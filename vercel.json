@@ -31,8 +31,8 @@
     }
   ],
   "redirects": [
-    { "source": "/casestudies/eye-care-provider/:rest*", "destination": "/casestudies/eyecare-provider/", "permanent": true },
-    { "source": "/sample-page/:rest*", "destination": "/", "permanent": true },
-    { "source": "/home-2/:rest*", "destination": "/", "permanent": true }
+    { "source": "/casestudies/eye-care-provider/", "destination": "/casestudies/eyecare-provider/", "permanent": true },
+    { "source": "/sample-page/", "destination": "/", "permanent": true },
+    { "source": "/home-2/", "destination": "/", "permanent": true }
   ]
 }
