@@ -383,9 +383,11 @@ h1:where(.wp-block-heading).has-background,h2:where(.wp-block-heading).has-backg
 {"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/Divi/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
 </script>
 <script type="module">
-  window.amplitude.init(AMPLITUDE_API_KEY)
-  const autocapturePlugin = window.amplitudeAutocapturePlugin.plugin();
-  window.amplitude.add(autocapturePlugin);
+  if (typeof AMPLITUDE_API_KEY !== "undefined" && window.amplitude) {
+    window.amplitude.init(AMPLITUDE_API_KEY);
+    const autocapturePlugin = window.amplitudeAutocapturePlugin.plugin();
+    window.amplitude.add(autocapturePlugin);
+  }
 </script><script type="text/javascript" src="/wp-content/plugins/coblocks/dist/js/coblocks-animation.js" id="coblocks-animation-js"></script>
 <script type="text/javascript" src="/wp-includes/js/jquery/jquery.min.js" id="jquery-core-js"></script>
 <script type="text/javascript" src="/wp-includes/js/jquery/jquery-migrate.min.js" id="jquery-migrate-js"></script>

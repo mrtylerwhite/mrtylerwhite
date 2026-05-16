@@ -12,7 +12,7 @@ HERO = """
 \t\t\t\t\t<div class="nl-conf-hero__content email-success-hero">
 \t\t\t\t\t\t<img src="/assets/newsletter/confirmation-envelope.png" width="226" height="177" alt="" class="nl-conf-hero__icon" loading="lazy" decoding="async">
 \t\t\t\t\t\t<h1 class="nl-conf-hero__title heading-7 center"><strong>Check your email<br>to finish signing up</strong></h1>
-\t\t\t\t\t\t<p class="nl-conf-hero__copy paragraph p-news-confirm"><em><br>A confirmation email is on its way.<br>Open it and click the button inside to finish signing up.<br>If you don\u2019t see it in the next minute, check spam or promotions.<br><br>It will come from </em><a href="mailto:tyler@saasifyos.com"><strong><em>tyler@saasifyos.com</em></strong></a><em>.</em></p>
+\t\t\t\t\t\t<p class="nl-conf-hero__copy paragraph p-news-confirm"><em><br>A confirmation email is on its way.<br>Open it and click the button inside to finish signing up.<br>If you don\u2019t see it in the next minute, check spam or promotions.<br><br>Check your inbox for an email from Tyler White.</em></p>
 \t\t\t\t\t</motion>
 \t\t\t\t</motion>
 \t\t\t</section>
@@ -78,6 +78,35 @@ def main() -> None:
         '<meta name="twitter:title" content="Check your email | Tyler White"',
         html,
         count=1,
+    )
+    confirm_desc = (
+        "A confirmation email is on its way. Open it to finish signing up for the newsletter."
+    )
+    html = re.sub(
+        r'<meta property="og:description" content="[^"]*"',
+        f'<meta property="og:description" content="{confirm_desc}"',
+        html,
+        count=1,
+    )
+    html = re.sub(
+        r'<meta name="twitter:description" content="[^"]*"',
+        f'<meta name="twitter:description" content="{confirm_desc}"',
+        html,
+        count=1,
+    )
+    confirm_schema = (
+        '\t<script type="application/ld+json">{"@context":"https://schema.org",'
+        '"@type":"WebPage","name":"Check your email | Tyler White",'
+        '"url":"https://mrtylerwhite.com/newsletter-confirmation/",'
+        '"description":"Confirmation step for newsletter signup. '
+        'Check your inbox for an email from Tyler White."}</script>'
+    )
+    html = re.sub(
+        r'\t<script type="application/ld\+json"[^>]*>.*?</script>\s*',
+        confirm_schema + "\n",
+        html,
+        count=1,
+        flags=re.DOTALL,
     )
     html = html.replace(
         'class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item menu-item-3458"',
