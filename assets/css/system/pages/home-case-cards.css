@@ -1,7 +1,9 @@
 /*
-  Homepage case study feature cards only
-  Scope: .case-work .card-kepler (rows 4 & 5 — Notch + Kepler)
-  Overrides site-wide headings.css tracking on long uppercase h5 titles.
+  Homepage typography overrides (index only)
+  Scope:
+  - .case-work .card-kepler h5 / .card-side-by-side h6 (case study cards)
+  - .et_pb_text_7 h3 (testimonial / mentorship section title)
+  Overrides site-wide headings.css (-3px tracking) on long uppercase titles.
 */
 
 /* -------------------------------------------------------------------------- */
@@ -24,6 +26,56 @@
 @media (max-width: 767px) {
   #page-container .case-work .card-kepler h5 {
     letter-spacing: -0.75px !important;
+    line-height: 1.1;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Card title letter-spacing (smaller side-by-side cards)                        */
+/* -------------------------------------------------------------------------- */
+
+@media (min-width: 981px) {
+  #page-container .case-work .card-side-by-side h6 {
+    letter-spacing: -0.75px !important;
+    line-height: 1.05;
+  }
+}
+
+@media (max-width: 980px) {
+  #page-container .case-work .card-side-by-side h6 {
+    letter-spacing: -0.5px !important;
+    line-height: 1.08;
+  }
+}
+
+@media (max-width: 767px) {
+  #page-container .case-work .card-side-by-side h6 {
+    letter-spacing: -0.25px !important;
+    line-height: 1.1;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Mentorship / testimonial section title (et_pb_text_7)                       */
+/* -------------------------------------------------------------------------- */
+
+@media (min-width: 981px) {
+  #page-container .et_pb_text_7 h3 {
+    letter-spacing: -0.75px !important;
+    line-height: 1.08;
+  }
+}
+
+@media (max-width: 980px) {
+  #page-container .et_pb_text_7 h3 {
+    letter-spacing: -0.5px !important;
+    line-height: 1.08;
+  }
+}
+
+@media (max-width: 767px) {
+  #page-container .et_pb_text_7 h3 {
+    letter-spacing: -0.25px !important;
     line-height: 1.1;
   }
 }
