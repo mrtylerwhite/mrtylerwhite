@@ -1,0 +1,126 @@
+/*
+  Typography utilities (Phase 5)
+  - Opt-in only via .ds-* classes (no h1–h6, p, or Divi selectors)
+  - Uses tokens from tokens.css
+  - Mobile-first; fluid sizes via clamp() where it improves small screens
+*/
+
+.ds-eyebrow{
+  margin: 0;
+  font-family: var(--ds-font-body);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  line-height: 1.35;
+  color: rgba(0,0,0,.55);
+}
+
+.ds-hero-title{
+  margin: 0;
+  font-family: var(--ds-font-heading-bold);
+  font-weight: 400;
+  letter-spacing: -3px;
+  text-transform: uppercase;
+  line-height: 1.12;
+  color: var(--ds-color-dark-2);
+  overflow-wrap: anywhere;
+  font-size: clamp(1.625rem, 0.35vw + 1.45rem, 2.75rem);
+}
+
+.ds-page-title{
+  margin: 0;
+  font-family: var(--ds-font-heading-bold);
+  font-weight: 400;
+  letter-spacing: -3px;
+  text-transform: uppercase;
+  line-height: 1.15;
+  color: var(--ds-color-dark-2);
+  overflow-wrap: anywhere;
+  font-size: clamp(1.5rem, 0.22vw + 1.28rem, 2rem);
+}
+
+.ds-section-title{
+  margin: 0;
+  font-family: var(--ds-font-heading-bold);
+  font-weight: 400;
+  letter-spacing: -3px;
+  text-transform: uppercase;
+  line-height: 1.2;
+  color: var(--ds-color-dark-2);
+  overflow-wrap: anywhere;
+  font-size: clamp(1.25rem, 0.18vw + 1.06rem, 1.5rem);
+}
+
+.ds-card-title{
+  margin: 0;
+  font-family: var(--ds-font-body);
+  font-weight: 650;
+  line-height: 1.2;
+  color: var(--ds-color-text);
+  font-size: 16px;
+}
+
+.ds-body{
+  margin: 0;
+  font-family: var(--ds-font-body);
+  font-size: var(--ds-font-size-body);
+  font-weight: 500;
+  line-height: var(--ds-line-height-body);
+  color: var(--ds-color-text);
+}
+
+.ds-body--large{
+  margin: 0;
+  font-family: var(--ds-font-body);
+  font-weight: 500;
+  line-height: 1.65;
+  color: var(--ds-color-text);
+  font-size: clamp(0.9375rem, 0.12vw + 0.88rem, 1.0625rem);
+}
+
+.ds-body--small{
+  margin: 0;
+  font-family: var(--ds-font-body);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.55;
+  color: var(--ds-color-text);
+}
+
+.ds-caption{
+  margin: 0;
+  font-family: var(--ds-font-body);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--ds-color-muted);
+}
+
+.ds-meta{
+  margin: 0;
+  font-family: var(--ds-font-body);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: rgba(0,0,0,.58);
+}
+
+.ds-text-link{
+  color: var(--ds-color-link);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  text-decoration-color: rgba(46,163,242,.4);
+}
+
+.ds-text-link:hover{
+  text-decoration-thickness: 2px;
+  text-decoration-color: rgba(46,163,242,.75);
+}
+
+.ds-text-link:focus-visible{
+  outline: 2px solid var(--ds-color-focus);
+  outline-offset: 2px;
+  border-radius: 2px;
+}

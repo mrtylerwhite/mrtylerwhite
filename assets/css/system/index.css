@@ -1,0 +1,10 @@
+/* Phase 1 system entrypoint (no build step) */
+@import url("/assets/css/system/tokens.css");
+@import url("/assets/css/system/headings.css");
+@import url("/assets/css/system/typography.css");
+@import url("/assets/css/system/layout.css");
+@import url("/assets/css/system/components/buttons.css");
+@import url("/assets/css/system/components/forms.css");
+@import url("/assets/css/system/components/cards.css");
+@import url("/assets/css/system/components/testimonials.css");
+

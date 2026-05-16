@@ -1,0 +1,81 @@
+/*
+  Buttons (Phase 1)
+  - Opt-in only via ds- classes
+  - No overrides of .et_pb_* or other Divi selectors
+*/
+
+.ds-btn{
+  -webkit-appearance:none;
+  appearance:none;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap: var(--ds-space-2);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0;
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+
+  height: var(--ds-control-h);
+  padding: 0 14px;
+  border-radius: var(--ds-radius-md);
+  border: 1px solid var(--ds-color-border-strong);
+  background: transparent;
+  color: rgba(0,0,0,.85);
+
+  transition: background-color .25s, border-color .25s, color .25s, box-shadow .25s, transform .06s;
+  box-sizing: border-box;
+}
+
+.ds-btn:hover{
+  background: rgba(0,0,0,.04);
+  text-decoration:none;
+}
+
+.ds-btn:active{
+  transform: translateY(1px);
+}
+
+.ds-btn:focus-visible{
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(197,144,96,.20);
+  border-color: var(--ds-color-focus);
+}
+
+.ds-btn[disabled],
+.ds-btn[aria-disabled="true"]{
+  opacity: .65;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.ds-btn--primary{
+  border-color: rgba(0,0,0,.24);
+  background: rgba(0,0,0,.02);
+}
+
+.ds-btn--secondary{
+  border-color: rgba(0,0,0,.16);
+  background: transparent;
+}
+
+.ds-btn--dark{
+  background: var(--ds-color-dark);
+  border-color: var(--ds-color-dark);
+  color: #fff;
+}
+.ds-btn--dark:hover{
+  background: var(--ds-color-dark-2);
+  border-color: var(--ds-color-dark-2);
+  color:#fff;
+}
+
+.ds-btn--pill{
+  border-radius: var(--ds-radius-pill);
+}
+

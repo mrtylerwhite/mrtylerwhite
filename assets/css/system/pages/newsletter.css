@@ -1,0 +1,468 @@
+/*
+  Newsletter landing (/newsletter/) — SaaSifyOS signup layout (light hero)
+  Scoped to #post-newsletter only.
+*/
+
+#post-newsletter {
+  --nl-page-bg: #fcf7f4;
+  --nl-hero-bg: #fefcfc;
+  --nl-hero-gradient: #f6f0e9;
+  --nl-text: #000;
+  --nl-text-body: rgba(0, 0, 0, 0.87);
+  --nl-text-muted: rgba(0, 0, 0, 0.6);
+  --nl-accent: #c59060;
+  --nl-shadow-hero: 0 2px 24px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04);
+  --nl-shadow-form: 0 5px 40px rgba(0, 0, 0, 0.05);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Page shell                                                                  */
+/* -------------------------------------------------------------------------- */
+
+body:has(#post-newsletter) #et-main-area,
+body:has(#post-newsletter) #main-content {
+  background-color: var(--nl-page-bg);
+}
+
+#post-newsletter .entry-content {
+  background-color: var(--nl-page-bg);
+  padding: 0;
+}
+
+#post-newsletter .et-l--post .et_pb_section {
+  background-color: transparent;
+  padding: 0;
+}
+
+#post-newsletter .et_builder_inner_content {
+  overflow-x: clip;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Hero section                                                                */
+/* -------------------------------------------------------------------------- */
+
+#post-newsletter .nl-saasify-hero {
+  position: relative;
+  margin: 28px 16px 18px;
+  min-height: 0;
+  border-radius: 20px;
+  overflow: hidden;
+  background-color: var(--nl-hero-bg);
+  background-image: linear-gradient(var(--nl-hero-gradient), var(--nl-hero-gradient));
+  box-shadow: none;
+  display: block;
+}
+
+#post-newsletter .nl-saasify-hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+#post-newsletter .nl-saasify-hero__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.22;
+}
+
+#post-newsletter .nl-saasify-hero__scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(254, 252, 252, 0.55) 0%,
+      rgba(246, 240, 233, 0.35) 50%,
+      rgba(252, 247, 244, 0.75) 100%
+    );
+  pointer-events: none;
+}
+
+#post-newsletter .nl-saasify-hero__inner {
+  position: relative;
+  z-index: 2;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: clamp(2.25rem, 4.5vw, 3.25rem) 24px clamp(8.5rem, 12vw, 11rem);
+  box-sizing: border-box;
+}
+
+#post-newsletter .nl-saasify-hero__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 100%;
+  padding-top: 0;
+}
+
+#post-newsletter .nl-saasify-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/*
+  Eyebrow pill — mirrors homepage hero:
+  HTML: .hero-cntn .et_pb_text_0 .et_pb_text_inner > p > sup
+  CSS:  .hero-cntn sup (+ base sup) in et-divi-customizer-global.min.css
+*/
+#post-newsletter .nl-saasify-title > p {
+  margin: 0;
+  text-align: center;
+}
+
+#post-newsletter .nl-saasify-title sup {
+  position: relative;
+  top: auto;
+  bottom: auto;
+  vertical-align: baseline;
+  display: inline-table;
+  font-family: Figtree, "Open Sans", Arial, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.5px;
+  text-transform: none;
+  color: #2b180a !important;
+  background-color: rgba(255, 255, 255, 0.28);
+  border: 1px solid transparent;
+  border-radius: 100px;
+  padding: 9px 16px;
+  margin: 0;
+  box-shadow: none;
+}
+
+/* Headline */
+#post-newsletter .nl-saasify-headline {
+  margin: 8px 0 8px;
+  padding-bottom: 0;
+  max-width: 980px;
+  font-size: clamp(2.6875rem, 4vw + 1rem, 4.375rem);
+  line-height: 0.85;
+  text-align: center;
+  color: var(--nl-text);
+}
+
+/* Lede */
+#post-newsletter .nl-saasify-lede {
+  margin: 0 auto 40px;
+  max-width: 660px;
+  width: 80%;
+  font-family: Lato, "Open Sans", Arial, sans-serif;
+  font-size: 18px;
+  line-height: 26px;
+  color: var(--nl-text-body);
+}
+
+/* Senja / social proof */
+#post-newsletter .nl-saasify-senja {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 100%;
+  margin: 32px auto 8px;
+  color: var(--nl-text);
+  text-align: center;
+}
+
+#post-newsletter .nl-saasify-senja .senja-embed {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Form                                                                        */
+/* -------------------------------------------------------------------------- */
+
+#post-newsletter .nl-saasify-form {
+  width: 100%;
+  max-width: 478px;
+  margin-top: 22px;
+}
+
+#post-newsletter .nl-saasify-input-container {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  width: 100%;
+  max-width: 478px;
+  margin: 0 auto 4px;
+  padding: 8px;
+  box-sizing: border-box;
+  border-radius: 999px;
+  background-color: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: var(--nl-shadow-form);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: border-color 0.35s, box-shadow 0.35s;
+  position: relative;
+}
+
+#post-newsletter .nl-saasify-input-container:hover,
+#post-newsletter .nl-saasify-input-container:focus-within {
+  border-color: var(--nl-accent);
+  box-shadow: 0 0 0 6px rgba(197, 144, 96, 0.2), var(--nl-shadow-form);
+}
+
+#post-newsletter .nl-saasify-input {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 36px;
+  margin: 0;
+  padding: 6px 8.5rem 6px 14px;
+  border: 0;
+  border-radius: 100px;
+  background: transparent;
+  font-family: Lato, "Open Sans", Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--nl-text);
+  box-sizing: border-box;
+}
+
+#post-newsletter .nl-saasify-input::placeholder {
+  color: rgba(0, 0, 0, 0.45);
+}
+
+#post-newsletter .nl-saasify-input:focus {
+  outline: 2px solid var(--nl-accent);
+  outline-offset: 2px;
+}
+
+#post-newsletter .nl-saasify-submit {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0;
+  padding: 8px 14px;
+  min-height: 36px;
+  border: 1px solid #000;
+  border-radius: 20px;
+  background-color: #000;
+  color: #fff;
+  font-family: Lato, "Open Sans", Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+  cursor: pointer;
+  transition: background-color 0.35s, color 0.35s, opacity 0.2s;
+  white-space: nowrap;
+}
+
+#post-newsletter .nl-saasify-submit:hover {
+  background-color: #1a1a1a;
+}
+
+#post-newsletter .nl-saasify-submit:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+#post-newsletter .nl-saasify-form-error {
+  margin: 6px 0 0;
+  min-height: 1.25em;
+  font-family: Lato, "Open Sans", Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.4;
+  color: #b42318;
+  text-align: center;
+}
+
+#post-newsletter .nl-saasify-caption {
+  margin: 12px 0 0;
+  padding: 4px 16px;
+  font-family: Lato, "Open Sans", Arial, sans-serif;
+  font-size: 11px;
+  line-height: 16px;
+  color: var(--nl-text-muted);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Logo marquee                                                                */
+/* -------------------------------------------------------------------------- */
+
+#post-newsletter .nl-saasify-logos {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+  padding: 50px 0;
+  overflow: hidden;
+  pointer-events: none;
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+#post-newsletter .nl-saasify-logos__track {
+  display: flex;
+  width: max-content;
+  animation: nl-saasify-marquee 45s linear infinite;
+}
+
+#post-newsletter .nl-saasify-logos__slide {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 2em;
+  padding-right: 2em;
+}
+
+#post-newsletter .nl-saasify-logos__item {
+  height: 20px;
+  width: auto;
+  max-width: none;
+  object-fit: contain;
+  opacity: 0.88;
+  filter: brightness(0);
+}
+
+@keyframes nl-saasify-marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #post-newsletter .nl-saasify-logos__track {
+    animation: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    gap: 1.5rem 2rem;
+  }
+
+  #post-newsletter .nl-saasify-logos__slide[aria-hidden="true"] {
+    display: none;
+  }
+
+  #post-newsletter .nl-saasify-logos__slide {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-right: 0;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Responsive                                                                  */
+/* -------------------------------------------------------------------------- */
+
+@media screen and (max-width: 980px) {
+  #post-newsletter .nl-saasify-hero {
+    margin: 20px 12px 16px;
+  }
+
+  #post-newsletter .nl-saasify-headline {
+    font-size: clamp(2.5rem, 6vw, 4.0625rem);
+  }
+
+  #post-newsletter .nl-saasify-lede {
+    width: 100%;
+    max-width: 600px;
+    font-size: 17px;
+    line-height: 24px;
+    margin-bottom: 28px;
+  }
+
+  #post-newsletter .nl-saasify-senja {
+    margin-top: 28px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  #post-newsletter .nl-saasify-hero {
+    margin: 16px 8px 14px;
+    border-radius: 16px;
+  }
+
+  #post-newsletter .nl-saasify-hero__inner {
+    padding: 1.75rem 16px 8.5rem;
+  }
+
+  #post-newsletter .nl-saasify-title sup {
+    font-size: 13px;
+    padding: 8px 14px;
+  }
+
+  #post-newsletter .nl-saasify-headline {
+    font-size: clamp(2rem, 9vw, 2.6875rem);
+    line-height: 0.9;
+    margin-bottom: 8px;
+  }
+
+  #post-newsletter .nl-saasify-lede {
+    font-size: 15px;
+    line-height: 20px;
+    margin-bottom: 24px;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  #post-newsletter .nl-saasify-senja {
+    margin-top: 24px;
+  }
+
+  #post-newsletter .nl-saasify-form,
+  #post-newsletter .nl-saasify-input-container {
+    max-width: 100%;
+  }
+
+  #post-newsletter .nl-saasify-input-container {
+    flex-direction: column;
+    align-items: stretch;
+    border-radius: 22px;
+    padding: 10px;
+  }
+
+  #post-newsletter .nl-saasify-input {
+    width: 100%;
+    padding: 10px 14px;
+    min-height: 44px;
+    font-size: 12px;
+  }
+
+  #post-newsletter .nl-saasify-submit {
+    position: static;
+    transform: none;
+    width: 100%;
+    margin-top: 8px;
+    min-height: 44px;
+    font-size: 11px;
+  }
+
+  #post-newsletter .nl-saasify-caption {
+    font-size: 13px;
+  }
+
+  #post-newsletter .nl-saasify-logos {
+    padding: 36px 0;
+  }
+
+  #post-newsletter .nl-saasify-hero__video {
+    opacity: 0.18;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  #post-newsletter .nl-saasify-hero__inner {
+    padding-top: 1.5rem;
+  }
+}

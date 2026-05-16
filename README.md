@@ -22,6 +22,16 @@ This is a pre-built static site — no build step. Deploy as-is.
 
 ### Local preview
 
+**Live reload (recommended for editing):** saves refresh the browser automatically.
+
+```bash
+npm install   # first time only
+npm run dev
+# http://127.0.0.1:4321/ — change any HTML/CSS/asset and the tab reloads
+```
+
+**Static server only** (no auto-refresh):
+
 ```bash
 npx serve@latest . -l 4321
 # open http://localhost:4321/

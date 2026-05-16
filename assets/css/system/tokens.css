@@ -1,0 +1,70 @@
+/*
+  Design System Tokens (Phase 1)
+  - All variables prefixed with --ds-
+  - Safe to load globally: variables only (no Divi overrides)
+
+  Breakpoints observed in exported pages (Divi/WP):
+  - Desktop: min-width: 981px
+  - Tablet: max-width: 980px
+  - Phone: max-width: 767px
+  - Additional: 600px, 479px, 420px (page-specific)
+*/
+
+:root{
+  /* Colors (current reality) */
+  --ds-color-text: #333333;
+  --ds-color-muted: #666666;
+  --ds-color-subtle: rgba(0,0,0,.65);
+  --ds-color-border: rgba(0,0,0,.10);
+  --ds-color-border-strong: rgba(0,0,0,.18);
+  --ds-color-surface: #ffffff;
+  --ds-color-surface-tint: rgba(255,255,255,.7);
+  --ds-color-link: #2ea3f2; /* Divi default link/accent */
+  --ds-color-accent: #24c8dc; /* observed in newsletter JS config */
+  --ds-color-focus: #c59060; /* newsletter focus/hover accent */
+  --ds-color-danger: #cc0000;
+  --ds-color-success: #167d3f;
+  --ds-color-dark: #000000;
+  --ds-color-dark-2: #1a1a1a;
+
+  /* Typography */
+  --ds-font-body: Open Sans, Arial, sans-serif;
+  /* Futura PT via Adobe Fonts (use.typekit.net) — see newsletter page head */
+  --ds-font-heading: "futura-pt", "Futura PT", futura, sans-serif;
+  --ds-font-heading-bold: "futura-pt-bold", "futura-pt", "Futura PT", futura, sans-serif;
+  --ds-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --ds-font-size-body: 14px;
+  --ds-line-height-body: 1.7;
+
+  /* Spacing scale (derived from common values; extend later if needed) */
+  --ds-space-1: 4px;
+  --ds-space-2: 8px;
+  --ds-space-3: 12px;
+  --ds-space-4: 16px;
+  --ds-space-5: 24px;
+  --ds-space-6: 32px;
+  --ds-space-7: 48px;
+  --ds-space-8: 64px;
+
+  /* Radius */
+  --ds-radius-sm: 8px;
+  --ds-radius-md: 10px;
+  --ds-radius-lg: 12px;
+  --ds-radius-pill: 999px;
+
+  /* Shadows (newsletter-derived) */
+  --ds-shadow-sm: 0 2px 12px rgba(0,0,0,.05);
+  --ds-shadow-md: 0 1px 6px rgba(20,18,12,.06);
+  --ds-shadow-lg: 0 5px 40px rgba(0,0,0,.05);
+
+  /* Component sizing */
+  --ds-control-h: 36px;
+  --ds-control-h-lg: 40px;
+
+  /* Breakpoints as custom props (use in docs; media queries still require literals) */
+  --ds-bp-desktop-min: 981px;
+  --ds-bp-tablet-max: 980px;
+  --ds-bp-phone-max: 767px;
+  --ds-bp-small-max: 479px;
+}
+

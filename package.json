@@ -1,0 +1,13 @@
+{
+  "name": "mrtylerwhite-static",
+  "private": true,
+  "description": "Static site — local dev uses live-server for auto-reload",
+  "scripts": {
+    "dev": "live-server . --port=4321 --host=127.0.0.1 --open=/",
+    "dev:api": "vercel dev --listen 127.0.0.1:4321",
+    "serve": "npx serve@latest . -l 4321"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}

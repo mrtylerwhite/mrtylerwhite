@@ -1,0 +1,91 @@
+/*
+  Testimonials (Phase 8)
+  - Composable with .ds-card (typically .ds-card.ds-card--testimonial)
+  - Mobile-safe by default; works inside CSS columns (masonry) and grids.
+  - Initials-based avatar fallback (no image asset required); supports <img>.
+  - Editorial serif quote treatment by default; override at site/page level.
+*/
+
+.ds-testimonial{
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+
+  /* Masonry-safety: never split a testimonial across columns when used
+     inside a CSS multi-column container. No-op in grid/flex contexts. */
+  break-inside: avoid;
+  page-break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+
+  display: inline-block;
+  vertical-align: top;
+}
+
+.ds-testimonial__stars{
+  margin: 0 0 var(--ds-space-2);
+  color: #b8860b;
+  font-size: 0.9rem;
+  line-height: 1;
+  letter-spacing: 0.12em;
+  opacity: 0.95;
+}
+
+.ds-testimonial__quote{
+  margin: 0 0 var(--ds-space-3);
+  padding: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 0.98rem;
+  line-height: 1.5;
+  color: #2a2a2a;
+}
+
+.ds-testimonial__author{
+  margin-top: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  min-width: 0;
+}
+
+/* Avatar circle. Renders centred initials by default; can wrap an <img>. */
+.ds-testimonial__avatar{
+  flex: 0 0 40px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #ebe7e2, #d9d3cc);
+  color: #3f3f3f;
+  font-weight: 700;
+  font-size: 0.72rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.ds-testimonial__avatar > img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.ds-testimonial__name{
+  display: block;
+  min-width: 0;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--ds-color-text);
+  line-height: 1.25;
+}
+
+.ds-testimonial__role{
+  display: block;
+  min-width: 0;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #7a7a7a;
+  line-height: 1.35;
+}

@@ -1,0 +1,16 @@
+/*
+  Site-wide heading typography — Futura PT (Adobe Fonts)
+  Load https://use.typekit.net/kap0kcr.css in each page <head>.
+*/
+
+@import url("/assets/css/system/tokens.css");
+
+body :where(h1, h2, h3, h4, h5, h6),
+.et-db :where(h1, h2, h3, h4, h5, h6),
+#et-boc :where(h1, h2, h3, h4, h5, h6),
+#main-content :where(h1, h2, h3, h4, h5, h6) {
+  font-family: var(--ds-font-heading-bold) !important;
+  font-weight: 400 !important;
+  letter-spacing: -3px !important;
+  text-transform: uppercase !important;
+}

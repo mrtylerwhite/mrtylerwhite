@@ -1,0 +1,61 @@
+/*
+  Forms (Phase 1)
+  - Opt-in only via ds- classes
+  - Designed to coexist with newsletter layout (which positions submit absolutely)
+*/
+
+.ds-form{
+  margin: 0;
+}
+
+.ds-form-row{
+  margin: 0;
+}
+
+.ds-input{
+  -webkit-appearance:none;
+  appearance:none;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.42857;
+  color: var(--ds-color-text);
+
+  width: 100%;
+  min-width: 0;
+  height: var(--ds-control-h);
+  padding: 6px 14px;
+
+  border-radius: var(--ds-radius-pill);
+  border: 1px solid transparent;
+  background: transparent;
+  box-sizing: border-box;
+}
+
+.ds-input::placeholder{
+  color: rgba(0,0,0,.55);
+}
+
+.ds-input:focus{
+  outline: none;
+}
+
+/* Submit is intentionally compatible with ds-btn */
+.ds-submit{
+  height: var(--ds-control-h);
+}
+
+.ds-form-message{
+  margin: 8px 0 0;
+  min-height: 1.3em; /* preserves layout when empty */
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.ds-form-message--error{
+  color: var(--ds-color-danger);
+}
+
+.ds-form-message--success{
+  color: var(--ds-color-success);
+}
+

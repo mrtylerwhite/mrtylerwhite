@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Design System (Internal) — Mr. Tyler White</title>
+
+  <!-- Internal documentation only -->
+  <meta name="robots" content="noindex, nofollow" />
+
+  <!-- Fonts used across the site (as referenced by existing pages) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Figtree:300,regular,500,600,700,800,900&subset=latin,latin-ext&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Smooch&display=swap" />
+
+  <!-- Existing plugin CSS present in repo (mobile hamburger icon) -->
+  <link rel="stylesheet" href="/wp-content/plugins/divi-100-hamburger-menu/assets/css/style.css" />
+
+  <!-- Design system: tokens, typography utilities, layout, components (opt-in classes only) -->
+  <link rel="stylesheet" href="/assets/css/system/index.css" />
+
+  <!-- Docs-only layout CSS -->
+  <link rel="stylesheet" href="/design-system/design-system.css" />
+
+  <!-- Minimal "site frame" CSS so header/footer & previews are usable here.
+       (Production pages carry large Divi/inline CSS; this page intentionally does not duplicate the entire payload.) -->
+  <style>
+    :root{--ds-accent:#2ea3f2;--ds-text:#333;--ds-muted:#666;}
+    html,body{margin:0;padding:0}
+    body{font-family:Open Sans,Arial,sans-serif;font-size:14px;color:var(--ds-muted);line-height:1.7em;font-weight:500;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;background:#fff}
+    h1,h2,h3,h4{color:var(--ds-text);line-height:1.15;font-weight:600;margin:0 0 10px}
+    h1{font-size:30px} h2{font-size:24px} h3{font-size:18px} h4{font-size:16px}
+    p{margin:0 0 12px}
+    a{color:var(--ds-accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{width:80%;max-width:1080px;margin:auto;position:relative}
+
+    /* Header frame (copied structurally from existing pages, styled lightly) */
+    #main-header{top:0;background:#fff;width:100%;box-shadow:0 1px 0 rgba(0,0,0,.1);position:sticky;z-index:99999}
+    #main-header .et_menu_container{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 0}
+    .logo_container{display:flex;align-items:center;gap:10px}
+    #logo{height:20px;width:auto;display:block}
+    #top-menu{margin:0;padding:0;list-style:none;display:flex;gap:18px;align-items:center}
+    #top-menu > li{display:block}
+    #top-menu a{color:rgba(0,0,0,.65);font-weight:600}
+    #top-menu a:hover{opacity:.8;text-decoration:none}
+    #et_mobile_nav_menu{display:none}
+    .mobile_menu_bar{display:inline-block}
+
+    /* Footer frame */
+    #main-footer{background:#222;color:#fff;margin-top:36px}
+    #footer-bottom{background:#1f1f1f}
+    #footer-bottom .container{padding:18px 0;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+    .et-social-icons{margin:0;padding:0;list-style:none;display:flex;gap:12px}
+    .et-social-icon a{color:#fff;opacity:.9}
+    .et-social-icon a:hover{opacity:.7}
+    #footer-info{color:rgba(255,255,255,.85)}
+    #footer-info .brand-color{color:#ff6b6b}
+
+    /* Keep docs visuals stable; ds-btn provides the canonical examples. */
+
+    /* Mobile */
+    @media (max-width:980px){
+      .container{width:92%}
+      #top-menu-nav{display:none}
+      #et_mobile_nav_menu{display:block}
+    }
+  </style>
+<link rel="preconnect" href="https://use.typekit.net" crossorigin />
+<link rel="stylesheet" href="https://use.typekit.net/kap0kcr.css" />
+<link rel="stylesheet" href="/assets/css/system/headings.css" />
+</head>
+<body class="custom-background">
+  <div id="page-container">
+    <header id="main-header" data-height-onload="30">
+      <div class="container clearfix et_menu_container">
+        <div class="logo_container">
+          <a href="/">
+            <img src="/wp-content/uploads/2025/12/logo-mrtylerwhite-1.svg" width="69" height="20" alt="Mr. Tyler White" id="logo" />
+          </a>
+        </div>
+        <div id="et-top-navigation" data-height="30" data-fixed-height="40">
+          <nav id="top-menu-nav" aria-label="Primary">
+            <ul id="top-menu" class="nav">
+              <li class="menu-item"><a href="/about/">About Me</a></li>
+              <li class="menu-item"><a href="/case-studies/">Case Studies</a></li>
+              <li class="menu-item"><a href="/newsletter/">Newsletter</a></li>
+              <li class="menu-item"><a href="https://www.designtablepodcast.com/">Podcast</a></li>
+              <li class="menu-item et_pb_button et_pb_button_secondary"><a target="_blank" rel="noopener" href="/wp-content/uploads/2024/08/TylerWhite-Resume-2024.pdf">Download CV</a></li>
+              <li class="menu-item et_pb_button"><a target="_blank" rel="noopener" href="https://www.linkedin.com/in/mrtylerwhite/">Let&#8217;s Connect</a></li>
+            </ul>
+          </nav>
+          <div id="et_mobile_nav_menu" aria-label="Mobile navigation (collapsed)">
+            <div class="mobile_nav closed">
+              <span class="select_page">Select Page</span>
+              <span class="mobile_menu_bar mobile_menu_bar_toggle"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div id="et-main-area">
+      <div id="main-content">
+        <div class="container">
+          <div class="ds-shell" role="document">
+            <aside class="ds-sidebar" aria-label="Design system navigation">
+              <h2>Design system</h2>
+              <ul class="ds-nav">
+                <li><a href="#overview">Overview</a></li>
+                <li>
+                  <a href="#foundations">Foundations</a>
+                  <ul class="ds-nav-sub">
+                    <li><a href="#foundations-colors">Colors</a></li>
+                    <li><a href="#foundations-typography">Typography</a></li>
+                    <li><a href="#foundations-typography-utilities">Typography utilities (Phase 5)</a></li>
+                    <li><a href="#foundations-spacing">Spacing</a></li>
+                    <li><a href="#foundations-borders">Borders &amp; radius</a></li>
+                    <li><a href="#foundations-shadows">Shadows</a></li>
+                    <li><a href="#foundations-backgrounds">Backgrounds</a></li>
+                    <li><a href="#foundations-breakpoints">Breakpoints</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#layout">Layout</a>
+                  <ul class="ds-nav-sub">
+                    <li><a href="#layout-wrappers">Page wrappers</a></li>
+                    <li><a href="#layout-containers">Containers</a></li>
+                    <li><a href="#layout-section-spacing">Section spacing</a></li>
+                    <li><a href="#layout-grids">Grids</a></li>
+                    <li><a href="#layout-heroes">Hero layouts</a></li>
+                    <li><a href="#layout-mobile">Mobile behavior</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#components">Components</a>
+                  <ul class="ds-nav-sub">
+                    <li><a href="#cmp-header">Header / nav</a></li>
+                    <li><a href="#cmp-mobile-menu">Mobile menu</a></li>
+                    <li><a href="#cmp-buttons">Buttons</a></li>
+                    <li><a href="#cmp-links">Links</a></li>
+                    <li><a href="#cmp-cards">Cards</a></li>
+                    <li><a href="#cmp-forms">Forms</a></li>
+                    <li><a href="#cmp-newsletter">Newsletter signup</a></li>
+                    <li><a href="#cmp-testimonials">Testimonials</a></li>
+                    <li><a href="#cmp-logo-strips">Logo strips</a></li>
+                    <li><a href="#cmp-footer">Footer</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#templates">Page templates</a>
+                  <ul class="ds-nav-sub">
+                    <li><a href="#tpl-home">Homepage</a></li>
+                    <li><a href="#tpl-about">About</a></li>
+                    <li><a href="#tpl-case-studies">Case studies</a></li>
+                    <li><a href="#tpl-newsletter">Newsletter</a></li>
+                    <li><a href="#tpl-podcast">Podcast</a></li>
+                    <li><a href="#tpl-confirmation">Confirmation pages</a></li>
+                  </ul>
+                </li>
+                <li><a href="#responsive-rules">Responsive rules</a></li>
+                <li><a href="#inconsistencies">Inconsistencies</a></li>
+                <li><a href="#cleanup-priorities">Cleanup priorities</a></li>
+              </ul>
+            </aside>
+
+            <main class="ds-main" aria-label="Design system content">
+              <section class="ds-top" id="overview">
+                <h1>Internal design system audit</h1>
+                <p>
+                  This page documents the <strong>current</strong> HTML/CSS system extracted from a hardcoded WordPress/Divi export.
+                  It inventories foundations, layout patterns, and reusable components as they exist today, highlights inconsistencies,
+                  and recommends cleanup priorities—without introducing new frameworks (no Tailwind).
+                </p>
+                <div class="ds-doc-meta">
+                  <span class="ds-pill"><strong>Last audited</strong> <span>2026-05-10</span></span>
+                  <span class="ds-pill"><strong>Scope</strong> <span>HTML + inline CSS + plugin CSS in repo</span></span>
+                  <span class="ds-pill"><strong>Note</strong> <span>Production pages contain large Divi inline CSS not duplicated here</span></span>
+                </div>
+              </section>
+
+              <section class="ds-section" id="foundations">
+                <h2>Foundations</h2>
+                <p>Baseline tokens inferred from inline CSS present in exported pages, plus site-specific overrides (notably the Newsletter page).</p>
+
+                <div class="ds-subsection" id="foundations-colors">
+                  <h3>Colors</h3>
+                  <dl class="ds-kv">
+                    <dt>What exists today</dt>
+                    <dd>
+                      A Divi/WP baseline palette (e.g. link/accent <code class="ds-code">#2ea3f2</code>) plus page-specific accents (Newsletter hover/focus <code class="ds-code">#c59060</code>, CTA accent <code class="ds-code">#24c8dc</code>).
+                    </dd>
+                    <dt>Where it appears</dt>
+                    <dd>
+                      Global-ish defaults are in head inline styles across most pages (e.g. <code class="ds-code">index.html</code>, <code class="ds-code">case-studies/index.html</code>). Newsletter includes a dedicated style block (<code class="ds-code">newsletter/index.html</code>).
+                    </dd>
+                    <dt>CSS selectors/classes</dt>
+                    <dd>
+                      <code class="ds-code">a</code>, <code class="ds-code">.et_pb_button</code>, <code class="ds-code">#main-header</code>, <code class="ds-code">#main-footer</code>, <code class="ds-code">.newsletter-input-container</code>
+                    </dd>
+                  </dl>
+
+                  <div class="ds-grid ds-grid--3" aria-label="Color swatches (sample)">
+                    <div class="ds-card ds-card--surface ds-card--bordered">
+                      <div class="ds-swatch">
+                        <div class="ds-swatch-box" style="background:#2ea3f2"></div>
+                        <div class="ds-swatch-meta">
+                          <div class="ds-swatch-name">Accent / Link (Divi default)</div>
+                          <div class="ds-swatch-hex">#2ea3f2</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="ds-card ds-card--surface ds-card--bordered">
+                      <div class="ds-swatch">
+                        <div class="ds-swatch-box" style="background:#222222"></div>
+                        <div class="ds-swatch-meta">
+                          <div class="ds-swatch-name">Footer background</div>
+                          <div class="ds-swatch-hex">#222222</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="ds-card ds-card--surface ds-card--bordered">
+                      <div class="ds-swatch">
+                        <div class="ds-swatch-box" style="background:#c59060"></div>
+                        <div class="ds-swatch-meta">
+                          <div class="ds-swatch-name">Newsletter accent (hover/focus ring)</div>
+                          <div class="ds-swatch-hex">#c59060</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="ds-issue">
+                    <strong>Known issues</strong>
+                    <ul>
+                      <li>Near-duplicate accents exist across pages (e.g. <code class="ds-code">#2ea3f2</code> vs Newsletter accent <code class="ds-code">#c59060</code> vs CTA accent <code class="ds-code">#24c8dc</code>).</li>
+                      <li>Some Newsletter cards use one-off inline styles (e.g. borders/shadows in <code class="ds-code">style=""</code> attributes).</li>
+                    </ul>
+                  </div>
+                  <p><strong>Cleanup recommendation</strong>: define a small accent set (Primary/Secondary/Neutral) and migrate one-off inline colors to named variables (even if only within Newsletter CSS initially).</p>
+                </div>
+
+                <div class="ds-subsection" id="foundations-typography">
+                  <h3>Typography</h3>
+                  <dl class="ds-kv">
+                    <dt>What exists today</dt>
+                    <dd>
+                      Baseline body: Open Sans, 14px, line-height ~1.7 (Divi default). Headings use fixed sizes: H1 30px, H2 26px, H3 22px, etc (Divi default). Newsletter introduces its own hero title and supporting text sizing.
+                    </dd>
+                    <dt>Where it appears</dt>
+                    <dd>
+                      Divi defaults in the head inline style block on most pages. Newsletter overrides in <code class="ds-code">&lt;style id="et-builder-module-design-deferred-newsletter"&gt;</code>.
+                    </dd>
+                    <dt>CSS selectors/classes</dt>
+                    <dd>
+                      <code class="ds-code">body</code>, <code class="ds-code">h1..h6</code>, <code class="ds-code">.newsletter-hero-title</code>, <code class="ds-code">.newsletter-hero-proof</code>, <code class="ds-code">.newsletter-hero-lede</code>
+                    </dd>
+                  </dl>
+
+                  <div class="ds-preview">
+                    <div class="ds-preview-row" style="align-items:baseline">
+                      <div style="flex:1;min-width:240px">
+                        <div style="font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:rgba(0,0,0,.55);margin-bottom:8px">Type samples</div>
+                        <h1 style="margin:0 0 10px">H1 example — Divi baseline</h1>
+                        <h2 style="margin:0 0 8px">H2 example</h2>
+                        <p style="margin:0">Body example — Open Sans, 14px baseline.</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="ds-issue">
+                    <strong>Known issues</strong>
+                    <ul>
+                      <li>Heading sizes are fixed, and column-specific heading overrides exist (e.g. <code class="ds-code">.et_pb_column_1_3 h1</code> etc in Divi CSS).</li>
+                      <li>Newsletter typography can diverge noticeably from the rest of the site (intentionally), but currently mixes class-based CSS with inline styles.</li>
+                    </ul>
+                  </div>
+                  <p><strong>Cleanup recommendation</strong>: define a typography scale (H1/H2/H3/body/caption/eyebrow/button) and normalize heading overrides to component-level classes rather than layout-based selectors.</p>
+                </div>
+
+                <div class="ds-subsection" id="foundations-typography-utilities">
+                  <h3>Typography utilities (Phase 5)</h3>
+                  <p>
+                    Reusable, opt-in classes are defined in <code class="ds-code">/assets/css/system/typography.css</code>, which <code class="ds-code">index.css</code> imports. Stylesheets load only from the document <code class="ds-code">&lt;head&gt;</code>—this section contains documentation only (no <code class="ds-code">&lt;link rel="stylesheet"&gt;</code> here).
+                  </p>
+                  <p>
+                    Utilities apply only when added to markup—no global <code class="ds-code">h1</code>–<code class="ds-code">h6</code> or <code class="ds-code">p</code> overrides.
+                  </p>
+
+                  <dl class="ds-kv">
+                    <dt>Purpose</dt>
+                    <dd>Normalize hero, page, section, and card titles plus body/caption/meta/link treatments using design tokens, <code class="ds-code">clamp()</code> for key headings, and mobile-safe line lengths (no fixed widths on utilities).</dd>
+                  </dl>
+
+                  <h4>When to use each utility</h4>
+                  <dl class="ds-kv">
+                    <dt><code class="ds-code">.ds-hero-title</code></dt>
+                    <dd>Primary headline in heroes (homepage video hero, newsletter hero, large promotional bands).</dd>
+                    <dt><code class="ds-code">.ds-page-title</code></dt>
+                    <dd>Main title for interior pages (about, case studies index, resume) when migrating off Divi default heading sizes.</dd>
+                    <dt><code class="ds-code">.ds-section-title</code></dt>
+                    <dd>Major section headings inside long pages (mid-page bands, “What readers say”, feature grids).</dd>
+                    <dt><code class="ds-code">.ds-card-title</code></dt>
+                    <dd>Titles inside cards and tiles; aligns with <code class="ds-code">.ds-card__title</code> in spirit for non-card markup.</dd>
+                    <dt><code class="ds-code">.ds-eyebrow</code></dt>
+                    <dd>Kicker labels above headlines (category, series name, “New issue”).</dd>
+                    <dt><code class="ds-code">.ds-body</code> / <code class="ds-code">.ds-body--large</code> / <code class="ds-code">.ds-body--small</code></dt>
+                    <dd>Default paragraph density; large for intros and hero supporting copy; small for dense UI paragraphs.</dd>
+                    <dt><code class="ds-code">.ds-caption</code></dt>
+                    <dd>Figure captions, thumbnail labels, supplementary notes.</dd>
+                    <dt><code class="ds-code">.ds-meta</code></dt>
+                    <dd>Secondary lines: dates, bylines, roles, taxonomy—paired well with listings and card footers.</dd>
+                    <dt><code class="ds-code">.ds-text-link</code></dt>
+                    <dd>Inline text links where underline affordance should match the tokenized link color (not button-styled CTAs).</dd>
+                  </dl>
+
+                  <h4>Live examples</h4>
+                  <div class="ds-preview">
+                    <div class="ds-stack ds-stack--sm">
+                      <p class="ds-eyebrow">Design system · Phase 5</p>
+                      <p class="ds-hero-title">Hero title — fluid size, no horizontal overflow on narrow viewports</p>
+                      <p class="ds-page-title">Page title — interior pages &amp; listing headers</p>
+                      <p class="ds-section-title">Section title — bands &amp; major subsections</p>
+                      <p class="ds-card-title">Card title — tiles &amp; compact summaries</p>
+                      <p class="ds-body--large">Body large — supporting copy and short intros. Uses clamp between slightly larger than body and a modest desktop cap.</p>
+                      <p class="ds-body">Body default — Open Sans at the token body size and line height for long reading.</p>
+                      <p class="ds-body--small">Body small — dense paragraphs, secondary descriptions, fine print adjacent to controls.</p>
+                      <p class="ds-caption">Caption — labels under figures, screenshots, or media thumbnails.</p>
+                      <p class="ds-meta">Meta — March 2026 · Montreal · Product design</p>
+                      <p class="ds-body">
+                        Inline link styled as <a class="ds-text-link" href="#foundations-typography-utilities">text link utility</a> (same paragraph as body copy).
+                      </p>
+                    </div>
+                  </div>
+
+                  <h4>Areas to migrate later (not done in Phase 5)</h4>
+                  <ul>
+                    <li><strong>Global Divi head styles</strong> — <code class="ds-code">h1</code>–<code class="ds-code">h4</code> fixed pixel sizes in inline blocks on most pages → apply utilities in markup where markup is controlled.</li>
+                    <li><strong>Column-specific heading overrides</strong> — e.g. <code class="ds-code">.et_pb_column_1_3 h1</code> patterns → replace with component classes (<code class="ds-code">.ds-section-title</code>, etc.) when templates are refactored.</li>
+                    <li><strong>Newsletter hero</strong> — <code class="ds-code">.newsletter-hero-title</code>, <code class="ds-code">.newsletter-hero-lede</code>, proof lines → candidates for <code class="ds-code">.ds-hero-title</code>, <code class="ds-code">.ds-body--large</code>, <code class="ds-code">.ds-meta</code> once explicitly migrated.</li>
+                    <li><strong>Case study long-form</strong> — pullquotes, stats, image captions → <code class="ds-code">.ds-caption</code>, <code class="ds-code">.ds-body--small</code>.</li>
+                    <li><strong>Footer / legal</strong> — copyright and secondary lines → often <code class="ds-code">.ds-caption</code> or <code class="ds-code">.ds-meta</code>.</li>
+                  </ul>
+
+                  <div class="ds-issue">
+                    <strong>Known typography inconsistencies (from audit)</strong>
+                    <ul>
+                      <li>Fixed heading sizes in Divi defaults conflict with layout-based column overrides (<code class="ds-code">.et_pb_column_* h1</code>).</li>
+                      <li>Newsletter typography intentionally diverges but mixes class-based CSS with inline styles.</li>
+                      <li>Multiple accent/link behaviors (<code class="ds-code">#2ea3f2</code> vs newsletter focus <code class="ds-code">#c59060</code>) affect perceived “primary link” color.</li>
+                      <li>Body text is broadly consistent (14px / 1.7) but module-level exceptions are common.</li>
+                      <li>See also <a class="ds-text-link" href="#inconsistencies">Inconsistencies (inventory)</a> — heading sizes, duplicate components, and spacing layers compound type rhythm drift.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="ds-subsection" id="foundations-spacing">
+                  <h3>Spacing</h3>
+                  <dl class="ds-kv">
+                    <dt>What exists today</dt>
+                    <dd>
+                      Divi sections use percentage padding on desktop and fixed pixel padding on mobile/tablet. Many page-specific modules add one-off margins/padding (e.g. <code class="ds-code">4.5em</code>, <code class="ds-code">2em</code>, <code class="ds-code">50px</code>).
+                    </dd>
+                    <dt>Where it appears</dt>
+                    <dd>
+                      Divi base: <code class="ds-code">.et_pb_section</code>, <code class="ds-code">.et_pb_row</code>. Per-page: <code class="ds-code">et-builder-module-design-deferred-*</code> style blocks near the bottom of each HTML file.
+                    </dd>
+                    <dt>Selectors/classes</dt>
+                    <dd><code class="ds-code">.et_pb_section</code>, <code class="ds-code">.et_pb_row</code>, <code class="ds-code">.et_pb_module</code>, plus per-page <code class="ds-code">.et_pb_section_0</code>, <code class="ds-code">.et_pb_row_1</code>, etc.</dd>
+                  </dl>
+
+                  <div class="ds-issue">
+                    <strong>Cleanup recommendation</strong>
+                    <ul>
+                      <li>Extract a spacing scale from existing values (suggest: 4, 8, 12, 16, 24, 32, 48, 64) and map the most common <code class="ds-code">px/em/%</code> values onto it.</li>
+                      <li>Reduce one-off inline spacing on Newsletter cards into a single component style.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="ds-subsection" id="foundations-borders">
+                  <h3>Borders &amp; radius</h3>
+                  <dl class="ds-kv">
+                    <dt>What exists today</dt>
+                    <dd>
+                      Divi defaults lean on subtle borders and small radii; Newsletter introduces pill radius (<code class="ds-code">border-radius:999px</code>) and card radius around 4px–12px (mix of inline styles + CSS).
+                    </dd>
+                    <dt>Selectors/classes</dt>
+                    <dd><code class="ds-code">.et_pb_button</code>, <code class="ds-code">.newsletter-input-container</code>, <code class="ds-code">.newsletter-preview-card</code></dd>
+                  </dl>
+                </div>
+
+                <div class="ds-subsection" id="foundations-shadows">
+                  <h3>Shadows</h3>
+                  <dl class="ds-kv">
+                    <dt>What exists today</dt>
+                    <dd>
+                      Light UI shadows used in header and in Newsletter form/container (<code class="ds-code">0 5px 40px rgba(0,0,0,.05)</code>) plus card shadows (e.g. <code class="ds-code">0 2px 12px rgba(0,0,0,.05)</code> inline).
+                    </dd>
+                    <dt>Selectors/classes</dt>
+                    <dd><code class="ds-code">#main-header</code>, <code class="ds-code">.newsletter-input-container</code>, <code class="ds-code">.newsletter-preview-card</code></dd>
+                  </dl>
+                </div>
+
+                <div class="ds-subsection" id="foundations-backgrounds">
+                  <h3>Backgrounds</h3>
+                  <dl class="ds-kv">
+                    <dt>What exists today</dt>
+                    <dd>
+                      Divi section backgrounds set by per-page section IDs/classes (e.g. homepage hero uses video background; many sections use warm off-whites like <code class="ds-code">#f6f0e9</code> and <code class="ds-code">#fbf7f5</code>).
+                    </dd>
+                    <dt>Selectors/classes</dt>
+                    <dd><code class="ds-code">.et_pb_section</code>, <code class="ds-code">.et_pb_section_video_bg</code>, per-page <code class="ds-code">.et_pb_section_*</code></dd>
+                  </dl>
+                </div>
+
+                <div class="ds-subsection" id="foundations-breakpoints">
+                  <h3>Breakpoints</h3>
+                  <dl class="ds-kv">
+                    <dt>What exists today</dt>
+                    <dd>
+                      Divi’s primary breakpoints show up repeatedly: <code class="ds-code">max-width: 980px</code> (tablet/mobile), <code class="ds-code">max-width: 767px</code> (phone), and <code class="ds-code">min-width: 981px</code> (desktop). The Site Designer UI panel uses <code class="ds-code">max-width: 768px</code>.
+                    </dd>
+                    <dt>Where it appears</dt>
+                    <dd>Inline CSS in nearly every HTML page.</dd>
+                  </dl>
+                </div>
+              </section>
+
+              <section class="ds-section" id="layout">
+                <h2>Layout</h2>
+                <p>Primary layout primitives are Divi wrappers/rows/columns. Page-level layouts are composed from sections and rows, with heavy per-page class naming.</p>
+
+                <div class="ds-subsection" id="layout-wrappers">
+                  <h3>Page wrappers</h3>
+                  <dl class="ds-kv">
+                    <dt>What exists today</dt>
+                    <dd><code class="ds-code">#page-container</code> wraps everything; content lives under <code class="ds-code">#et-main-area</code> and <code class="ds-code">#main-content</code>.</dd>
+                    <dt>Appears on</dt>
+                    <dd>All pages</dd>
+                    <dt>CSS selectors/classes</dt>
+                    <dd><code class="ds-code">#page-container</code>, <code class="ds-code">#et-main-area</code>, <code class="ds-code">#main-content</code></dd>
+                  </dl>
+                </div>
+
+                <div class="ds-subsection" id="layout-containers">
+                  <h3>Containers</h3>
+                  <dl class="ds-kv">
+                    <dt>What exists today</dt>
+                    <dd><code class="ds-code">.container</code> is the global max-width container (80% width, max 1080px).</dd>
+                    <dt>Known issues</dt>
+                    <dd>Some components use fixed widths or per-page max-width overrides that can be mobile-risky.</dd>
+                  </dl>
+                </div>
+
+                <div class="ds-subsection" id="layout-section-spacing">
+                  <h3>Section spacing</h3>
+                  <dl class="ds-kv">
+                    <dt>What exists today</dt>
+                    <dd>Desktop sections often use percentage padding; tablet/phone use fixed padding (50px) for sections/rows.</dd>
+                    <dt>Selectors/classes</dt>
+                    <dd><code class="ds-code">.et_pb_section</code>, <code class="ds-code">.et_pb_row</code></dd>
+                  </dl>
+                </div>
+
+                <div class="ds-subsection" id="layout-grids">
+                  <h3>Grids</h3>
+                  <dl class="ds-kv">
+                    <dt>What exists today</dt>
+                    <dd>Divi columns with gutter presets (e.g. <code class="ds-code">.et_pb_gutters3</code>, <code class="ds-code">.et_pb_gutters2</code>) and responsive column collapsing below 980px.</dd>
+                    <dt>Selectors/classes</dt>
+                    <dd><code class="ds-code">.et_pb_row</code>, <code class="ds-code">.et_pb_column_2_3</code>, <code class="ds-code">.et_pb_column_1_3</code>, etc.</dd>
+                  </dl>
+                </div>
+
+                <div class="ds-subsection" id="layout-heroes">
+                  <h3>Hero layouts</h3>
+                  <dl class="ds-kv">
+                    <dt>What exists today</dt>
+                    <dd>Homepage hero uses video background + two-column row. Newsletter hero is a text-first hero with embedded social proof and a custom form.</dd>
+                    <dt>Appears on</dt>
+                    <dd><code class="ds-code">/</code>, <code class="ds-code">/newsletter/</code></dd>
+                  </dl>
+                </div>
+
+                <div class="ds-subsection" id="layout-mobile">
+                  <h3>Mobile behavior</h3>
+                  <dl class="ds-kv">
+                    <dt>What exists today</dt>
+                    <dd>Divi collapses columns to 100% and swaps to mobile nav below 980px. Some page-specific modules hide/show elements at 768/767.</dd>
+                    <dt>Known issues</dt>
+                    <dd>Multiple breakpoints (980/768/767/600) can cause edge-case overlaps if page-specific rules conflict.</dd>
+                  </dl>
+                </div>
+              </section>
+
+              <section class="ds-section" id="components">
+                <h2>Components (Atomic Design)</h2>
+                <p>Components below are grouped as Atoms, Molecules, Organisms, and Templates. Each entry documents what exists today and what should be cleaned up.</p>
+
+                <div class="ds-subsection" id="cmp-ds-phase1">
+                  <h3>Design System (Phase 1) — live examples</h3>
+                  <dl class="ds-kv">
+                    <dt>What exists today</dt>
+                    <dd>New opt-in <code class="ds-code">ds-*</code> classes for tokens, buttons, and forms. These do not override Divi styles unless added to markup.</dd>
+                    <dt>CSS files</dt>
+                    <dd>
+                      <code class="ds-code">/assets/css/system/tokens.css</code>,
+                      <code class="ds-code">/assets/css/system/typography.css</code>,
+                      <code class="ds-code">/assets/css/system/components/buttons.css</code>,
+                      <code class="ds-code">/assets/css/system/components/forms.css</code>,
+                      <code class="ds-code">/assets/css/system/index.css</code>
+                    </dd>
+                  </dl>
+
+                  <div class="ds-preview">
+                    <strong>Buttons</strong>
+                    <div class="ds-preview-row" style="margin-top:10px">
+                      <a class="ds-btn ds-btn--primary" href="#cmp-ds-phase1">Primary button</a>
+                      <a class="ds-btn ds-btn--secondary" href="#cmp-ds-phase1">Secondary button</a>
+                      <a class="ds-btn ds-btn--dark ds-btn--pill" href="#cmp-ds-phase1">Dark pill button</a>
+                    </div>
+                  </div>
+
+                  <div class="ds-preview">
+                    <strong>Forms</strong>
+                    <form class="ds-form" onsubmit="return false" style="margin-top:10px">
+                      <div class="ds-preview-row" style="align-items:stretch">
+                        <input class="ds-input" type="email" placeholder="Enter your email address…" aria-label="Email" style="flex:1;min-width:220px;background:rgba(255,255,255,.7);border:1px solid rgba(0,0,0,.12);border-radius:999px;box-shadow:var(--ds-shadow-lg);padding:8px 14px;height:auto;min-height:40px" />
+                        <button class="ds-btn ds-btn--dark ds-btn--pill ds-submit" type="button">Subscribe</button>
+                      </div>
+                      <div class="ds-form-message ds-form-message--error" role="alert" aria-live="polite">Error message example (invalid email)</div>
+                      <div class="ds-form-message ds-form-message--success" role="status" aria-live="polite">Success message example (subscribed)</div>
+                    </form>
+                  </div>
+                </div>
+
+                <div class="ds-subsection" id="cmp-ds-phase2">
+                  <h3>Design System (Phase 2) — layout utilities (live examples)</h3>
+                  <dl class="ds-kv">
+                    <dt>What exists today</dt>
+                    <dd>New opt-in layout utilities for containers, sections, stacks, grids, and mobile safety. These only apply when <code class="ds-code">ds-*</code> classes are used.</dd>
+                    <dt>CSS file</dt>
+                    <dd><code class="ds-code">/assets/css/system/layout.css</code></dd>
+                  </dl>
+
+                  <div class="ds-preview">
+                    <strong>Standard container</strong>
+                    <div class="ds-section ds-section--tight" style="background:rgba(0,0,0,.02);border-radius:12px;border:1px solid rgba(0,0,0,.08)">
+                      <div class="ds-container ds-safe-wrap">
+                        <div style="font-size:13px;color:rgba(0,0,0,.65)">
+                          <code class="ds-code">.ds-container</code> (max-width 1080px) inside a padded section.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="ds-preview">
+                    <strong>Narrow container</strong>
+                    <div class="ds-section ds-section--tight" style="background:rgba(0,0,0,.02);border-radius:12px;border:1px solid rgba(0,0,0,.08)">
+                      <div class="ds-container ds-container--narrow ds-safe-wrap">
+                        <div style="font-size:13px;color:rgba(0,0,0,.65)">
+                          <code class="ds-code">.ds-container.ds-container--narrow</code> (max-width 823px)
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="ds-preview">
+                    <strong>Two-column grid</strong>
+                    <div class="ds-container ds-safe-wrap">
+                      <div class="ds-grid ds-grid--2">
+                        <div class="ds-card ds-card--surface ds-card--bordered"><strong>Column A</strong><p style="margin:6px 0 0">Stacks to 1 column on mobile; 2 columns at ≥768px.</p></div>
+                        <div class="ds-card ds-card--surface ds-card--bordered"><strong>Column B</strong><p style="margin:6px 0 0">Uses <code class="ds-code">minmax(0, 1fr)</code> to avoid overflow.</p></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="ds-preview">
+                    <strong>Three-column grid</strong>
+                    <div class="ds-container ds-safe-wrap">
+                      <div class="ds-grid ds-grid--3">
+                        <div class="ds-card ds-card--surface ds-card--bordered"><strong>Card 1</strong><p style="margin:6px 0 0">1 col on mobile</p></div>
+                        <div class="ds-card ds-card--surface ds-card--bordered"><strong>Card 2</strong><p style="margin:6px 0 0">2 cols at ≥768px</p></div>
+                        <div class="ds-card ds-card--surface ds-card--bordered"><strong>Card 3</strong><p style="margin:6px 0 0">3 cols at ≥981px</p></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="ds-preview">
+                    <strong>Stacked mobile layout</strong>
+                    <div class="ds-container ds-safe-wrap">
+                      <div class="ds-stack ds-stack--sm" style="max-width:520px">
+                        <div class="ds-card ds-card--surface ds-card--bordered"><strong>Item 1</strong><p style="margin:6px 0 0">Uses <code class="ds-code">gap</code> token scale.</p></div>
+                        <div class="ds-card ds-card--surface ds-card--bordered"><strong>Item 2</strong><p style="margin:6px 0 0">Switch sizes with <code class="ds-code">.ds-stack--sm</code>/<code class="ds-code">--lg</code>.</p></div>
+                        <div class="ds-card ds-card--surface ds-card--bordered"><strong>Item 3</strong><p style="margin:6px 0 0">No fixed widths.</p></div>
+                      </div>
+                    </div>
+                  </div>
+
+                <div class="ds-subsection" id="cmp-ds-phase3">
+                  <h3>Design System (Phase 3) — card primitives (live examples)</h3>
+                  <dl class="ds-kv">
+                    <dt>What exists today</dt>
+                    <dd>Composable card primitives for surfaces, borders, shadows, feature highlights, testimonials, and quotes. These are opt-in and do not modify Divi markup until migrated.</dd>
+                    <dt>CSS file</dt>
+                    <dd><code class="ds-code">/assets/css/system/components/cards.css</code></dd>
+                    <dt>When to use</dt>
+                    <dd>
+                      Use <code class="ds-code">.ds-card</code> as the base wrapper, then compose variants like
+                      <code class="ds-code">.ds-card--surface</code>, <code class="ds-code">--bordered</code>, <code class="ds-code">--shadow</code>, <code class="ds-code">--feature</code>, <code class="ds-code">--testimonial</code>, or <code class="ds-code">--quote</code>.
+                    </dd>
+                  </dl>
+
+                  <div class="ds-preview">
+                    <strong>Default card</strong>
+                    <div class="ds-card ds-card--surface ds-card--bordered">
+                      <div class="ds-card__eyebrow">Base</div>
+                      <div class="ds-card__title">Default card</div>
+                      <p class="ds-card__body">Use for neutral surfaces that need padding + radius and safe mobile sizing.</p>
+                      <div class="ds-card__meta"><span>Meta item</span><span>Another meta</span></div>
+                      <div class="ds-card__footer"><a class="ds-btn ds-btn--secondary" href="#cmp-ds-phase3">Action</a></div>
+                    </div>
+                  </div>
+
+                  <div class="ds-preview">
+                    <strong>Feature card</strong>
+                    <div class="ds-card ds-card--feature">
+                      <div class="ds-card__eyebrow">Feature</div>
+                      <div class="ds-card__title">Feature highlight</div>
+                      <p class="ds-card__body">Use when a card needs more emphasis (homepage callouts, primary case study promos).</p>
+                    </div>
+                  </div>
+
+                  <div class="ds-preview">
+                    <strong>Article / content card</strong>
+                    <div class="ds-card ds-card--surface ds-card--bordered ds-card--shadow">
+                      <div class="ds-card__eyebrow">From the letter</div>
+                      <div class="ds-card__title">Content preview</div>
+                      <p class="ds-card__body">Candidate replacement for one-off inline “newsletter preview card” styling.</p>
+                      <div class="ds-card__footer">
+                        <a class="ds-btn ds-btn--primary" href="#cmp-ds-phase3">Read more</a>
+                        <a class="ds-btn ds-btn--secondary" href="#cmp-ds-phase3">Secondary</a>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="ds-preview">
+                    <strong>Testimonial card</strong>
+                    <div class="ds-card ds-card--testimonial">
+                      <div class="ds-card__meta"><span aria-hidden="true">★★★★★</span><span>Reader</span></div>
+                      <p class="ds-card__body" style="font-family:Georgia, 'Times New Roman', serif;color:#2a2a2a">“Practical, direct, and immediately useful. This should feel editorial, not like UI chrome.”</p>
+                      <div class="ds-card__footer" style="gap:10px">
+                        <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(145deg,#ebe7e2,#d9d3cc);display:flex;align-items:center;justify-content:center;font-weight:700">TW</div>
+                        <div>
+                          <div style="font-weight:650;color:#2a2a2a;line-height:1.2">Taylor W.</div>
+                          <div style="font-size:13px;color:rgba(0,0,0,.55)">Product Designer</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="ds-preview">
+                    <strong>Quote card</strong>
+                    <div class="ds-card ds-card--surface ds-card--bordered ds-card--quote">
+                      <div class="ds-card__title">Quote</div>
+                      <p class="ds-card__body">Use for pullquotes or emphasized callouts inside long-form case studies.</p>
+                      <div class="ds-card__meta"><span>— Attribution</span></div>
+                    </div>
+                  </div>
+
+                  <div class="ds-preview">
+                    <strong>Card grid (ds-grid--3)</strong>
+                    <div class="ds-grid ds-grid--3">
+                      <div class="ds-card ds-card--surface ds-card--bordered">
+                        <div class="ds-card__title">Grid card 1</div>
+                        <p class="ds-card__body">One column on mobile.</p>
+                      </div>
+                      <div class="ds-card ds-card--surface ds-card--bordered">
+                        <div class="ds-card__title">Grid card 2</div>
+                        <p class="ds-card__body">Two columns at ≥768px.</p>
+                      </div>
+                      <div class="ds-card ds-card--surface ds-card--bordered">
+                        <div class="ds-card__title">Grid card 3</div>
+                        <p class="ds-card__body">Three columns at ≥981px.</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="ds-issue">
+                    <strong>Future migration candidates</strong>
+                    <ul>
+                      <li><strong>Newsletter preview card</strong> → <code class="ds-code">.ds-card--surface.ds-card--bordered.ds-card--shadow</code> (replaces inline border/shadow/padding).</li>
+                      <li><strong>Newsletter testimonial cards</strong> → <code class="ds-code">.ds-card--testimonial</code> (then map existing author/stars markup onto internals).</li>
+                      <li><strong>Case study index “row-cards”</strong> → <code class="ds-code">.ds-card--feature</code> for primary promos and <code class="ds-code">.ds-card--surface</code> for standard cards (after markup extraction).</li>
+                      <li><strong>Case study pullquotes</strong> → <code class="ds-code">.ds-card--quote</code>.</li>
+                    </ul>
+                  </div>
+
+                  <div class="ds-issue">
+                    <strong>Known gaps before production migration</strong>
+                    <ul>
+                      <li>Divi-generated case study “cards” are currently layout-driven (<code class="ds-code">.et_pb_row_*</code>) rather than component markup; migration needs an intermediate “wrapper” approach or re-export.</li>
+                      <li>Newsletter testimonial layout uses masonry columns; card primitives cover the card surface but not masonry composition.</li>
+                      <li>Some cards use inline background images; card primitives do not prescribe media handling yet (will likely need <code class="ds-code">.ds-card__media</code> later).</li>
+                    </ul>
+                  </div>
+                </div>
+
+                  <div class="ds-preview">
+                    <strong>Section spacing variants</strong>
+                    <div class="ds-stack ds-stack--sm">
+                      <div class="ds-section ds-section--tight" style="background:rgba(0,0,0,.02);border:1px solid rgba(0,0,0,.08);border-radius:12px">
+                        <div class="ds-container ds-safe-wrap"><code class="ds-code">.ds-section--tight</code></div>
+                      </div>
+                      <div class="ds-section" style="background:rgba(0,0,0,.02);border:1px solid rgba(0,0,0,.08);border-radius:12px">
+                        <div class="ds-container ds-safe-wrap"><code class="ds-code">.ds-section</code></div>
+                      </div>
+                      <div class="ds-section ds-section--loose" style="background:rgba(0,0,0,.02);border:1px solid rgba(0,0,0,.08);border-radius:12px">
+                        <div class="ds-container ds-safe-wrap"><code class="ds-code">.ds-section--loose</code></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="ds-subsection" id="cmp-header">
+                  <h3>Header / nav</h3>
+                  <dl class="ds-kv">
+                    <dt>Component name</dt><dd>Primary Header</dd>
+                    <dt>Type</dt><dd>Organism</dd>
+                    <dt>Appears on</dt><dd>Homepage, About, Case Studies, Newsletter, Case Study detail pages</dd>
+                    <dt>CSS selectors/classes</dt><dd><code class="ds-code">#main-header</code>, <code class="ds-code">#top-menu</code>, <code class="ds-code">#et-top-navigation</code>, <code class="ds-code">.container</code></dd>
+                    <dt>Current HTML</dt>
+                    <dd>
+                      <pre class="ds-code">&lt;header id="main-header"&gt;
+  &lt;div class="container et_menu_container"&gt;
+    &lt;div class="logo_container"&gt;...&lt;/div&gt;
+    &lt;nav id="top-menu-nav"&gt;
+      &lt;ul id="top-menu" class="nav"&gt;...&lt;/ul&gt;
+    &lt;/nav&gt;
+  &lt;/div&gt;
+&lt;/header&gt;</pre>
+                    </dd>
+                  </dl>
+                  <div class="ds-preview">
+                    <strong>Visual sample</strong>
+                    <p style="margin-top:6px">The live header is the one at the top of this page.</p>
+                  </div>
+                  <div class="ds-issue">
+                    <strong>Cleanup recommendation</strong>
+                    <ul>
+                      <li>Normalize “nav item as button” patterns (currently menu items reuse <code class="ds-code">.et_pb_button</code> styles).</li>
+                      <li>Reduce selector specificity for nav states and align hover/focus behavior for accessibility.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="ds-subsection" id="cmp-mobile-menu">
+                  <h3>Mobile menu</h3>
+                  <dl class="ds-kv">
+                    <dt>Component name</dt><dd>Hamburger menu icon</dd>
+                    <dt>Type</dt><dd>Atom</dd>
+                    <dt>Appears on</dt><dd>All pages (below 980px)</dd>
+                    <dt>CSS selectors/classes</dt><dd><code class="ds-code">.mobile_menu_bar</code>, <code class="ds-code">.et_divi_100_custom_hamburger_menu__icon</code></dd>
+                    <dt>Current HTML</dt>
+                    <dd>
+                      <pre class="ds-code">&lt;div id="et_mobile_nav_menu"&gt;
+  &lt;div class="mobile_nav closed"&gt;
+    &lt;span class="mobile_menu_bar mobile_menu_bar_toggle"&gt;&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+                    </dd>
+                  </dl>
+                  <div class="ds-issue">
+                    <strong>Known issues</strong>
+                    <ul>
+                      <li>Behavior/styling depends on a JS file not loaded on this docs page; this audit focuses on HTML/CSS structure.</li>
+                      <li>Multiple hamburger style variants exist in plugin CSS (types/styles) without clear governance.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="ds-subsection" id="cmp-buttons">
+                  <h3>Buttons</h3>
+                  <dl class="ds-kv">
+                    <dt>Component name</dt><dd>Primary / Secondary button</dd>
+                    <dt>Type</dt><dd>Atom</dd>
+                    <dt>Appears on</dt><dd>Header CTAs, homepage hero CTAs, case study CTAs, newsletter CTA</dd>
+                    <dt>CSS selectors/classes</dt><dd><code class="ds-code">.et_pb_button</code>, <code class="ds-code">.et_pb_button_secondary</code></dd>
+                    <dt>Current HTML</dt>
+                    <dd>
+                      <pre class="ds-code">&lt;a class="et_pb_button et_pb_bg_layout_light" href="/case-studies/"&gt;
+  View case studies
+&lt;/a&gt;</pre>
+                    </dd>
+                  </dl>
+                  <div class="ds-preview">
+                    <strong>Visual sample (ds-btn)</strong>
+                    <div class="ds-preview-row" style="margin-top:10px">
+                      <a class="ds-btn ds-btn--primary" href="#cmp-buttons">Primary button</a>
+                      <a class="ds-btn ds-btn--secondary" href="#cmp-buttons">Secondary button</a>
+                      <a class="ds-btn ds-btn--dark ds-btn--pill" target="_blank" rel="noopener" href="https://example.com">External dark pill</a>
+                    </div>
+                  </div>
+                  <div class="ds-issue">
+                    <strong>Known issues</strong>
+                    <ul>
+                      <li>Buttons are used inside nav list items, which mixes semantics (navigation vs call-to-action).</li>
+                      <li>Newsletter submit button uses a separate system (<code class="ds-code">.newsletter-submit-btn</code>).</li>
+                    </ul>
+                  </div>
+                  <p><strong>Cleanup recommendation</strong>: standardize on one button base + variants, then map Newsletter submit onto that system (or intentionally define “Newsletter CTA” variant).</p>
+                </div>
+
+                <div class="ds-subsection" id="cmp-links">
+                  <h3>Links</h3>
+                  <dl class="ds-kv">
+                    <dt>Component name</dt><dd>Text link</dd>
+                    <dt>Type</dt><dd>Atom</dd>
+                    <dt>Appears on</dt><dd>All pages</dd>
+                    <dt>Selectors/classes</dt><dd><code class="ds-code">a</code>, plus occasional utility classes (e.g. <code class="ds-code">.anim-link</code>)</dd>
+                    <dt>Usage</dt><dd>Use for inline navigation; avoid styling a link to look like a button unless it is a primary action.</dd>
+                  </dl>
+                </div>
+
+                <div class="ds-subsection" id="cmp-cards">
+                  <h3>Cards</h3>
+                  <dl class="ds-kv">
+                    <dt>Component name</dt><dd>Case study card / Newsletter testimonial card</dd>
+                    <dt>Type</dt><dd>Molecule → Organism (depending on composition)</dd>
+                    <dt>Appears on</dt><dd>Homepage case study grid, Case Studies index, Newsletter testimonials</dd>
+                    <dt>Known issues</dt><dd>Multiple implementations exist: Divi row-as-card patterns vs Newsletter custom card markup.</dd>
+                  </dl>
+                  <div class="ds-preview">
+                    <strong>Visual sample</strong>
+                    <p style="margin-top:6px">Preview (iframe) of an existing page section:</p>
+                    <iframe class="ds-iframe" title="Case studies preview" src="/case-studies/"></iframe>
+                  </div>
+                </div>
+
+                <div class="ds-subsection" id="cmp-forms">
+                  <h3>Forms</h3>
+                  <dl class="ds-kv">
+                    <dt>Component name</dt><dd>Text input + submit</dd>
+                    <dt>Type</dt><dd>Molecule</dd>
+                    <dt>Appears on</dt><dd>Newsletter</dd>
+                    <dt>Selectors/classes</dt><dd><code class="ds-code">#newsletter-form</code>, <code class="ds-code">.newsletter-text-field</code>, <code class="ds-code">.newsletter-submit-btn</code></dd>
+                  </dl>
+                  <div class="ds-preview">
+                    <strong>Visual sample</strong>
+                    <p style="margin-top:6px">See the Newsletter page’s live form:</p>
+                    <iframe class="ds-iframe" title="Newsletter form preview" src="/newsletter/"></iframe>
+                  </div>
+                </div>
+
+                <div class="ds-subsection" id="cmp-newsletter">
+                  <h3>Newsletter signup</h3>
+                  <dl class="ds-kv">
+                    <dt>Component name</dt><dd>Newsletter hero signup</dd>
+                    <dt>Type</dt><dd>Organism</dd>
+                    <dt>Appears on</dt><dd><code class="ds-code">/newsletter/</code></dd>
+                    <dt>Current HTML</dt>
+                    <dd>
+                      <pre class="ds-code">&lt;form id="newsletter-form" novalidate&gt;
+  &lt;label class="screen-reader-text" for="email"&gt;Email address&lt;/label&gt;
+  &lt;input id="email" class="newsletter-text-field" type="email" ...&gt;
+  &lt;button id="subscribe-btn" class="newsletter-submit-btn"&gt;Subscribe&lt;/button&gt;
+&lt;/form&gt;</pre>
+                    </dd>
+                    <dt>Known issues</dt><dd>Mix of inline styles + dedicated Newsletter CSS; potential divergence from global form/button styles.</dd>
+                    <dt>Cleanup recommendation</dt><dd>Extract a reusable “email signup” component and align input/button tokens with site foundations.</dd>
+                  </dl>
+                </div>
+
+                <div class="ds-subsection" id="cmp-testimonials">
+                  <h3>Testimonials</h3>
+                  <dl class="ds-kv">
+                    <dt>Component name</dt><dd>Newsletter testimonial card</dd>
+                    <dt>Type</dt><dd>Molecule</dd>
+                    <dt>Appears on</dt><dd><code class="ds-code">/newsletter/</code></dd>
+                    <dt>Page-specific selectors</dt><dd><code class="ds-code">.newsletter-t-card</code>, <code class="ds-code">.newsletter-t-author</code>, <code class="ds-code">.newsletter-t-meta</code></dd>
+                    <dt>Reusable utilities (Phase 8)</dt>
+                    <dd>
+                      <code class="ds-code">.ds-testimonial</code>,
+                      <code class="ds-code">.ds-testimonial__stars</code>,
+                      <code class="ds-code">.ds-testimonial__quote</code>,
+                      <code class="ds-code">.ds-testimonial__author</code>,
+                      <code class="ds-code">.ds-testimonial__avatar</code>,
+                      <code class="ds-code">.ds-testimonial__name</code>,
+                      <code class="ds-code">.ds-testimonial__role</code>
+                    </dd>
+                    <dt>CSS file</dt>
+                    <dd><code class="ds-code">/assets/css/system/components/testimonials.css</code></dd>
+                  </dl>
+
+                  <h4>When to use</h4>
+                  <p>
+                    Compose with <code class="ds-code">.ds-card</code> (typically with the <code class="ds-code">.ds-card--testimonial</code> variant) for the surface, then add <code class="ds-code">.ds-testimonial</code> on the same root element to apply masonry-safe behavior, an editorial serif quote treatment, and an initials-based avatar circle.
+                  </p>
+                  <ul>
+                    <li><strong>Avatar</strong>: when no image asset exists, place 1–3 initials directly inside <code class="ds-code">.ds-testimonial__avatar</code>. To use an image instead, drop an <code class="ds-code">&lt;img&gt;</code> as the only child of the avatar; it is sized and clipped automatically.</li>
+                    <li><strong>Author meta</strong>: name and role render as block elements; wrap them in any element you need to stack them next to the avatar. The newsletter uses <code class="ds-code">.newsletter-t-meta</code> as that wrapper.</li>
+                    <li><strong>Masonry</strong>: the root carries <code class="ds-code">break-inside: avoid</code> + <code class="ds-code">display: inline-block; vertical-align: top</code>, so cards never split inside a CSS multi-column parent. Outside column contexts (grid/flex) those properties are no-ops.</li>
+                  </ul>
+
+                  <h4>Live example — single card</h4>
+                  <div class="ds-preview">
+                    <article class="ds-card ds-card--testimonial ds-testimonial" style="max-width:380px">
+                      <div class="ds-testimonial__stars" aria-hidden="true">★★★★★</div>
+                      <p class="ds-testimonial__quote">Tyler&rsquo;s insights completely changed the way I think about design and business. Every newsletter is packed with real, actionable advice.</p>
+                      <div class="ds-testimonial__author">
+                        <div class="ds-testimonial__avatar" aria-hidden="true">MJ</div>
+                        <div style="display:flex;flex-direction:column;gap:.12rem;min-width:0">
+                          <span class="ds-testimonial__name">Michael Johnson</span>
+                          <span class="ds-testimonial__role">UX Designer</span>
+                        </div>
+                      </div>
+                    </article>
+                  </div>
+
+                  <h4>Live example — three-up grid</h4>
+                  <div class="ds-preview">
+                    <div class="ds-grid ds-grid--3">
+                      <article class="ds-card ds-card--testimonial ds-testimonial">
+                        <div class="ds-testimonial__stars" aria-hidden="true">★★★★★</div>
+                        <p class="ds-testimonial__quote">Finally, someone who gets how chaotic product design really is. A reality check and a roadmap for moving forward.</p>
+                        <div class="ds-testimonial__author">
+                          <div class="ds-testimonial__avatar" aria-hidden="true">ST</div>
+                          <div style="display:flex;flex-direction:column;gap:.12rem;min-width:0">
+                            <span class="ds-testimonial__name">Sarah Thompson</span>
+                            <span class="ds-testimonial__role">Product Designer</span>
+                          </div>
+                        </div>
+                      </article>
+                      <article class="ds-card ds-card--testimonial ds-testimonial">
+                        <div class="ds-testimonial__stars" aria-hidden="true">★★★★★</div>
+                        <p class="ds-testimonial__quote">Deep in the trenches. The advice is not theory&mdash;it&rsquo;s experience earned from real, messy product work.</p>
+                        <div class="ds-testimonial__author">
+                          <div class="ds-testimonial__avatar" aria-hidden="true">DM</div>
+                          <div style="display:flex;flex-direction:column;gap:.12rem;min-width:0">
+                            <span class="ds-testimonial__name">David Martinez</span>
+                            <span class="ds-testimonial__role">Senior Product Designer</span>
+                          </div>
+                        </div>
+                      </article>
+                      <article class="ds-card ds-card--testimonial ds-testimonial">
+                        <div class="ds-testimonial__stars" aria-hidden="true">★★★★★</div>
+                        <p class="ds-testimonial__quote">Practical, business-first, and immediately actionable&mdash;exactly what most designers are missing.</p>
+                        <div class="ds-testimonial__author">
+                          <div class="ds-testimonial__avatar" aria-hidden="true">ED</div>
+                          <div style="display:flex;flex-direction:column;gap:.12rem;min-width:0">
+                            <span class="ds-testimonial__name">Emily Davis</span>
+                            <span class="ds-testimonial__role">UI/UX Designer</span>
+                          </div>
+                        </div>
+                      </article>
+                    </div>
+                  </div>
+
+                  <h4>Live example — masonry (CSS columns)</h4>
+                  <div class="ds-preview">
+                    <div style="column-count:1;column-gap:14px;max-width:1100px;margin:0 auto">
+                      <style>
+                        @media (min-width:600px){ #ds-testimonial-masonry-demo{ column-count:2 } }
+                        @media (min-width:981px){ #ds-testimonial-masonry-demo{ column-count:3 } }
+                      </style>
+                      <div id="ds-testimonial-masonry-demo" style="column-count:1;column-gap:14px">
+                        <article class="ds-card ds-card--testimonial ds-testimonial" style="margin-bottom:14px">
+                          <div class="ds-testimonial__stars" aria-hidden="true">★★★★★</div>
+                          <p class="ds-testimonial__quote">A short testimonial that fits on one line in masonry layout.</p>
+                          <div class="ds-testimonial__author">
+                            <div class="ds-testimonial__avatar" aria-hidden="true">AW</div>
+                            <div style="display:flex;flex-direction:column;gap:.12rem;min-width:0">
+                              <span class="ds-testimonial__name">Alexander Wilson</span>
+                              <span class="ds-testimonial__role">Lead Designer</span>
+                            </div>
+                          </div>
+                        </article>
+                        <article class="ds-card ds-card--testimonial ds-testimonial" style="margin-bottom:14px">
+                          <div class="ds-testimonial__stars" aria-hidden="true">★★★★★</div>
+                          <p class="ds-testimonial__quote">A medium-length testimonial that demonstrates how masonry packs cards of varying heights without splitting them across columns.</p>
+                          <div class="ds-testimonial__author">
+                            <div class="ds-testimonial__avatar" aria-hidden="true">JL</div>
+                            <div style="display:flex;flex-direction:column;gap:.12rem;min-width:0">
+                              <span class="ds-testimonial__name">Jessica Lee</span>
+                              <span class="ds-testimonial__role">Graphic Designer</span>
+                            </div>
+                          </div>
+                        </article>
+                        <article class="ds-card ds-card--testimonial ds-testimonial" style="margin-bottom:14px">
+                          <div class="ds-testimonial__stars" aria-hidden="true">★★★★★</div>
+                          <p class="ds-testimonial__quote">A longer testimonial that takes up more vertical space than its neighbours&mdash;the column-break-inside rules ensure the card stays whole even when the column count changes at the next breakpoint.</p>
+                          <div class="ds-testimonial__author">
+                            <div class="ds-testimonial__avatar" aria-hidden="true">TW</div>
+                            <div style="display:flex;flex-direction:column;gap:.12rem;min-width:0">
+                              <span class="ds-testimonial__name">Taylor W.</span>
+                              <span class="ds-testimonial__role">Product Designer</span>
+                            </div>
+                          </div>
+                        </article>
+                      </div>
+                    </div>
+                  </div>
+
+                  <h4>Markup</h4>
+                  <pre class="ds-code">&lt;article class="ds-card ds-card--testimonial ds-testimonial"&gt;
+  &lt;div class="ds-testimonial__stars" aria-hidden="true"&gt;&#9733;&#9733;&#9733;&#9733;&#9733;&lt;/div&gt;
+  &lt;p class="ds-testimonial__quote"&gt;Quote text&hellip;&lt;/p&gt;
+  &lt;div class="ds-testimonial__author"&gt;
+    &lt;div class="ds-testimonial__avatar" aria-hidden="true"&gt;TW&lt;/div&gt;
+    &lt;div&gt;
+      &lt;span class="ds-testimonial__name"&gt;Taylor W.&lt;/span&gt;
+      &lt;span class="ds-testimonial__role"&gt;Product Designer&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/article&gt;</pre>
+
+                  <div class="ds-preview">
+                    <strong>Newsletter (live page)</strong>
+                    <iframe class="ds-iframe" title="Newsletter testimonials preview" src="/newsletter/#newsletter-form"></iframe>
+                  </div>
+                </div>
+
+                <div class="ds-subsection" id="cmp-logo-strips">
+                  <h3>Logo strips</h3>
+                  <dl class="ds-kv">
+                    <dt>Component name</dt><dd>Featured-in logo strip</dd>
+                    <dt>Type</dt><dd>Organism</dd>
+                    <dt>Appears on</dt><dd>Homepage</dd>
+                    <dt>Known issues</dt><dd>Implementation appears to be Divi module-specific and page-scoped.</dd>
+                  </dl>
+                  <div class="ds-preview">
+                    <strong>Visual sample</strong>
+                    <iframe class="ds-iframe" title="Homepage logo strip preview" src="/"></iframe>
+                  </div>
+                </div>
+
+                <div class="ds-subsection" id="cmp-footer">
+                  <h3>Footer</h3>
+                  <dl class="ds-kv">
+                    <dt>Component name</dt><dd>Footer bottom bar</dd>
+                    <dt>Type</dt><dd>Organism</dd>
+                    <dt>Appears on</dt><dd>All pages</dd>
+                    <dt>Selectors/classes</dt><dd><code class="ds-code">#main-footer</code>, <code class="ds-code">#footer-bottom</code>, <code class="ds-code">.et-social-icons</code></dd>
+                  </dl>
+                  <div class="ds-preview">
+                    <strong>Visual sample</strong>
+                    <p style="margin-top:6px">The live footer is the one at the bottom of this page.</p>
+                  </div>
+                </div>
+              </section>
+
+              <section class="ds-section" id="templates">
+                <h2>Page templates</h2>
+                <p>Templates are primarily “Divi pagebuilder layouts” with large page-scoped class names and deferred style blocks.</p>
+
+                <div class="ds-subsection" id="tpl-home">
+                  <h3>Homepage template</h3>
+                  <dl class="ds-kv">
+                    <dt>Type</dt><dd>Template</dd>
+                    <dt>Appears on</dt><dd><code class="ds-code">/</code></dd>
+                    <dt>Notes</dt><dd>Video hero + CTAs + featured logo strip + case study grid.</dd>
+                  </dl>
+                </div>
+                <div class="ds-subsection" id="tpl-about">
+                  <h3>About template</h3>
+                  <dl class="ds-kv"><dt>Appears on</dt><dd><code class="ds-code">/about/</code></dd></dl>
+                </div>
+                <div class="ds-subsection" id="tpl-case-studies">
+                  <h3>Case studies template</h3>
+                  <dl class="ds-kv"><dt>Appears on</dt><dd><code class="ds-code">/case-studies/</code> and <code class="ds-code">/casestudies/*</code></dd></dl>
+                </div>
+                <div class="ds-subsection" id="tpl-newsletter">
+                  <h3>Newsletter template</h3>
+                  <dl class="ds-kv"><dt>Appears on</dt><dd><code class="ds-code">/newsletter/</code></dd></dl>
+                </div>
+                <div class="ds-subsection" id="tpl-podcast">
+                  <h3>Podcast</h3>
+                  <dl class="ds-kv"><dt>Appears on</dt><dd>External: <code class="ds-code">designtablepodcast.com</code></dd></dl>
+                </div>
+                <div class="ds-subsection" id="tpl-confirmation">
+                  <h3>Confirmation pages</h3>
+                  <dl class="ds-kv"><dt>Appears on</dt><dd><code class="ds-code">/newsletter-confirmation/</code></dd></dl>
+                </div>
+              </section>
+
+              <section class="ds-section" id="responsive-rules">
+                <h2>Responsive rules</h2>
+                <dl class="ds-kv">
+                  <dt>Breakpoints seen</dt>
+                  <dd><code class="ds-code">981px</code>, <code class="ds-code">980px</code>, <code class="ds-code">768px</code>, <code class="ds-code">767px</code>, <code class="ds-code">600px</code>, <code class="ds-code">479px</code></dd>
+                  <dt>Major component changes</dt>
+                  <dd>
+                    Header switches to mobile nav below 980px; rows/columns collapse to single column; some modules hide on tablet/phone using page-specific rules.
+                  </dd>
+                </dl>
+                <div class="ds-issue">
+                  <strong>Risk areas</strong>
+                  <ul>
+                    <li>Conflicting page-specific media queries (especially when mixing 768 and 767 cutoffs).</li>
+                    <li>Hard-coded widths/max-widths inside page-scoped selectors (<code class="ds-code">.et_pb_row_*</code> etc).</li>
+                  </ul>
+                </div>
+              </section>
+
+              <section class="ds-section" id="inconsistencies">
+                <h2>Inconsistencies (inventory)</h2>
+                <ul>
+                  <li><strong>Duplicate button styles</strong>: Divi buttons vs Newsletter submit button system.</li>
+                  <li><strong>Duplicate card styles</strong>: Divi row-as-card vs Newsletter custom cards + inline styles.</li>
+                  <li><strong>Duplicate nav/header patterns</strong>: menu items styled as buttons; hover/focus behavior varies.</li>
+                  <li><strong>Inconsistent heading sizes</strong>: fixed heading sizes plus layout-based overrides.</li>
+                  <li><strong>Inconsistent form styles</strong>: Newsletter pill input + focus ring differs from Divi inputs.</li>
+                  <li><strong>One-off colors</strong>: multiple accents and inline swatches.</li>
+                  <li><strong>One-off spacing</strong>: frequent <code class="ds-code">em</code>/<code class="ds-code">px</code>/<code class="ds-code">%</code> mix and inline spacing.</li>
+                  <li><strong>Conflicting media queries</strong>: repeated 980/768/767/600/479 rules across different layers.</li>
+                  <li><strong>Legacy WordPress CSS</strong>: WP preset variables and block styles present even when not used widely.</li>
+                  <li><strong>Overly specific selectors</strong>: page-scoped <code class="ds-code">.et_pb_row_*</code>, <code class="ds-code">.et_pb_section_*</code> increase maintenance cost.</li>
+                  <li><strong>Hardcoded widths</strong>: max-width overrides (e.g. row max-width 750px on homepage) can create inconsistent rhythm.</li>
+                </ul>
+              </section>
+
+              <section class="ds-section" id="cleanup-priorities">
+                <h2>Cleanup priorities</h2>
+
+                <div class="ds-priority ds-priority--high">
+                  <strong>High</strong>
+                  <ul>
+                    <li>Mobile-breaking layout rules (audit page-scoped media queries; fix overlaps).</li>
+                    <li>Duplicated header/nav patterns (semantics + consistent CTA treatment).</li>
+                    <li>Form styles needed for Newsletter (standardize input + submit button).</li>
+                    <li>Buttons and CTAs (single base + variants across site + newsletter).</li>
+                    <li>Core typography scale (normalize headings/eyebrows/button text).</li>
+                  </ul>
+                </div>
+
+                <div class="ds-priority ds-priority--medium">
+                  <strong>Medium</strong>
+                  <ul>
+                    <li>Card normalization (case study + newsletter cards).</li>
+                    <li>Testimonial styles (extract into shared component).</li>
+                    <li>Logo strips (standardize spacing/alignment).</li>
+                    <li>Section spacing rhythm (reduce one-offs).</li>
+                    <li>Legacy WordPress/Divi CSS cleanup plan (identify unused selectors safely).</li>
+                  </ul>
+                </div>
+
+                <div class="ds-priority ds-priority--low">
+                  <strong>Low</strong>
+                  <ul>
+                    <li>Minor color cleanup (near-duplicates, token naming).</li>
+                    <li>Animation cleanup (ensure consistent motion + reduced motion support).</li>
+                    <li>Decorative details (borders, shadow fine-tuning).</li>
+                  </ul>
+                </div>
+              </section>
+            </main>
+          </div>
+        </div>
+      </div>
+
+      <footer id="main-footer">
+        <div id="footer-bottom">
+          <div class="container clearfix">
+            <ul class="et-social-icons">
+              <li class="et-social-icon et-social-twitter"><a href="https://twitter.com/mrtylerwhite" class="icon"><span>X</span></a></li>
+              <li class="et-social-icon et-social-instagram"><a href="https://www.instagram.com/mrtylerwhite/" class="icon"><span>Instagram</span></a></li>
+            </ul>
+            <div id="footer-info">©2020 Tyler White  |  Made with <span class="brand-color">♥</span> from Montreal, Canada.</div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+</body>
+</html>
+

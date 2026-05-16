@@ -1,0 +1,97 @@
+/*
+  Cards (Phase 3)
+  - Opt-in only via ds- classes
+  - Mobile-safe by default
+  - Composable variants
+*/
+
+.ds-card{
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+
+  border-radius: var(--ds-radius-lg);
+  padding: var(--ds-space-5);
+  background: transparent;
+  border: 1px solid transparent;
+  box-shadow: none;
+  color: inherit;
+}
+
+/* Common base surfaces */
+.ds-card--surface{
+  background: var(--ds-color-surface);
+}
+
+.ds-card--bordered{
+  border-color: var(--ds-color-border);
+}
+
+.ds-card--shadow{
+  box-shadow: var(--ds-shadow-sm);
+}
+
+/* Feature: slightly stronger border + subtle tint */
+.ds-card--feature{
+  background: rgba(0,0,0,.015);
+  border-color: rgba(0,0,0,.12);
+  box-shadow: var(--ds-shadow-sm);
+}
+
+/* Testimonial: warm surface + readable body */
+.ds-card--testimonial{
+  background: #fffef9;
+  border-color: rgba(0,0,0,.10);
+  box-shadow: var(--ds-shadow-md);
+}
+
+/* Quote: emphasize left rule; keep composable with surface/border/shadow */
+.ds-card--quote{
+  padding-left: calc(var(--ds-space-5) - 2px);
+  border-left: 4px solid rgba(197,144,96,.55);
+  background: rgba(197,144,96,.06);
+}
+
+/* Internals */
+.ds-card__eyebrow{
+  margin: 0 0 var(--ds-space-2);
+  font-size: 12px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: rgba(0,0,0,.55);
+}
+
+.ds-card__title{
+  margin: 0 0 var(--ds-space-2);
+  color: var(--ds-color-text);
+  line-height: 1.2;
+  font-weight: 650;
+  font-size: 16px;
+}
+
+.ds-card__body{
+  margin: 0;
+  color: rgba(0,0,0,.70);
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+.ds-card__meta{
+  margin: var(--ds-space-3) 0 0;
+  color: rgba(0,0,0,.58);
+  font-size: 13px;
+  line-height: 1.4;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ds-space-2) var(--ds-space-3);
+}
+
+.ds-card__footer{
+  margin: var(--ds-space-4) 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ds-space-2);
+  align-items: center;
+}
+
