@@ -201,10 +201,10 @@ body.custom-background { background-color: #f9f9fe; }
 							</div>
 						</div>
 
-						<form id="newsletter-form" class="nl-saasify-form" novalidate>
+						<form id="newsletter-form" class="nl-saasify-form" method="post" action="https://app.kit.com/forms/4969496/subscriptions" data-sv-form="4969496" data-uid="4969496" novalidate>
 							<div class="nl-saasify-input-container">
 								<label class="screen-reader-text" for="email">Email address</label>
-								<input id="email" name="email" type="email" autocomplete="email" placeholder="Enter your email address..." required class="nl-saasify-input" aria-describedby="form-error">
+								<input id="email" name="email_address" type="email" autocomplete="email" placeholder="Enter your email address..." required class="nl-saasify-input" aria-describedby="form-error">
 								<button type="submit" id="subscribe-btn" class="nl-saasify-submit">Subscribe Now</button>
 							</div>
 							<p id="form-error" role="alert" aria-live="polite" class="nl-saasify-form-error"></p>
@@ -317,72 +317,45 @@ var et_pb_box_shadow_elements = [];
 <script type="text/javascript" src="/wp-content/themes/Divi/core/admin/js/common.js" id="et-core-common-js"></script>
 <script>
 (function () {
-  function wireNewsletterForm(form, btn, err, emailFieldId) {
-    if (!form || !btn || !err) return;
-    var input = document.getElementById(emailFieldId);
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      err.textContent = "";
-      var email = (input && input.value) || "";
-      email = String(email).trim();
-      if (!email) {
-        err.textContent = "Please enter your email.";
+  /* Same flow as SaaSifyOS KitSubscribeRedirect — browser POST to app.kit.com (server proxy hits bot guards). */
+  var thankYouUrl = new URL("/newsletter-confirmation/", window.location.origin).href;
+  var form = document.getElementById("newsletter-form");
+  var btn = document.getElementById("subscribe-btn");
+  var err = document.getElementById("form-error");
+  if (!form || !btn || !err) return;
+
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+    err.textContent = "";
+    var input = document.getElementById("email");
+    var email = input ? String(input.value).trim() : "";
+    if (!email) {
+      err.textContent = "Please enter your email.";
+      return;
+    }
+    btn.disabled = true;
+    try {
+      var res = await fetch(form.action, {
+        method: "POST",
+        body: new URLSearchParams(new FormData(form)),
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        redirect: "manual",
+        mode: "cors",
+      });
+      var ok =
+        res.type === "opaqueredirect" ||
+        res.status === 0 ||
+        (res.status >= 200 && res.status < 400);
+      if (ok) {
+        window.location.assign(thankYouUrl);
         return;
       }
-      btn.disabled = true;
-      var isLocalDev =
-        location.hostname === "localhost" ||
-        location.hostname === "127.0.0.1";
-
-      fetch("/api/subscribe/", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: email }),
-      })
-        .then(function (res) {
-          return res.text().then(function (text) {
-            var data = {};
-            if (text) {
-              try {
-                data = JSON.parse(text);
-              } catch (parseErr) {
-                data = {};
-              }
-            }
-            return { ok: res.ok, status: res.status, data: data };
-          });
-        })
-        .then(function (r) {
-          if (!r.ok) {
-            if (isLocalDev && (r.status === 404 || r.status === 405)) {
-              err.textContent =
-                "Signup API is not running. Use npm run dev:api (not npm run dev).";
-            } else {
-              err.textContent =
-                r.data && r.data.error
-                  ? r.data.error
-                  : "Something went wrong. Please try again.";
-            }
-            btn.disabled = false;
-            return;
-          }
-          window.location.href = "/newsletter-confirmation/";
-        })
-        .catch(function () {
-          err.textContent = isLocalDev
-            ? "Could not reach the signup API. Run npx vercel dev in mrtylerwhite-static (not npm run dev)."
-            : "Network error. Check your connection and try again.";
-          btn.disabled = false;
-        });
-    });
-  }
-
-  wireNewsletterForm(
-    document.getElementById("newsletter-form"),
-    document.getElementById("subscribe-btn"),
-    document.getElementById("form-error"),
-    "email"
-  );
+      err.textContent = "Something went wrong. Please try again in a moment.";
+    } catch (_) {
+      err.textContent = "Network error. Check your connection and try again.";
+    }
+    btn.disabled = false;
+  });
 })();
 </script></body>
 </html>

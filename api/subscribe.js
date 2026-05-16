@@ -111,11 +111,22 @@ module.exports = async function handler(req, res) {
       }
     );
 
+    const location = kitRes.headers.get("location") || "";
+    if (
+      kitFormSubscribeSucceeded(kitRes.status) &&
+      location.includes("/forms/guards/")
+    ) {
+      return res.status(502).json({
+        error:
+          "Kit blocked this server-side signup. Use the newsletter form on /newsletter/ (browser submits directly to Kit).",
+      });
+    }
+
     if (kitFormSubscribeSucceeded(kitRes.status)) {
       return res.status(200).json({
         success: true,
         kit_status: kitRes.status,
-        redirect: kitRes.headers.get("location") || null,
+        redirect: location || null,
       });
     }
 
