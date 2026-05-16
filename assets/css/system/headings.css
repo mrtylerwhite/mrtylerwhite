@@ -4,6 +4,7 @@
 */
 
 @import url("/assets/css/system/tokens.css");
+@import url("/assets/css/system/mobile-open-menu.css");
 
 body :where(h1, h2, h3, h4, h5, h6),
 .et-db :where(h1, h2, h3, h4, h5, h6),
