@@ -73,6 +73,7 @@
 <link rel="stylesheet" href="/assets/css/system/headings.css" />
 </head>
 <body class="custom-background">
+	<a class="skip-link" href="#main-content">Skip to main content</a>
   <div id="page-container">
     <header id="main-header" data-height-onload="30">
       <div class="container clearfix et_menu_container">
@@ -95,7 +96,7 @@
           <div id="et_mobile_nav_menu" aria-label="Mobile navigation (collapsed)">
             <div class="mobile_nav closed">
               <span class="select_page">Select Page</span>
-              <span class="mobile_menu_bar mobile_menu_bar_toggle"></span>
+              <button type="button" class="mobile_menu_bar mobile_menu_bar_toggle" aria-label="Open menu" aria-controls="mobile_menu" aria-expanded="false"></button>
             </div>
           </div>
         </div>
@@ -103,7 +104,7 @@
     </header>
 
     <div id="et-main-area">
-      <div id="main-content">
+      <div id="main-content" role="main">
         <div class="container">
           <div class="ds-shell" role="document">
             <aside class="ds-sidebar" aria-label="Design system navigation">
@@ -1165,8 +1166,8 @@
         <div id="footer-bottom">
           <div class="container clearfix">
             <ul class="et-social-icons">
-              <li class="et-social-icon et-social-twitter"><a href="https://twitter.com/mrtylerwhite" class="icon"><span>X</span></a></li>
-              <li class="et-social-icon et-social-instagram"><a href="https://www.instagram.com/mrtylerwhite/" class="icon"><span>Instagram</span></a></li>
+              <li class="et-social-icon et-social-twitter"><a href="https://twitter.com/mrtylerwhite" class="icon" aria-label="X"><span>X</span></a></li>
+              <li class="et-social-icon et-social-instagram"><a href="https://www.instagram.com/mrtylerwhite/" class="icon" aria-label="Instagram"><span>Instagram</span></a></li>
             </ul>
             <div id="footer-info">©2020 Tyler White  |  Made with <span class="brand-color">♥</span> from Montreal, Canada.</div>
           </div>
@@ -1174,6 +1175,7 @@
       </footer>
     </div>
   </div>
+<script type="text/javascript" src="/assets/js/mobile-menu-a11y.js" id="mobile-menu-a11y-js"></script>
 </body>
 </html>
 

@@ -1,40 +1,21 @@
 /*
-  Homepage typography overrides (index only)
-  Scope:
-  - .case-work .card-kepler h5 / .card-side-by-side h6 (case study cards)
-  - .et_pb_text_7 h3 (testimonial / mentorship section title)
-  Overrides site-wide headings.css (-3px tracking) on long uppercase titles.
+  Homepage typography overrides (index.html only)
+  Loaded after headings.css. Does not change global heading rules.
+
+  Scope: smaller uppercase section/card titles on the homepage.
+  Hero H1 (.et_pb_text_0 h1) keeps headings.css tracking.
 */
 
 /* -------------------------------------------------------------------------- */
-/* Card title letter-spacing (large feature cards)                             */
+/* Case study card titles                                                      */
 /* -------------------------------------------------------------------------- */
 
 @media (min-width: 981px) {
   #page-container .case-work .card-kepler h5 {
     letter-spacing: -1.5px !important;
-  }
-}
-
-@media (max-width: 980px) {
-  #page-container .case-work .card-kepler h5 {
-    letter-spacing: -1px !important;
     line-height: 1.05;
   }
-}
 
-@media (max-width: 767px) {
-  #page-container .case-work .card-kepler h5 {
-    letter-spacing: -0.75px !important;
-    line-height: 1.1;
-  }
-}
-
-/* -------------------------------------------------------------------------- */
-/* Card title letter-spacing (smaller side-by-side cards)                        */
-/* -------------------------------------------------------------------------- */
-
-@media (min-width: 981px) {
   #page-container .case-work .card-side-by-side h6 {
     letter-spacing: -0.75px !important;
     line-height: 1.05;
@@ -42,6 +23,11 @@
 }
 
 @media (max-width: 980px) {
+  #page-container .case-work .card-kepler h5 {
+    letter-spacing: -1px !important;
+    line-height: 1.06;
+  }
+
   #page-container .case-work .card-side-by-side h6 {
     letter-spacing: -0.5px !important;
     line-height: 1.08;
@@ -49,6 +35,11 @@
 }
 
 @media (max-width: 767px) {
+  #page-container .case-work .card-kepler h5 {
+    letter-spacing: -0.75px !important;
+    line-height: 1.08;
+  }
+
   #page-container .case-work .card-side-by-side h6 {
     letter-spacing: -0.25px !important;
     line-height: 1.1;
@@ -56,25 +47,31 @@
 }
 
 /* -------------------------------------------------------------------------- */
-/* Mentorship / testimonial section title (et_pb_text_7)                       */
+/* Section titles (mentorship, growth system, intro band)                      */
 /* -------------------------------------------------------------------------- */
 
 @media (min-width: 981px) {
-  #page-container .et_pb_text_7 h3 {
+  #page-container .et_pb_text_2 h3,
+  #page-container .et_pb_text_7 h3,
+  #page-container .et_pb_text_8 h3 {
     letter-spacing: -0.75px !important;
     line-height: 1.08;
   }
 }
 
 @media (max-width: 980px) {
-  #page-container .et_pb_text_7 h3 {
+  #page-container .et_pb_text_2 h3,
+  #page-container .et_pb_text_7 h3,
+  #page-container .et_pb_text_8 h3 {
     letter-spacing: -0.5px !important;
     line-height: 1.08;
   }
 }
 
 @media (max-width: 767px) {
-  #page-container .et_pb_text_7 h3 {
+  #page-container .et_pb_text_2 h3,
+  #page-container .et_pb_text_7 h3,
+  #page-container .et_pb_text_8 h3 {
     letter-spacing: -0.25px !important;
     line-height: 1.1;
   }

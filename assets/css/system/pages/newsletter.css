@@ -219,7 +219,8 @@ body:has(#post-newsletter) #main-content {
 #post-newsletter .nl-saasify-input {
   flex: 1 1 auto;
   min-width: 0;
-  height: 36px;
+  min-height: 44px;
+  height: 44px;
   margin: 0;
   padding: 6px 8.5rem 6px 14px;
   border: 0;
@@ -248,7 +249,7 @@ body:has(#post-newsletter) #main-content {
   transform: translateY(-50%);
   margin: 0;
   padding: 8px 14px;
-  min-height: 36px;
+  min-height: 44px;
   border: 1px solid #000;
   border-radius: 20px;
   background-color: #000;
@@ -264,6 +265,15 @@ body:has(#post-newsletter) #main-content {
 
 #post-newsletter .nl-saasify-submit:hover {
   background-color: #1a1a1a;
+}
+
+#post-newsletter .nl-saasify-submit:focus {
+  outline: none;
+}
+
+#post-newsletter .nl-saasify-submit:focus-visible {
+  outline: 2px solid var(--nl-accent);
+  outline-offset: 3px;
 }
 
 #post-newsletter .nl-saasify-submit:disabled {
