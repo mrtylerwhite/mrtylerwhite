@@ -1,0 +1,28 @@
+/* Reserve space before Senja widget paints (homepage + newsletter CLS) */
+.senja-embed--reserved {
+  display: block;
+  width: 100%;
+  min-height: 220px;
+}
+
+.et_pb_code_1 .senja-embed--reserved {
+  min-height: 260px;
+}
+
+#post-newsletter .nl-saasify-senja {
+  min-height: 200px;
+}
+
+@media (max-width: 767px) {
+  .senja-embed--reserved {
+    min-height: 200px;
+  }
+
+  .et_pb_code_1 .senja-embed--reserved {
+    min-height: 220px;
+  }
+
+  #post-newsletter .nl-saasify-senja {
+    min-height: 180px;
+  }
+}
