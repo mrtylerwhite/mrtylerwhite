@@ -9,8 +9,13 @@
   min-height: 260px;
 }
 
+/* Newsletter: compact social-proof row (not homepage testimonial carousel) */
 #post-newsletter .nl-saasify-senja {
-  min-height: 200px;
+  min-height: 0;
+}
+
+#post-newsletter .nl-saasify-senja .senja-embed.senja-embed--reserved {
+  min-height: 56px;
 }
 
 @media (max-width: 767px) {
@@ -22,7 +27,7 @@
     min-height: 220px;
   }
 
-  #post-newsletter .nl-saasify-senja {
-    min-height: 180px;
+  #post-newsletter .nl-saasify-senja .senja-embed.senja-embed--reserved {
+    min-height: 48px;
   }
 }

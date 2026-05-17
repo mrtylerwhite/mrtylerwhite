@@ -64,35 +64,51 @@
   background: transparent;
 }
 
-/* Secondary white pill (case cards, newsletter CTA) */
-.ds-btn-secondary,
-.cta_secondary,
+/*
+  Page-level CTAs (hero, cards, bottom sections)
+  Excludes #top-menu / mobile drawer nav buttons (menu-item-53/54).
+  Excludes newsletter form submit (.nl-saasify-submit).
+*/
+
+:root {
+  --ds-page-cta-min-h: 44px;
+  --ds-page-cta-px: 28px;
+  --ds-page-cta-font-size: 1rem;
+}
+
+/* Shared dimensions */
+#page-container a.ds-btn-primary,
+#page-container a.ds-btn-secondary,
+#page-container a.cta_primary,
+#page-container a.cta_secondary,
+#page-container #cta_newsletter,
+#page-container #cta_case_studies,
 #page-container .case-work a.text-button.brand-link,
 #page-container .card-kepler a.text-button.brand-link,
-#page-container .card-side-by-side a.text-button.brand-link {
+#page-container .card-side-by-side a.text-button.brand-link,
+#page-container a.et_pb_button.ds-btn-primary,
+#page-container a.et_pb_button.ds-btn-secondary,
+#page-container a.et_pb_button.cta_primary,
+#page-container a.et_pb_button.cta_secondary,
+#page-container a.et_pb_button#cta_newsletter,
+#page-container a.et_pb_button#cta_case_studies {
   -webkit-appearance: none;
   appearance: none;
   position: relative;
-  display: inline-flex;
+  display: inline-flex !important;
   align-items: center;
   justify-content: center;
-  min-height: 44px;
-  padding: 0.75rem 1.5rem !important;
-  margin: 0.75rem 0 0;
-  border-radius: var(--ds-radius-pill) !important;
-  background: #fffaf4 !important;
-  color: #2d1f16 !important;
-  border: 1px solid rgba(45, 31, 22, 0.1) !important;
-  box-shadow: 0 8px 24px rgba(45, 31, 22, 0.08);
+  box-sizing: border-box;
+  min-height: var(--ds-page-cta-min-h);
+  padding: 0 var(--ds-page-cta-px) !important;
+  border-radius: 999px !important;
   font-family: var(--ds-font-body) !important;
-  font-size: 16px !important;
+  font-size: var(--ds-page-cta-font-size) !important;
   font-weight: 600 !important;
-  line-height: 1.2 !important;
+  line-height: 1.1 !important;
   letter-spacing: 0.01em !important;
   text-decoration: none !important;
   cursor: pointer;
-  box-sizing: border-box;
-  clear: left;
   top: auto !important;
   white-space: nowrap;
   transition:
@@ -103,12 +119,45 @@
     box-shadow 0.2s ease;
 }
 
-.ds-btn-secondary::before,
-.ds-btn-secondary::after,
-.cta_secondary::before,
-.cta_secondary::after,
+/* Card / section CTAs: spacing below copy */
+#page-container .case-work a.text-button.brand-link,
+#page-container .card-kepler a.text-button.brand-link,
+#page-container .card-side-by-side a.text-button.brand-link {
+  margin: 0.75rem 0 0;
+  clear: left;
+}
+
+/* Hero pair: inline spacing */
+#page-container #cta_newsletter {
+  margin-right: 0.5em;
+  margin-top: 0;
+}
+
+#page-container #cta_case_studies {
+  margin-top: 0;
+}
+
+/* No Divi / text-link pseudo decorations */
+#page-container a.ds-btn-primary::before,
+#page-container a.ds-btn-primary::after,
+#page-container a.ds-btn-secondary::before,
+#page-container a.ds-btn-secondary::after,
+#page-container a.cta_primary::before,
+#page-container a.cta_primary::after,
+#page-container a.cta_secondary::before,
+#page-container a.cta_secondary::after,
+#page-container #cta_newsletter::before,
+#page-container #cta_newsletter::after,
+#page-container #cta_case_studies::before,
+#page-container #cta_case_studies::after,
 #page-container a.text-button.brand-link::before,
-#page-container a.text-button.brand-link::after {
+#page-container a.text-button.brand-link::after,
+#page-container a.et_pb_button.ds-btn-primary::after,
+#page-container a.et_pb_button.ds-btn-secondary::after,
+#page-container a.et_pb_button.cta_primary::after,
+#page-container a.et_pb_button.cta_secondary::after,
+#page-container a.et_pb_button#cta_newsletter::after,
+#page-container a.et_pb_button#cta_case_studies::after {
   display: none !important;
   content: none !important;
   width: 0 !important;
@@ -116,45 +165,88 @@
   opacity: 0 !important;
 }
 
-.ds-btn-secondary:hover,
-.cta_secondary:hover,
+/* Secondary (warm white pill) */
+#page-container a.ds-btn-secondary,
+#page-container a.cta_secondary,
+#page-container #cta_newsletter,
+#page-container .case-work a.text-button.brand-link,
+#page-container .card-kepler a.text-button.brand-link,
+#page-container .card-side-by-side a.text-button.brand-link {
+  background: #fffaf4 !important;
+  color: #2d1f16 !important;
+  border: 1px solid rgba(45, 31, 22, 0.1) !important;
+  box-shadow: 0 8px 24px rgba(45, 31, 22, 0.08);
+}
+
+#page-container a.ds-btn-secondary:hover,
+#page-container a.cta_secondary:hover,
+#page-container #cta_newsletter:hover,
 #page-container .case-work a.text-button.brand-link:hover,
 #page-container .card-kepler a.text-button.brand-link:hover,
 #page-container .card-side-by-side a.text-button.brand-link:hover {
   background: #ffffff !important;
   color: #2d1f16 !important;
   border-color: rgba(45, 31, 22, 0.18) !important;
+  border-radius: 999px !important;
   transform: translateY(-1px);
   box-shadow: 0 10px 28px rgba(45, 31, 22, 0.1);
   text-decoration: none !important;
 }
 
-.ds-btn-secondary:active,
-.cta_secondary:active,
-#page-container a.text-button.brand-link:active {
+#page-container a.ds-btn-secondary:active,
+#page-container a.cta_secondary:active,
+#page-container #cta_newsletter:active,
+#page-container .case-work a.text-button.brand-link:active {
   transform: translateY(0);
   box-shadow: 0 6px 16px rgba(45, 31, 22, 0.08);
 }
 
-.ds-btn-secondary:focus-visible,
-.cta_secondary:focus-visible,
-#page-container a.text-button.brand-link:focus-visible {
+#page-container a.ds-btn-secondary:focus-visible,
+#page-container a.cta_secondary:focus-visible,
+#page-container #cta_newsletter:focus-visible,
+#page-container .case-work a.text-button.brand-link:focus-visible {
   outline: 2px solid #c59060 !important;
   outline-offset: 4px !important;
   color: #2d1f16 !important;
   background: #fffaf4 !important;
 }
 
-#page-container a.et_pb_button.ds-btn-secondary,
-#page-container a.et_pb_button.cta_secondary {
-  min-height: 44px;
-  padding: 0.75rem 1.5rem !important;
+/* Primary (dark pill) */
+#page-container a.ds-btn-primary,
+#page-container a.cta_primary,
+#page-container #cta_case_studies {
+  background: #000000 !important;
+  color: #ffffff !important;
+  border: 1px solid #000000 !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
-#page-container a.et_pb_button.ds-btn-secondary::after,
-#page-container a.et_pb_button.cta_secondary::after {
-  display: none !important;
-  opacity: 0 !important;
+#page-container a.ds-btn-primary:hover,
+#page-container a.cta_primary:hover,
+#page-container #cta_case_studies:hover {
+  background: #1a1a1a !important;
+  color: #ffffff !important;
+  border-color: #1a1a1a !important;
+  border-radius: 999px !important;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.16);
+  text-decoration: none !important;
+}
+
+#page-container a.ds-btn-primary:active,
+#page-container a.cta_primary:active,
+#page-container #cta_case_studies:active {
+  transform: translateY(0);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+#page-container a.ds-btn-primary:focus-visible,
+#page-container a.cta_primary:focus-visible,
+#page-container #cta_case_studies:focus-visible {
+  outline: 2px solid #c59060 !important;
+  outline-offset: 4px !important;
+  color: #ffffff !important;
+  background: #000000 !important;
 }
 
 .ds-btn--dark{

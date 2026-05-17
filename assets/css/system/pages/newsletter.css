@@ -168,7 +168,7 @@ body:has(#post-newsletter) #main-content {
   justify-content: center;
   width: 100%;
   max-width: 100%;
-  margin: 32px auto 8px;
+  margin: 32px auto 32px;
   color: var(--nl-text);
   text-align: center;
 }
@@ -188,7 +188,7 @@ body:has(#post-newsletter) #main-content {
 #post-newsletter .nl-saasify-form {
   width: 100%;
   max-width: 478px;
-  margin-top: 22px;
+  margin-top: 0;
 }
 
 #post-newsletter .nl-saasify-input-container {
@@ -428,6 +428,7 @@ body:has(#post-newsletter) #main-content {
 
   #post-newsletter .nl-saasify-senja {
     margin-top: 24px;
+    margin-bottom: 28px;
   }
 
   #post-newsletter .nl-saasify-form,

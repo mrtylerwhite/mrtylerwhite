@@ -1,0 +1,57 @@
+/*
+  Homepage typography hierarchy (index.html only)
+  Role-based scale: hero display, section headings, case card titles.
+*/
+
+/* Neutralize global heading crush (Futura tracking / -3px) on homepage */
+body.home #page-container #main-content .et-l--post :where(h1, h2, h3, h4, h5, h6) {
+  font-family: var(--ds-font-heading) !important;
+  text-transform: none !important;
+  text-shadow: none !important;
+}
+
+/*
+  A. Hero display — match About .cta_main.et_pb_text_0 h3 treatment at h1 scale
+  (Inter, 400, 1.1 lh, -3px tracking; Divi h1 sizes, not display clamp)
+*/
+body.home #page-container .hero-cntn .et_pb_text_0 h1 {
+  font-family: var(--ds-font-heading) !important;
+  font-weight: 400 !important;
+  font-size: 48px !important;
+  line-height: 1.1 !important;
+  letter-spacing: -3px !important;
+  text-transform: none !important;
+  text-shadow: none !important;
+  margin-bottom: 0 !important;
+}
+
+@media screen and (max-width: 980px) {
+  body.home #page-container .hero-cntn .et_pb_text_0 h1 {
+    font-size: 40px !important;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  body.home #page-container .hero-cntn .et_pb_text_0 h1 {
+    font-size: 30px !important;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  body.home #page-container .hero-cntn .et_pb_text_0 h1 {
+    font-size: 28px !important;
+  }
+}
+
+/* B. Section headings (editorial bands) */
+body.home #page-container .et_pb_text_2 h3,
+body.home #page-container .et_pb_text_7 h3,
+body.home #page-container .et_pb_text_8 h3,
+body.home #page-container .et_pb_text_8 .notion-sub_header-block {
+  font-weight: 400 !important;
+  font-size: clamp(2rem, 3vw, 3.25rem) !important;
+  line-height: 1.05 !important;
+  letter-spacing: -0.03em !important;
+  text-transform: none !important;
+  text-shadow: none !important;
+}

@@ -24,6 +24,31 @@ body.et_pb_pagebuilder_layout,
   font-family: var(--ds-font-body) !important;
 }
 
+/*
+  Body copy weight — Divi critical CSS sets body { font-weight: 500 }.
+  Scoped to text modules; excludes eyebrows, buttons, nav, headings.
+*/
+#page-container .et_pb_text_inner p:not(.ds-eyebrow),
+#main-content .et_pb_text_inner p:not(.ds-eyebrow) {
+  font-weight: 400;
+}
+
+/* Newsletter hero (not inside .et_pb_text_inner) */
+#post-newsletter .nl-saasify-lede,
+#post-newsletter .nl-saasify-caption {
+  font-weight: 400;
+}
+
+/*
+  Main nav text links — Divi/customizer uses font-weight: 600 on #top-menu a.
+  Excludes nav CTA buttons (li.et_pb_button: Download CV, Let's Connect).
+*/
+#page-container #main-header #top-menu > li:not(.et_pb_button) > a,
+#page-container #main-header #top-menu > li:not(.et_pb_button).current-menu-item > a,
+#page-container #main-header #top-menu > li:not(.et_pb_button).current_page_item > a {
+  font-weight: 400 !important;
+}
+
 /* Legacy page CSS that named Figtree, Geist, or Lato explicitly */
 #post-newsletter .nl-saasify-headline,
 #post-newsletter .nl-saasify-lede,

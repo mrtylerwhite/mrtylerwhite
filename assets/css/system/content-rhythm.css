@@ -10,6 +10,10 @@
   margin-bottom: 0;
 }
 
+.hero-cntn .et_pb_text_0 .et_pb_text_inner > h1 + p {
+  margin-top: 16px;
+}
+
 #page-container .case-work .et_pb_text_inner > .ds-eyebrow + :is(h5, h6) {
   margin-top: 0;
 }

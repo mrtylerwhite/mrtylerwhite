@@ -87,7 +87,7 @@
     color: var(--mow-drawer-text) !important;
     font-family: "Geist", "Figtree", var(--ds-font-body, "Open Sans", Arial, sans-serif) !important;
     font-size: clamp(1.125rem, 3.6vw, 1.375rem) !important;
-    font-weight: 600 !important;
+    font-weight: 400 !important;
     line-height: 1.12 !important;
     letter-spacing: -0.015em !important;
     text-transform: none !important;
