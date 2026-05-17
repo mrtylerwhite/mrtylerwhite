@@ -1,0 +1,37 @@
+/*
+  Muted eyebrow labels (ElevenLabs-style)
+*/
+
+.ds-eyebrow,
+#page-container .ds-eyebrow {
+  display: block;
+  margin: 0 0 8px;
+  color: rgba(45, 31, 22, 0.55);
+  font-family: var(--ds-font-body);
+  font-size: 0.95rem;
+  line-height: 1.2;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  text-shadow: none;
+}
+
+/* Legacy Divi sup eyebrows — do not pill/heavy */
+.hero-cntn sup,
+#page-container .hero-cntn sup {
+  display: block;
+  margin: 0 0 8px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  color: rgba(45, 31, 22, 0.55) !important;
+  font-family: var(--ds-font-body) !important;
+  font-size: 0.95rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.02em !important;
+  text-transform: none !important;
+  text-shadow: none !important;
+  line-height: 1.2 !important;
+}

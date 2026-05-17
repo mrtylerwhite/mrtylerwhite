@@ -19,7 +19,6 @@
     section.classList.remove('et_pb_preload');
     var wrap = section.querySelector('.et_pb_section_video_bg');
     if (wrap) {
-      wrap.style.opacity = '1';
       wrap.style.visibility = 'visible';
     }
   }

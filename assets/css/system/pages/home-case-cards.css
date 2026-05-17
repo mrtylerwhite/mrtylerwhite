@@ -1,10 +1,10 @@
 /*
-  Case study card titles (homepage + case-studies index).
-  Loaded after headings.css. Editorial Inter titles, not label uppercase.
+  Homepage + case-studies index: card titles, layout scrims, hero CTA stack.
+  Typography base: headings.css. Buttons: buttons.css.
 */
 
 /* -------------------------------------------------------------------------- */
-/* Case study card titles                                                      */
+/* Case study card titles (editorial Inter, sentence case)                     */
 /* -------------------------------------------------------------------------- */
 
 #page-container .case-work .card-kepler h5,
@@ -14,6 +14,7 @@
   text-transform: none !important;
   letter-spacing: -0.02em !important;
   line-height: 1.05 !important;
+  text-shadow: none !important;
 }
 
 #page-container .case-work .card-side-by-side h6 {
@@ -30,7 +31,7 @@
   #page-container .et_pb_text_2 h3,
   #page-container .et_pb_text_7 h3,
   #page-container .et_pb_text_8 h3 {
-    letter-spacing: -0.75px !important;
+    letter-spacing: -0.02em !important;
     line-height: 1.08;
   }
 }
@@ -39,24 +40,35 @@
   #page-container .et_pb_text_2 h3,
   #page-container .et_pb_text_7 h3,
   #page-container .et_pb_text_8 h3 {
-    letter-spacing: -0.5px !important;
+    letter-spacing: -0.015em !important;
     line-height: 1.08;
   }
 }
 
-@media (max-width: 767px) {
-  #page-container .et_pb_text_2 h3,
-  #page-container .et_pb_text_7 h3,
-  #page-container .et_pb_text_8 h3 {
-    letter-spacing: -0.25px !important;
-    line-height: 1.1;
+/* Bottom growth block — Notion-nested h3 after eyebrow */
+#page-container .et_pb_text_8 .et_pb_text_inner > .notion-scroller,
+#page-container .et_pb_text_8 .et_pb_text_inner .notion-sub_header-block,
+#page-container .et_pb_text_8 h3 {
+  margin-top: 0 !important;
+}
+
+/* Hero CTAs — stack on small mobile */
+@media screen and (max-width: 430px) {
+  #page-container .hero-cntn .et_pb_code_0 .et_pb_code_inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  #page-container .hero-cntn .et_pb_code_0 .et_pb_code_inner a {
+    width: auto;
+    min-width: 0;
+    white-space: nowrap;
   }
 }
 
-/* -------------------------------------------------------------------------- */
-/* Tablet background art — keep image visible, clear of copy                   */
-/* -------------------------------------------------------------------------- */
-
+/* Tablet — large case cards: text above decorative background bleed */
 @media (min-width: 768px) and (max-width: 975px) {
   #page-container .case-work .card-kepler.card-notch {
     background-size: min(460px, 56vw) auto;
@@ -70,5 +82,83 @@
 
   #page-container .case-work .card-kepler .et_pb_column_1_2 .et_clickable {
     padding-right: 42%;
+  }
+
+  #page-container .case-work .card-kepler > .et_pb_column_1_2:not(.et_pb_column_empty) {
+    position: relative;
+    z-index: 2;
+  }
+
+  #page-container .case-work .card-kepler > .et_pb_column_1_2:not(.et_pb_column_empty)::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      #f6f0e9 0%,
+      #f6f0e9 52%,
+      rgba(246, 240, 233, 0.55) 72%,
+      transparent 100%
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  #page-container .case-work .card-kepler > .et_pb_column_1_2:not(.et_pb_column_empty) .et_pb_module {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+/* Small case cards — bottom scrim for copy/CTA */
+#page-container .case-work .card-side-by-side > .et_pb_column_1_2 {
+  position: relative;
+  isolation: isolate;
+}
+
+#page-container .case-work .card-side-by-side > .et_pb_column_1_2::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: auto;
+  height: 48%;
+  background: linear-gradient(
+    to top,
+    rgba(246, 240, 233, 0.96) 0%,
+    rgba(246, 240, 233, 0.82) 45%,
+    rgba(246, 240, 233, 0) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+#page-container .case-work .card-side-by-side .et_pb_text {
+  position: relative;
+  z-index: 2;
+}
+
+#page-container .case-work .card-side-by-side .et_pb_text_inner > .ds-eyebrow,
+#page-container .case-work .card-side-by-side .et_pb_text_inner > h6,
+#page-container .case-work .card-kepler .et_pb_text_inner > .ds-eyebrow {
+  text-shadow: none !important;
+}
+
+@media screen and (max-width: 980px) {
+  #page-container .case-work .card-side-by-side > .et_pb_column_1_2::before {
+    height: 52%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  #page-container .case-work .card-side-by-side > .et_pb_column_1_2::before {
+    height: 56%;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  #page-container .case-work .card-side-by-side > .et_pb_column_1_2::before {
+    height: 58%;
   }
 }

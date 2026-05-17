@@ -1,0 +1,36 @@
+/*
+  Eyebrow → title → body spacing on marketing blocks
+*/
+
+.hero-cntn .et_pb_text_0 .et_pb_text_inner > .ds-eyebrow + h1 {
+  margin-top: 0;
+}
+
+.hero-cntn .et_pb_text_0 .et_pb_text_inner > h1 {
+  margin-bottom: 0;
+}
+
+#page-container .case-work .et_pb_text_inner > .ds-eyebrow + :is(h5, h6) {
+  margin-top: 0;
+}
+
+#page-container .case-work .et_pb_text_inner > :is(h5, h6) + p {
+  margin-top: 16px;
+}
+
+#page-container .case-work .et_pb_text_inner > .ds-eyebrow + p {
+  margin-top: 0;
+}
+
+#page-container .et_pb_text_2 .et_pb_text_inner > .ds-eyebrow + h3,
+#page-container .et_pb_text_7 .et_pb_text_inner > .ds-eyebrow + h3,
+#page-container .et_pb_text_8 .et_pb_text_inner > .ds-eyebrow + h3,
+#page-container .et_pb_text_8 .et_pb_text_inner > .ds-eyebrow + .notion-scroller {
+  margin-top: 0;
+}
+
+#page-container .et_pb_text_2 .et_pb_text_inner > h3 + p,
+#page-container .et_pb_text_7 .et_pb_text_inner > h3 + p,
+#page-container .et_pb_text_8 .et_pb_text_inner > h3 + p {
+  margin-top: 16px;
+}
