@@ -22,7 +22,7 @@ const jobs = [
     args: [
       '-vf', "scale='min(1280,iw)':-2",
       '-c:v', 'libx264', '-preset', 'medium', '-crf', '28',
-      '-movflags', '+faststart', '-an',
+      '-movflags', '+faststart', '-c:a', 'aac', '-b:a', '128k',
     ],
   },
   {
