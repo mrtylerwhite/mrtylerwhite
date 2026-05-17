@@ -22,9 +22,7 @@ const pages = [
   {
     name: 'home',
     path: '/',
-    expectSrc: /Palm-Swaying-optimized\.mp4/,
-    expectPreload: 'metadata',
-    deferUntilPlay: false,
+    expectNoVideo: true,
   },
   {
     name: 'notch',
@@ -80,12 +78,18 @@ async function auditPage(browser, pageDef, mobile = false) {
       ) && !/-optimized\.mp4/.test(m.url),
   );
 
-  const pass =
-    info &&
-    pageDef.expectSrc.test(info.src || '') &&
-    info.preload === pageDef.expectPreload &&
-    legacyHits.length === 0 &&
-    (!pageDef.deferUntilPlay || media.every((m) => !pageDef.expectSrc.test(m.url) || m.status === 200));
+  const palmOnHome =
+    pageDef.name === 'home' &&
+    media.some((m) => /Palm-Swaying.*\.mp4/i.test(m.url));
+
+  const pass = pageDef.expectNoVideo
+    ? count === 0 && legacyHits.length === 0 && !palmOnHome
+    : info &&
+      pageDef.expectSrc.test(info.src || '') &&
+      info.preload === pageDef.expectPreload &&
+      legacyHits.length === 0 &&
+      (!pageDef.deferUntilPlay ||
+        media.every((m) => !pageDef.expectSrc.test(m.url) || m.status === 200));
 
   results.push({
     key,

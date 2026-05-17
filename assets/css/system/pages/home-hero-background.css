@@ -1,0 +1,59 @@
+/*
+  Homepage hero — static palm poster with warm scrim (no background video).
+*/
+
+.hero-cntn.et_pb_section_0 {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: #f6f0e9;
+}
+
+/* Faded palm texture (replaces low-opacity video) */
+.hero-cntn.et_pb_section_0::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url("/wp-content/uploads/2025/12/Palm-Swaying-poster.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  opacity: 0.32;
+}
+
+/* Warm scrim above poster, below hero copy */
+.hero-cntn.et_pb_section_0::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    105deg,
+    rgba(246, 240, 233, 0.92) 0%,
+    rgba(246, 240, 233, 0.78) 42%,
+    rgba(246, 240, 233, 0.45) 68%,
+    rgba(246, 240, 233, 0.2) 100%
+  );
+}
+
+.hero-cntn.et_pb_section_0 > .et_pb_row {
+  position: relative;
+  z-index: 2;
+}
+
+@media screen and (max-width: 767px) {
+  .hero-cntn.et_pb_section_0::before {
+    background: linear-gradient(
+      180deg,
+      rgba(246, 240, 233, 0.55) 0%,
+      rgba(246, 240, 233, 0.35) 100%
+    );
+  }
+
+  .hero-cntn.et_pb_section_0::after {
+    opacity: 0.38;
+  }
+}

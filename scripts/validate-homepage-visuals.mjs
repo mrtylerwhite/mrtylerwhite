@@ -14,6 +14,7 @@ const outDir = path.join(
 mkdirSync(outDir, { recursive: true });
 
 const viewports = [
+  { name: '1440', width: 1440, height: 900 },
   { name: '1280', width: 1280, height: 900 },
   { name: '1024', width: 1024, height: 768 },
   { name: '768', width: 768, height: 1024 },
@@ -39,7 +40,11 @@ for (const vp of viewports) {
     const ctaStyle = cta ? getComputedStyle(cta) : null;
     const eyebrow = document.querySelector('.hero-cntn .ds-eyebrow');
     const eyebrowStyle = eyebrow ? getComputedStyle(eyebrow) : null;
-    const videoWrap = document.querySelector('.hero-cntn .et_pb_section_video_bg');
+    const heroSection = document.querySelector('.hero-cntn.et_pb_section_0');
+    const heroVideo = heroSection?.querySelector('video');
+    const heroAfterBg = heroSection
+      ? getComputedStyle(heroSection, '::after').backgroundImage
+      : '';
     const cardTitle = document.querySelector('.case-work h5');
     return {
       ctaTextDecoration: ctaStyle?.textDecorationLine,
@@ -48,15 +53,15 @@ for (const vp of viewports) {
       eyebrowColor: eyebrowStyle?.color,
       eyebrowTransform: eyebrowStyle?.textTransform,
       eyebrowWeight: eyebrowStyle?.fontWeight,
-      videoOpacity: videoWrap ? getComputedStyle(videoWrap).opacity : null,
-      videoDisplay: videoWrap ? getComputedStyle(videoWrap).display : null,
+      heroHasVideo: !!heroVideo,
+      heroPosterBg: heroAfterBg.includes('Palm-Swaying-poster.jpg'),
       cardTransform: cardTitle ? getComputedStyle(cardTitle).textTransform : null,
       cardLetterSpacing: cardTitle ? getComputedStyle(cardTitle).letterSpacing : null,
     };
   });
 
   const legacy = media.some((u) => /712465_Palm-Swaying-Background/.test(u));
-  const desktop = vp.width >= 768;
+  const palmMp4 = media.some((u) => /Palm-Swaying.*\.mp4/i.test(u));
   const pass =
     checks.ctaTextDecoration === 'none' &&
     parseFloat(checks.ctaBorderRadius) >= 20 &&
@@ -65,9 +70,9 @@ for (const vp of viewports) {
     parseInt(checks.eyebrowWeight, 10) <= 500 &&
     checks.cardTransform === 'none' &&
     !legacy &&
-    (desktop
-      ? checks.videoDisplay !== 'none' && parseFloat(checks.videoOpacity) < 0.5
-      : checks.videoDisplay === 'none');
+    !palmMp4 &&
+    !checks.heroHasVideo &&
+    checks.heroPosterBg;
 
   if (!pass) ok = false;
   console.log(`[${pass ? 'PASS' : 'FAIL'}] ${vp.name}px`, checks, legacy ? 'LEGACY_VIDEO' : '');
