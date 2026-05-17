@@ -1,9 +1,10 @@
 /*
-  Site-wide heading typography — Futura PT (Adobe Fonts)
-  Load https://use.typekit.net/kap0kcr.css in each page <head>.
+  Site-wide heading typography
+  Inter loads from assets/css/system/fonts.css (self-hosted).
 */
 
 @import url("/assets/css/system/tokens.css");
+@import url("/assets/css/system/fonts.css");
 @import url("/assets/css/system/mobile-open-menu.css");
 @import url("/assets/css/system/accessibility.css");
 

@@ -1,0 +1,49 @@
+/*
+  Self-hosted Inter (SIL Open Font License 1.1)
+  https://github.com/rsms/inter
+*/
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("/assets/fonts/inter/InterVariable.woff2") format("woff2");
+}
+
+:root {
+  --ds-font-body: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --ds-font-heading: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --ds-font-heading-bold: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* Divi critical CSS still sets Open Sans on body */
+body,
+body.et_pb_pagebuilder_layout,
+.et-db #page-container {
+  font-family: var(--ds-font-body) !important;
+}
+
+/* Legacy page CSS that named Figtree, Geist, or Lato explicitly */
+#post-newsletter .nl-saasify-headline,
+#post-newsletter .nl-saasify-lede,
+#post-newsletter .nl-saasify-input,
+#post-newsletter .nl-saasify-submit,
+#post-newsletter .nl-saasify-caption,
+#post-newsletter .nl-saasify-form-error,
+#post-newsletter .nl-confirm-title,
+#post-newsletter .nl-confirm-lede {
+  font-family: var(--ds-font-body) !important;
+}
+
+@media screen and (max-width: 980px) {
+  #main-header .mobile_menu_bar:before,
+  #main-header .mobile_menu_bar:after,
+  #main-header .et_mobile_menu li a {
+    font-family: var(--ds-font-body) !important;
+  }
+}
+
+.skip-link {
+  font-family: var(--ds-font-body) !important;
+}
