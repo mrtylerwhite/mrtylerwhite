@@ -1,0 +1,20 @@
+/*
+  Homepage hero background video — defer heavy media on small screens.
+*/
+
+.hero-cntn.et_pb_section_0 .et_pb_section_video_bg video {
+  object-fit: cover;
+}
+
+@media screen and (max-width: 767px) {
+  .hero-cntn.et_pb_section_0 .et_pb_section_video_bg {
+    display: none;
+  }
+
+  .hero-cntn.et_pb_section_0.et_pb_section {
+    background-image: url("/wp-content/uploads/2025/12/Palm-Swaying-poster.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+}
