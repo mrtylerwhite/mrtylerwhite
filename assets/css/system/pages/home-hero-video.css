@@ -1,14 +1,34 @@
 /*
-  Homepage hero background video — defer heavy media on small screens.
+  Homepage hero background video — poster on small screens, video on tablet+.
 */
 
+.hero-cntn.et_pb_section_0 .et_pb_section_video_bg {
+  opacity: 1;
+  visibility: visible;
+}
+
 .hero-cntn.et_pb_section_0 .et_pb_section_video_bg video {
+  display: block;
+  width: 100%;
+  min-height: 100%;
   object-fit: cover;
+}
+
+@media screen and (min-width: 768px) {
+  .hero-cntn.et_pb_section_0 .et_pb_section_video_bg {
+    display: block !important;
+  }
+
+  .hero-cntn.et_pb_section_0.et_pb_preload .et_pb_section_video_bg,
+  .hero-cntn.et_pb_section_0.et_pb_preload .et_pb_section_video_bg video {
+    opacity: 1;
+    visibility: visible;
+  }
 }
 
 @media screen and (max-width: 767px) {
   .hero-cntn.et_pb_section_0 .et_pb_section_video_bg {
-    display: none;
+    display: none !important;
   }
 
   .hero-cntn.et_pb_section_0.et_pb_section {

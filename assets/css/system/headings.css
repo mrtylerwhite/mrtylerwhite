@@ -22,8 +22,3 @@ body :where(h1, h2, h3, h4, h5, h6),
 #page-container #main-content .et-l--post :where(h1, h2, h3, h4, h5, h6) {
   text-transform: none !important;
 }
-
-/* Homepage and index card titles stay label-style */
-#page-container #main-content .et-l--post .case-work :where(h5, h6) {
-  text-transform: uppercase !important;
-}

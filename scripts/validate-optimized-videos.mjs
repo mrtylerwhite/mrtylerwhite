@@ -23,7 +23,7 @@ const pages = [
     name: 'home',
     path: '/',
     expectSrc: /Palm-Swaying-optimized\.mp4/,
-    expectPreload: 'none',
+    expectPreload: 'metadata',
     deferUntilPlay: false,
   },
   {

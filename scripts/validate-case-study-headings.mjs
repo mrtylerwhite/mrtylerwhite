@@ -32,7 +32,7 @@ for (const p of pages) {
       .first()
       .evaluate((el) => getComputedStyle(el).textTransform)
       .catch(() => 'missing');
-    const cardPass = cardTransform === 'uppercase';
+    const cardPass = cardTransform === 'none';
     if (!cardPass) ok = false;
     console.log(`[${cardPass ? 'PASS' : 'FAIL'}] ${p.name} card title transform=${cardTransform}`);
   }
