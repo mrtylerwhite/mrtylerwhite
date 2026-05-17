@@ -50,6 +50,13 @@ body.page-id-2147 #page-container .et_pb_section_0.case-work.et_pb_section_0 {
   text-shadow: none !important;
 }
 
+/* Title → body/CTA gap (on card title, not any following p) */
+#page-container .case-work .card-kepler .et_pb_text_inner > h5,
+#page-container .case-work .card-side-by-side .et_pb_text_inner > h6 {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
 /* Bottom growth block — Notion-nested h3 after eyebrow */
 #page-container .et_pb_text_8 .et_pb_text_inner > .notion-scroller,
 #page-container .et_pb_text_8 .et_pb_text_inner .notion-sub_header-block,
