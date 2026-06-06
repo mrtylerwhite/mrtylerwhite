@@ -62,4 +62,37 @@ body.home .hero-cntn .et_pb_row_0.et_pb_row {
   .hero-cntn.et_pb_section_0::after {
     opacity: 0.38;
   }
+
+  /*
+    CLS stabilization (Phase 3.5): before Divi deferred inline CSS parses,
+    the profile image column renders and row_0 keeps desktop padding — hero
+    overshoots ~1163px then settles to ~682px, pushing section_1 into the
+    viewport (~0.30 mobile CLS). These rules mirror the final mobile layout
+    early so first paint matches post-load height.
+  */
+  body.home .hero-cntn.et_pb_section_0 {
+    min-height: 682px;
+  }
+
+  body.home .hero-cntn .et_pb_image_0 {
+    display: none !important;
+  }
+
+  body.home .hero-cntn .et_pb_row_0.et_pb_row {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+}
+
+/* Tablet: profile image hidden in final Divi layout (768–980px) — hide early for CLS */
+@media screen and (min-width: 768px) and (max-width: 980px) {
+  body.home .hero-cntn .et_pb_image_0 {
+    display: none !important;
+  }
+
+  body.home .hero-cntn.et_pb_section_0 {
+    min-height: 703px;
+  }
 }
