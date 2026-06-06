@@ -44,7 +44,10 @@ body:has(#post-newsletter) #main-content {
 
 #post-newsletter .nl-saasify-hero {
   position: relative;
-  margin: 28px 16px 18px;
+  /* Clear the floating nav: the rounded card otherwise tucks under it.
+     The card edge is the first hero block, so nav→card-top uses the shared
+     --ds-hero-clearance token; the card keeps its own internal top padding. */
+  margin: var(--ds-hero-clearance) 16px 18px;
   min-height: 0;
   border-radius: 20px;
   overflow: hidden;
@@ -377,7 +380,7 @@ body:has(#post-newsletter) #main-content {
 
 @media screen and (max-width: 980px) {
   #post-newsletter .nl-saasify-hero {
-    margin: 20px 12px 16px;
+    margin: var(--ds-hero-clearance) 12px 16px;
   }
 
   #post-newsletter .nl-saasify-headline {
@@ -399,7 +402,7 @@ body:has(#post-newsletter) #main-content {
 
 @media screen and (max-width: 767px) {
   #post-newsletter .nl-saasify-hero {
-    margin: 16px 8px 14px;
+    margin: var(--ds-hero-clearance) 8px 14px;
     border-radius: 16px;
   }
 

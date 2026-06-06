@@ -39,3 +39,70 @@
 #page-container .et_pb_text_8 .et_pb_text_inner > h3 + p {
   margin-top: 16px;
 }
+
+/* "Design as a growth system" bottom CTA section.
+   Heading (et_pb_text_8), paragraph (et_pb_text_9) and CTA are separate Divi
+   modules, so the heading→paragraph gap is module spacing + the serif heading's
+   ~32px line-box leading (reads as ~47px). Group them like the case cards:
+   eyebrow→heading ~12px, heading→paragraph ~19px, paragraph→CTA ~26px.
+   Margins only — layout, columns, type and the left image collage untouched. */
+body.home #page-container .et_pb_text_8 .et_pb_text_inner > .ds-eyebrow {
+  margin-bottom: 16px !important;
+}
+
+body.home #page-container .et_pb_text_9 {
+  margin-top: -28px !important;
+  margin-bottom: 26px !important;
+}
+
+/* The heading clamps to its 2rem floor on narrower viewports, shrinking the
+   serif leading — ease the pull-up so heading→paragraph stays ~16–20px. */
+@media (max-width: 1280px) {
+  body.home #page-container .et_pb_text_9 {
+    margin-top: -20px !important;
+  }
+}
+
+/* Homepage "A quick note before you scroll" editorial block. Same serif
+   line-box leading issue: h3→paragraph reads ~47px. Pull the copy up under the
+   heading (~18px). Scoped to homepage — et_pb_text_2 is a card on /case-studies/. */
+body.home #page-container .et_pb_text_2 .et_pb_text_inner > h3 {
+  margin-bottom: -14px !important;
+}
+@media (max-width: 1066px) {
+  body.home #page-container .et_pb_text_2 .et_pb_text_inner > h3 {
+    margin-bottom: -7px !important;
+  }
+}
+
+/* Large standalone editorial headings (homepage testimonials h3,
+   /case-studies/ intro h2) read ~3px eyebrow→heading because the serif heading's
+   top line-box leading eats into the eyebrow margin. Nudge the eyebrow so these
+   match the cards' ~7px rhythm. */
+body.home #page-container .et_pb_text_7 .et_pb_text_inner > .ds-eyebrow,
+body.page-id-2147 #page-container .et_pb_text_0 .et_pb_text_inner > .ds-eyebrow {
+  margin-bottom: 14px !important;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Site-wide hero clearance below the floating nav                            */
+/* -------------------------------------------------------------------------- */
+/*
+  The header floats over the page and #page-container has padding-top:0, so the
+  first section on every page must clear the nav itself. Pages ship different
+  first-section/row paddings (case-studies .case-work, about + case-study detail
+  plain .et_pb_section_0), which left hero content tucked under or behind the nav.
+
+  Normalize: the first non-home section owns the clearance via padding-top
+  (the shared --ds-hero-clearance token), and its first row's top padding is
+  zeroed so the token is the single source of truth across page types.
+  Homepage (.hero-cntn) is excluded — it has a full-bleed background and its
+  own tuned hero rhythm. Newsletter uses a custom card hero handled in
+  pages/newsletter.css. */
+#page-container .et_pb_section.et_pb_section_0:not(.hero-cntn) {
+  padding-top: var(--ds-hero-clearance) !important;
+}
+
+#page-container .et_pb_section.et_pb_section_0:not(.hero-cntn) > .et_pb_row:first-of-type {
+  padding-top: 0 !important;
+}

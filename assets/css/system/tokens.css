@@ -66,6 +66,16 @@
   --ds-space-9: 96px;
   --ds-space-10: 128px;
 
+  /* ── Hero clearance (floating nav → first hero content) ──
+     #page-container has padding-top:0 and the header floats over the
+     page, so every top section must clear the nav itself. This token
+     bakes in the floating-nav height (~84px desktop / ~97px tablet+phone)
+     plus editorial breathing room, so nav→hero content lands in the
+     48–72px (desktop) / 40–56px (tablet) / 32–44px (phone) range.
+     Consumed by the shared first-section rule in content-rhythm.css and
+     the newsletter hero in pages/newsletter.css. */
+  --ds-hero-clearance: 138px;
+
   /* ── Radius ────────────────────────────────────────────── */
   --ds-radius-sm: 8px;
   --ds-radius-md: 12px;
@@ -93,5 +103,13 @@
   --ds-bp-tablet-max: 980px;
   --ds-bp-phone-max: 767px;
   --ds-bp-small-max: 479px;
+}
+
+/* Phone: nav sits ~13px lower, so trim hero clearance to keep
+   nav→content in the 32–44px range and avoid excess blank space. */
+@media (max-width: 767px) {
+  :root {
+    --ds-hero-clearance: 136px;
+  }
 }
 
