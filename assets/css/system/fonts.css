@@ -1,12 +1,41 @@
 /*
-  Fonts — design system (Phase 2 update)
+  Fonts — design system (Phase 3: self-hosted display + mono)
   Body:    Inter (self-hosted)
-  Display: Instrument Serif (Google Fonts — editorial serif)
-  Mono:    JetBrains Mono (Google Fonts — eyebrows / kickers)
+  Display: Instrument Serif (self-hosted)
+  Mono:    JetBrains Mono (self-hosted)
 */
 
-/* Google Fonts — load lazily, non-blocking */
-@import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap");
+@font-face {
+  font-family: "Instrument Serif";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/assets/fonts/instrument-serif/InstrumentSerif-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Instrument Serif";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/assets/fonts/instrument-serif/InstrumentSerif-Italic.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/assets/fonts/jetbrains-mono/JetBrainsMono-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/assets/fonts/jetbrains-mono/JetBrainsMono-Regular.woff2") format("woff2");
+}
 
 /* Self-hosted Inter (SIL Open Font License 1.1) */
 @font-face {
