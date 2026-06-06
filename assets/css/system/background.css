@@ -1,0 +1,20 @@
+/*
+  Warm-white page background (#FCF7F4)
+  Drop-in: add @import url("/assets/css/system/background.css"); to index.css.
+  Cards, inputs and selects stay crisp white (--ds-color-surface) so they lift
+  off the warm page. Scoped to body / #page-container; no Divi component overrides.
+*/
+:root{
+  --ds-color-page: #FCF7F4; /* warm white page */
+}
+
+html,
+body,
+#page-container{
+  background-color: var(--ds-color-page);
+}
+
+/* Keep large light section bands consistent with the warm page */
+#page-container .et_pb_section.et_pb_section_regular:not([style*="background"]){
+  background-color: var(--ds-color-page);
+}

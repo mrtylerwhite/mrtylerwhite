@@ -1,0 +1,115 @@
+/*
+  Controls — Inputs, Selects, Tabs, Segmented ("button tabs")
+  ElevenLabs-style, built on your --ds- tokens. Opt-in .ds- classes only;
+  additive — does NOT override existing .ds-input (newsletter) or Divi selectors.
+
+  Drop-in: place at assets/css/system/components/controls.css and add
+    @import url("/assets/css/system/components/controls.css");
+  to assets/css/system/index.css (after forms.css). Interactivity for tabs /
+  segmented lives in controls.js (see this folder).
+*/
+
+/* ---------- Field scaffold (labels + help) ---------- */
+.ds-field{ display:flex; flex-direction:column; gap: var(--ds-space-2); }
+.ds-label{ font-family: var(--ds-font-body); font-size:14px; font-weight:600; color: var(--ds-color-text); }
+.ds-help{ font-family: var(--ds-font-mono); font-size:12px; letter-spacing:.02em; color: var(--ds-color-muted); }
+.ds-help--error{ color: var(--ds-color-danger); }
+
+/* ---------- Boxed text input (forms) ----------
+   Use .ds-input.ds-input--box. Keeps the bare .ds-input (transparent pill)
+   for the newsletter inset untouched. */
+.ds-input--box{
+  height: var(--ds-control-h-lg);
+  padding: 0 14px;
+  border-radius: var(--ds-radius-md);
+  border: 1px solid var(--ds-color-border-strong);
+  background: var(--ds-color-surface);
+  color: var(--ds-color-text);
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+.ds-input--box::placeholder{ color: var(--ds-color-muted); }
+.ds-input--box:focus{
+  outline: none;
+  border-color: var(--ds-color-dark);
+  box-shadow: 0 0 0 3px rgba(0,0,0,.08);
+}
+
+/* ---------- Select (styled native) ---------- */
+.ds-select{
+  -webkit-appearance:none; appearance:none;
+  font-family: var(--ds-font-body);
+  font-size: 14px;
+  color: var(--ds-color-text);
+  width: 100%;
+  height: var(--ds-control-h-lg);
+  padding: 0 38px 0 14px;
+  border: 1px solid var(--ds-color-border-strong);
+  border-radius: var(--ds-radius-md);
+  background-color: var(--ds-color-surface);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'><path d='M3 4.5 6 7.5 9 4.5' fill='none' stroke='%23666666' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+.ds-select:focus{
+  outline: none;
+  border-color: var(--ds-color-dark);
+  box-shadow: 0 0 0 3px rgba(0,0,0,.08);
+}
+
+/* ---------- Tabs (underline) ---------- */
+.ds-tabs{
+  display: flex;
+  gap: var(--ds-space-5);
+  border-bottom: 1px solid var(--ds-color-border);
+}
+.ds-tab{
+  -webkit-appearance:none; appearance:none;
+  background: none; border: none; cursor: pointer;
+  font-family: var(--ds-font-body);
+  font-size: 15px; font-weight: 600; line-height: 1;
+  color: var(--ds-color-muted);
+  padding: 0 0 12px;
+  margin-bottom: -1px;
+  border-bottom: 2px solid transparent;
+  transition: color .15s ease, border-color .15s ease;
+}
+.ds-tab:hover{ color: var(--ds-color-text); }
+.ds-tab[aria-selected="true"],
+.ds-tab.is-active{
+  color: var(--ds-color-dark);
+  border-bottom-color: var(--ds-color-dark);
+}
+.ds-tab:focus-visible{ outline: 2px solid var(--ds-color-focus); outline-offset: 3px; border-radius: 4px; }
+
+/* ---------- Segmented ("button tabs") ---------- */
+.ds-segmented{
+  display: inline-flex;
+  gap: 2px;
+  padding: 3px;
+  background: rgba(0,0,0,.05);
+  border: 1px solid var(--ds-color-border);
+  border-radius: var(--ds-radius-pill);
+}
+.ds-segmented__item{
+  -webkit-appearance:none; appearance:none;
+  border: none; cursor: pointer;
+  font-family: var(--ds-font-body);
+  font-size: 14px; font-weight: 600; line-height: 1.1;
+  white-space: nowrap;
+  padding: 8px 18px;
+  border-radius: var(--ds-radius-pill);
+  color: var(--ds-color-muted);
+  background: transparent;
+  transition: color .15s ease, background .15s ease, box-shadow .15s ease;
+}
+.ds-segmented__item:hover{ color: var(--ds-color-text); }
+.ds-segmented__item[aria-selected="true"],
+.ds-segmented__item.is-active{
+  color: var(--ds-color-dark);
+  background: var(--ds-color-surface);
+  box-shadow: var(--ds-shadow-md);
+}
+.ds-segmented--sm .ds-segmented__item{ padding: 6px 14px; font-size: 13px; }

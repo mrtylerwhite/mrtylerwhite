@@ -1,0 +1,25 @@
+/*
+  About page — Phase 2 editorial serif system
+  Supplements headings.css (loaded before this file on about/index.html).
+*/
+
+/* Hero / main intro heading */
+body.page-id-24 #page-container #main-content :where(h1, h2, h3) {
+  font-family: var(--ds-font-display) !important;
+  font-weight: 400 !important;
+  letter-spacing: -0.02em !important;
+  text-transform: none !important;
+  line-height: 1.05 !important;
+}
+
+/* Body text sizing on about */
+body.page-id-24 #page-container .et_pb_text_inner p {
+  font-size: var(--ds-font-size-body);
+  line-height: var(--ds-line-height-body);
+  color: var(--ds-color-text);
+}
+
+/* Section backgrounds — alternate warm/white rhythm */
+body.page-id-24 #page-container .et_pb_section.et_pb_section_regular:not([style*="background"]) {
+  background-color: var(--ds-color-page) !important;
+}

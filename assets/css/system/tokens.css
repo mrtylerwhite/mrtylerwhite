@@ -11,32 +11,50 @@
 */
 
 :root{
-  /* Colors (current reality) */
-  --ds-color-text: #333333;
-  --ds-color-muted: #666666;
-  --ds-color-subtle: rgba(0,0,0,.65);
-  --ds-color-border: rgba(0,0,0,.10);
-  --ds-color-border-strong: rgba(0,0,0,.18);
-  --ds-color-surface: #ffffff;
+  /* ── Page / surface colors ─────────────────────────────── */
+  --ds-color-page: #FCF7F4;       /* warm-white page bg */
+  --ds-color-surface: #ffffff;    /* cards, inputs — stay crisp white */
+  --ds-color-surface-raised: #F6EFEA;
+  --ds-color-surface-inset: #EEE5DE;
   --ds-color-surface-tint: rgba(255,255,255,.7);
-  --ds-color-link: #2ea3f2; /* Divi default link/accent */
-  --ds-color-accent: #24c8dc; /* observed in newsletter JS config */
-  --ds-color-focus: #c59060; /* newsletter focus/hover accent */
-  --ds-color-danger: #cc0000;
-  --ds-color-success: #167d3f;
+
+  /* ── Ink / text ────────────────────────────────────────── */
+  --ds-color-text: #27272A;       /* body copy */
+  --ds-color-text-strong: #09090B;/* headlines */
+  --ds-color-muted: #52525B;      /* secondary */
+  --ds-color-faint: #71717A;      /* captions */
+  --ds-color-subtle: rgba(0,0,0,.65);
+  --ds-color-on-dark: #ffffff;
+  --ds-color-on-dark-muted: #A1A1AA;
+
+  /* ── Borders ───────────────────────────────────────────── */
+  --ds-color-border: #E2D6CD;     /* hairline on warm bg */
+  --ds-color-border-strong: rgba(0,0,0,.18);
+  --ds-color-border-on-dark: rgba(255,255,255,.14);
+
+  /* ── Accent (black CTAs) ───────────────────────────────── */
   --ds-color-dark: #000000;
-  --ds-color-dark-2: #1a1a1a;
+  --ds-color-dark-2: #18181B;
+  --ds-color-dark-hover: #1C1C20;
+  --ds-color-accent-soft: #E4E4E7;
 
-  /* Typography */
-  --ds-font-body: Open Sans, Arial, sans-serif;
-  /* Futura PT via Adobe Fonts (use.typekit.net) — see newsletter page head */
-  --ds-font-heading: "futura-pt", "Futura PT", futura, sans-serif;
-  --ds-font-heading-bold: "futura-pt-bold", "futura-pt", "Futura PT", futura, sans-serif;
-  --ds-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  --ds-font-size-body: 14px;
-  --ds-line-height-body: 1.7;
+  /* ── Legacy / functional ───────────────────────────────── */
+  --ds-color-link: #2ea3f2;
+  --ds-color-accent: #24c8dc;
+  --ds-color-focus: rgba(0,0,0,.08);
+  --ds-color-danger: #B23A2E;
+  --ds-color-success: #2F7D52;
 
-  /* Spacing scale (derived from common values; extend later if needed) */
+  /* ── Typography ────────────────────────────────────────── */
+  --ds-font-display: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --ds-font-body: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --ds-font-heading: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --ds-font-heading-bold: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --ds-font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --ds-font-size-body: 17px;
+  --ds-line-height-body: 1.5;
+
+  /* ── Spacing (8-px grid) ───────────────────────────────── */
   --ds-space-1: 4px;
   --ds-space-2: 8px;
   --ds-space-3: 12px;
@@ -45,23 +63,32 @@
   --ds-space-6: 32px;
   --ds-space-7: 48px;
   --ds-space-8: 64px;
+  --ds-space-9: 96px;
+  --ds-space-10: 128px;
 
-  /* Radius */
+  /* ── Radius ────────────────────────────────────────────── */
   --ds-radius-sm: 8px;
-  --ds-radius-md: 10px;
-  --ds-radius-lg: 12px;
+  --ds-radius-md: 12px;
+  --ds-radius-lg: 16px;
+  --ds-radius-xl: 24px;
   --ds-radius-pill: 999px;
 
-  /* Shadows (newsletter-derived) */
-  --ds-shadow-sm: 0 2px 12px rgba(0,0,0,.05);
-  --ds-shadow-md: 0 1px 6px rgba(20,18,12,.06);
-  --ds-shadow-lg: 0 5px 40px rgba(0,0,0,.05);
+  /* ── Shadows ───────────────────────────────────────────── */
+  --ds-shadow-xs: 0 1px 2px rgba(9,9,11,.04);
+  --ds-shadow-sm: 0 1px 3px rgba(9,9,11,.06), 0 1px 2px rgba(9,9,11,.04);
+  --ds-shadow-md: 0 4px 16px rgba(9,9,11,.06);
+  --ds-shadow-lg: 0 12px 40px rgba(9,9,11,.10);
 
-  /* Component sizing */
+  /* ── Component sizing ──────────────────────────────────── */
   --ds-control-h: 36px;
   --ds-control-h-lg: 40px;
 
-  /* Breakpoints as custom props (use in docs; media queries still require literals) */
+  /* ── Motion ────────────────────────────────────────────── */
+  --ds-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ds-dur-fast: 120ms;
+  --ds-dur-base: 200ms;
+
+  /* ── Breakpoints ───────────────────────────────────────── */
   --ds-bp-desktop-min: 981px;
   --ds-bp-tablet-max: 980px;
   --ds-bp-phone-max: 767px;

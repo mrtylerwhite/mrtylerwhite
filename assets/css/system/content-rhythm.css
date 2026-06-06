@@ -2,6 +2,11 @@
   Eyebrow → title → body spacing on marketing blocks
 */
 
+/* Heading → paragraph gap: collapse p margin-top so the gap is heading margin-bottom only (0.5em) */
+#page-container .et_pb_text_inner > :where(h1, h2, h3, h4, h5, h6) + p {
+  margin-top: 0 !important;
+}
+
 .hero-cntn .et_pb_text_0 .et_pb_text_inner > .ds-eyebrow + h1 {
   margin-top: 0;
 }

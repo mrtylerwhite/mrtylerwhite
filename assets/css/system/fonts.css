@@ -1,8 +1,14 @@
 /*
-  Self-hosted Inter (SIL Open Font License 1.1)
-  https://github.com/rsms/inter
+  Fonts — design system (Phase 2 update)
+  Body:    Inter (self-hosted)
+  Display: Instrument Serif (Google Fonts — editorial serif)
+  Mono:    JetBrains Mono (Google Fonts — eyebrows / kickers)
 */
 
+/* Google Fonts — load lazily, non-blocking */
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap");
+
+/* Self-hosted Inter (SIL Open Font License 1.1) */
 @font-face {
   font-family: "Inter";
   font-style: normal;
@@ -12,9 +18,11 @@
 }
 
 :root {
-  --ds-font-body: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --ds-font-heading: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --ds-font-heading-bold: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --ds-font-display:      "Instrument Serif", Georgia, "Times New Roman", serif;
+  --ds-font-body:         "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --ds-font-heading:      "Instrument Serif", Georgia, "Times New Roman", serif;
+  --ds-font-heading-bold: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --ds-font-mono:         "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
 }
 
 /* Divi critical CSS still sets Open Sans on body */
@@ -62,8 +70,7 @@ body.et_pb_pagebuilder_layout,
 }
 
 @media screen and (max-width: 980px) {
-  #main-header .mobile_menu_bar:before,
-  #main-header .mobile_menu_bar:after,
+  /* :before/:after renders the ETModules icon glyph — must NOT override */
   #main-header .et_mobile_menu li a {
     font-family: var(--ds-font-body) !important;
   }

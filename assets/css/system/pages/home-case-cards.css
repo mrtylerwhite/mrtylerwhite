@@ -5,7 +5,7 @@
 
 /* Case-studies index intro (page-id-2147) */
 body.page-id-2147 #page-container .et_pb_section_0.case-work .et_pb_text_0 h2 {
-  font-family: var(--ds-font-heading) !important;
+  font-family: var(--ds-font-display) !important;
   font-weight: 400 !important;
   font-size: clamp(2rem, 3vw, 3.25rem) !important;
   line-height: 1.05 !important;
@@ -30,7 +30,7 @@ body.page-id-2147 #page-container .et_pb_section_0.case-work.et_pb_section_0 {
 
 /* C. Large featured case cards (homepage + case-studies index) */
 #page-container .case-work .card-kepler h5 {
-  font-family: var(--ds-font-heading) !important;
+  font-family: var(--ds-font-display) !important;
   font-weight: 400 !important;
   font-size: clamp(2rem, 3.2vw, 3.5rem) !important;
   line-height: 1.05 !important;
@@ -41,7 +41,7 @@ body.page-id-2147 #page-container .et_pb_section_0.case-work.et_pb_section_0 {
 
 /* D. Small case cards */
 #page-container .case-work .card-side-by-side h6 {
-  font-family: var(--ds-font-heading) !important;
+  font-family: var(--ds-font-display) !important;
   font-weight: 500 !important;
   font-size: clamp(1.25rem, 1.6vw, 1.75rem) !important;
   line-height: 1.08 !important;

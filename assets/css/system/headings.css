@@ -1,9 +1,11 @@
 /*
-  Site-wide heading typography
-  Inter loads from assets/css/system/fonts.css (self-hosted).
+  Site-wide heading typography — Phase 2 (editorial serif system)
+  Instrument Serif + Inter body + JetBrains Mono eyebrows.
+  Loads its own dependencies so it works as a standalone <link>.
 */
 
 @import url("/assets/css/system/tokens.css");
+@import url("/assets/css/system/background.css");
 @import url("/assets/css/system/fonts.css");
 @import url("/assets/css/system/components/buttons.css");
 @import url("/assets/css/system/eyebrows.css");
@@ -11,17 +13,280 @@
 @import url("/assets/css/system/mobile-open-menu.css");
 @import url("/assets/css/system/accessibility.css");
 
+/* ── Base heading reset → editorial serif ─────────────────────────────────── */
 body :where(h1, h2, h3, h4, h5, h6),
 .et-db :where(h1, h2, h3, h4, h5, h6),
 #et-boc :where(h1, h2, h3, h4, h5, h6),
 #main-content :where(h1, h2, h3, h4, h5, h6) {
-  font-family: var(--ds-font-heading-bold) !important;
+  font-family: var(--ds-font-display) !important;
   font-weight: 400 !important;
-  letter-spacing: -3px !important;
-  text-transform: uppercase !important;
+  letter-spacing: -0.02em !important;
+  text-transform: none !important;
+  line-height: 1.05 !important;
+  color: var(--ds-color-text-strong) !important;
 }
 
-/* Long-form page and case study headings: keep authored casing */
-#page-container #main-content .et-l--post :where(h1, h2, h3, h4, h5, h6) {
+/* Tighten heading → body gap site-wide. Kept em-relative but trimmed from
+   0.5em so large display titles don't open up an oversized gap (e.g. a 46px
+   case-card title now sits ~16px above its description instead of ~23px). */
+body :where(h2, h3, h4, h5, h6),
+.et-db :where(h2, h3, h4, h5, h6),
+#main-content :where(h2, h3, h4, h5, h6) {
+  margin-bottom: 0.35em !important;
+}
+
+/* The signature move: italic serif <em> inside headings */
+body :where(h1, h2, h3, h4, h5, h6) em,
+.et-db :where(h1, h2, h3, h4, h5, h6) em,
+#et-boc :where(h1, h2, h3, h4, h5, h6) em,
+#main-content :where(h1, h2, h3, h4, h5, h6) em {
+  font-style: italic;
+  color: inherit;
+}
+
+/* Override legacy .brand-color spans inside headings → follow heading token */
+body :where(h1, h2, h3, h4, h5, h6) span.brand-color,
+body :where(h1, h2, h3, h4, h5, h6) span.brand-color2 {
+  color: inherit !important;
+}
+
+/* ── Body font override (Divi critical CSS sets Open Sans) ─────────────────── */
+body,
+body.et_pb_pagebuilder_layout,
+.et-db #page-container {
+  font-family: var(--ds-font-body) !important;
+  font-size: var(--ds-font-size-body);
+  line-height: var(--ds-line-height-body);
+  color: var(--ds-color-text);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Body copy weight */
+#page-container .et_pb_text_inner p:not(.ds-eyebrow),
+#main-content .et_pb_text_inner p:not(.ds-eyebrow) {
+  font-weight: 400;
+  font-size: var(--ds-font-size-body);
+  line-height: var(--ds-line-height-body);
+}
+
+/* ── Nav links ──────────────────────────────────────────────────────────────── */
+#page-container #main-header #top-menu > li:not(.et_pb_button) > a,
+#page-container #main-header #top-menu > li:not(.et_pb_button).current-menu-item > a,
+#page-container #main-header #top-menu > li:not(.et_pb_button).current_page_item > a {
+  font-family: var(--ds-font-body) !important;
+  font-weight: 400 !important;
+  font-size: 14px !important;
+  color: var(--ds-color-muted) !important;
+  letter-spacing: 0 !important;
   text-transform: none !important;
+  transition: color var(--ds-dur-fast) var(--ds-ease-out);
+}
+#page-container #main-header #top-menu > li:not(.et_pb_button) > a:hover {
+  color: var(--ds-color-text-strong) !important;
+}
+
+/* ── Header bar ─────────────────────────────────────────────────────────────── */
+body.et_fixed_nav.et_show_nav #page-container {
+  padding-top: 0 !important;
+}
+
+body.et_fixed_nav #page-container #main-header {
+  top: 0 !important;
+}
+
+/* Header is transparent — matches production */
+#main-header,
+#page-container #main-header {
+  background-color: transparent !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
+
+/* ── Floating container — exact production values ────────────────────────────
+   Matches customizer: top: 2em, glass rgba(255,255,255,0.3), border-radius: 10px
+   Logo left, nav right via flex + margin-left: auto on #et-top-navigation. */
+#main-header .et_menu_container,
+#page-container #main-header .et_menu_container {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  top: 2em !important;
+  width: 90% !important;
+  padding: 8px 8px !important;
+  background: rgba(255, 255, 255, 0.3) !important;
+  color: black !important;
+  border: transparent !important;
+  z-index: 999 !important;
+  border-radius: 10px !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  transition: background 0.3s ease, color 0.3s ease, border 0.3s ease !important;
+}
+
+/* Scrolled/fixed state: matches production */
+#main-header.et-fixed-header .et_menu_container,
+#page-container #main-header.et-fixed-header .et_menu_container {
+  border: 1px solid rgba(255, 255, 255, 0.6) !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05) !important;
+}
+
+#page-container #main-header .logo_helper {
+  display: none !important;
+}
+
+/* Logo: pull back into flex flow so it occupies space on the left */
+#main-header .logo_container,
+#page-container #main-header .logo_container {
+  position: relative !important;
+  top: auto !important;
+  width: auto !important;
+  flex-shrink: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  height: auto !important;
+}
+
+/* Nav: push to right side of pill */
+#main-header #et-top-navigation,
+#page-container #main-header #et-top-navigation {
+  margin-left: auto !important;
+}
+
+/* Wordmark */
+
+#main-header .logo_container a {
+  font-family: var(--ds-font-display) !important;
+  font-weight: 400 !important;
+  letter-spacing: -0.01em !important;
+  font-size: 16px !important;
+}
+
+#main-header #logo {
+  position: static !important;
+  top: auto !important;
+  margin: 0 !important;
+}
+
+/* ── Eyebrow / kicker global override ────────────────────────────────────── */
+/* Note: eyebrows.css is imported above — this layer upgrades to mono */
+.ds-eyebrow,
+#page-container .ds-eyebrow,
+.hero-cntn sup,
+#page-container .hero-cntn sup {
+  font-family: var(--ds-font-mono) !important;
+  font-size: 11px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.18em !important;
+  text-transform: uppercase !important;
+  color: var(--ds-color-muted) !important;
+  line-height: 1.35 !important;
+}
+
+/* ── .ds- typography utilities aligned to new tokens ─────────────────────── */
+.ds-hero-title {
+  font-family: var(--ds-font-display) !important;
+  font-weight: 400 !important;
+  letter-spacing: -0.02em !important;
+  text-transform: none !important;
+  line-height: 1.05;
+  color: var(--ds-color-text-strong);
+  font-size: clamp(2.75rem, 6vw, 5.5rem);
+}
+
+.ds-page-title {
+  font-family: var(--ds-font-display) !important;
+  font-weight: 400 !important;
+  letter-spacing: -0.02em !important;
+  text-transform: none !important;
+  line-height: 1.08;
+  color: var(--ds-color-text-strong);
+  font-size: clamp(2rem, 4vw, 4rem);
+}
+
+.ds-section-title {
+  font-family: var(--ds-font-display) !important;
+  font-weight: 400 !important;
+  letter-spacing: -0.02em !important;
+  text-transform: none !important;
+  line-height: 1.1;
+  color: var(--ds-color-text-strong);
+  font-size: clamp(1.75rem, 3vw, 2.75rem);
+}
+
+/* ── Newsletter font override ─────────────────────────────────────────────── */
+/* Headline stays editorial serif */
+#post-newsletter .nl-saasify-headline,
+#post-newsletter .nl-confirm-title {
+  font-family: var(--ds-font-display) !important;
+}
+/* Body / UI elements use Inter */
+#post-newsletter .nl-saasify-lede,
+#post-newsletter .nl-saasify-input,
+#post-newsletter .nl-saasify-submit,
+#post-newsletter .nl-saasify-caption,
+#post-newsletter .nl-saasify-form-error,
+#post-newsletter .nl-confirm-lede {
+  font-family: var(--ds-font-body) !important;
+}
+
+/* ── Mobile ───────────────────────────────────────────────────────────────── */
+@media screen and (max-width: 980px) {
+  /* mobile_menu_bar:before/:after renders the ETModules icon glyph — must NOT
+     override font-family or the hamburger icon disappears */
+  #main-header .et_mobile_menu li a {
+    font-family: var(--ds-font-body) !important;
+  }
+}
+
+.skip-link {
+  font-family: var(--ds-font-body) !important;
+}
+
+/* ── Global link color (override Divi #2ea3f2 default) ───────────────────── */
+#page-container a:not([class*="et_pb_button"]):not(.ds-btn):not(.ds-btn-primary):not(.ds-btn-secondary) {
+  color: inherit;
+}
+#page-container a:not([class*="et_pb_button"]):not(.ds-btn):not(.ds-btn-primary):not(.ds-btn-secondary):hover {
+  color: var(--ds-color-text-strong, #09090B);
+}
+
+/* ── Nav CTA buttons (pill primary / secondary) ───────────────────────────── */
+/* Primary — Let's Connect */
+#page-container #main-header #top-menu li.et_pb_button:not(.et_pb_button_secondary),
+#page-container #main-header #top-menu li.menu-item-54 {
+  background-color: #000000 !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+#page-container #main-header #top-menu li.et_pb_button:not(.et_pb_button_secondary) a,
+#page-container #main-header #top-menu li.menu-item-54 a {
+  color: #ffffff !important;
+  font-family: var(--ds-font-body) !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  text-decoration: none !important;
+}
+#page-container #main-header #top-menu li.et_pb_button:not(.et_pb_button_secondary):hover,
+#page-container #main-header #top-menu li.menu-item-54:hover {
+  background-color: #18181B !important;
+}
+
+/* Secondary — Download CV */
+#page-container #main-header #top-menu li.et_pb_button.et_pb_button_secondary,
+#page-container #main-header #top-menu li.menu-item-53 {
+  background-color: #ffffff !important;
+  border: 1px solid var(--ds-color-border, #E2D6CD) !important;
+  box-shadow: none !important;
+}
+#page-container #main-header #top-menu li.et_pb_button.et_pb_button_secondary a,
+#page-container #main-header #top-menu li.menu-item-53 a {
+  color: var(--ds-color-text-strong, #09090B) !important;
+  font-family: var(--ds-font-body) !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  text-decoration: none !important;
+}
+#page-container #main-header #top-menu li.et_pb_button.et_pb_button_secondary:hover,
+#page-container #main-header #top-menu li.menu-item-53:hover {
+  background-color: var(--ds-color-surface-raised, #F6EFEA) !important;
 }

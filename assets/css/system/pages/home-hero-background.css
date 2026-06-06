@@ -6,7 +6,13 @@
   position: relative;
   isolation: isolate;
   overflow: hidden;
+  margin-top: 0 !important;
   background-color: #f6f0e9;
+}
+
+body.home .hero-cntn .et_pb_row_0.et_pb_row {
+  margin-top: 0 !important;
+  padding-top: 4.5rem !important;
 }
 
 /* Faded palm texture (replaces low-opacity video) */
