@@ -1,13 +1,8 @@
-/* Phase 1 system entrypoint (no build step) */
-@import url("/assets/css/system/tokens.css");
-@import url("/assets/css/system/background.css");
-@import url("/assets/css/system/headings.css");
+/* Phase 1 system entrypoint (no build step for page CSS beyond critical bundle) */
+@import url("/assets/css/dist/critical.css");
 @import url("/assets/css/system/typography.css");
 @import url("/assets/css/system/layout.css");
-@import url("/assets/css/system/components/buttons.css");
 @import url("/assets/css/system/components/forms.css");
 @import url("/assets/css/system/components/controls.css");
 @import url("/assets/css/system/components/cards.css");
 @import url("/assets/css/system/components/testimonials.css");
-@import url("/assets/css/system/accessibility.css");
-
