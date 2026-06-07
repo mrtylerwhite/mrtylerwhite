@@ -5,6 +5,16 @@
   No @import · No @font-face · No global overrides
 */
 
+/* ── Typography: h3 + strong → Inter (sans-serif) ───────────────
+   critical.css sets all headings to Instrument Serif via !important.
+   This scoped rule wins via higher specificity (body.prototype-ready h3
+   vs the generic body h3 selector in critical.css). */
+body.prototype-ready h3 {
+  font-family: var(--ds-font-body) !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.02em !important;
+}
+
 /* ── Containers ────────────────────────────────────────────────── */
 body.prototype-ready .pr-container {
   width: 90%;
@@ -666,8 +676,8 @@ body.prototype-ready .pr-tldr__item:last-child {
 }
 
 body.prototype-ready .pr-tldr__item strong {
-  font-family: var(--ds-font-display);
-  font-weight: 400;
+  font-family: var(--ds-font-body);
+  font-weight: 600;
   font-size: 1.1875rem;
   letter-spacing: -0.015em;
   color: var(--ds-color-on-dark);
@@ -841,7 +851,7 @@ body.prototype-ready .pr-bento-card__num {
 }
 
 body.prototype-ready .pr-bento-card__heading {
-  font-family: var(--ds-font-display) !important;
+  font-family: var(--ds-font-body) !important;
   font-size: 1.1875rem !important;
   letter-spacing: -0.02em !important;
   line-height: 1.2 !important;
@@ -1118,6 +1128,8 @@ body.prototype-ready .pr-ticket__left {
 }
 
 body.prototype-ready .pr-ticket__title {
+  font-family: var(--ds-font-display) !important;
+  font-weight: 400 !important;
   font-size: 2rem !important;
   letter-spacing: -0.025em !important;
   line-height: 1.05 !important;
@@ -1352,9 +1364,9 @@ body.prototype-ready .pr-why-card {
 }
 
 body.prototype-ready .pr-why-card__heading {
-  font-family: var(--ds-font-display);
+  font-family: var(--ds-font-body);
   font-size: 1.25rem;
-  font-weight: 400;
+  font-weight: 600;
   letter-spacing: -0.02em;
   color: var(--ds-color-text-strong);
   line-height: 1.2;
@@ -1444,7 +1456,8 @@ body.prototype-ready .pr-faq__card summary {
   padding: 1.25rem 0;
   cursor: pointer;
   list-style: none;
-  font-family: var(--ds-font-display);
+  font-family: var(--ds-font-body);
+  font-weight: 600;
   font-size: 1.0625rem;
   letter-spacing: -0.01em;
   color: var(--ds-color-text-strong);
