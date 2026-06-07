@@ -1,25 +1,131 @@
 /*
-  About page — Phase 2 editorial serif system
-  Supplements headings.css (loaded before this file on about/index.html).
+  About page — ElevenLabs-inspired editorial layout
+  Scope: body.page-id-24
+  Patterns applied:
+    · Scroll/load reveal (via scroll-reveal.js + ds-reveal.css)
+    · Editorial text column (reading width on body copy)
+    · Full-bleed portrait treatment
+    · Tighter eyebrow → heading → body rhythm
 */
 
-/* Hero / main intro heading */
-body.page-id-24 #page-container #main-content :where(h1, h2, h3) {
+/* ── Section background ─────────────────────────────────────────────────────── */
+body.page-id-24 #page-container .et_pb_section_0 {
+  background-color: var(--ds-color-page, #FCF7F4) !important;
+}
+
+/* ── Hero row: remove default Divi gutter, let columns breathe naturally ─────── */
+body.page-id-24 #page-container .et_pb_row_0 {
+  padding-top: 4em !important;
+  padding-bottom: 4em !important;
+  align-items: flex-start !important;
+}
+
+/* ── Portrait column (right, 2/5) ────────────────────────────────────────────── */
+/* Stick the portrait to viewport top as you read — editorial sticky portrait */
+body.page-id-24 #page-container .et_pb_column_1 {
+  position: sticky !important;
+  top: 100px !important;
+  align-self: flex-start !important;
+}
+
+body.page-id-24 #page-container .et_pb_image_2 {
+  border-radius: 12px !important; /* editorial card, not full pill */
+  overflow: hidden !important;
+}
+
+body.page-id-24 #page-container .et_pb_image_2 img {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+}
+
+/* ── Text column (left, 3/5) ─────────────────────────────────────────────────── */
+body.page-id-24 #page-container .et_pb_text_0 {
+  max-width: 600px !important;
+  padding-right: 3em !important;
+}
+
+/* Heading */
+body.page-id-24 #page-container .et_pb_text_0 h3 {
   font-family: var(--ds-font-display) !important;
   font-weight: 400 !important;
-  letter-spacing: -0.02em !important;
-  text-transform: none !important;
-  line-height: 1.05 !important;
+  font-size: clamp(2rem, 3.5vw, 2.75rem) !important;
+  letter-spacing: -0.025em !important;
+  line-height: 1.06 !important;
+  color: var(--ds-color-text-strong, #1a1410) !important;
+  margin-top: 0.5em !important;
+  margin-bottom: 0.25em !important;
 }
 
-/* Body text sizing on about */
-body.page-id-24 #page-container .et_pb_text_inner p {
-  font-size: var(--ds-font-size-body);
-  line-height: var(--ds-line-height-body);
-  color: var(--ds-color-text);
+/* Eyebrow (ds-eyebrow already handles font, this refines spacing for about) */
+body.page-id-24 #page-container .et_pb_text_0 .ds-eyebrow {
+  margin-bottom: 0.5em !important;
+  margin-top: 0 !important;
 }
 
-/* Section backgrounds — alternate warm/white rhythm */
-body.page-id-24 #page-container .et_pb_section.et_pb_section_regular:not([style*="background"]) {
-  background-color: var(--ds-color-page) !important;
+/* Suppress the empty <p> Divi inserts between h3 and first paragraph */
+body.page-id-24 #page-container .et_pb_text_0 p:empty {
+  display: none !important;
+  margin: 0 !important;
+}
+
+/* Zero margin-top on all non-empty paragraphs after the heading
+   (adjacent-sibling h3+p hits the empty p, not the real first one) */
+body.page-id-24 #page-container .et_pb_text_0 h3 ~ p:not(:empty) {
+  margin-top: 0 !important;
+}
+
+/* Body paragraphs — editorial reading width */
+body.page-id-24 #page-container .et_pb_text_0 p:not(.ds-eyebrow) {
+  font-size: 1rem !important;
+  line-height: 1.75 !important;
+  color: var(--ds-color-text, #3d2e24) !important;
+  max-width: 62ch !important;
+  margin-bottom: 1.1em !important;
+}
+
+/* Last paragraph (signature line "Tyler White") — distinct treatment */
+body.page-id-24 #page-container .et_pb_text_0 p:last-of-type strong {
+  font-family: var(--ds-font-display) !important;
+  font-weight: 400 !important;
+  font-size: 1.15rem !important;
+  letter-spacing: -0.01em !important;
+  font-style: italic !important;
+}
+
+/* ── Signature SVG ───────────────────────────────────────────────────────────── */
+body.page-id-24 #page-container .et_pb_image_1 {
+  margin-top: 0.5em !important;
+  opacity: 0.55 !important;
+}
+
+body.page-id-24 #page-container .et_pb_image_1 img {
+  max-height: 44px !important;
+  width: auto !important;
+}
+
+/* ── Hairline divider between eyebrow and heading ────────────────────────────── */
+body.page-id-24 #page-container .et_pb_text_0 .ds-eyebrow::after {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 1px;
+  background: var(--ds-color-border, #E2D6CD);
+  margin-top: 0.75em;
+}
+
+/* ── Mobile: stack naturally ─────────────────────────────────────────────────── */
+@media screen and (max-width: 980px) {
+  body.page-id-24 #page-container .et_pb_column_1 {
+    position: static !important;
+  }
+
+  body.page-id-24 #page-container .et_pb_text_0 {
+    max-width: 100% !important;
+    padding-right: 0 !important;
+  }
+
+  body.page-id-24 #page-container .et_pb_text_0 h3 {
+    font-size: clamp(1.75rem, 5vw, 2.25rem) !important;
+  }
 }

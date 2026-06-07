@@ -421,17 +421,17 @@ body.et_pb_pagebuilder_layout,
   opacity: 0 !important;
 }
 
-/* Secondary (warm white pill) */
+/* Secondary — now matches primary black pill (ElevenLabs style) */
 #page-container a.ds-btn-secondary,
 #page-container a.cta_secondary,
 #page-container #cta_newsletter,
 #page-container .case-work a.text-button.brand-link,
 #page-container .card-kepler a.text-button.brand-link,
 #page-container .card-side-by-side a.text-button.brand-link {
-  background: #fffaf4 !important;
-  color: #2d1f16 !important;
-  border: 1px solid rgba(45, 31, 22, 0.1) !important;
-  box-shadow: 0 8px 24px rgba(45, 31, 22, 0.08);
+  background: #000000 !important;
+  color: #ffffff !important;
+  border: 1px solid #000000 !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
 #page-container a.ds-btn-secondary:hover,
@@ -440,12 +440,12 @@ body.et_pb_pagebuilder_layout,
 #page-container .case-work a.text-button.brand-link:hover,
 #page-container .card-kepler a.text-button.brand-link:hover,
 #page-container .card-side-by-side a.text-button.brand-link:hover {
-  background: #ffffff !important;
-  color: #2d1f16 !important;
-  border-color: rgba(45, 31, 22, 0.18) !important;
+  background: #1a1a1a !important;
+  color: #ffffff !important;
+  border-color: #1a1a1a !important;
   border-radius: 999px !important;
   transform: translateY(-1px);
-  box-shadow: 0 10px 28px rgba(45, 31, 22, 0.1);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.16);
   text-decoration: none !important;
 }
 
@@ -454,7 +454,7 @@ body.et_pb_pagebuilder_layout,
 #page-container #cta_newsletter:active,
 #page-container .case-work a.text-button.brand-link:active {
   transform: translateY(0);
-  box-shadow: 0 6px 16px rgba(45, 31, 22, 0.08);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
 }
 
 #page-container a.ds-btn-secondary:focus-visible,
@@ -463,8 +463,8 @@ body.et_pb_pagebuilder_layout,
 #page-container .case-work a.text-button.brand-link:focus-visible {
   outline: 2px solid #c59060 !important;
   outline-offset: 4px !important;
-  color: #2d1f16 !important;
-  background: #fffaf4 !important;
+  color: #ffffff !important;
+  background: #000000 !important;
 }
 
 /* Primary (dark pill) */
@@ -1078,12 +1078,50 @@ button.mobile_menu_bar.mobile_menu_bar_toggle:focus {
   outline-color: var(--a11y-focus) !important;
 }
 
+/* ----- assets/css/system/scroll-reveal.css ----- */
+/*
+  Scroll / load reveal — design system
+  Elements get opacity:0 + translateY(20px) until .ds-revealed is added by JS.
+  Works for above-fold (fires on load) and below-fold (IntersectionObserver).
+*/
+
+.ds-reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity  0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.ds-reveal.ds-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger delay variants — apply alongside ds-reveal */
+.ds-reveal-d1 { transition-delay: 80ms;  }
+.ds-reveal-d2 { transition-delay: 160ms; }
+.ds-reveal-d3 { transition-delay: 240ms; }
+.ds-reveal-d4 { transition-delay: 320ms; }
+.ds-reveal-d5 { transition-delay: 400ms; }
+
+/* Respect reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .ds-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
 /* ----- assets/css/system/headings.css ----- */
 /*
   Site-wide heading typography — Phase 2 (editorial serif system)
   Instrument Serif + Inter body + JetBrains Mono eyebrows.
   Loads its own dependencies so it works as a standalone <link>.
 */
+
 
 
 
@@ -1316,6 +1354,10 @@ body.et_fixed_nav #page-container #main-header {
      override font-family or the hamburger icon disappears */
   #main-header .et_mobile_menu li a {
     font-family: var(--ds-font-body) !important;
+  }
+
+  .et_header_style_left #logo {
+    max-width: 90% !important;
   }
 }
 

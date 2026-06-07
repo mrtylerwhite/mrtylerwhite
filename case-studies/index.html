@@ -106,6 +106,7 @@ body.custom-background { background-color: #f9f9fe; }
 
 <link rel="preload" href="/assets/fonts/instrument-serif/InstrumentSerif-Regular.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="stylesheet" href="/assets/css/dist/critical.css" />
+<link rel="stylesheet" href="/assets/css/system/site-footer.css" />
 <link rel="stylesheet" href="/assets/css/system/pages/home-case-cards.css" />
 </head>
 <body data-rsssl=1 class="wp-singular page-template-default page page-id-2147 custom-background wp-theme-Divi et_divi_100_custom_hamburger_menu et_divi_100_custom_hamburger_menu--style-2 et_divi_100_custom_hamburger_menu--type-1 et_button_no_icon et_button_custom_icon et_pb_button_helper_class et_fixed_nav et_show_nav et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_header_style_left et_pb_svg_logo et_pb_footer_columns4 et_cover_background et_pb_gutter et_pb_gutters3 et_pb_pagebuilder_layout et_no_sidebar et_divi_theme et-db">
@@ -128,8 +129,8 @@ body.custom-background { background-color: #f9f9fe; }
 						<ul id="top-menu" class="nav"><li id="menu-item-30" class="anim-link menu-item menu-item-type-post_type menu-item-object-page menu-item-30"><a href="/about/">About Me</a></li>
 <li id="menu-item-2148" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-2147 current_page_item menu-item-2148"><a href="/" aria-current="page">Case Studies</a></li>
 <li id="menu-item-3458" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3458"><a href="/newsletter/">Newsletter</a></li>
-<li id="menu-item-3464" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3464"><a href="https://www.designtablepodcast.com/">Podcast</a></li>
-<li id="menu-item-53" class="et_pb_button et_pb_button_secondary menu-item menu-item-type-custom menu-item-object-custom menu-item-53"><a target="_blank" rel="noopener noreferrer" href="/wp-content/uploads/2024/08/TylerWhite-Resume-2024.pdf">Download CV</a></li>
+<li id="menu-item-3464" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3464"><a href="https://www.designtablepodcast.com/">Podcast</a></li><li id="menu-item-4000" class="site-nav-workshop menu-item menu-item-type-custom menu-item-object-custom menu-item-4000"><a href="/prototype-ready/">Live Workshop</a></li>
+<li id="menu-item-53" class="site-nav-mobile-only menu-item menu-item-type-custom menu-item-object-custom menu-item-53"><a target="_blank" rel="noopener noreferrer" href="/wp-content/uploads/2024/08/TylerWhite-Resume-2024.pdf">Download CV</a></li>
 <li id="menu-item-54" class="et_pb_button menu-item menu-item-type-custom menu-item-object-custom menu-item-54"><a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/mrtylerwhite/">Let&#8217;s Connect</a></li>
 </ul>						</nav>
 					
@@ -337,28 +338,39 @@ body.custom-background { background-color: #f9f9fe; }
 </div>
 
 
-			<footer id="main-footer">
-				
-
-		
-				<div id="footer-bottom">
-					<div class="container clearfix">
-				<ul class="et-social-icons">
-
-	<li class="et-social-icon et-social-twitter">
-		<a href="https://twitter.com/mrtylerwhite" class="icon" aria-label="X">
-			<span>X</span>
-		</a>
-	</li>
-	<li class="et-social-icon et-social-instagram">
-		<a href="https://www.instagram.com/mrtylerwhite/" class="icon" aria-label="Instagram">
-			<span>Instagram</span>
-		</a>
-	</li>
-
-</ul><div id="footer-info">©2020 Tyler White  |  Made with <span class="brand-color">♥</span> from Montreal, Canada. </div>					</div>
-				</div>
-			</footer>
+			<footer class="site-footer" role="contentinfo">
+  <div class="site-footer__inner">
+    <div class="site-footer__brand">
+      <img class="site-footer__wordmark" src="/wp-content/uploads/2025/12/logo-mrtylerwhite-1.svg" width="69" height="20" alt="Mr. Tyler White" />
+      <p class="site-footer__tagline">Product design, growth systems, and prototypes that help teams make better decisions.</p>
+    </div>
+    <nav class="site-footer__col" aria-label="Explore">
+      <span class="site-footer__col-heading">Explore</span>
+      <a href="/about/">About Me</a>
+      <a href="/case-studies/">Case Studies</a>
+      <a href="/newsletter/">Newsletter</a>
+      <a href="https://www.designtablepodcast.com/" target="_blank" rel="noopener noreferrer">Podcast</a>
+      <a href="/prototype-ready/">Live Workshop</a>
+    </nav>
+    <nav class="site-footer__col" aria-label="Resources">
+      <span class="site-footer__col-heading">Resources</span>
+      <a href="/wp-content/uploads/2024/08/TylerWhite-Resume-2024.pdf" target="_blank" rel="noopener noreferrer">Download CV</a>
+      <a href="https://www.linkedin.com/in/mrtylerwhite/" target="_blank" rel="noopener noreferrer">Let&#8217;s Connect</a>
+      <a href="https://www.designtablepodcast.com/" target="_blank" rel="noopener noreferrer">The Design Table</a>
+    </nav>
+    <div class="site-footer__cta-block">
+      <span class="site-footer__col-heading">Prototype Ready</span>
+      <p class="site-footer__cta-copy">A monthly live workshop for designers who want to turn messy ideas into prototypes their team can actually react to.</p>
+      <a href="/prototype-ready/" class="site-footer__cta-btn">Get Prototype Ready &#8212; $7</a>
+    </div>
+  </div>
+  <div class="site-footer__bottom">
+    <p class="site-footer__copy">&#169; 2026 Tyler White. Made with taste, caffeine, and a suspicious number of prototypes.</p>
+    <nav class="site-footer__legal" aria-label="Legal">
+      <a href="/privacy-policy/">Privacy Policy</a>
+    </nav>
+  </div>
+</footer>
 		</div>
 
 
@@ -400,6 +412,7 @@ var et_pb_box_shadow_elements = [];
 </script>
 <script type="text/javascript" src="/wp-content/themes/Divi/js/scripts.min.js" id="divi-custom-script-js"></script>
 <script type="text/javascript" src="/wp-content/themes/Divi/core/admin/js/common.js" id="et-core-common-js"></script>
-<style id="et-builder-module-design-deferred-2147-cached-inline-styles">.et_pb_section_0.et_pb_section{padding-bottom:0px;margin-bottom:0px;background-color:rgba(254,237,225,0)!important}.et_pb_row_0.et_pb_row{padding-bottom:0px!important;padding-bottom:0px}.et_pb_section_1.et_pb_section{padding-top:0px;margin-top:0px;background-color:rgba(254,237,225,0)!important}.et_pb_row_1{background-position:right 0px center;background-image:url(/wp-content/uploads/2024/08/notch-platform-1.webp);background-color:#f6f0e9}.et_pb_row_1.et_pb_row{padding-bottom:5%!important;margin-top:2em!important;margin-bottom:1.5em!important;padding-bottom:5%}html:not(.et_fb_edit_enabled) #et-fb-app .et_pb_column_3:hover,html:not(.et_fb_edit_enabled) #et-fb-app .et_pb_column_5:hover,html:not(.et_fb_edit_enabled) #et-fb-app .et_pb_column_7:hover{filter:sepia(0px);filter:sepia(0px)}.et_pb_row_4.et_pb_row{padding-bottom:5%!important;padding-bottom:5%}.et_pb_column_3{background-position:center;background-image:url(/wp-content/uploads/2024/08/verify.webp);background-color:#f6f0e9;filter:sepia(0px);backface-visibility:hidden;padding-top:50px;padding-right:50px;padding-bottom:0px;padding-left:50px;filter:sepia(0px);backface-visibility:hidden}.et_pb_column_4{background-position:center;background-image:url(/wp-content/uploads/2024/08/workflow-1.webp);background-color:#f6f0e9;padding-top:50px;padding-right:50px;padding-bottom:0px;padding-left:50px}.et_pb_column_5{background-position:center;background-image:url(/wp-content/uploads/2024/08/Frame-5748-1.webp);background-color:#f6f0e9;filter:sepia(0px);backface-visibility:hidden;padding-top:50px;padding-right:50px;padding-bottom:0px;padding-left:50px;filter:sepia(0px);backface-visibility:hidden}.et_pb_column_6{background-image:url(/wp-content/uploads/2024/08/aftermockup-yunda-iphone-5-2-scaled.webp);background-color:#ecf1ff;padding-top:50px;padding-right:50px;padding-bottom:0px;padding-left:50px}.et_pb_column_7{background-image:url(/wp-content/uploads/2024/08/aftermockup-yunda-iphone-6-1-scaled.webp);background-color:#dddcf4;filter:sepia(0px);backface-visibility:hidden;padding-top:50px;padding-right:50px;padding-bottom:0px;padding-left:50px;filter:sepia(0px);backface-visibility:hidden}.et_pb_column_8{background-position:center;background-image:url(/wp-content/uploads/2024/08/essentia.webp);background-color:#f6f0e9;padding-top:50px;padding-right:50px;padding-bottom:0px;padding-left:50px}@media only screen and (max-width:767px){.et_pb_row_1.et_pb_row,.et_pb_row_4.et_pb_row{padding-top:3%!important;padding-bottom:1em!important;padding-top:3%!important;padding-bottom:1em!important}}</style><script src="/assets/js/controls.js" defer></script>
+<style id="et-builder-module-design-deferred-2147-cached-inline-styles">.et_pb_section_0.et_pb_section{padding-bottom:0px;margin-bottom:0px;background-color:rgba(254,237,225,0)!important}.et_pb_row_0.et_pb_row{padding-bottom:0px!important;padding-bottom:0px}.et_pb_section_1.et_pb_section{padding-top:0px;margin-top:0px;background-color:rgba(254,237,225,0)!important}.et_pb_row_1{background-position:right 0px center;background-image:url(/wp-content/uploads/2024/08/notch-platform-1.webp);background-color:#f6f0e9}.et_pb_row_1.et_pb_row{padding-bottom:5%!important;margin-top:2em!important;margin-bottom:1.5em!important;padding-bottom:5%}html:not(.et_fb_edit_enabled) #et-fb-app .et_pb_column_3:hover,html:not(.et_fb_edit_enabled) #et-fb-app .et_pb_column_5:hover,html:not(.et_fb_edit_enabled) #et-fb-app .et_pb_column_7:hover{filter:sepia(0px);filter:sepia(0px)}.et_pb_row_4.et_pb_row{padding-bottom:5%!important;padding-bottom:5%}.et_pb_column_3{background-position:center;background-image:url(/wp-content/uploads/2024/08/verify.webp);background-color:#f6f0e9;filter:sepia(0px);backface-visibility:hidden;padding-top:50px;padding-right:50px;padding-bottom:0px;padding-left:50px;filter:sepia(0px);backface-visibility:hidden}.et_pb_column_4{background-position:center;background-image:url(/wp-content/uploads/2024/08/workflow-1.webp);background-color:#f6f0e9;padding-top:50px;padding-right:50px;padding-bottom:0px;padding-left:50px}.et_pb_column_5{background-position:center;background-image:url(/wp-content/uploads/2024/08/Frame-5748-1.webp);background-color:#f6f0e9;filter:sepia(0px);backface-visibility:hidden;padding-top:50px;padding-right:50px;padding-bottom:0px;padding-left:50px;filter:sepia(0px);backface-visibility:hidden}.et_pb_column_6{background-image:url(/wp-content/uploads/2024/08/aftermockup-yunda-iphone-5-2-scaled.webp);background-color:#ecf1ff;padding-top:50px;padding-right:50px;padding-bottom:0px;padding-left:50px}.et_pb_column_7{background-image:url(/wp-content/uploads/2024/08/aftermockup-yunda-iphone-6-1-scaled.webp);background-color:#dddcf4;filter:sepia(0px);backface-visibility:hidden;padding-top:50px;padding-right:50px;padding-bottom:0px;padding-left:50px;filter:sepia(0px);backface-visibility:hidden}.et_pb_column_8{background-position:center;background-image:url(/wp-content/uploads/2024/08/essentia.webp);background-color:#f6f0e9;padding-top:50px;padding-right:50px;padding-bottom:0px;padding-left:50px}@media only screen and (max-width:767px){.et_pb_row_1.et_pb_row,.et_pb_row_4.et_pb_row{padding-top:3%!important;padding-bottom:1em!important;padding-top:3%!important;padding-bottom:1em!important}}</style><script src="/assets/js/scroll-reveal.js" defer></script>
+<script src="/assets/js/controls.js" defer></script>
 </body>
 </html>

@@ -23,6 +23,7 @@ const FRAGMENTS = [
   "assets/css/system/content-rhythm.css",
   "assets/css/system/mobile-open-menu.css",
   "assets/css/system/accessibility.css",
+  "assets/css/system/scroll-reveal.css",
   "assets/css/system/headings.css",
 ];
 

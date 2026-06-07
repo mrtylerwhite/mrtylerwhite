@@ -12,6 +12,7 @@
 @import url("/assets/css/system/content-rhythm.css");
 @import url("/assets/css/system/mobile-open-menu.css");
 @import url("/assets/css/system/accessibility.css");
+@import url("/assets/css/system/scroll-reveal.css");
 
 /* ── Base heading reset → editorial serif ─────────────────────────────────── */
 body :where(h1, h2, h3, h4, h5, h6),
@@ -235,6 +236,10 @@ body.et_fixed_nav #page-container #main-header {
      override font-family or the hamburger icon disappears */
   #main-header .et_mobile_menu li a {
     font-family: var(--ds-font-body) !important;
+  }
+
+  .et_header_style_left #logo {
+    max-width: 90% !important;
   }
 }
 

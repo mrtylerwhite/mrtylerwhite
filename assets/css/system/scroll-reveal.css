@@ -1,0 +1,35 @@
+/*
+  Scroll / load reveal — design system
+  Elements get opacity:0 + translateY(20px) until .ds-revealed is added by JS.
+  Works for above-fold (fires on load) and below-fold (IntersectionObserver).
+*/
+
+.ds-reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity  0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.ds-reveal.ds-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger delay variants — apply alongside ds-reveal */
+.ds-reveal-d1 { transition-delay: 80ms;  }
+.ds-reveal-d2 { transition-delay: 160ms; }
+.ds-reveal-d3 { transition-delay: 240ms; }
+.ds-reveal-d4 { transition-delay: 320ms; }
+.ds-reveal-d5 { transition-delay: 400ms; }
+
+/* Respect reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .ds-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}

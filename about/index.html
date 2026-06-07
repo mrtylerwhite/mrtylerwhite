@@ -108,6 +108,7 @@ body.custom-background { background-color: #f9f9fe; }
 
 <link rel="preload" href="/assets/fonts/instrument-serif/InstrumentSerif-Regular.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="stylesheet" href="/assets/css/dist/critical.css" />
+<link rel="stylesheet" href="/assets/css/system/site-footer.css" />
 </head>
 <body data-rsssl=1 class="wp-singular page-template-default page page-id-24 custom-background wp-theme-Divi et_divi_100_custom_hamburger_menu et_divi_100_custom_hamburger_menu--style-2 et_divi_100_custom_hamburger_menu--type-1 et_button_no_icon et_button_custom_icon et_pb_button_helper_class et_fixed_nav et_show_nav et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_header_style_left et_pb_svg_logo et_pb_footer_columns4 et_cover_background et_pb_gutter et_pb_gutters3 et_pb_pagebuilder_layout et_no_sidebar et_divi_theme et-db">
 	<a class="skip-link" href="#main-content">Skip to main content</a>
@@ -129,8 +130,8 @@ body.custom-background { background-color: #f9f9fe; }
 						<ul id="top-menu" class="nav"><li id="menu-item-30" class="anim-link menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-24 current_page_item menu-item-30"><a href="/" aria-current="page">About Me</a></li>
 <li id="menu-item-2148" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2148"><a href="/case-studies/">Case Studies</a></li>
 <li id="menu-item-3458" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3458"><a href="/newsletter/">Newsletter</a></li>
-<li id="menu-item-3464" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3464"><a href="https://www.designtablepodcast.com/">Podcast</a></li>
-<li id="menu-item-53" class="et_pb_button et_pb_button_secondary menu-item menu-item-type-custom menu-item-object-custom menu-item-53"><a target="_blank" rel="noopener noreferrer" href="/wp-content/uploads/2024/08/TylerWhite-Resume-2024.pdf">Download CV</a></li>
+<li id="menu-item-3464" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3464"><a href="https://www.designtablepodcast.com/">Podcast</a></li><li id="menu-item-4000" class="site-nav-workshop menu-item menu-item-type-custom menu-item-object-custom menu-item-4000"><a href="/prototype-ready/">Live Workshop</a></li>
+<li id="menu-item-53" class="site-nav-mobile-only menu-item menu-item-type-custom menu-item-object-custom menu-item-53"><a target="_blank" rel="noopener noreferrer" href="/wp-content/uploads/2024/08/TylerWhite-Resume-2024.pdf">Download CV</a></li>
 <li id="menu-item-54" class="et_pb_button menu-item menu-item-type-custom menu-item-object-custom menu-item-54"><a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/mrtylerwhite/">Let&#8217;s Connect</a></li>
 </ul>						</nav>
 					
@@ -182,7 +183,6 @@ body.custom-background { background-color: #f9f9fe; }
 				
 				<div class="et_pb_text_inner"><p class="ds-eyebrow">Designing rectangles with varying levels of border radius’</p>
 <h3>I design product decisions that change behavior, not just screens.</h3>
-<p>&nbsp;</p>
 <p data-start="836" data-end="1490">I am a Senior Product Designer with over 15 years of experience working in B2B SaaS, fintech, AI, and regulated products, focused on designing the decisions inside products that drive adoption, retention, and revenue. I have spent most of my career inside messy systems where the UI was not the problem, the decision behind it was. That is where I do my best work. Access models, defaults, incentives, sequencing, and constraints are the levers I care about, because they are what turn shipped features into actual behavior. I work closely with product, engineering, and go-to-market teams to turn strategy into systems that get used, not just discussed.</p>
 <p data-start="1492" data-end="1912">Outside of work, I am a husband, a new father, and someone who has learned to channel what used to be caffeinated-squirrel energy into focus and leverage. Coffee still plays a role. So do early mornings. That stage of life has made me far less interested in output for output’s sake and far more interested in work that actually moves the needle. If something ships and nobody uses it, I consider that debt, not success.</p>
 <p data-start="318" data-end="972"><strong style="font-size: 17px;">Tyler White</strong></p></div>
@@ -225,28 +225,39 @@ body.custom-background { background-color: #f9f9fe; }
 </div>
 
 
-			<footer id="main-footer">
-				
-
-		
-				<div id="footer-bottom">
-					<div class="container clearfix">
-				<ul class="et-social-icons">
-
-	<li class="et-social-icon et-social-twitter">
-		<a href="https://twitter.com/mrtylerwhite" class="icon" aria-label="X">
-			<span>X</span>
-		</a>
-	</li>
-	<li class="et-social-icon et-social-instagram">
-		<a href="https://www.instagram.com/mrtylerwhite/" class="icon" aria-label="Instagram">
-			<span>Instagram</span>
-		</a>
-	</li>
-
-</ul><div id="footer-info">©2020 Tyler White  |  Made with <span class="brand-color">♥</span> from Montreal, Canada. </div>					</div>
-				</div>
-			</footer>
+			<footer class="site-footer" role="contentinfo">
+  <div class="site-footer__inner">
+    <div class="site-footer__brand">
+      <img class="site-footer__wordmark" src="/wp-content/uploads/2025/12/logo-mrtylerwhite-1.svg" width="69" height="20" alt="Mr. Tyler White" />
+      <p class="site-footer__tagline">Product design, growth systems, and prototypes that help teams make better decisions.</p>
+    </div>
+    <nav class="site-footer__col" aria-label="Explore">
+      <span class="site-footer__col-heading">Explore</span>
+      <a href="/about/">About Me</a>
+      <a href="/case-studies/">Case Studies</a>
+      <a href="/newsletter/">Newsletter</a>
+      <a href="https://www.designtablepodcast.com/" target="_blank" rel="noopener noreferrer">Podcast</a>
+      <a href="/prototype-ready/">Live Workshop</a>
+    </nav>
+    <nav class="site-footer__col" aria-label="Resources">
+      <span class="site-footer__col-heading">Resources</span>
+      <a href="/wp-content/uploads/2024/08/TylerWhite-Resume-2024.pdf" target="_blank" rel="noopener noreferrer">Download CV</a>
+      <a href="https://www.linkedin.com/in/mrtylerwhite/" target="_blank" rel="noopener noreferrer">Let&#8217;s Connect</a>
+      <a href="https://www.designtablepodcast.com/" target="_blank" rel="noopener noreferrer">The Design Table</a>
+    </nav>
+    <div class="site-footer__cta-block">
+      <span class="site-footer__col-heading">Prototype Ready</span>
+      <p class="site-footer__cta-copy">A monthly live workshop for designers who want to turn messy ideas into prototypes their team can actually react to.</p>
+      <a href="/prototype-ready/" class="site-footer__cta-btn">Get Prototype Ready &#8212; $7</a>
+    </div>
+  </div>
+  <div class="site-footer__bottom">
+    <p class="site-footer__copy">&#169; 2026 Tyler White. Made with taste, caffeine, and a suspicious number of prototypes.</p>
+    <nav class="site-footer__legal" aria-label="Legal">
+      <a href="/privacy-policy/">Privacy Policy</a>
+    </nav>
+  </div>
+</footer>
 		</div>
 
 
@@ -287,6 +298,7 @@ var et_pb_box_shadow_elements = [];
 </script>
 <script type="text/javascript" src="/wp-content/themes/Divi/js/scripts.min.js" id="divi-custom-script-js"></script>
 <script type="text/javascript" src="/wp-content/themes/Divi/core/admin/js/common.js" id="et-core-common-js"></script>
-<style id="et-builder-module-design-deferred-24-cached-inline-styles">.et_pb_section_0.et_pb_section{padding-top:2em;padding-bottom:3em;background-color:rgba(254,237,225,0)!important}.et_pb_row_0.et_pb_row{padding-top:3em!important;padding-bottom:2em!important;padding-top:3em;padding-bottom:2em}.et_pb_image_0{padding-bottom:4em;border-radius:300px 300px 6px 6px;overflow:hidden;margin-bottom:3em;text-align:right;margin-right:0}.et_pb_text_0{padding-bottom:0px!important;margin-bottom:0px!important}.et_pb_image_1{margin-top:0px!important;text-align:left;margin-left:0}.et_pb_image_1 .et_pb_image_wrap{display:block}.et_pb_image_2{border-radius:300px 300px 6px 6px;overflow:hidden;text-align:right;margin-right:0}@media only screen and (min-width:981px){.et_pb_image_0{display:none!important}.et_pb_text_0{width:90%}}@media only screen and (max-width:980px){.et_pb_image_0 .et_pb_image_wrap img,.et_pb_image_1 .et_pb_image_wrap img,.et_pb_image_2 .et_pb_image_wrap img{width:auto}.et_pb_text_0{width:100%;max-width:720px}}@media only screen and (min-width:768px) and (max-width:980px){.et_pb_image_0{display:none!important}}@media only screen and (max-width:767px){.et_pb_image_0 .et_pb_image_wrap img,.et_pb_image_1 .et_pb_image_wrap img,.et_pb_image_2 .et_pb_image_wrap img{width:auto}.et_pb_text_0{width:100%;max-width:100%}.et_pb_image_2{display:none!important}}</style><link rel="stylesheet" href="/assets/css/system/pages/about.css" /><script src="/assets/js/controls.js" defer></script>
+<style id="et-builder-module-design-deferred-24-cached-inline-styles">.et_pb_section_0.et_pb_section{padding-top:2em;padding-bottom:3em;background-color:rgba(254,237,225,0)!important}.et_pb_row_0.et_pb_row{padding-top:3em!important;padding-bottom:2em!important;padding-top:3em;padding-bottom:2em}.et_pb_image_0{padding-bottom:4em;border-radius:300px 300px 6px 6px;overflow:hidden;margin-bottom:3em;text-align:right;margin-right:0}.et_pb_text_0{padding-bottom:0px!important;margin-bottom:0px!important}.et_pb_image_1{margin-top:0px!important;text-align:left;margin-left:0}.et_pb_image_1 .et_pb_image_wrap{display:block}.et_pb_image_2{border-radius:300px 300px 6px 6px;overflow:hidden;text-align:right;margin-right:0}@media only screen and (min-width:981px){.et_pb_image_0{display:none!important}.et_pb_text_0{width:90%}}@media only screen and (max-width:980px){.et_pb_image_0 .et_pb_image_wrap img,.et_pb_image_1 .et_pb_image_wrap img,.et_pb_image_2 .et_pb_image_wrap img{width:auto}.et_pb_text_0{width:100%;max-width:720px}}@media only screen and (min-width:768px) and (max-width:980px){.et_pb_image_0{display:none!important}}@media only screen and (max-width:767px){.et_pb_image_0 .et_pb_image_wrap img,.et_pb_image_1 .et_pb_image_wrap img,.et_pb_image_2 .et_pb_image_wrap img{width:auto}.et_pb_text_0{width:100%;max-width:100%}.et_pb_image_2{display:none!important}}</style><link rel="stylesheet" href="/assets/css/system/pages/about.css" /><script src="/assets/js/scroll-reveal.js" defer></script>
+<script src="/assets/js/controls.js" defer></script>
 </body>
 </html>

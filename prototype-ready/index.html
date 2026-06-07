@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prototype Ready — Live Workshop · Tyler White</title>
+  <meta name="description" content="A 90-minute live workshop for product designers who want to turn messy ideas into testable prototypes using AI, Figma, and code-powered workflows." />
+
+  <!-- Font preload -->
+  <link rel="preload" href="/assets/fonts/instrument-serif/InstrumentSerif-Regular.woff2" as="font" type="font/woff2" crossorigin />
+
+  <!-- Design system bundle -->
+  <link rel="stylesheet" href="/assets/css/dist/critical.css" />
+
+  <!-- Page styles -->
+  <link rel="stylesheet" href="/assets/css/system/pages/prototype-ready.css" />
+  <link rel="stylesheet" href="/assets/css/system/site-footer.css" />
+</head>
+<body class="page-id-prototype-ready prototype-ready">
+
+  <!-- ── Sticky bar ──────────────────────────────────────────────── -->
+  <div class="pr-bar" role="banner">
+    <div class="pr-bar__inner">
+      <a href="/" class="pr-bar__wordmark" aria-label="Back to mrtylerwhite.com">
+        <img src="/wp-content/uploads/2025/12/logo-mrtylerwhite-1.svg" width="69" height="20" alt="Mr. Tyler White" />
+      </a>
+      <span class="pr-bar__meta">Live Workshop · First Saturday Monthly · 7:00 AM ET</span>
+      <a href="https://saasifyos.kit.com/products/live-builder-kickoff-workshop" class="pr-bar__cta">Get Prototype Ready — $7</a>
+    </div>
+  </div>
+
+  <!-- ── Main ───────────────────────────────────────────────────── -->
+  <main id="page-container" class="pr-main">
+
+    <!-- 1. Hero — two-column ──────────────────────────────────── -->
+    <section class="pr-hero">
+      <div class="pr-container">
+
+          <div class="pr-hero__copy ds-reveal">
+            <p class="ds-eyebrow">Live Workshop</p>
+            <h1 class="pr-hero__title">Prototype Ready.</h1>
+            <p class="pr-hero__sub">A 90-minute workshop for designers who want to turn messy product ideas into prototypes their team can actually react to. Not another deck. Not another "let me circle back." A prototype that moves the damn conversation.</p>
+            <a href="https://saasifyos.kit.com/products/live-builder-kickoff-workshop" class="ds-btn-primary pr-hero__cta">Save your seat — $7</a>
+            <p class="pr-hero__meta">90 minutes · Live on Zoom · Replay included</p>
+          </div>
+
+          <div class="pr-hero__card ds-reveal ds-reveal-d2">
+            <div class="pr-event-card">
+              <div class="pr-event-card__header">
+                <span class="pr-event-card__eyebrow">Live Workshop</span>
+                <span class="pr-event-card__seats">Limited seats</span>
+              </div>
+              <div class="pr-event-card__date">
+                <span class="pr-event-card__date-main">First Saturday of every month</span>
+                <span class="pr-event-card__date-time">7:00 AM ET</span>
+              </div>
+              <div class="pr-event-card__rows">
+                <div class="pr-event-card__row">
+                  <span class="pr-event-card__label">Format</span>
+                  <span class="pr-event-card__val">Live on Zoom</span>
+                </div>
+                <div class="pr-event-card__row">
+                  <span class="pr-event-card__label">Length</span>
+                  <span class="pr-event-card__val">90 min + Q&amp;A</span>
+                </div>
+                <div class="pr-event-card__row">
+                  <span class="pr-event-card__label">Replay</span>
+                  <span class="pr-event-card__val">Included</span>
+                </div>
+                <div class="pr-event-card__row">
+                  <span class="pr-event-card__label">Tools</span>
+                  <span class="pr-event-card__val">Figma · Claude · Cursor</span>
+                </div>
+              </div>
+              <div class="pr-event-card__price-row">
+                <div class="pr-event-card__price">
+                  $7<span class="pr-event-card__price-sub">one-time</span>
+                </div>
+                <a href="https://saasifyos.kit.com/products/live-builder-kickoff-workshop" class="ds-btn-primary pr-event-card__cta">Grab your seat</a>
+              </div>
+            </div>
+          </div>
+
+      </div>
+    </section>
+
+    <!-- 2. Stats band — dark strip ───────────────────────────── -->
+    <div class="pr-stats-band" role="region" aria-label="Workshop at a glance" data-nav-theme="dark">
+      <div class="pr-container pr-stats-band__inner">
+        <div class="pr-stat">
+          <span class="pr-stat__num">90</span>
+          <span class="pr-stat__label">min working session</span>
+        </div>
+        <div class="pr-stat-divider" aria-hidden="true"></div>
+        <div class="pr-stat">
+          <span class="pr-stat__num">$7</span>
+          <span class="pr-stat__label">one-time</span>
+        </div>
+        <div class="pr-stat-divider" aria-hidden="true"></div>
+        <div class="pr-stat">
+          <span class="pr-stat__num">4</span>
+          <span class="pr-stat__label">parts from idea to prototype</span>
+        </div>
+        <div class="pr-stat-divider" aria-hidden="true"></div>
+        <div class="pr-stat">
+          <span class="pr-stat__num">7</span>
+          <span class="pr-stat__label">tools, templates, prompts, checklists</span>
+        </div>
+        <div class="pr-stat-divider" aria-hidden="true"></div>
+        <div class="pr-stat">
+          <span class="pr-stat__num">Replay</span>
+          <span class="pr-stat__label">included</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Problem — two-column ──────────────────────────────── -->
+    <section class="pr-section pr-section--raised pr-problem" aria-labelledby="problem-heading">
+      <div class="pr-container">
+        <div class="pr-two-col ds-reveal">
+
+          <div class="pr-two-col__main">
+            <p class="ds-eyebrow">THE PROBLEM</p>
+            <h2 id="problem-heading">You're not slow. <em>Your workflow is.</em></h2>
+            <p class="pr-body">Most designers are using AI for scraps. Auto-complete. "Make this look more modern." The workflow stays the same — vague idea, open Figma, hope. AI just makes the hoping happen faster.</p>
+            <p class="pr-body">You can generate a full screen of UI in 30 seconds and still not know what you are trying to prove. More output. Same problem. Just a more impressive-looking, beautiful pile of bullshit.</p>
+            <p class="pr-body">The bottleneck was never speed. It was always the first five minutes: what are we actually testing, who is it for, and what counts as passing.</p>
+            <p class="pr-body">That is where Prototype Ready comes in.</p>
+          </div>
+
+          <div class="pr-two-col__aside">
+            <div class="pr-workflow-card">
+              <p class="pr-workflow-card__eyebrow ds-eyebrow">The usual mess</p>
+              <div class="pr-workflow-steps">
+                <div class="pr-workflow-step pr-workflow-step--muted">PRD (or nothing)</div>
+                <div class="pr-workflow-step pr-workflow-step--muted">Ask Claude to "make a UI"</div>
+                <div class="pr-workflow-step pr-workflow-step--muted">Open Figma. Start building.</div>
+                <div class="pr-workflow-step pr-workflow-step--muted">Vibe-code something.</div>
+                <div class="pr-workflow-step pr-workflow-step--muted">Show stakeholders. Hope for the best.</div>
+                <div class="pr-workflow-step pr-workflow-step--warn">Prototype Ready: Frame it. Build it. Test it.</div>
+              </div>
+              <p class="pr-workflow-card__note">The problem is always the first five minutes,<br>not the tools.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. TL;DR — dark section ──────────────────────────────── -->
+    <section class="pr-section pr-section--dark pr-tldr" aria-labelledby="tldr-heading" data-nav-theme="dark">
+      <div class="pr-container">
+        <div class="pr-tldr__copy ds-reveal">
+          <p class="ds-eyebrow pr-eyebrow-light">THE SHORT VERSION</p>
+          <h2 id="tldr-heading" class="pr-heading-light">Everything you need to know, <em>in ten seconds.</em></h2>
+          <ul class="pr-tldr__list" role="list">
+            <li class="pr-tldr__item">
+              <strong>What it is.</strong>
+              A 90-minute live workshop. One payment. You get the session, the replay, and every template and tool in the stack.
+            </li>
+            <li class="pr-tldr__item">
+              <strong>What you need.</strong>
+              A real problem to work with and enough self-awareness to know "make it pop" is not a brief.
+            </li>
+            <li class="pr-tldr__item">
+              <strong>When it is.</strong>
+              First Saturday of every month at 7:00 AM ET on Zoom. If you can't make it live, the full replay ships within 24 hours.
+            </li>
+            <li class="pr-tldr__item">
+              <strong>What you leave with.</strong>
+              Seven tools, a working process, and a method that pretends the Jira ticket made sense so you can build what actually matters.
+            </li>
+            <li class="pr-tldr__item">
+              <strong>What it costs.</strong>
+              $7. One-time. Less than a Figma plugin subscription. No upsell at the end.
+            </li>
+          </ul>
+          <a href="https://saasifyos.kit.com/products/live-builder-kickoff-workshop" class="pr-cta-inverse">Save your seat — $7</a>
+          <p class="pr-meta-light">90 minutes · Live on Zoom · Replay included</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Four components ───────────────────────────────────── -->
+    <section class="pr-section pr-components" aria-labelledby="components-heading">
+      <div class="pr-container">
+        <div class="pr-section-header ds-reveal">
+          <p class="ds-eyebrow">THE METHOD</p>
+          <h2 id="components-heading">Four parts. <em>Finished on the call.</em></h2>
+        </div>
+        <div class="pr-component-grid ds-reveal">
+
+          <div class="pr-component-card">
+            <div class="pr-component-card__num" aria-hidden="true">01</div>
+            <h3 class="pr-component-card__heading">Prototype Brief</h3>
+            <p class="pr-component-card__body">Before anything opens in Figma, you write a one-page brief: what are we testing, who is it for, what counts as passing. Most prototypes fail because nobody wrote this down.</p>
+            <span class="pr-component-card__time">~20 min</span>
+          </div>
+
+          <div class="pr-component-card">
+            <div class="pr-component-card__num" aria-hidden="true">02</div>
+            <h3 class="pr-component-card__heading">Build Workflow</h3>
+            <p class="pr-component-card__body">Use Claude to generate three wireframe directions from your brief. Pick the best one, not the first one. Build it with scope discipline — and know when to stop building because the prototype already proved the damn point.</p>
+            <span class="pr-component-card__time">~20 min</span>
+          </div>
+
+          <div class="pr-component-card">
+            <div class="pr-component-card__num" aria-hidden="true">03</div>
+            <h3 class="pr-component-card__heading">Validation Loop</h3>
+            <p class="pr-component-card__body">Set up a 10-minute test before you spend three hours on screens. Define what the prototype needs to prove. Run a quick check with a teammate or PM. Build with a clear pass/fail in mind.</p>
+            <span class="pr-component-card__time">~30 min</span>
+          </div>
+
+          <div class="pr-component-card">
+            <div class="pr-component-card__num" aria-hidden="true">04</div>
+            <h3 class="pr-component-card__heading">Handoff Format</h3>
+            <p class="pr-component-card__body">Write up findings that actually change what gets built next. Package the prototype so it becomes a decision-making tool, not a Figma link nobody knows how to read. The template comes with you.</p>
+            <span class="pr-component-card__time">~20 min</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. What's included — bento grid ────────────────────── -->
+    <section class="pr-section pr-section--raised pr-seat" aria-labelledby="seat-heading">
+      <div class="pr-container--wide">
+
+        <!-- Two-col header -->
+        <div class="pr-seat-header ds-reveal">
+          <div class="pr-seat-header__left">
+            <p class="ds-eyebrow">What's included</p>
+            <h2 id="seat-heading">One seat. Seven things you keep forever.</h2>
+            <a href="https://saasifyos.kit.com/products/live-builder-kickoff-workshop" class="pr-seat-header__cta">Save your seat</a>
+          </div>
+          <div class="pr-seat-header__right">
+            <p class="pr-body">You're not just buying 90 minutes. You're getting the brief worksheet, prompt pack, Cursor + Claude guide, validation checklist, handoff template, and the replay. Everything in the workflow, not just the walkthrough.</p>
+          </div>
+        </div>
+
+        <!-- Bento feature grid -->
+        <div class="pr-bento ds-reveal">
+
+          <!-- Top row: two large cards -->
+          <div class="pr-bento__row pr-bento__row--top">
+
+            <!-- Card 1: Prototype Brief Worksheet -->
+            <div class="pr-bento-card pr-bento-card--large">
+              <div class="pr-bento-card__content">
+                <span class="pr-bento-card__num" aria-hidden="true">01</span>
+                <h3 class="pr-bento-card__heading">Prototype Brief Worksheet</h3>
+                <p class="pr-bento-card__body">One page. Five fields. Turns a vague idea, a PRD, or a stakeholder ramble into a scoped prototype brief before anyone opens Figma.</p>
+              </div>
+              <div class="pr-bento-card__preview" aria-hidden="true">
+                <div class="pr-worksheet">
+                  <div class="pr-worksheet__header">
+                    <span class="pr-worksheet__title">Prototype Brief</span>
+                    <span class="pr-worksheet__subtitle">Workshop 01</span>
+                  </div>
+                  <div class="pr-worksheet__row">
+                    <span class="pr-worksheet__label">Problem</span>
+                    <div class="pr-worksheet__field">
+                      <div class="pr-worksheet__line"></div>
+                      <div class="pr-worksheet__line pr-worksheet__line--short"></div>
+                    </div>
+                  </div>
+                  <div class="pr-worksheet__row">
+                    <span class="pr-worksheet__label">Audience</span>
+                    <div class="pr-worksheet__field">
+                      <div class="pr-worksheet__line pr-worksheet__line--med"></div>
+                    </div>
+                  </div>
+                  <div class="pr-worksheet__row">
+                    <span class="pr-worksheet__label">Prototype goal</span>
+                    <div class="pr-worksheet__field">
+                      <div class="pr-worksheet__line"></div>
+                    </div>
+                  </div>
+                  <div class="pr-worksheet__row">
+                    <span class="pr-worksheet__label">What to prove</span>
+                    <div class="pr-worksheet__field">
+                      <div class="pr-worksheet__line"></div>
+                      <div class="pr-worksheet__line pr-worksheet__line--med"></div>
+                    </div>
+                  </div>
+                  <div class="pr-worksheet__row">
+                    <span class="pr-worksheet__label">Success signal</span>
+                    <div class="pr-worksheet__field">
+                      <div class="pr-worksheet__line pr-worksheet__line--short"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 2: AI Prototype Prompt Pack -->
+            <div class="pr-bento-card pr-bento-card--large">
+              <div class="pr-bento-card__content">
+                <span class="pr-bento-card__num" aria-hidden="true">02</span>
+                <h3 class="pr-bento-card__heading">AI Prototype Prompt Pack</h3>
+                <p class="pr-bento-card__body">Organized by workflow stage: brief, directions, build, test. So you are not starting every prototype with "please make this better" like a maniac.</p>
+              </div>
+              <div class="pr-bento-card__preview" aria-hidden="true">
+                <div class="pr-prompt-preview">
+                  <div class="pr-prompt-preview__meta">
+                    <span class="pr-prompt-preview__stage">Stage: Brief</span>
+                    <span class="pr-prompt-preview__count">01 of 20+</span>
+                  </div>
+                  <p class="pr-prompt-preview__text">"Turn this feature idea into a prototype brief with assumptions, user flow, validation risks, and first-pass screen structure."</p>
+                  <div class="pr-prompt-preview__tags">
+                    <span class="pr-prompt-preview__tag">Claude</span>
+                    <span class="pr-prompt-preview__tag">Cursor</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Small cards row -->
+          <div class="pr-bento__row pr-bento__row--small">
+
+            <div class="pr-bento-card pr-bento-card--small">
+              <span class="pr-bento-card__num" aria-hidden="true">03</span>
+              <h3 class="pr-bento-card__heading">Cursor + Claude Workflow</h3>
+              <p class="pr-bento-card__body">When to use Claude for thinking and Cursor for building. The cheat sheet for not burning 45 minutes on the wrong tool.</p>
+            </div>
+
+            <div class="pr-bento-card pr-bento-card--small">
+              <span class="pr-bento-card__num" aria-hidden="true">04</span>
+              <h3 class="pr-bento-card__heading">Validation Checklist</h3>
+              <p class="pr-bento-card__body">Define what the prototype needs to prove before you show it to anyone. One sheet. Saves a lot of awkward meetings.</p>
+            </div>
+
+            <div class="pr-bento-card pr-bento-card--small">
+              <span class="pr-bento-card__num" aria-hidden="true">05</span>
+              <h3 class="pr-bento-card__heading">Handoff Template</h3>
+              <p class="pr-bento-card__body">Package the prototype so it becomes a decision-making tool, not another weird sandbox link.</p>
+            </div>
+
+            <div class="pr-bento-card pr-bento-card--small">
+              <span class="pr-bento-card__num" aria-hidden="true">06</span>
+              <h3 class="pr-bento-card__heading">Replay + Q&amp;A</h3>
+              <p class="pr-bento-card__body">Rewatch the session and steal the workflow when your calendar stops punching you in the face.</p>
+            </div>
+
+          </div>
+
+          <!-- Bottom CTA row -->
+          <div class="pr-bento-cta">
+            <div class="pr-bento-cta__price">
+              <span class="pr-bento-cta__label">You pay today</span>
+              <span class="pr-bento-cta__amount">$7</span>
+            </div>
+            <p class="pr-bento-cta__copy">One workshop. Seven tools. One method you can use Monday.</p>
+            <a href="https://saasifyos.kit.com/products/live-builder-kickoff-workshop" class="pr-bento-cta__btn">Save your seat</a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 7. Ticket — centerpiece ──────────────────────────────── -->
+    <section class="pr-ticket-section" aria-labelledby="ticket-heading">
+      <div class="pr-container--wide">
+        <div class="pr-section-header pr-section-header--center ds-reveal">
+          <p class="ds-eyebrow">YOUR SEAT</p>
+          <h2 id="ticket-heading">90 minutes. <em>$7.</em> Walk out Prototype Ready.</h2>
+          <p class="pr-body">One working session. Seven deliverables. A method you can run on your next project.</p>
+        </div>
+
+        <div class="pr-ticket ds-reveal" role="region" aria-label="Workshop ticket">
+
+          <div class="pr-ticket__header">
+            <span class="pr-ticket__issued">Issued by: Tyler White · Workshop 01 · 2026</span>
+            <span class="pr-ticket__admit">Non-transferable · Admit one</span>
+          </div>
+
+          <div class="pr-ticket__body">
+
+            <div class="pr-ticket__left">
+              <h3 class="pr-ticket__title">Prototype <em>Ready.</em></h3>
+              <p class="pr-ticket__subtitle">A 90-minute live working session with Tyler White — not a webinar wearing a fake mustache.</p>
+              <div class="pr-ticket__meta">
+                <div class="pr-ticket__row">
+                  <span class="pr-ticket__row-label">Event</span>
+                  <span class="pr-ticket__row-value">Prototype Ready</span>
+                </div>
+                <div class="pr-ticket__row">
+                  <span class="pr-ticket__row-label">Date</span>
+                  <span class="pr-ticket__row-value">First Saturday of every month</span>
+                </div>
+                <div class="pr-ticket__row">
+                  <span class="pr-ticket__row-label">Start</span>
+                  <span class="pr-ticket__row-value">7:00 AM ET</span>
+                </div>
+                <div class="pr-ticket__row">
+                  <span class="pr-ticket__row-label">Length</span>
+                  <span class="pr-ticket__row-value">90 min + Q&amp;A</span>
+                </div>
+                <div class="pr-ticket__row">
+                  <span class="pr-ticket__row-label">Format</span>
+                  <span class="pr-ticket__row-value">Live on Zoom</span>
+                </div>
+                <div class="pr-ticket__row">
+                  <span class="pr-ticket__row-label">Replay</span>
+                  <span class="pr-ticket__row-value">Included · within 24h</span>
+                </div>
+              </div>
+              <p class="pr-ticket__watermark" aria-hidden="true">TW·26·PR01 · Bring to Zoom</p>
+            </div>
+
+            <div class="pr-ticket__tear" aria-hidden="true"></div>
+
+            <div class="pr-ticket__right">
+              <p class="pr-ticket__includes-label">What's included</p>
+              <div class="pr-ticket__includes-list">
+                <div class="pr-ticket__include">
+                  <span class="pr-ticket__include-check" aria-hidden="true">✓</span>
+                  <span>Live workshop session</span>
+                </div>
+                <div class="pr-ticket__include">
+                  <span class="pr-ticket__include-check" aria-hidden="true">✓</span>
+                  <span>Prototype Brief worksheet</span>
+                </div>
+                <div class="pr-ticket__include">
+                  <span class="pr-ticket__include-check" aria-hidden="true">✓</span>
+                  <span>Full replay · lifetime</span>
+                </div>
+                <div class="pr-ticket__include">
+                  <span class="pr-ticket__include-check" aria-hidden="true">✓</span>
+                  <span>AI prompt pack (20+)</span>
+                </div>
+                <div class="pr-ticket__include">
+                  <span class="pr-ticket__include-check" aria-hidden="true">✓</span>
+                  <span>Cursor + Claude guide</span>
+                </div>
+                <div class="pr-ticket__include">
+                  <span class="pr-ticket__include-check" aria-hidden="true">✓</span>
+                  <span>Validation checklist</span>
+                </div>
+                <div class="pr-ticket__include">
+                  <span class="pr-ticket__include-check" aria-hidden="true">✓</span>
+                  <span>Handoff template</span>
+                </div>
+              </div>
+              <div class="pr-ticket__purchase">
+                <div class="pr-ticket__purchase-row">
+                  <span class="pr-ticket__purchase-label">One-time · Seat</span>
+                  <span class="pr-ticket__purchase-price">$7</span>
+                </div>
+                <a href="https://saasifyos.kit.com/products/live-builder-kickoff-workshop" class="ds-btn-primary pr-ticket__cta">Save your seat</a>
+                <p class="pr-ticket__purchase-seats">Limited seats per session</p>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="pr-ticket__footer" aria-hidden="true">
+            <span>TW·26·PR01</span>
+            <span>Prototype Ready · Workshop 01</span>
+            <span>Admit one · Admit one · Admit one</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. Why This Works ───────────────────────────────────────── -->
+    <section class="pr-section pr-section--raised pr-why" aria-labelledby="why-heading">
+      <div class="pr-container">
+
+        <div class="pr-why__intro ds-reveal">
+          <p class="ds-eyebrow">WHY THIS WORKS</p>
+          <h2 id="why-heading">The prototype is not the deliverable. <em>The decision is.</em></h2>
+          <p class="pr-body">A pretty prototype is useless if nobody knows what it proves.</p>
+          <p class="pr-body">Prototype Ready gives you a simple way to frame the idea, build only what matters, and use the prototype to force a clearer decision.</p>
+          <p class="pr-body">No 47-screen masterpiece. No random vibe-coded sandbox. No "looks cool, but what are we doing with this?"</p>
+          <p class="pr-body">Just a workflow for turning messy product conversations into something your team can actually judge.</p>
+        </div>
+
+        <div class="pr-why__cards ds-reveal">
+
+          <div class="pr-why-card">
+            <h3 class="pr-why-card__heading">Frame the mess</h3>
+            <p class="pr-why-card__body">Turn vague asks, half-baked PRDs, and stakeholder rambles into a clear prototype brief.</p>
+          </div>
+
+          <div class="pr-why-card">
+            <h3 class="pr-why-card__heading">Build the proof</h3>
+            <p class="pr-why-card__body">Use Figma, Claude, and Cursor to create only what the decision actually needs.</p>
+          </div>
+
+          <div class="pr-why-card">
+            <h3 class="pr-why-card__heading">Drive the decision</h3>
+            <p class="pr-why-card__body">Package the prototype so PMs, engineers, and stakeholders know what it proves and what happens next.</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 9. Credibility / Teacher — two-column ────────────────── -->
+    <section class="pr-section pr-cred" aria-labelledby="cred-heading">
+      <div class="pr-container">
+        <div class="pr-cred__layout ds-reveal">
+
+          <div class="pr-host-image">
+            <img
+              src="/assets/images/prototype-ready/tyler-host.png"
+              alt="Tyler White smiling at his desk with a microphone setup"
+              width="1024"
+              height="576"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+
+          <div class="pr-cred__content">
+            <p class="ds-eyebrow">Your host</p>
+            <h2 id="cred-heading">Tyler White.</h2>
+            <p class="pr-body">Principal Product Designer. 15+ years across B2B SaaS, fintech, AI, design systems, and product-led growth. I have shipped a lot of prototypes. Most of the bad ones were bad because of the first five minutes.</p>
+            <p class="pr-body">Two years ago I started using Claude in my prototype workflow. Not to speed-run components, but to front-load the thinking. Brief first. Directions second. Build third. My prototype time dropped by more than half and the output actually got better.</p>
+            <p class="pr-body">This workshop is that method. Not a tool review. Not a framework to study. A working session where you build a brief, generate directions, and leave with a process you can run on your next project.</p>
+          </div>
+
+        </div>
+
+        <div class="pr-cred__stats" role="list" aria-label="Career highlights">
+          <div class="pr-cred__stat" role="listitem">
+            <span class="pr-cred__stat-num">15+</span>
+            <span class="pr-cred__stat-label">Years designing<br>product</span>
+          </div>
+          <div class="pr-cred__stat" role="listitem">
+            <span class="pr-cred__stat-num">Principal</span>
+            <span class="pr-cred__stat-label">IC<br>level</span>
+          </div>
+          <div class="pr-cred__stat" role="listitem">
+            <span class="pr-cred__stat-num">B2B</span>
+            <span class="pr-cred__stat-label">SaaS<br>focus</span>
+          </div>
+          <div class="pr-cred__stat" role="listitem">
+            <span class="pr-cred__stat-num">AI</span>
+            <span class="pr-cred__stat-label">In the<br>workflow</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 10. FAQ ──────────────────────────────────────────────── -->
+    <section class="pr-section pr-section--raised pr-faq" aria-labelledby="faq-heading">
+      <div class="pr-container--narrow">
+        <div class="pr-section-header ds-reveal">
+          <p class="ds-eyebrow">FAQ</p>
+          <h2 id="faq-heading">Common questions.</h2>
+        </div>
+        <div class="pr-faq__list ds-reveal">
+
+          <details class="pr-faq__card">
+            <summary>Is this for designers who can't code?</summary>
+            <p class="pr-faq__answer">No code required. The workflow uses Claude and Cursor as thinking tools, not a reason to learn to code. If you can describe what you want in plain English, you can use these tools effectively.</p>
+          </details>
+
+          <details class="pr-faq__card">
+            <summary>Do I need Cursor?</summary>
+            <p class="pr-faq__answer">No. The core workflow runs on Figma and Claude. Cursor is covered as an optional tool for code-based prototyping. If you want to use it, there is a section on how to do that without your prototype becoming AI spaghetti nobody can edit.</p>
+          </details>
+
+          <details class="pr-faq__card">
+            <summary>Is this just vibe coding?</summary>
+            <p class="pr-faq__answer">No. Vibe coding is what you get when there is no brief, no validation plan, and no idea what you are trying to prove. The result is impressive-looking garbage nobody can ship. This workshop is specifically about avoiding that — using AI to generate and compare directions quickly, without skipping the important shit.</p>
+          </details>
+
+          <details class="pr-faq__card">
+            <summary>Will there be a replay?</summary>
+            <p class="pr-faq__answer">Yes. Every seat includes the full replay within 24 hours. If your timezone is painful or something comes up the day of, you will not miss the material.</p>
+          </details>
+
+          <details class="pr-faq__card">
+            <summary>Is this beginner friendly?</summary>
+            <p class="pr-faq__answer">It assumes you have shipped at least one digital product and know your way around Figma. If you have shipped dozens, it will probably change how you spend the first hour of every project.</p>
+          </details>
+
+          <details class="pr-faq__card">
+            <summary>What should I bring?</summary>
+            <p class="pr-faq__answer">A real problem. Something messy and underspecified, not a clean hypothetical. If you have a project that has been stalled because nobody agrees on what to build, bring that one. The worksheet works best on something you actually need to solve.</p>
+          </details>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 11. Final CTA — dark ─────────────────────────────────── -->
+    <section class="pr-final" aria-labelledby="final-heading" data-nav-theme="dark">
+      <div class="pr-container--narrow">
+        <div class="ds-reveal">
+          <p class="ds-eyebrow pr-eyebrow-light">BUILT FOR MODERN PRODUCT WORK</p>
+          <h2 id="final-heading" class="pr-heading-light">Build prototypes that end conversations.</h2>
+          <p class="pr-final__sub">Stop debating what to build. Stop guessing what it should look like. Make a prototype that forces a decision.</p>
+          <a href="https://saasifyos.kit.com/products/live-builder-kickoff-workshop" class="pr-cta-inverse pr-final__cta">Get Prototype Ready — $7</a>
+          <p class="pr-meta-light">$7 · Live on Zoom · Replay included · First Saturday monthly</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Footer ─────────────────────────────────────────────── -->
+  <footer class="site-footer" role="contentinfo">
+  <div class="site-footer__inner">
+    <div class="site-footer__brand">
+      <img class="site-footer__wordmark" src="/wp-content/uploads/2025/12/logo-mrtylerwhite-1.svg" width="69" height="20" alt="Mr. Tyler White" />
+      <p class="site-footer__tagline">Product design, growth systems, and prototypes that help teams make better decisions.</p>
+    </div>
+    <nav class="site-footer__col" aria-label="Explore">
+      <span class="site-footer__col-heading">Explore</span>
+      <a href="/about/">About Me</a>
+      <a href="/case-studies/">Case Studies</a>
+      <a href="/newsletter/">Newsletter</a>
+      <a href="https://www.designtablepodcast.com/" target="_blank" rel="noopener noreferrer">Podcast</a>
+      <a href="/prototype-ready/">Live Workshop</a>
+    </nav>
+    <nav class="site-footer__col" aria-label="Resources">
+      <span class="site-footer__col-heading">Resources</span>
+      <a href="/wp-content/uploads/2024/08/TylerWhite-Resume-2024.pdf" target="_blank" rel="noopener noreferrer">Download CV</a>
+      <a href="https://www.linkedin.com/in/mrtylerwhite/" target="_blank" rel="noopener noreferrer">Let&#8217;s Connect</a>
+      <a href="https://www.designtablepodcast.com/" target="_blank" rel="noopener noreferrer">The Design Table</a>
+    </nav>
+    <div class="site-footer__cta-block">
+      <span class="site-footer__col-heading">Prototype Ready</span>
+      <p class="site-footer__cta-copy">A monthly live workshop for designers who want to turn messy ideas into prototypes their team can actually react to.</p>
+      <a href="/prototype-ready/" class="site-footer__cta-btn">Get Prototype Ready &#8212; $7</a>
+    </div>
+  </div>
+  <div class="site-footer__bottom">
+    <p class="site-footer__copy">&#169; 2026 Tyler White. Made with taste, caffeine, and a suspicious number of prototypes.</p>
+    <nav class="site-footer__legal" aria-label="Legal">
+      <a href="/privacy-policy/">Privacy Policy</a>
+    </nav>
+  </div>
+</footer>
+
+  <script src="/assets/js/scroll-reveal.js" defer></script>
+
+  <!-- Page-scoped: sticky nav contrast detection -->
+  <script>
+  (function () {
+    'use strict';
+    var bar = document.querySelector('.pr-bar');
+    if (!bar) return;
+    var pending = false;
+
+    function check() {
+      pending = false;
+      var r   = bar.getBoundingClientRect();
+      var cx  = r.left + r.width / 2;
+      // Sample at bar's bottom edge — that's where the underlying section
+      // first becomes visible. Subtract 1 to stay within the bar's z-stack.
+      var cy  = r.bottom - 1;
+      // elementsFromPoint returns every element stacked at (cx, cy),
+      // topmost first — the sticky bar is first, dark sections appear
+      // further down the list when the bar overlaps them.
+      var els = document.elementsFromPoint(cx, cy);
+      var dark = false;
+      for (var i = 0; i < els.length; i++) {
+        if (els[i].dataset && els[i].dataset.navTheme === 'dark') {
+          dark = true;
+          break;
+        }
+      }
+      bar.classList.toggle('pr-bar--on-dark', dark);
+    }
+
+    function enqueue() {
+      if (!pending) { pending = true; requestAnimationFrame(check); }
+    }
+
+    window.addEventListener('scroll', enqueue, { passive: true });
+    window.addEventListener('resize', enqueue, { passive: true });
+    enqueue(); // run once on load
+  }());
+  </script>
+</body>
+</html>

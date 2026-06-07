@@ -1,0 +1,415 @@
+/* ── Site-wide nav + footer ──────────────────────────────────────
+   No new fonts (Inter / Instrument Serif / JetBrains Mono
+   are already self-hosted via critical.css).
+   No external assets. No JS.
+   ─────────────────────────────────────────────────────────────── */
+
+/* ── Global CTA button override ──────────────────────────────────
+   critical.css compiled buttons.css with a warm-white secondary style.
+   All page CTAs (View Case Study, Join the newsletter, etc.) should
+   use the ElevenLabs-style black pill — same as the primary treatment.
+   Selectors mirror critical.css so specificity beats the compiled rule. */
+/* View Case Study / cta_secondary → black pill */
+#page-container a.ds-btn-secondary,
+#page-container a.cta_secondary,
+#page-container .case-work a.text-button.brand-link,
+#page-container .card-kepler a.text-button.brand-link,
+#page-container .card-side-by-side a.text-button.brand-link {
+  background: #000000 !important;
+  color: #ffffff !important;
+  border: 1px solid #000000 !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
+}
+
+#page-container a.ds-btn-secondary:hover,
+#page-container a.cta_secondary:hover,
+#page-container .case-work a.text-button.brand-link:hover,
+#page-container .card-kepler a.text-button.brand-link:hover,
+#page-container .card-side-by-side a.text-button.brand-link:hover {
+  background: #1a1a1a !important;
+  color: #ffffff !important;
+  border-color: #1a1a1a !important;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.16) !important;
+  text-decoration: none !important;
+}
+
+#page-container a.ds-btn-secondary:active,
+#page-container a.cta_secondary:active,
+#page-container .case-work a.text-button.brand-link:active {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12) !important;
+}
+
+#page-container a.ds-btn-secondary:focus-visible,
+#page-container a.cta_secondary:focus-visible,
+#page-container .case-work a.text-button.brand-link:focus-visible {
+  color: #ffffff !important;
+  background: #000000 !important;
+}
+
+/* Join the newsletter → ElevenLabs white secondary (white bg, subtle border + shadow) */
+#page-container #cta_newsletter,
+#page-container #cta_newsletter:visited {
+  background: #ffffff !important;
+  color: #000000 !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04), 0 2px 4px rgba(0,0,0,0.04) !important;
+}
+
+#page-container #cta_newsletter:hover {
+  background: rgba(255, 255, 255, 0.85) !important;
+  color: #000000 !important;
+  border-color: rgba(0, 0, 0, 0.12) !important;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.06) !important;
+  text-decoration: none !important;
+}
+
+#page-container #cta_newsletter:focus-visible {
+  background: #ffffff !important;
+  color: #000000 !important;
+}
+
+/* ── Live Workshop — soft pill nav treatment ─────────────────────
+   Sits between plain nav links and the primary black Let's Connect CTA.
+   Higher specificity than Divi's:
+     #main-header #top-menu li { display: inline-flex !important }
+   ─────────────────────────────────────────────────────────────── */
+/* Match li.et_pb_button layout exactly:
+   align-items/justify-content come from the Divi customizer's li.et_pb_button rule;
+   the 1.7em line-height comes from Divi's core .et_pb_button rule — both are needed
+   so the pill is the same height (31.8px) as the live secondary nav button. */
+#page-container #main-header #top-menu li.site-nav-workshop {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Default + visited: match live et_pb_button_secondary exactly —
+   white bg, near-invisible border, subtle layered shadow.
+   Uses #page-container prefix to beat critical.css's 3-ID specificity rule.
+   :visited is explicitly set so the browser never applies its default purple. */
+#page-container #main-header #top-menu li.site-nav-workshop > a,
+#page-container #main-header #top-menu li.site-nav-workshop > a:visited {
+  display: inline-flex !important;
+  align-items: center;
+  background-color: #ffffff !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  border-radius: 999px !important;
+  padding: 3px 12px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  color: #000000 !important;
+  line-height: 1.7em !important;
+  text-decoration: none !important;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04), 0 2px 4px rgba(0,0,0,0.04) !important;
+  transition: background-color 0.2s ease, opacity 0.2s ease;
+}
+
+/* Hover + focus: match live secondary button (rgba(255,255,255,0.6) over cream nav bg) */
+#page-container #main-header #top-menu li.site-nav-workshop > a:hover,
+#page-container #main-header #top-menu li.site-nav-workshop > a:focus-visible {
+  background-color: rgba(255, 255, 255, 0.6) !important;
+  color: #000000 !important;
+  text-decoration: none !important;
+}
+
+/* Active: slight press */
+#page-container #main-header #top-menu li.site-nav-workshop > a:active {
+  background-color: rgba(255, 255, 255, 0.5) !important;
+  color: #000000 !important;
+}
+
+/* ── Plain nav links — pin visited so browser never applies purple ─ */
+#page-container #main-header #top-menu > li:not(.et_pb_button):not(.site-nav-workshop) > a:visited {
+  color: var(--ds-color-muted, #52525B) !important;
+}
+
+/* ── Hide Download CV from desktop nav — still shows in mobile ───
+   Higher specificity than Divi's #main-header #top-menu li { display: inline-flex !important } */
+@media (min-width: 981px) {
+  #main-header #top-menu li.site-nav-mobile-only {
+    display: none !important;
+  }
+}
+
+/* design-system page uses a simpler nav without Divi IDs */
+@media (min-width: 981px) {
+  .site-nav-mobile-only {
+    display: none !important;
+  }
+}
+
+/* ── Footer shell ─────────────────────────────────────────────── */
+.site-footer {
+  background-color: #09090B;
+  color: rgba(255, 255, 255, 0.75);
+  font-family: var(--ds-font-body, 'Inter', system-ui, sans-serif);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ── Main grid — 4 columns on desktop ────────────────────────── */
+/* max-width matches Divi .container / nav container (1100px).
+   box-sizing: border-box prevents padding adding to max-width on non-Divi pages.
+   No horizontal padding — content is flush with the container edge,
+   matching the nav logo left alignment. */
+.site-footer__inner {
+  box-sizing: border-box;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 5rem 0 3.5rem;
+  display: grid;
+  grid-template-columns: 1.9fr 1fr 1fr 1.6fr;
+  gap: 2.5rem 3rem;
+  align-items: start;
+}
+
+/* ── Brand column ─────────────────────────────────────────────── */
+.site-footer__brand {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Same SVG as nav logo — inverted to white via CSS filter.
+   align-self: flex-start prevents the flex-column's default stretch
+   from expanding the img to the full column width. */
+.site-footer__wordmark {
+  display: block;
+  height: 24px;
+  width: auto;
+  align-self: flex-start;
+  margin: 0 0 1.25rem;
+  /* Invert the dark-fill SVG (#2B180A) to white on the dark footer */
+  filter: brightness(0) invert(1);
+  image-rendering: -webkit-optimize-contrast;
+}
+
+.site-footer__tagline {
+  font-size: 0.8125rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.42);
+  margin: 0;
+  padding: 0;
+  max-width: 24ch;
+}
+
+/* ── Nav columns (Explore + Resources) ───────────────────────── */
+.site-footer__col {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.site-footer__col-heading {
+  display: block;
+  font-family: var(--ds-font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.6875rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.28);
+  margin: 0 0 1.1rem;
+  padding: 0;
+}
+
+/* Footer links — visited explicitly set to prevent browser-default purple */
+.site-footer__col a,
+.site-footer__col a:visited {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  display: block;
+  padding: 0.3rem 0;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+
+.site-footer__col a:hover,
+.site-footer__col a:focus-visible {
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 255, 255, 0.35);
+  text-underline-offset: 3px;
+}
+
+/* ── CTA block (right column) ─────────────────────────────────── */
+.site-footer__cta-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  padding: 1.25rem 1.375rem 1.375rem;
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 10px;
+}
+
+.site-footer__cta-block .site-footer__col-heading {
+  margin-bottom: 0.75rem;
+}
+
+.site-footer__cta-copy {
+  font-size: 0.8125rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0 0 1.25rem;
+  padding: 0;
+}
+
+/* ── Footer CTA button — matches live white button treatment ─────
+   Reference: #page-container #main-header #top-menu
+     li.et_pb_button.et_pb_button_secondary {
+       background-color: #ffffff;
+       border: 1px solid var(--ds-color-border, #E2D6CD);
+       box-shadow: none;
+     }
+   ─────────────────────────────────────────────────────────────── */
+.site-footer__cta-btn,
+.site-footer__cta-btn:visited {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 28px;
+  border-radius: 999px;
+  background-color: #ffffff;
+  color: var(--ds-color-text-strong, #09090B) !important;
+  border: 1px solid var(--ds-color-border, #E2D6CD);
+  box-shadow: none;
+  font-family: var(--ds-font-body, 'Inter', system-ui, sans-serif);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-decoration: none !important;
+  white-space: nowrap;
+  transition: background-color 0.15s ease;
+  cursor: pointer;
+}
+
+/* Hover: subtle warm bg, matching secondary nav button hover */
+.site-footer__cta-btn:hover,
+.site-footer__cta-btn:focus-visible {
+  background-color: var(--ds-color-surface-raised, #F6EFEA) !important;
+  border-color: var(--ds-color-border, #E2D6CD) !important;
+  box-shadow: none !important;
+  color: var(--ds-color-text-strong, #09090B) !important;
+  text-decoration: none !important;
+  transform: none;
+}
+
+.site-footer__cta-btn:active {
+  background-color: var(--ds-color-surface-inset, #EEE5DE) !important;
+  border-color: var(--ds-color-border-strong, rgba(0,0,0,.18)) !important;
+  color: var(--ds-color-text-strong, #09090B) !important;
+  box-shadow: none !important;
+}
+
+/* ── Bottom bar ───────────────────────────────────────────────── */
+.site-footer__bottom {
+  box-sizing: border-box;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.25rem 0 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.site-footer__copy {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.25);
+  margin: 0;
+  padding: 0;
+}
+
+.site-footer__legal {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.site-footer__legal a,
+.site-footer__legal a:visited {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.25);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.site-footer__legal a:hover,
+.site-footer__legal a:focus-visible {
+  color: rgba(255, 255, 255, 0.25);
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 255, 255, 0.2);
+  text-underline-offset: 3px;
+}
+
+/* ── Responsive ───────────────────────────────────────────────── */
+/* Tablet: 2-column grid, add horizontal padding back since viewport is narrower */
+@media (max-width: 980px) {
+  .site-footer__inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem 2rem;
+    padding: 3.5rem 5% 0;
+  }
+
+  .site-footer__bottom {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
+  .site-footer__brand {
+    grid-column: 1 / -1;
+  }
+
+  .site-footer__cta-block {
+    grid-column: 1 / -1;
+  }
+
+  .site-footer__tagline {
+    max-width: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .site-footer__inner {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 3rem 5% 2rem;
+  }
+
+  .site-footer__bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 1.75rem;
+  }
+}
+
+/* ── design-system page nav pill (no Divi menu-item IDs) ─────── */
+.site-nav-workshop > a,
+.site-nav-workshop > a:visited {
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #000000 !important;
+  line-height: 1;
+  text-decoration: none !important;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04), 0 2px 4px rgba(0,0,0,0.04);
+  transition: background-color 0.2s ease;
+}
+
+.site-nav-workshop > a:hover,
+.site-nav-workshop > a:focus-visible {
+  background-color: rgba(255, 255, 255, 0.6);
+  color: #000000 !important;
+  text-decoration: none;
+}
