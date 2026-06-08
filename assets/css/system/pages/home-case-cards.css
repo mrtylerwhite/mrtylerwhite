@@ -49,23 +49,10 @@ body.page-id-2147 #page-container .et_pb_section_0 .et_pb_text_inner > .ds-eyebr
   text-shadow: none !important;
 }
 
-/* Title → body/CTA gap (on card title, not any following p).
-   The large display serif carries ~33px of empty line-box leading below the
-   last line, so a positive margin reads as a ~49px gap. We pull the following
-   copy up with a negative margin (and add a touch of margin-top) so the visual
-   rhythm lands at ~7px eyebrow→title and ~15px title→description. Margins only —
-   font size / line-height / treatment are untouched. */
+/* Title → body gap: offset eyebrow clearance without negative margin pull. */
 #page-container .case-work .card-kepler .et_pb_text_inner > h5 {
   margin-top: 12px !important;
-  margin-bottom: -18px !important;
-}
-
-/* Below the title's font-size clamp minimum the line-box leading shrinks, so
-   the fixed negative margin would over-tighten — ease it off to keep ~12px. */
-@media (max-width: 1000px) {
-  #page-container .case-work .card-kepler .et_pb_text_inner > h5 {
-    margin-bottom: -12px !important;
-  }
+  margin-bottom: 0 !important;
 }
 
 /* Small cards: title sits directly above the CTA; trim the gap to ~20px */

@@ -12,6 +12,7 @@ body.home #page-container #main-content .et-l--post :where(h1, h2, h3, h4, h5, h
   text-transform: none !important;
   text-shadow: none !important;
   line-height: 1.05 !important;
+  margin-bottom: 0.35em !important;
 }
 
 /* A. Hero display heading */
