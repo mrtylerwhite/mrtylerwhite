@@ -22,7 +22,7 @@ body.home .hero-cntn .et_pb_row_0.et_pb_row {
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  background-image: url("/wp-content/uploads/2025/12/Palm-Swaying-poster.jpg");
+  background-image: url("/wp-content/uploads/2025/12/Palm-Swaying-poster.webp");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -60,6 +60,7 @@ body.home .hero-cntn .et_pb_row_0.et_pb_row {
   }
 
   .hero-cntn.et_pb_section_0::after {
+    background-image: url("/wp-content/uploads/2025/12/Palm-Swaying-poster-mobile.webp");
     opacity: 0.38;
   }
 

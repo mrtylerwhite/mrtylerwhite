@@ -183,6 +183,31 @@ body.home #page-container #main-content .case-work .card-kepler .et_pb_text_inne
   }
 }
 
+/* Case study decorative backgrounds — applied via lazy-case-bg.js near viewport */
+body.home #page-container .case-work .et_pb_row_4.card-notch,
+body.home #page-container .case-work .et_pb_row_5.card-kepler-hm,
+body.home #page-container .case-work .card-side-by-side .et_pb_column_13,
+body.home #page-container .case-work .card-side-by-side .et_pb_column_14 {
+  background-color: #f6f0e9;
+}
+
+body.home #page-container .case-work .et_pb_row_4.card-notch.is-lazy-bg-loaded {
+  background-position: right 0 center;
+  background-repeat: no-repeat;
+}
+
+body.home #page-container .case-work .et_pb_row_5.card-kepler-hm.is-lazy-bg-loaded {
+  background-position: right 0 bottom;
+  background-repeat: no-repeat;
+}
+
+body.home #page-container .case-work .card-side-by-side .et_pb_column_13.is-lazy-bg-loaded,
+body.home #page-container .case-work .card-side-by-side .et_pb_column_14.is-lazy-bg-loaded {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 /* ── Social proof logos: center slots on mobile (flipper mask lives in home.css) ── */
 @media screen and (max-width: 767px) {
   body.home #page-container .et_pb_row_2.social-proof .et_pb_column {
