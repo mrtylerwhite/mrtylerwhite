@@ -28,7 +28,7 @@ body.page-id-2147 #page-container .et_pb_section_0 .et_pb_text_inner > .ds-eyebr
 /* -------------------------------------------------------------------------- */
 
 /* C. Large featured case cards (homepage + case-studies index) */
-#page-container .case-work .card-kepler h5 {
+#page-container .case-work .card-kepler :is(h3, h5) {
   font-family: var(--ds-font-display) !important;
   font-weight: 400 !important;
   font-size: clamp(2rem, 3.2vw, 3.5rem) !important;
@@ -39,7 +39,7 @@ body.page-id-2147 #page-container .et_pb_section_0 .et_pb_text_inner > .ds-eyebr
 }
 
 /* D. Small case cards */
-#page-container .case-work .card-side-by-side h6 {
+#page-container .case-work .card-side-by-side :is(h4, h6) {
   font-family: var(--ds-font-display) !important;
   font-weight: 500 !important;
   font-size: clamp(1.25rem, 1.6vw, 1.75rem) !important;
@@ -50,17 +50,17 @@ body.page-id-2147 #page-container .et_pb_section_0 .et_pb_text_inner > .ds-eyebr
 }
 
 /* Title → body gap on featured case cards (homepage; beats home-typography h5 rule). */
-body.home #page-container #main-content .case-work .card-kepler .et_pb_text_inner > h5 {
+body.home #page-container #main-content .case-work .card-kepler .et_pb_text_inner > :is(h3, h5) {
   margin-top: 12px !important;
   margin-bottom: 0.4em !important;
 }
 
-body.home #page-container #main-content .case-work .card-kepler .et_pb_text_inner > h5 + p {
+body.home #page-container #main-content .case-work .card-kepler .et_pb_text_inner > :is(h3, h5) + p {
   margin-top: 0 !important;
 }
 
 /* Small cards: title sits directly above the CTA; trim the gap to ~20px */
-#page-container .case-work .card-side-by-side .et_pb_text_inner > h6 {
+#page-container .case-work .card-side-by-side .et_pb_text_inner > :is(h4, h6) {
   margin-top: 0 !important;
   margin-bottom: 2px !important;
 }

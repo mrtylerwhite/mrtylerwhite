@@ -582,7 +582,7 @@ body.et_pb_pagebuilder_layout,
   margin-top: 16px;
 }
 
-#page-container .case-work .et_pb_text_inner > .ds-eyebrow + :is(h5, h6) {
+#page-container .case-work .et_pb_text_inner > .ds-eyebrow + :is(h3, h4, h5, h6) {
   margin-top: 0;
 }
 

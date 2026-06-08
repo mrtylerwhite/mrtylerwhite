@@ -187,7 +187,7 @@
 .site-footer__tagline {
   font-size: 0.8125rem;
   line-height: 1.7;
-  color: rgba(255, 255, 255, 0.42);
+  color: rgba(255, 255, 255, 0.58);
   margin: 0;
   padding: 0;
   max-width: 24ch;
@@ -209,7 +209,7 @@
   font-weight: 400;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.28);
+  color: rgba(255, 255, 255, 0.52);
   margin: 0 0 1.1rem;
   padding: 0;
 }
@@ -321,7 +321,7 @@
 
 .site-footer__copy {
   font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 0.48);
   margin: 0;
   padding: 0;
 }
