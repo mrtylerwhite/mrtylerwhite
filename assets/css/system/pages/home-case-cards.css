@@ -179,14 +179,8 @@ body.page-id-2147 #page-container .et_pb_section_0 .et_pb_text_inner > .ds-eyebr
   }
 }
 
-/* ── Social proof logos: keep readable size on mobile ────────────────────── */
+/* ── Social proof logos: center slots on mobile (flipper mask lives in home.css) ── */
 @media screen and (max-width: 767px) {
-  body.home #page-container .et_pb_row_2.social-proof .et_pb_image img {
-    height: 26px !important;
-    width: auto !important;
-    max-width: none !important;
-  }
-
   body.home #page-container .et_pb_row_2.social-proof .et_pb_column {
     text-align: center !important;
     display: flex !important;
