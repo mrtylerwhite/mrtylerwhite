@@ -177,11 +177,11 @@ body:has(#post-newsletter) #main-content {
 }
 
 #post-newsletter .nl-saasify-senja .senja-embed {
-  display: block;
-  width: fit-content;
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
+  display: block !important;
+  width: fit-content !important;
+  max-width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
 /* -------------------------------------------------------------------------- */
