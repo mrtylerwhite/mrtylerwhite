@@ -47,40 +47,103 @@
           </div>
 
           <div class="pr-hero__card ds-reveal ds-reveal-d2">
-            <div class="pr-event-card">
-              <div class="pr-event-card__header">
-                <span class="pr-event-card__eyebrow">Live Workshop</span>
-                <span class="pr-event-card__seats">Limited seats</span>
-              </div>
-              <div class="pr-event-card__date">
-                <span class="pr-event-card__date-main">First Saturday of every month</span>
-                <span class="pr-event-card__date-time">7:00 AM ET</span>
-              </div>
-              <div class="pr-event-card__rows">
-                <div class="pr-event-card__row">
-                  <span class="pr-event-card__label">Format</span>
-                  <span class="pr-event-card__val">Live on Zoom</span>
+            <div class="workshop-card-shell">
+              <article class="workshop-card" aria-label="Workshop details and pricing">
+
+                <!-- Head: timestamp + title + duration pill -->
+                <div class="workshop-card__head">
+                  <span class="workshop-card__timestamp">First Saturday · 7:00 AM ET</span>
+                  <p class="workshop-card__title">Prototype Ready.</p>
+                  <span class="workshop-card__duration">
+                    <svg width="9" height="10" viewBox="0 0 9 10" fill="currentColor" aria-hidden="true"><polygon points="1,1 8,5 1,9"/></svg>
+                    90 min
+                  </span>
                 </div>
-                <div class="pr-event-card__row">
-                  <span class="pr-event-card__label">Length</span>
-                  <span class="pr-event-card__val">90 min + Q&amp;A</span>
+
+                <!-- Tab bar (JS-powered) -->
+                <div class="workshop-card__tabs" role="tablist" aria-label="Workshop info">
+                  <button class="workshop-card__tab workshop-card__tab--active" role="tab" aria-selected="true" aria-controls="wc-panel-summary" id="wc-tab-summary" data-panel="summary">
+                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6.5" cy="6.5" r="5"/><circle cx="6.5" cy="6.5" r="1.75" fill="currentColor" stroke="none"/></svg>
+                    Summary
+                  </button>
+                  <button class="workshop-card__tab" role="tab" aria-selected="false" aria-controls="wc-panel-details" id="wc-tab-details" data-panel="details">
+                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="1.5" width="9" height="10" rx="1.5"/><line x1="4" y1="5" x2="9" y2="5"/><line x1="4" y1="7.5" x2="9" y2="7.5"/><line x1="4" y1="10" x2="7" y2="10"/></svg>
+                    Details
+                  </button>
+                  <button class="workshop-card__tab" role="tab" aria-selected="false" aria-controls="wc-panel-included" id="wc-tab-included" data-panel="included">
+                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><polyline points="2,6.5 5,9.5 11,3.5"/></svg>
+                    Included
+                  </button>
                 </div>
-                <div class="pr-event-card__row">
-                  <span class="pr-event-card__label">Replay</span>
-                  <span class="pr-event-card__val">Included</span>
+
+                <!-- Panel: Summary -->
+                <div class="workshop-card__panel" id="wc-panel-summary" role="tabpanel" aria-labelledby="wc-tab-summary">
+                  <p class="workshop-card__intro">Key details about this live workshop:</p>
+                  <ul class="workshop-card__list">
+                    <li><strong>Format:</strong> Live on Zoom, first Saturday monthly</li>
+                    <li><strong>Length:</strong> 90 min working session + Q&amp;A</li>
+                    <li><strong>Replay:</strong> Full recording included within 24h</li>
+                    <li><strong>Tools:</strong> Figma · Claude · Cursor</li>
+                  </ul>
+                  <p class="workshop-card__note">Next step: Save your seat and show up ready to build.</p>
                 </div>
-                <div class="pr-event-card__row">
-                  <span class="pr-event-card__label">Tools</span>
-                  <span class="pr-event-card__val">Figma · Claude · Cursor</span>
+
+                <!-- Panel: Details -->
+                <div class="workshop-card__panel workshop-card__panel--hidden" id="wc-panel-details" role="tabpanel" aria-labelledby="wc-tab-details">
+                  <p class="workshop-card__intro">How the session runs:</p>
+                  <ul class="workshop-card__list">
+                    <li><strong>Schedule:</strong> First Saturday of every month</li>
+                    <li><strong>Start time:</strong> 7:00 AM ET on Zoom</li>
+                    <li><strong>Duration:</strong> 90 minutes + live Q&amp;A</li>
+                    <li><strong>Format:</strong> Live working session — not a webinar</li>
+                  </ul>
+                  <p class="workshop-card__note">Replay ships within 24h if you can't make it live.</p>
                 </div>
-              </div>
-              <div class="pr-event-card__price-row">
-                <div class="pr-event-card__price">
-                  $7<span class="pr-event-card__price-sub">one-time</span>
+
+                <!-- Panel: Included -->
+                <div class="workshop-card__panel workshop-card__panel--hidden" id="wc-panel-included" role="tabpanel" aria-labelledby="wc-tab-included">
+                  <p class="workshop-card__intro">Everything you walk away with:</p>
+                  <ul class="workshop-card__list">
+                    <li><strong>Live session</strong> + full replay</li>
+                    <li><strong>Prototype Brief</strong> worksheet</li>
+                    <li><strong>AI prompt pack</strong> — 20+ prompts by stage</li>
+                    <li><strong>Cursor + Claude</strong> workflow guide</li>
+                    <li><strong>Validation</strong> checklist + handoff template</li>
+                  </ul>
+                  <p class="workshop-card__note">Seven tools. One method. One Monday.</p>
                 </div>
-                <a href="https://saasifyos.kit.com/products/live-builder-kickoff-workshop?step=checkout" class="ds-btn-primary pr-event-card__cta">Grab your seat</a>
-              </div>
+
+                <!-- Footer toolbar -->
+                <footer class="workshop-card__footer">
+                  <span class="workshop-card__price-tag">$7 · one-time</span>
+                  <a href="https://saasifyos.kit.com/products/live-builder-kickoff-workshop?step=checkout" class="workshop-card__cta">Grab your seat</a>
+                </footer>
+
+              </article>
             </div>
+
+            <script>
+            (function () {
+              var card = document.querySelector('.workshop-card');
+              if (!card) return;
+              var tabs = card.querySelectorAll('.workshop-card__tab');
+              tabs.forEach(function (tab) {
+                tab.addEventListener('click', function () {
+                  tabs.forEach(function (t) {
+                    t.classList.remove('workshop-card__tab--active');
+                    t.setAttribute('aria-selected', 'false');
+                  });
+                  card.querySelectorAll('.workshop-card__panel').forEach(function (p) {
+                    p.classList.add('workshop-card__panel--hidden');
+                  });
+                  tab.classList.add('workshop-card__tab--active');
+                  tab.setAttribute('aria-selected', 'true');
+                  var panel = card.querySelector('#wc-panel-' + tab.dataset.panel);
+                  if (panel) panel.classList.remove('workshop-card__panel--hidden');
+                });
+              });
+            }());
+            </script>
           </div>
 
       </div>
@@ -131,17 +194,52 @@
           </div>
 
           <div class="pr-two-col__aside">
-            <div class="pr-workflow-card">
-              <p class="pr-workflow-card__eyebrow ds-eyebrow">The usual mess</p>
-              <div class="pr-workflow-steps">
-                <div class="pr-workflow-step pr-workflow-step--muted">PRD (or nothing)</div>
-                <div class="pr-workflow-step pr-workflow-step--muted">Ask Claude to "make a UI"</div>
-                <div class="pr-workflow-step pr-workflow-step--muted">Open Figma. Start building.</div>
-                <div class="pr-workflow-step pr-workflow-step--muted">Vibe-code something.</div>
-                <div class="pr-workflow-step pr-workflow-step--muted">Show stakeholders. Hope for the best.</div>
-                <div class="pr-workflow-step pr-workflow-step--warn">Prototype Ready: Frame it. Build it. Test it.</div>
+            <div class="mess-card">
+
+              <div class="mess-card__header">
+                <h3>The Usual Mess</h3>
+                <button class="mess-card__plus" aria-hidden="true" tabindex="-1">+</button>
               </div>
-              <p class="pr-workflow-card__note">The problem is always the first five minutes,<br>not the tools.</p>
+
+              <div class="mess-card__panel">
+
+                <div class="mess-card__row mess-card__row--done">
+                  <span class="mess-card__check" aria-hidden="true">✓</span>
+                  <span class="mess-card__text">PRD (or nothing)</span>
+                </div>
+
+                <div class="mess-card__row mess-card__row--done">
+                  <span class="mess-card__check" aria-hidden="true">✓</span>
+                  <span class="mess-card__text">Ask Claude to "make a UI"</span>
+                </div>
+
+                <div class="mess-card__row mess-card__row--done">
+                  <span class="mess-card__check" aria-hidden="true">✓</span>
+                  <span class="mess-card__text">Open Figma. Start building.</span>
+                </div>
+
+                <div class="mess-card__row mess-card__row--done">
+                  <span class="mess-card__check" aria-hidden="true">✓</span>
+                  <span class="mess-card__text">Vibe-code something.</span>
+                </div>
+
+                <div class="mess-card__row mess-card__row--done">
+                  <span class="mess-card__check" aria-hidden="true">✓</span>
+                  <span class="mess-card__text">Show stakeholders. Hope for the best.</span>
+                </div>
+
+                <div class="mess-card__row mess-card__row--active">
+                  <span class="mess-card__check" aria-hidden="true">✓</span>
+                  <span class="mess-card__text">Prototype Ready: Frame it. Build it. Test it.</span>
+                  <span class="mess-card__pill">Use this</span>
+                </div>
+
+              </div>
+
+              <div class="mess-card__note">
+                The problem is always the first five minutes, not the tools.
+              </div>
+
             </div>
           </div>
 

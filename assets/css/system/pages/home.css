@@ -1,3 +1,13 @@
+@property --border-angle {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0turn;
+}
+
+@keyframes border-spin {
+  to { --border-angle: 1turn; }
+}
+
 /*
   Homepage v3 — page-scoped (body.home only)
   Cinematic dark bands · bento · framework lockup · dark close
@@ -640,6 +650,51 @@ body.home #page-container #main-header:not(.main-header--on-dark) .et_divi_100_c
 body.home #page-container #main-header.main-header--on-dark .et_divi_100_custom_hamburger_menu__icon div,
 body.home #page-container #main-header.main-header--on-dark .et_divi_100_custom_hamburger_menu__icon.et_divi_100_custom_hamburger_menu__icon--toggled div {
   background: #ffffff !important;
+}
+
+/* ── Hero CTA swap: case studies → white + animated border, newsletter → black ── */
+
+/* Spinning ring wrapper around the white button */
+body.home .home-hero__cta-ring {
+  display: inline-block;
+  border-radius: 999px;
+  padding: 1.5px;
+  background: conic-gradient(from var(--border-angle), transparent 25%, #c59060, #f5d9b0 75%, transparent);
+  animation: border-spin 3s linear infinite;
+  vertical-align: middle;
+  margin-right: 16px;
+}
+
+body.home .home-hero__cta-ring:hover {
+  animation-play-state: paused;
+}
+
+/* White button inside the ring */
+body.home #page-container #cta_case_studies {
+  background: #ffffff !important;
+  color: #000000 !important;
+  border: none !important;
+}
+
+body.home #page-container #cta_case_studies:hover,
+body.home #page-container #cta_case_studies:active {
+  background: #f5f5f5 !important;
+  color: #000000 !important;
+  transform: none !important;
+}
+
+/* Newsletter → black */
+body.home #page-container #cta_newsletter {
+  background: #000000 !important;
+  color: #ffffff !important;
+  border: 1px solid #000000 !important;
+}
+
+body.home #page-container #cta_newsletter:hover,
+body.home #page-container #cta_newsletter:active {
+  background: #1a1a1a !important;
+  color: #ffffff !important;
+  border-color: #1a1a1a !important;
 }
 
 /* ── Responsive ─────────────────────────────────────────────────── */
