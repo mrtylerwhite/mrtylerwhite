@@ -130,33 +130,13 @@ body.home #page-container #main-content .case-work .card-kepler .et_pb_text_inne
   }
 }
 
-/* Small case cards — bottom scrim for copy/CTA */
+/* Small case cards — base reset (shared across homepage + case-studies) */
 #page-container .case-work .card-side-by-side > .et_pb_column_1_2 {
   position: relative;
-  isolation: isolate;
 }
-
+/* Kill the old pseudo-element overlay */
 #page-container .case-work .card-side-by-side > .et_pb_column_1_2::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  top: auto;
-  height: 48%;
-  background: linear-gradient(
-    to top,
-    rgba(246, 240, 233, 0.96) 0%,
-    rgba(246, 240, 233, 0.82) 45%,
-    rgba(246, 240, 233, 0) 100%
-  );
-  pointer-events: none;
-  z-index: 1;
-}
-
-#page-container .case-work .card-side-by-side .et_pb_text {
-  position: relative;
-  z-index: 2;
+  content: none;
 }
 
 #page-container .case-work .card-side-by-side .et_pb_text_inner > .ds-eyebrow,
@@ -165,21 +145,70 @@ body.home #page-container #main-content .case-work .card-kepler .et_pb_text_inne
   text-shadow: none !important;
 }
 
+/* ─── Case-studies index only: real frosted bottom panel ─────────────────── */
+
+/* Column: flex column so .et_pb_text anchors to the bottom */
+body.page-id-2147 #page-container .case-work .card-side-by-side > .et_pb_column_1_2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  padding: 0 !important;   /* override per-column 50px padding from inline <style> */
+  min-height: 702px;
+}
+
+/* Divi decorative spans: pull out of flex flow */
+body.page-id-2147 #page-container .case-work .card-side-by-side > .et_pb_column_1_2 > .et_pb_background_pattern,
+body.page-id-2147 #page-container .case-work .card-side-by-side > .et_pb_column_1_2 > .et_pb_background_mask {
+  position: absolute !important;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Frosted content panel — applied directly to the text module */
+body.page-id-2147 #page-container .case-work .card-side-by-side > .et_pb_column_1_2 > .et_pb_text {
+  position: relative;
+  z-index: 3;
+  margin: 0 !important;
+  padding: 28px 40px 34px !important;
+  background: rgba(255, 250, 244, 0.40);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* No gradient feather — clean panel edge only */
+body.page-id-2147 #page-container .case-work .card-side-by-side > .et_pb_column_1_2 > .et_pb_text::before {
+  content: none;
+  display: none;
+}
+
+/* Hide body copy only — keep eyebrow (.ds-eyebrow) and CTA (p > a) */
+body.page-id-2147 #page-container .case-work .card-side-by-side > .et_pb_column_1_2 > .et_pb_text .et_pb_text_inner > p:not(.ds-eyebrow):not(:has(a)) {
+  display: none;
+}
+
 @media screen and (max-width: 980px) {
-  #page-container .case-work .card-side-by-side > .et_pb_column_1_2::before {
-    height: 52%;
+  body.page-id-2147 #page-container .case-work .card-side-by-side > .et_pb_column_1_2 {
+    min-height: 650px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  #page-container .case-work .card-side-by-side > .et_pb_column_1_2::before {
-    height: 56%;
+  body.page-id-2147 #page-container .case-work .card-side-by-side > .et_pb_column_1_2 {
+    min-height: 598px;
+  }
+  body.page-id-2147 #page-container .case-work .card-side-by-side > .et_pb_column_1_2 > .et_pb_text {
+    padding: 24px 28px 30px !important;
   }
 }
 
-@media screen and (max-width: 430px) {
-  #page-container .case-work .card-side-by-side > .et_pb_column_1_2::before {
-    height: 58%;
+@media screen and (max-width: 479px) {
+  body.page-id-2147 #page-container .case-work .card-side-by-side > .et_pb_column_1_2 {
+    min-height: 598px;
+  }
+  body.page-id-2147 #page-container .case-work .card-side-by-side > .et_pb_column_1_2 > .et_pb_text {
+    padding: 24px 28px 30px !important;
   }
 }
 
