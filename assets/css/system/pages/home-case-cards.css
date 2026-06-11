@@ -42,9 +42,9 @@ body.page-id-2147 #page-container .et_pb_section_0 .et_pb_text_inner > .ds-eyebr
 #page-container .case-work .card-side-by-side :is(h4, h6) {
   font-family: var(--ds-font-display) !important;
   font-weight: 500 !important;
-  font-size: clamp(1.25rem, 1.6vw, 1.75rem) !important;
-  line-height: 1.08 !important;
-  letter-spacing: -0.02em !important;
+  font-size: clamp(1.5rem, 1.92vw, 2.1rem) !important;
+  line-height: 1.06 !important;
+  letter-spacing: -0.01em !important;
   text-transform: none !important;
   text-shadow: none !important;
 }
