@@ -16,6 +16,14 @@
       ]
     },
     {
+      "source": "/(.*)\\.skill",
+      "headers": [
+        { "key": "Content-Type", "value": "application/octet-stream" },
+        { "key": "Content-Disposition", "value": "attachment; filename=\"roi-design-case-study.skill\"" },
+        { "key": "Cache-Control", "value": "public, max-age=86400, must-revalidate" }
+      ]
+    },
+    {
       "source": "/(.*\\.html|.*/)",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }

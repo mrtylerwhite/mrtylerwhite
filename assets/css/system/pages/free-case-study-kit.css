@@ -221,6 +221,26 @@ body.free-case-study-kit .fck-hero__sub {
   color: var(--ds-color-muted);
 }
 
+body.free-case-study-kit .fck-hero__fallback {
+  margin: 1.25rem auto 0;
+  max-width: 42rem;
+  font-family: var(--ds-font-body);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--ds-color-muted);
+}
+
+body.free-case-study-kit .fck-hero__fallback a {
+  color: var(--ds-color-text-strong);
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+body.free-case-study-kit .fck-hero__fallback a:hover {
+  color: var(--ds-color-text);
+}
+
 /* ── Video card ─────────────────────────────────────────────────── */
 body.free-case-study-kit .fck-video-section {
   padding: 0 0 2rem;
