@@ -78,11 +78,60 @@
       });
     }
 
-    function scrollToChat() {
-      var target = document.getElementById("chat-capture");
-      if (target) {
-        target.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    function afterScrollEnd(cb, maxMs) {
+      var timer;
+      var finished = false;
+
+      function done() {
+        if (finished) return;
+        finished = true;
+        window.removeEventListener("scroll", onScroll);
+        clearTimeout(timer);
+        cb();
       }
+
+      function onScroll() {
+        clearTimeout(timer);
+        timer = setTimeout(done, 80);
+      }
+
+      window.addEventListener("scroll", onScroll, { passive: true });
+      timer = setTimeout(done, maxMs || 900);
+      onScroll();
+    }
+
+    function highlightChat() {
+      var shell = document.getElementById("chat-capture");
+      if (!shell) return;
+      shell.classList.add("rcst-chat-shell--guided");
+      if (prefersReducedMotion()) return;
+      window.setTimeout(function () {
+        shell.classList.remove("rcst-chat-shell--guided");
+      }, 1400);
+    }
+
+    function scrollToChat(cb) {
+      var target = document.getElementById("chat-capture");
+      if (!target) {
+        if (cb) cb();
+        return;
+      }
+
+      var reduced = prefersReducedMotion();
+      target.scrollIntoView({
+        behavior: reduced ? "auto" : "smooth",
+        block: "center",
+        inline: "nearest",
+      });
+
+      if (reduced) {
+        if (cb) cb();
+        return;
+      }
+
+      afterScrollEnd(function () {
+        if (cb) cb();
+      });
     }
 
     function engageHero(btn) {
@@ -93,28 +142,35 @@
       if (actions) actions.setAttribute("aria-hidden", "true");
     }
 
+    function beginChat(fromHero, btn) {
+      if (fromHero) {
+        engageHero(btn);
+      }
+      highlightChat();
+      if (self.state === "idle" || self.state === "success") {
+        self.start();
+      } else if (self.state !== "submitting") {
+        self.input && self.input.focus();
+      }
+    }
+
     document.querySelectorAll("[data-start-chat]").forEach(function (btn) {
       btn.addEventListener("click", function (e) {
         if (btn.tagName === "A" && btn.getAttribute("href") === "#chat-capture") {
           e.preventDefault();
         }
         var fromHero = !!btn.closest(".rcst-hero__actions");
-        if (fromHero) {
-          engageHero(btn);
-        } else {
-          scrollToChat();
-        }
-        if (self.state === "idle" || self.state === "success") {
-          self.start();
-        } else if (self.state !== "submitting") {
-          self.input && self.input.focus();
-        }
+        scrollToChat(function () {
+          beginChat(fromHero, btn);
+        });
       });
     });
 
     document.querySelectorAll("[data-scroll-chat]").forEach(function (btn) {
       btn.addEventListener("click", function () {
-        scrollToChat();
+        scrollToChat(function () {
+          highlightChat();
+        });
       });
     });
   };
@@ -136,7 +192,7 @@
       this.submitBtn.hidden = !!opts.hideButton;
     }
     if (this.composerEl) {
-      this.composerEl.hidden = !!opts.hideComposer;
+      this.composerEl.classList.toggle("rcst-chat__composer--hidden", !!opts.hideComposer);
     }
     if (this.idleHintEl) {
       this.idleHintEl.hidden = this.root.classList.contains("rcst-chat--active");
