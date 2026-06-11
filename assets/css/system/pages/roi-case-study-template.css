@@ -3,6 +3,12 @@
   Scope: body.roi-case-study-template only
 */
 
+@media (prefers-reduced-motion: no-preference) {
+  html:has(body.roi-case-study-template) {
+    scroll-behavior: smooth;
+  }
+}
+
 @property --border-angle {
   syntax: "<angle>";
   inherits: true;

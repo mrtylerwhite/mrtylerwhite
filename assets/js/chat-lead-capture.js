@@ -79,25 +79,33 @@
     }
 
     function afterScrollEnd(cb, maxMs) {
-      var timer;
       var finished = false;
+      var maxTimer;
+      var settleTimer;
 
       function done() {
         if (finished) return;
         finished = true;
         window.removeEventListener("scroll", onScroll);
-        clearTimeout(timer);
+        clearTimeout(maxTimer);
+        clearTimeout(settleTimer);
         cb();
       }
 
       function onScroll() {
-        clearTimeout(timer);
-        timer = setTimeout(done, 80);
+        clearTimeout(settleTimer);
+        settleTimer = setTimeout(done, 120);
       }
 
       window.addEventListener("scroll", onScroll, { passive: true });
-      timer = setTimeout(done, maxMs || 900);
-      onScroll();
+      maxTimer = setTimeout(done, maxMs || 1200);
+    }
+
+    function getChatScrollTop(target) {
+      var rect = target.getBoundingClientRect();
+      var targetTop = window.scrollY + rect.top;
+      var centeredTop = targetTop - (window.innerHeight - rect.height) / 2;
+      return Math.max(0, Math.round(centeredTop));
     }
 
     function highlightChat() {
@@ -118,16 +126,17 @@
       }
 
       var reduced = prefersReducedMotion();
-      target.scrollIntoView({
-        behavior: reduced ? "auto" : "smooth",
-        block: "center",
-        inline: "nearest",
-      });
+      var top = getChatScrollTop(target);
+      var startY = window.scrollY;
+      var needsScroll = Math.abs(startY - top) > 8;
 
-      if (reduced) {
+      if (reduced || !needsScroll) {
+        window.scrollTo({ top: top, left: 0, behavior: "auto" });
         if (cb) cb();
         return;
       }
+
+      window.scrollTo({ top: top, left: 0, behavior: "smooth" });
 
       afterScrollEnd(function () {
         if (cb) cb();
