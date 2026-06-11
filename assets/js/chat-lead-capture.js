@@ -21,7 +21,14 @@
     return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   }
 
+  function track(name, props) {
+    if (typeof window.trackEvent === "function") {
+      window.trackEvent(name, props || {});
+    }
+  }
+
   function redirectAfterKitSuccess(url) {
+    track("roi_skill_redirect_thank_you", { page: window.location.pathname });
     try {
       sessionStorage.setItem(RCST_THANK_YOU_KEY, "1");
     } catch (_) {}
@@ -70,6 +77,13 @@
     }
 
     if (this.input) {
+      var chatStarted = false;
+      this.input.addEventListener("focus", function () {
+        if (chatStarted || self.input.disabled) return;
+        chatStarted = true;
+        track("roi_skill_chat_start", { page: window.location.pathname });
+      });
+
       this.input.addEventListener("keydown", function (e) {
         if (e.key === "Enter") {
           e.preventDefault();
@@ -308,6 +322,7 @@
         return;
       }
       this.firstName = name;
+      track("roi_skill_name_submitted", { page: window.location.pathname });
       this.addMessage("user", name);
       this.busy = true;
       this.setComposer({ disabled: true, placeholder: "One moment…" });
@@ -346,6 +361,7 @@
         return;
       }
 
+      track("roi_skill_email_submitted", { page: window.location.pathname });
       this.addMessage("user", email);
       await this.submitToKit(email);
     }
@@ -390,6 +406,7 @@
       }
 
       if (res.ok && data && data.success === true) {
+        track("roi_skill_submit_success", { page: window.location.pathname });
         this.state = "success";
         this.root.classList.add("rcst-chat--success");
         this.setComposer({ hideComposer: true });
@@ -404,6 +421,11 @@
         return;
       }
 
+      track("roi_skill_submit_error", {
+        page: window.location.pathname,
+        reason: res.ok ? "api_rejected" : "http_" + res.status,
+      });
+
       var errMsg =
         data && typeof data.error === "string" && data.error.trim()
           ? data.error.trim()
@@ -413,6 +435,7 @@
       this.showError(errMsg);
       this.resetEmailComposer();
     } catch (_) {
+      track("roi_skill_submit_error", { page: window.location.pathname, reason: "network" });
       this.state = "email";
       this.showError("Something went wrong. Please try again.");
       this.resetEmailComposer();
