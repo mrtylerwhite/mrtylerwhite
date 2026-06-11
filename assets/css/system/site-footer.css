@@ -227,7 +227,7 @@
 
 .site-footer__col a:hover,
 .site-footer__col a:focus-visible {
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.6) !important;
   text-decoration: underline;
   text-decoration-color: rgba(255, 255, 255, 0.35);
   text-underline-offset: 3px;
@@ -341,10 +341,59 @@
 
 .site-footer__legal a:hover,
 .site-footer__legal a:focus-visible {
-  color: rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 0.25) !important;
   text-decoration: underline;
   text-decoration-color: rgba(255, 255, 255, 0.2);
   text-underline-offset: 3px;
+}
+
+/* ── Inside #page-container (Divi / case study pages) ───────────────────────
+   Footer sits inside #page-container on most templates. critical.css sets
+   #page-container a { color: inherit } and a:hover { color: #09090B } with
+   higher ID specificity — beat those rules here. */
+#page-container .site-footer {
+  background-color: #09090B !important;
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+
+#page-container .site-footer__tagline {
+  color: rgba(255, 255, 255, 0.58) !important;
+}
+
+#page-container .site-footer__col-heading {
+  color: rgba(255, 255, 255, 0.52) !important;
+}
+
+#page-container .site-footer__cta-copy {
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+
+#page-container .site-footer__copy {
+  color: rgba(255, 255, 255, 0.48) !important;
+}
+
+#page-container .site-footer__col a,
+#page-container .site-footer__col a:visited,
+#page-container .site-footer__col a:hover,
+#page-container .site-footer__col a:focus-visible,
+#page-container .site-footer__col a:active {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+#page-container .site-footer__legal a,
+#page-container .site-footer__legal a:visited,
+#page-container .site-footer__legal a:hover,
+#page-container .site-footer__legal a:focus-visible,
+#page-container .site-footer__legal a:active {
+  color: rgba(255, 255, 255, 0.25) !important;
+}
+
+#page-container .site-footer__cta-btn,
+#page-container .site-footer__cta-btn:visited,
+#page-container .site-footer__cta-btn:hover,
+#page-container .site-footer__cta-btn:focus-visible,
+#page-container .site-footer__cta-btn:active {
+  color: var(--ds-color-text-strong, #09090B) !important;
 }
 
 /* ── Responsive ───────────────────────────────────────────────── */

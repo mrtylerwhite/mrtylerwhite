@@ -1366,10 +1366,10 @@ body.et_fixed_nav #page-container #main-header {
 }
 
 /* ── Global link color (override Divi #2ea3f2 default) ───────────────────── */
-#page-container a:not([class*="et_pb_button"]):not(.ds-btn):not(.ds-btn-primary):not(.ds-btn-secondary):not(.workshop-card__cta):not(.pr-seat-header__cta):not(.pr-bento-cta__btn):not(.pr-hero__cta):not(.pr-ticket__cta) {
+#page-container a:not(.site-footer *):not([class*="et_pb_button"]):not(.ds-btn):not(.ds-btn-primary):not(.ds-btn-secondary):not(.workshop-card__cta):not(.pr-seat-header__cta):not(.pr-bento-cta__btn):not(.pr-hero__cta):not(.pr-ticket__cta) {
   color: inherit;
 }
-#page-container a:not([class*="et_pb_button"]):not(.ds-btn):not(.ds-btn-primary):not(.ds-btn-secondary):not(.workshop-card__cta):not(.pr-seat-header__cta):not(.pr-bento-cta__btn):not(.pr-hero__cta):not(.pr-ticket__cta):hover {
+#page-container a:not(.site-footer *):not([class*="et_pb_button"]):not(.ds-btn):not(.ds-btn-primary):not(.ds-btn-secondary):not(.workshop-card__cta):not(.pr-seat-header__cta):not(.pr-bento-cta__btn):not(.pr-hero__cta):not(.pr-ticket__cta):hover {
   color: var(--ds-color-text-strong, #09090B);
 }
 
