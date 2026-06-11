@@ -140,8 +140,8 @@
 
 /* ── Footer shell ─────────────────────────────────────────────── */
 .site-footer {
-  background-color: #09090B;
-  color: rgba(255, 255, 255, 0.75);
+  background-color: #09090B !important;
+  color: rgba(255, 255, 255, 0.75) !important;
   font-family: var(--ds-font-body, 'Inter', system-ui, sans-serif);
   font-size: 14px;
   line-height: 1.6;
@@ -187,7 +187,7 @@
 .site-footer__tagline {
   font-size: 0.8125rem;
   line-height: 1.7;
-  color: rgba(255, 255, 255, 0.58);
+  color: rgba(255, 255, 255, 0.58) !important;
   margin: 0;
   padding: 0;
   max-width: 24ch;
@@ -209,7 +209,7 @@
   font-weight: 400;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.52);
+  color: rgba(255, 255, 255, 0.52) !important;
   margin: 0 0 1.1rem;
   padding: 0;
 }
@@ -218,7 +218,7 @@
 .site-footer__col a,
 .site-footer__col a:visited {
   font-size: 0.875rem;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.6) !important;
   text-decoration: none;
   display: block;
   padding: 0.3rem 0;
@@ -252,7 +252,7 @@
 .site-footer__cta-copy {
   font-size: 0.8125rem;
   line-height: 1.65;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.5) !important;
   margin: 0 0 1.25rem;
   padding: 0;
 }
