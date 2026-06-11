@@ -397,6 +397,26 @@ body.free-case-study-kit .fck-next__link:focus-visible {
   border-radius: 4px;
 }
 
+/* ── Lead magnet enter fade (from /roi-case-study-template chat success) ─ */
+@media (prefers-reduced-motion: no-preference) {
+  html.rcst-thank-you-prehide body.free-case-study-kit {
+    opacity: 0;
+  }
+
+  body.free-case-study-kit.rcst-thank-you--enter {
+    animation: rcst-thank-you-enter 320ms ease forwards;
+  }
+
+  @keyframes rcst-thank-you-enter {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
+
 /* ── Responsive ─────────────────────────────────────────────────── */
 @media screen and (max-width: 980px) {
   body.free-case-study-kit {
