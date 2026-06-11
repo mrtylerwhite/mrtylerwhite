@@ -306,6 +306,15 @@ body.free-case-study-kit .fck-next__meta {
   color: var(--ds-color-faint);
 }
 
+body.free-case-study-kit .fck-next__note {
+  margin: 0;
+  font-family: var(--ds-font-body);
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  text-align: center;
+  color: var(--ds-color-faint);
+}
+
 body.free-case-study-kit .fck-next__actions {
   display: flex;
   flex-direction: column;
