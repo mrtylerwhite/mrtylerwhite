@@ -413,7 +413,7 @@
         await delay(400);
         this.addMessage(
           "assistant",
-          "Done. Check your inbox. I'm taking you to the walkthrough now."
+          "Done. Check your inbox — the skill is on its way."
         );
         await delay(750);
         redirectAfterKitSuccess(this.successRedirect);

@@ -162,6 +162,7 @@
       return;
     }
 
+    /* Skill is email-gated via Kit — download/open tracked in Kit email analytics, not on-site funnel */
     if (href.indexOf(".skill") !== -1) {
       trackEvent("roi_skill_download_click", { location: linkLocation(el) });
       return;
