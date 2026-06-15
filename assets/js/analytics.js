@@ -64,6 +64,8 @@
 
   function linkLocation(el) {
     if (!el) return "unknown";
+    if (el.closest(".hero-intro") || el.closest(".hero-cntn")) return "home_hero";
+    if (el.closest("#top-menu") || el.closest("#main-header")) return "nav";
     if (el.closest(".pr-bar")) return "header";
     if (el.closest(".rcst-hero__actions")) return "hero";
     if (el.closest(".workshop-card")) return "card";
@@ -112,6 +114,22 @@
     if (el.matches("[data-start-chat]")) {
       trackEvent("roi_skill_cta_click", { location: linkLocation(el) });
       return;
+    }
+
+    if (href.indexOf("/roi-case-study-template") !== -1) {
+      trackEvent("roi_skill_cta_click", { location: linkLocation(el) });
+      return;
+    }
+
+    if (
+      href === "/newsletter/" ||
+      href === "/newsletter" ||
+      href.indexOf("/newsletter/#") === 0
+    ) {
+      if (el.closest("#top-menu") || el.closest("#main-header")) {
+        trackEvent("newsletter_cta_click", { location: "nav" });
+        return;
+      }
     }
 
     if (href.indexOf("saasifyos.kit.com/products/live-builder-kickoff") !== -1) {

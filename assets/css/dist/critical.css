@@ -222,7 +222,7 @@ body.et_pb_pagebuilder_layout,
 
 /*
   Main nav text links — Divi/customizer uses font-weight: 600 on #top-menu a.
-  Excludes nav CTA buttons (li.et_pb_button: Download CV, Let's Connect).
+  Excludes nav CTA buttons (li.et_pb_button: Download CV, Join the Newsletter).
 */
 #page-container #main-header #top-menu > li:not(.et_pb_button) > a,
 #page-container #main-header #top-menu > li:not(.et_pb_button).current-menu-item > a,
@@ -1374,7 +1374,7 @@ body.et_fixed_nav #page-container #main-header {
 }
 
 /* ── Nav CTA buttons (pill primary / secondary) ───────────────────────────── */
-/* Primary — Let's Connect */
+/* Primary — Join the Newsletter */
 #page-container #main-header #top-menu li.et_pb_button:not(.et_pb_button_secondary),
 #page-container #main-header #top-menu li.menu-item-54 {
   background-color: #000000 !important;

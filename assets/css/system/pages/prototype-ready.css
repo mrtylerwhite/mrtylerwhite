@@ -327,7 +327,7 @@ body.prototype-ready .pr-hero__meta {
   margin-top: 0.875rem;
 }
 
-/* Workshop card — AI notes aesthetic (Tailark-inspired) */
+/* Workshop card — static port of Tailark Pro notes-2 layout (no React/Tailwind) */
 body.prototype-ready .workshop-card-shell {
   width: 100%;
   max-width: 420px;
@@ -335,13 +335,13 @@ body.prototype-ready .workshop-card-shell {
 
 body.prototype-ready .workshop-card {
   background: var(--ds-color-surface);
-  border: 0.5px solid #e2d6cda1;
-  border-radius: var(--ds-radius-xl);
+  border: 1px solid rgba(226, 214, 205, 0.72);
+  border-radius: 1rem;
   overflow: hidden;
   box-shadow:
-    0 1px 3px rgba(9, 9, 11, 0.04),
-    0 16px 48px rgba(9, 9, 11, 0.10),
-    0 4px 12px rgba(9, 9, 11, 0.05);
+    0 1px 2px rgba(9, 9, 11, 0.04),
+    0 8px 24px rgba(9, 9, 11, 0.06),
+    0 20px 48px rgba(9, 9, 11, 0.08);
 }
 
 /* ── Head: timestamp + title + duration pill ── */
@@ -359,10 +359,10 @@ body.prototype-ready .workshop-card__timestamp {
 
 body.prototype-ready .workshop-card__title {
   font-family: var(--ds-font-body);
-  font-size: 1.125rem;
+  font-size: 1.375rem;
   font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1.2;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
   color: var(--ds-color-text-strong);
   margin: 0 0 0.875rem;
 }
@@ -442,12 +442,23 @@ body.prototype-ready .workshop-card__tab--active {
   border-bottom-color: var(--ds-color-text-strong);
 }
 
+body.prototype-ready .workshop-card__tab:focus-visible {
+  outline: 2px solid var(--ds-color-text-strong);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
 /* ── Tab panels ── */
+body.prototype-ready .workshop-card__panels {
+  min-height: 13.5rem;
+}
+
 body.prototype-ready .workshop-card__panel {
   padding: 1.25rem 1.5rem 1rem;
 }
 
-body.prototype-ready .workshop-card__panel--hidden {
+body.prototype-ready .workshop-card__panel--hidden,
+body.prototype-ready .workshop-card__panel[hidden] {
   display: none;
 }
 
@@ -598,175 +609,175 @@ body.prototype-ready .pr-problem .pr-two-col {
   align-items: center;
 }
 
-body.prototype-ready .pr-problem .mess-card {
-  zoom: 0.8;
-}
-
-@media screen and (max-width: 767px) {
-  body.prototype-ready .pr-problem .mess-card {
-    zoom: 1;
-  }
-}
-
-/* ── Mess card — refined Tailark-style widget ───────────────────── */
-body.prototype-ready .mess-card {
-  background: #ffffff87;
-  border: 1px solid rgb(255 255 255 / 9%);
-  border-radius: 28px;
+/* ── Meeting card — static port of Tailark Pro meeting (no React/Tailwind) ── */
+body.prototype-ready .meeting-card {
+  background: var(--ds-color-surface);
+  border: 1px solid rgba(226, 214, 205, 0.72);
+  border-radius: 1rem;
   overflow: hidden;
-  box-shadow: 0 24px 70px rgba(50, 35, 20, 0.10);
+  box-shadow:
+    0 1px 2px rgba(9, 9, 11, 0.04),
+    0 8px 24px rgba(9, 9, 11, 0.06),
+    0 20px 48px rgba(9, 9, 11, 0.08);
 }
 
-/* Header */
-body.prototype-ready .mess-card__header {
+body.prototype-ready .meeting-card__header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 24px 28px 16px;
+  gap: 1rem;
+  padding: 1.375rem 1.5rem 1rem;
 }
 
-body.prototype-ready .mess-card__header h3 {
+body.prototype-ready .meeting-card__title {
   margin: 0 !important;
   font-family: var(--ds-font-body) !important;
-  font-size: 17px !important;
+  font-size: 1.0625rem !important;
   font-weight: 700 !important;
   letter-spacing: -0.025em !important;
-  line-height: 1.1 !important;
+  line-height: 1.15 !important;
   color: var(--ds-color-text-strong) !important;
 }
 
-body.prototype-ready .mess-card__plus {
-  font-size: 22px;
+body.prototype-ready .meeting-card__add {
+  font-size: 1.375rem;
   font-weight: 300;
   line-height: 1;
-  color: rgba(20, 20, 20, 0.40);
-  background: transparent;
-  border: none;
-  padding: 0;
-  margin: 0;
-  cursor: default;
+  color: rgba(20, 20, 20, 0.38);
   flex-shrink: 0;
-  -webkit-appearance: none;
-  appearance: none;
 }
 
-/* Inner panel — inset white panel with border */
-body.prototype-ready .mess-card__panel {
-  margin: 0 18px 18px;
-  padding: 12px;
-  background: #ffffff;
-  border: none;
-  border-radius: 22px;
-  box-shadow: none;
+body.prototype-ready .meeting-card__list {
+  list-style: none;
+  margin: 0;
+  padding: 0 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
 }
 
-/* Rows — pill-shaped */
-body.prototype-ready .mess-card__row {
+body.prototype-ready .meeting-card__item {
   display: grid;
-  grid-template-columns: 30px 1fr auto;
+  grid-template-columns: 1.5rem 1fr auto;
   align-items: center;
-  gap: 12px;
-  padding: 9px 12px;
-  border-radius: 14px;
-  min-height: 44px;
+  gap: 0.75rem;
+  padding: 0.5625rem 0.75rem;
+  border-radius: 0.75rem;
+  min-height: 2.75rem;
 }
 
-body.prototype-ready .mess-card__row + .mess-card__row {
-  margin-top: 6px;
+body.prototype-ready .meeting-card__item--done {
+  background: rgba(9, 9, 11, 0.045);
 }
 
-body.prototype-ready .mess-card__row--done {
-  background: rgba(20, 20, 20, 0.055);
+body.prototype-ready .meeting-card__item--selected {
+  background: var(--ds-color-surface);
+  box-shadow:
+    0 1px 2px rgba(9, 9, 11, 0.05),
+    0 6px 18px rgba(9, 9, 11, 0.08);
 }
 
-body.prototype-ready .mess-card__row--active {
-  background: #ffffff;
-  box-shadow: 0 4px 16px rgba(30, 20, 10, 0.09);
-}
-
-/* Check icon — outlined circle with ✓ */
-body.prototype-ready .mess-card__check {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
+body.prototype-ready .meeting-card__check {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: #c59060;
-  border: 2px solid #c59060;
-  font-family: var(--ds-font-body);
-  font-size: 12px;
-  font-weight: 700;
-  line-height: 1;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #b38b67;
   flex-shrink: 0;
 }
 
-/* Row text */
-body.prototype-ready .mess-card__text {
+body.prototype-ready .meeting-card__check svg {
+  display: block;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+body.prototype-ready .meeting-card__label {
   font-family: var(--ds-font-body);
-  font-size: 14px;
-  line-height: 1.35;
+  font-size: 0.875rem;
+  line-height: 1.4;
   color: rgba(20, 20, 24, 0.68);
 }
 
-body.prototype-ready .mess-card__row--done .mess-card__text {
+body.prototype-ready .meeting-card__item--done .meeting-card__label {
   text-decoration: line-through;
   text-decoration-thickness: 1.5px;
-  text-decoration-color: rgba(20, 20, 24, 0.42);
+  text-decoration-color: rgba(20, 20, 24, 0.4);
 }
 
-body.prototype-ready .mess-card__row--active .mess-card__text {
-  color: #111111;
+body.prototype-ready .meeting-card__item--selected .meeting-card__label {
+  color: var(--ds-color-text-strong);
+}
+
+body.prototype-ready .meeting-card__item--selected .meeting-card__label strong {
   font-weight: 600;
+}
+
+body.prototype-ready a.meeting-card__action {
+  font-family: var(--ds-font-body);
+  font-size: 0.75rem;
+  line-height: 1;
+  font-weight: 600;
+  color: #b38b67;
+  background: rgba(179, 139, 103, 0.14);
+  padding: 0.375rem 0.6875rem;
+  border-radius: var(--ds-radius-pill);
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background 0.15s ease;
+}
+
+body.prototype-ready a.meeting-card__action:hover,
+body.prototype-ready a.meeting-card__action:visited,
+body.prototype-ready a.meeting-card__action:focus,
+body.prototype-ready a.meeting-card__action:focus-visible,
+body.prototype-ready a.meeting-card__action:active {
+  color: #b38b67 !important;
   text-decoration: none;
 }
 
-/* "Use this" pill */
-body.prototype-ready .mess-card__pill {
-  font-family: var(--ds-font-body);
-  font-size: 12px;
-  line-height: 1;
-  font-weight: 600;
-  color: #c59060;
-  background: rgba(197, 144, 96, 0.13);
-  padding: 6px 11px;
-  border-radius: 999px;
-  white-space: nowrap;
-  flex-shrink: 0;
+body.prototype-ready a.meeting-card__action:hover {
+  background: rgba(179, 139, 103, 0.22);
 }
 
-/* Footer note */
-body.prototype-ready .mess-card__note {
-  border-top: 1px solid rgba(80, 60, 40, 0.12);
-  padding: 18px 28px 24px;
-  font-family: var(--ds-font-body);
-  font-size: 14px;
-  line-height: 1.55;
-  color: rgba(20, 20, 24, 0.62);
+body.prototype-ready .meeting-card__footer {
+  border-top: 1px solid var(--ds-color-border);
+  padding: 1rem 1.5rem 1.25rem;
+}
+
+body.prototype-ready .meeting-card__footer p {
   margin: 0;
+  font-family: var(--ds-font-body);
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--ds-color-muted);
+  text-align: center;
 }
 
-/* Mobile — 479px */
 @media screen and (max-width: 479px) {
-  body.prototype-ready .mess-card__header {
-    padding: 18px 20px 12px;
+  body.prototype-ready .meeting-card__header {
+    padding: 1.125rem 1.25rem 0.875rem;
   }
-  body.prototype-ready .mess-card__panel {
-    margin: 0 12px 12px;
-    padding: 9px;
+
+  body.prototype-ready .meeting-card__list {
+    padding: 0 0.75rem 0.875rem;
   }
-  body.prototype-ready .mess-card__note {
-    padding: 14px 20px 18px;
+
+  body.prototype-ready .meeting-card__footer {
+    padding: 0.875rem 1.25rem 1.125rem;
   }
-  /* Stack pill below text on narrow screens */
-  body.prototype-ready .mess-card__row--active {
-    grid-template-columns: 30px 1fr;
+
+  body.prototype-ready .meeting-card__item--selected {
+    grid-template-columns: 1.5rem 1fr;
     grid-template-rows: auto auto;
   }
-  body.prototype-ready .mess-card__row--active .mess-card__pill {
+
+  body.prototype-ready .meeting-card__item--selected .meeting-card__action {
     grid-column: 2;
     justify-self: start;
-    margin-top: 4px;
+    margin-top: 0.25rem;
   }
 }
 
