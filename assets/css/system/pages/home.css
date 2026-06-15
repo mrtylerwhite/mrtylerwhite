@@ -33,13 +33,17 @@ body.home #page-container .home-hub {
 }
 
 /* ── Hero manifesto + photo presence ────────────────────────────── */
-@media screen and (min-width: 981px) {
-  /* Match floating nav shell (#main-header .et_menu_container is width: 90%) */
+@media screen and (min-width: 768px) {
+  /* Match floating nav shell: .et_menu_container is width 90% + Divi .container max-width 1080px */
   body.home #page-container .hero-cntn.et_pb_section_0 > .et_pb_row {
     width: 90% !important;
-    max-width: none !important;
+    max-width: 1080px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
   }
+}
 
+@media screen and (min-width: 981px) {
   body.home #page-container .hero-cntn .et_pb_text_0 h1 {
     font-size: clamp(3rem, 5vw, 4.25rem) !important;
     line-height: 1.02 !important;
