@@ -132,7 +132,7 @@
       }
     }
 
-    if (href.indexOf("saasifyos.kit.com/products/live-builder-kickoff") !== -1) {
+    if (href.indexOf("kit.com/products/live-builder-kickoff") !== -1) {
       trackEvent("builder_kickoff_checkout_click", { location: linkLocation(el) });
       return;
     }
