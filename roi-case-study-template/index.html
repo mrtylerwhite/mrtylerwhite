@@ -54,11 +54,6 @@
           <p class="rcst-eyebrow">Free case study auditor &#8226; Built for product designers</p>
           <h1 id="rcst-hero-heading" class="rcst-hero__title">Write case studies that prove business impact, not just process.</h1>
           <p class="rcst-hero__sub">Use this free Claude-powered kit to audit your current case study, find the missing business context, and generate a sharper story around the problem, decisions, and outcome.</p>
-          <div class="rcst-hero__actions">
-            <span class="home-hero__cta-ring">
-              <button type="button" class="rcst-hero__cta" data-start-chat data-track-location="hero">Start the free case study audit</button>
-            </span>
-          </div>
         </div>
 
         <div class="rcst-hero__visual">
@@ -96,24 +91,11 @@
                   </div>
                 </div>
 
-                <div class="rcst-chat__thread" data-chat-messages aria-live="polite" aria-relevant="additions">
-                  <div class="rcst-chat__msg rcst-chat__msg--assistant rcst-chat__msg--idle">
-                    <span class="rcst-chat__time rcst-chat__time--above">Now</span>
-                    <p class="rcst-chat__bubble-text">Most portfolios show the process. The best ones show the value.</p>
-                  </div>
-                  <div class="rcst-chat__msg rcst-chat__msg--assistant rcst-chat__msg--idle">
-                    <span class="rcst-chat__time rcst-chat__time--above">Now</span>
-                    <p class="rcst-chat__bubble-text">Let&#8217;s turn your project notes into a business-impact story.</p>
-                  </div>
-                  <div class="rcst-chat__msg rcst-chat__msg--assistant rcst-chat__msg--idle">
-                    <span class="rcst-chat__time rcst-chat__time--above">Now</span>
-                    <p class="rcst-chat__bubble-text">What&#8217;s your first name?</p>
-                  </div>
-                </div>
+                <div class="rcst-chat__thread" data-chat-messages aria-live="polite" aria-relevant="additions"></div>
 
                 <p class="rcst-chat__error" data-chat-error role="alert" hidden></p>
 
-                <div class="rcst-chat__composer" data-chat-composer>
+                <div class="rcst-chat__composer rcst-chat__composer--hidden" data-chat-composer>
                   <div class="rcst-chat__composer-panel">
                     <label class="screen-reader-text" data-chat-label for="chat-lead-input">Your response</label>
                     <span class="rcst-chat__composer-idle" data-chat-idle-hint>Start with your first name</span>
@@ -179,7 +161,7 @@
 
   <script src="/assets/js/gtm-defer.js" defer></script>
   <script src="/assets/js/analytics.js" defer></script>
-  <script src="/assets/js/chat-lead-capture.js?v=5" defer></script>
+  <script src="/assets/js/chat-lead-capture.js?v=6" defer></script>
 
   <script>
   (function () {

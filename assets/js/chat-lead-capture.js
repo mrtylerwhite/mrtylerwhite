@@ -10,6 +10,14 @@
   var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   var RCST_THANK_YOU_KEY = "rcst-thank-you-enter";
   var RCST_FADE_MS = 320;
+  var INTRO_MESSAGES = [
+    "Most portfolios show the process. The best ones show the value.",
+    "Let's turn your project notes into a business-impact story.",
+    "What's your first name?",
+  ];
+  var INTRO_START_DELAY = 1200;
+  var INTRO_MESSAGE_GAP = 350;
+  var REPLY_MESSAGE_GAP = 225;
 
   function delay(ms) {
     return new Promise(function (resolve) {
@@ -19,6 +27,14 @@
 
   function prefersReducedMotion() {
     return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  }
+
+  function isMobileViewport() {
+    return window.matchMedia("(max-width: 767px)").matches;
+  }
+
+  function shouldAutofocusInput() {
+    return !isMobileViewport();
   }
 
   function track(name, props) {
@@ -63,8 +79,11 @@
     this.state = "idle";
     this.firstName = "";
     this.busy = false;
+    this.introToken = 0;
+    this.chatEngaged = false;
 
     this.bind();
+    this.scheduleAutoIntro();
   }
 
   ChatLeadCapture.prototype.bind = function () {
@@ -77,10 +96,9 @@
     }
 
     if (this.input) {
-      var chatStarted = false;
       this.input.addEventListener("focus", function () {
-        if (chatStarted || self.input.disabled) return;
-        chatStarted = true;
+        if (self.chatEngaged || self.input.disabled) return;
+        self.chatEngaged = true;
         track("roi_skill_chat_start", { page: window.location.pathname });
       });
 
@@ -92,110 +110,197 @@
       });
     }
 
-    function afterScrollEnd(cb, maxMs) {
-      var finished = false;
-      var maxTimer;
-      var settleTimer;
-
-      function done() {
-        if (finished) return;
-        finished = true;
-        window.removeEventListener("scroll", onScroll);
-        clearTimeout(maxTimer);
-        clearTimeout(settleTimer);
-        cb();
-      }
-
-      function onScroll() {
-        clearTimeout(settleTimer);
-        settleTimer = setTimeout(done, 120);
-      }
-
-      window.addEventListener("scroll", onScroll, { passive: true });
-      maxTimer = setTimeout(done, maxMs || 1200);
-    }
-
-    function getChatScrollTop(target) {
-      var rect = target.getBoundingClientRect();
-      var targetTop = window.scrollY + rect.top;
-      var centeredTop = targetTop - (window.innerHeight - rect.height) / 2;
-      return Math.max(0, Math.round(centeredTop));
-    }
-
-    function highlightChat() {
-      var shell = document.getElementById("chat-capture");
-      if (!shell) return;
-      shell.classList.add("rcst-chat-shell--guided");
-      if (prefersReducedMotion()) return;
-      window.setTimeout(function () {
-        shell.classList.remove("rcst-chat-shell--guided");
-      }, 1400);
-    }
-
-    function scrollToChat(cb) {
-      var target = document.getElementById("chat-capture");
-      if (!target) {
-        if (cb) cb();
-        return;
-      }
-
-      var reduced = prefersReducedMotion();
-      var top = getChatScrollTop(target);
-      var startY = window.scrollY;
-      var needsScroll = Math.abs(startY - top) > 8;
-
-      if (reduced || !needsScroll) {
-        window.scrollTo({ top: top, left: 0, behavior: "auto" });
-        if (cb) cb();
-        return;
-      }
-
-      window.scrollTo({ top: top, left: 0, behavior: "smooth" });
-
-      afterScrollEnd(function () {
-        if (cb) cb();
-      });
-    }
-
-    function engageHero(btn) {
-      var hero = btn.closest(".rcst-hero");
-      if (!hero || hero.classList.contains("rcst-hero--engaged")) return;
-      hero.classList.add("rcst-hero--engaged");
-      var actions = hero.querySelector(".rcst-hero__actions");
-      if (actions) actions.setAttribute("aria-hidden", "true");
-    }
-
-    function beginChat(fromHero, btn) {
-      if (fromHero) {
-        engageHero(btn);
-      }
-      highlightChat();
-      if (self.state === "idle" || self.state === "success") {
-        self.start();
-      } else if (self.state !== "submitting") {
-        self.input && self.input.focus();
-      }
-    }
-
     document.querySelectorAll("[data-start-chat]").forEach(function (btn) {
       btn.addEventListener("click", function (e) {
         if (btn.tagName === "A" && btn.getAttribute("href") === "#chat-capture") {
           e.preventDefault();
         }
-        var fromHero = !!btn.closest(".rcst-hero__actions");
-        scrollToChat(function () {
-          beginChat(fromHero, btn);
+        self.scrollToChat(function () {
+          self.highlightChat();
+          self.handleHeaderCta();
         });
       });
     });
 
     document.querySelectorAll("[data-scroll-chat]").forEach(function (btn) {
-      btn.addEventListener("click", function () {
-        scrollToChat(function () {
-          highlightChat();
+      btn.addEventListener("click", function (e) {
+        if (btn.tagName === "A" && btn.getAttribute("href") === "#chat-capture") {
+          e.preventDefault();
+        }
+        self.scrollToChat(function () {
+          self.highlightChat();
+          self.handleHeaderCta();
         });
       });
     });
+  };
+
+  ChatLeadCapture.prototype.afterScrollEnd = function (cb, maxMs) {
+    var finished = false;
+    var maxTimer;
+    var settleTimer;
+
+    function done() {
+      if (finished) return;
+      finished = true;
+      window.removeEventListener("scroll", onScroll);
+      clearTimeout(maxTimer);
+      clearTimeout(settleTimer);
+      cb();
+    }
+
+    function onScroll() {
+      clearTimeout(settleTimer);
+      settleTimer = setTimeout(done, 120);
+    }
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    maxTimer = setTimeout(done, maxMs || 1200);
+  };
+
+  ChatLeadCapture.prototype.getChatScrollTop = function (target) {
+    var rect = target.getBoundingClientRect();
+    var targetTop = window.scrollY + rect.top;
+    var centeredTop = targetTop - (window.innerHeight - rect.height) / 2;
+    return Math.max(0, Math.round(centeredTop));
+  };
+
+  ChatLeadCapture.prototype.highlightChat = function () {
+    var shell = document.getElementById("chat-capture");
+    if (!shell) return;
+    shell.classList.add("rcst-chat-shell--guided");
+    if (prefersReducedMotion()) return;
+    window.setTimeout(function () {
+      shell.classList.remove("rcst-chat-shell--guided");
+    }, 1400);
+  };
+
+  ChatLeadCapture.prototype.scrollToChat = function (cb) {
+    var target = document.getElementById("chat-capture");
+    if (!target) {
+      if (cb) cb();
+      return;
+    }
+
+    var reduced = prefersReducedMotion();
+    var top = this.getChatScrollTop(target);
+    var startY = window.scrollY;
+    var needsScroll = Math.abs(startY - top) > 8;
+
+    if (reduced || !needsScroll) {
+      window.scrollTo({ top: top, left: 0, behavior: "auto" });
+      if (cb) cb();
+      return;
+    }
+
+    var self = this;
+    window.scrollTo({ top: top, left: 0, behavior: "smooth" });
+    this.afterScrollEnd(function () {
+      if (cb) cb();
+    });
+  };
+
+  ChatLeadCapture.prototype.handleHeaderCta = function () {
+    if (this.state === "intro" || this.state === "idle") {
+      this.completeIntroImmediately();
+      return;
+    }
+
+    if (this.state === "name" || this.state === "email") {
+      this.focusInputIfDesktop();
+    }
+  };
+
+  ChatLeadCapture.prototype.scheduleAutoIntro = function () {
+    this.runIntroSequence();
+  };
+
+  ChatLeadCapture.prototype.runIntroSequence = async function () {
+    if (this.busy || (this.state !== "idle" && this.state !== "success")) return;
+
+    var token = ++this.introToken;
+    this.busy = true;
+    this.state = "intro";
+    this.firstName = "";
+    this.clearError();
+    this.root.classList.add("rcst-chat--active");
+    this.root.classList.remove("rcst-chat--success");
+
+    if (this.messagesEl) this.messagesEl.innerHTML = "";
+
+    this.setComposer({
+      disabled: true,
+      hideComposer: true,
+      buttonText: "…",
+      placeholder: "",
+    });
+
+    if (!prefersReducedMotion()) {
+      await delay(INTRO_START_DELAY);
+    }
+    if (token !== this.introToken) return;
+
+    for (var i = 0; i < INTRO_MESSAGES.length; i++) {
+      if (i > 0 && !prefersReducedMotion()) {
+        await delay(INTRO_MESSAGE_GAP);
+      }
+      if (token !== this.introToken) return;
+      this.addMessage("assistant", INTRO_MESSAGES[i]);
+    }
+
+    if (token !== this.introToken) return;
+    this.openNameComposer();
+    this.busy = false;
+  };
+
+  ChatLeadCapture.prototype.completeIntroImmediately = function () {
+    if (this.state !== "intro" && this.state !== "idle") {
+      if (this.state === "name" || this.state === "email") {
+        this.focusInputIfDesktop();
+      }
+      return;
+    }
+
+    this.introToken++;
+    this.busy = true;
+    this.state = "intro";
+    this.root.classList.add("rcst-chat--active");
+    this.root.classList.remove("rcst-chat--success");
+
+    var existing = this.messagesEl ? this.messagesEl.children.length : 0;
+    for (var i = existing; i < INTRO_MESSAGES.length; i++) {
+      this.addMessage("assistant", INTRO_MESSAGES[i]);
+    }
+
+    this.openNameComposer();
+    this.busy = false;
+  };
+
+  ChatLeadCapture.prototype.openNameComposer = function () {
+    this.state = "name";
+    this.setComposer({
+      label: "First name",
+      type: "text",
+      placeholder: "Start with your first name",
+      ariaLabel: "Start with your first name",
+      buttonText: "Continue",
+      disabled: false,
+      hideComposer: false,
+    });
+    this.markChatEngaged();
+    this.focusInputIfDesktop();
+  };
+
+  ChatLeadCapture.prototype.markChatEngaged = function () {
+    if (this.chatEngaged) return;
+    this.chatEngaged = true;
+    track("roi_skill_chat_start", { page: window.location.pathname });
+  };
+
+  ChatLeadCapture.prototype.focusInputIfDesktop = function () {
+    if (shouldAutofocusInput() && this.input && !this.input.disabled) {
+      this.input.focus();
+    }
   };
 
   ChatLeadCapture.prototype.setComposer = function (opts) {
@@ -275,68 +380,11 @@
   };
 
   ChatLeadCapture.prototype.addMessages = async function (lines, gap) {
-    var pause = gap == null ? 225 : gap;
+    var pause = gap == null ? REPLY_MESSAGE_GAP : gap;
     for (var i = 0; i < lines.length; i++) {
       if (i > 0) await delay(pause);
       this.addMessage("assistant", lines[i]);
     }
-  };
-
-  ChatLeadCapture.prototype.promoteIdlePreview = function () {
-    if (!this.messagesEl) return false;
-    var idleMsgs = this.messagesEl.querySelectorAll(".rcst-chat__msg--idle");
-    if (!idleMsgs.length) return false;
-    idleMsgs.forEach(function (m) {
-      m.classList.remove("rcst-chat__msg--idle");
-    });
-    return true;
-  };
-
-  ChatLeadCapture.prototype.start = async function () {
-    if (this.busy || (this.state !== "idle" && this.state !== "success")) return;
-    this.busy = true;
-    this.firstName = "";
-    this.clearError();
-    this.root.classList.add("rcst-chat--active");
-    this.root.classList.remove("rcst-chat--success");
-
-    if (this.state === "idle" && this.promoteIdlePreview()) {
-      this.state = "name";
-      this.setComposer({
-        label: "First name",
-        type: "text",
-        placeholder: "Start with your first name",
-        ariaLabel: "Start with your first name",
-        buttonText: "Continue",
-        disabled: false,
-      });
-      this.input && this.input.focus();
-      this.busy = false;
-      return;
-    }
-
-    this.state = "intro";
-    if (this.messagesEl) this.messagesEl.innerHTML = "";
-
-    this.setComposer({ disabled: true, hideComposer: false, buttonText: "…", placeholder: "Starting…" });
-
-    await this.addMessages([
-      "Most portfolios show the process. The best ones show the value.",
-      "Let's turn your project notes into a business-impact story.",
-      "What's your first name?",
-    ]);
-
-    this.state = "name";
-    this.setComposer({
-      label: "First name",
-      type: "text",
-      placeholder: "Start with your first name",
-      ariaLabel: "Start with your first name",
-      buttonText: "Continue",
-      disabled: false,
-    });
-    this.input && this.input.focus();
-    this.busy = false;
   };
 
   ChatLeadCapture.prototype.handleSubmit = async function () {
@@ -347,7 +395,7 @@
       var name = this.input ? String(this.input.value).trim() : "";
       if (!name) {
         this.showError("Please enter your first name.");
-        this.input && this.input.focus();
+        this.focusInputIfDesktop();
         return;
       }
       this.firstName = name;
@@ -372,7 +420,7 @@
         buttonText: "Get the free auditor",
         disabled: false,
       });
-      this.input && this.input.focus();
+      this.focusInputIfDesktop();
       this.busy = false;
       return;
     }
@@ -381,12 +429,12 @@
       var email = this.input ? String(this.input.value).trim() : "";
       if (!email) {
         this.showError("Please enter your email address.");
-        this.input && this.input.focus();
+        this.focusInputIfDesktop();
         return;
       }
       if (!EMAIL_RE.test(email)) {
         this.showError("That email doesn't look right. Try again?");
-        this.input && this.input.focus();
+        this.focusInputIfDesktop();
         return;
       }
 
@@ -405,7 +453,7 @@
       buttonText: "Get the free auditor",
       disabled: false,
     });
-    this.input && this.input.focus();
+    this.focusInputIfDesktop();
   };
 
   ChatLeadCapture.prototype.submitToKit = async function (email) {
