@@ -48,19 +48,6 @@
 
   <main id="main-content" class="rcst-main">
 
-    <video
-      class="rcst-main-video"
-      aria-hidden="true"
-      autoplay
-      muted
-      loop
-      playsinline
-      preload="metadata"
-      poster="/assets/images/roi-case-study-template/background-chat.png"
-    >
-      <source src="/assets/video/roi-case-study-template/background.mp4" type="video/mp4" />
-    </video>
-
     <section class="rcst-hero" aria-labelledby="rcst-hero-heading">
       <div class="rcst-hero__stage">
         <div class="rcst-hero__copy">
@@ -75,6 +62,15 @@
         </div>
 
         <div class="rcst-hero__visual">
+          <div class="rcst-hero__scene-bg" aria-hidden="true">
+            <img
+              src="/assets/images/roi-case-study-template/background-chat.png"
+              alt=""
+              width="1024"
+              height="710"
+              decoding="async"
+            />
+          </div>
 
           <!-- Kit: form 8010475 — server POST via /api/subscribe/roi-case-study -->
           <div class="rcst-chat-shell" id="chat-capture">

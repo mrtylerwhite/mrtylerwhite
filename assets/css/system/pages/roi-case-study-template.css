@@ -48,6 +48,7 @@ body.roi-case-study-template .screen-reader-text {
 }
 
 body.roi-case-study-template .rcst-main {
+  position: relative;
   background: #f6f0e9;
 }
 
@@ -163,7 +164,7 @@ body.roi-case-study-template .rcst-hero {
 
 body.roi-case-study-template .rcst-hero__stage {
   position: relative;
-  padding: clamp(0.875rem, calc(8vw - 50px), 2.875rem) 0 2rem;
+  padding: clamp(0.5rem, calc(3vw - 12px), 1.25rem) 0 2rem;
 }
 
 body.roi-case-study-template .rcst-hero__copy {
