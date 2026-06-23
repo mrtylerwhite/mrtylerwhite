@@ -440,8 +440,14 @@ body.roi-case-study-template .rcst-chat__thread {
   margin: 1rem 0 0;
   overflow-x: hidden;
   overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
+}
+
+body.roi-case-study-template .rcst-chat__thread::-webkit-scrollbar {
+  display: none;
 }
 
 body.roi-case-study-template .rcst-chat__msg {
