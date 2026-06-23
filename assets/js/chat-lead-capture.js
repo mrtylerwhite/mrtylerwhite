@@ -18,6 +18,7 @@
   var INTRO_START_DELAY = 1200;
   var INTRO_MESSAGE_GAP = 350;
   var REPLY_MESSAGE_GAP = 225;
+  var VISIBILITY_FOCUS_THRESHOLD = 0.75;
 
   function delay(ms) {
     return new Promise(function (resolve) {
@@ -77,6 +78,13 @@
     this.busy = false;
     this.introToken = 0;
     this.chatEngaged = false;
+    this.visibilityFocusConsumed = false;
+    this.externalFieldActive = false;
+    this.visibilityFocusArmed = false;
+    this.userHasScrolled = false;
+    this.visibilityObserver = null;
+    this._visibilityScrollListener = null;
+    this._guidedScrollActive = false;
 
     this.bind();
     this.scheduleAutoIntro();
@@ -93,6 +101,7 @@
 
     if (this.input) {
       this.input.addEventListener("focus", function () {
+        self.consumeVisibilityFocus();
         if (self.chatEngaged || self.input.disabled) return;
         self.chatEngaged = true;
         track("roi_skill_chat_start", { page: window.location.pathname });
@@ -129,6 +138,124 @@
         });
       });
     });
+
+    this.bindVisibilityFocus();
+  };
+
+  ChatLeadCapture.prototype.bindVisibilityFocus = function () {
+    var self = this;
+
+    if (!("IntersectionObserver" in window) || !this.composerEl) return;
+
+    document.addEventListener("focusin", function (e) {
+      var t = e.target;
+      if (!t || t === self.input || self.root.contains(t)) return;
+      if (
+        t.matches &&
+        t.matches("input, textarea, select, button[type='submit'], [contenteditable='true']")
+      ) {
+        self.externalFieldActive = true;
+        self.stopVisibilityFocusObserver();
+      }
+    });
+
+    window.matchMedia("(max-width: 767px)").addEventListener("change", function () {
+      if (isMobileViewport()) self.stopVisibilityFocusObserver();
+    });
+  };
+
+  ChatLeadCapture.prototype.consumeVisibilityFocus = function () {
+    this.visibilityFocusConsumed = true;
+    this.stopVisibilityFocusObserver();
+  };
+
+  ChatLeadCapture.prototype.armVisibilityFocus = function () {
+    if (
+      this.visibilityFocusConsumed ||
+      this.externalFieldActive ||
+      isMobileViewport() ||
+      !this.composerEl ||
+      (this.state !== "name" && this.state !== "email")
+    ) {
+      return;
+    }
+
+    this.visibilityFocusArmed = true;
+
+    if (this.userHasScrolled) {
+      this.startVisibilityFocusObserver();
+      return;
+    }
+
+    if (this._visibilityScrollListener) return;
+
+    var self = this;
+    this._visibilityScrollListener = function () {
+      self.userHasScrolled = true;
+      if (self.visibilityFocusArmed && !self.visibilityFocusConsumed) {
+        self.startVisibilityFocusObserver();
+      }
+    };
+    window.addEventListener("scroll", this._visibilityScrollListener, { passive: true });
+  };
+
+  ChatLeadCapture.prototype.startVisibilityFocusObserver = function () {
+    if (
+      this.visibilityFocusConsumed ||
+      this.externalFieldActive ||
+      isMobileViewport() ||
+      !this.composerEl ||
+      !("IntersectionObserver" in window) ||
+      (this.state !== "name" && this.state !== "email")
+    ) {
+      return;
+    }
+
+    this.stopVisibilityFocusObserver();
+
+    var self = this;
+    this.visibilityObserver = new IntersectionObserver(
+      function (entries) {
+        var entry = entries[0];
+        if (!entry || !entry.isIntersecting) return;
+        if (entry.intersectionRatio < VISIBILITY_FOCUS_THRESHOLD) return;
+        if (!self.userHasScrolled) return;
+        self.tryVisibilityAutoFocus();
+      },
+      { threshold: [VISIBILITY_FOCUS_THRESHOLD] }
+    );
+
+    this.visibilityObserver.observe(this.composerEl);
+  };
+
+  ChatLeadCapture.prototype.stopVisibilityFocusObserver = function () {
+    if (this.visibilityObserver) {
+      this.visibilityObserver.disconnect();
+      this.visibilityObserver = null;
+    }
+  };
+
+  ChatLeadCapture.prototype.tryVisibilityAutoFocus = function () {
+    if (this.visibilityFocusConsumed) return;
+    if (this._guidedScrollActive) return;
+    if (this.externalFieldActive) return;
+    if (!this.userHasScrolled) return;
+    if (isMobileViewport()) return;
+    if (this.state !== "name" && this.state !== "email") return;
+    if (!this.input || this.input.disabled) return;
+    if (
+      this.composerEl &&
+      this.composerEl.classList.contains("rcst-chat__composer--hidden")
+    ) {
+      return;
+    }
+    if (document.activeElement === this.input) {
+      this.consumeVisibilityFocus();
+      return;
+    }
+
+    this.consumeVisibilityFocus();
+    this.focusInput({ preventScroll: true, desktopOnly: true });
   };
 
   ChatLeadCapture.prototype.afterScrollEnd = function (cb, maxMs) {
@@ -182,9 +309,11 @@
     var top = this.getChatScrollTop(target);
     var startY = window.scrollY;
     var needsScroll = Math.abs(startY - top) > 8;
+    this._guidedScrollActive = true;
 
     if (reduced || !needsScroll) {
       window.scrollTo({ top: top, left: 0, behavior: "auto" });
+      this._guidedScrollActive = false;
       if (cb) cb();
       return;
     }
@@ -192,6 +321,7 @@
     var self = this;
     window.scrollTo({ top: top, left: 0, behavior: "smooth" });
     this.afterScrollEnd(function () {
+      self._guidedScrollActive = false;
       if (cb) cb();
     });
   };
@@ -278,6 +408,7 @@
       hideComposer: false,
     });
     this.markChatEngaged();
+    this.armVisibilityFocus();
   };
 
   ChatLeadCapture.prototype.markChatEngaged = function () {
@@ -324,6 +455,10 @@
     }
     if (this.composerEl) {
       this.composerEl.classList.toggle("rcst-chat__composer--hidden", !!opts.hideComposer);
+    }
+    if (opts.hideComposer) {
+      this.stopVisibilityFocusObserver();
+      this.visibilityFocusArmed = false;
     }
     if (this.idleHintEl) {
       this.idleHintEl.hidden = this.root.classList.contains("rcst-chat--active");
@@ -423,6 +558,7 @@
         buttonText: "Get the free auditor",
         disabled: false,
       });
+      this.armVisibilityFocus();
       this.focusInputIfDesktop();
       this.busy = false;
       return;
@@ -456,6 +592,7 @@
       buttonText: "Get the free auditor",
       disabled: false,
     });
+    this.armVisibilityFocus();
     this.focusInputIfDesktop();
   };
 
