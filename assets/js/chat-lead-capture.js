@@ -275,22 +275,48 @@
   };
 
   ChatLeadCapture.prototype.addMessages = async function (lines, gap) {
-    var pause = gap == null ? 420 : gap;
+    var pause = gap == null ? 225 : gap;
     for (var i = 0; i < lines.length; i++) {
       if (i > 0) await delay(pause);
       this.addMessage("assistant", lines[i]);
     }
   };
 
+  ChatLeadCapture.prototype.promoteIdlePreview = function () {
+    if (!this.messagesEl) return false;
+    var idleMsgs = this.messagesEl.querySelectorAll(".rcst-chat__msg--idle");
+    if (!idleMsgs.length) return false;
+    idleMsgs.forEach(function (m) {
+      m.classList.remove("rcst-chat__msg--idle");
+    });
+    return true;
+  };
+
   ChatLeadCapture.prototype.start = async function () {
     if (this.busy || (this.state !== "idle" && this.state !== "success")) return;
     this.busy = true;
-    this.state = "intro";
     this.firstName = "";
     this.clearError();
-    if (this.messagesEl) this.messagesEl.innerHTML = "";
     this.root.classList.add("rcst-chat--active");
     this.root.classList.remove("rcst-chat--success");
+
+    if (this.state === "idle" && this.promoteIdlePreview()) {
+      this.state = "name";
+      this.setComposer({
+        label: "First name",
+        type: "text",
+        placeholder: "Start with your first name",
+        ariaLabel: "Start with your first name",
+        buttonText: "Continue",
+        disabled: false,
+      });
+      this.input && this.input.focus();
+      this.busy = false;
+      return;
+    }
+
+    this.state = "intro";
+    if (this.messagesEl) this.messagesEl.innerHTML = "";
 
     this.setComposer({ disabled: true, hideComposer: false, buttonText: "…", placeholder: "Starting…" });
 
@@ -416,7 +442,7 @@
         await delay(400);
         this.addMessage(
           "assistant",
-          "Done. Check your inbox — the Case Study Auditor & Generator is on its way."
+          "Done. Check your inbox. The Case Study Auditor & Generator is on its way."
         );
         await delay(750);
         redirectAfterKitSuccess(this.successRedirect);
