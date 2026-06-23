@@ -1003,10 +1003,10 @@ body.prototype-ready .pr-bento__row--top {
   gap: 1rem;
 }
 
-/* Small cards row — four columns */
+/* Small cards row — three equal columns (Playbook, Replay, ROI) */
 body.prototype-ready .pr-bento__row--small {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
 }
 
@@ -1802,10 +1802,6 @@ body.prototype-ready .pr-footer__link:hover {
     grid-template-columns: 1fr;
     gap: 1.25rem;
     align-items: start;
-  }
-
-  body.prototype-ready .pr-bento__row--small {
-    grid-template-columns: repeat(2, 1fr);
   }
 
   body.prototype-ready .pr-cred__layout {
