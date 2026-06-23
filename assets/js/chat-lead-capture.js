@@ -33,10 +33,6 @@
     return window.matchMedia("(max-width: 767px)").matches;
   }
 
-  function shouldAutofocusInput() {
-    return !isMobileViewport();
-  }
-
   function track(name, props) {
     if (typeof window.trackEvent === "function") {
       window.trackEvent(name, props || {});
@@ -203,11 +199,10 @@
   ChatLeadCapture.prototype.handleHeaderCta = function () {
     if (this.state === "intro" || this.state === "idle") {
       this.completeIntroImmediately();
-      return;
     }
 
     if (this.state === "name" || this.state === "email") {
-      this.focusInputIfDesktop();
+      this.focusInput({ preventScroll: true, desktopOnly: true });
     }
   };
 
@@ -254,12 +249,7 @@
   };
 
   ChatLeadCapture.prototype.completeIntroImmediately = function () {
-    if (this.state !== "intro" && this.state !== "idle") {
-      if (this.state === "name" || this.state === "email") {
-        this.focusInputIfDesktop();
-      }
-      return;
-    }
+    if (this.state !== "intro" && this.state !== "idle") return;
 
     this.introToken++;
     this.busy = true;
@@ -288,7 +278,6 @@
       hideComposer: false,
     });
     this.markChatEngaged();
-    this.focusInputIfDesktop();
   };
 
   ChatLeadCapture.prototype.markChatEngaged = function () {
@@ -297,10 +286,24 @@
     track("roi_skill_chat_start", { page: window.location.pathname });
   };
 
-  ChatLeadCapture.prototype.focusInputIfDesktop = function () {
-    if (shouldAutofocusInput() && this.input && !this.input.disabled) {
+  ChatLeadCapture.prototype.focusInput = function (opts) {
+    opts = opts || {};
+    if (!this.input || this.input.disabled) return;
+    if (opts.desktopOnly && isMobileViewport()) return;
+
+    try {
+      if (opts.preventScroll) {
+        this.input.focus({ preventScroll: true });
+      } else {
+        this.input.focus();
+      }
+    } catch (_) {
       this.input.focus();
     }
+  };
+
+  ChatLeadCapture.prototype.focusInputIfDesktop = function () {
+    this.focusInput({ desktopOnly: true });
   };
 
   ChatLeadCapture.prototype.setComposer = function (opts) {
