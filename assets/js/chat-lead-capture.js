@@ -238,6 +238,11 @@
     }
   };
 
+  ChatLeadCapture.prototype.scrollThreadToBottom = function () {
+    if (!this.messagesEl) return;
+    this.messagesEl.scrollTop = this.messagesEl.scrollHeight;
+  };
+
   ChatLeadCapture.prototype.addMessage = function (role, text) {
     if (!this.messagesEl || !text) return null;
     var msg = document.createElement("div");
@@ -265,9 +270,7 @@
     }
 
     this.messagesEl.appendChild(msg);
-    if (this.messagesEl.scrollHeight > this.messagesEl.clientHeight) {
-      this.messagesEl.scrollTop = this.messagesEl.scrollHeight;
-    }
+    this.scrollThreadToBottom();
     return msg;
   };
 

@@ -324,7 +324,10 @@ body.roi-case-study-template .rcst-chat__window {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  min-height: clamp(560px, 70vh, 720px);
+  height: clamp(560px, 70vh, 720px);
+  max-height: clamp(560px, 70vh, 720px);
+  min-height: 0;
+  overflow: hidden;
   width: 100%;
   max-width: 384px;
   padding: 24px;
@@ -430,11 +433,12 @@ body.roi-case-study-template .rcst-chat__divider {
 /* ── Message thread ───────────────────────────────────────────── */
 body.roi-case-study-template .rcst-chat__thread {
   display: flex;
-  flex: 1 1 auto;
+  flex: 1 1 0;
   flex-direction: column;
   gap: 1.25rem;
   min-height: 0;
   margin: 1rem 0 0;
+  overflow-x: hidden;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
@@ -681,6 +685,7 @@ body.roi-case-study-template .rcst-chat--success .rcst-chat__composer {
   }
 
   body.roi-case-study-template .rcst-chat__window {
-    min-height: clamp(480px, 62vh, 580px);
+    height: min(clamp(480px, 62vh, 580px), calc(100dvh - 11rem));
+    max-height: min(clamp(480px, 62vh, 580px), calc(100dvh - 11rem));
   }
 }
