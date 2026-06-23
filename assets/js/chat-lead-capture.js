@@ -330,7 +330,7 @@
       await delay(300);
       await this.addMessages([
         "Nice to meet you, " + name + ".",
-        "I'll send you the free ROI-driven case study skill.",
+        "I'll send you the free Case Study Auditor & Generator.",
         "Where should I send it?",
       ]);
 
@@ -340,7 +340,7 @@
         type: "email",
         placeholder: "you@company.com",
         ariaLabel: "Your email address",
-        buttonText: "Send me the skill",
+        buttonText: "Get the free auditor",
         disabled: false,
       });
       this.input && this.input.focus();
@@ -373,7 +373,7 @@
       type: "email",
       placeholder: "you@company.com",
       ariaLabel: "Your email address",
-      buttonText: "Send me the skill",
+      buttonText: "Get the free auditor",
       disabled: false,
     });
     this.input && this.input.focus();
@@ -413,7 +413,7 @@
         await delay(400);
         this.addMessage(
           "assistant",
-          "Done. Check your inbox — the skill is on its way."
+          "Done. Check your inbox — the Case Study Auditor & Generator is on its way."
         );
         await delay(750);
         redirectAfterKitSuccess(this.successRedirect);
