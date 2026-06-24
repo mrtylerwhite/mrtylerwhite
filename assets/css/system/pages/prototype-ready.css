@@ -24,7 +24,7 @@ body.prototype-ready h3 {
 /* ── Containers ────────────────────────────────────────────────── */
 body.prototype-ready .pr-container {
   width: 90%;
-  max-width: 960px;
+  max-width: 1100px;
   margin: 0 auto;
 }
 
@@ -36,7 +36,7 @@ body.prototype-ready .pr-container--narrow {
 
 body.prototype-ready .pr-container--wide {
   width: 90%;
-  max-width: 1040px;
+  max-width: 1100px;
   margin: 0 auto;
 }
 
@@ -188,7 +188,7 @@ body.prototype-ready .pr-bar__inner {
   justify-content: space-between;
   gap: 1rem;
   width: 90%;
-  max-width: 1040px;
+  max-width: 1100px;
   margin: 0 auto;
 }
 
