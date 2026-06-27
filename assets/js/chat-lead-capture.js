@@ -483,7 +483,10 @@
 
   ChatLeadCapture.prototype.scrollThreadToBottom = function () {
     if (!this.messagesEl) return;
-    this.messagesEl.scrollTop = this.messagesEl.scrollHeight;
+    var el = this.messagesEl;
+    requestAnimationFrame(function () {
+      el.scrollTop = el.scrollHeight;
+    });
   };
 
   ChatLeadCapture.prototype.addMessage = function (role, text) {
