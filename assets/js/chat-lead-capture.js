@@ -15,7 +15,7 @@
     "Let's turn your project notes into a business-impact story.",
     "What's your first name?",
   ];
-  var INTRO_START_DELAY = 1200;
+  var INTRO_START_DELAY = 300;
   var INTRO_MESSAGE_GAP = 350;
   var REPLY_MESSAGE_GAP = 225;
   var VISIBILITY_FOCUS_THRESHOLD = 0.75;
@@ -624,6 +624,9 @@
 
       if (res.ok && data && data.success === true) {
         track("roi_skill_submit_success", { page: window.location.pathname });
+        // generate_lead is a GA4 recommended event — mark it as a key event in
+        // GA4 Admin › Events › generate_lead › toggle "Mark as key event"
+        track("generate_lead", { page: window.location.pathname });
         this.state = "success";
         this.root.classList.add("rcst-chat--success");
         this.setComposer({ hideComposer: true });
