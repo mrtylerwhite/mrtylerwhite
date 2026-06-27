@@ -538,7 +538,7 @@
         this.focusInputIfDesktop();
         return;
       }
-      this.firstName = name;
+      this.firstName = name.charAt(0).toUpperCase() + name.slice(1);
       track("roi_skill_name_submitted", { page: window.location.pathname });
       this.addMessage("user", name);
       this.busy = true;
@@ -546,9 +546,8 @@
 
       await delay(300);
       await this.addMessages([
-        "Nice to meet you, " + name + ".",
-        "I'll send you the free Case Study Auditor & Generator.",
-        "Where should I send it?",
+        "Nice to meet you, " + this.firstName + " — I'll send the free Case Study Auditor & Generator your way.",
+        "Where should I send it? Drop your email below.",
       ]);
 
       this.state = "email";
