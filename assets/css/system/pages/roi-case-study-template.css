@@ -806,7 +806,30 @@ body.roi-case-study-template .rcst-how__nudge-link:hover {
   }
 
   body.roi-case-study-template .rcst-chat__window {
-    height: min(clamp(480px, 62vh, 580px), calc(100dvh - 11rem));
-    max-height: min(clamp(480px, 62vh, 580px), calc(100dvh - 11rem));
+    height: min(clamp(480px, 62dvh, 580px), calc(100dvh - 11rem));
+    max-height: min(clamp(480px, 62dvh, 580px), calc(100dvh - 11rem));
+  }
+
+  /* FIX 1 — lock chat thread scroll on mobile (programmatic scroll still works) */
+  body.roi-case-study-template .rcst-chat__thread {
+    touch-action: none;
+    overscroll-behavior: none;
+    pointer-events: none;
+  }
+
+  /* FIX 2 — prevent iOS input zoom (zooms when font-size < 16px) */
+  body.roi-case-study-template .rcst-chat__input {
+    font-size: 16px;
+  }
+
+  /* FIX 3 — drop the 48px translate on mobile so it doesn't eat screen space */
+  body.roi-case-study-template .rcst-chat-shell {
+    transform: none;
+    padding-bottom: 0.75rem;
+  }
+
+  /* FIX 5 — reclaim vertical space above the stacked hero on mobile */
+  body.roi-case-study-template .rcst-hero__stage {
+    padding-top: 24px;
   }
 }
