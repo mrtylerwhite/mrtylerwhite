@@ -11,8 +11,7 @@
   var RCST_THANK_YOU_KEY = "rcst-thank-you-enter";
   var RCST_FADE_MS = 320;
   var INTRO_MESSAGES = [
-    "Most portfolios show the process. The best ones show the value.",
-    "Let's turn your project notes into a business-impact story.",
+    "Most portfolios show the process. The best ones show the value. Let's turn yours into a business-impact story.",
     "What's your first name?",
   ];
   var INTRO_START_DELAY = 300;
