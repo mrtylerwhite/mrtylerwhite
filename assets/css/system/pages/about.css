@@ -72,15 +72,32 @@ body.about #main-header .container.et_menu_container {
   margin-right: auto;
 }
 
+/*
+  Logo size. On full Divi pages, common.js sizes the logo to 54% of the 30px
+  header height (~21px). This page doesn't load that JS, so the static rule
+  `.et_pb_svg_logo #logo { height: 34% }` resolves against an auto-height
+  container and collapses the wordmark. Pin it to match the other pages. */
+body.about #main-header #logo {
+  height: 24px !important;
+  max-height: none !important;
+  width: auto !important;
+}
+
 /* Desktop (≥981px): compact horizontal menu, vertically centered in the pill.
    critical.css already flexes .et_menu_container (logo left / nav right) and
    styles the link/button typography; these rules only supply the layout that
    Divi's base nav would otherwise provide. A flex row keeps the pill the same
    compact height as the home page (no tall Divi link padding). */
 @media all and (min-width: 981px) {
+  /* Kill the tall vertical padding the customizer/Divi base apply to the nav
+     and links (padding-top: 33px / padding-bottom: 33px). On full Divi pages
+     common.js shrinks these to center the menu in the 30px header; without the
+     JS they leave the pill ~30px too tall. align-items:center on the flex
+     parents handles the centering instead. */
   body.about #main-header #et-top-navigation {
     display: flex;
     align-items: center;
+    padding: 0 !important;
   }
 
   body.about #main-header #top-menu-nav {
@@ -91,7 +108,7 @@ body.about #main-header .container.et_menu_container {
   body.about #main-header #top-menu {
     display: flex;
     align-items: center;
-    gap: 22px;
+    gap: 18px;
     line-height: normal;
   }
 
@@ -105,6 +122,13 @@ body.about #main-header .container.et_menu_container {
     display: inline-flex;
     align-items: center;
     position: relative;
+  }
+
+  /* Zero only the plain link padding — leave the workshop/CTA pill padding
+     (site-footer.css / critical.css) intact so those buttons keep their shape. */
+  body.about #main-header #top-menu > li:not(.et_pb_button):not(.site-nav-workshop) > a {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
   }
 
   /* Hamburger hidden on desktop */
