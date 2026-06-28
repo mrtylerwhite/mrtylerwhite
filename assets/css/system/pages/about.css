@@ -7,6 +7,11 @@
 /* ── Base ────────────────────────────────────────────────────────────────── */
 
 body.about {
+  /* Divi's reset (loaded inline on full Divi pages) zeroes the body margin.
+     This hand-built page doesn't load it, so the browser's default 8px body
+     margin left a cream strip around everything — most visible as a band
+     around the full-width dark footer. Reset it here. */
+  margin: 0;
   background-color: var(--ds-color-page, #FCF7F4);
   min-height: 100vh;
 }
@@ -53,63 +58,65 @@ body.about #main-header .container.et_menu_container {
   margin-right: auto;
 }
 
-/* Vertical rhythm Divi's base applies — sets the pill height to match home */
-body.about #main-header #et-top-navigation {
-  padding-top: 33px;
-}
-
-body.about #main-header #et-top-navigation nav > ul > li > a {
-  padding-bottom: 33px;
-}
-
-/* Desktop menu: horizontal row */
-body.about #main-header #top-menu-nav,
-body.about #main-header #top-menu {
-  line-height: 0;
-}
-
-body.about #main-header #top-menu li {
-  display: inline-block;
-  font-size: 14px;
-  padding-right: 22px;
-}
-
-body.about #main-header #top-menu > li:last-child {
-  padding-right: 0;
-}
-
-body.about #main-header #top-menu a {
-  display: block;
-  position: relative;
-}
-
-/* Hamburger hidden on desktop */
-body.about #main-header #et_mobile_nav_menu {
-  display: none;
-}
-
-body.about #main-header .mobile_menu_bar {
-  position: relative;
-  display: block;
-  line-height: 0;
-}
-
-body.about #main-header .mobile_nav .select_page {
-  display: none;
-}
-
-/* Mobile: swap the menu for the hamburger (matches Divi's ≤980px breakpoint) */
-@media all and (max-width: 980px) {
+/* Desktop (≥981px): compact horizontal menu, vertically centered in the pill.
+   critical.css already flexes .et_menu_container (logo left / nav right) and
+   styles the link/button typography; these rules only supply the layout that
+   Divi's base nav would otherwise provide. A flex row keeps the pill the same
+   compact height as the home page (no tall Divi link padding). */
+@media all and (min-width: 981px) {
   body.about #main-header #et-top-navigation {
-    padding-top: 24px;
+    display: flex;
+    align-items: center;
   }
 
+  body.about #main-header #top-menu-nav {
+    display: flex;
+    align-items: center;
+  }
+
+  body.about #main-header #top-menu {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    line-height: normal;
+  }
+
+  body.about #main-header #top-menu li {
+    display: inline-flex;
+    align-items: center;
+    font-size: 14px;
+  }
+
+  body.about #main-header #top-menu a {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+  }
+
+  /* Hamburger hidden on desktop */
+  body.about #main-header #et_mobile_nav_menu {
+    display: none;
+  }
+}
+
+/* Mobile (≤980px): swap the menu for the hamburger (matches Divi's breakpoint) */
+@media all and (max-width: 980px) {
   body.about #main-header #top-menu {
     display: none;
   }
 
   body.about #main-header #et_mobile_nav_menu {
     display: block;
+  }
+
+  body.about #main-header .mobile_menu_bar {
+    position: relative;
+    display: block;
+    line-height: 0;
+  }
+
+  body.about #main-header .mobile_nav .select_page {
+    display: none;
   }
 }
 
