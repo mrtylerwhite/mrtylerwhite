@@ -1958,12 +1958,6 @@ body.prototype-ready .pr-footer__link:hover {
 
   body.prototype-ready .pr-final {
     padding: 4.5rem 0;
-    text-align: left;
-  }
-
-  body.prototype-ready .pr-final__sub {
-    margin-left: 0;
-    margin-right: 0;
   }
 
   body.prototype-ready .pr-footer__inner {

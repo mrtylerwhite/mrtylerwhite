@@ -230,6 +230,25 @@ body.home #page-container .case-work .et_pb_row_5.card-kepler-hm.is-lazy-bg-load
   background-repeat: no-repeat;
 }
 
+/* Mobile: stack the Notch mockup in a reserved band BELOW the content/CTA
+   instead of bleeding behind the text. Band height ≈ image aspect
+   (1136/1328 ≈ 85.5%) so the full mockup sits under the button. */
+@media screen and (max-width: 767px) {
+  body.home #page-container .case-work .et_pb_row_4.card-notch.is-lazy-bg-loaded {
+    background-position: center bottom;
+    background-size: 100% auto;
+    padding-bottom: 64% !important;
+  }
+
+  /* Same treatment for the Kepler card; band tuned to its image aspect
+     (1105/1338 ≈ 82.6%, minus the same ~21.5% button overlap). */
+  body.home #page-container .case-work .et_pb_row_5.card-kepler-hm.is-lazy-bg-loaded {
+    background-position: center bottom;
+    background-size: 100% auto;
+    padding-bottom: 32% !important;
+  }
+}
+
 body.home #page-container .case-work .card-side-by-side .et_pb_column_13.is-lazy-bg-loaded,
 body.home #page-container .case-work .card-side-by-side .et_pb_column_14.is-lazy-bg-loaded {
   background-position: center;
