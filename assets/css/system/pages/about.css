@@ -1,131 +1,342 @@
 /*
-  About page — ElevenLabs-inspired editorial layout
-  Scope: body.page-id-24
-  Patterns applied:
-    · Scroll/load reveal (via scroll-reveal.js + ds-reveal.css)
-    · Editorial text column (reading width on body copy)
-    · Full-bleed portrait treatment
-    · Tighter eyebrow → heading → body rhythm
+  About page — clean static layout
+  Scope: body.about
+  Two-column hero (text left, photo right) + upsell cards
 */
 
-/* ── Section background ─────────────────────────────────────────────────────── */
-body.page-id-24 #page-container .et_pb_section_0 {
-  background-color: var(--ds-color-page, #FCF7F4) !important;
+/* ── Base ────────────────────────────────────────────────────────────────── */
+
+body.about {
+  background-color: var(--ds-color-page, #FCF7F4);
+  min-height: 100vh;
 }
 
-/* ── Hero row: remove default Divi gutter, let columns breathe naturally ─────── */
-body.page-id-24 #page-container .et_pb_row_0 {
-  padding-top: 4em !important;
-  padding-bottom: 4em !important;
-  align-items: flex-start !important;
+.about-container {
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+  box-sizing: border-box;
 }
 
-/* ── Portrait column (right, 2/5) ────────────────────────────────────────────── */
-/* Stick the portrait to viewport top as you read — editorial sticky portrait */
-body.page-id-24 #page-container .et_pb_column_1 {
-  position: sticky !important;
-  top: 100px !important;
-  align-self: flex-start !important;
+/* ── Nav — base positioning Divi normally provides via theme CSS ──────────── */
+
+body.about #main-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 99999;
+  background: transparent;
 }
 
-body.page-id-24 #page-container .et_pb_image_2 {
-  border-radius: 12px !important; /* editorial card, not full pill */
-  overflow: hidden !important;
+/*
+  The floating "glass pill" look lives in critical.css (.et_menu_container:
+  display:flex; width:90%; top:2em — logo left, nav right). But critical.css
+  only restyles the nav; it relies on Divi's BASE nav layout (inline theme CSS
+  on full Divi pages) for the fundamentals: centering the pill, laying the menu
+  items out horizontally, and showing the hamburger only on mobile. This
+  hand-built page never loaded that base layer, so the menu stacked vertically,
+  the mobile hamburger showed on desktop, and the pill sat flush left/top.
+  The rules below reproduce that base layer (scoped to this page's header) so
+  the nav matches the home page. critical.css's !important rules still win for
+  the pill styling itself.
+*/
+
+/* Pill: relative positioning makes critical.css's `top: 2em` apply, and auto
+   margins center its 90% width. */
+body.about #main-header .container.et_menu_container {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-body.page-id-24 #page-container .et_pb_image_2 img {
-  display: block !important;
-  width: 100% !important;
-  height: auto !important;
+/* Vertical rhythm Divi's base applies — sets the pill height to match home */
+body.about #main-header #et-top-navigation {
+  padding-top: 33px;
 }
 
-/* ── Text column (left, 3/5) ─────────────────────────────────────────────────── */
-body.page-id-24 #page-container .et_pb_text_0 {
-  max-width: 600px !important;
-  padding-right: 3em !important;
+body.about #main-header #et-top-navigation nav > ul > li > a {
+  padding-bottom: 33px;
 }
 
-/* Heading */
-body.page-id-24 #page-container .et_pb_text_0 h3 {
-  font-family: var(--ds-font-display) !important;
-  font-weight: 400 !important;
-  font-size: clamp(2rem, 3.5vw, 2.75rem) !important;
-  letter-spacing: -0.025em !important;
-  line-height: 1.06 !important;
-  color: var(--ds-color-text-strong, #1a1410) !important;
-  margin-top: 0.5em !important;
-  margin-bottom: 0.25em !important;
+/* Desktop menu: horizontal row */
+body.about #main-header #top-menu-nav,
+body.about #main-header #top-menu {
+  line-height: 0;
 }
 
-/* Eyebrow (ds-eyebrow already handles font, this refines spacing for about) */
-body.page-id-24 #page-container .et_pb_text_0 .ds-eyebrow {
-  margin-bottom: 0.5em !important;
-  margin-top: 0 !important;
+body.about #main-header #top-menu li {
+  display: inline-block;
+  font-size: 14px;
+  padding-right: 22px;
 }
 
-/* Suppress the empty <p> Divi inserts between h3 and first paragraph */
-body.page-id-24 #page-container .et_pb_text_0 p:empty {
-  display: none !important;
-  margin: 0 !important;
+body.about #main-header #top-menu > li:last-child {
+  padding-right: 0;
 }
 
-/* Zero margin-top on all non-empty paragraphs after the heading
-   (adjacent-sibling h3+p hits the empty p, not the real first one) */
-body.page-id-24 #page-container .et_pb_text_0 h3 ~ p:not(:empty) {
-  margin-top: 0 !important;
-}
-
-/* Body paragraphs — editorial reading width */
-body.page-id-24 #page-container .et_pb_text_0 p:not(.ds-eyebrow) {
-  font-size: 1rem !important;
-  line-height: 1.75 !important;
-  color: var(--ds-color-text, #3d2e24) !important;
-  max-width: 62ch !important;
-  margin-bottom: 1.1em !important;
-}
-
-/* Last paragraph (signature line "Tyler White") — distinct treatment */
-body.page-id-24 #page-container .et_pb_text_0 p:last-of-type strong {
-  font-family: var(--ds-font-display) !important;
-  font-weight: 400 !important;
-  font-size: 1.15rem !important;
-  letter-spacing: -0.01em !important;
-  font-style: italic !important;
-}
-
-/* ── Signature SVG ───────────────────────────────────────────────────────────── */
-body.page-id-24 #page-container .et_pb_image_1 {
-  margin-top: 0.5em !important;
-  opacity: 0.55 !important;
-}
-
-body.page-id-24 #page-container .et_pb_image_1 img {
-  max-height: 44px !important;
-  width: auto !important;
-}
-
-/* ── Hairline divider between eyebrow and heading ────────────────────────────── */
-body.page-id-24 #page-container .et_pb_text_0 .ds-eyebrow::after {
-  content: '';
+body.about #main-header #top-menu a {
   display: block;
-  width: 32px;
-  height: 1px;
-  background: var(--ds-color-border, #E2D6CD);
-  margin-top: 0.75em;
+  position: relative;
 }
 
-/* ── Mobile: stack naturally ─────────────────────────────────────────────────── */
-@media screen and (max-width: 980px) {
-  body.page-id-24 #page-container .et_pb_column_1 {
-    position: static !important;
+/* Hamburger hidden on desktop */
+body.about #main-header #et_mobile_nav_menu {
+  display: none;
+}
+
+body.about #main-header .mobile_menu_bar {
+  position: relative;
+  display: block;
+  line-height: 0;
+}
+
+body.about #main-header .mobile_nav .select_page {
+  display: none;
+}
+
+/* Mobile: swap the menu for the hamburger (matches Divi's ≤980px breakpoint) */
+@media all and (max-width: 980px) {
+  body.about #main-header #et-top-navigation {
+    padding-top: 24px;
   }
 
-  body.page-id-24 #page-container .et_pb_text_0 {
-    max-width: 100% !important;
-    padding-right: 0 !important;
+  body.about #main-header #top-menu {
+    display: none;
   }
 
-  body.page-id-24 #page-container .et_pb_text_0 h3 {
-    font-size: clamp(1.75rem, 5vw, 2.25rem) !important;
+  body.about #main-header #et_mobile_nav_menu {
+    display: block;
+  }
+}
+
+/* ── Hero ────────────────────────────────────────────────────────────────── */
+
+.about-hero {
+  padding-top: 108px;
+  padding-bottom: 88px;
+}
+
+.about-hero .about-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+/* Left: copy */
+.about-hero__copy {
+  min-width: 0;
+}
+
+.about-hero__headline {
+  font-family: var(--ds-font-display, "Instrument Serif", Georgia, serif);
+  font-weight: 400;
+  font-size: clamp(2rem, 3.2vw, 2.75rem);
+  letter-spacing: -0.025em;
+  line-height: 1.06;
+  color: var(--ds-color-text-strong, #09090B);
+  margin-top: 0.5em;
+  margin-bottom: 1.5rem;
+}
+
+.about-hero__body p {
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--ds-color-text, #27272A);
+  margin-bottom: 1.1em;
+  max-width: 58ch;
+}
+
+.about-hero__body p:last-child {
+  margin-bottom: 0;
+}
+
+.about-hero__sig {
+  margin-top: 2rem;
+  opacity: 0.55;
+}
+
+.about-hero__sig img {
+  display: block;
+  max-height: 44px;
+  width: auto;
+}
+
+/* Right: photo */
+.about-hero__photo {
+  position: sticky;
+  top: 88px;
+}
+
+.about-hero__photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+/* ── Upsell section ──────────────────────────────────────────────────────── */
+
+.about-upsells {
+  border-top: 1px solid var(--ds-color-border, #E2D6CD);
+  padding-top: 56px;
+  padding-bottom: 88px;
+}
+
+.about-upsells__eyebrow {
+  margin-bottom: 32px;
+}
+
+.about-upsells__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* Cards */
+.about-upsell-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 16px;
+  padding: 32px 34px;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+/* Light cards (Newsletter + Case Study Kit) */
+.about-upsell-card:not(.about-upsell-card--dark) {
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 8px 28px rgba(9, 9, 11, 0.05);
+}
+
+.about-upsell-card:not(.about-upsell-card--dark):hover {
+  border-color: rgba(0, 0, 0, 0.14) !important;
+  box-shadow: 0 12px 36px rgba(9, 9, 11, 0.08);
+}
+
+.about-upsell-card .ds-card__eyebrow {
+  font-family: var(--ds-font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ds-color-faint, #71717A);
+  margin-bottom: 12px;
+}
+
+.about-upsell-card .ds-card__title.about-upsell-card__title {
+  font-family: var(--ds-font-display, "Instrument Serif", Georgia, serif);
+  font-weight: 400;
+  font-size: clamp(1.35rem, 1.8vw, 1.6rem);
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+  margin-bottom: 12px;
+  color: var(--ds-color-text-strong, #09090B);
+}
+
+.about-upsell-card .ds-card__body {
+  flex: 1;
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--ds-color-muted, #52525B);
+}
+
+.about-upsell-card .ds-card__footer {
+  margin-top: 24px;
+}
+
+.about-upsell-card__link {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ds-color-text-strong, #09090B);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding-bottom: 1px;
+  transition: opacity 0.15s ease;
+}
+
+.about-upsell-card__link:hover {
+  opacity: 0.65;
+}
+
+/* Dark card (Builder Kickoff) */
+.about-upsell-card--dark {
+  background: #0a0a0a;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
+  color: #fff;
+}
+
+.about-upsell-card--dark:hover {
+  border-color: rgba(255, 255, 255, 0.16) !important;
+  box-shadow: 0 20px 56px rgba(0, 0, 0, 0.28);
+}
+
+.about-upsell-card--dark .ds-card__eyebrow {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.about-upsell-card--dark .ds-card__title.about-upsell-card__title {
+  color: #fff;
+}
+
+.about-upsell-card--dark .ds-card__body {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Dark card CTA — white pill button */
+.about-upsell-card__btn {
+  display: inline-block;
+  padding: 12px 24px;
+  background: #fff;
+  color: #0a0a0a;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: background 0.15s ease, opacity 0.15s ease;
+}
+
+.about-upsell-card__btn:hover {
+  background: rgba(255, 255, 255, 0.88);
+}
+
+/* ── Mobile ──────────────────────────────────────────────────────────────── */
+
+@media (max-width: 900px) {
+  .about-hero .about-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  /* Photo above copy on mobile */
+  .about-hero__photo {
+    order: -1;
+    position: static;
+  }
+
+  .about-hero__photo img {
+    max-width: 300px;
+    border-radius: 10px;
+  }
+
+  .about-upsells__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .about-hero {
+    padding-top: 80px;
+    padding-bottom: 56px;
+  }
+
+  .about-hero__headline {
+    font-size: clamp(1.75rem, 7vw, 2.25rem);
   }
 }
