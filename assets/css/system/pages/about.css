@@ -50,6 +50,20 @@ body.about #main-header {
   the pill styling itself.
 */
 
+/*
+  Divi's theme options set a custom button icon — the glyph is literally "$"
+  (et-divi-customizer-global.min.css: `.et_pb_button:after{content:'$'}`).
+  Full Divi pages hide it via `.et_button_no_icon .et_pb_button:after{display:none}`,
+  which ships in Divi's inline reset. This hand-built page has the
+  `et_button_no_icon` body class but never loads that reset, so the "$" leaked
+  out after every .et_pb_button — most visibly the "Join the Newsletter" nav
+  button. Reproduce the suppression so the nav matches the other pages. */
+body.about .et_pb_button::after,
+body.about .et_pb_button::before {
+  content: none !important;
+  display: none !important;
+}
+
 /* Pill: relative positioning makes critical.css's `top: 2em` apply, and auto
    margins center its 90% width. */
 body.about #main-header .container.et_menu_container {
