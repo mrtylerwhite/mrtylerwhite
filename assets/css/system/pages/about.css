@@ -110,6 +110,12 @@ body.about #main-header #logo {
     align-items: center;
     gap: 18px;
     line-height: normal;
+    /* Reset the browser's default <ul> margin (~17px top/bottom) and
+       padding-inline-start (40px). Divi's base CSS zeroes these on full pages;
+       without it the margin inflated the pill by ~34px and the padding added a
+       left indent. */
+    margin: 0;
+    padding: 0;
   }
 
   body.about #main-header #top-menu li {
@@ -129,6 +135,13 @@ body.about #main-header #logo {
   body.about #main-header #top-menu > li:not(.et_pb_button):not(.site-nav-workshop) > a {
     padding-top: 0 !important;
     padding-bottom: 0 !important;
+  }
+
+  /* Join the Newsletter pill: Divi core sets .et_pb_button line-height:1.7em
+     (≈23.8px), which gives the button its full height. This page doesn't load
+     that base, so the pill rendered flat (22px vs 32px on other pages). */
+  body.about #main-header #top-menu li.et_pb_button > a {
+    line-height: 1.7em;
   }
 
   /* Hamburger hidden on desktop */
