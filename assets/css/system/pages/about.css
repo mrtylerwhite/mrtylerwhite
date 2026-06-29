@@ -293,7 +293,11 @@ body.about #main-header #logo {
   font-size: clamp(1.75rem, 2.2vw, 2.125rem);
   letter-spacing: -0.015em;
   line-height: 1.1;
-  margin-bottom: 12px;
+  /* !important beats the global heading rule in critical.css
+     (`body :where(h2…) { margin-bottom: 0.35em !important }`) and the
+     browser's default ~0.83em <h2> margin-top, which this page never resets. */
+  margin-top: 8px !important;
+  margin-bottom: 6px !important;
   color: var(--ds-color-text-strong, #09090B);
 }
 
@@ -339,8 +343,10 @@ body.about #main-header #logo {
   color: rgba(255, 255, 255, 0.5);
 }
 
+/* !important required: critical.css sets `body :where(h2…) { color: text-strong
+   !important }`, which otherwise paints this title black-on-black. */
 .about-upsell-card--dark .ds-card__title.about-upsell-card__title {
-  color: #fff;
+  color: #fff !important;
 }
 
 .about-upsell-card--dark .ds-card__body {
