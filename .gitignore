@@ -8,6 +8,3 @@
 node_modules
 *.log
 .playwright-investigation/
-
-# Separate Next.js project / build artifacts — not part of the static deploy
-next-site/
