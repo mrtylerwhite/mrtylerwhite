@@ -290,14 +290,14 @@ body.about #main-header #logo {
 .about-upsell-card .ds-card__title.about-upsell-card__title {
   font-family: var(--ds-font-display, "Instrument Serif", Georgia, serif);
   font-weight: 400;
-  font-size: clamp(1.75rem, 2.2vw, 2.125rem);
+  font-size: clamp(2.25rem, 2.9vw, 2.625rem);
   letter-spacing: -0.015em;
   line-height: 1.1;
   /* !important beats the global heading rule in critical.css
      (`body :where(h2…) { margin-bottom: 0.35em !important }`) and the
      browser's default ~0.83em <h2> margin-top, which this page never resets. */
   margin-top: 8px !important;
-  margin-bottom: 6px !important;
+  margin-bottom: 4px !important;
   color: var(--ds-color-text-strong, #09090B);
 }
 
@@ -306,6 +306,9 @@ body.about #main-header #logo {
   font-size: 15px;
   line-height: 1.65;
   color: var(--ds-color-muted, #52525B);
+  /* Kill the browser's default <p> top margin (~15px) so the body sits close
+     under the title — the gap is now just the title's 4px margin-bottom. */
+  margin-top: 0;
 }
 
 .about-upsell-card .ds-card__footer {
