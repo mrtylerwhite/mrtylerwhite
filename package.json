@@ -11,6 +11,7 @@
     "apply:css-performance": "node scripts/strip-dead-css-links.mjs && node scripts/build-css-bundles.mjs"
   },
   "devDependencies": {
-    "live-server": "^1.2.2"
+    "live-server": "^1.2.2",
+    "node-html-parser": "^8.0.3"
   }
 }
