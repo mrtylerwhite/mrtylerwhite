@@ -275,7 +275,17 @@ body.home .hero-cntn .et_pb_row_0.et_pb_row {
   }
 }
 </style>
-<link rel="stylesheet" href="/assets/css/system/pages/home.css" />
+<style id="home-critical-inline">
+/* ── Critical above-fold overrides (home.css deferred) ── */
+body.home #page-container #main-content{overflow-x:clip}
+body.home #page-container h1,body.home #page-container h2,body.home #page-container h3,body.home #page-container h4,body.home #page-container h5,body.home #page-container h6{padding-bottom:0}
+@media screen and (max-width:767px){
+  body.home #page-container .hero-cntn .et_pb_row_0.et_pb_row{padding-top:var(--ds-hero-clearance,136px)!important;margin-top:0!important;padding-bottom:1.25rem!important}
+  body.home #page-container .hero-cntn.et_pb_section_0{min-height:auto!important}
+}
+</style>
+<link rel="stylesheet" href="/assets/css/system/pages/home.css" media="print" onload="this.media='all'" />
+<noscript><link rel="stylesheet" href="/assets/css/system/pages/home.css" /></noscript>
 </head>
 <body data-rsssl=1 class="home wp-singular page-template-default page page-id-42 custom-background wp-theme-Divi et_divi_100_custom_hamburger_menu et_divi_100_custom_hamburger_menu--style-2 et_divi_100_custom_hamburger_menu--type-1 et_button_no_icon et_button_custom_icon et_pb_button_helper_class et_fixed_nav et_show_nav et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_header_style_left et_pb_svg_logo et_pb_footer_columns4 et_cover_background et_pb_gutter osx et_pb_gutters3 et_pb_pagebuilder_layout et_no_sidebar et_divi_theme et-db">
 	<div id="page-container">
