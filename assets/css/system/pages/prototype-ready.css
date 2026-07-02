@@ -1280,6 +1280,15 @@ body.prototype-ready .pr-bento-cta__btn:hover {
 }
 
 /* ── Ticket section — centerpiece ──────────────────────────────── */
+/* ── Testimonials section ───────────────────────────────────────── */
+body.prototype-ready .pr-testimonials {
+  padding: 5rem 0 2.5rem;
+}
+
+body.prototype-ready .pr-testimonials .pr-section-header {
+  margin-bottom: 2.5rem;
+}
+
 body.prototype-ready .pr-ticket-section {
   padding: 5rem 0;
 }
