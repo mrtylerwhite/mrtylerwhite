@@ -19,6 +19,10 @@
   to { --border-angle: 1turn; }
 }
 
+@keyframes border-spin {
+  to { --border-angle: 1turn; }
+}
+
 body.roi-case-study-template {
   --rcst-primary: #4f46e5;
   --rcst-primary-hover: #4338ca;
@@ -69,7 +73,7 @@ body.roi-case-study-template .pr-bar__inner {
   justify-content: space-between;
   gap: 1rem;
   width: 90%;
-  max-width: 1040px;
+  max-width: 1100px;
   margin: 0 auto;
 }
 
@@ -164,16 +168,28 @@ body.roi-case-study-template .rcst-hero {
 
 body.roi-case-study-template .rcst-hero__stage {
   position: relative;
-  padding: clamp(0.5rem, calc(3vw - 12px), 1.25rem) 0 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 1.5rem 3rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: clamp(2rem, 5vw, 4rem) 1.5rem 2rem;
 }
 
 body.roi-case-study-template .rcst-hero__copy {
   position: relative;
   z-index: 2;
-  max-width: 64rem;
-  margin: 0 auto;
-  padding: 0 1.5rem;
-  text-align: center;
+  text-align: left;
+  grid-column: 1;
+  grid-row: 1;
+  align-self: end;
+}
+
+body.roi-case-study-template .rcst-hero__testimonial {
+  grid-column: 1;
+  grid-row: 2;
+  align-self: start;
 }
 
 body.roi-case-study-template .rcst-eyebrow {
@@ -186,25 +202,35 @@ body.roi-case-study-template .rcst-eyebrow {
 }
 
 body.roi-case-study-template .rcst-hero__title {
-  margin: 0 auto;
-  max-width: 36rem;
+  margin: 0 0 1rem;
+  max-width: none;
   font-family: var(--ds-font-body) !important;
   font-weight: 600 !important;
-  font-size: clamp(2.25rem, 5vw, 3rem) !important;
-  line-height: 1 !important;
+  font-size: clamp(2.5rem, 4.5vw, 3.75rem) !important;
+  line-height: 1.1 !important;
   letter-spacing: normal !important;
   color: var(--rcst-foreground) !important;
   text-wrap: balance;
 }
 
 body.roi-case-study-template .rcst-hero__sub {
-  margin: 1rem auto 1.5rem;
-  max-width: 36rem;
+  margin: 0 0 1.75rem;
+  max-width: none;
   font-family: var(--ds-font-body);
-  font-size: 1.125rem;
-  line-height: 1.55;
+  font-size: 1.0625rem;
+  line-height: 1.6;
   color: var(--rcst-muted);
   text-wrap: balance;
+}
+
+body.roi-case-study-template .rcst-hero__testimonial {
+  overflow: hidden;
+}
+
+body.roi-case-study-template .rcst-hero__testimonial .senja-embed {
+  position: relative;
+  left: -48px;
+  width: calc(100% + 48px);
 }
 
 body.roi-case-study-template .rcst-hero__actions {
@@ -279,11 +305,14 @@ body.roi-case-study-template .rcst-hero__visual {
   z-index: 1;
   margin-top: 0;
   overflow: visible;
-  padding: 0 1.5rem 1rem;
+  padding: 0 0 1rem;
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: center;
 }
 
 body.roi-case-study-template .rcst-hero {
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
 }
 
 body.roi-case-study-template .rcst-hero__scene-bg {
@@ -312,10 +341,8 @@ body.roi-case-study-template .rcst-chat-shell {
   position: relative;
   z-index: 2;
   width: 100%;
-  max-width: 384px;
-  margin: 0 auto;
+  margin: 0;
   padding-bottom: 1.5rem;
-  transform: translateY(48px);
   scroll-margin-top: calc(64px + 1.5rem);
   scroll-margin-bottom: 1.5rem;
 }
@@ -329,7 +356,6 @@ body.roi-case-study-template .rcst-chat__window {
   min-height: 0;
   overflow: hidden;
   width: 100%;
-  max-width: 384px;
   padding: 24px;
   border: 1px solid transparent;
   border-radius: 16px;
@@ -674,12 +700,12 @@ body.roi-case-study-template .rcst-chat--success .rcst-chat__composer {
 
 /* ── How it works section ───────────────────────────────────────── */
 body.roi-case-study-template .rcst-how {
-  padding: 2.5rem 1.5rem 6rem;
+  padding: 1.25rem 1.5rem 6rem;
   background: #f6f0e9;
 }
 
 body.roi-case-study-template .rcst-how__inner {
-  max-width: 900px;
+  max-width: 1100px;
   margin: 0 auto;
   text-align: center;
 }
@@ -798,8 +824,8 @@ body.roi-case-study-template .rcst-how__nudge-link:hover {
   }
 
   body.roi-case-study-template .rcst-hero__visual {
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 0;
+    padding-right: 0;
   }
 
   body.roi-case-study-template .rcst-hero__scene-bg {
@@ -829,8 +855,146 @@ body.roi-case-study-template .rcst-how__nudge-link:hover {
     padding-bottom: 0.75rem;
   }
 
-  /* FIX 5 — reclaim vertical space above the stacked hero on mobile */
+  /* FIX 5 — stack to single column on mobile, reorder for conversion */
   body.roi-case-study-template .rcst-hero__stage {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
     padding-top: 24px;
+    gap: 1.5rem;
   }
+
+  body.roi-case-study-template .rcst-hero__copy {
+    text-align: left;
+    grid-column: auto;
+    grid-row: auto;
+    align-self: auto;
+    order: 1;
+  }
+
+  body.roi-case-study-template .rcst-hero__visual {
+    grid-column: auto;
+    grid-row: auto;
+    align-self: auto;
+    order: 2;
+  }
+
+  body.roi-case-study-template .rcst-hero__testimonial {
+    grid-column: auto;
+    grid-row: auto;
+    align-self: auto;
+    order: 3;
+  }
+}
+
+/* ── Testimonial ─────────────────────────────────────────────────── */
+body.roi-case-study-template .rcst-testimonial {
+  padding: 4rem 1.5rem;
+  background: var(--ds-color-surface-raised);
+}
+
+body.roi-case-study-template .rcst-testimonial__inner {
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+body.roi-case-study-template .rcst-testimonial__quote p {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: var(--ds-color-text-strong);
+  font-style: italic;
+  margin: 0 0 1.25rem;
+}
+
+body.roi-case-study-template .rcst-testimonial__cite {
+  font-size: 0.875rem;
+  color: var(--ds-color-text-muted);
+  font-style: normal;
+  font-weight: 500;
+}
+
+/* ── Builder Kickoff bridge ──────────────────────────────────────── */
+/* ── Builder Kickoff bridge (mirrors BK final CTA) ──────────────── */
+body.roi-case-study-template .rcst-bridge {
+  padding: 6rem 1.5rem;
+  background: var(--ds-color-text-strong);
+  text-align: center;
+}
+
+body.roi-case-study-template .rcst-bridge__inner {
+  max-width: 52ch;
+  margin: 0 auto;
+}
+
+body.roi-case-study-template .rcst-bridge__eyebrow {
+  font-family: var(--ds-font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+  margin: 0 0 1rem;
+}
+
+body.roi-case-study-template .rcst-bridge__heading {
+  font-family: var(--ds-font-serif);
+  font-size: clamp(2rem, 4.5vw, 4rem);
+  line-height: 1.03;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  margin: 0 0 0.75rem;
+}
+
+body.roi-case-study-template .rcst-bridge__body {
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.6);
+  margin: 0 0 2.25rem;
+}
+
+/* Animated border button — same as BK pr-final__cta */
+body.roi-case-study-template .rcst-bridge__cta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 28px;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #000000;
+  border: 1px solid transparent;
+  font-family: var(--ds-font-body);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  white-space: nowrap;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+body.roi-case-study-template .rcst-bridge__cta::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: inherit;
+  padding: 3px;
+  background: conic-gradient(from var(--border-angle), transparent 25%, #c59060, #f5d9b0 75%, transparent);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: rcst-border-spin 3s linear infinite;
+  pointer-events: none;
+}
+
+body.roi-case-study-template .rcst-bridge__cta:hover {
+  background: rgba(255,255,255,0.9);
+  transform: translateY(-1px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.4);
+  text-decoration: none;
+}
+
+body.roi-case-study-template .rcst-bridge__cta:hover::before {
+  animation-play-state: paused;
 }
