@@ -577,6 +577,14 @@ body.roi-case-study-template .rcst-chat__composer-panel {
   min-height: 5.5rem;
   border-radius: 0.5rem;
   background: var(--rcst-surface);
+  border: 1.5px solid transparent;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+body.roi-case-study-template .rcst-chat__composer-panel:hover,
+body.roi-case-study-template .rcst-chat__composer-panel:focus-within {
+  border-color: #c59060;
+  box-shadow: 0 0 0 3px rgba(197, 144, 96, 0.22);
 }
 
 body.roi-case-study-template .rcst-chat__composer--hidden {
