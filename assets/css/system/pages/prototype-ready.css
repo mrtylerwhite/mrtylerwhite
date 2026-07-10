@@ -108,7 +108,7 @@ body.prototype-ready .pr-body + .pr-body {
 
 /* ── Dark section text utilities ───────────────────────────────── */
 body.prototype-ready .pr-eyebrow-light {
-  color: rgba(255, 255, 255, 0.45) !important;
+  color: #c59060 !important;
 }
 
 body.prototype-ready .pr-heading-light {
@@ -182,6 +182,11 @@ body.prototype-ready .pr-bar {
   padding: 0.875rem 0;
 }
 
+/* Float the bar over the dark hero on first paint */
+body.prototype-ready .pr-main {
+  margin-top: -3.25rem;
+}
+
 body.prototype-ready .pr-bar__inner {
   display: flex;
   align-items: center;
@@ -246,50 +251,77 @@ body.prototype-ready .pr-bar__cta:hover {
 
 /* ── Hero ───────────────────────────────────────────────────────── */
 body.prototype-ready .pr-hero {
-  padding: 5.5rem 0 5rem;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: min(88vh, 760px);
+  padding: calc(3.25rem + 2rem) 0 3.5rem;
+  background: #0a0a0a;
+  color: #f4f0ea;
 }
 
-/* Desktop: two-column side-by-side */
+/* Full-bleed portrait — subject stays on the right */
+body.prototype-ready .pr-hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-color: #0a0a0a;
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(6, 5, 4, 0.92) 0%,
+      rgba(6, 5, 4, 0.78) 34%,
+      rgba(6, 5, 4, 0.28) 58%,
+      rgba(6, 5, 4, 0.08) 100%
+    ),
+    url("/wp-content/uploads/2026/07/builder-kickoff-hero.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: right center;
+}
+
 body.prototype-ready .pr-hero .pr-container {
+  position: relative;
+  z-index: 1;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4.5rem;
-  align-items: center;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  gap: 2rem;
+  align-items: start;
+  min-height: inherit;
+  padding-top: 0.5rem;
 }
 
 body.prototype-ready .pr-hero__copy {
-  max-width: none;
+  max-width: 34rem;
   margin-bottom: 0;
+  color: #f4f0ea;
 }
 
-body.prototype-ready .pr-hero__copy .ds-eyebrow {
-  margin-bottom: 0.875rem;
+body.prototype-ready #page-container .pr-hero__copy .ds-eyebrow {
+  margin: 0 0 24px !important;
 }
 
-body.prototype-ready .pr-hero__card {
-  max-width: 420px;
-  width: 100%;
-  margin-left: auto;
-}
-
-body.prototype-ready .pr-hero__title {
+body.prototype-ready #page-container .pr-hero__title {
   font-size: clamp(2.75rem, 6vw, 5.25rem) !important;
   line-height: 1.01 !important;
   letter-spacing: -0.035em !important;
+  margin-top: 0 !important;
   margin-bottom: 1.25rem !important;
+  color: #faf7f2 !important;
 }
 
 body.prototype-ready .pr-hero__sub {
   font-size: 1.0625rem;
   line-height: 1.65;
-  color: var(--ds-color-text);
-  max-width: 50ch;
+  color: rgba(244, 240, 234, 0.86);
+  max-width: 46ch;
   margin-bottom: 2rem;
 }
 
-/* Hero primary CTA */
+/* Hero primary CTA — inverted white pill on dark portrait */
 body.prototype-ready .pr-hero .pr-hero__cta,
-body.prototype-ready a.pr-hero__cta {
+body.prototype-ready #page-container a.ds-btn-primary.pr-hero__cta,
+body.prototype-ready #page-container a.pr-hero__cta {
   -webkit-appearance: none;
   appearance: none;
   display: inline-flex;
@@ -298,24 +330,33 @@ body.prototype-ready a.pr-hero__cta {
   min-height: 48px;
   padding: 0 28px;
   border-radius: 999px;
-  background: #000000;
-  color: #ffffff;
-  border: 1px solid #000000;
+  background: #ffffff !important;
+  color: #0a0a0a !important;
+  border: 1px solid #ffffff !important;
   font-family: var(--ds-font-body);
   font-size: 1rem;
   font-weight: 600;
   letter-spacing: 0.01em;
   text-decoration: none;
   white-space: nowrap;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
 }
 
-body.prototype-ready a.pr-hero__cta:hover {
-  background: #1a1a1a;
+body.prototype-ready #page-container a.ds-btn-primary.pr-hero__cta:hover,
+body.prototype-ready #page-container a.pr-hero__cta:hover {
+  background: #f4f0ea !important;
+  color: #0a0a0a !important;
+  border-color: #f4f0ea !important;
   transform: translateY(-1px);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
-  text-decoration: none;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.34);
+  text-decoration: none !important;
+}
+
+body.prototype-ready #page-container a.ds-btn-primary.pr-hero__cta:focus-visible,
+body.prototype-ready #page-container a.pr-hero__cta:focus-visible {
+  background: #ffffff !important;
+  color: #0a0a0a !important;
 }
 
 body.prototype-ready .pr-hero__meta {
@@ -323,7 +364,7 @@ body.prototype-ready .pr-hero__meta {
   font-size: 10px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--ds-color-muted);
+  color: rgba(244, 240, 234, 0.58);
   margin-top: 0.875rem;
 }
 
@@ -1790,21 +1831,31 @@ body.prototype-ready .pr-footer__link:hover {
 /* ── Responsive: 980px tablet ───────────────────────────────────── */
 @media screen and (max-width: 980px) {
   body.prototype-ready .pr-hero {
-    padding: 4rem 0 4rem;
+    min-height: min(78vh, 720px);
+    padding: calc(3.25rem + 1.75rem) 0 3.5rem;
+  }
+
+  body.prototype-ready .pr-hero__media {
+    background-image:
+      linear-gradient(
+        180deg,
+        rgba(6, 5, 4, 0.88) 0%,
+        rgba(6, 5, 4, 0.72) 42%,
+        rgba(6, 5, 4, 0.35) 72%,
+        rgba(6, 5, 4, 0.55) 100%
+      ),
+      url("/wp-content/uploads/2026/07/builder-kickoff-hero.jpg");
+    background-position: 72% center;
   }
 
   body.prototype-ready .pr-hero .pr-container {
     grid-template-columns: 1fr;
-    gap: 2.5rem;
+    gap: 0;
+    align-items: end;
   }
 
   body.prototype-ready .pr-hero__copy {
     max-width: 560px;
-  }
-
-  body.prototype-ready .pr-hero__card {
-    max-width: 480px;
-    margin-left: 0;
   }
 
   body.prototype-ready .pr-seat-header {
@@ -1893,20 +1944,16 @@ body.prototype-ready .pr-footer__link:hover {
   body.prototype-ready .pr-bar__meta { display: none; }
 
   body.prototype-ready .pr-hero {
-    padding: 3rem 0 3rem;
+    min-height: min(88vh, 680px);
+    padding: calc(3.25rem + 1.5rem) 0 3rem;
+  }
+
+  body.prototype-ready .pr-hero__media {
+    background-position: 78% center;
   }
 
   body.prototype-ready .pr-hero .pr-container {
-    gap: 2rem;
-  }
-
-  body.prototype-ready .pr-hero__card {
-    max-width: 100%;
-    margin-left: 0;
-  }
-
-  body.prototype-ready .workshop-card-shell {
-    max-width: 100%;
+    gap: 0;
   }
 
   body.prototype-ready .pr-section {
@@ -2023,12 +2070,16 @@ body.prototype-ready .pr-footer__link:hover {
 /* Default + pseudo-states — beats #page-container a { color: inherit } in critical.css */
 
 body.prototype-ready .pr-bar__cta,
-body.prototype-ready #page-container a.pr-hero__cta,
 body.prototype-ready #page-container a.workshop-card__cta,
 body.prototype-ready #page-container a.pr-seat-header__cta,
 body.prototype-ready #page-container a.pr-bento-cta__btn,
 body.prototype-ready #page-container a.pr-ticket__cta {
   color: #ffffff !important;
+}
+
+/* Hero CTA is a light pill on the dark portrait — keep text dark */
+body.prototype-ready #page-container a.pr-hero__cta {
+  color: #0a0a0a !important;
 }
 
 body.prototype-ready .pr-bar__cta:visited,
@@ -2043,7 +2094,7 @@ body.prototype-ready a.pr-hero__cta:visited,
 body.prototype-ready a.pr-hero__cta:focus,
 body.prototype-ready a.pr-hero__cta:focus-visible,
 body.prototype-ready a.pr-hero__cta:active {
-  color: #ffffff !important;
+  color: #0a0a0a !important;
   text-decoration: none;
 }
 
@@ -2081,12 +2132,15 @@ body.prototype-ready a.pr-ticket__cta:active {
 
 /* Also lock down the hover states across the board */
 body.prototype-ready .pr-bar__cta:hover,
-body.prototype-ready a.pr-hero__cta:hover,
 body.prototype-ready a.workshop-card__cta:hover,
 body.prototype-ready .pr-seat-header__cta:hover,
 body.prototype-ready .pr-bento-cta__btn:hover,
 body.prototype-ready a.pr-ticket__cta:hover {
   color: #ffffff !important;
+}
+
+body.prototype-ready a.pr-hero__cta:hover {
+  color: #0a0a0a !important;
 }
 
 /* ── Nav-on-dark contrast switching ───────────────────────────── */
@@ -2100,7 +2154,7 @@ body.prototype-ready .pr-bar__meta {
 
 /* Active state: nav is over a [data-nav-theme="dark"] section */
 body.prototype-ready .pr-bar--on-dark .pr-bar__wordmark img {
-  filter: invert(1);
+  filter: brightness(0) invert(1);
 }
 body.prototype-ready .pr-bar--on-dark .pr-bar__meta {
   color: rgba(255, 255, 255, 0.75);

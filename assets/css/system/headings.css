@@ -179,7 +179,7 @@ body.et_fixed_nav #page-container #main-header {
   font-weight: 500 !important;
   letter-spacing: 0.18em !important;
   text-transform: uppercase !important;
-  color: var(--ds-color-muted) !important;
+  color: #c59060 !important;
   line-height: 1.35 !important;
 }
 

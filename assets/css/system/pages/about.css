@@ -283,7 +283,7 @@ body.about #main-header #logo {
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--ds-color-faint, #71717A);
+  color: #c59060;
   margin-bottom: 12px;
 }
 
@@ -343,7 +343,7 @@ body.about #main-header #logo {
 }
 
 .about-upsell-card--dark .ds-card__eyebrow {
-  color: rgba(255, 255, 255, 0.5);
+  color: #c59060;
 }
 
 /* !important required: critical.css sets `body :where(h2…) { color: text-strong

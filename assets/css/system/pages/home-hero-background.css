@@ -1,48 +1,89 @@
 /*
-  Homepage hero — static palm poster with warm scrim (no background video).
+  Homepage hero — moody full-bleed portrait (subject right, copy left).
+  Source of truth; also inlined in index.html as #home-hero-background-inline.
 */
 
 .hero-cntn.et_pb_section_0 {
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  margin-top: 0 !important;
-  background-color: #f6f0e9;
+  margin: 0 !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  width: 100% !important;
+  max-width: none !important;
+  min-height: min(92vh, 820px);
+  background-color: #0a0a0a !important;
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(6, 5, 4, 0.92) 0%,
+      rgba(6, 5, 4, 0.78) 34%,
+      rgba(6, 5, 4, 0.28) 58%,
+      rgba(6, 5, 4, 0.08) 100%
+    ),
+    url("/wp-content/uploads/2026/07/home-hero.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: right center;
+  color: #f4f0ea;
+}
+
+/* Kill Divi section padding / any parent inset that frames the hero */
+body.home #page-container #main-content,
+body.home #page-container .entry-content,
+body.home #page-container .et-l--post,
+body.home #page-container .et_builder_inner_content {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+body.home #page-container .hero-cntn.et_pb_section_0,
+body.home #page-container .hero-cntn.et_pb_section_0.et_pb_section {
+  margin: 0 !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
 }
 
 body.home .hero-cntn .et_pb_row_0.et_pb_row {
   margin-top: 0 !important;
-  padding-top: 4.5rem !important;
+  padding-top: var(--ds-hero-clearance, 138px) !important;
+  padding-bottom: 2rem !important;
 }
 
-/* Faded palm texture (replaces low-opacity video) */
-.hero-cntn.et_pb_section_0::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background-image: url("/wp-content/uploads/2025/12/Palm-Swaying-poster.webp");
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  opacity: 0.32;
+/* Portrait column retired — photo is the full-bleed background */
+body.home .hero-cntn .et_pb_column_1,
+body.home .hero-cntn .et_pb_image_0 {
+  display: none !important;
 }
 
-/* Warm scrim above poster, below hero copy */
-.hero-cntn.et_pb_section_0::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  background: linear-gradient(
-    105deg,
-    rgba(246, 240, 233, 0.92) 0%,
-    rgba(246, 240, 233, 0.78) 42%,
-    rgba(246, 240, 233, 0.45) 68%,
-    rgba(246, 240, 233, 0.2) 100%
-  );
+/* Lockup left-aligned to match nav logo edge (.et_menu_container = 90% / 1080) */
+body.home #page-container .hero-cntn.et_pb_section_0 > .et_pb_row_0.et_pb_row {
+  width: 90% !important;
+  max-width: 1080px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+body.home #page-container .hero-cntn .et_pb_column_0 {
+  float: none !important;
+  width: 100% !important;
+  max-width: 36rem !important;
+  margin-left: 0 !important;
+  margin-right: auto !important;
+}
+
+body.home #page-container .hero-cntn .et_pb_text_0.et_pb_module,
+body.home #page-container .hero-cntn .et_pb_code_0.et_pb_module {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  text-align: left !important;
+}
+
+body.home #page-container .hero-cntn .et_pb_text_0,
+body.home #page-container .hero-cntn .et_pb_text_0 .et_pb_text_inner,
+body.home #page-container .hero-cntn .et_pb_code_0 .et_pb_code_inner {
+  text-align: left !important;
 }
 
 .hero-cntn.et_pb_section_0 > .et_pb_row {
@@ -50,50 +91,82 @@ body.home .hero-cntn .et_pb_row_0.et_pb_row {
   z-index: 2;
 }
 
-@media screen and (max-width: 767px) {
-  .hero-cntn.et_pb_section_0::before {
-    background: linear-gradient(
-      180deg,
-      rgba(246, 240, 233, 0.55) 0%,
-      rgba(246, 240, 233, 0.35) 100%
-    );
-  }
+/* Light type on dark hero */
+body.home #page-container .hero-cntn .et_pb_text_0,
+body.home #page-container .hero-cntn .et_pb_text_0 .et_pb_text_inner,
+body.home #page-container .hero-cntn .et_pb_text_0 p {
+  color: rgba(244, 240, 234, 0.86) !important;
+}
 
-  .hero-cntn.et_pb_section_0::after {
-    background-image: url("/wp-content/uploads/2025/12/Palm-Swaying-poster-mobile.webp");
-    opacity: 0.38;
-  }
+body.home #page-container .hero-cntn .et_pb_text_0 .ds-eyebrow {
+  color: #c59060 !important;
+}
 
-  /*
-    CLS stabilization (Phase 3.5): before Divi deferred inline CSS parses,
-    the profile image column renders and row_0 keeps desktop padding — hero
-    overshoots ~1163px then settles to ~682px, pushing section_1 into the
-    viewport (~0.30 mobile CLS). These rules mirror the final mobile layout
-    early so first paint matches post-load height.
-  */
+body.home #page-container .hero-cntn .home-hero__punch {
+  color: #faf7f2 !important;
+}
+
+body.home #page-container .hero-cntn .et_pb_text_1,
+body.home #page-container .hero-cntn .et_pb_text_1 .et_pb_text_inner,
+body.home #page-container .hero-cntn .et_pb_text_1 sup {
+  color: rgba(244, 240, 234, 0.55) !important;
+}
+
+/* Featured logos readable on dark */
+body.home #page-container .hero-cntn .et_pb_row_2.social-proof {
+  filter: none !important;
+  padding-bottom: 50px !important;
+}
+
+body.home #page-container .hero-cntn .et_pb_row_2.social-proof img {
+  filter: brightness(0) invert(1) !important;
+  opacity: 1;
+}
+
+/* Secondary CTA: outline on dark */
+body.home #page-container #cta_builder_kickoff {
+  background: transparent !important;
+  color: #faf7f2 !important;
+  border: 1px solid rgba(250, 247, 242, 0.72) !important;
+}
+
+body.home #page-container #cta_builder_kickoff:hover,
+body.home #page-container #cta_builder_kickoff:active {
+  background: rgba(250, 247, 242, 0.1) !important;
+  color: #ffffff !important;
+  border-color: #ffffff !important;
+}
+
+@media screen and (max-width: 980px) {
   body.home .hero-cntn.et_pb_section_0 {
-    min-height: 682px;
-  }
-
-  body.home .hero-cntn .et_pb_image_0 {
-    display: none !important;
+    min-height: min(78vh, 720px);
+    background-image:
+      linear-gradient(
+        180deg,
+        rgba(6, 5, 4, 0.88) 0%,
+        rgba(6, 5, 4, 0.72) 42%,
+        rgba(6, 5, 4, 0.35) 72%,
+        rgba(6, 5, 4, 0.55) 100%
+      ),
+      url("/wp-content/uploads/2026/07/home-hero.jpg");
+    background-position: 72% center;
   }
 
   body.home .hero-cntn .et_pb_row_0.et_pb_row {
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
+    padding-top: calc(var(--ds-hero-clearance, 138px) - 8px) !important;
   }
 }
 
-/* Tablet: profile image hidden in final Divi layout (768–980px) — hide early for CLS */
-@media screen and (min-width: 768px) and (max-width: 980px) {
-  body.home .hero-cntn .et_pb_image_0 {
-    display: none !important;
+@media screen and (max-width: 767px) {
+  body.home .hero-cntn.et_pb_section_0 {
+    min-height: min(88vh, 680px);
+    background-position: 78% center;
   }
 
-  body.home .hero-cntn.et_pb_section_0 {
-    min-height: 703px;
+  body.home .hero-cntn .et_pb_row_0.et_pb_row {
+    padding-top: 3.5rem !important;
+    padding-bottom: 1.5rem !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
   }
 }

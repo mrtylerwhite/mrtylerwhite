@@ -125,7 +125,7 @@ body.home #page-container .home-hub {
 
   body.home #page-container .hero-cntn .et_pb_row_2.social-proof {
     padding-top: 0.5rem !important;
-    padding-bottom: 1rem !important;
+    padding-bottom: 50px !important;
   }
 }
 
@@ -155,6 +155,7 @@ body.home #page-container .home-hub {
 body.home #page-container .hero-cntn .et_pb_row_2.social-proof {
   /* Row-level filter breaks overflow clipping on flipper slots */
   filter: none !important;
+  padding-bottom: 50px !important;
 }
 
 body.home #page-container .hero-cntn .et_pb_row_2.social-proof .et_pb_image.et_pb_module {
@@ -184,7 +185,8 @@ body.home #page-container .hero-cntn .et_pb_row_2.social-proof .et_pb_image img 
   height: auto !important;
   max-width: 100%;
   display: block;
-  filter: saturate(0.43) sepia(0.41);
+  filter: brightness(0) invert(1) !important;
+  opacity: 1;
   will-change: transform;
   animation: ds-social-proof-flip 10s ease infinite;
   animation-delay: 0.5s;
@@ -230,7 +232,7 @@ body.home #page-container .home-hub__eyebrow {
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--ds-color-muted);
+  color: #c59060;
 }
 
 body.home #page-container .home-hub__title {
@@ -304,7 +306,7 @@ body.home #page-container .home-hub--enemy {
 
 body.home #page-container .home-hub--enemy .home-hub__eyebrow--dark,
 body.home #page-container .home-v3-band--close .home-hub__eyebrow--dark {
-  color: rgba(255, 255, 255, 0.62);
+  color: #c59060;
 }
 
 body.home #page-container .home-hub--enemy .home-hub__title--cinematic {
@@ -393,11 +395,11 @@ body.home #page-container .home-bento__eyebrow {
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--ds-color-faint);
+  color: #c59060;
 }
 
 body.home #page-container .home-bento__eyebrow--light {
-  color: rgba(255, 255, 255, 0.5);
+  color: #c59060;
 }
 
 body.home #page-container .home-bento__primary .home-bento__title {
@@ -693,18 +695,18 @@ body.home #page-container #cta_case_studies:active {
   transform: none !important;
 }
 
-/* Builder Kickoff — hero secondary */
+/* Builder Kickoff — hero secondary (outline on dark portrait) */
 body.home #page-container #cta_builder_kickoff {
-  background: #000000 !important;
-  color: #ffffff !important;
-  border: 1px solid #000000 !important;
+  background: transparent !important;
+  color: #faf7f2 !important;
+  border: 1px solid rgba(250, 247, 242, 0.72) !important;
 }
 
 body.home #page-container #cta_builder_kickoff:hover,
 body.home #page-container #cta_builder_kickoff:active {
-  background: #1a1a1a !important;
+  background: rgba(250, 247, 242, 0.1) !important;
   color: #ffffff !important;
-  border-color: #1a1a1a !important;
+  border-color: #ffffff !important;
 }
 
 /* ── Responsive ─────────────────────────────────────────────────── */
