@@ -418,11 +418,15 @@ body.roi-case-study-template .rcst-chat__brand {
 
 body.roi-case-study-template .rcst-chat__icon {
   display: inline-flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
   width: 1.5rem;
   height: 1.5rem;
   border-radius: 5px;
   overflow: hidden;
+  background: var(--rcst-claude);
+  color: #ffffff;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
 }
 
@@ -430,6 +434,11 @@ body.roi-case-study-template .rcst-chat__icon img {
   display: block;
   width: 100%;
   height: 100%;
+}
+
+body.roi-case-study-template .rcst-chat__icon svg {
+  width: 0.875rem;
+  height: 0.875rem;
 }
 
 body.roi-case-study-template .rcst-chat__brand-name {
