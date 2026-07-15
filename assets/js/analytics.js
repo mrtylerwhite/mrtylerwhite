@@ -54,12 +54,35 @@
     return p.endsWith("/") ? p : p + "/";
   }
 
+  /* Builder Kickoff price, in the currency Kit actually bills in (CAD) — keep in
+     sync with the product price in Kit if it ever changes. */
+  var BUILDER_KICKOFF_VALUE = 97;
+  var BUILDER_KICKOFF_CURRENCY = "CAD";
+
+  function purchaseTransactionId() {
+    try {
+      var params = new URLSearchParams(window.location.search);
+      var candidates = ["transaction_id", "order_id", "purchase_id", "id", "receipt_id"];
+      for (var i = 0; i < candidates.length; i++) {
+        var v = params.get(candidates[i]);
+        if (v) return v.slice(0, 60);
+      }
+    } catch (_) {}
+    return null;
+  }
+
   function pageViews() {
     var p = path();
     if (p === "/roi-case-study-template/") trackEvent("roi_skill_page_view", { page: p });
     if (p === "/roi-case-study-skill/thank-you/") trackEvent("roi_skill_thank_you_view", { page: p });
     if (p === "/free-case-study-kit/") trackEvent("free_case_study_kit_thank_you_view", { page: p });
     if (p === "/prototype-ready/") trackEvent("builder_kickoff_page_view", { page: p });
+    if (p === "/builder-kickoff/thank-you/") {
+      var txnId = purchaseTransactionId();
+      var props = { value: BUILDER_KICKOFF_VALUE, currency: BUILDER_KICKOFF_CURRENCY, page: p };
+      if (txnId) props.transaction_id = txnId;
+      trackEvent("purchase", props);
+    }
   }
 
   function linkLocation(el) {
