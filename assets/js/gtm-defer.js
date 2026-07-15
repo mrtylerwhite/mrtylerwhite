@@ -1,8 +1,24 @@
 /**
  * Defer Google tag (GT-NBP3W94) until idle or first user interaction.
+ *
+ * Never loads on local/dev hosts (localhost, 127.0.0.1, LAN IPs, .local) —
+ * without this guard, running `npm run dev` / `vercel dev` sends real
+ * events straight into the production GA4 property.
  */
 (function () {
   "use strict";
+
+  var host = window.location.hostname;
+  var isLocalDev =
+    host === "localhost" ||
+    host === "127.0.0.1" ||
+    host === "0.0.0.0" ||
+    host === "[::1]" ||
+    /^192\.168\./.test(host) ||
+    /^10\./.test(host) ||
+    /^172\.(1[6-9]|2\d|3[0-1])\./.test(host) ||
+    /\.local$/.test(host);
+  if (isLocalDev) return;
 
   var GTM_ID = "GT-NBP3W94";
   var loaded = false;
