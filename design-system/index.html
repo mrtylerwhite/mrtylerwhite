@@ -19,11 +19,15 @@
   <!-- Existing plugin CSS present in repo (mobile hamburger icon) -->
   <link rel="stylesheet" href="/wp-content/plugins/divi-100-hamburger-menu/assets/css/style.css" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="/wp-content/plugins/divi-100-hamburger-menu/assets/css/style.css"></noscript>
+  <link rel="stylesheet" href="/wp-content/et-cache/global/et-divi-customizer-global.min.css" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="/wp-content/et-cache/global/et-divi-customizer-global.min.css"></noscript>
 
   <!-- Design system: tokens, typography utilities, layout, components (opt-in classes only) -->
   <link rel="preload" href="/assets/fonts/instrument-serif/InstrumentSerif-Regular.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="stylesheet" href="/assets/css/system/index.css" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="/assets/css/system/index.css"></noscript>
+<link rel="stylesheet" href="/assets/css/system/site-footer.css" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="/assets/css/system/site-footer.css"></noscript>
 
   <!-- Docs-only layout CSS -->
   <link rel="stylesheet" href="/design-system/design-system.css" media="print" onload="this.media='all'">
@@ -42,17 +46,8 @@
     a:hover{text-decoration:underline}
     .container{width:80%;max-width:1080px;margin:auto;position:relative}
 
-    /* Header frame (copied structurally from existing pages, styled lightly) */
-    #main-header{top:0;background:#fff;width:100%;box-shadow:0 1px 0 rgba(0,0,0,.1);position:sticky;z-index:99999}
-    #main-header .et_menu_container{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 0}
-    .logo_container{display:flex;align-items:center;gap:10px}
-    #logo{height:20px;width:auto;display:block}
-    #top-menu{margin:0;padding:0;list-style:none;display:flex;gap:18px;align-items:center}
-    #top-menu > li{display:block}
-    #top-menu a{color:rgba(0,0,0,.65);font-weight:600}
-    #top-menu a:hover{opacity:.8;text-decoration:none}
-    #et_mobile_nav_menu{display:none}
-    .mobile_menu_bar{display:inline-block}
+    /* Header: no local overrides — critical.css (via index.css @import) owns #main-header styling
+       so this page's header renders identically to production. */
 
     /* Footer frame */
     #main-footer{background:#222;color:#fff;margin-top:36px}
@@ -69,19 +64,18 @@
     /* Mobile */
     @media (max-width:980px){
       .container{width:92%}
-      #top-menu-nav{display:none}
-      #et_mobile_nav_menu{display:block}
     }
   </style>
   <script src="/assets/js/hotjar.js" defer></script>
 </head>
-<body class="custom-background">
+<body class="custom-background wp-theme-Divi et_divi_100_custom_hamburger_menu et_divi_100_custom_hamburger_menu--style-2 et_divi_100_custom_hamburger_menu--type-1 et_button_no_icon et_button_custom_icon et_pb_button_helper_class et_fixed_nav et_show_nav et_header_style_left et_pb_svg_logo">
   <div id="page-container">
     <header id="main-header" data-height-onload="30">
       <div class="container clearfix et_menu_container">
         <div class="logo_container">
+          <span class="logo_helper"></span>
           <a href="/">
-            <img src="/wp-content/uploads/2025/12/logo-mrtylerwhite-1.svg" width="69" height="20" alt="Mr. Tyler White" id="logo" />
+            <img src="/wp-content/uploads/2025/12/logo-mrtylerwhite-1.svg" width="69" height="20" alt="Mr. Tyler White" id="logo" data-height-percentage="34" />
           </a>
         </div>
         <div id="et-top-navigation" data-height="30" data-fixed-height="40">
