@@ -43,6 +43,8 @@
     { "source": "/sample-page/", "destination": "/", "permanent": true },
     { "source": "/home-2/", "destination": "/", "permanent": true },
     { "source": "/podcast/", "destination": "https://www.designtablepodcast.com/", "permanent": true },
-    { "source": "/podcast", "destination": "https://www.designtablepodcast.com/", "permanent": true }
+    { "source": "/podcast", "destination": "https://www.designtablepodcast.com/", "permanent": true },
+    { "source": "/join/", "destination": "https://buy.stripe.com/3cI28k4zf5wJ9286Krebu01", "permanent": true },
+    { "source": "/join", "destination": "https://buy.stripe.com/3cI28k4zf5wJ9286Krebu01", "permanent": true }
   ]
 }
