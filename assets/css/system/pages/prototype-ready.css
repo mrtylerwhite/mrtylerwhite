@@ -176,9 +176,9 @@ body.prototype-ready .pr-bar {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(252, 247, 244, 0.30);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: rgba(252, 247, 244, 0.05);
+  backdrop-filter: blur(21px);
+  -webkit-backdrop-filter: blur(21px);
   padding: 0.875rem 0;
 }
 
