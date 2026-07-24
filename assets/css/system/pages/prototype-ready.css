@@ -256,23 +256,23 @@ body.prototype-ready .pr-hero {
   overflow: hidden;
   min-height: min(88vh, 760px);
   padding: calc(3.25rem + 2rem) 0 3.5rem;
-  background: #0a0a0a;
-  color: #f4f0ea;
+  background: #fcf7f4;
+  color: #1a1714;
 }
 
-/* Full-bleed portrait — subject stays on the right */
+/* Full-bleed portrait — subject stays on the right; light wash for dark type */
 body.prototype-ready .pr-hero__media {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background-color: #0a0a0a;
+  background-color: #fcf7f4;
   background-image:
     linear-gradient(
       90deg,
-      rgba(6, 5, 4, 0.92) 0%,
-      rgba(6, 5, 4, 0.78) 34%,
-      rgba(6, 5, 4, 0.28) 58%,
-      rgba(6, 5, 4, 0.08) 100%
+      rgba(252, 247, 244, 0.94) 0%,
+      rgba(252, 247, 244, 0.82) 34%,
+      rgba(252, 247, 244, 0.32) 58%,
+      rgba(252, 247, 244, 0.04) 100%
     ),
     url("/wp-content/uploads/2026/07/builder-kickoff-hero.jpg");
   background-repeat: no-repeat;
@@ -294,11 +294,12 @@ body.prototype-ready .pr-hero .pr-container {
 body.prototype-ready .pr-hero__copy {
   max-width: 34rem;
   margin-bottom: 0;
-  color: #f4f0ea;
+  color: #1a1714;
 }
 
 body.prototype-ready #page-container .pr-hero__copy .ds-eyebrow {
   margin: 0 0 24px !important;
+  color: #8a5a32 !important;
 }
 
 body.prototype-ready #page-container .pr-hero__title {
@@ -307,18 +308,18 @@ body.prototype-ready #page-container .pr-hero__title {
   letter-spacing: -0.035em !important;
   margin-top: 0 !important;
   margin-bottom: 1.25rem !important;
-  color: #faf7f2 !important;
+  color: #0a0a0a !important;
 }
 
 body.prototype-ready .pr-hero__sub {
   font-size: 1.0625rem;
   line-height: 1.65;
-  color: rgba(244, 240, 234, 0.86);
+  color: rgba(26, 23, 20, 0.78);
   max-width: 46ch;
   margin-bottom: 2rem;
 }
 
-/* Hero primary CTA — inverted white pill on dark portrait */
+/* Hero primary CTA — solid dark pill on light wash */
 body.prototype-ready .pr-hero .pr-hero__cta,
 body.prototype-ready #page-container a.ds-btn-primary.pr-hero__cta,
 body.prototype-ready #page-container a.pr-hero__cta {
@@ -330,33 +331,33 @@ body.prototype-ready #page-container a.pr-hero__cta {
   min-height: 48px;
   padding: 0 28px;
   border-radius: 999px;
-  background: #ffffff !important;
-  color: #0a0a0a !important;
-  border: 1px solid #ffffff !important;
+  background: #0a0a0a !important;
+  color: #ffffff !important;
+  border: 1px solid #0a0a0a !important;
   font-family: var(--ds-font-body);
   font-size: 1rem;
   font-weight: 600;
   letter-spacing: 0.01em;
   text-decoration: none;
   white-space: nowrap;
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.16);
   transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
 }
 
 body.prototype-ready #page-container a.ds-btn-primary.pr-hero__cta:hover,
 body.prototype-ready #page-container a.pr-hero__cta:hover {
-  background: #f4f0ea !important;
-  color: #0a0a0a !important;
-  border-color: #f4f0ea !important;
+  background: #1a1a1a !important;
+  color: #ffffff !important;
+  border-color: #1a1a1a !important;
   transform: translateY(-1px);
-  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.34);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.2);
   text-decoration: none !important;
 }
 
 body.prototype-ready #page-container a.ds-btn-primary.pr-hero__cta:focus-visible,
 body.prototype-ready #page-container a.pr-hero__cta:focus-visible {
-  background: #ffffff !important;
-  color: #0a0a0a !important;
+  background: #0a0a0a !important;
+  color: #ffffff !important;
 }
 
 body.prototype-ready .pr-hero__meta {
@@ -364,7 +365,7 @@ body.prototype-ready .pr-hero__meta {
   font-size: 10px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(244, 240, 234, 0.58);
+  color: rgba(26, 23, 20, 0.52);
   margin-top: 0.875rem;
 }
 
@@ -1839,10 +1840,10 @@ body.prototype-ready .pr-footer__link:hover {
     background-image:
       linear-gradient(
         180deg,
-        rgba(6, 5, 4, 0.88) 0%,
-        rgba(6, 5, 4, 0.72) 42%,
-        rgba(6, 5, 4, 0.35) 72%,
-        rgba(6, 5, 4, 0.55) 100%
+        rgba(252, 247, 244, 0.94) 0%,
+        rgba(252, 247, 244, 0.82) 38%,
+        rgba(252, 247, 244, 0.28) 70%,
+        rgba(252, 247, 244, 0.45) 100%
       ),
       url("/wp-content/uploads/2026/07/builder-kickoff-hero.jpg");
     background-position: 72% center;
@@ -2077,9 +2078,9 @@ body.prototype-ready #page-container a.pr-ticket__cta {
   color: #ffffff !important;
 }
 
-/* Hero CTA is a light pill on the dark portrait — keep text dark */
+/* Hero CTA is a dark pill on the light wash — keep text light */
 body.prototype-ready #page-container a.pr-hero__cta {
-  color: #0a0a0a !important;
+  color: #ffffff !important;
 }
 
 body.prototype-ready .pr-bar__cta:visited,
@@ -2094,7 +2095,7 @@ body.prototype-ready a.pr-hero__cta:visited,
 body.prototype-ready a.pr-hero__cta:focus,
 body.prototype-ready a.pr-hero__cta:focus-visible,
 body.prototype-ready a.pr-hero__cta:active {
-  color: #0a0a0a !important;
+  color: #ffffff !important;
   text-decoration: none;
 }
 
@@ -2140,7 +2141,7 @@ body.prototype-ready a.pr-ticket__cta:hover {
 }
 
 body.prototype-ready a.pr-hero__cta:hover {
-  color: #0a0a0a !important;
+  color: #ffffff !important;
 }
 
 /* ── Nav-on-dark contrast switching ───────────────────────────── */
