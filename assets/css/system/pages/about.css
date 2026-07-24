@@ -174,31 +174,37 @@ body.about #main-header #logo {
 /* ── Hero ────────────────────────────────────────────────────────────────── */
 
 .about-hero {
-  padding-top: 108px;
+  padding-top: 148px;
   padding-bottom: 88px;
 }
 
 .about-hero .about-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 64px;
-  align-items: start;
+  display: block;
 }
 
-/* Left: copy */
+/* Copy — now full width, no photo column */
 .about-hero__copy {
   min-width: 0;
+}
+
+.about-hero__copy .ds-eyebrow {
+  text-align: center;
+}
+
+.about-hero__video {
+  margin: 0 0 1.75rem;
 }
 
 .about-hero__headline {
   font-family: var(--ds-font-display, "Instrument Serif", Georgia, serif);
   font-weight: 400;
-  font-size: clamp(2rem, 3.2vw, 2.75rem);
+  font-size: clamp(2.6875rem, 4vw + 1rem, 4.375rem);
   letter-spacing: -0.025em;
-  line-height: 1.06;
+  line-height: 0.85;
+  text-align: center;
   color: var(--ds-color-text-strong, #09090B);
-  margin-top: 0.5em;
-  margin-bottom: 1.5rem;
+  margin-top: 0.2em;
+  margin-bottom: 0.35rem;
 }
 
 .about-hero__body p {
@@ -206,7 +212,6 @@ body.about #main-header #logo {
   line-height: 1.75;
   color: var(--ds-color-text, #27272A);
   margin-bottom: 1.1em;
-  max-width: 58ch;
 }
 
 .about-hero__body p:last-child {
@@ -215,27 +220,89 @@ body.about #main-header #logo {
 
 .about-hero__sig {
   margin-top: 2rem;
-  opacity: 0.55;
 }
 
 .about-hero__sig img {
   display: block;
-  max-height: 44px;
+  max-height: 88px;
   width: auto;
 }
 
-/* Right: photo */
-.about-hero__photo {
-  position: sticky;
-  top: 88px;
+/* ── Video ───────────────────────────────────────────────────────────────── */
+
+.about-video {
+  position: relative;
+  width: 100%;
+  /* Matches the source video's native 16:9 — was 21:9, which let YouTube
+     letterbox/crop the actual footage inside our frame. */
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #000;
 }
 
-.about-hero__photo img {
+.about-video__frame {
+  position: absolute;
+  inset: 0;
+}
+
+.about-video__frame iframe {
   display: block;
   width: 100%;
-  height: auto;
-  border-radius: 12px;
-  object-fit: cover;
+  height: 100%;
+  border: 0;
+  /* Muted preview isn't interactive — the overlay button owns clicks until
+     playback is handed off, at which point .is-active re-enables it. */
+  pointer-events: none;
+}
+
+.about-video__frame.is-active iframe {
+  pointer-events: auto;
+}
+
+.about-video__overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  padding: 0;
+  background: rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.about-video__overlay:hover {
+  background: rgba(0, 0, 0, 0.28);
+}
+
+.about-video__play {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  position: relative;
+  flex-shrink: 0;
+}
+
+.about-video__play::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 54%;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 12px 0 12px 20px;
+  border-color: transparent transparent transparent #0a0a0a;
+  transform: translate(-50%, -50%);
+}
+
+@media (max-width: 600px) {
+  .about-video {
+    border-radius: 10px;
+  }
 }
 
 /* ── Upsell section ──────────────────────────────────────────────────────── */
@@ -376,22 +443,6 @@ body.about #main-header #logo {
 /* ── Mobile ──────────────────────────────────────────────────────────────── */
 
 @media (max-width: 900px) {
-  .about-hero .about-container {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-
-  /* Photo above copy on mobile */
-  .about-hero__photo {
-    order: -1;
-    position: static;
-  }
-
-  .about-hero__photo img {
-    max-width: 300px;
-    border-radius: 10px;
-  }
-
   .about-upsells__grid {
     grid-template-columns: 1fr;
   }
