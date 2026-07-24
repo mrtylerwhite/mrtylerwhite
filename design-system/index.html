@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Design System (Internal) — Mr. Tyler White</title>
+  <title>Design System (Internal): Mr. Tyler White</title>
   <meta name="robots" content="noindex, nofollow" />
 
   <link rel="icon" href="/wp-content/uploads/2025/05/cropped-Favicon-2-32x32.png" sizes="32x32" />
@@ -169,7 +169,7 @@
                 <p>
                   This page documents the <strong>current</strong> HTML/CSS system extracted from a hardcoded WordPress/Divi export.
                   It inventories foundations, layout patterns, and reusable components as they exist today, highlights inconsistencies,
-                  and recommends cleanup priorities—without introducing new frameworks (no Tailwind).
+                  and recommends cleanup priorities, without introducing new frameworks (no Tailwind).
                 </p>
                 <div class="ds-doc-meta">
                   <span class="ds-pill"><strong>Last audited</strong> <span>2026-05-10</span></span>
@@ -260,9 +260,9 @@
                     <div class="ds-preview-row" style="align-items:baseline">
                       <div style="flex:1;min-width:240px">
                         <div style="font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:rgba(0,0,0,.55);margin-bottom:8px">Type samples</div>
-                        <h1 style="margin:0 0 10px">H1 example — Divi baseline</h1>
+                        <h1 style="margin:0 0 10px">H1 example: Divi baseline</h1>
                         <h2 style="margin:0 0 8px">H2 example</h2>
-                        <p style="margin:0">Body example — Open Sans, 14px baseline.</p>
+                        <p style="margin:0">Body example: Open Sans, 14px baseline.</p>
                       </div>
                     </div>
                   </div>
@@ -280,10 +280,10 @@
                 <div class="ds-subsection" id="foundations-typography-utilities">
                   <h3>Typography utilities (Phase 5)</h3>
                   <p>
-                    Reusable, opt-in classes are defined in <code class="ds-code">/assets/css/system/typography.css</code>, which <code class="ds-code">index.css</code> imports. Stylesheets load only from the document <code class="ds-code">&lt;head&gt;</code>—this section contains documentation only (no <code class="ds-code">&lt;link rel="stylesheet"&gt;</code> here).
+                    Reusable, opt-in classes are defined in <code class="ds-code">/assets/css/system/typography.css</code>, which <code class="ds-code">index.css</code> imports. Stylesheets load only from the document <code class="ds-code">&lt;head&gt;</code>. This section contains documentation only (no <code class="ds-code">&lt;link rel="stylesheet"&gt;</code> here).
                   </p>
                   <p>
-                    Utilities apply only when added to markup—no global <code class="ds-code">h1</code>–<code class="ds-code">h6</code> or <code class="ds-code">p</code> overrides.
+                    Utilities apply only when added to markup. No global <code class="ds-code">h1</code>–<code class="ds-code">h6</code> or <code class="ds-code">p</code> overrides.
                   </p>
 
                   <dl class="ds-kv">
@@ -308,7 +308,7 @@
                     <dt><code class="ds-code">.ds-caption</code></dt>
                     <dd>Figure captions, thumbnail labels, supplementary notes.</dd>
                     <dt><code class="ds-code">.ds-meta</code></dt>
-                    <dd>Secondary lines: dates, bylines, roles, taxonomy—paired well with listings and card footers.</dd>
+                    <dd>Secondary lines: dates, bylines, roles, taxonomy. Paired well with listings and card footers.</dd>
                     <dt><code class="ds-code">.ds-text-link</code></dt>
                     <dd>Inline text links where underline affordance should match the tokenized link color (not button-styled CTAs).</dd>
                   </dl>
@@ -317,15 +317,15 @@
                   <div class="ds-preview">
                     <div class="ds-stack ds-stack--sm">
                       <p class="ds-eyebrow">Design system · Phase 5</p>
-                      <p class="ds-hero-title">Hero title — fluid size, no horizontal overflow on narrow viewports</p>
-                      <p class="ds-page-title">Page title — interior pages &amp; listing headers</p>
-                      <p class="ds-section-title">Section title — bands &amp; major subsections</p>
-                      <p class="ds-card-title">Card title — tiles &amp; compact summaries</p>
-                      <p class="ds-body--large">Body large — supporting copy and short intros. Uses clamp between slightly larger than body and a modest desktop cap.</p>
-                      <p class="ds-body">Body default — Open Sans at the token body size and line height for long reading.</p>
-                      <p class="ds-body--small">Body small — dense paragraphs, secondary descriptions, fine print adjacent to controls.</p>
-                      <p class="ds-caption">Caption — labels under figures, screenshots, or media thumbnails.</p>
-                      <p class="ds-meta">Meta — March 2026 · Montreal · Product design</p>
+                      <p class="ds-hero-title">Hero title: fluid size, no horizontal overflow on narrow viewports</p>
+                      <p class="ds-page-title">Page title: interior pages &amp; listing headers</p>
+                      <p class="ds-section-title">Section title: bands &amp; major subsections</p>
+                      <p class="ds-card-title">Card title: tiles &amp; compact summaries</p>
+                      <p class="ds-body--large">Body large: supporting copy and short intros. Uses clamp between slightly larger than body and a modest desktop cap.</p>
+                      <p class="ds-body">Body default: Open Sans at the token body size and line height for long reading.</p>
+                      <p class="ds-body--small">Body small: dense paragraphs, secondary descriptions, fine print adjacent to controls.</p>
+                      <p class="ds-caption">Caption: labels under figures, screenshots, or media thumbnails.</p>
+                      <p class="ds-meta">Meta: March 2026 · Montreal · Product design</p>
                       <p class="ds-body">
                         Inline link styled as <a class="ds-text-link" href="#foundations-typography-utilities">text link utility</a> (same paragraph as body copy).
                       </p>
@@ -334,11 +334,11 @@
 
                   <h4>Areas to migrate later (not done in Phase 5)</h4>
                   <ul>
-                    <li><strong>Global Divi head styles</strong> — <code class="ds-code">h1</code>–<code class="ds-code">h4</code> fixed pixel sizes in inline blocks on most pages → apply utilities in markup where markup is controlled.</li>
-                    <li><strong>Column-specific heading overrides</strong> — e.g. <code class="ds-code">.et_pb_column_1_3 h1</code> patterns → replace with component classes (<code class="ds-code">.ds-section-title</code>, etc.) when templates are refactored.</li>
-                    <li><strong>Newsletter hero</strong> — <code class="ds-code">.newsletter-hero-title</code>, <code class="ds-code">.newsletter-hero-lede</code>, proof lines → candidates for <code class="ds-code">.ds-hero-title</code>, <code class="ds-code">.ds-body--large</code>, <code class="ds-code">.ds-meta</code> once explicitly migrated.</li>
-                    <li><strong>Case study long-form</strong> — pullquotes, stats, image captions → <code class="ds-code">.ds-caption</code>, <code class="ds-code">.ds-body--small</code>.</li>
-                    <li><strong>Footer / legal</strong> — copyright and secondary lines → often <code class="ds-code">.ds-caption</code> or <code class="ds-code">.ds-meta</code>.</li>
+                    <li><strong>Global Divi head styles</strong>: <code class="ds-code">h1</code>–<code class="ds-code">h4</code> fixed pixel sizes in inline blocks on most pages → apply utilities in markup where markup is controlled.</li>
+                    <li><strong>Column-specific heading overrides</strong>: e.g. <code class="ds-code">.et_pb_column_1_3 h1</code> patterns → replace with component classes (<code class="ds-code">.ds-section-title</code>, etc.) when templates are refactored.</li>
+                    <li><strong>Newsletter hero</strong>: <code class="ds-code">.newsletter-hero-title</code>, <code class="ds-code">.newsletter-hero-lede</code>, proof lines → candidates for <code class="ds-code">.ds-hero-title</code>, <code class="ds-code">.ds-body--large</code>, <code class="ds-code">.ds-meta</code> once explicitly migrated.</li>
+                    <li><strong>Case study long-form</strong>: pullquotes, stats, image captions → <code class="ds-code">.ds-caption</code>, <code class="ds-code">.ds-body--small</code>.</li>
+                    <li><strong>Footer / legal</strong>: copyright and secondary lines → often <code class="ds-code">.ds-caption</code> or <code class="ds-code">.ds-meta</code>.</li>
                   </ul>
 
                   <div class="ds-issue">
@@ -348,7 +348,7 @@
                       <li>Newsletter typography intentionally diverges but mixes class-based CSS with inline styles.</li>
                       <li>Multiple accent/link behaviors (<code class="ds-code">#2ea3f2</code> vs newsletter focus <code class="ds-code">#c59060</code>) affect perceived “primary link” color.</li>
                       <li>Body text is broadly consistent (14px / 1.7) but module-level exceptions are common.</li>
-                      <li>See also <a class="ds-text-link" href="#inconsistencies">Inconsistencies (inventory)</a> — heading sizes, duplicate components, and spacing layers compound type rhythm drift.</li>
+                      <li>See also <a class="ds-text-link" href="#inconsistencies">Inconsistencies (inventory)</a>: heading sizes, duplicate components, and spacing layers compound type rhythm drift.</li>
                     </ul>
                   </div>
                 </div>
@@ -498,7 +498,7 @@
                 <p>Components below are grouped as Atoms, Molecules, Organisms, and Templates. Each entry documents what exists today and what should be cleaned up.</p>
 
                 <div class="ds-subsection" id="cmp-ds-phase1">
-                  <h3>Design System (Phase 1) — live examples</h3>
+                  <h3>Design System (Phase 1): live examples</h3>
                   <dl class="ds-kv">
                     <dt>What exists today</dt>
                     <dd>New opt-in <code class="ds-code">ds-*</code> classes for tokens, buttons, and forms. These do not override Divi styles unless added to markup.</dd>
@@ -535,7 +535,7 @@
                 </div>
 
                 <div class="ds-subsection" id="cmp-ds-phase2">
-                  <h3>Design System (Phase 2) — layout utilities (live examples)</h3>
+                  <h3>Design System (Phase 2): layout utilities (live examples)</h3>
                   <dl class="ds-kv">
                     <dt>What exists today</dt>
                     <dd>New opt-in layout utilities for containers, sections, stacks, grids, and mobile safety. These only apply when <code class="ds-code">ds-*</code> classes are used.</dd>
@@ -598,7 +598,7 @@
                   </div>
 
                 <div class="ds-subsection" id="cmp-ds-phase3">
-                  <h3>Design System (Phase 3) — card primitives (live examples)</h3>
+                  <h3>Design System (Phase 3): card primitives (live examples)</h3>
                   <dl class="ds-kv">
                     <dt>What exists today</dt>
                     <dd>Composable card primitives for surfaces, borders, shadows, feature highlights, testimonials, and quotes. These are opt-in and do not modify Divi markup until migrated.</dd>
@@ -664,7 +664,7 @@
                     <div class="ds-card ds-card--surface ds-card--bordered ds-card--quote">
                       <div class="ds-card__title">Quote</div>
                       <p class="ds-card__body">Use for pullquotes or emphasized callouts inside long-form case studies.</p>
-                      <div class="ds-card__meta"><span>— Attribution</span></div>
+                      <div class="ds-card__meta"><span>Attribution</span></div>
                     </div>
                   </div>
 
@@ -902,7 +902,7 @@
                     <li><strong>Masonry</strong>: the root carries <code class="ds-code">break-inside: avoid</code> + <code class="ds-code">display: inline-block; vertical-align: top</code>, so cards never split inside a CSS multi-column parent. Outside column contexts (grid/flex) those properties are no-ops.</li>
                   </ul>
 
-                  <h4>Live example — single card</h4>
+                  <h4>Live example: single card</h4>
                   <div class="ds-preview">
                     <article class="ds-card ds-card--testimonial ds-testimonial" style="max-width:380px">
                       <div class="ds-testimonial__stars" aria-hidden="true">★★★★★</div>
@@ -917,7 +917,7 @@
                     </article>
                   </div>
 
-                  <h4>Live example — three-up grid</h4>
+                  <h4>Live example: three-up grid</h4>
                   <div class="ds-preview">
                     <div class="ds-grid ds-grid--3">
                       <article class="ds-card ds-card--testimonial ds-testimonial">
@@ -956,7 +956,7 @@
                     </div>
                   </div>
 
-                  <h4>Live example — masonry (CSS columns)</h4>
+                  <h4>Live example: masonry (CSS columns)</h4>
                   <div class="ds-preview">
                     <div style="column-count:1;column-gap:14px;max-width:1100px;margin:0 auto">
                       <style>
