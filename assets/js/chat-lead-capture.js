@@ -546,7 +546,7 @@
 
       await delay(300);
       await this.addMessages([
-        "Nice to meet you, " + this.firstName + " — I'll send the free Case Study Auditor & Generator your way.",
+        "Nice to meet you, " + this.firstName + ", I'll send the free Case Study Auditor & Generator your way.",
         "Where should I send it? Drop your email below.",
       ]);
 
