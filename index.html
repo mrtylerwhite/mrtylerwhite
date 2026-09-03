@@ -121,44 +121,43 @@ body.custom-background { background-color: #f9f9fe; }
 <link rel="stylesheet" href="/assets/css/system/pages/home-case-cards.css?v=20260627" media="print" onload="this.media='all'" /><noscript><link rel="stylesheet" href="/assets/css/system/pages/home-case-cards.css?v=20260627" /></noscript>
 <style id="home-typography-inline">
 /*
-  Homepage typography — Phase 2 (editorial serif system)
-  All headings use var(--ds-font-display) = Instrument Serif.
-  Overrides any legacy Futura/Inter values; keeps global heading rules.
+  Homepage typography
+  All headings use Alternate Gothic ATF Heavy, all caps.
 */
 
-/* All home headings: serif, sentence-case, tight tracking */
+/* All home headings */
 body.home #page-container #main-content .et-l--post :where(h1, h2, h3, h4, h5, h6) {
   font-family: var(--ds-font-display) !important;
-  font-weight: 400 !important;
-  letter-spacing: -0.02em !important;
-  text-transform: none !important;
+  font-weight: var(--ds-font-weight-heading, 800) !important;
+    text-transform: uppercase !important;
   text-shadow: none !important;
-  line-height: 1.05 !important;
+  line-height: var(--ds-line-height-heading, 0.94) !important;
   margin-bottom: 0.35em !important;
 }
 
 /* A. Hero display heading */
 body.home #page-container .hero-cntn .et_pb_text_0 h1 {
   font-family: var(--ds-font-display) !important;
-  font-weight: 400 !important;
-  font-size: clamp(2.5rem, 5vw, 4.5rem) !important;
-  line-height: 1.05 !important;
-  letter-spacing: -0.02em !important;
-  text-transform: none !important;
+  font-weight: var(--ds-font-weight-heading, 800) !important;
+  font-size: var(--ds-size-h1) !important;
+  line-height: var(--ds-line-height-heading, 0.94) !important;
+  letter-spacing: var(--ds-tracking-h1) !important;
+  text-transform: uppercase !important;
   text-shadow: none !important;
   margin-bottom: 0 !important;
   color: #0a0a0a !important;
+  text-wrap: balance;
 }
 
 @media screen and (max-width: 980px) {
   body.home #page-container .hero-cntn .et_pb_text_0 h1 {
-    font-size: clamp(2rem, 5vw, 3.5rem) !important;
+    font-size: var(--ds-size-h1) !important;
   }
 }
 
 @media screen and (max-width: 767px) {
   body.home #page-container .hero-cntn .et_pb_text_0 h1 {
-    font-size: clamp(1.75rem, 7vw, 2.5rem) !important;
+    font-size: var(--ds-size-h1) !important;
   }
 }
 
@@ -168,11 +167,11 @@ body.home #page-container .et_pb_text_7 h3,
 body.home #page-container .et_pb_text_8 h3,
 body.home #page-container .et_pb_text_8 .notion-sub_header-block {
   font-family: var(--ds-font-display) !important;
-  font-weight: 400 !important;
-  font-size: clamp(2rem, 3vw, 3.25rem) !important;
-  line-height: 1.05 !important;
-  letter-spacing: -0.02em !important;
-  text-transform: none !important;
+  font-weight: var(--ds-font-weight-heading, 800) !important;
+  font-size: var(--ds-size-h3) !important;
+  line-height: var(--ds-line-height-heading, 0.94) !important;
+  letter-spacing: var(--ds-tracking-h3) !important;
+  text-transform: uppercase !important;
   text-shadow: none !important;
 }
 </style>
@@ -399,7 +398,7 @@ body.home #page-container .home-hub {
 
 @media screen and (min-width: 981px) {
   body.home #page-container .hero-cntn .et_pb_text_0 h1 {
-    font-size: clamp(3rem, 5vw, 4.25rem) !important;
+    font-size: var(--ds-size-h1) !important;
     line-height: 1.02 !important;
   }
 
@@ -435,7 +434,7 @@ body.home #page-container .home-hub {
   }
 
   body.home #page-container .hero-cntn .et_pb_text_0 h1 {
-    font-size: clamp(2.35rem, 8.5vw, 3.1rem) !important;
+    font-size: var(--ds-size-h1) !important;
     text-align: center !important;
   }
 
@@ -592,10 +591,11 @@ body.home #page-container .home-hub__eyebrow {
 body.home #page-container .home-hub__title {
   margin: 0 0 1rem;
   font-family: var(--ds-font-display) !important;
-  font-weight: 400 !important;
+  font-weight: var(--ds-font-weight-heading, 800) !important;
   font-size: clamp(1.75rem, 3.5vw, 2.75rem) !important;
-  line-height: 1.05 !important;
-  letter-spacing: -0.02em !important;
+  line-height: var(--ds-line-height-heading, 0.94) !important;
+  letter-spacing: var(--ds-tracking-h2) !important;
+  text-transform: uppercase !important;
   color: var(--ds-color-text-strong) !important;
 }
 
@@ -669,6 +669,10 @@ body.home #page-container .home-hub--enemy .home-hub__title--cinematic {
   font-size: clamp(2.25rem, 4vw, 3.5rem) !important;
   line-height: 1.08 !important;
   text-wrap: balance;
+}
+
+body.home #page-container .home-hub--enemy .home-hub__title--cinematic .home-hub__accent {
+  color: #c59060 !important;
 }
 
 body.home #page-container .home-hub__enemy-copy {
@@ -759,10 +763,11 @@ body.home #page-container .home-bento__eyebrow--light {
 body.home #page-container .home-bento__primary .home-bento__title {
   margin: 0;
   font-family: var(--ds-font-display) !important;
-  font-weight: 400 !important;
+  font-weight: var(--ds-font-weight-heading, 800) !important;
   font-size: clamp(1.725rem, 2.875vw, 2.3rem) !important;
-  line-height: 1.05 !important;
-  letter-spacing: -0.02em !important;
+  line-height: var(--ds-line-height-heading, 0.94) !important;
+  letter-spacing: var(--ds-tracking-h3) !important;
+  text-transform: uppercase !important;
 }
 
 body.home #page-container .home-bento__cell--kit .home-bento__title {
@@ -1416,7 +1421,7 @@ body.home #page-container #cta_builder_kickoff:active {
 				<div class="et_pb_module et_pb_code">
 				<div class="et_pb_code_inner"><div class="home-v3-band__inner home-hub home-hub--enemy">
 <p class="home-hub__eyebrow home-hub__eyebrow--dark">The enemy</p>
-<h2 class="home-hub__title home-hub__title--cinematic" id="home-enemy-heading">Most design work dies between &#8220;looks good&#8221; and &#8220;why the hell should anyone care?&#8221;</h2>
+<h2 class="home-hub__title home-hub__title--cinematic" id="home-enemy-heading">Most design work dies between <span class="home-hub__accent">&#8220;looks good&#8221;</span> and &#8220;why the hell should anyone care?&#8221;</h2>
 <p class="home-hub__enemy-copy">The feature shipped, but nobody used it. The prototype looked cool, but did not answer the question. The case study looked polished, but said nothing useful. Everyone liked the work, and somehow the team still had no clue what to build next.</p>
 <p class="home-hub__enemy-close">That is the gap I help designers close.</p>
 </div></div>
@@ -1432,7 +1437,7 @@ body.home #page-container #cta_builder_kickoff:active {
 <p class="home-hub__lead">If your case study sounds vague, your prototype proves nothing, or your team is still circling the same decision, start here.</p>
 <div class="home-bento">
 <div class="home-bento__primary">
-<a class="home-bento__cell home-bento__cell--kit" href="https://www.mrtylerwhite.com/roi-case-study-template/"><p class="home-bento__eyebrow">FREE KIT</p><h3 class="home-bento__title home-bento__title--sans">Explain your work like it mattered.</h3><p class="home-bento__copy">Turn your work into a clear story about the problem, the decision, and what changed. Not another portfolio walkthrough that politely bores everyone to death.</p><span class="home-bento__btn home-bento__btn--ghost">Get the free kit</span></a>
+<a class="home-bento__cell home-bento__cell--kit" href="https://www.mrtylerwhite.com/roi-case-study-template/"><p class="home-bento__eyebrow">FREE KIT</p><h3 class="home-bento__title home-bento__title--sans">Explain your work so the decision behind it sounds like it mattered.</h3><p class="home-bento__copy">Turn your work into a clear story about the problem, the decision, and what changed. Not another portfolio walkthrough that politely bores everyone to death.</p><span class="home-bento__btn home-bento__btn--ghost">Get the free kit</span></a>
 <a class="home-bento__cell home-bento__cell--workshop" href="/prototype-ready/"><p class="home-bento__eyebrow home-bento__eyebrow--light">BUILDER KICKOFF™ · $97</p><h3 class="home-bento__title home-bento__title--serif">The workshop that makes you the most powerful designer in the room.</h3><p class="home-bento__copy home-bento__copy--light">Learn to run the structured session that turns a business problem into a prototype brief and ROI calculator automatically. Your PM and engineer will wonder how you did it. One seat. Everything included.</p><span class="home-bento__btn home-bento__btn--white">Join Builder Kickoff™</span></a>
 </div>
 </div>
@@ -1640,7 +1645,7 @@ body.home #page-container #cta_builder_kickoff:active {
 				
 				
 				
-				<div class="et_pb_text_inner"><h3>Better framing. Clearer decisions. Work that sounds like it mattered.</h3></div>
+				<div class="et_pb_text_inner"><h3>Better framing.<br>Clearer decisions.<br>Work that sounds like it mattered.</h3></div>
 			</div>
 			</div>
 				
