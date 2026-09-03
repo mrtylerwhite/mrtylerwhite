@@ -191,10 +191,11 @@ body.free-case-study-kit .fck-hero .ds-eyebrow {
 body.free-case-study-kit .fck-hero__title {
   margin: 0 0 1.25rem;
   font-family: var(--ds-font-display) !important;
-  font-weight: 400 !important;
+  font-weight: var(--ds-font-weight-heading, 800) !important;
   font-size: clamp(2.25rem, 4.5vw, 3.75rem) !important;
   line-height: 0.95 !important;
-  letter-spacing: -0.02em !important;
+  letter-spacing: var(--ds-tracking-h1) !important;
+  text-transform: uppercase !important;
   color: var(--ds-color-text-strong) !important;
   max-width: none;
   margin-left: auto;
@@ -280,7 +281,7 @@ body.free-case-study-kit .fck-next__card {
 body.free-case-study-kit #main-content .fck-next__card h2.fck-next__title {
   margin: 0 0 0.5rem;
   font-family: var(--ds-font-body) !important;
-  font-weight: 700 !important;
+  font-weight: var(--ds-font-weight-heading, 800) !important;
   font-size: clamp(1.0625rem, 2vw, 1.25rem) !important;
   line-height: 1.35 !important;
   letter-spacing: -0.02em !important;

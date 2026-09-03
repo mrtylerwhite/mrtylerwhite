@@ -46,13 +46,33 @@
   --ds-color-success: #2F7D52;
 
   /* ── Typography ────────────────────────────────────────── */
-  --ds-font-display: "Instrument Serif", Georgia, "Times New Roman", serif;
+  /* Alternate Gothic ATF Heavy (Adobe Fonts) — King Kong–style condensed display */
+  --ds-font-display: "alternate-gothic-atf", "Arial Narrow", Arial, sans-serif;
   --ds-font-body: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --ds-font-heading: "Instrument Serif", Georgia, "Times New Roman", serif;
-  --ds-font-heading-bold: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --ds-font-heading: "alternate-gothic-atf", "Arial Narrow", Arial, sans-serif;
+  --ds-font-heading-bold: "alternate-gothic-atf", "Arial Narrow", Arial, sans-serif;
   --ds-font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
   --ds-font-size-body: 17px;
   --ds-line-height-body: 1.5;
+  --ds-font-weight-heading: 700; /* Bold in kit today; bump to 800 when Heavy is published */
+  --ds-line-height-heading: 0.94; /* King Kong–style tight leading */
+
+  /* Condensed display tracking — tight, but not colliding.
+     King Kong uses ~-0.08em; we sit a touch looser for readability. */
+  --ds-tracking-h1: -0.05em;
+  --ds-tracking-h2: -0.05em;
+  --ds-tracking-h3: -0.045em;
+  --ds-tracking-h4: -0.035em;
+  --ds-tracking-h5: -0.025em;
+  --ds-tracking-h6: -0.015em;
+
+  /* Size ramp inspired by King Kong (tempered — not billboard-scale) */
+  --ds-size-h1: clamp(2.75rem, 1.2rem + 6vw, 5.5rem);
+  --ds-size-h2: clamp(2.125rem, 1rem + 4vw, 3.75rem);
+  --ds-size-h3: clamp(1.75rem, 0.9rem + 2.8vw, 3rem);
+  --ds-size-h4: clamp(1.375rem, 0.85rem + 1.6vw, 2.25rem);
+  --ds-size-h5: clamp(1.25rem, 0.9rem + 1vw, 1.75rem);
+  --ds-size-h6: clamp(1.125rem, 0.95rem + 0.6vw, 1.5rem);
 
   /* ── Spacing (8-px grid) ───────────────────────────────── */
   --ds-space-1: 4px;
@@ -105,11 +125,35 @@
   --ds-bp-small-max: 479px;
 }
 
+/* Desktop: H1 at 80% of the base clamp */
+@media (min-width: 981px) {
+  :root {
+    --ds-size-h1: clamp(2.2rem, 0.96rem + 4.8vw, 4.4rem);
+  }
+}
+
 /* Phone: nav sits ~13px lower, so trim hero clearance to keep
    nav→content in the 32–44px range and avoid excess blank space. */
 @media (max-width: 767px) {
   :root {
     --ds-hero-clearance: 136px;
+    --ds-tracking-h1: -0.035em;
+    --ds-tracking-h2: -0.035em;
+    --ds-tracking-h3: -0.03em;
+    --ds-tracking-h4: -0.025em;
+    --ds-tracking-h5: -0.015em;
+    --ds-tracking-h6: -0.01em;
+  }
+}
+
+@media (max-width: 479px) {
+  :root {
+    --ds-tracking-h1: -0.025em;
+    --ds-tracking-h2: -0.025em;
+    --ds-tracking-h3: -0.02em;
+    --ds-tracking-h4: -0.015em;
+    --ds-tracking-h5: -0.01em;
+    --ds-tracking-h6: 0;
   }
 }
 

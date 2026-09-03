@@ -196,11 +196,12 @@ body.about #main-header #logo {
 }
 
 .about-hero__headline {
-  font-family: var(--ds-font-display, "Instrument Serif", Georgia, serif);
-  font-weight: 400;
+  font-family: var(--ds-font-display, "alternate-gothic-atf", "Arial Narrow", Arial, sans-serif);
+  font-weight: var(--ds-font-weight-heading, 800);
   font-size: clamp(2.6875rem, 4vw + 1rem, 4.375rem);
-  letter-spacing: -0.025em;
+  letter-spacing: var(--ds-tracking-h1);
   line-height: 0.85;
+  text-transform: uppercase;
   text-align: center;
   color: var(--ds-color-text-strong, #09090B);
   margin-top: 0.2em;
@@ -355,11 +356,12 @@ body.about #main-header #logo {
 }
 
 .about-upsell-card .ds-card__title.about-upsell-card__title {
-  font-family: var(--ds-font-display, "Instrument Serif", Georgia, serif);
-  font-weight: 400;
+  font-family: var(--ds-font-display, "alternate-gothic-atf", "Arial Narrow", Arial, sans-serif);
+  font-weight: var(--ds-font-weight-heading, 800);
   font-size: clamp(2.25rem, 2.9vw, 2.625rem);
-  letter-spacing: -0.015em;
-  line-height: 1.1;
+  letter-spacing: var(--ds-tracking-h1);
+  line-height: var(--ds-line-height-heading, 0.94);
+  text-transform: uppercase;
   /* !important beats the global heading rule in critical.css
      (`body :where(h2…) { margin-bottom: 0.35em !important }`) and the
      browser's default ~0.83em <h2> margin-top, which this page never resets. */
@@ -413,9 +415,12 @@ body.about #main-header #logo {
   color: #c59060;
 }
 
-/* !important required: critical.css sets `body :where(h2…) { color: text-strong
-   !important }`, which otherwise paints this title black-on-black. */
-.about-upsell-card--dark .ds-card__title.about-upsell-card__title {
+/* !important + #page-container prefix required: critical.css's base heading
+   reset is `#page-container h2 { color: text-strong !important }` (ID-based,
+   specificity 1,0,1) — a class-only override here loses to it even with
+   !important. Matching the #page-container ID and outclassing on selector
+   count is what actually wins the cascade and stops this painting black-on-black. */
+#page-container .about-upsell-card--dark .ds-card__title.about-upsell-card__title {
   color: #fff !important;
 }
 

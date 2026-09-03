@@ -32,12 +32,39 @@ const IMPORT_RE = /@import\s+url\(\s*["']?([^"')]+)["']?\s*\)\s*;?/g;
 const FONT_PRELOAD =
   '<link rel="preload" href="/assets/fonts/instrument-serif/InstrumentSerif-Regular.woff2" as="font" type="font/woff2" crossorigin />\n';
 
+const TYPEKIT_LINKS =
+  '<link rel="preconnect" href="https://use.typekit.net" crossorigin />\n' +
+  '<link rel="stylesheet" href="https://use.typekit.net/fks5kmr.css" />\n';
+
 function readCss(relPath) {
   return fs.readFileSync(path.join(ROOT, relPath), "utf8");
 }
 
 function stripImports(css) {
   return css.replace(IMPORT_RE, "").trim();
+}
+
+function applyTypekit(html) {
+  // Drop any existing kit links so rebuilds can re-place them correctly
+  // (an earlier pass could trap them inside <noscript>).
+  let next = html
+    .replace(/<link\s+rel="preconnect"\s+href="https:\/\/use\.typekit\.net"[^>]*>\s*/gi, "")
+    .replace(/<link\s+rel="stylesheet"\s+href="https:\/\/use\.typekit\.net\/fks5kmr\.css"[^>]*>\s*/gi, "");
+
+  const injectBefore = (pattern) => {
+    if (!pattern.test(next)) return false;
+    next = next.replace(pattern, TYPEKIT_LINKS + "$1");
+    return true;
+  };
+
+  // Prefer the first live stylesheet tag (media/onload attrs allowed).
+  if (injectBefore(/(<link\s+rel=["']stylesheet["']\s+href=["']\/assets\/css\/dist\/critical\.css["'][^>]*>)/i)) {
+    return next;
+  }
+  if (injectBefore(/(<link\s+rel=["']stylesheet["']\s+href=["']\/assets\/css\/system\/index\.css["'][^>]*>)/i)) {
+    return next;
+  }
+  return next;
 }
 
 function applyFontPreload(html) {
@@ -122,7 +149,8 @@ function patchHtmlLinks() {
   for (const file of walkHtml(ROOT)) {
     let html = fs.readFileSync(file, "utf8");
     const linked = applyCriticalLink(html);
-    const next = applyFontPreload(linked);
+    const withTypekit = applyTypekit(linked);
+    const next = applyFontPreload(withTypekit);
     if (next !== html) {
       fs.writeFileSync(file, next, "utf8");
       htmlChanged++;

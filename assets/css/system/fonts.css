@@ -1,8 +1,9 @@
 /*
-  Fonts — design system (Phase 3: self-hosted display + mono)
-  Body:    Inter (self-hosted)
-  Display: Instrument Serif (self-hosted)
-  Mono:    JetBrains Mono (self-hosted)
+  Fonts — design system
+  Body:     Inter (self-hosted)
+  Headings: Alternate Gothic ATF (Adobe Fonts kit fks5kmr — Bold/700 now; add Heavy/800 when available)
+  Mono:     JetBrains Mono (self-hosted)
+  Instrument Serif kept self-hosted for any legacy italic/display accents.
 */
 
 @font-face {
@@ -47,10 +48,10 @@
 }
 
 :root {
-  --ds-font-display:      "Instrument Serif", Georgia, "Times New Roman", serif;
+  --ds-font-display:      "alternate-gothic-atf", "Arial Narrow", Arial, sans-serif;
   --ds-font-body:         "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --ds-font-heading:      "Instrument Serif", Georgia, "Times New Roman", serif;
-  --ds-font-heading-bold: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --ds-font-heading:      "alternate-gothic-atf", "Arial Narrow", Arial, sans-serif;
+  --ds-font-heading-bold: "alternate-gothic-atf", "Arial Narrow", Arial, sans-serif;
   --ds-font-mono:         "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
 }
 

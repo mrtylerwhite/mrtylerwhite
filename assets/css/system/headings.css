@@ -1,6 +1,6 @@
 /*
-  Site-wide heading typography — Phase 2 (editorial serif system)
-  Instrument Serif + Inter body + JetBrains Mono eyebrows.
+  Site-wide heading typography
+  Alternate Gothic ATF Heavy (King Kong–style) + Inter body + JetBrains Mono eyebrows.
   Loads its own dependencies so it works as a standalone <link>.
 */
 
@@ -14,40 +14,133 @@
 @import url("/assets/css/system/accessibility.css");
 @import url("/assets/css/system/scroll-reveal.css");
 
-/* ── Base heading reset → editorial serif ─────────────────────────────────── */
-body :where(h1, h2, h3, h4, h5, h6),
-.et-db :where(h1, h2, h3, h4, h5, h6),
-#et-boc :where(h1, h2, h3, h4, h5, h6),
-#main-content :where(h1, h2, h3, h4, h5, h6) {
+/* ── Base heading reset → Alternate Gothic ATF Heavy, all caps ───────────────
+   High-specificity selectors (no :where) so Divi Figtree/Geist can't win. */
+#page-container h1,
+#page-container h2,
+#page-container h3,
+#page-container h4,
+#page-container h5,
+#page-container h6,
+#main-content h1,
+#main-content h2,
+#main-content h3,
+#main-content h4,
+#main-content h5,
+#main-content h6,
+.et-db #page-container h1,
+.et-db #page-container h2,
+.et-db #page-container h3,
+.et-db #page-container h4,
+.et-db #page-container h5,
+.et-db #page-container h6,
+#et-boc h1,
+#et-boc h2,
+#et-boc h3,
+#et-boc h4,
+#et-boc h5,
+#et-boc h6 {
   font-family: var(--ds-font-display) !important;
-  font-weight: 400 !important;
-  letter-spacing: -0.02em !important;
-  text-transform: none !important;
-  line-height: 1.05 !important;
+  font-weight: var(--ds-font-weight-heading, 800) !important;
+  text-transform: uppercase !important;
+  line-height: var(--ds-line-height-heading, 0.94) !important;
   color: var(--ds-color-text-strong) !important;
+}
+
+#page-container h1,
+#main-content h1,
+.et-db #page-container h1,
+#et-boc h1 {
+  font-size: var(--ds-size-h1) !important;
+  letter-spacing: var(--ds-tracking-h1) !important;
+}
+
+#page-container h2,
+#main-content h2,
+.et-db #page-container h2,
+#et-boc h2 {
+  font-size: var(--ds-size-h2) !important;
+  letter-spacing: var(--ds-tracking-h2) !important;
+}
+
+#page-container h3,
+#main-content h3,
+.et-db #page-container h3,
+#et-boc h3 {
+  font-size: var(--ds-size-h3) !important;
+  letter-spacing: var(--ds-tracking-h3) !important;
+}
+
+#page-container h4,
+#main-content h4,
+.et-db #page-container h4,
+#et-boc h4 {
+  font-size: var(--ds-size-h4) !important;
+  letter-spacing: var(--ds-tracking-h4) !important;
+}
+
+#page-container h5,
+#main-content h5,
+.et-db #page-container h5,
+#et-boc h5 {
+  font-size: var(--ds-size-h5) !important;
+  letter-spacing: var(--ds-tracking-h5) !important;
+}
+
+#page-container h6,
+#main-content h6,
+.et-db #page-container h6,
+#et-boc h6 {
+  font-size: var(--ds-size-h6) !important;
+  letter-spacing: var(--ds-tracking-h6) !important;
 }
 
 /* Tighten heading → body gap site-wide. Kept em-relative but trimmed from
    0.5em so large display titles don't open up an oversized gap (e.g. a 46px
    case-card title now sits ~16px above its description instead of ~23px). */
-body :where(h2, h3, h4, h5, h6),
-.et-db :where(h2, h3, h4, h5, h6),
-#main-content :where(h2, h3, h4, h5, h6) {
+#page-container h2,
+#page-container h3,
+#page-container h4,
+#page-container h5,
+#page-container h6,
+#main-content h2,
+#main-content h3,
+#main-content h4,
+#main-content h5,
+#main-content h6 {
   margin-bottom: 0.35em !important;
 }
 
-/* The signature move: italic serif <em> inside headings */
-body :where(h1, h2, h3, h4, h5, h6) em,
-.et-db :where(h1, h2, h3, h4, h5, h6) em,
-#et-boc :where(h1, h2, h3, h4, h5, h6) em,
-#main-content :where(h1, h2, h3, h4, h5, h6) em {
+/* The signature move: italic <em> inside headings */
+#page-container h1 em,
+#page-container h2 em,
+#page-container h3 em,
+#page-container h4 em,
+#page-container h5 em,
+#page-container h6 em,
+#main-content h1 em,
+#main-content h2 em,
+#main-content h3 em,
+#main-content h4 em,
+#main-content h5 em,
+#main-content h6 em {
   font-style: italic;
   color: inherit;
 }
 
 /* Override legacy .brand-color spans inside headings → follow heading token */
-body :where(h1, h2, h3, h4, h5, h6) span.brand-color,
-body :where(h1, h2, h3, h4, h5, h6) span.brand-color2 {
+#page-container h1 span.brand-color,
+#page-container h2 span.brand-color,
+#page-container h3 span.brand-color,
+#page-container h4 span.brand-color,
+#page-container h5 span.brand-color,
+#page-container h6 span.brand-color,
+#page-container h1 span.brand-color2,
+#page-container h2 span.brand-color2,
+#page-container h3 span.brand-color2,
+#page-container h4 span.brand-color2,
+#page-container h5 span.brand-color2,
+#page-container h6 span.brand-color2 {
   color: inherit !important;
 }
 
@@ -186,39 +279,42 @@ body.et_fixed_nav #page-container #main-header {
 /* ── .ds- typography utilities aligned to new tokens ─────────────────────── */
 .ds-hero-title {
   font-family: var(--ds-font-display) !important;
-  font-weight: 400 !important;
-  letter-spacing: -0.02em !important;
-  text-transform: none !important;
-  line-height: 1.05;
+  font-weight: var(--ds-font-weight-heading, 800) !important;
+  letter-spacing: var(--ds-tracking-h1) !important;
+  text-transform: uppercase !important;
+  line-height: var(--ds-line-height-heading, 0.94);
   color: var(--ds-color-text-strong);
-  font-size: clamp(2.75rem, 6vw, 5.5rem);
+  font-size: var(--ds-size-h1);
 }
 
 .ds-page-title {
   font-family: var(--ds-font-display) !important;
-  font-weight: 400 !important;
-  letter-spacing: -0.02em !important;
-  text-transform: none !important;
-  line-height: 1.08;
+  font-weight: var(--ds-font-weight-heading, 800) !important;
+  letter-spacing: var(--ds-tracking-h2) !important;
+  text-transform: uppercase !important;
+  line-height: var(--ds-line-height-heading, 0.94);
   color: var(--ds-color-text-strong);
   font-size: clamp(2rem, 4vw, 4rem);
 }
 
 .ds-section-title {
   font-family: var(--ds-font-display) !important;
-  font-weight: 400 !important;
-  letter-spacing: -0.02em !important;
-  text-transform: none !important;
-  line-height: 1.1;
+  font-weight: var(--ds-font-weight-heading, 800) !important;
+  letter-spacing: var(--ds-tracking-h3) !important;
+  text-transform: uppercase !important;
+  line-height: var(--ds-line-height-heading, 0.94);
   color: var(--ds-color-text-strong);
   font-size: clamp(1.75rem, 3vw, 2.75rem);
 }
 
 /* ── Newsletter font override ─────────────────────────────────────────────── */
-/* Headline stays editorial serif */
+/* Newsletter headlines follow display heading treatment */
 #post-newsletter .nl-saasify-headline,
 #post-newsletter .nl-confirm-title {
   font-family: var(--ds-font-display) !important;
+  font-weight: var(--ds-font-weight-heading, 800) !important;
+  letter-spacing: var(--ds-tracking-h1) !important;
+  text-transform: uppercase !important;
 }
 /* Body / UI elements use Inter */
 #post-newsletter .nl-saasify-lede,

@@ -20,9 +20,10 @@
   font-family: var(--ds-font-display);
   font-size: clamp(2.5rem, 6vw, 4rem);
   color: var(--ds-color-text-strong);
-  font-weight: 400;
+  font-weight: 700;
+  text-transform: uppercase;
   margin: 0.25rem 0 0.75rem;
-  line-height: 1.1;
+  line-height: var(--ds-line-height-heading, 0.94);
 }
 
 .letters-hero__sub {
@@ -86,7 +87,8 @@
 .letters-list__title {
   font-family: var(--ds-font-display);
   font-size: 1.3125rem;
-  font-weight: 400;
+  font-weight: 700;
+  text-transform: uppercase;
   color: var(--ds-color-text-strong);
   margin: 0 0 0.4rem;
   line-height: 1.25;
@@ -129,7 +131,8 @@
 .letter-title {
   font-family: var(--ds-font-display);
   font-size: clamp(1.875rem, 5vw, 2.875rem);
-  font-weight: 400;
+  font-weight: 700;
+  text-transform: uppercase;
   color: var(--ds-color-text-strong);
   line-height: 1.15;
   margin: 0;
@@ -170,7 +173,8 @@
 .letter-body h2 {
   font-family: var(--ds-font-display);
   font-size: 1.5rem;
-  font-weight: 400;
+  font-weight: 700;
+  text-transform: uppercase;
   color: var(--ds-color-text-strong);
   margin: 2rem 0 0.75rem;
   line-height: 1.2;

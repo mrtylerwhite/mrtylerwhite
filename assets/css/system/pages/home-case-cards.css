@@ -6,11 +6,11 @@
 /* Case-studies index intro (page-id-2147) */
 body.page-id-2147 #page-container .et_pb_section_0.case-work .et_pb_text_0 h2 {
   font-family: var(--ds-font-display) !important;
-  font-weight: 400 !important;
+  font-weight: var(--ds-font-weight-heading, 800) !important;
   font-size: clamp(2rem, 3vw, 3.25rem) !important;
-  line-height: 1.05 !important;
-  letter-spacing: -0.03em !important;
-  text-transform: none !important;
+  line-height: var(--ds-line-height-heading, 0.94) !important;
+  letter-spacing: var(--ds-tracking-h2) !important;
+  text-transform: uppercase !important;
   text-shadow: none !important;
   margin-top: 0 !important;
   margin-bottom: 0 !important;
@@ -24,28 +24,29 @@ body.page-id-2147 #page-container .et_pb_section_0 .et_pb_text_inner > .ds-eyebr
    --ds-hero-clearance rule in content-rhythm.css. */
 
 /* -------------------------------------------------------------------------- */
-/* Case study card titles (editorial Inter, sentence case)                     */
+/* Case study card titles                                                     */
 /* -------------------------------------------------------------------------- */
 
 /* C. Large featured case cards (homepage + case-studies index) */
 #page-container .case-work .card-kepler :is(h3, h5) {
   font-family: var(--ds-font-display) !important;
-  font-weight: 400 !important;
+  font-weight: var(--ds-font-weight-heading, 800) !important;
   font-size: clamp(2rem, 3.2vw, 3.5rem) !important;
-  line-height: 1.05 !important;
-  letter-spacing: -0.035em !important;
-  text-transform: none !important;
+  line-height: var(--ds-line-height-heading, 0.94) !important;
+  letter-spacing: var(--ds-tracking-h3) !important;
+  text-transform: uppercase !important;
   text-shadow: none !important;
+  text-wrap: balance;
 }
 
 /* D. Small case cards */
 #page-container .case-work .card-side-by-side :is(h4, h6) {
   font-family: var(--ds-font-display) !important;
-  font-weight: 500 !important;
+  font-weight: var(--ds-font-weight-heading, 800) !important;
   font-size: clamp(1.5rem, 1.92vw, 2.1rem) !important;
-  line-height: 1.06 !important;
-  letter-spacing: -0.01em !important;
-  text-transform: none !important;
+  line-height: var(--ds-line-height-heading, 0.94) !important;
+  letter-spacing: var(--ds-tracking-h4) !important;
+  text-transform: uppercase !important;
   text-shadow: none !important;
 }
 

@@ -19,8 +19,8 @@
 .ds-hero-title{
   margin: 0;
   font-family: var(--ds-font-heading-bold);
-  font-weight: 400;
-  letter-spacing: -3px;
+  font-weight: var(--ds-font-weight-heading, 800);
+  letter-spacing: var(--ds-tracking-h1);
   text-transform: uppercase;
   line-height: 1.12;
   color: var(--ds-color-dark-2);
@@ -31,8 +31,8 @@
 .ds-page-title{
   margin: 0;
   font-family: var(--ds-font-heading-bold);
-  font-weight: 400;
-  letter-spacing: -3px;
+  font-weight: var(--ds-font-weight-heading, 800);
+  letter-spacing: var(--ds-tracking-h2);
   text-transform: uppercase;
   line-height: 1.15;
   color: var(--ds-color-dark-2);
@@ -43,8 +43,8 @@
 .ds-section-title{
   margin: 0;
   font-family: var(--ds-font-heading-bold);
-  font-weight: 400;
-  letter-spacing: -3px;
+  font-weight: var(--ds-font-weight-heading, 800);
+  letter-spacing: var(--ds-tracking-h3);
   text-transform: uppercase;
   line-height: 1.2;
   color: var(--ds-color-dark-2);

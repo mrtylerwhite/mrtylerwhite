@@ -281,7 +281,7 @@ body.roi-case-study-template .rcst-hero__cta {
   font-family: var(--ds-font-body);
   font-size: 1rem;
   font-weight: 600;
-  line-height: 1.1;
+  line-height: var(--ds-line-height-heading, 0.94);
   letter-spacing: 0.01em;
   white-space: nowrap;
   cursor: pointer;
@@ -731,10 +731,11 @@ body.roi-case-study-template .rcst-how__title {
   margin: 0.75rem auto clamp(2.75rem, 4.5vw, 3.5rem);
   max-width: none;
   font-family: var(--ds-font-display);
-  font-weight: 400;
+  font-weight: var(--ds-font-weight-heading, 800);
   font-size: clamp(1.875rem, 4vw, 2.5rem);
-  line-height: 1.1;
-  letter-spacing: -0.01em;
+  line-height: var(--ds-line-height-heading, 0.94);
+  letter-spacing: var(--ds-tracking-h2);
+  text-transform: uppercase;
   color: var(--rcst-foreground);
   text-wrap: balance;
 }
@@ -745,8 +746,12 @@ body.roi-case-study-template #main-content .rcst-how__title {
 }
 
 body.roi-case-study-template #main-content .rcst-how__step-title {
-  font-family: var(--ds-font-body) !important;
-  font-weight: 600 !important;
+  font-family: var(--ds-font-display) !important;
+  font-weight: var(--ds-font-weight-heading, 800) !important;
+  font-size: clamp(1.375rem, 1.8vw, 1.625rem) !important;
+  line-height: 1.08 !important;
+  letter-spacing: var(--ds-tracking-h4) !important;
+  margin-bottom: 0.75rem !important;
 }
 
 body.roi-case-study-template .rcst-how__steps {
@@ -761,7 +766,7 @@ body.roi-case-study-template .rcst-how__steps {
 
 body.roi-case-study-template .rcst-how__step {
   background: var(--ds-color-surface);
-  border: 1px solid var(--ds-color-border);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: var(--ds-radius-lg);
   padding: 2rem;
   display: flex;
@@ -769,6 +774,13 @@ body.roi-case-study-template .rcst-how__step {
   gap: 0;
   position: relative;
   overflow: hidden;
+  box-shadow: 0 8px 28px rgba(9, 9, 11, 0.05);
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+body.roi-case-study-template .rcst-how__step:hover {
+  border-color: rgba(0, 0, 0, 0.14);
+  box-shadow: 0 12px 36px rgba(9, 9, 11, 0.08);
 }
 
 body.roi-case-study-template .rcst-how__num {
@@ -783,13 +795,8 @@ body.roi-case-study-template .rcst-how__num {
 }
 
 body.roi-case-study-template .rcst-how__step-title {
-  margin: 0 0 0.625rem;
-  font-family: var(--ds-font-body);
-  font-weight: 600;
-  font-size: 1.25rem;
-  line-height: 1.15;
-  letter-spacing: -0.02em;
   color: var(--rcst-foreground);
+  text-wrap: balance;
 }
 
 body.roi-case-study-template .rcst-how__step-body {

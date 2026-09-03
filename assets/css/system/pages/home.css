@@ -45,7 +45,7 @@ body.home #page-container .home-hub {
 
 @media screen and (min-width: 981px) {
   body.home #page-container .hero-cntn .et_pb_text_0 h1 {
-    font-size: clamp(3rem, 5vw, 4.25rem) !important;
+    font-size: var(--ds-size-h1) !important;
     line-height: 1.02 !important;
   }
 
@@ -81,7 +81,7 @@ body.home #page-container .home-hub {
   }
 
   body.home #page-container .hero-cntn .et_pb_text_0 h1 {
-    font-size: clamp(2.35rem, 8.5vw, 3.1rem) !important;
+    font-size: var(--ds-size-h1) !important;
     text-align: center !important;
   }
 
@@ -238,10 +238,11 @@ body.home #page-container .home-hub__eyebrow {
 body.home #page-container .home-hub__title {
   margin: 0 0 1rem;
   font-family: var(--ds-font-display) !important;
-  font-weight: 400 !important;
+  font-weight: var(--ds-font-weight-heading, 800) !important;
   font-size: clamp(1.75rem, 3.5vw, 2.75rem) !important;
-  line-height: 1.05 !important;
-  letter-spacing: -0.02em !important;
+  line-height: var(--ds-line-height-heading, 0.94) !important;
+  letter-spacing: var(--ds-tracking-h2) !important;
+  text-transform: uppercase !important;
   color: var(--ds-color-text-strong) !important;
 }
 
@@ -405,10 +406,12 @@ body.home #page-container .home-bento__eyebrow--light {
 body.home #page-container .home-bento__primary .home-bento__title {
   margin: 0;
   font-family: var(--ds-font-display) !important;
-  font-weight: 400 !important;
+  font-weight: var(--ds-font-weight-heading, 800) !important;
   font-size: clamp(1.725rem, 2.875vw, 2.3rem) !important;
-  line-height: 1.05 !important;
-  letter-spacing: -0.02em !important;
+  line-height: var(--ds-line-height-heading, 0.94) !important;
+  letter-spacing: var(--ds-tracking-h3) !important;
+  text-transform: uppercase !important;
+  text-wrap: balance;
 }
 
 body.home #page-container .home-bento__cell--kit .home-bento__title {
