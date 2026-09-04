@@ -47,7 +47,7 @@
    eyebrow→heading ~12px, heading→paragraph ~19px, paragraph→CTA ~26px.
    Margins only — layout, columns, type and the left image collage untouched. */
 body.home #page-container .et_pb_text_8 .et_pb_text_inner > .ds-eyebrow {
-  margin-bottom: 16px !important;
+  margin-bottom: 8px !important;
 }
 
 body.home #page-container .et_pb_text_9 {
@@ -81,7 +81,7 @@ body.home #page-container .et_pb_text_2 .et_pb_text_inner > h3 {
    match the cards' ~7px rhythm. */
 body.home #page-container .et_pb_text_7 .et_pb_text_inner > .ds-eyebrow,
 body.page-id-2147 #page-container .et_pb_text_0 .et_pb_text_inner > .ds-eyebrow {
-  margin-bottom: 14px !important;
+  margin-bottom: 7px !important;
 }
 
 /* -------------------------------------------------------------------------- */

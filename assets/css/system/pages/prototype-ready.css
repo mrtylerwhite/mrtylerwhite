@@ -92,7 +92,7 @@ body.prototype-ready .pr-section-header--center, body.page-id-3101 .pr-section-h
 }
 
 body.prototype-ready .pr-section-header .ds-eyebrow, body.page-id-3101 .pr-section-header .ds-eyebrow {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
 }
 
 body.prototype-ready .pr-section h2, body.page-id-3101 .pr-section h2 {
@@ -307,7 +307,7 @@ body.prototype-ready .pr-hero__copy {
 }
 
 body.prototype-ready #page-container .pr-hero__copy .ds-eyebrow {
-  margin: 0 0 24px !important;
+  margin: 0 0 12px !important;
   color: #c59060 !important;
 }
 
@@ -685,7 +685,7 @@ body.prototype-ready .pr-problem .pr-section-header {
 }
 
 body.prototype-ready .pr-problem .pr-two-col__main .ds-eyebrow, body.page-id-3101 .pr-problem .pr-two-col__main .ds-eyebrow {
-  margin-bottom: 0.625rem;
+  margin-bottom: 0.3125rem;
 }
 
 body.prototype-ready .pr-problem .pr-two-col__main h2, body.page-id-3101 .pr-problem .pr-two-col__main h2 {
@@ -939,7 +939,7 @@ body.prototype-ready .pr-tldr__copy {
 }
 
 body.prototype-ready .pr-tldr .pr-eyebrow-light, body.page-id-3101 .pr-tldr .pr-eyebrow-light {
-  margin-bottom: 0.625rem;
+  margin-bottom: 0.3125rem;
 }
 
 body.prototype-ready .pr-tldr h2 {
@@ -1654,7 +1654,7 @@ body.prototype-ready .pr-why__intro {
 }
 
 body.prototype-ready .pr-why__intro .ds-eyebrow {
-  margin-bottom: 0.625rem;
+  margin-bottom: 0.3125rem;
 }
 
 body.prototype-ready .pr-why__intro h2 {
@@ -1875,7 +1875,7 @@ body.prototype-ready .pr-cred__layout {
 }
 
 body.prototype-ready .pr-cred__content .ds-eyebrow {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
 }
 
 body.prototype-ready .pr-cred__content h2 {
@@ -2007,7 +2007,7 @@ body.prototype-ready .pr-final, body.page-id-3101 .pr-final {
 }
 
 body.prototype-ready .pr-final .pr-eyebrow-light, body.page-id-3101 .pr-final .pr-eyebrow-light {
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 body.prototype-ready .pr-final .pr-heading-light, body.page-id-3101 .pr-final .pr-heading-light {

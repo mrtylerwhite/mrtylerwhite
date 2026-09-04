@@ -6,7 +6,7 @@
 .ds-eyebrow,
 #page-container .ds-eyebrow {
   display: block;
-  margin: 0 0 8px;
+  margin: 0 0 4px;
   color: #c59060;
   font-family: var(--ds-font-mono, "JetBrains Mono", ui-monospace, monospace);
   font-size: 11px;
