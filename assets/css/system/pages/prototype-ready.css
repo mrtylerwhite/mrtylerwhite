@@ -595,6 +595,7 @@ body.prototype-ready a.workshop-card__cta {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
   height: 36px;
   padding: 0 1rem;
   border-radius: var(--ds-radius-pill);
