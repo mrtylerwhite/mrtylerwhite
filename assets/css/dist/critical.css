@@ -1216,6 +1216,7 @@ button.mobile_menu_bar.mobile_menu_bar_toggle:focus {
 #et-boc h1 {
   font-size: var(--ds-size-h1) !important;
   letter-spacing: var(--ds-tracking-h1) !important;
+  text-wrap: balance;
 }
 
 #page-container h2,

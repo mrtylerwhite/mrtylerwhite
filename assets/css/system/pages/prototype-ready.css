@@ -317,8 +317,10 @@ body.prototype-ready #page-container .pr-hero__copy .ds-eyebrow {
 }
 
 body.prototype-ready #page-container .pr-hero__title {
-  font-size: clamp(2.75rem, 6vw, 5.25rem) !important;
-  line-height: 1.01 !important;
+  /* Font size + line height matched to the home hero H1 (--ds-size-h1 at
+     desktop, clamp(2.2rem, 0.96rem + 4.8vw, 4.4rem) / 1.02 line-height). */
+  font-size: clamp(2.2rem, 0.96rem + 4.8vw, 4.4rem) !important;
+  line-height: 1.02 !important;
   letter-spacing: -0.035em !important;
   margin-top: 0 !important;
   margin-bottom: 1.25rem !important;
@@ -1343,6 +1345,15 @@ body.prototype-ready .pr-bento-cta__btn:hover {
 /* ── Testimonials section ───────────────────────────────────────── */
 body.prototype-ready .pr-testimonials {
   padding: 5rem 0 2.5rem;
+  overflow-x: hidden;
+}
+
+body.prototype-ready .pr-testimonials .senja-embed, body.page-id-3101 .pr-testimonials .senja-embed {
+  display: block !important;
+  width: fit-content !important;
+  max-width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
 body.prototype-ready .pr-testimonials .pr-section-header, body.page-id-3101 .pr-testimonials .pr-section-header {
