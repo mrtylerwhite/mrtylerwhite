@@ -333,7 +333,7 @@ body.about #main-header #logo {
   transition: box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
-/* Light cards (Newsletter + Case Study Kit) */
+/* Light cards (Newsletter + Value Gut-Check) */
 .about-upsell-card:not(.about-upsell-card--dark) {
   background: #fff;
   border: 1px solid rgba(0, 0, 0, 0.08) !important;

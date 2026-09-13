@@ -546,7 +546,7 @@
 
       await delay(300);
       await this.addMessages([
-        "Nice to meet you, " + this.firstName + ", I'll send the free Case Study Auditor & Generator your way.",
+        "Nice to meet you, " + this.firstName + ", I'll send The Value Gut-Check your way.",
         "Where should I send it? Drop your email below.",
       ]);
 
@@ -556,7 +556,7 @@
         type: "email",
         placeholder: "you@company.com",
         ariaLabel: "Your email address",
-        buttonText: "Get the free auditor",
+        buttonText: "Get the Value Gut-Check",
         disabled: false,
       });
       this.armVisibilityFocus();
@@ -590,7 +590,7 @@
       type: "email",
       placeholder: "you@company.com",
       ariaLabel: "Your email address",
-      buttonText: "Get the free auditor",
+      buttonText: "Get the Value Gut-Check",
       disabled: false,
     });
     this.armVisibilityFocus();
@@ -634,7 +634,7 @@
         await delay(400);
         this.addMessage(
           "assistant",
-          "Done. Check your inbox. The Case Study Auditor & Generator is on its way."
+          "Done. Check your inbox. The Value Gut-Check is on its way."
         );
         await delay(750);
         redirectAfterKitSuccess(this.successRedirect);

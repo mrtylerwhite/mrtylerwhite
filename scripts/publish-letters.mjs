@@ -269,7 +269,7 @@ function letterPage({ title, subject, html, publishedAt, slug, kitUrl }) {
         <a href="/wp-content/uploads/2024/08/TylerWhite-Resume-2024.pdf" target="_blank" rel="noopener noreferrer">Download CV</a>
         <a href="https://www.linkedin.com/in/mrtylerwhite/" target="_blank" rel="noopener noreferrer">Let&#8217;s Connect</a>
         <a href="https://www.designtablepodcast.com/" target="_blank" rel="noopener noreferrer">The Design Table</a>
-        <a href="/roi-case-study-template/">Free Case Study Auditor</a>
+        <a href="/roi-case-study-template/">The Value Gut-Check</a>
       </nav>
       <div class="site-footer__cta-block">
         <span class="site-footer__col-heading">Free Strategy Call</span>
@@ -376,7 +376,7 @@ function lettersIndex(letters) {
         <a href="/wp-content/uploads/2024/08/TylerWhite-Resume-2024.pdf" target="_blank" rel="noopener noreferrer">Download CV</a>
         <a href="https://www.linkedin.com/in/mrtylerwhite/" target="_blank" rel="noopener noreferrer">Let&#8217;s Connect</a>
         <a href="https://www.designtablepodcast.com/" target="_blank" rel="noopener noreferrer">The Design Table</a>
-        <a href="/roi-case-study-template/">Free Case Study Auditor</a>
+        <a href="/roi-case-study-template/">The Value Gut-Check</a>
       </nav>
       <div class="site-footer__cta-block">
         <span class="site-footer__col-heading">Free Strategy Call</span>
