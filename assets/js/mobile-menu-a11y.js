@@ -33,6 +33,40 @@
 
     toggle.removeAttribute("tabindex");
 
+    // Pages built without Divi's legacy scripts.min.js (the modern rebuilds,
+    // e.g. /about/) never get the hamburger-plugin's icon bars or its click
+    // handler, since both are injected by that jQuery-dependent script. On
+    // those pages, do the same two things ourselves in vanilla JS: inject
+    // the icon's bar divs and toggle the drawer open/closed on click.
+    var hasLegacyToggleScript = !!document.getElementById("divi-custom-script-js");
+    if (!hasLegacyToggleScript) {
+      var iconClass = "et_divi_100_custom_hamburger_menu__icon";
+      var iconToggledClass = iconClass + "--toggled";
+      if (!toggle.classList.contains(iconClass)) {
+        toggle.classList.add(iconClass);
+        toggle.innerHTML = "<div></div><div></div><div></div>";
+      }
+
+      // Divi's core script also clones #top-menu into #mobile_menu for the
+      // drawer's contents; replicate that here since it's absent too.
+      if (!document.getElementById("mobile_menu")) {
+        var sourceMenu = document.getElementById("top-menu");
+        if (sourceMenu) {
+          var menuClone = sourceMenu.cloneNode(true);
+          menuClone.id = "mobile_menu";
+          menuClone.classList.add("et_mobile_menu");
+          nav.appendChild(menuClone);
+        }
+      }
+
+      toggle.addEventListener("click", function (e) {
+        e.preventDefault();
+        nav.classList.toggle("opened");
+        nav.classList.toggle("closed");
+        toggle.classList.toggle(iconToggledClass);
+      });
+    }
+
     function menuEl() {
       return document.getElementById("mobile_menu");
     }
