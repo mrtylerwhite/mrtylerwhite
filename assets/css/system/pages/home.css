@@ -785,11 +785,11 @@ body.home #page-container #main-header.main-header--on-dark .et_divi_100_custom_
 body.home .home-hero__cta-ring {
   display: inline-block;
   border-radius: 999px;
-  padding: 1.5px;
+  padding: 2px;
   background: conic-gradient(from var(--border-angle), transparent 25%, #c59060, #f5d9b0 75%, transparent);
   animation: border-spin 3s linear infinite;
   vertical-align: middle;
-  margin-right: 16px;
+  margin-right: 0;
 }
 
 body.home .home-hero__cta-ring:hover {
