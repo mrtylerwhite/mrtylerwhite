@@ -21,11 +21,41 @@
   <link rel="stylesheet" href="/assets/css/system/pages/free-case-study-kit.css" />
   <link rel="stylesheet" href="/assets/css/system/site-footer.css" />
   <script src="/assets/js/rcst-lead-transition.js"></script>
+<!-- partial:head -->
+<style id="page-transitions">
+/* Page transitions (details.so port). Inline on purpose: Chrome decides whether
+   to run a cross-page transition as the new page first renders, and an opt-in
+   inside an external stylesheet is sometimes not applied yet, so the transition
+   was skipped at random. Text entrance (.ds-enter) lives in page-transitions.css. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.5s;
+  animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+/* Nav stays in place while the page crossfades. Named on the glass pill, and the
+   group re-applies the glass blur, which a snapshot can't capture. */
+#main-header .et_menu_container,
+.fck-site-header .fck-nav {
+  view-transition-name: site-header;
+}
+::view-transition-group(site-header) {
+  animation-duration: 0.5s;
+  animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border-radius: 10px;
+  -webkit-backdrop-filter: blur(20px) saturate(1.8);
+  backdrop-filter: blur(20px) saturate(1.8);
+}
+</style>
+<!-- /partial:head -->
 </head>
 <body class="free-case-study-kit">
 
   
-  <header class="fck-site-header" role="banner">
+  <!-- partial:header-thank-you -->
+<header class="fck-site-header" role="banner">
     <div class="fck-nav">
       <a class="fck-nav__logo" href="/" aria-label="Mr. Tyler White home">
         <img src="/wp-content/uploads/2025/12/logo-mrtylerwhite-1.svg" width="69" height="20" alt="Mr. Tyler White" />
@@ -34,22 +64,23 @@
         <ul class="fck-nav__links">
           <li class="fck-nav__link--secondary"><a href="/about/">About Me</a></li>
           <li class="fck-nav__link--secondary"><a href="/newsletter/">Newsletter</a></li>
-          <li class="fck-nav__link--secondary"><a href="https://www.designtablepodcast.com/">Podcast</a></li>
+          <li class="fck-nav__link--secondary"><a href="https://www.designtablepodcast.com/" target="_blank" rel="noopener noreferrer">Podcast</a></li>
           <li class="fck-nav__workshop"><a href="/prototype-ready/">Builder Kickoff™</a></li>
           <li class="fck-nav__cta"><a href="https://www.linkedin.com/in/mrtylerwhite/" target="_blank" rel="noopener noreferrer">Let&#8217;s Connect</a></li>
         </ul>
       </nav>
     </div>
   </header>
+<!-- /partial:header-thank-you -->
 
   <main id="main-content" class="fck-main">
 
     <!-- Hero -->
     <section class="fck-hero" aria-labelledby="fck-hero-heading">
       <div class="fck-container fck-container--narrow">
-        <p class="ds-eyebrow">The 15 Minute Case Study</p>
-        <h1 id="fck-hero-heading" class="fck-hero__title">Check your inbox. It&#8217;s already in there.</h1>
-        <p class="fck-hero__inbox-note">If you don&#8217;t see it in a few minutes, check spam. Gmail buries good news all the time.</p>
+        <p class="ds-eyebrow ds-enter">The 15 Minute Case Study</p>
+        <h1 id="fck-hero-heading" class="fck-hero__title ds-enter ds-enter-d1">Check your inbox. It&#8217;s already in there.</h1>
+        <p class="fck-hero__inbox-note ds-enter ds-enter-d2">If you don&#8217;t see it in a few minutes, check spam. Gmail buries good news all the time.</p>
       </div>
     </section>
 
@@ -85,7 +116,7 @@
             <p class="fck-next__meta">7 video lessons · About 20 minutes · Instant access</p>
           </div>
           <div class="fck-next__actions">
-            <a href="https://mrtylerwhite.kit.com/products/builder-kickoff-course?step=checkout" class="fck-next__cta" data-track-location="roi_skill_thank_you">Get instant access · $97</a>
+            <a href="https://mrtylerwhite.kit.com/products/builder-kickoff-course?step=checkout" class="fck-next__cta" data-track-location="roi_skill_thank_you" target="_blank" rel="noopener noreferrer">Get instant access · $97</a>
             <p class="fck-next__note">FigJam board, slide deck, Notion kit and Claude skill included.</p>
             <a href="/prototype-ready/" class="fck-next__link">Learn more</a>
           </div>
@@ -95,39 +126,41 @@
 
   </main>
 
-  <footer class="site-footer" role="contentinfo">
-    <div class="site-footer__inner">
-      <div class="site-footer__brand">
-        <img class="site-footer__wordmark" src="/wp-content/uploads/2025/12/logo-mrtylerwhite-1.svg" width="69" height="20" alt="Mr. Tyler White" />
-        <p class="site-footer__tagline">Product design, growth systems, and prototypes that help teams make better decisions.</p>
-      </div>
-      <nav class="site-footer__col" aria-label="Explore">
-        <span class="site-footer__col-heading">Explore</span>
-        <a href="/about/">About Me</a>
-        <a href="/case-studies/">Case Studies</a>
-        <a href="/newsletter/">Newsletter</a>
-        <a href="https://www.designtablepodcast.com/" target="_blank" rel="noopener noreferrer">Podcast</a>
-        <a href="/prototype-ready/">Builder Kickoff™</a>
-      </nav>
-      <nav class="site-footer__col" aria-label="Resources">
-        <span class="site-footer__col-heading">Resources</span>
-        <a href="/wp-content/uploads/2024/08/TylerWhite-Resume-2024.pdf" target="_blank" rel="noopener noreferrer">Download CV</a>
-        <a href="https://www.linkedin.com/in/mrtylerwhite/" target="_blank" rel="noopener noreferrer">Let&#8217;s Connect</a>
-        <a href="https://www.designtablepodcast.com/" target="_blank" rel="noopener noreferrer">The Design Table</a>
-      </nav>
-      <div class="site-footer__cta-block">
-        <span class="site-footer__col-heading">Free Strategy Call</span>
-        <p class="site-footer__cta-copy">Want help turning messy product, growth, or design problems into a clearer plan? Book a 30-minute call and we&#8217;ll figure out where the biggest leverage is.</p>
-        <a href="https://cal.com/mrtylerwhite/30min" class="site-footer__cta-btn">Book a free strategy call</a>
-      </div>
+  <!-- partial:footer hide="case-study" -->
+<footer class="site-footer" role="contentinfo">
+  <div class="site-footer__inner">
+    <div class="site-footer__brand">
+      <img class="site-footer__wordmark" src="/wp-content/uploads/2025/12/logo-mrtylerwhite-1.svg" width="69" height="20" alt="Mr. Tyler White" />
+      <p class="site-footer__tagline">Product design, growth systems, and prototypes that help teams make better decisions.</p>
     </div>
-    <div class="site-footer__bottom">
-      <p class="site-footer__copy">&#169; 2026 Tyler White. Made with taste, caffeine, and a suspicious number of prototypes.</p>
-      <nav class="site-footer__legal" aria-label="Legal">
-        <a href="/privacy-policy/">Privacy Policy</a>
-      </nav>
+    <nav class="site-footer__col" aria-label="Explore">
+      <span class="site-footer__col-heading">Explore</span>
+      <a href="/about/">About Me</a>
+      <a href="/case-studies/">Case Studies</a>
+      <a href="/newsletter/">Newsletter</a>
+      <a href="https://www.designtablepodcast.com/" target="_blank" rel="noopener noreferrer">Podcast</a>
+      <a href="/prototype-ready/">Builder Kickoff™</a>
+    </nav>
+    <nav class="site-footer__col" aria-label="Resources">
+      <span class="site-footer__col-heading">Resources</span>
+      <a href="/wp-content/uploads/2024/08/TylerWhite-Resume-2024.pdf" target="_blank" rel="noopener noreferrer">Download CV</a>
+      <a href="https://www.linkedin.com/in/mrtylerwhite/" target="_blank" rel="noopener noreferrer">Let&#8217;s Connect</a>
+      <a href="https://www.designtablepodcast.com/" target="_blank" rel="noopener noreferrer">The Design Table</a>
+    </nav>
+    <div class="site-footer__cta-block">
+      <span class="site-footer__col-heading">Free Strategy Call</span>
+      <p class="site-footer__cta-copy">Want help turning messy product, growth, or design problems into a clearer plan? Book a 30-minute call and we&#8217;ll figure out where the biggest leverage is.</p>
+      <a href="https://cal.com/mrtylerwhite/30min" class="site-footer__cta-btn" target="_blank" rel="noopener noreferrer">Book a free strategy call</a>
     </div>
-  </footer>
+  </div>
+  <div class="site-footer__bottom">
+    <p class="site-footer__copy">&#169; 2026 Tyler White. Made with taste, caffeine, and a suspicious number of prototypes.</p>
+    <nav class="site-footer__legal" aria-label="Legal">
+      <a href="/privacy-policy/">Privacy Policy</a>
+    </nav>
+  </div>
+</footer>
+<!-- /partial:footer -->
 
   <script src="/assets/js/gtm-defer.js" defer></script>
   <script src="/assets/js/analytics.js" defer></script>

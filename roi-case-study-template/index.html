@@ -37,6 +37,35 @@
 <noscript><link rel="stylesheet" href="/assets/css/system/pages/roi-case-study-template.css?v=20260714a"></noscript>
   <link rel="stylesheet" href="/assets/css/system/site-footer.css" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="/assets/css/system/site-footer.css"></noscript>
+<!-- partial:head -->
+<style id="page-transitions">
+/* Page transitions (details.so port). Inline on purpose: Chrome decides whether
+   to run a cross-page transition as the new page first renders, and an opt-in
+   inside an external stylesheet is sometimes not applied yet, so the transition
+   was skipped at random. Text entrance (.ds-enter) lives in page-transitions.css. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.5s;
+  animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+/* Nav stays in place while the page crossfades. Named on the glass pill, and the
+   group re-applies the glass blur, which a snapshot can't capture. */
+#main-header .et_menu_container,
+.fck-site-header .fck-nav {
+  view-transition-name: site-header;
+}
+::view-transition-group(site-header) {
+  animation-duration: 0.5s;
+  animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border-radius: 10px;
+  -webkit-backdrop-filter: blur(20px) saturate(1.8);
+  backdrop-filter: blur(20px) saturate(1.8);
+}
+</style>
+<!-- /partial:head -->
 </head>
 <body class="roi-case-study-template">
 
@@ -55,9 +84,9 @@
     <section class="rcst-hero" aria-labelledby="rcst-hero-heading">
       <div class="rcst-hero__stage">
         <div class="rcst-hero__copy">
-          <p class="rcst-eyebrow">Free Claude Skill</p>
-          <h1 id="rcst-hero-heading" class="rcst-hero__title">The case study that gets you promoted or hired. Written in 15 minutes.</h1>
-          <p class="rcst-hero__sub">You can ship the work. Can you say what it was worth? Most case studies describe what you built. This free Claude Skill turns your rough notes into one that proves what changed, written for your manager or a hiring manager. And if you can&#8217;t fill in the numbers, that&#8217;s the real finding.</p>
+          <p class="rcst-eyebrow ds-enter">Free Claude Skill</p>
+          <h1 id="rcst-hero-heading" class="rcst-hero__title ds-enter ds-enter-d1">The case study that gets you promoted or hired. Written in 15 minutes.</h1>
+          <p class="rcst-hero__sub ds-enter ds-enter-d2">You can ship the work. Can you say what it was worth? Most case studies describe what you built. This free Claude Skill turns your rough notes into one that proves what changed, written for your manager or a hiring manager. And if you can&#8217;t fill in the numbers, that&#8217;s the real finding.</p>
         </div>
 
         <div class="rcst-hero__testimonial">
@@ -161,40 +190,42 @@
 
   </main>
 
-  <footer class="site-footer" role="contentinfo" data-nav-theme="dark">
-    <div class="site-footer__inner">
-      <div class="site-footer__brand">
-        <img class="site-footer__wordmark" src="/wp-content/uploads/2025/12/logo-mrtylerwhite-1.svg" width="69" height="20" alt="Mr. Tyler White" />
-        <p class="site-footer__tagline">Product design, growth systems, and prototypes that help teams make better decisions.</p>
-      </div>
-      <nav class="site-footer__col" aria-label="Explore">
-        <span class="site-footer__col-heading">Explore</span>
-        <a href="/about/">About Me</a>
-        <a href="/case-studies/">Case Studies</a>
-        <a href="/newsletter/">Newsletter</a>
-        <a href="https://www.designtablepodcast.com/" target="_blank" rel="noopener noreferrer">Podcast</a>
-        <a href="/prototype-ready/">Builder Kickoff™</a>
-      </nav>
-      <nav class="site-footer__col" aria-label="Resources">
-        <span class="site-footer__col-heading">Resources</span>
-        <a href="/wp-content/uploads/2024/08/TylerWhite-Resume-2024.pdf" target="_blank" rel="noopener noreferrer">Download CV</a>
-        <a href="https://www.linkedin.com/in/mrtylerwhite/" target="_blank" rel="noopener noreferrer">Let&#8217;s Connect</a>
-        <a href="https://www.designtablepodcast.com/" target="_blank" rel="noopener noreferrer">The Design Table</a>
-        <a href="/roi-case-study-template/">The 15 Minute Case Study</a>
-      </nav>
-      <div class="site-footer__cta-block">
-        <span class="site-footer__col-heading">Free Strategy Call</span>
-        <p class="site-footer__cta-copy">Want help turning messy product, growth, or design problems into a clearer plan? Book a 30-minute call and we&#8217;ll figure out where the biggest leverage is.</p>
-        <a href="https://cal.com/mrtylerwhite/30min" class="site-footer__cta-btn">Book a free strategy call</a>
-      </div>
+  <!-- partial:footer theme="dark" -->
+<footer class="site-footer" role="contentinfo" data-nav-theme="dark">
+  <div class="site-footer__inner">
+    <div class="site-footer__brand">
+      <img class="site-footer__wordmark" src="/wp-content/uploads/2025/12/logo-mrtylerwhite-1.svg" width="69" height="20" alt="Mr. Tyler White" />
+      <p class="site-footer__tagline">Product design, growth systems, and prototypes that help teams make better decisions.</p>
     </div>
-    <div class="site-footer__bottom">
-      <p class="site-footer__copy">&#169; 2026 Tyler White. Made with taste, caffeine, and a suspicious number of prototypes.</p>
-      <nav class="site-footer__legal" aria-label="Legal">
-        <a href="/privacy-policy/">Privacy Policy</a>
-      </nav>
+    <nav class="site-footer__col" aria-label="Explore">
+      <span class="site-footer__col-heading">Explore</span>
+      <a href="/about/">About Me</a>
+      <a href="/case-studies/">Case Studies</a>
+      <a href="/newsletter/">Newsletter</a>
+      <a href="https://www.designtablepodcast.com/" target="_blank" rel="noopener noreferrer">Podcast</a>
+      <a href="/prototype-ready/">Builder Kickoff™</a>
+    </nav>
+    <nav class="site-footer__col" aria-label="Resources">
+      <span class="site-footer__col-heading">Resources</span>
+      <a href="/wp-content/uploads/2024/08/TylerWhite-Resume-2024.pdf" target="_blank" rel="noopener noreferrer">Download CV</a>
+      <a href="https://www.linkedin.com/in/mrtylerwhite/" target="_blank" rel="noopener noreferrer">Let&#8217;s Connect</a>
+      <a href="https://www.designtablepodcast.com/" target="_blank" rel="noopener noreferrer">The Design Table</a>
+      <a href="/roi-case-study-template/" aria-current="page">The 15 Minute Case Study</a>
+    </nav>
+    <div class="site-footer__cta-block">
+      <span class="site-footer__col-heading">Free Strategy Call</span>
+      <p class="site-footer__cta-copy">Want help turning messy product, growth, or design problems into a clearer plan? Book a 30-minute call and we&#8217;ll figure out where the biggest leverage is.</p>
+      <a href="https://cal.com/mrtylerwhite/30min" class="site-footer__cta-btn" target="_blank" rel="noopener noreferrer">Book a free strategy call</a>
     </div>
-  </footer>
+  </div>
+  <div class="site-footer__bottom">
+    <p class="site-footer__copy">&#169; 2026 Tyler White. Made with taste, caffeine, and a suspicious number of prototypes.</p>
+    <nav class="site-footer__legal" aria-label="Legal">
+      <a href="/privacy-policy/">Privacy Policy</a>
+    </nav>
+  </div>
+</footer>
+<!-- /partial:footer -->
 
   <script src="/assets/js/gtm-defer.js" defer></script>
   <script src="/assets/js/analytics.js" defer></script>

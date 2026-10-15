@@ -1,34 +1,39 @@
 /*
   Scroll / load reveal — design system
-  Elements get opacity:0 + translateY(20px) until .ds-revealed is added by JS.
+  Elements get opacity:0 + blur(7px) + translateY(20px) until .ds-revealed is added by JS.
+  Motion matches the page-entry blur + rise in page-transitions.css (details.so).
   Works for above-fold (fires on load) and below-fold (IntersectionObserver).
 */
 
 .ds-reveal {
   opacity: 0;
-  transform: translateY(22px);
+  filter: blur(7px);
+  transform: translateY(20px);
   transition:
-    opacity  0.6s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity  0.9s cubic-bezier(0.165, 0.84, 0.44, 1),
+    filter   0.9s cubic-bezier(0.165, 0.84, 0.44, 1),
+    transform 0.9s cubic-bezier(0.165, 0.84, 0.44, 1);
   will-change: opacity, transform;
 }
 
 .ds-reveal.ds-revealed {
   opacity: 1;
+  filter: none;
   transform: translateY(0);
 }
 
 /* Stagger delay variants — apply alongside ds-reveal */
-.ds-reveal-d1 { transition-delay: 80ms;  }
-.ds-reveal-d2 { transition-delay: 160ms; }
-.ds-reveal-d3 { transition-delay: 240ms; }
-.ds-reveal-d4 { transition-delay: 320ms; }
-.ds-reveal-d5 { transition-delay: 400ms; }
+.ds-reveal-d1 { transition-delay: 100ms; }
+.ds-reveal-d2 { transition-delay: 200ms; }
+.ds-reveal-d3 { transition-delay: 300ms; }
+.ds-reveal-d4 { transition-delay: 400ms; }
+.ds-reveal-d5 { transition-delay: 500ms; }
 
 /* Respect reduced-motion */
 @media (prefers-reduced-motion: reduce) {
   .ds-reveal {
     opacity: 1 !important;
+    filter: none !important;
     transform: none !important;
     transition: none !important;
   }

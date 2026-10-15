@@ -69,6 +69,25 @@ npx serve@latest . -l 4321
 
 **Total:** 13 HTML pages · 197 images · 3 videos · 110 MB on disk · 279 files.
 
+## Shared nav and footer (partials)
+
+The nav and footer live once in `partials/` and are copied into every page:
+
+| Partial | Used on |
+|---|---|
+| `partials/header.html` | main nav (`cta="connect"` swaps the last button for Let's Connect) |
+| `partials/header-thank-you.html` | thank-you pages (`hide="kickoff"` drops the Builder Kickoff link) |
+| `partials/footer.html` | every page (`hide="case-study"`, `theme="dark"`) |
+| `partials/head.html` | every page's `<head>`: page-transition rules, kept inline so Chrome always sees them |
+
+To change the nav or footer, edit the partial, then run:
+
+```bash
+npm run build:partials
+```
+
+In each page the generated region sits between `<!-- partial:name -->` and `<!-- /partial:name -->`. Don't edit inside the markers; the next build overwrites it. `npm run build:partials -- --check` lists pages that are out of date. The current-page highlight is set automatically from each page's URL.
+
 ## What loads from the internet at runtime
 
 These are SaaS dependencies (same as on production):

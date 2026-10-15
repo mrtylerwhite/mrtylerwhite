@@ -117,13 +117,43 @@ body.custom-background { background-color: #f9f9fe; }
 <link rel="stylesheet" href="/assets/css/dist/critical.css" />
 <link rel="stylesheet" href="/assets/css/system/site-footer.css" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="/assets/css/system/site-footer.css"></noscript>
+<!-- partial:head -->
+<style id="page-transitions">
+/* Page transitions (details.so port). Inline on purpose: Chrome decides whether
+   to run a cross-page transition as the new page first renders, and an opt-in
+   inside an external stylesheet is sometimes not applied yet, so the transition
+   was skipped at random. Text entrance (.ds-enter) lives in page-transitions.css. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.5s;
+  animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+/* Nav stays in place while the page crossfades. Named on the glass pill, and the
+   group re-applies the glass blur, which a snapshot can't capture. */
+#main-header .et_menu_container,
+.fck-site-header .fck-nav {
+  view-transition-name: site-header;
+}
+::view-transition-group(site-header) {
+  animation-duration: 0.5s;
+  animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border-radius: 10px;
+  -webkit-backdrop-filter: blur(20px) saturate(1.8);
+  backdrop-filter: blur(20px) saturate(1.8);
+}
+</style>
+<!-- /partial:head -->
 </head>
 <body data-rsssl=1 class="wp-singular page-template-default page page-id-2743 page-child parent-pageid-27 custom-background wp-theme-Divi et_divi_100_custom_hamburger_menu et_divi_100_custom_hamburger_menu--style-2 et_divi_100_custom_hamburger_menu--type-1 et_button_no_icon et_button_custom_icon et_pb_button_helper_class et_fixed_nav et_show_nav et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_header_style_left et_pb_svg_logo et_pb_footer_columns4 et_cover_background et_pb_gutter et_pb_gutters3 et_pb_pagebuilder_layout et_no_sidebar et_divi_theme et-db">
 	<div id="page-container">
 
 	
 	
-			<header id="main-header" data-height-onload="30">
+			<!-- partial:header -->
+<header id="main-header" data-height-onload="30">
 			<div class="container clearfix et_menu_container">
 							<div class="logo_container">
 					<span class="logo_helper"></span>
@@ -135,14 +165,14 @@ body.custom-background { background-color: #f9f9fe; }
 											<nav id="top-menu-nav">
 						<ul id="top-menu" class="nav"><li id="menu-item-30" class="anim-link menu-item menu-item-type-post_type menu-item-object-page menu-item-30"><a href="/about/">About Me</a></li>
 <li id="menu-item-3458" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3458"><a href="/newsletter/">Newsletter</a></li>
-<li id="menu-item-3464" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3464"><a href="https://www.designtablepodcast.com/">Podcast</a></li><li id="menu-item-4000" class="site-nav-workshop menu-item menu-item-type-custom menu-item-object-custom menu-item-4000"><a href="/prototype-ready/">Builder Kickoff™</a></li>
+<li id="menu-item-3464" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3464"><a href="https://www.designtablepodcast.com/" target="_blank" rel="noopener noreferrer">Podcast</a></li><li id="menu-item-4000" class="site-nav-workshop menu-item menu-item-type-custom menu-item-object-custom menu-item-4000"><a href="/prototype-ready/">Builder Kickoff™</a></li>
 
 <li id="menu-item-54" class="et_pb_button menu-item menu-item-type-custom menu-item-object-custom menu-item-54"><a href="/roi-case-study-template/" data-track-event="case_study_kit_cta_click" data-track-location="nav">The 15 Minute Case Study</a></li>
 </ul>						</nav>
-					
-					
-					
-					
+
+
+
+
 					<div id="et_mobile_nav_menu">
 				<div class="mobile_nav closed">
 					<span class="select_page">Select Page</span>
@@ -150,7 +180,8 @@ body.custom-background { background-color: #f9f9fe; }
 				</div>
 			</div>				</div> <!-- #et-top-navigation -->
 			</div> <!-- .container -->
-					</header> <!-- #main-header -->
+					</header>
+<!-- /partial:header --> <!-- #main-header -->
 			<div id="et-main-area">
 	
 <div id="main-content" role="main">
@@ -714,7 +745,8 @@ body.custom-background { background-color: #f9f9fe; }
 </div>
 
 
-			<footer class="site-footer" role="contentinfo">
+			<!-- partial:footer -->
+<footer class="site-footer" role="contentinfo">
   <div class="site-footer__inner">
     <div class="site-footer__brand">
       <img class="site-footer__wordmark" src="/wp-content/uploads/2025/12/logo-mrtylerwhite-1.svg" width="69" height="20" alt="Mr. Tyler White" />
@@ -733,12 +765,12 @@ body.custom-background { background-color: #f9f9fe; }
       <a href="/wp-content/uploads/2024/08/TylerWhite-Resume-2024.pdf" target="_blank" rel="noopener noreferrer">Download CV</a>
       <a href="https://www.linkedin.com/in/mrtylerwhite/" target="_blank" rel="noopener noreferrer">Let&#8217;s Connect</a>
       <a href="https://www.designtablepodcast.com/" target="_blank" rel="noopener noreferrer">The Design Table</a>
-      <a href="https://www.mrtylerwhite.com/roi-case-study-template/" target="_blank" rel="noopener noreferrer">The 15 Minute Case Study</a>
+      <a href="/roi-case-study-template/">The 15 Minute Case Study</a>
     </nav>
     <div class="site-footer__cta-block">
       <span class="site-footer__col-heading">Free Strategy Call</span>
       <p class="site-footer__cta-copy">Want help turning messy product, growth, or design problems into a clearer plan? Book a 30-minute call and we&#8217;ll figure out where the biggest leverage is.</p>
-      <a href="https://cal.com/mrtylerwhite/30min" class="site-footer__cta-btn">Book a free strategy call</a>
+      <a href="https://cal.com/mrtylerwhite/30min" class="site-footer__cta-btn" target="_blank" rel="noopener noreferrer">Book a free strategy call</a>
     </div>
   </div>
   <div class="site-footer__bottom">
@@ -748,6 +780,7 @@ body.custom-background { background-color: #f9f9fe; }
     </nav>
   </div>
 </footer>
+<!-- /partial:footer -->
 		</div>
 
 

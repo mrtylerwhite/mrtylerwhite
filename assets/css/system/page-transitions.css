@@ -1,0 +1,46 @@
+/*
+  Page transitions — design system
+  Ported from details.so:
+    1. 0.5s crossfade between pages (cross-document View Transitions), with the
+       nav held in place. Those rules live INLINE in partials/head.html, not
+       here: Chrome decides whether to transition as the new page first renders,
+       and an opt-in in an external stylesheet was sometimes not applied yet,
+       so the transition was skipped at random.
+    2. Hero text enters with a blur + rise: opacity 0, blur(7px), 20px down
+       → resting, 0.9s ease-out-quart, staggered ~100ms per line.
+  .ds-enter runs on page load (CSS only, no JS). For scroll-triggered
+  content use .ds-reveal (scroll-reveal.css), which shares the same motion.
+*/
+
+:root {
+  --ease-out-quad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-out-quart: cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+@keyframes ds-enter {
+  from {
+    opacity: 0;
+    filter: blur(7px);
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+.ds-enter {
+  animation: ds-enter 0.9s var(--ease-out-quart) 0.06s backwards;
+}
+
+/* Stagger ladder (details.so: title .16s, subtitle .26s, supporting .36s) */
+.ds-enter-d1 { animation-delay: 0.16s; }
+.ds-enter-d2 { animation-delay: 0.26s; }
+.ds-enter-d3 { animation-delay: 0.36s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ds-enter {
+    animation: none;
+  }
+}

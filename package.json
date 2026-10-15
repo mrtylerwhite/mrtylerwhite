@@ -7,6 +7,7 @@
     "dev:api": "vercel dev --listen 127.0.0.1:4321",
     "serve": "npx serve@latest . -l 4321",
     "build:css": "node scripts/build-css-bundles.mjs",
+    "build:partials": "node scripts/build-partials.mjs",
     "strip:css": "node scripts/strip-dead-css-links.mjs",
     "apply:css-performance": "node scripts/strip-dead-css-links.mjs && node scripts/build-css-bundles.mjs"
   },

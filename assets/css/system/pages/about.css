@@ -73,68 +73,76 @@ body.about #main-header .container.et_menu_container {
 }
 
 /*
-  Logo size. On full Divi pages, common.js sizes the logo to 54% of the 30px
-  header height (~21px). This page doesn't load that JS, so the static rule
-  `.et_pb_svg_logo #logo { height: 34% }` resolves against an auto-height
-  container and collapses the wordmark. Pin it to match the other pages. */
-body.about #main-header #logo {
-  height: 24px !important;
-  max-height: none !important;
-  width: auto !important;
+  Logo. Divi's base CSS centers the wordmark with an inline-block helper span
+  and a 23px header line-height; on full Divi pages common.js also sizes it.
+  This page loads neither, so reproduce the result (23px tall, centered). */
+body.about #main-header {
+  line-height: 23px;
 }
 
-/* Desktop (≥981px): compact horizontal menu, vertically centered in the pill.
-   critical.css already flexes .et_menu_container (logo left / nav right) and
-   styles the link/button typography; these rules only supply the layout that
-   Divi's base nav would otherwise provide. A flex row keeps the pill the same
-   compact height as the home page (no tall Divi link padding). */
+body.about #main-header span.logo_helper {
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  width: 0;
+}
+
+body.about #main-header #logo {
+  display: inline-block;
+  vertical-align: middle;
+  height: 23px !important;
+  max-height: none !important;
+  width: auto !important;
+  margin-bottom: 0;
+}
+
+/* Desktop (≥981px): reproduce Divi's base nav layout exactly (inline-block
+   items, line-height 0 on the list, 1em on items) so this page's nav matches
+   every other page to the pixel. The link padding (10px 12px) comes from the
+   customizer CSS this page does load. Measured against /resume/ at 1280px. */
 @media all and (min-width: 981px) {
-  /* Kill the tall vertical padding the customizer/Divi base apply to the nav
-     and links (padding-top: 33px / padding-bottom: 33px). On full Divi pages
-     common.js shrinks these to center the menu in the 30px header; without the
-     JS they leave the pill ~30px too tall. align-items:center on the flex
-     parents handles the centering instead. */
+  /* The customizer pads #et-top-navigation and its links by 15px on desktop;
+     Divi's common.js normally cancels that. Zero the wrapper padding here. */
   body.about #main-header #et-top-navigation {
-    display: flex;
-    align-items: center;
+    display: block;
+    float: right;
     padding: 0 !important;
+    font-weight: 600;
   }
 
   body.about #main-header #top-menu-nav {
-    display: flex;
-    align-items: center;
+    display: block;
+    float: left;
+    line-height: 0;
   }
 
   body.about #main-header #top-menu {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-    line-height: normal;
-    /* Reset the browser's default <ul> margin (~17px top/bottom) and
-       padding-inline-start (40px). Divi's base CSS zeroes these on full pages;
-       without it the margin inflated the pill by ~34px and the padding added a
-       left indent. */
+    display: block;
+    float: left;
+    line-height: 0;
+    /* Reset the browser's default <ul> margin and padding-inline-start, which
+       Divi's base CSS zeroes on full pages. */
     margin: 0;
     padding: 0;
   }
 
   body.about #main-header #top-menu li {
-    display: inline-flex;
-    align-items: center;
+    display: inline-block;
+    position: relative;
     font-size: 14px;
+    line-height: 1em;
   }
 
   body.about #main-header #top-menu a {
-    display: inline-flex;
-    align-items: center;
+    display: block;
     position: relative;
   }
 
-  /* Zero only the plain link padding — leave the workshop/CTA pill padding
-     (site-footer.css / critical.css) intact so those buttons keep their shape. */
+  /* Plain links: the same 10px top/bottom as other pages (the customizer's
+     desktop rule would otherwise add 15px at the bottom). */
   body.about #main-header #top-menu > li:not(.et_pb_button):not(.site-nav-workshop) > a {
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
   }
 
   /* Join the Newsletter pill: Divi core sets .et_pb_button line-height:1.7em
