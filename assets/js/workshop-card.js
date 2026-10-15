@@ -49,6 +49,35 @@
       });
     });
 
+    // Keep the card height steady across tabs: size the panel area to the
+    // tallest panel (normally Summary) so switching tabs doesn't jump.
+    var panelWrap = panels.length ? panels[0].parentNode : null;
+    function lockHeight() {
+      if (!panelWrap) return;
+      panelWrap.style.minHeight = "";
+      var tallest = 0;
+      panels.forEach(function (panel) {
+        var wasHidden = panel.hidden;
+        var hadClass = panel.classList.contains("workshop-card__panel--hidden");
+        panel.hidden = false;
+        panel.classList.remove("workshop-card__panel--hidden");
+        var prevPos = panel.style.position, prevVis = panel.style.visibility;
+        if (wasHidden) { panel.style.position = "absolute"; panel.style.visibility = "hidden"; panel.style.width = panelWrap.clientWidth + "px"; }
+        tallest = Math.max(tallest, panel.offsetHeight);
+        if (wasHidden) { panel.style.position = prevPos; panel.style.visibility = prevVis; panel.style.width = ""; }
+        panel.hidden = wasHidden;
+        if (hadClass) panel.classList.add("workshop-card__panel--hidden");
+      });
+      if (tallest) panelWrap.style.minHeight = tallest + "px";
+    }
+    lockHeight();
+    window.addEventListener("load", lockHeight);
+    var resizeTimer;
+    window.addEventListener("resize", function () {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(lockHeight, 150);
+    });
+
     tabs.forEach(function (tab, index) {
       tab.tabIndex = index === 0 ? 0 : -1;
     });
