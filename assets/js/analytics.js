@@ -57,7 +57,7 @@
   /* Builder Kickoff price, in the currency Kit actually bills in (CAD) — keep in
      sync with the product price in Kit if it ever changes. */
   var BUILDER_KICKOFF_VALUE = 97;
-  var BUILDER_KICKOFF_CURRENCY = "CAD";
+  var BUILDER_KICKOFF_CURRENCY = "USD";
 
   function purchaseTransactionId() {
     try {
