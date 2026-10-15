@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Design Rationale: Explaining Design Decisions | Tyler White</title>
+  <meta name="description" content="How to write and present design rationale: which calls aren't up for debate, how to document the ones that are, and a decision record format to reuse." />
+  <link rel="canonical" href="https://www.mrtylerwhite.com/letters/design-rationale/" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Mr. Tyler White" />
+  <meta property="og:title" content="Design Rationale: Explaining Design Decisions | Tyler White" />
+  <meta property="og:description" content="How to write and present design rationale: which calls aren't up for debate, how to document the ones that are, and a decision record format to reuse." />
+  <meta property="og:url" content="https://www.mrtylerwhite.com/letters/design-rationale/" />
+  <meta property="og:image" content="https://www.mrtylerwhite.com/assets/images/letters/design-rationale.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@mrtylerwhite" />
+  <meta name="twitter:title" content="Design Rationale: Explaining Design Decisions | Tyler White" />
+  <meta name="twitter:description" content="How to write and present design rationale: which calls aren't up for debate, how to document the ones that are, and a decision record format to reuse." />
+  <meta name="twitter:image" content="https://www.mrtylerwhite.com/assets/images/letters/design-rationale.jpg" />
+  <link rel="alternate" type="application/rss+xml" title="Letters · Tyler White" href="https://www.mrtylerwhite.com/letters/feed.xml" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Design rationale: how to explain design decisions without defending them","description":"How to write and present design rationale: which calls aren't up for debate, how to document the ones that are, and a decision record format to reuse.","datePublished":"2026-09-16","dateModified":"2026-10-15","image":"https://www.mrtylerwhite.com/assets/images/letters/design-rationale.jpg","mainEntityOfPage":"https://www.mrtylerwhite.com/letters/design-rationale/","url":"https://www.mrtylerwhite.com/letters/design-rationale/","keywords":"design rationale","wordCount":1020,"author":{"@type":"Person","name":"Tyler White","url":"https://www.mrtylerwhite.com/about/","jobTitle":"Director of Product Design"},"publisher":{"@type":"Person","name":"Tyler White","url":"https://www.mrtylerwhite.com/"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.mrtylerwhite.com/"},{"@type":"ListItem","position":2,"name":"Letters","item":"https://www.mrtylerwhite.com/letters/"},{"@type":"ListItem","position":3,"name":"Design rationale: how to explain design decisions without defending them","item":"https://www.mrtylerwhite.com/letters/design-rationale/"}]}</script>
+
+  <link rel="icon" href="/wp-content/uploads/2025/05/cropped-Favicon-2-32x32.png" sizes="32x32" />
+  <link rel="icon" href="/wp-content/uploads/2025/05/cropped-Favicon-2-192x192.png" sizes="192x192" />
+  <link rel="apple-touch-icon" href="/wp-content/uploads/2025/05/cropped-Favicon-2-180x180.png" />
+
+  <link rel="preload" href="/assets/fonts/instrument-serif/InstrumentSerif-Regular.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/wp-content/et-cache/global/et-divi-customizer-global.min.css" />
+  <link rel="stylesheet" href="/wp-content/plugins/divi-100-hamburger-menu/assets/css/style.css" />
+  <link rel="preconnect" href="https://use.typekit.net" crossorigin />
+  <link rel="stylesheet" href="https://use.typekit.net/fks5kmr.css" />
+  <link rel="stylesheet" href="/assets/css/dist/critical.css" />
+  <link rel="stylesheet" href="/assets/css/system/nav-standalone.css" />
+  <link rel="stylesheet" href="/assets/css/system/pages/letters.css" />
+  <link rel="stylesheet" href="/assets/css/system/site-footer.css" />
+<!-- partial:head -->
+<style id="page-transitions">
+/* Page transitions (details.so port). Inline on purpose: Chrome decides whether
+   to run a cross-page transition as the new page first renders, and an opt-in
+   inside an external stylesheet is sometimes not applied yet, so the transition
+   was skipped at random. Text entrance (.ds-enter) lives in page-transitions.css. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.5s;
+  animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+/* Nav stays in place while the page crossfades. Named on the glass pill, and the
+   group re-applies the glass blur, which a snapshot can't capture. */
+#main-header .et_menu_container,
+.fck-site-header .fck-nav {
+  view-transition-name: site-header;
+}
+::view-transition-group(site-header) {
+  animation-duration: 0.5s;
+  animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border-radius: 10px;
+  -webkit-backdrop-filter: blur(20px) saturate(1.8);
+  backdrop-filter: blur(20px) saturate(1.8);
+}
+</style>
+<!-- /partial:head -->
+</head>
+<body class="letters-page letter-page ds-standalone-nav et_fixed_nav et_show_nav et_header_style_left et_pb_svg_logo et_divi_100_custom_hamburger_menu et_divi_100_custom_hamburger_menu--style-2 et_divi_100_custom_hamburger_menu--type-1 et_button_no_icon et_button_custom_icon et_pb_button_helper_class">
+<div id="page-container">
+<!-- partial:header -->
+<header id="main-header" data-height-onload="30">
+			<div class="container clearfix et_menu_container">
+							<div class="logo_container">
+					<span class="logo_helper"></span>
+					<a href="/">
+						<img src="/wp-content/uploads/2025/12/logo-mrtylerwhite-1.svg" width="69" height="20" alt="Mr. Tyler White" id="logo" data-height-percentage="34" />
+					</a>
+				</div>
+							<div id="et-top-navigation" data-height="30" data-fixed-height="40">
+											<nav id="top-menu-nav">
+						<ul id="top-menu" class="nav"><li id="menu-item-30" class="anim-link menu-item menu-item-type-post_type menu-item-object-page menu-item-30"><a href="/about/">About Me</a></li>
+<li id="menu-item-3458" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3458"><a href="/letters/">Letters</a></li>
+<li id="menu-item-3464" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3464"><a href="https://www.designtablepodcast.com/" target="_blank" rel="noopener noreferrer">Podcast</a></li><li id="menu-item-4000" class="site-nav-workshop menu-item menu-item-type-custom menu-item-object-custom menu-item-4000"><a href="/prototype-ready/">Builder Kickoff™</a></li>
+
+<li id="menu-item-54" class="et_pb_button menu-item menu-item-type-custom menu-item-object-custom menu-item-54"><a href="/roi-case-study-template/" data-track-event="case_study_kit_cta_click" data-track-location="nav">The 15 Minute Case Study</a></li>
+</ul>						</nav>
+
+
+
+
+					<div id="et_mobile_nav_menu">
+				<div class="mobile_nav closed">
+					<span class="select_page">Select Page</span>
+					<button type="button" class="mobile_menu_bar mobile_menu_bar_toggle" aria-label="Open menu" aria-controls="mobile_menu" aria-expanded="false"></button>
+				</div>
+			</div>				</div> <!-- #et-top-navigation -->
+			</div> <!-- .container -->
+					</header>
+<!-- /partial:header -->
+<main class="letter" id="main-content">
+  <article class="letter__article">
+    <header class="letter__header">
+      <h1 class="letter__title ds-enter ds-enter-d1">Design rationale: how to explain design decisions without defending them</h1>
+      <p class="letter__subtitle ds-enter ds-enter-d1">Engineers don't justify their linter in a design review. Some design calls deserve the same treatment. The rest need one clear line, not a slide deck.</p>
+      <div class="letter__byline ds-enter ds-enter-d2">
+        <img class="letter__avatar" src="/assets/images/tyler-white-avatar.webp" alt="" width="36" height="36" />
+        <p><a href="/about/" rel="author">Tyler White</a><time datetime="2026-09-16">Sep 16, 2026</time></p>
+      </div>
+      <div class="letter__bar ds-enter ds-enter-d2">
+        <span>4 min read · <a href="/letters/#case-studies">Case Studies</a></span>
+        <button type="button" class="letter__share" data-share-url="https://www.mrtylerwhite.com/letters/design-rationale/">Share</button>
+      </div>
+    </header>
+    <img class="letter__cover" src="/assets/images/letters/design-rationale.jpg" alt="" width="1200" height="630" />
+    <nav class="letter-toc" aria-label="In this letter">
+        <p class="letter-toc__label">In this letter</p>
+        <ol><li><a href="#not-every-decision-is-up-for-debate">Not every decision is up for debate</a></li><li><a href="#two-kinds-of-design-decisions">Two kinds of design decisions</a></li><li><a href="#how-to-write-design-rationale-for-the-bets">How to write design rationale for the bets</a></li><li><a href="#where-design-rationale-should-live">Where design rationale should live</a></li><li><a href="#how-to-present-design-decisions-in-a-review">How to present design decisions in a review</a></li><li><a href="#the-real-fix-happens-upstream">The real fix happens upstream</a></li><li><a href="#turn-your-rationale-into-a-case-study">Turn your rationale into a case study</a></li><li><a href="#design-rationale-faq">Design rationale FAQ</a></li></ol>
+      </nav>
+    <div class="letter__body">
+<p>A stakeholder pushes back on a design decision.</p>
+<p>Nine times out of ten, you go into defense mode. Wireframes. Research. The whole case, laid out like you&#39;re in front of a judge.</p>
+<p>I stopped doing that.</p>
+<p>Not because rationale doesn&#39;t matter. It matters a lot. But most designers explain the wrong decisions, at the wrong length, at the wrong time. And it slowly teaches the room that every design call is up for a vote.</p>
+<h2 id="not-every-decision-is-up-for-debate">Not every decision is up for debate</h2>
+<p>Engineering doesn&#39;t explain which linter they&#39;re using. Nobody asks a backend engineer to justify a database migration in a design review. They say &quot;we&#39;re not doing that&quot; and move on.</p>
+<p>I treat design the same way now.</p>
+<p>Too many clicks? Fix it. Not up for debate.</p>
+<p>Accessibility gets cut for time? Not up for debate either.</p>
+<p>I don&#39;t explain myself unless I&#39;m pushed.</p>
+<p>That&#39;s not arrogance. That&#39;s what happens when you stop treating your own expertise like it needs a permission slip from the room. (I first wrote about this in <a href="/newsletter/">the newsletter</a>.)</p>
+<p>That &quot;people don&#39;t scroll&quot; bullshit gets the same treatment, like it&#39;s still 2012 and everyone&#39;s on a BlackBerry. They&#39;re gonna scroll. You don&#39;t need a slide deck to prove it. You need to stop pretending it&#39;s a debate.</p>
+<h2 id="two-kinds-of-design-decisions">Two kinds of design decisions</h2>
+<p>The trick is knowing which kind you&#39;re dealing with.</p>
+<div class="letter-table"><table>
+<thead>
+<tr>
+<th></th>
+<th>Standards</th>
+<th>Bets</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>What they are</td>
+<td>Things good practice already settled</td>
+<td>Calls where reasonable people could disagree</td>
+</tr>
+<tr>
+<td>Examples</td>
+<td>Accessibility, consistent patterns, clear error states, not hiding key actions</td>
+<td>Which flow to build first, what to cut, how to trade speed for flexibility</td>
+</tr>
+<tr>
+<td>How to handle them</td>
+<td>State it once. Don&#39;t re-argue it.</td>
+<td>Write down the rationale and what would change your mind</td>
+</tr>
+<tr>
+<td>Where the rationale lives</td>
+<td>Your design system and principles</td>
+<td>The PRD and the case study</td>
+</tr>
+</tbody></table></div>
+<p>Most design arguments go badly because a standard gets treated like a bet. You end up defending accessibility like it&#39;s a personal preference.</p>
+<p>And sometimes it&#39;s the opposite: a genuine bet gets presented like a standard, and the room feels steamrolled. That&#39;s when you need real rationale.</p>
+<h2 id="how-to-write-design-rationale-for-the-bets">How to write design rationale for the bets</h2>
+<p>Keep it short enough that someone will actually read it. This format works:</p>
+<pre><code class="language-markdown">## Decision: [what we chose]
+
+- Context: what problem this solves, in one sentence
+- Options considered: 2-3, one line each
+- Why this one: the tradeoff we accepted, and what we gave up
+- Evidence: data, research, or constraint behind it
+- What would change our mind: the signal that means we revisit
+- Owner and date
+</code></pre>
+<p>That last field is the one that ends arguments. &quot;We&#39;ll revisit if week-two usage is under 20%&quot; turns a standoff into an experiment. Nobody has to win. You just have to agree on what you&#39;re watching.</p>
+<p>If you need help picking that signal, start with <a href="/letters/ux-metrics/">the UX metrics that actually make it into the exec deck</a>.</p>
+<aside class="letter-signup" aria-label="Newsletter">
+  <p class="ds-eyebrow letter-signup__eyebrow">The ROI of Design</p>
+  <p class="letter-signup__title">The short version lands in your inbox every Saturday.</p>
+  <p class="letter-signup__body">One idea a week on proving what design is worth. No fluff, no theory, unsubscribe whenever.</p>
+  <form class="letter-signup__form" data-newsletter-form data-track-location="letters_inline" method="post" action="https://app.kit.com/forms/4969496/subscriptions" novalidate>
+    <label class="screen-reader-text" for="nl-letters_inline">Email address</label>
+    <input id="nl-letters_inline" class="letter-signup__input" name="email_address" type="email" autocomplete="email" placeholder="you@company.com" required />
+    <button class="letter-signup__btn" type="submit">Subscribe</button>
+    <p class="letter-signup__error" data-newsletter-error role="alert" aria-live="polite"></p>
+  </form>
+</aside>
+
+<h2 id="where-design-rationale-should-live">Where design rationale should live</h2>
+<p><strong>In the PRD.</strong> Decisions made at kickoff belong in the doc everyone reads. Here&#39;s <a href="/letters/prd-template/">the PRD template I use</a>, which has a decision table built into the ROI section.</p>
+<p><strong>In the case study.</strong> Rationale is the most interesting part of a case study, and the part most designers bury. Structure it around decisions, not the timeline. Here&#39;s <a href="/letters/ux-case-study-template/">the UX case study template</a> that does exactly that.</p>
+<p><strong>Not in Slack.</strong> If the reasoning only exists in a thread, it doesn&#39;t fucking exist. Three weeks from now nobody will find it, and you&#39;ll have the same argument again.</p>
+<h2 id="how-to-present-design-decisions-in-a-review">How to present design decisions in a review</h2>
+<p><strong>Lead with the decision, not the backstory.</strong> &quot;We&#39;re going with option B because it ships in half the time and we can add the rest later&quot; beats ten minutes of context every time.</p>
+<p><strong>Give one line of why.</strong> If they want more, they&#39;ll ask. When they ask, you&#39;ve got the decision record.</p>
+<p><strong>Name the tradeoff out loud.</strong> It tells people you saw the other options. Most pushback is really &quot;did you think about X?&quot; Answer it before they ask.</p>
+<p><strong>Say what would change your mind.</strong> It makes you look confident, not stubborn.</p>
+<p><strong>Don&#39;t defend standards.</strong> State them and move on.</p>
+<h2 id="the-real-fix-happens-upstream">The real fix happens upstream</h2>
+<p>Most of the pushback you get in design reviews is a symptom. The decision should have been made earlier, with the right people in the room.</p>
+<p>If constraints, scope and the success metric get agreed at kickoff, design reviews stop being trials. They become check-ins against decisions everyone already made.</p>
+<p>That&#39;s how you earn your seat at the table. Not by winning the review. By making the argument unnecessary before the review starts. Here&#39;s <a href="/letters/project-kickoff-meeting/">how I run a project kickoff meeting that actually forces those decisions</a>.</p>
+<h2 id="turn-your-rationale-into-a-case-study">Turn your rationale into a case study</h2>
+<p>Your design decisions are the strongest material you have for a portfolio or a promotion packet. Most designers just never write them down.</p>
+<p><a href="/roi-case-study-template/">The 15 Minute Case Study</a> is a free Claude Skill that pulls the rationale out of your rough notes and turns it into the business story: what you decided, what you traded off, and what changed because of it.</p>
+<h2 id="design-rationale-faq">Design rationale FAQ</h2>
+<h3 id="what-is-design-rationale">What is design rationale?</h3>
+<p>The reasoning behind a design decision: the problem, the options considered, why one was chosen, and the evidence behind it. Good rationale is short, written down, and says what would change the decision.</p>
+<h3 id="how-do-i-explain-a-design-decision-to-a-stakeholder-who-disagrees">How do I explain a design decision to a stakeholder who disagrees?</h3>
+<p>State the decision, give one line of reasoning, name the tradeoff, and offer a signal you&#39;ll watch. If it&#39;s a standard like accessibility, state it and don&#39;t re-argue it.</p>
+<h3 id="should-designers-document-every-decision">Should designers document every decision?</h3>
+<p>No. Document the bets, the calls where reasonable people could disagree. Standards belong in your design principles once, not in every review.</p>
+<h3 id="how-long-should-design-rationale-be">How long should design rationale be?</h3>
+<p>A few lines per decision. If it needs a page, you&#39;ve bundled several decisions together. Split them.</p>
+<aside class="letter-cta" aria-label="Get the 15 Minute Case Study">
+  <p class="ds-eyebrow letter-cta__eyebrow">Free Claude Skill</p>
+  <p class="letter-cta__title">Turn your last project into a case study that shows what it was worth.</p>
+  <p class="letter-cta__body">The 15 Minute Case Study. Paste your rough notes, answer the hard questions, walk away with the business story.</p>
+  <a class="letter-cta__btn" href="/roi-case-study-template/" data-track-event="letters_cta_click" data-track-location="case-study">Get the 15 Minute Case Study &rarr;</a>
+</aside>
+
+    </div>
+    <footer class="letter__author">
+      <img class="letter__avatar letter__avatar--lg" src="/assets/images/tyler-white-avatar.webp" alt="" width="64" height="64" loading="lazy" />
+      <div>
+        <p class="letter__author-name">Tyler White</p>
+        <p class="letter__author-bio">Director of Product Design. 16 years in B2B SaaS, writing about how design decisions turn into revenue, retention and the seat at the table. Creator of Builder Kickoff™.</p>
+      </div>
+    </footer>
+  </article>
+  <section class="letters-related" aria-labelledby="related-heading">
+        <h2 id="related-heading" class="letters-label">Keep reading</h2>
+        <ul class="letters-list"><li class="letters-list__item" data-topic="case-studies">
+  <a class="letters-list__link" href="/letters/ux-case-study-examples/">
+    <span class="letters-list__text">
+      <span class="letters-list__title">UX case study examples that prove what the work was worth</span>
+      <span class="letters-list__sub">Most case studies describe what got built. The ones that land show what changed because of it. Here's what separates them, with before-and-after examples.</span>
+      <span class="letters-list__meta"><time datetime="2026-08-26">Aug 26, 2026</time> · Case Studies</span>
+    </span>
+    <img class="letters-list__thumb" src="/assets/images/letters/ux-case-study-examples.jpg" alt="" loading="lazy" width="320" height="200" />
+  </a>
+</li><li class="letters-list__item" data-topic="case-studies">
+  <a class="letters-list__link" href="/letters/ux-case-study-template/">
+    <span class="letters-list__text">
+      <span class="letters-list__title">The UX case study template I'd use (built around decisions, not screens)</span>
+      <span class="letters-list__sub">Copy the template, answer five uncomfortable questions, and you'll have the case study. The screens come last.</span>
+      <span class="letters-list__meta"><time datetime="2026-08-19">Aug 19, 2026</time> · Case Studies</span>
+    </span>
+    <img class="letters-list__thumb" src="/assets/images/letters/ux-case-study-template.jpg" alt="" loading="lazy" width="320" height="200" />
+  </a>
+</li><li class="letters-list__item" data-topic="case-studies">
+  <a class="letters-list__link" href="/letters/product-designer-portfolio/">
+    <span class="letters-list__text">
+      <span class="letters-list__title">The product designer portfolio homepage structure that sells before anyone scrolls</span>
+      <span class="letters-list__sub">Most portfolio homepages are a highlight reel. Yours should be a filter. Here's the structure, section by section.</span>
+      <span class="letters-list__meta"><time datetime="2026-08-12">Aug 12, 2026</time> · Case Studies</span>
+    </span>
+    <img class="letters-list__thumb" src="/assets/images/letters/product-designer-portfolio.jpg" alt="" loading="lazy" width="320" height="200" />
+  </a>
+</li></ul>
+      </section>
+</main>
+<script>
+(function () {
+  var btn = document.querySelector("[data-share-url]");
+  if (!btn) return;
+  btn.addEventListener("click", async function () {
+    var url = btn.getAttribute("data-share-url");
+    try {
+      if (navigator.share) { await navigator.share({ title: document.title, url: url }); return; }
+      await navigator.clipboard.writeText(url);
+      btn.textContent = "Link copied";
+      setTimeout(function () { btn.textContent = "Share"; }, 2000);
+    } catch (_) {}
+  });
+})();
+</script>
+<!-- partial:footer -->
+<footer class="site-footer" role="contentinfo">
+  <div class="site-footer__inner">
+    <div class="site-footer__brand">
+      <img class="site-footer__wordmark" src="/wp-content/uploads/2025/12/logo-mrtylerwhite-1.svg" width="69" height="20" alt="Mr. Tyler White" />
+      <p class="site-footer__tagline">Product design, growth systems, and prototypes that help teams make better decisions.</p>
+    </div>
+    <nav class="site-footer__col" aria-label="Explore">
+      <span class="site-footer__col-heading">Explore</span>
+      <a href="/about/">About Me</a>
+      <a href="/case-studies/">Case Studies</a>
+      <a href="/newsletter/">Newsletter</a>
+      <a href="/letters/">Letters</a>
+      <a href="https://www.designtablepodcast.com/" target="_blank" rel="noopener noreferrer">Podcast</a>
+      <a href="/prototype-ready/">Builder Kickoff™</a>
+    </nav>
+    <nav class="site-footer__col" aria-label="Resources">
+      <span class="site-footer__col-heading">Resources</span>
+      <a href="/wp-content/uploads/2024/08/TylerWhite-Resume-2024.pdf" target="_blank" rel="noopener noreferrer">Download CV</a>
+      <a href="https://www.linkedin.com/in/mrtylerwhite/" target="_blank" rel="noopener noreferrer">Let&#8217;s Connect</a>
+      <a href="https://www.designtablepodcast.com/" target="_blank" rel="noopener noreferrer">The Design Table</a>
+      <a href="/roi-case-study-template/">The 15 Minute Case Study</a>
+    </nav>
+    <div class="site-footer__cta-block">
+      <span class="site-footer__col-heading">Free Strategy Call</span>
+      <p class="site-footer__cta-copy">Want help turning messy product, growth, or design problems into a clearer plan? Book a 30-minute call and we&#8217;ll figure out where the biggest leverage is.</p>
+      <a href="https://cal.com/mrtylerwhite/30min" class="site-footer__cta-btn" target="_blank" rel="noopener noreferrer">Book a free strategy call</a>
+    </div>
+  </div>
+  <div class="site-footer__bottom">
+    <p class="site-footer__copy">&#169; 2026 Tyler White. Made with taste, caffeine, and a suspicious number of prototypes.</p>
+    <nav class="site-footer__legal" aria-label="Legal">
+      <a href="/privacy-policy/">Privacy Policy</a>
+    </nav>
+  </div>
+</footer>
+<!-- /partial:footer -->
+</div>
+<script src="/assets/js/mobile-menu-a11y.js" defer></script>
+<script src="/assets/js/newsletter-form.js" defer></script>
+<script src="/assets/js/gtm-defer.js" defer></script>
+<script src="/assets/js/analytics.js" defer></script>
+<script src="/assets/js/hotjar.js" defer></script>
+</body>
+</html>

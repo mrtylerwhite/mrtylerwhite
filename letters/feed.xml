@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>Letters · Tyler White</title>
+  <link>https://www.mrtylerwhite.com/letters/</link>
+  <atom:link href="https://www.mrtylerwhite.com/letters/feed.xml" rel="self" type="application/rss+xml" />
+  <description>The long version of the ROI of Design newsletter.</description>
+  <item>
+    <title>The PRD template I actually use (and how to fill it from one kickoff call)</title>
+    <link>https://www.mrtylerwhite.com/letters/prd-template/</link>
+    <guid isPermaLink="true">https://www.mrtylerwhite.com/letters/prd-template/</guid>
+    <pubDate>Thu, 08 Oct 2026 12:00:00 GMT</pubDate>
+    <description>A free PRD template to copy and paste, plus how to fill it from one kickoff meeting so engineering gets a doc they'll actually read. Example included.</description>
+  </item>
+  <item>
+    <title>Design rationale: how to explain design decisions without defending them</title>
+    <link>https://www.mrtylerwhite.com/letters/design-rationale/</link>
+    <guid isPermaLink="true">https://www.mrtylerwhite.com/letters/design-rationale/</guid>
+    <pubDate>Wed, 16 Sep 2026 12:00:00 GMT</pubDate>
+    <description>How to write and present design rationale: which calls aren't up for debate, how to document the ones that are, and a decision record format to reuse.</description>
+  </item>
+  <item>
+    <title>UX case study examples that prove what the work was worth</title>
+    <link>https://www.mrtylerwhite.com/letters/ux-case-study-examples/</link>
+    <guid isPermaLink="true">https://www.mrtylerwhite.com/letters/ux-case-study-examples/</guid>
+    <pubDate>Wed, 26 Aug 2026 12:00:00 GMT</pubDate>
+    <description>What strong UX case study examples have in common: a structure built around decisions, results placed where they land, and a slide about what went wrong.</description>
+  </item>
+  <item>
+    <title>The UX case study template I'd use (built around decisions, not screens)</title>
+    <link>https://www.mrtylerwhite.com/letters/ux-case-study-template/</link>
+    <guid isPermaLink="true">https://www.mrtylerwhite.com/letters/ux-case-study-template/</guid>
+    <pubDate>Wed, 19 Aug 2026 12:00:00 GMT</pubDate>
+    <description>A free UX case study template structured around decisions and outcomes, plus five questions that pressure-test the story before your next portfolio review.</description>
+  </item>
+  <item>
+    <title>The product designer portfolio homepage structure that sells before anyone scrolls</title>
+    <link>https://www.mrtylerwhite.com/letters/product-designer-portfolio/</link>
+    <guid isPermaLink="true">https://www.mrtylerwhite.com/letters/product-designer-portfolio/</guid>
+    <pubDate>Wed, 12 Aug 2026 12:00:00 GMT</pubDate>
+    <description>How to structure a product designer portfolio homepage: a one-line hero, a proof strip, case studies sorted by outcome and result-first headlines.</description>
+  </item>
+  <item>
+    <title>How to run a project kickoff meeting that actually kicks something off</title>
+    <link>https://www.mrtylerwhite.com/letters/project-kickoff-meeting/</link>
+    <guid isPermaLink="true">https://www.mrtylerwhite.com/letters/project-kickoff-meeting/</guid>
+    <pubDate>Wed, 08 Jul 2026 12:00:00 GMT</pubDate>
+    <description>A project kickoff meeting agenda that forces real decisions in 60 minutes: the four questions to ask, who should be in the room, and what you leave with.</description>
+  </item>
+  <item>
+    <title>Product brief template (and the design brief questions that actually matter)</title>
+    <link>https://www.mrtylerwhite.com/letters/product-brief-template/</link>
+    <guid isPermaLink="true">https://www.mrtylerwhite.com/letters/product-brief-template/</guid>
+    <pubDate>Wed, 01 Jul 2026 12:00:00 GMT</pubDate>
+    <description>A free product brief template plus the design brief questions that matter, so design gets pulled in before the decisions are made, not after.</description>
+  </item>
+  <item>
+    <title>Cursor for designers: why I left Figma Make for real product work</title>
+    <link>https://www.mrtylerwhite.com/letters/cursor-for-designers/</link>
+    <guid isPermaLink="true">https://www.mrtylerwhite.com/letters/cursor-for-designers/</guid>
+    <pubDate>Wed, 22 Apr 2026 12:00:00 GMT</pubDate>
+    <description>Why I switched from Figma Make to Cursor for real product prototypes: the credit burn, the spec-driven loop that replaced it, and when Figma still wins.</description>
+  </item>
+  <item>
+    <title>PRD vs BRD: which one you actually need (probably not both)</title>
+    <link>https://www.mrtylerwhite.com/letters/prd-vs-brd/</link>
+    <guid isPermaLink="true">https://www.mrtylerwhite.com/letters/prd-vs-brd/</guid>
+    <pubDate>Wed, 15 Apr 2026 12:00:00 GMT</pubDate>
+    <description>PRD vs BRD explained: what each document covers, who owns it, when to use it, and why most product teams are better off with one doc instead of two.</description>
+  </item>
+  <item>
+    <title>UX metrics that actually make it into the exec deck</title>
+    <link>https://www.mrtylerwhite.com/letters/ux-metrics/</link>
+    <guid isPermaLink="true">https://www.mrtylerwhite.com/letters/ux-metrics/</guid>
+    <pubDate>Wed, 01 Apr 2026 12:00:00 GMT</pubDate>
+    <description>The UX metrics and KPIs leadership cares about: adoption, retention, efficiency and revenue, plus how to estimate impact without perfect data.</description>
+  </item>
+  <item>
+    <title>The AI prototyping workflow I actually use (and where it breaks)</title>
+    <link>https://www.mrtylerwhite.com/letters/ai-prototyping-workflow/</link>
+    <guid isPermaLink="true">https://www.mrtylerwhite.com/letters/ai-prototyping-workflow/</guid>
+    <pubDate>Wed, 25 Mar 2026 12:00:00 GMT</pubDate>
+    <description>A real AI prototyping workflow for product designers: load context, explore 4-5 directions to kill bad ideas fast, test in code, then polish. Prompt included.</description>
+  </item>
+</channel>
+</rss>

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PRD vs BRD: Which One You Actually Need | Tyler White</title>
+  <meta name="description" content="PRD vs BRD explained: what each document covers, who owns it, when to use it, and why most product teams are better off with one doc instead of two." />
+  <link rel="canonical" href="https://www.mrtylerwhite.com/letters/prd-vs-brd/" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Mr. Tyler White" />
+  <meta property="og:title" content="PRD vs BRD: Which One You Actually Need | Tyler White" />
+  <meta property="og:description" content="PRD vs BRD explained: what each document covers, who owns it, when to use it, and why most product teams are better off with one doc instead of two." />
+  <meta property="og:url" content="https://www.mrtylerwhite.com/letters/prd-vs-brd/" />
+  <meta property="og:image" content="https://www.mrtylerwhite.com/assets/images/letters/prd-vs-brd.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@mrtylerwhite" />
+  <meta name="twitter:title" content="PRD vs BRD: Which One You Actually Need | Tyler White" />
+  <meta name="twitter:description" content="PRD vs BRD explained: what each document covers, who owns it, when to use it, and why most product teams are better off with one doc instead of two." />
+  <meta name="twitter:image" content="https://www.mrtylerwhite.com/assets/images/letters/prd-vs-brd.jpg" />
+  <link rel="alternate" type="application/rss+xml" title="Letters · Tyler White" href="https://www.mrtylerwhite.com/letters/feed.xml" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"PRD vs BRD: which one you actually need (probably not both)","description":"PRD vs BRD explained: what each document covers, who owns it, when to use it, and why most product teams are better off with one doc instead of two.","datePublished":"2026-04-15","dateModified":"2026-10-15","image":"https://www.mrtylerwhite.com/assets/images/letters/prd-vs-brd.jpg","mainEntityOfPage":"https://www.mrtylerwhite.com/letters/prd-vs-brd/","url":"https://www.mrtylerwhite.com/letters/prd-vs-brd/","keywords":"prd vs brd","wordCount":932,"author":{"@type":"Person","name":"Tyler White","url":"https://www.mrtylerwhite.com/about/","jobTitle":"Director of Product Design"},"publisher":{"@type":"Person","name":"Tyler White","url":"https://www.mrtylerwhite.com/"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.mrtylerwhite.com/"},{"@type":"ListItem","position":2,"name":"Letters","item":"https://www.mrtylerwhite.com/letters/"},{"@type":"ListItem","position":3,"name":"PRD vs BRD: which one you actually need (probably not both)","item":"https://www.mrtylerwhite.com/letters/prd-vs-brd/"}]}</script>
+
+  <link rel="icon" href="/wp-content/uploads/2025/05/cropped-Favicon-2-32x32.png" sizes="32x32" />
+  <link rel="icon" href="/wp-content/uploads/2025/05/cropped-Favicon-2-192x192.png" sizes="192x192" />
+  <link rel="apple-touch-icon" href="/wp-content/uploads/2025/05/cropped-Favicon-2-180x180.png" />
+
+  <link rel="preload" href="/assets/fonts/instrument-serif/InstrumentSerif-Regular.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/wp-content/et-cache/global/et-divi-customizer-global.min.css" />
+  <link rel="stylesheet" href="/wp-content/plugins/divi-100-hamburger-menu/assets/css/style.css" />
+  <link rel="preconnect" href="https://use.typekit.net" crossorigin />
+  <link rel="stylesheet" href="https://use.typekit.net/fks5kmr.css" />
+  <link rel="stylesheet" href="/assets/css/dist/critical.css" />
+  <link rel="stylesheet" href="/assets/css/system/nav-standalone.css" />
+  <link rel="stylesheet" href="/assets/css/system/pages/letters.css" />
+  <link rel="stylesheet" href="/assets/css/system/site-footer.css" />
+<!-- partial:head -->
+<style id="page-transitions">
+/* Page transitions (details.so port). Inline on purpose: Chrome decides whether
+   to run a cross-page transition as the new page first renders, and an opt-in
+   inside an external stylesheet is sometimes not applied yet, so the transition
+   was skipped at random. Text entrance (.ds-enter) lives in page-transitions.css. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.5s;
+  animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+/* Nav stays in place while the page crossfades. Named on the glass pill, and the
+   group re-applies the glass blur, which a snapshot can't capture. */
+#main-header .et_menu_container,
+.fck-site-header .fck-nav {
+  view-transition-name: site-header;
+}
+::view-transition-group(site-header) {
+  animation-duration: 0.5s;
+  animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border-radius: 10px;
+  -webkit-backdrop-filter: blur(20px) saturate(1.8);
+  backdrop-filter: blur(20px) saturate(1.8);
+}
+</style>
+<!-- /partial:head -->
+</head>
+<body class="letters-page letter-page ds-standalone-nav et_fixed_nav et_show_nav et_header_style_left et_pb_svg_logo et_divi_100_custom_hamburger_menu et_divi_100_custom_hamburger_menu--style-2 et_divi_100_custom_hamburger_menu--type-1 et_button_no_icon et_button_custom_icon et_pb_button_helper_class">
+<div id="page-container">
+<!-- partial:header -->
+<header id="main-header" data-height-onload="30">
+			<div class="container clearfix et_menu_container">
+							<div class="logo_container">
+					<span class="logo_helper"></span>
+					<a href="/">
+						<img src="/wp-content/uploads/2025/12/logo-mrtylerwhite-1.svg" width="69" height="20" alt="Mr. Tyler White" id="logo" data-height-percentage="34" />
+					</a>
+				</div>
+							<div id="et-top-navigation" data-height="30" data-fixed-height="40">
+											<nav id="top-menu-nav">
+						<ul id="top-menu" class="nav"><li id="menu-item-30" class="anim-link menu-item menu-item-type-post_type menu-item-object-page menu-item-30"><a href="/about/">About Me</a></li>
+<li id="menu-item-3458" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3458"><a href="/letters/">Letters</a></li>
+<li id="menu-item-3464" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3464"><a href="https://www.designtablepodcast.com/" target="_blank" rel="noopener noreferrer">Podcast</a></li><li id="menu-item-4000" class="site-nav-workshop menu-item menu-item-type-custom menu-item-object-custom menu-item-4000"><a href="/prototype-ready/">Builder Kickoff™</a></li>
+
+<li id="menu-item-54" class="et_pb_button menu-item menu-item-type-custom menu-item-object-custom menu-item-54"><a href="/roi-case-study-template/" data-track-event="case_study_kit_cta_click" data-track-location="nav">The 15 Minute Case Study</a></li>
+</ul>						</nav>
+
+
+
+
+					<div id="et_mobile_nav_menu">
+				<div class="mobile_nav closed">
+					<span class="select_page">Select Page</span>
+					<button type="button" class="mobile_menu_bar mobile_menu_bar_toggle" aria-label="Open menu" aria-controls="mobile_menu" aria-expanded="false"></button>
+				</div>
+			</div>				</div> <!-- #et-top-navigation -->
+			</div> <!-- .container -->
+					</header>
+<!-- /partial:header -->
+<main class="letter" id="main-content">
+  <article class="letter__article">
+    <header class="letter__header">
+      <h1 class="letter__title ds-enter ds-enter-d1">PRD vs BRD: which one you actually need (probably not both)</h1>
+      <p class="letter__subtitle ds-enter ds-enter-d1">One explains why the business wants it. The other explains what the product will do. Most teams write both and then let them drift apart.</p>
+      <div class="letter__byline ds-enter ds-enter-d2">
+        <img class="letter__avatar" src="/assets/images/tyler-white-avatar.webp" alt="" width="36" height="36" />
+        <p><a href="/about/" rel="author">Tyler White</a><time datetime="2026-04-15">Apr 15, 2026</time></p>
+      </div>
+      <div class="letter__bar ds-enter ds-enter-d2">
+        <span>4 min read · <a href="/letters/#kickoffs">Kickoffs &amp; PRDs</a></span>
+        <button type="button" class="letter__share" data-share-url="https://www.mrtylerwhite.com/letters/prd-vs-brd/">Share</button>
+      </div>
+    </header>
+    <img class="letter__cover" src="/assets/images/letters/prd-vs-brd.jpg" alt="" width="1200" height="630" />
+    <nav class="letter-toc" aria-label="In this letter">
+        <p class="letter-toc__label">In this letter</p>
+        <ol><li><a href="#prd-vs-brd-at-a-glance">PRD vs BRD at a glance</a></li><li><a href="#what-goes-in-a-brd">What goes in a BRD</a></li><li><a href="#what-goes-in-a-prd">What goes in a PRD</a></li><li><a href="#the-problem-with-having-both">The problem with having both</a></li><li><a href="#which-one-do-you-actually-need">Which one do you actually need?</a></li><li><a href="#where-the-product-brief-fits">Where the product brief fits</a></li><li><a href="#the-fastest-way-to-get-a-good-prd">The fastest way to get a good PRD</a></li><li><a href="#prd-vs-brd-faq">PRD vs BRD FAQ</a></li></ol>
+      </nav>
+    <div class="letter__body">
+<p>Here&#39;s the short answer.</p>
+<p>A <strong>BRD</strong> (business requirements document) explains <em>why</em> the business wants something.</p>
+<p>A <strong>PRD</strong> (product requirements document) explains <em>what</em> the product will do to get there.</p>
+<p>That&#39;s the whole difference. The rest is detail. But the detail matters, because most teams that write both end up with two docs that quietly contradict each other by week three.</p>
+<h2 id="prd-vs-brd-at-a-glance">PRD vs BRD at a glance</h2>
+<div class="letter-table"><table>
+<thead>
+<tr>
+<th></th>
+<th>BRD</th>
+<th>PRD</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Question it answers</td>
+<td>Why are we doing this?</td>
+<td>What exactly are we building?</td>
+</tr>
+<tr>
+<td>Audience</td>
+<td>Leadership, finance, stakeholders</td>
+<td>Product, design, engineering</td>
+</tr>
+<tr>
+<td>Owner</td>
+<td>Business analyst or business lead</td>
+<td>Product manager</td>
+</tr>
+<tr>
+<td>Contents</td>
+<td>Goals, market context, revenue impact, budget, risks</td>
+<td>Requirements, scope, out of scope, success metrics, open questions</td>
+</tr>
+<tr>
+<td>Level of detail</td>
+<td>Strategic</td>
+<td>Feature level</td>
+</tr>
+<tr>
+<td>When it&#39;s written</td>
+<td>Before a project is approved</td>
+<td>Before and during the build</td>
+</tr>
+</tbody></table></div>
+<h2 id="what-goes-in-a-brd">What goes in a BRD</h2>
+<p>A BRD makes the case for spending money. It usually covers:</p>
+<ul>
+<li>The business objective</li>
+<li>The market or customer problem</li>
+<li>Expected revenue, cost savings or risk reduction</li>
+<li>Budget and timeline at a high level</li>
+<li>Stakeholders and success criteria for the business</li>
+</ul>
+<p>It&#39;s written for the people who approve the project, not the people who build it.</p>
+<h2 id="what-goes-in-a-prd">What goes in a PRD</h2>
+<p>A PRD turns that case into something a team can build. It usually covers:</p>
+<ul>
+<li>The objective and how you&#39;ll measure success</li>
+<li>Problems and pain points</li>
+<li>MVP requirements</li>
+<li>What&#39;s explicitly out of scope</li>
+<li>Open questions with owners</li>
+</ul>
+<p>If you want the exact sections I use, here&#39;s <a href="/letters/prd-template/">the PRD template I actually use</a>, with a filled-in example.</p>
+<h2 id="the-problem-with-having-both">The problem with having both</h2>
+<p>On paper, two docs make sense. Strategy in one, execution in the other.</p>
+<p>In real life, here&#39;s what happens.</p>
+<p>The BRD gets written, approved, and never opened again. It has the lifespan of a New Year&#39;s gym membership. The PRD gets written by someone else, weeks later.</p>
+<p>Scope changes during the build. The PRD gets updated. The BRD doesn&#39;t.</p>
+<p>Now the business case says one thing and the product does another. Two docs, zero truth. Congrats, you&#39;ve built a very expensive way to argue. And when someone asks &quot;did this work?&quot;, nobody can agree what the hell &quot;work&quot; was supposed to mean.</p>
+<p>That&#39;s not a documentation problem. It&#39;s a decision problem. The decisions got made in different rooms, by different people, at different times.</p>
+<aside class="letter-signup" aria-label="Newsletter">
+  <p class="ds-eyebrow letter-signup__eyebrow">The ROI of Design</p>
+  <p class="letter-signup__title">The short version lands in your inbox every Saturday.</p>
+  <p class="letter-signup__body">One idea a week on proving what design is worth. No fluff, no theory, unsubscribe whenever.</p>
+  <form class="letter-signup__form" data-newsletter-form data-track-location="letters_inline" method="post" action="https://app.kit.com/forms/4969496/subscriptions" novalidate>
+    <label class="screen-reader-text" for="nl-letters_inline">Email address</label>
+    <input id="nl-letters_inline" class="letter-signup__input" name="email_address" type="email" autocomplete="email" placeholder="you@company.com" required />
+    <button class="letter-signup__btn" type="submit">Subscribe</button>
+    <p class="letter-signup__error" data-newsletter-error role="alert" aria-live="polite"></p>
+  </form>
+</aside>
+
+<h2 id="which-one-do-you-actually-need">Which one do you actually need?</h2>
+<p><strong>Use one doc.</strong> For most product teams building features, a single PRD with a solid business case section beats a BRD plus a PRD every time.</p>
+<p>The trick is putting the &quot;why&quot; inside the PRD instead of in a separate file:</p>
+<ul>
+<li><strong>Objective and success metric</strong> cover the business goal</li>
+<li><strong>ROI analysis</strong> covers the bet, the team cost, and the decision between options</li>
+<li><strong>Out of scope</strong> covers what the business agreed not to pay for</li>
+</ul>
+<p>That&#39;s the structure in my template. One doc. One source of truth. Business case and requirements can&#39;t drift apart because they&#39;re on the same page.</p>
+<p><strong>Use a separate BRD</strong> when you genuinely need approval before any product work starts. Big budget decisions, regulated industries, new product lines, or anything that needs a finance sign-off before a team gets assigned.</p>
+<h2 id="where-the-product-brief-fits">Where the product brief fits</h2>
+<p>There&#39;s a third doc people mix in here: the product brief.</p>
+<p>Think of it as a lightweight BRD. One page that decides whether a problem is worth solving at all, before you commit a team. If it is, the brief grows into the PRD.</p>
+<p>Here&#39;s <a href="/letters/product-brief-template/">a product brief template</a> if you want that starting point.</p>
+<p>So the order looks like this:</p>
+<ol>
+<li><strong>Product brief:</strong> should we solve this?</li>
+<li><strong>Kickoff:</strong> what exactly are we building, in what time, and what are we not doing?</li>
+<li><strong>PRD:</strong> the written record of those decisions</li>
+</ol>
+<h2 id="the-fastest-way-to-get-a-good-prd">The fastest way to get a good PRD</h2>
+<p>Write it during the kickoff, not after.</p>
+<p>If you run a <a href="/letters/project-kickoff-meeting/">project kickoff meeting</a> that forces the room to answer what you&#39;re solving, what you&#39;re not solving, how much time you have and what tradeoffs you&#39;ll accept, you&#39;ve already got most of the PRD. Record the call and the transcript has the rest.</p>
+<p>That&#39;s what <a href="/prototype-ready/">Builder Kickoff™</a> is built for. You run the session once, and walk out with the PRD, the business case and the prototype direction the same day. No separate BRD to keep in sync.</p>
+<h2 id="prd-vs-brd-faq">PRD vs BRD FAQ</h2>
+<h3 id="is-a-prd-the-same-as-a-functional-spec">Is a PRD the same as a functional spec?</h3>
+<p>No. A PRD says what the product needs to do and why. A functional spec goes deeper into exactly how each piece behaves. Many teams skip the formal spec and let design and engineering work it out from the PRD.</p>
+<h3 id="whats-an-mrd">What&#39;s an MRD?</h3>
+<p>A market requirements document. It covers the market opportunity and customer needs, usually before a BRD or PRD. It&#39;s more common in hardware and large enterprise products than in SaaS feature work.</p>
+<h3 id="who-approves-a-prd">Who approves a PRD?</h3>
+<p>Usually the product lead, with engineering and design signing off on feasibility and scope. If leadership needs to approve the spend, that&#39;s the job a BRD or the PRD&#39;s ROI section does.</p>
+<h3 id="how-do-i-measure-whether-the-prds-goals-were-met">How do I measure whether the PRD&#39;s goals were met?</h3>
+<p>Pick the success metric before you build, with a baseline and a target. If you need help choosing, start with <a href="/letters/ux-metrics/">the UX metrics that actually make it into the exec deck</a>.</p>
+<aside class="letter-cta" aria-label="See how Builder Kickoff works">
+  <p class="ds-eyebrow letter-cta__eyebrow">Builder Kickoff™ · $97</p>
+  <p class="letter-cta__title">Run the kickoff once. Walk out with the PRD and the prototype prompt.</p>
+  <p class="letter-cta__body">Seven short lessons. Record your next kickoff, and get the PRD, the business case and the prototype direction the same day.</p>
+  <a class="letter-cta__btn" href="/prototype-ready/" data-track-event="letters_cta_click" data-track-location="builder-kickoff">See how Builder Kickoff works &rarr;</a>
+</aside>
+
+    </div>
+    <footer class="letter__author">
+      <img class="letter__avatar letter__avatar--lg" src="/assets/images/tyler-white-avatar.webp" alt="" width="64" height="64" loading="lazy" />
+      <div>
+        <p class="letter__author-name">Tyler White</p>
+        <p class="letter__author-bio">Director of Product Design. 16 years in B2B SaaS, writing about how design decisions turn into revenue, retention and the seat at the table. Creator of Builder Kickoff™.</p>
+      </div>
+    </footer>
+  </article>
+  <section class="letters-related" aria-labelledby="related-heading">
+        <h2 id="related-heading" class="letters-label">Keep reading</h2>
+        <ul class="letters-list"><li class="letters-list__item" data-topic="kickoffs">
+  <a class="letters-list__link" href="/letters/prd-template/">
+    <span class="letters-list__text">
+      <span class="letters-list__title">The PRD template I actually use (and how to fill it from one kickoff call)</span>
+      <span class="letters-list__sub">Most PRDs die because they're written after the decisions get made. Here's the template, and how to fill it while the room is still deciding.</span>
+      <span class="letters-list__meta"><time datetime="2026-10-08">Oct 8, 2026</time> · Kickoffs &amp; PRDs</span>
+    </span>
+    <img class="letters-list__thumb" src="/assets/images/letters/prd-template.jpg" alt="" loading="lazy" width="320" height="200" />
+  </a>
+</li><li class="letters-list__item" data-topic="kickoffs">
+  <a class="letters-list__link" href="/letters/project-kickoff-meeting/">
+    <span class="letters-list__text">
+      <span class="letters-list__title">How to run a project kickoff meeting that actually kicks something off</span>
+      <span class="letters-list__sub">Most kickoffs are expensive brainstorms. Here's the agenda that makes the room decide, and the outputs you should have before anyone opens Figma.</span>
+      <span class="letters-list__meta"><time datetime="2026-07-08">Jul 8, 2026</time> · Kickoffs &amp; PRDs</span>
+    </span>
+    <img class="letters-list__thumb" src="/assets/images/letters/project-kickoff-meeting.jpg" alt="" loading="lazy" width="320" height="200" />
+  </a>
+</li><li class="letters-list__item" data-topic="kickoffs">
+  <a class="letters-list__link" href="/letters/product-brief-template/">
+    <span class="letters-list__text">
+      <span class="letters-list__title">Product brief template (and the design brief questions that actually matter)</span>
+      <span class="letters-list__sub">The brief usually shows up as a Jira ticket with the decisions already baked in. Here's the template, and how to stop it arriving half-wrong.</span>
+      <span class="letters-list__meta"><time datetime="2026-07-01">Jul 1, 2026</time> · Kickoffs &amp; PRDs</span>
+    </span>
+    <img class="letters-list__thumb" src="/assets/images/letters/product-brief-template.jpg" alt="" loading="lazy" width="320" height="200" />
+  </a>
+</li></ul>
+      </section>
+</main>
+<script>
+(function () {
+  var btn = document.querySelector("[data-share-url]");
+  if (!btn) return;
+  btn.addEventListener("click", async function () {
+    var url = btn.getAttribute("data-share-url");
+    try {
+      if (navigator.share) { await navigator.share({ title: document.title, url: url }); return; }
+      await navigator.clipboard.writeText(url);
+      btn.textContent = "Link copied";
+      setTimeout(function () { btn.textContent = "Share"; }, 2000);
+    } catch (_) {}
+  });
+})();
+</script>
+<!-- partial:footer -->
+<footer class="site-footer" role="contentinfo">
+  <div class="site-footer__inner">
+    <div class="site-footer__brand">
+      <img class="site-footer__wordmark" src="/wp-content/uploads/2025/12/logo-mrtylerwhite-1.svg" width="69" height="20" alt="Mr. Tyler White" />
+      <p class="site-footer__tagline">Product design, growth systems, and prototypes that help teams make better decisions.</p>
+    </div>
+    <nav class="site-footer__col" aria-label="Explore">
+      <span class="site-footer__col-heading">Explore</span>
+      <a href="/about/">About Me</a>
+      <a href="/case-studies/">Case Studies</a>
+      <a href="/newsletter/">Newsletter</a>
+      <a href="/letters/">Letters</a>
+      <a href="https://www.designtablepodcast.com/" target="_blank" rel="noopener noreferrer">Podcast</a>
+      <a href="/prototype-ready/">Builder Kickoff™</a>
+    </nav>
+    <nav class="site-footer__col" aria-label="Resources">
+      <span class="site-footer__col-heading">Resources</span>
+      <a href="/wp-content/uploads/2024/08/TylerWhite-Resume-2024.pdf" target="_blank" rel="noopener noreferrer">Download CV</a>
+      <a href="https://www.linkedin.com/in/mrtylerwhite/" target="_blank" rel="noopener noreferrer">Let&#8217;s Connect</a>
+      <a href="https://www.designtablepodcast.com/" target="_blank" rel="noopener noreferrer">The Design Table</a>
+      <a href="/roi-case-study-template/">The 15 Minute Case Study</a>
+    </nav>
+    <div class="site-footer__cta-block">
+      <span class="site-footer__col-heading">Free Strategy Call</span>
+      <p class="site-footer__cta-copy">Want help turning messy product, growth, or design problems into a clearer plan? Book a 30-minute call and we&#8217;ll figure out where the biggest leverage is.</p>
+      <a href="https://cal.com/mrtylerwhite/30min" class="site-footer__cta-btn" target="_blank" rel="noopener noreferrer">Book a free strategy call</a>
+    </div>
+  </div>
+  <div class="site-footer__bottom">
+    <p class="site-footer__copy">&#169; 2026 Tyler White. Made with taste, caffeine, and a suspicious number of prototypes.</p>
+    <nav class="site-footer__legal" aria-label="Legal">
+      <a href="/privacy-policy/">Privacy Policy</a>
+    </nav>
+  </div>
+</footer>
+<!-- /partial:footer -->
+</div>
+<script src="/assets/js/mobile-menu-a11y.js" defer></script>
+<script src="/assets/js/newsletter-form.js" defer></script>
+<script src="/assets/js/gtm-defer.js" defer></script>
+<script src="/assets/js/analytics.js" defer></script>
+<script src="/assets/js/hotjar.js" defer></script>
+</body>
+</html>

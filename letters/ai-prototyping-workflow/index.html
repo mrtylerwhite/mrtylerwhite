@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Prototyping Workflow for Product Designers | Tyler White</title>
+  <meta name="description" content="A real AI prototyping workflow for product designers: load context, explore 4-5 directions to kill bad ideas fast, test in code, then polish. Prompt included." />
+  <link rel="canonical" href="https://www.mrtylerwhite.com/letters/ai-prototyping-workflow/" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Mr. Tyler White" />
+  <meta property="og:title" content="AI Prototyping Workflow for Product Designers | Tyler White" />
+  <meta property="og:description" content="A real AI prototyping workflow for product designers: load context, explore 4-5 directions to kill bad ideas fast, test in code, then polish. Prompt included." />
+  <meta property="og:url" content="https://www.mrtylerwhite.com/letters/ai-prototyping-workflow/" />
+  <meta property="og:image" content="https://www.mrtylerwhite.com/assets/images/letters/ai-prototyping-workflow.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@mrtylerwhite" />
+  <meta name="twitter:title" content="AI Prototyping Workflow for Product Designers | Tyler White" />
+  <meta name="twitter:description" content="A real AI prototyping workflow for product designers: load context, explore 4-5 directions to kill bad ideas fast, test in code, then polish. Prompt included." />
+  <meta name="twitter:image" content="https://www.mrtylerwhite.com/assets/images/letters/ai-prototyping-workflow.jpg" />
+  <link rel="alternate" type="application/rss+xml" title="Letters · Tyler White" href="https://www.mrtylerwhite.com/letters/feed.xml" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"The AI prototyping workflow I actually use (and where it breaks)","description":"A real AI prototyping workflow for product designers: load context, explore 4-5 directions to kill bad ideas fast, test in code, then polish. Prompt included.","datePublished":"2026-03-25","dateModified":"2026-10-15","image":"https://www.mrtylerwhite.com/assets/images/letters/ai-prototyping-workflow.jpg","mainEntityOfPage":"https://www.mrtylerwhite.com/letters/ai-prototyping-workflow/","url":"https://www.mrtylerwhite.com/letters/ai-prototyping-workflow/","keywords":"ai prototyping","wordCount":1209,"author":{"@type":"Person","name":"Tyler White","url":"https://www.mrtylerwhite.com/about/","jobTitle":"Director of Product Design"},"publisher":{"@type":"Person","name":"Tyler White","url":"https://www.mrtylerwhite.com/"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.mrtylerwhite.com/"},{"@type":"ListItem","position":2,"name":"Letters","item":"https://www.mrtylerwhite.com/letters/"},{"@type":"ListItem","position":3,"name":"The AI prototyping workflow I actually use (and where it breaks)","item":"https://www.mrtylerwhite.com/letters/ai-prototyping-workflow/"}]}</script>
+
+  <link rel="icon" href="/wp-content/uploads/2025/05/cropped-Favicon-2-32x32.png" sizes="32x32" />
+  <link rel="icon" href="/wp-content/uploads/2025/05/cropped-Favicon-2-192x192.png" sizes="192x192" />
+  <link rel="apple-touch-icon" href="/wp-content/uploads/2025/05/cropped-Favicon-2-180x180.png" />
+
+  <link rel="preload" href="/assets/fonts/instrument-serif/InstrumentSerif-Regular.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/wp-content/et-cache/global/et-divi-customizer-global.min.css" />
+  <link rel="stylesheet" href="/wp-content/plugins/divi-100-hamburger-menu/assets/css/style.css" />
+  <link rel="preconnect" href="https://use.typekit.net" crossorigin />
+  <link rel="stylesheet" href="https://use.typekit.net/fks5kmr.css" />
+  <link rel="stylesheet" href="/assets/css/dist/critical.css" />
+  <link rel="stylesheet" href="/assets/css/system/nav-standalone.css" />
+  <link rel="stylesheet" href="/assets/css/system/pages/letters.css" />
+  <link rel="stylesheet" href="/assets/css/system/site-footer.css" />
+<!-- partial:head -->
+<style id="page-transitions">
+/* Page transitions (details.so port). Inline on purpose: Chrome decides whether
+   to run a cross-page transition as the new page first renders, and an opt-in
+   inside an external stylesheet is sometimes not applied yet, so the transition
+   was skipped at random. Text entrance (.ds-enter) lives in page-transitions.css. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.5s;
+  animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+/* Nav stays in place while the page crossfades. Named on the glass pill, and the
+   group re-applies the glass blur, which a snapshot can't capture. */
+#main-header .et_menu_container,
+.fck-site-header .fck-nav {
+  view-transition-name: site-header;
+}
+::view-transition-group(site-header) {
+  animation-duration: 0.5s;
+  animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border-radius: 10px;
+  -webkit-backdrop-filter: blur(20px) saturate(1.8);
+  backdrop-filter: blur(20px) saturate(1.8);
+}
+</style>
+<!-- /partial:head -->
+</head>
+<body class="letters-page letter-page ds-standalone-nav et_fixed_nav et_show_nav et_header_style_left et_pb_svg_logo et_divi_100_custom_hamburger_menu et_divi_100_custom_hamburger_menu--style-2 et_divi_100_custom_hamburger_menu--type-1 et_button_no_icon et_button_custom_icon et_pb_button_helper_class">
+<div id="page-container">
+<!-- partial:header -->
+<header id="main-header" data-height-onload="30">
+			<div class="container clearfix et_menu_container">
+							<div class="logo_container">
+					<span class="logo_helper"></span>
+					<a href="/">
+						<img src="/wp-content/uploads/2025/12/logo-mrtylerwhite-1.svg" width="69" height="20" alt="Mr. Tyler White" id="logo" data-height-percentage="34" />
+					</a>
+				</div>
+							<div id="et-top-navigation" data-height="30" data-fixed-height="40">
+											<nav id="top-menu-nav">
+						<ul id="top-menu" class="nav"><li id="menu-item-30" class="anim-link menu-item menu-item-type-post_type menu-item-object-page menu-item-30"><a href="/about/">About Me</a></li>
+<li id="menu-item-3458" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3458"><a href="/letters/">Letters</a></li>
+<li id="menu-item-3464" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3464"><a href="https://www.designtablepodcast.com/" target="_blank" rel="noopener noreferrer">Podcast</a></li><li id="menu-item-4000" class="site-nav-workshop menu-item menu-item-type-custom menu-item-object-custom menu-item-4000"><a href="/prototype-ready/">Builder Kickoff™</a></li>
+
+<li id="menu-item-54" class="et_pb_button menu-item menu-item-type-custom menu-item-object-custom menu-item-54"><a href="/roi-case-study-template/" data-track-event="case_study_kit_cta_click" data-track-location="nav">The 15 Minute Case Study</a></li>
+</ul>						</nav>
+
+
+
+
+					<div id="et_mobile_nav_menu">
+				<div class="mobile_nav closed">
+					<span class="select_page">Select Page</span>
+					<button type="button" class="mobile_menu_bar mobile_menu_bar_toggle" aria-label="Open menu" aria-controls="mobile_menu" aria-expanded="false"></button>
+				</div>
+			</div>				</div> <!-- #et-top-navigation -->
+			</div> <!-- .container -->
+					</header>
+<!-- /partial:header -->
+<main class="letter" id="main-content">
+  <article class="letter__article">
+    <header class="letter__header">
+      <h1 class="letter__title ds-enter ds-enter-d1">The AI prototyping workflow I actually use (and where it breaks)</h1>
+      <p class="letter__subtitle ds-enter ds-enter-d1">Speed doesn't let you skip the fundamentals. It tells you, fast, which ones were real. Here's the workflow, the prompt, and the places it'll burn you.</p>
+      <div class="letter__byline ds-enter ds-enter-d2">
+        <img class="letter__avatar" src="/assets/images/tyler-white-avatar.webp" alt="" width="36" height="36" />
+        <p><a href="/about/" rel="author">Tyler White</a><time datetime="2026-03-25">Mar 25, 2026</time></p>
+      </div>
+      <div class="letter__bar ds-enter ds-enter-d2">
+        <span>5 min read · <a href="/letters/#ai-workflow">AI Workflow</a></span>
+        <button type="button" class="letter__share" data-share-url="https://www.mrtylerwhite.com/letters/ai-prototyping-workflow/">Share</button>
+      </div>
+    </header>
+    <img class="letter__cover" src="/assets/images/letters/ai-prototyping-workflow.jpg" alt="" width="1200" height="630" />
+    <nav class="letter-toc" aria-label="In this letter">
+        <p class="letter-toc__label">In this letter</p>
+        <ol><li><a href="#the-real-shift-isnt-generation-its-feedback">The real shift isn&#39;t generation. It&#39;s feedback.</a></li><li><a href="#the-workflow-step-by-step">The workflow, step by step</a></li><li><a href="#the-exploration-prompt">The exploration prompt</a></li><li><a href="#where-ai-prototyping-breaks-and-where-people-get-burned">Where AI prototyping breaks (and where people get burned)</a></li><li><a href="#ai-prototyping-tools-what-i-use-each-one-for">AI prototyping tools: what I use each one for</a></li><li><a href="#faster-building-makes-the-kickoff-matter-more">Faster building makes the kickoff matter more</a></li><li><a href="#try-it-this-week">Try it this week</a></li><li><a href="#ai-prototyping-faq">AI prototyping FAQ</a></li></ol>
+      </nav>
+    <div class="letter__body">
+<p>I ran a quick poll asking <a href="/newsletter/">newsletter</a> readers what they wanted more of.</p>
+<p>I had a guess. I was wrong.</p>
+<p>AI workflows in real product work: 60%. Real product breakdowns: 40%. Everything else: basically noise.</p>
+<p>Small sample, but clear enough. Most of what&#39;s out there about AI in design is still surface level. Tools. Prompts. Outputs. A lot of it is just noise, and honestly a bit of bullshit.</p>
+<p>What people actually want is how this shows up in real work. Where it saves time. Where it breaks. Where it makes you look smart, and where it makes you look dumb if you&#39;re not careful.</p>
+<p>So here&#39;s mine.</p>
+<h2 id="the-real-shift-isnt-generation-its-feedback">The real shift isn&#39;t generation. It&#39;s feedback.</h2>
+<p>AI can generate things. Fine. That&#39;s not the interesting part.</p>
+<p>The interesting part is that it collapses the time between having an idea and finding out it&#39;s wrong.</p>
+<p>Which means the fundamentals matter more, not less.</p>
+<p>When a tool builds while you&#39;re still deciding, you find out fast which of your rules were real and which were just habits. Wireframes before logic? Habit. Knowing what problem you&#39;re solving before you build? Real.</p>
+<p>Learn it to break it.</p>
+<p>Skip the fundamentals and the tool just ships the wrong thing faster. Know them cold and you spend less time making things and more time deciding what&#39;s worth making.</p>
+<h2 id="the-workflow-step-by-step">The workflow, step by step</h2>
+<p><strong>1. Load context before asking for anything.</strong></p>
+<p>I use Claude as my main tool, connected to GitHub, Atlassian, Figma and Slack, so it has real context. It knows the product, the constraints and how things actually work.</p>
+<p>When I start a feature I don&#39;t jump into design. I load context first. PRD, notes, screenshots, anything that shows how the product behaves. I feed it in step by step and tell it to wait.</p>
+<p>If you don&#39;t have a PRD yet, start with <a href="/letters/prd-template/">the PRD template I use</a>. The quality of everything after this step depends on it.</p>
+<p><strong>2. Generate 4–5 directions in separate threads.</strong></p>
+<p>Not to find the best UI. To see what breaks.</p>
+<p>This is where bad ideas die. Usually two of them fall apart right away. That&#39;s the point.</p>
+<p><strong>3. Stress test the survivors.</strong></p>
+<p>I take the best one or two and ask it to critique the flow and point out risks. Not because it&#39;s always right. Because it helps me catch things faster.</p>
+<p><strong>4. Build the risky part in code.</strong></p>
+<p>For anything with real logic, I build a quick version in Cursor and use it. That&#39;s where the problems mocks hide show up. I wrote about why in <a href="/letters/cursor-for-designers/">Cursor for designers</a>.</p>
+<p><strong>5. Polish in Figma.</strong></p>
+<p>Once the logic holds up, I move to Figma and clean it up.</p>
+<p>What used to take hours now takes about 20 to 30 minutes to explore and kill bad ideas early.</p>
+<h2 id="the-exploration-prompt">The exploration prompt</h2>
+<p>Here&#39;s the prompt I use for step 2. Copy it and adapt it.</p>
+<pre><code class="language-text">I&#39;m a product designer working on a feature inside an existing system
+with real constraints (design system, data models, user expectations).
+
+I&#39;ve provided context including product behavior, requirements, and research.
+Do not generate a solution yet.
+
+First, confirm you understand:
+- the goal of the feature
+- the constraints of the system
+- the expected user behavior
+
+Then, generate 4-5 different solution directions.
+These are not final designs. These are exploration paths.
+
+For each direction:
+- describe how inputs flow through the system
+- explain how outputs are affected
+- call out where the logic might break or fail
+- identify any edge cases or missing states
+
+After generating directions, evaluate:
+- which concepts are worth exploring further
+- which should be killed early
+- where the system behavior might confuse users
+
+Do not optimize for polish. Optimize for:
+- exposing bad ideas quickly
+- revealing logic gaps
+- identifying points of failure
+
+Assume this will be used in a real production system, engineering
+constraints are non-trivial, and anything that looks right but doesn&#39;t
+hold up logically is wrong.
+
+I&#39;m not looking for a perfect solution. I&#39;m looking for the fastest
+way to figure out what doesn&#39;t work.
+</code></pre>
+<p>The most important line is &quot;do not generate a solution yet.&quot; Skip it and you get a confident answer to a question you haven&#39;t finished asking.</p>
+<aside class="letter-signup" aria-label="Newsletter">
+  <p class="ds-eyebrow letter-signup__eyebrow">The ROI of Design</p>
+  <p class="letter-signup__title">The short version lands in your inbox every Saturday.</p>
+  <p class="letter-signup__body">One idea a week on proving what design is worth. No fluff, no theory, unsubscribe whenever.</p>
+  <form class="letter-signup__form" data-newsletter-form data-track-location="letters_inline" method="post" action="https://app.kit.com/forms/4969496/subscriptions" novalidate>
+    <label class="screen-reader-text" for="nl-letters_inline">Email address</label>
+    <input id="nl-letters_inline" class="letter-signup__input" name="email_address" type="email" autocomplete="email" placeholder="you@company.com" required />
+    <button class="letter-signup__btn" type="submit">Subscribe</button>
+    <p class="letter-signup__error" data-newsletter-error role="alert" aria-live="polite"></p>
+  </form>
+</aside>
+
+<h2 id="where-ai-prototyping-breaks-and-where-people-get-burned">Where AI prototyping breaks (and where people get burned)</h2>
+<p>It will hand you a wrong answer with the confidence of a guy who watched one YouTube video on the topic. And it will absolutely fuck things up if you trust it blindly.</p>
+<p>It will make up copy. It will invent edge cases. It will suggest things that would never work in your real product.</p>
+<p>Anything beyond quick UI needs to be checked. Every time.</p>
+<p>If you don&#39;t, you&#39;ll present something that looks good but is wrong. That&#39;s how you lose trust and look sloppy, fast.</p>
+<h2 id="ai-prototyping-tools-what-i-use-each-one-for">AI prototyping tools: what I use each one for</h2>
+<div class="letter-table"><table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>What I use it for</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Claude (with connectors)</td>
+<td>Loading context, exploring directions, critiquing flows, drafting PRDs</td>
+</tr>
+<tr>
+<td>Cursor</td>
+<td>Building the risky logic in real code and testing edge cases</td>
+</tr>
+<tr>
+<td>Figma</td>
+<td>Visual polish, design system alignment, handoff</td>
+</tr>
+<tr>
+<td>Voice chat</td>
+<td>Talking a messy product idea out before writing anything</td>
+</tr>
+</tbody></table></div>
+<p>The tool matters less than the order. Context, then exploration, then real testing, then polish.</p>
+<h2 id="faster-building-makes-the-kickoff-matter-more">Faster building makes the kickoff matter more</h2>
+<p>Here&#39;s the uncomfortable part. When building gets cheap, building the wrong thing gets cheap too. Teams are shipping more than ever, and a lot of it isn&#39;t translating into business impact.</p>
+<p>The thinking upstream is the bottleneck now. What are we actually solving? What are we not solving? What does success look like? If you can&#39;t answer those, AI just helps you ship the wrong thing faster.</p>
+<p>Here&#39;s <a href="/letters/project-kickoff-meeting/">how I run a project kickoff meeting</a> that forces those answers, and <a href="/letters/ux-metrics/">the UX metrics</a> I&#39;d use to know if it worked.</p>
+<p><a href="/prototype-ready/">Builder Kickoff™</a> is the front half of this workflow, packaged. Run the session, record it, and get the PRD and a prototype prompt you can paste straight into step 1.</p>
+<h2 id="try-it-this-week">Try it this week</h2>
+<p>Don&#39;t change everything.</p>
+<p>Pick one slow step and replace it. Wireframes. Exploration. Copy. Anything that delays real feedback.</p>
+<p>Then watch what happens. Worst case, you wasted an afternoon. Best case, you stop burning a week on wireframes that prove fuck all.</p>
+<h2 id="ai-prototyping-faq">AI prototyping FAQ</h2>
+<h3 id="whats-the-best-ai-prototyping-tool-for-product-designers">What&#39;s the best AI prototyping tool for product designers?</h3>
+<p>The one that fits the step. I use Claude for context and exploration, Cursor for real logic, and Figma for polish. The order matters more than the brand.</p>
+<h3 id="will-ai-prototyping-replace-wireframes">Will AI prototyping replace wireframes?</h3>
+<p>For logic-heavy features, it already has for me. Wireframes weren&#39;t proving anything about whether the system works. For simple layouts, quick sketches are still fine.</p>
+<h3 id="how-do-i-stop-ai-from-making-things-up">How do I stop AI from making things up?</h3>
+<p>Load real context first, tell it to wait before generating, ask it to flag assumptions, and check everything beyond simple UI against the actual product.</p>
+<h3 id="how-long-does-this-workflow-take">How long does this workflow take?</h3>
+<p>Exploring directions and killing the bad ones takes me about 20 to 30 minutes now. Building the risky part in code depends on the feature.</p>
+<aside class="letter-cta" aria-label="See how Builder Kickoff works">
+  <p class="ds-eyebrow letter-cta__eyebrow">Builder Kickoff™ · $97</p>
+  <p class="letter-cta__title">Run the kickoff once. Walk out with the PRD and the prototype prompt.</p>
+  <p class="letter-cta__body">Seven short lessons. Record your next kickoff, and get the PRD, the business case and the prototype direction the same day.</p>
+  <a class="letter-cta__btn" href="/prototype-ready/" data-track-event="letters_cta_click" data-track-location="builder-kickoff">See how Builder Kickoff works &rarr;</a>
+</aside>
+
+    </div>
+    <footer class="letter__author">
+      <img class="letter__avatar letter__avatar--lg" src="/assets/images/tyler-white-avatar.webp" alt="" width="64" height="64" loading="lazy" />
+      <div>
+        <p class="letter__author-name">Tyler White</p>
+        <p class="letter__author-bio">Director of Product Design. 16 years in B2B SaaS, writing about how design decisions turn into revenue, retention and the seat at the table. Creator of Builder Kickoff™.</p>
+      </div>
+    </footer>
+  </article>
+  <section class="letters-related" aria-labelledby="related-heading">
+        <h2 id="related-heading" class="letters-label">Keep reading</h2>
+        <ul class="letters-list"><li class="letters-list__item" data-topic="ai-workflow">
+  <a class="letters-list__link" href="/letters/cursor-for-designers/">
+    <span class="letters-list__text">
+      <span class="letters-list__title">Cursor for designers: why I left Figma Make for real product work</span>
+      <span class="letters-list__sub">Figma Make is great until the thing has to actually work. Here's the loop I use instead, and what building in code exposed that mocks never did.</span>
+      <span class="letters-list__meta"><time datetime="2026-04-22">Apr 22, 2026</time> · AI Workflow</span>
+    </span>
+    <img class="letters-list__thumb" src="/assets/images/letters/cursor-for-designers.jpg" alt="" loading="lazy" width="320" height="200" />
+  </a>
+</li></ul>
+      </section>
+</main>
+<script>
+(function () {
+  var btn = document.querySelector("[data-share-url]");
+  if (!btn) return;
+  btn.addEventListener("click", async function () {
+    var url = btn.getAttribute("data-share-url");
+    try {
+      if (navigator.share) { await navigator.share({ title: document.title, url: url }); return; }
+      await navigator.clipboard.writeText(url);
+      btn.textContent = "Link copied";
+      setTimeout(function () { btn.textContent = "Share"; }, 2000);
+    } catch (_) {}
+  });
+})();
+</script>
+<!-- partial:footer -->
+<footer class="site-footer" role="contentinfo">
+  <div class="site-footer__inner">
+    <div class="site-footer__brand">
+      <img class="site-footer__wordmark" src="/wp-content/uploads/2025/12/logo-mrtylerwhite-1.svg" width="69" height="20" alt="Mr. Tyler White" />
+      <p class="site-footer__tagline">Product design, growth systems, and prototypes that help teams make better decisions.</p>
+    </div>
+    <nav class="site-footer__col" aria-label="Explore">
+      <span class="site-footer__col-heading">Explore</span>
+      <a href="/about/">About Me</a>
+      <a href="/case-studies/">Case Studies</a>
+      <a href="/newsletter/">Newsletter</a>
+      <a href="/letters/">Letters</a>
+      <a href="https://www.designtablepodcast.com/" target="_blank" rel="noopener noreferrer">Podcast</a>
+      <a href="/prototype-ready/">Builder Kickoff™</a>
+    </nav>
+    <nav class="site-footer__col" aria-label="Resources">
+      <span class="site-footer__col-heading">Resources</span>
+      <a href="/wp-content/uploads/2024/08/TylerWhite-Resume-2024.pdf" target="_blank" rel="noopener noreferrer">Download CV</a>
+      <a href="https://www.linkedin.com/in/mrtylerwhite/" target="_blank" rel="noopener noreferrer">Let&#8217;s Connect</a>
+      <a href="https://www.designtablepodcast.com/" target="_blank" rel="noopener noreferrer">The Design Table</a>
+      <a href="/roi-case-study-template/">The 15 Minute Case Study</a>
+    </nav>
+    <div class="site-footer__cta-block">
+      <span class="site-footer__col-heading">Free Strategy Call</span>
+      <p class="site-footer__cta-copy">Want help turning messy product, growth, or design problems into a clearer plan? Book a 30-minute call and we&#8217;ll figure out where the biggest leverage is.</p>
+      <a href="https://cal.com/mrtylerwhite/30min" class="site-footer__cta-btn" target="_blank" rel="noopener noreferrer">Book a free strategy call</a>
+    </div>
+  </div>
+  <div class="site-footer__bottom">
+    <p class="site-footer__copy">&#169; 2026 Tyler White. Made with taste, caffeine, and a suspicious number of prototypes.</p>
+    <nav class="site-footer__legal" aria-label="Legal">
+      <a href="/privacy-policy/">Privacy Policy</a>
+    </nav>
+  </div>
+</footer>
+<!-- /partial:footer -->
+</div>
+<script src="/assets/js/mobile-menu-a11y.js" defer></script>
+<script src="/assets/js/newsletter-form.js" defer></script>
+<script src="/assets/js/gtm-defer.js" defer></script>
+<script src="/assets/js/analytics.js" defer></script>
+<script src="/assets/js/hotjar.js" defer></script>
+</body>
+</html>

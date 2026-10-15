@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cursor for Designers: Why I Left Figma Make | Tyler White</title>
+  <meta name="description" content="Why I switched from Figma Make to Cursor for real product prototypes: the credit burn, the spec-driven loop that replaced it, and when Figma still wins." />
+  <link rel="canonical" href="https://www.mrtylerwhite.com/letters/cursor-for-designers/" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Mr. Tyler White" />
+  <meta property="og:title" content="Cursor for Designers: Why I Left Figma Make | Tyler White" />
+  <meta property="og:description" content="Why I switched from Figma Make to Cursor for real product prototypes: the credit burn, the spec-driven loop that replaced it, and when Figma still wins." />
+  <meta property="og:url" content="https://www.mrtylerwhite.com/letters/cursor-for-designers/" />
+  <meta property="og:image" content="https://www.mrtylerwhite.com/assets/images/letters/cursor-for-designers.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@mrtylerwhite" />
+  <meta name="twitter:title" content="Cursor for Designers: Why I Left Figma Make | Tyler White" />
+  <meta name="twitter:description" content="Why I switched from Figma Make to Cursor for real product prototypes: the credit burn, the spec-driven loop that replaced it, and when Figma still wins." />
+  <meta name="twitter:image" content="https://www.mrtylerwhite.com/assets/images/letters/cursor-for-designers.jpg" />
+  <link rel="alternate" type="application/rss+xml" title="Letters · Tyler White" href="https://www.mrtylerwhite.com/letters/feed.xml" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Cursor for designers: why I left Figma Make for real product work","description":"Why I switched from Figma Make to Cursor for real product prototypes: the credit burn, the spec-driven loop that replaced it, and when Figma still wins.","datePublished":"2026-04-22","dateModified":"2026-10-15","image":"https://www.mrtylerwhite.com/assets/images/letters/cursor-for-designers.jpg","mainEntityOfPage":"https://www.mrtylerwhite.com/letters/cursor-for-designers/","url":"https://www.mrtylerwhite.com/letters/cursor-for-designers/","keywords":"cursor for designers","wordCount":1105,"author":{"@type":"Person","name":"Tyler White","url":"https://www.mrtylerwhite.com/about/","jobTitle":"Director of Product Design"},"publisher":{"@type":"Person","name":"Tyler White","url":"https://www.mrtylerwhite.com/"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.mrtylerwhite.com/"},{"@type":"ListItem","position":2,"name":"Letters","item":"https://www.mrtylerwhite.com/letters/"},{"@type":"ListItem","position":3,"name":"Cursor for designers: why I left Figma Make for real product work","item":"https://www.mrtylerwhite.com/letters/cursor-for-designers/"}]}</script>
+
+  <link rel="icon" href="/wp-content/uploads/2025/05/cropped-Favicon-2-32x32.png" sizes="32x32" />
+  <link rel="icon" href="/wp-content/uploads/2025/05/cropped-Favicon-2-192x192.png" sizes="192x192" />
+  <link rel="apple-touch-icon" href="/wp-content/uploads/2025/05/cropped-Favicon-2-180x180.png" />
+
+  <link rel="preload" href="/assets/fonts/instrument-serif/InstrumentSerif-Regular.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/wp-content/et-cache/global/et-divi-customizer-global.min.css" />
+  <link rel="stylesheet" href="/wp-content/plugins/divi-100-hamburger-menu/assets/css/style.css" />
+  <link rel="preconnect" href="https://use.typekit.net" crossorigin />
+  <link rel="stylesheet" href="https://use.typekit.net/fks5kmr.css" />
+  <link rel="stylesheet" href="/assets/css/dist/critical.css" />
+  <link rel="stylesheet" href="/assets/css/system/nav-standalone.css" />
+  <link rel="stylesheet" href="/assets/css/system/pages/letters.css" />
+  <link rel="stylesheet" href="/assets/css/system/site-footer.css" />
+<!-- partial:head -->
+<style id="page-transitions">
+/* Page transitions (details.so port). Inline on purpose: Chrome decides whether
+   to run a cross-page transition as the new page first renders, and an opt-in
+   inside an external stylesheet is sometimes not applied yet, so the transition
+   was skipped at random. Text entrance (.ds-enter) lives in page-transitions.css. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.5s;
+  animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+/* Nav stays in place while the page crossfades. Named on the glass pill, and the
+   group re-applies the glass blur, which a snapshot can't capture. */
+#main-header .et_menu_container,
+.fck-site-header .fck-nav {
+  view-transition-name: site-header;
+}
+::view-transition-group(site-header) {
+  animation-duration: 0.5s;
+  animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border-radius: 10px;
+  -webkit-backdrop-filter: blur(20px) saturate(1.8);
+  backdrop-filter: blur(20px) saturate(1.8);
+}
+</style>
+<!-- /partial:head -->
+</head>
+<body class="letters-page letter-page ds-standalone-nav et_fixed_nav et_show_nav et_header_style_left et_pb_svg_logo et_divi_100_custom_hamburger_menu et_divi_100_custom_hamburger_menu--style-2 et_divi_100_custom_hamburger_menu--type-1 et_button_no_icon et_button_custom_icon et_pb_button_helper_class">
+<div id="page-container">
+<!-- partial:header -->
+<header id="main-header" data-height-onload="30">
+			<div class="container clearfix et_menu_container">
+							<div class="logo_container">
+					<span class="logo_helper"></span>
+					<a href="/">
+						<img src="/wp-content/uploads/2025/12/logo-mrtylerwhite-1.svg" width="69" height="20" alt="Mr. Tyler White" id="logo" data-height-percentage="34" />
+					</a>
+				</div>
+							<div id="et-top-navigation" data-height="30" data-fixed-height="40">
+											<nav id="top-menu-nav">
+						<ul id="top-menu" class="nav"><li id="menu-item-30" class="anim-link menu-item menu-item-type-post_type menu-item-object-page menu-item-30"><a href="/about/">About Me</a></li>
+<li id="menu-item-3458" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3458"><a href="/letters/">Letters</a></li>
+<li id="menu-item-3464" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3464"><a href="https://www.designtablepodcast.com/" target="_blank" rel="noopener noreferrer">Podcast</a></li><li id="menu-item-4000" class="site-nav-workshop menu-item menu-item-type-custom menu-item-object-custom menu-item-4000"><a href="/prototype-ready/">Builder Kickoff™</a></li>
+
+<li id="menu-item-54" class="et_pb_button menu-item menu-item-type-custom menu-item-object-custom menu-item-54"><a href="/roi-case-study-template/" data-track-event="case_study_kit_cta_click" data-track-location="nav">The 15 Minute Case Study</a></li>
+</ul>						</nav>
+
+
+
+
+					<div id="et_mobile_nav_menu">
+				<div class="mobile_nav closed">
+					<span class="select_page">Select Page</span>
+					<button type="button" class="mobile_menu_bar mobile_menu_bar_toggle" aria-label="Open menu" aria-controls="mobile_menu" aria-expanded="false"></button>
+				</div>
+			</div>				</div> <!-- #et-top-navigation -->
+			</div> <!-- .container -->
+					</header>
+<!-- /partial:header -->
+<main class="letter" id="main-content">
+  <article class="letter__article">
+    <header class="letter__header">
+      <h1 class="letter__title ds-enter ds-enter-d1">Cursor for designers: why I left Figma Make for real product work</h1>
+      <p class="letter__subtitle ds-enter ds-enter-d1">Figma Make is great until the thing has to actually work. Here's the loop I use instead, and what building in code exposed that mocks never did.</p>
+      <div class="letter__byline ds-enter ds-enter-d2">
+        <img class="letter__avatar" src="/assets/images/tyler-white-avatar.webp" alt="" width="36" height="36" />
+        <p><a href="/about/" rel="author">Tyler White</a><time datetime="2026-04-22">Apr 22, 2026</time></p>
+      </div>
+      <div class="letter__bar ds-enter ds-enter-d2">
+        <span>5 min read · <a href="/letters/#ai-workflow">AI Workflow</a></span>
+        <button type="button" class="letter__share" data-share-url="https://www.mrtylerwhite.com/letters/cursor-for-designers/">Share</button>
+      </div>
+    </header>
+    <img class="letter__cover" src="/assets/images/letters/cursor-for-designers.jpg" alt="" width="1200" height="630" />
+    <nav class="letter-toc" aria-label="In this letter">
+        <p class="letter-toc__label">In this letter</p>
+        <ol><li><a href="#it-wasnt-a-tool-problem-it-was-a-process-problem">It wasn&#39;t a tool problem. It was a process problem.</a></li><li><a href="#the-loop-that-replaced-it">The loop that replaced it</a></li><li><a href="#everything-broke-once-it-was-real">Everything broke once it was real</a></li><li><a href="#cursor-vs-figma-make-for-designers">Cursor vs Figma Make for designers</a></li><li><a href="#a-small-real-example">A small, real example</a></li><li><a href="#figma-still-has-a-job">Figma still has a job</a></li><li><a href="#the-step-before-cursor-matters-most">The step before Cursor matters most</a></li><li><a href="#cursor-for-designers-faq">Cursor for designers FAQ</a></li></ol>
+      </nav>
+    <div class="letter__body">
+<p>Figma Make pissed me off. Like actually pissed me off.</p>
+<p>I was trying to build something real. Not a hero section. Not a fake UI. Real product shit. Upload, processing, validation, a graph, a review step. Something with actual moving parts.</p>
+<p>And it felt wrong immediately. Like dragging your hand across rough paper. Every interaction had friction. You could feel the tool pushing back.</p>
+<p>Every small change cost me credits. I burned through two full rounds and needed three top-ups just to keep going. Stuff would hang mid-generation and I&#39;d sit there, staring at it, watching it eat credits.</p>
+<p>And when it finally gave something back, it was off. Not completely wrong. Just wrong enough. Close enough to trick you. Not good enough to use.</p>
+<p>At some point I just sat there like… what the fuck am I doing.</p>
+<h2 id="it-wasnt-a-tool-problem-it-was-a-process-problem">It wasn&#39;t a tool problem. It was a process problem.</h2>
+<p>Here&#39;s what I realized once I stopped pulling the lever.</p>
+<p>I wasn&#39;t building something simple. It was a system.</p>
+<p>Things connect. State moves. Users move through it.</p>
+<p>And you can fake that in Figma. Everything snaps. Everything aligns. Everything looks finished.</p>
+<p>Until it has to actually work.</p>
+<p>Wireframes hide that. Mocks hide it even better. And yeah, I&#39;ve been part of that.</p>
+<p>So the tool didn&#39;t fail me. My process did. That&#39;s what forced the switch to Cursor.</p>
+<h2 id="the-loop-that-replaced-it">The loop that replaced it</h2>
+<p><strong>Step 1: Talk it out.</strong> I opened a voice chat and just explained the product like I would in a meeting. The admin uploads a batch of PDFs. Nodes validate logic. Users think in files, not forms. Messy, but real.</p>
+<p><strong>Step 2: Write the PRD.</strong> I turned that conversation into a PRD and saved it as a markdown file in the project. That file became the source of truth. If you need a starting point, here&#39;s <a href="/letters/prd-template/">the PRD template I use</a>.</p>
+<p><strong>Step 3: Build one piece at a time in Cursor.</strong> Upload. Processing. Graph. Inspector. Review. Build it, use it, break it, fix it, repeat.</p>
+<p><strong>Step 4: Use the product.</strong> Not look at it. Use it.</p>
+<p><strong>Step 5: Fix what breaks.</strong> Then go back to step 3.</p>
+<p>That&#39;s spec-driven development, and for real products it&#39;s a better loop. No fake certainty. Just truth. Truth is uncomfortable at first. But it&#39;s way faster.</p>
+<h2 id="everything-broke-once-it-was-real">Everything broke once it was real</h2>
+<p>Too many nodes. Wrong mental model. Numbers didn&#39;t match. The flow didn&#39;t make sense.</p>
+<p>Not visually. Fundamentally.</p>
+<p>Like wearing something that looks fine in the mirror but feels wrong the second you move.</p>
+<p>These weren&#39;t design tweaks. They were product decisions, and I only saw them because the thing was real. Nodes became files. The summary step got killed.</p>
+<p>The inspector became contextual. Layout mattered more than styling. I switched to React Flow and added guided review.</p>
+<p>All obvious once it was real. None of it obvious in Figma.</p>
+<p><strong>You don&#39;t find these problems by thinking harder. You find them by running into them.</strong></p>
+<aside class="letter-signup" aria-label="Newsletter">
+  <p class="ds-eyebrow letter-signup__eyebrow">The ROI of Design</p>
+  <p class="letter-signup__title">The short version lands in your inbox every Saturday.</p>
+  <p class="letter-signup__body">One idea a week on proving what design is worth. No fluff, no theory, unsubscribe whenever.</p>
+  <form class="letter-signup__form" data-newsletter-form data-track-location="letters_inline" method="post" action="https://app.kit.com/forms/4969496/subscriptions" novalidate>
+    <label class="screen-reader-text" for="nl-letters_inline">Email address</label>
+    <input id="nl-letters_inline" class="letter-signup__input" name="email_address" type="email" autocomplete="email" placeholder="you@company.com" required />
+    <button class="letter-signup__btn" type="submit">Subscribe</button>
+    <p class="letter-signup__error" data-newsletter-error role="alert" aria-live="polite"></p>
+  </form>
+</aside>
+
+<h2 id="cursor-vs-figma-make-for-designers">Cursor vs Figma Make for designers</h2>
+<div class="letter-table"><table>
+<thead>
+<tr>
+<th></th>
+<th>Figma Make</th>
+<th>Cursor</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Best for</td>
+<td>Quick visual explorations, simple screens</td>
+<td>Real flows with state, data and edge cases</td>
+</tr>
+<tr>
+<td>Cost model</td>
+<td>Credits per generation</td>
+<td>Flat subscription</td>
+</tr>
+<tr>
+<td>What you&#39;re working with</td>
+<td>Generated output you negotiate with</td>
+<td>Real code, real libraries, real components</td>
+</tr>
+<tr>
+<td>Where it breaks</td>
+<td>Multi-step systems and logic</td>
+<td>Pure visual polish</td>
+</tr>
+<tr>
+<td>Feedback loop</td>
+<td>Generate, wait, hope, repeat</td>
+<td>Build, use, break, fix, repeat</td>
+</tr>
+</tbody></table></div>
+<p>Flat cost was a bigger deal than I expected. No credit anxiety means you iterate without flinching. It feels like working with the product instead of negotiating with a tool.</p>
+<h2 id="a-small-real-example">A small, real example</h2>
+<p>Engineering needed a real fix for an accessibility issue before the end of a sprint. Focus order for an action bar that appears when you select rows in a table with checkboxes.</p>
+<p>Instead of writing it up, I built a simple HTML demo in Cursor. We fixed focus so it returns to the right place after updates. We moved the banner in the DOM so it reads logically but stays fixed at the top visually.</p>
+<p>We cleaned up keyboard behavior so tabbing feels normal.</p>
+<p>The rules kept changing as we tested edge cases. Cursor made it easy to adjust without getting stuck. Instead of talking about it, engineering had something real to react to.</p>
+<h2 id="figma-still-has-a-job">Figma still has a job</h2>
+<p>I&#39;m not anti-Figma. After the logic holds up in code, I move to Figma and clean it up. Visual polish, design system alignment, handoff.</p>
+<p>The change is the order. For this kind of work I&#39;m not starting with wireframes anymore. Too easy to lie. If it matters, build it. If it breaks, fix it.</p>
+<p>Speed didn&#39;t let me skip the fundamentals. It just told me, fast, which ones were real. Wireframes first? Habit. Knowing what the product has to do before you build it? Rule. Learn it to break it.</p>
+<p>Anyone can generate screens now. Fewer people can build something that holds up the second a real user touches it. That&#39;s the gap worth being on the right side of.</p>
+<p>I wrote up the full day-to-day version in <a href="/letters/ai-prototyping-workflow/">the AI prototyping workflow I actually use</a>.</p>
+<h2 id="the-step-before-cursor-matters-most">The step before Cursor matters most</h2>
+<p>Notice that the loop starts with a conversation and a PRD, not with Cursor.</p>
+<p>Building fast only helps if you&#39;re building the right thing. That&#39;s decided in the kickoff: what you&#39;re solving, what you&#39;re not, how much time you have, what tradeoffs you&#39;ll accept. Here&#39;s <a href="/letters/project-kickoff-meeting/">how I run that kickoff</a>.</p>
+<p><a href="/prototype-ready/">Builder Kickoff™</a> packages the whole front half of this loop. You run the session, record it, and get the PRD and a prototype prompt you can drop straight into Claude or Cursor the same day.</p>
+<h2 id="cursor-for-designers-faq">Cursor for designers FAQ</h2>
+<h3 id="do-designers-need-to-know-how-to-code-to-use-cursor">Do designers need to know how to code to use Cursor?</h3>
+<p>No, but you need to be comfortable reading what it produces and testing it. You&#39;re directing the build and judging the result, not hand-writing every line.</p>
+<h3 id="is-cursor-better-than-figma-make">Is Cursor better than Figma Make?</h3>
+<p>For real product flows with state and logic, yes, in my experience. For quick visual exploration of simple screens, Figma Make is fine.</p>
+<h3 id="what-should-i-build-first-in-cursor">What should I build first in Cursor?</h3>
+<p>One piece of a real flow you&#39;re already working on. Not a toy project. Something where the logic is the hard part.</p>
+<h3 id="will-this-replace-figma">Will this replace Figma?</h3>
+<p>Not for me. Figma is where I polish and align with the design system. Cursor is where I find out if the thing actually works.</p>
+<aside class="letter-cta" aria-label="See how Builder Kickoff works">
+  <p class="ds-eyebrow letter-cta__eyebrow">Builder Kickoff™ · $97</p>
+  <p class="letter-cta__title">Run the kickoff once. Walk out with the PRD and the prototype prompt.</p>
+  <p class="letter-cta__body">Seven short lessons. Record your next kickoff, and get the PRD, the business case and the prototype direction the same day.</p>
+  <a class="letter-cta__btn" href="/prototype-ready/" data-track-event="letters_cta_click" data-track-location="builder-kickoff">See how Builder Kickoff works &rarr;</a>
+</aside>
+
+    </div>
+    <footer class="letter__author">
+      <img class="letter__avatar letter__avatar--lg" src="/assets/images/tyler-white-avatar.webp" alt="" width="64" height="64" loading="lazy" />
+      <div>
+        <p class="letter__author-name">Tyler White</p>
+        <p class="letter__author-bio">Director of Product Design. 16 years in B2B SaaS, writing about how design decisions turn into revenue, retention and the seat at the table. Creator of Builder Kickoff™.</p>
+      </div>
+    </footer>
+  </article>
+  <section class="letters-related" aria-labelledby="related-heading">
+        <h2 id="related-heading" class="letters-label">Keep reading</h2>
+        <ul class="letters-list"><li class="letters-list__item" data-topic="ai-workflow">
+  <a class="letters-list__link" href="/letters/ai-prototyping-workflow/">
+    <span class="letters-list__text">
+      <span class="letters-list__title">The AI prototyping workflow I actually use (and where it breaks)</span>
+      <span class="letters-list__sub">Speed doesn't let you skip the fundamentals. It tells you, fast, which ones were real. Here's the workflow, the prompt, and the places it'll burn you.</span>
+      <span class="letters-list__meta"><time datetime="2026-03-25">Mar 25, 2026</time> · AI Workflow</span>
+    </span>
+    <img class="letters-list__thumb" src="/assets/images/letters/ai-prototyping-workflow.jpg" alt="" loading="lazy" width="320" height="200" />
+  </a>
+</li></ul>
+      </section>
+</main>
+<script>
+(function () {
+  var btn = document.querySelector("[data-share-url]");
+  if (!btn) return;
+  btn.addEventListener("click", async function () {
+    var url = btn.getAttribute("data-share-url");
+    try {
+      if (navigator.share) { await navigator.share({ title: document.title, url: url }); return; }
+      await navigator.clipboard.writeText(url);
+      btn.textContent = "Link copied";
+      setTimeout(function () { btn.textContent = "Share"; }, 2000);
+    } catch (_) {}
+  });
+})();
+</script>
+<!-- partial:footer -->
+<footer class="site-footer" role="contentinfo">
+  <div class="site-footer__inner">
+    <div class="site-footer__brand">
+      <img class="site-footer__wordmark" src="/wp-content/uploads/2025/12/logo-mrtylerwhite-1.svg" width="69" height="20" alt="Mr. Tyler White" />
+      <p class="site-footer__tagline">Product design, growth systems, and prototypes that help teams make better decisions.</p>
+    </div>
+    <nav class="site-footer__col" aria-label="Explore">
+      <span class="site-footer__col-heading">Explore</span>
+      <a href="/about/">About Me</a>
+      <a href="/case-studies/">Case Studies</a>
+      <a href="/newsletter/">Newsletter</a>
+      <a href="/letters/">Letters</a>
+      <a href="https://www.designtablepodcast.com/" target="_blank" rel="noopener noreferrer">Podcast</a>
+      <a href="/prototype-ready/">Builder Kickoff™</a>
+    </nav>
+    <nav class="site-footer__col" aria-label="Resources">
+      <span class="site-footer__col-heading">Resources</span>
+      <a href="/wp-content/uploads/2024/08/TylerWhite-Resume-2024.pdf" target="_blank" rel="noopener noreferrer">Download CV</a>
+      <a href="https://www.linkedin.com/in/mrtylerwhite/" target="_blank" rel="noopener noreferrer">Let&#8217;s Connect</a>
+      <a href="https://www.designtablepodcast.com/" target="_blank" rel="noopener noreferrer">The Design Table</a>
+      <a href="/roi-case-study-template/">The 15 Minute Case Study</a>
+    </nav>
+    <div class="site-footer__cta-block">
+      <span class="site-footer__col-heading">Free Strategy Call</span>
+      <p class="site-footer__cta-copy">Want help turning messy product, growth, or design problems into a clearer plan? Book a 30-minute call and we&#8217;ll figure out where the biggest leverage is.</p>
+      <a href="https://cal.com/mrtylerwhite/30min" class="site-footer__cta-btn" target="_blank" rel="noopener noreferrer">Book a free strategy call</a>
+    </div>
+  </div>
+  <div class="site-footer__bottom">
+    <p class="site-footer__copy">&#169; 2026 Tyler White. Made with taste, caffeine, and a suspicious number of prototypes.</p>
+    <nav class="site-footer__legal" aria-label="Legal">
+      <a href="/privacy-policy/">Privacy Policy</a>
+    </nav>
+  </div>
+</footer>
+<!-- /partial:footer -->
+</div>
+<script src="/assets/js/mobile-menu-a11y.js" defer></script>
+<script src="/assets/js/newsletter-form.js" defer></script>
+<script src="/assets/js/gtm-defer.js" defer></script>
+<script src="/assets/js/analytics.js" defer></script>
+<script src="/assets/js/hotjar.js" defer></script>
+</body>
+</html>

@@ -69,6 +69,16 @@ npx serve@latest . -l 4321
 
 **Total:** 13 HTML pages · 197 images · 3 videos · 110 MB on disk · 279 files.
 
+## Letters (the blog at /letters/)
+
+Each letter is a Markdown file in `letters/_posts/`. The front matter (title, SEO title, description, topic, target keyword, CTA rung) is documented at the top of `scripts/build-letters.mjs`. To publish or update:
+
+```bash
+npm run build:letters
+```
+
+That renders `/letters/`, every `/letters/<slug>/`, the RSS feed (`/letters/feed.xml`) and `letters-sitemap.xml`, then fills the shared partials. Layout lives in `assets/css/system/pages/letters.css`; signup forms use `assets/js/newsletter-form.js`. Don't edit the generated HTML in `letters/`; edit the `.md` file and rebuild.
+
 ## Shared nav and footer (partials)
 
 The nav and footer live once in `partials/` and are copied into every page:

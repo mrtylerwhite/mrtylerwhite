@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Letters: Product Design, PRDs and Design ROI | Tyler White</title>
+  <meta name="description" content="Letters from Tyler White on proving what design is worth: PRDs and kickoffs, case studies that show impact, and AI workflows for product designers." />
+  <link rel="canonical" href="https://www.mrtylerwhite.com/letters/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Mr. Tyler White" />
+  <meta property="og:title" content="Letters: Product Design, PRDs and Design ROI | Tyler White" />
+  <meta property="og:description" content="Letters from Tyler White on proving what design is worth: PRDs and kickoffs, case studies that show impact, and AI workflows for product designers." />
+  <meta property="og:url" content="https://www.mrtylerwhite.com/letters/" />
+  <meta property="og:image" content="https://www.mrtylerwhite.com/assets/images/og-home.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@mrtylerwhite" />
+  <meta name="twitter:title" content="Letters: Product Design, PRDs and Design ROI | Tyler White" />
+  <meta name="twitter:description" content="Letters from Tyler White on proving what design is worth: PRDs and kickoffs, case studies that show impact, and AI workflows for product designers." />
+  <meta name="twitter:image" content="https://www.mrtylerwhite.com/assets/images/og-home.jpg" />
+  <link rel="alternate" type="application/rss+xml" title="Letters · Tyler White" href="https://www.mrtylerwhite.com/letters/feed.xml" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Blog","name":"Letters · Tyler White","url":"https://www.mrtylerwhite.com/letters/","description":"Letters from Tyler White on proving what design is worth: PRDs and kickoffs, case studies that show impact, and AI workflows for product designers.","author":{"@type":"Person","name":"Tyler White","url":"https://www.mrtylerwhite.com/about/"},"blogPost":[{"@type":"BlogPosting","headline":"The PRD template I actually use (and how to fill it from one kickoff call)","url":"https://www.mrtylerwhite.com/letters/prd-template/","datePublished":"2026-10-08"},{"@type":"BlogPosting","headline":"Design rationale: how to explain design decisions without defending them","url":"https://www.mrtylerwhite.com/letters/design-rationale/","datePublished":"2026-09-16"},{"@type":"BlogPosting","headline":"UX case study examples that prove what the work was worth","url":"https://www.mrtylerwhite.com/letters/ux-case-study-examples/","datePublished":"2026-08-26"},{"@type":"BlogPosting","headline":"The UX case study template I'd use (built around decisions, not screens)","url":"https://www.mrtylerwhite.com/letters/ux-case-study-template/","datePublished":"2026-08-19"},{"@type":"BlogPosting","headline":"The product designer portfolio homepage structure that sells before anyone scrolls","url":"https://www.mrtylerwhite.com/letters/product-designer-portfolio/","datePublished":"2026-08-12"},{"@type":"BlogPosting","headline":"How to run a project kickoff meeting that actually kicks something off","url":"https://www.mrtylerwhite.com/letters/project-kickoff-meeting/","datePublished":"2026-07-08"},{"@type":"BlogPosting","headline":"Product brief template (and the design brief questions that actually matter)","url":"https://www.mrtylerwhite.com/letters/product-brief-template/","datePublished":"2026-07-01"},{"@type":"BlogPosting","headline":"Cursor for designers: why I left Figma Make for real product work","url":"https://www.mrtylerwhite.com/letters/cursor-for-designers/","datePublished":"2026-04-22"},{"@type":"BlogPosting","headline":"PRD vs BRD: which one you actually need (probably not both)","url":"https://www.mrtylerwhite.com/letters/prd-vs-brd/","datePublished":"2026-04-15"},{"@type":"BlogPosting","headline":"UX metrics that actually make it into the exec deck","url":"https://www.mrtylerwhite.com/letters/ux-metrics/","datePublished":"2026-04-01"},{"@type":"BlogPosting","headline":"The AI prototyping workflow I actually use (and where it breaks)","url":"https://www.mrtylerwhite.com/letters/ai-prototyping-workflow/","datePublished":"2026-03-25"}]}</script>
+
+  <link rel="icon" href="/wp-content/uploads/2025/05/cropped-Favicon-2-32x32.png" sizes="32x32" />
+  <link rel="icon" href="/wp-content/uploads/2025/05/cropped-Favicon-2-192x192.png" sizes="192x192" />
+  <link rel="apple-touch-icon" href="/wp-content/uploads/2025/05/cropped-Favicon-2-180x180.png" />
+
+  <link rel="preload" href="/assets/fonts/instrument-serif/InstrumentSerif-Regular.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/wp-content/et-cache/global/et-divi-customizer-global.min.css" />
+  <link rel="stylesheet" href="/wp-content/plugins/divi-100-hamburger-menu/assets/css/style.css" />
+  <link rel="preconnect" href="https://use.typekit.net" crossorigin />
+  <link rel="stylesheet" href="https://use.typekit.net/fks5kmr.css" />
+  <link rel="stylesheet" href="/assets/css/dist/critical.css" />
+  <link rel="stylesheet" href="/assets/css/system/nav-standalone.css" />
+  <link rel="stylesheet" href="/assets/css/system/pages/letters.css" />
+  <link rel="stylesheet" href="/assets/css/system/site-footer.css" />
+<!-- partial:head -->
+<style id="page-transitions">
+/* Page transitions (details.so port). Inline on purpose: Chrome decides whether
+   to run a cross-page transition as the new page first renders, and an opt-in
+   inside an external stylesheet is sometimes not applied yet, so the transition
+   was skipped at random. Text entrance (.ds-enter) lives in page-transitions.css. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.5s;
+  animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+/* Nav stays in place while the page crossfades. Named on the glass pill, and the
+   group re-applies the glass blur, which a snapshot can't capture. */
+#main-header .et_menu_container,
+.fck-site-header .fck-nav {
+  view-transition-name: site-header;
+}
+::view-transition-group(site-header) {
+  animation-duration: 0.5s;
+  animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border-radius: 10px;
+  -webkit-backdrop-filter: blur(20px) saturate(1.8);
+  backdrop-filter: blur(20px) saturate(1.8);
+}
+</style>
+<!-- /partial:head -->
+</head>
+<body class="letters-page letters-index ds-standalone-nav et_fixed_nav et_show_nav et_header_style_left et_pb_svg_logo et_divi_100_custom_hamburger_menu et_divi_100_custom_hamburger_menu--style-2 et_divi_100_custom_hamburger_menu--type-1 et_button_no_icon et_button_custom_icon et_pb_button_helper_class">
+<div id="page-container">
+<!-- partial:header -->
+<header id="main-header" data-height-onload="30">
+			<div class="container clearfix et_menu_container">
+							<div class="logo_container">
+					<span class="logo_helper"></span>
+					<a href="/">
+						<img src="/wp-content/uploads/2025/12/logo-mrtylerwhite-1.svg" width="69" height="20" alt="Mr. Tyler White" id="logo" data-height-percentage="34" />
+					</a>
+				</div>
+							<div id="et-top-navigation" data-height="30" data-fixed-height="40">
+											<nav id="top-menu-nav">
+						<ul id="top-menu" class="nav"><li id="menu-item-30" class="anim-link menu-item menu-item-type-post_type menu-item-object-page menu-item-30"><a href="/about/">About Me</a></li>
+<li id="menu-item-3458" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item menu-item-3458"><a href="/letters/" aria-current="page">Letters</a></li>
+<li id="menu-item-3464" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3464"><a href="https://www.designtablepodcast.com/" target="_blank" rel="noopener noreferrer">Podcast</a></li><li id="menu-item-4000" class="site-nav-workshop menu-item menu-item-type-custom menu-item-object-custom menu-item-4000"><a href="/prototype-ready/">Builder Kickoff™</a></li>
+
+<li id="menu-item-54" class="et_pb_button menu-item menu-item-type-custom menu-item-object-custom menu-item-54"><a href="/roi-case-study-template/" data-track-event="case_study_kit_cta_click" data-track-location="nav">The 15 Minute Case Study</a></li>
+</ul>						</nav>
+
+
+
+
+					<div id="et_mobile_nav_menu">
+				<div class="mobile_nav closed">
+					<span class="select_page">Select Page</span>
+					<button type="button" class="mobile_menu_bar mobile_menu_bar_toggle" aria-label="Open menu" aria-controls="mobile_menu" aria-expanded="false"></button>
+				</div>
+			</div>				</div> <!-- #et-top-navigation -->
+			</div> <!-- .container -->
+					</header>
+<!-- /partial:header -->
+<main class="letters" id="main-content">
+  <header class="letters__head">
+    <h1 class="letters__title ds-enter">Letters</h1>
+    <p class="letters__lede ds-enter ds-enter-d1">The long version of The ROI of Design. Templates, examples and the reasoning behind them.</p>
+  </header>
+
+
+
+  <a class="letters-feature ds-enter ds-enter-d2" href="/letters/prd-template/">
+    <img class="letters-feature__art" src="/assets/images/letters/prd-template.jpg" alt="" loading="lazy" width="320" height="200" />
+    <span class="letters-feature__text">
+      <span class="letters-feature__eyebrow"><time datetime="2026-10-08">Oct 8, 2026</time> · Kickoffs &amp; PRDs</span>
+      <span class="letters-feature__title">The PRD template I actually use (and how to fill it from one kickoff call)</span>
+      <span class="letters-feature__sub">Most PRDs die because they're written after the decisions get made. Here's the template, and how to fill it while the room is still deciding.</span>
+      <span class="letters-feature__cta"><span class="letters-feature__arrow" aria-hidden="true">&rarr;</span>Read the latest</span>
+    </span>
+  </a>
+
+  <section class="letters-popular" aria-labelledby="popular-heading">
+    <div class="letters-row-head">
+      <h2 id="popular-heading" class="letters-label">Most popular</h2>
+      <a class="letters-viewall" href="#latest-heading">View all</a>
+    </div>
+    <ul class="letters-popular__grid"><li><a href="/letters/ux-case-study-examples/">
+      <img class="letters-popular__thumb" src="/assets/images/letters/ux-case-study-examples.jpg" alt="" loading="lazy" width="320" height="200" />
+      <span class="letters-popular__text">
+        <span class="letters-popular__title">UX case study examples that prove what the work was worth</span>
+        <span class="letters-popular__cat">Case Studies</span>
+      </span></a></li><li><a href="/letters/product-designer-portfolio/">
+      <img class="letters-popular__thumb" src="/assets/images/letters/product-designer-portfolio.jpg" alt="" loading="lazy" width="320" height="200" />
+      <span class="letters-popular__text">
+        <span class="letters-popular__title">The product designer portfolio homepage structure that sells before anyone scrolls</span>
+        <span class="letters-popular__cat">Case Studies</span>
+      </span></a></li><li><a href="/letters/project-kickoff-meeting/">
+      <img class="letters-popular__thumb" src="/assets/images/letters/project-kickoff-meeting.jpg" alt="" loading="lazy" width="320" height="200" />
+      <span class="letters-popular__text">
+        <span class="letters-popular__title">How to run a project kickoff meeting that actually kicks something off</span>
+        <span class="letters-popular__cat">Kickoffs &amp; PRDs</span>
+      </span></a></li><li><a href="/letters/product-brief-template/">
+      <img class="letters-popular__thumb" src="/assets/images/letters/product-brief-template.jpg" alt="" loading="lazy" width="320" height="200" />
+      <span class="letters-popular__text">
+        <span class="letters-popular__title">Product brief template (and the design brief questions that actually matter)</span>
+        <span class="letters-popular__cat">Kickoffs &amp; PRDs</span>
+      </span></a></li></ul>
+  </section>
+
+  <div class="letters-columns">
+    <section class="letters-latest" aria-labelledby="latest-heading">
+      <div class="letters-latest__head">
+        <h2 id="latest-heading" class="letters-label">Latest</h2>
+      </div>
+      <div class="letters-chips ds-enter ds-enter-d2" role="tablist" aria-label="Filter by topic">
+    <button type="button" role="tab" aria-selected="true" data-topic-filter="all">All</button>
+    <span class="letters-chips__divider" aria-hidden="true"></span>
+    <button type="button" role="tab" aria-selected="false" data-topic-filter="case-studies" id="case-studies">Case Studies</button><button type="button" role="tab" aria-selected="false" data-topic-filter="kickoffs" id="kickoffs">Kickoffs &amp; PRDs</button><button type="button" role="tab" aria-selected="false" data-topic-filter="ai-workflow" id="ai-workflow">AI Workflow</button>
+  </div>
+      <ul class="letters-list"><li class="letters-list__item" data-featured hidden data-topic="kickoffs">
+  <a class="letters-list__link" href="/letters/prd-template/">
+    <span class="letters-list__text">
+      <span class="letters-list__title">The PRD template I actually use (and how to fill it from one kickoff call)</span>
+      <span class="letters-list__sub">Most PRDs die because they're written after the decisions get made. Here's the template, and how to fill it while the room is still deciding.</span>
+      <span class="letters-list__meta"><time datetime="2026-10-08">Oct 8, 2026</time> · Kickoffs &amp; PRDs</span>
+    </span>
+    <img class="letters-list__thumb" src="/assets/images/letters/prd-template.jpg" alt="" loading="lazy" width="320" height="200" />
+  </a>
+</li><li class="letters-list__item" data-topic="case-studies">
+  <a class="letters-list__link" href="/letters/design-rationale/">
+    <span class="letters-list__text">
+      <span class="letters-list__title">Design rationale: how to explain design decisions without defending them</span>
+      <span class="letters-list__sub">Engineers don't justify their linter in a design review. Some design calls deserve the same treatment. The rest need one clear line, not a slide deck.</span>
+      <span class="letters-list__meta"><time datetime="2026-09-16">Sep 16, 2026</time> · Case Studies</span>
+    </span>
+    <img class="letters-list__thumb" src="/assets/images/letters/design-rationale.jpg" alt="" loading="lazy" width="320" height="200" />
+  </a>
+</li><li class="letters-list__item" data-topic="case-studies">
+  <a class="letters-list__link" href="/letters/ux-case-study-examples/">
+    <span class="letters-list__text">
+      <span class="letters-list__title">UX case study examples that prove what the work was worth</span>
+      <span class="letters-list__sub">Most case studies describe what got built. The ones that land show what changed because of it. Here's what separates them, with before-and-after examples.</span>
+      <span class="letters-list__meta"><time datetime="2026-08-26">Aug 26, 2026</time> · Case Studies</span>
+    </span>
+    <img class="letters-list__thumb" src="/assets/images/letters/ux-case-study-examples.jpg" alt="" loading="lazy" width="320" height="200" />
+  </a>
+</li><li class="letters-list__item" data-topic="case-studies">
+  <a class="letters-list__link" href="/letters/ux-case-study-template/">
+    <span class="letters-list__text">
+      <span class="letters-list__title">The UX case study template I'd use (built around decisions, not screens)</span>
+      <span class="letters-list__sub">Copy the template, answer five uncomfortable questions, and you'll have the case study. The screens come last.</span>
+      <span class="letters-list__meta"><time datetime="2026-08-19">Aug 19, 2026</time> · Case Studies</span>
+    </span>
+    <img class="letters-list__thumb" src="/assets/images/letters/ux-case-study-template.jpg" alt="" loading="lazy" width="320" height="200" />
+  </a>
+</li><li class="letters-list__item" data-topic="case-studies">
+  <a class="letters-list__link" href="/letters/product-designer-portfolio/">
+    <span class="letters-list__text">
+      <span class="letters-list__title">The product designer portfolio homepage structure that sells before anyone scrolls</span>
+      <span class="letters-list__sub">Most portfolio homepages are a highlight reel. Yours should be a filter. Here's the structure, section by section.</span>
+      <span class="letters-list__meta"><time datetime="2026-08-12">Aug 12, 2026</time> · Case Studies</span>
+    </span>
+    <img class="letters-list__thumb" src="/assets/images/letters/product-designer-portfolio.jpg" alt="" loading="lazy" width="320" height="200" />
+  </a>
+</li><li class="letters-list__item" data-topic="kickoffs">
+  <a class="letters-list__link" href="/letters/project-kickoff-meeting/">
+    <span class="letters-list__text">
+      <span class="letters-list__title">How to run a project kickoff meeting that actually kicks something off</span>
+      <span class="letters-list__sub">Most kickoffs are expensive brainstorms. Here's the agenda that makes the room decide, and the outputs you should have before anyone opens Figma.</span>
+      <span class="letters-list__meta"><time datetime="2026-07-08">Jul 8, 2026</time> · Kickoffs &amp; PRDs</span>
+    </span>
+    <img class="letters-list__thumb" src="/assets/images/letters/project-kickoff-meeting.jpg" alt="" loading="lazy" width="320" height="200" />
+  </a>
+</li><li class="letters-list__item" data-topic="kickoffs">
+  <a class="letters-list__link" href="/letters/product-brief-template/">
+    <span class="letters-list__text">
+      <span class="letters-list__title">Product brief template (and the design brief questions that actually matter)</span>
+      <span class="letters-list__sub">The brief usually shows up as a Jira ticket with the decisions already baked in. Here's the template, and how to stop it arriving half-wrong.</span>
+      <span class="letters-list__meta"><time datetime="2026-07-01">Jul 1, 2026</time> · Kickoffs &amp; PRDs</span>
+    </span>
+    <img class="letters-list__thumb" src="/assets/images/letters/product-brief-template.jpg" alt="" loading="lazy" width="320" height="200" />
+  </a>
+</li><li class="letters-list__item" data-topic="ai-workflow">
+  <a class="letters-list__link" href="/letters/cursor-for-designers/">
+    <span class="letters-list__text">
+      <span class="letters-list__title">Cursor for designers: why I left Figma Make for real product work</span>
+      <span class="letters-list__sub">Figma Make is great until the thing has to actually work. Here's the loop I use instead, and what building in code exposed that mocks never did.</span>
+      <span class="letters-list__meta"><time datetime="2026-04-22">Apr 22, 2026</time> · AI Workflow</span>
+    </span>
+    <img class="letters-list__thumb" src="/assets/images/letters/cursor-for-designers.jpg" alt="" loading="lazy" width="320" height="200" />
+  </a>
+</li><li class="letters-list__item" data-topic="kickoffs">
+  <a class="letters-list__link" href="/letters/prd-vs-brd/">
+    <span class="letters-list__text">
+      <span class="letters-list__title">PRD vs BRD: which one you actually need (probably not both)</span>
+      <span class="letters-list__sub">One explains why the business wants it. The other explains what the product will do. Most teams write both and then let them drift apart.</span>
+      <span class="letters-list__meta"><time datetime="2026-04-15">Apr 15, 2026</time> · Kickoffs &amp; PRDs</span>
+    </span>
+    <img class="letters-list__thumb" src="/assets/images/letters/prd-vs-brd.jpg" alt="" loading="lazy" width="320" height="200" />
+  </a>
+</li><li class="letters-list__item" data-topic="case-studies">
+  <a class="letters-list__link" href="/letters/ux-metrics/">
+    <span class="letters-list__text">
+      <span class="letters-list__title">UX metrics that actually make it into the exec deck</span>
+      <span class="letters-list__sub">Anyone can ship now. The question is whether it made money. Here are the UX metrics that answer that, and the math to use when you don't have clean data.</span>
+      <span class="letters-list__meta"><time datetime="2026-04-01">Apr 1, 2026</time> · Case Studies</span>
+    </span>
+    <img class="letters-list__thumb" src="/assets/images/letters/ux-metrics.jpg" alt="" loading="lazy" width="320" height="200" />
+  </a>
+</li><li class="letters-list__item" data-topic="ai-workflow">
+  <a class="letters-list__link" href="/letters/ai-prototyping-workflow/">
+    <span class="letters-list__text">
+      <span class="letters-list__title">The AI prototyping workflow I actually use (and where it breaks)</span>
+      <span class="letters-list__sub">Speed doesn't let you skip the fundamentals. It tells you, fast, which ones were real. Here's the workflow, the prompt, and the places it'll burn you.</span>
+      <span class="letters-list__meta"><time datetime="2026-03-25">Mar 25, 2026</time> · AI Workflow</span>
+    </span>
+    <img class="letters-list__thumb" src="/assets/images/letters/ai-prototyping-workflow.jpg" alt="" loading="lazy" width="320" height="200" />
+  </a>
+</li></ul>
+      <p class="letters-empty" hidden>No letters match that yet.</p>
+    </section>
+    <aside class="letters-sidebar">
+      <aside class="letter-signup" aria-label="Newsletter">
+  <p class="ds-eyebrow letter-signup__eyebrow">The ROI of Design</p>
+  <p class="letter-signup__title">The short version lands in your inbox every Saturday.</p>
+  <p class="letter-signup__body">One idea a week on proving what design is worth. No fluff, no theory, unsubscribe whenever.</p>
+  <form class="letter-signup__form" data-newsletter-form data-track-location="letters_sidebar" method="post" action="https://app.kit.com/forms/4969496/subscriptions" novalidate>
+    <label class="screen-reader-text" for="nl-letters_sidebar">Email address</label>
+    <input id="nl-letters_sidebar" class="letter-signup__input" name="email_address" type="email" autocomplete="email" placeholder="you@company.com" required />
+    <button class="letter-signup__btn" type="submit">Subscribe</button>
+    <p class="letter-signup__error" data-newsletter-error role="alert" aria-live="polite"></p>
+  </form>
+</aside>
+    </aside>
+  </div>
+</main>
+<script>
+(function () {
+  var tabs = document.querySelectorAll("[data-topic-filter]");
+  var items = document.querySelectorAll(".letters-latest .letters-list__item");
+  var page = document.querySelector(".letters");
+  var empty = document.querySelector(".letters-empty");
+  var latestLabel = document.getElementById("latest-heading");
+  var topic = "all";
+  function apply() {
+    var filtering = topic !== "all";
+    page.classList.toggle("is-filtering", filtering);
+    if (latestLabel) latestLabel.textContent = filtering ? "Results" : "Latest";
+    var shown = 0;
+    items.forEach(function (li) {
+      var okTopic = topic === "all" || li.dataset.topic === topic;
+      var hideFeatured = li.hasAttribute("data-featured") && !filtering;
+      li.hidden = !okTopic || hideFeatured;
+      if (!li.hidden) shown++;
+    });
+    if (empty) empty.hidden = shown !== 0;
+  }
+  function setTopic(t) {
+    topic = t;
+    tabs.forEach(function (b) { b.setAttribute("aria-selected", String(b.dataset.topicFilter === t)); });
+    apply();
+  }
+  tabs.forEach(function (b) { b.addEventListener("click", function () { setTopic(b.dataset.topicFilter); history.replaceState(null, "", b.dataset.topicFilter === "all" ? location.pathname : "#" + b.dataset.topicFilter); }); });
+  var hash = location.hash.slice(1);
+  if (hash && document.querySelector('[data-topic-filter="' + hash + '"]')) setTopic(hash);
+})();
+</script>
+<!-- partial:footer -->
+<footer class="site-footer" role="contentinfo">
+  <div class="site-footer__inner">
+    <div class="site-footer__brand">
+      <img class="site-footer__wordmark" src="/wp-content/uploads/2025/12/logo-mrtylerwhite-1.svg" width="69" height="20" alt="Mr. Tyler White" />
+      <p class="site-footer__tagline">Product design, growth systems, and prototypes that help teams make better decisions.</p>
+    </div>
+    <nav class="site-footer__col" aria-label="Explore">
+      <span class="site-footer__col-heading">Explore</span>
+      <a href="/about/">About Me</a>
+      <a href="/case-studies/">Case Studies</a>
+      <a href="/newsletter/">Newsletter</a>
+      <a href="/letters/" aria-current="page">Letters</a>
+      <a href="https://www.designtablepodcast.com/" target="_blank" rel="noopener noreferrer">Podcast</a>
+      <a href="/prototype-ready/">Builder Kickoff™</a>
+    </nav>
+    <nav class="site-footer__col" aria-label="Resources">
+      <span class="site-footer__col-heading">Resources</span>
+      <a href="/wp-content/uploads/2024/08/TylerWhite-Resume-2024.pdf" target="_blank" rel="noopener noreferrer">Download CV</a>
+      <a href="https://www.linkedin.com/in/mrtylerwhite/" target="_blank" rel="noopener noreferrer">Let&#8217;s Connect</a>
+      <a href="https://www.designtablepodcast.com/" target="_blank" rel="noopener noreferrer">The Design Table</a>
+      <a href="/roi-case-study-template/">The 15 Minute Case Study</a>
+    </nav>
+    <div class="site-footer__cta-block">
+      <span class="site-footer__col-heading">Free Strategy Call</span>
+      <p class="site-footer__cta-copy">Want help turning messy product, growth, or design problems into a clearer plan? Book a 30-minute call and we&#8217;ll figure out where the biggest leverage is.</p>
+      <a href="https://cal.com/mrtylerwhite/30min" class="site-footer__cta-btn" target="_blank" rel="noopener noreferrer">Book a free strategy call</a>
+    </div>
+  </div>
+  <div class="site-footer__bottom">
+    <p class="site-footer__copy">&#169; 2026 Tyler White. Made with taste, caffeine, and a suspicious number of prototypes.</p>
+    <nav class="site-footer__legal" aria-label="Legal">
+      <a href="/privacy-policy/">Privacy Policy</a>
+    </nav>
+  </div>
+</footer>
+<!-- /partial:footer -->
+</div>
+<script src="/assets/js/mobile-menu-a11y.js" defer></script>
+<script src="/assets/js/newsletter-form.js" defer></script>
+<script src="/assets/js/gtm-defer.js" defer></script>
+<script src="/assets/js/analytics.js" defer></script>
+<script src="/assets/js/hotjar.js" defer></script>
+</body>
+</html>

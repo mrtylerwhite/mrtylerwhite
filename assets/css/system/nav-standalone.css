@@ -1,0 +1,162 @@
+/*
+  Standalone nav — design system
+  The shared nav (partials/header.html) was built for Divi pages, which load
+  Divi's base theme CSS. Hand-built pages (About, Letters) don't, so this file
+  reproduces that base layer. Add `ds-standalone-nav` to <body> to use it, along
+  with the Divi body classes the customizer CSS keys off (et_header_style_left,
+  et_button_no_icon, etc.). Measured to match /resume/ to the pixel at 375-1440px.
+*/
+
+/* ── Nav — base positioning Divi normally provides via theme CSS ──────────── */
+
+body.ds-standalone-nav #main-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 99999;
+  background: transparent;
+}
+
+/*
+  The floating "glass pill" look lives in critical.css (.et_menu_container:
+  display:flex; width:90%; top:2em — logo left, nav right). But critical.css
+  only restyles the nav; it relies on Divi's BASE nav layout (inline theme CSS
+  on full Divi pages) for the fundamentals: centering the pill, laying the menu
+  items out horizontally, and showing the hamburger only on mobile. This
+  hand-built page never loaded that base layer, so the menu stacked vertically,
+  the mobile hamburger showed on desktop, and the pill sat flush left/top.
+  The rules below reproduce that base layer (scoped to this page's header) so
+  the nav matches the home page. critical.css's !important rules still win for
+  the pill styling itself.
+*/
+
+/*
+  Divi's theme options set a custom button icon — the glyph is literally "$"
+  (et-divi-customizer-global.min.css: `.et_pb_button:after{content:'$'}`).
+  Full Divi pages hide it via `.et_button_no_icon .et_pb_button:after{display:none}`,
+  which ships in Divi's inline reset. This hand-built page has the
+  `et_button_no_icon` body class but never loads that reset, so the "$" leaked
+  out after every .et_pb_button — most visibly the "Join the Newsletter" nav
+  button. Reproduce the suppression so the nav matches the other pages. */
+body.ds-standalone-nav .et_pb_button::after,
+body.ds-standalone-nav .et_pb_button::before {
+  content: none !important;
+  display: none !important;
+}
+
+/* Pill: relative positioning makes critical.css's `top: 2em` apply, and auto
+   margins center its 90% width. */
+body.ds-standalone-nav #main-header .container.et_menu_container {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/*
+  Logo. Divi's base CSS centers the wordmark with an inline-block helper span
+  and a 23px header line-height; on full Divi pages common.js also sizes it.
+  This page loads neither, so reproduce the result (23px tall, centered). */
+body.ds-standalone-nav #main-header {
+  line-height: 23px;
+}
+
+body.ds-standalone-nav #main-header span.logo_helper {
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  width: 0;
+}
+
+body.ds-standalone-nav #main-header #logo {
+  display: inline-block;
+  vertical-align: middle;
+  height: 23px !important;
+  max-height: none !important;
+  width: auto !important;
+  margin-bottom: 0;
+}
+
+/* Desktop (≥981px): reproduce Divi's base nav layout exactly (inline-block
+   items, line-height 0 on the list, 1em on items) so this page's nav matches
+   every other page to the pixel. The link padding (10px 12px) comes from the
+   customizer CSS this page does load. Measured against /resume/ at 1280px. */
+@media all and (min-width: 981px) {
+  /* The customizer pads #et-top-navigation and its links by 15px on desktop;
+     Divi's common.js normally cancels that. Zero the wrapper padding here. */
+  body.ds-standalone-nav #main-header #et-top-navigation {
+    display: block;
+    float: right;
+    padding: 0 !important;
+    font-weight: 600;
+  }
+
+  body.ds-standalone-nav #main-header #top-menu-nav {
+    display: block;
+    float: left;
+    line-height: 0;
+  }
+
+  body.ds-standalone-nav #main-header #top-menu {
+    display: block;
+    float: left;
+    line-height: 0;
+    /* Reset the browser's default <ul> margin and padding-inline-start, which
+       Divi's base CSS zeroes on full pages. */
+    margin: 0;
+    padding: 0;
+  }
+
+  body.ds-standalone-nav #main-header #top-menu li {
+    display: inline-block;
+    position: relative;
+    font-size: 14px;
+    line-height: 1em;
+  }
+
+  body.ds-standalone-nav #main-header #top-menu a {
+    display: block;
+    position: relative;
+  }
+
+  /* Plain links: the same 10px top/bottom as other pages (the customizer's
+     desktop rule would otherwise add 15px at the bottom). */
+  body.ds-standalone-nav #main-header #top-menu > li:not(.et_pb_button):not(.site-nav-workshop) > a {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+  }
+
+  /* Join the Newsletter pill: Divi core sets .et_pb_button line-height:1.7em
+     (≈23.8px), which gives the button its full height. This page doesn't load
+     that base, so the pill rendered flat (22px vs 32px on other pages). */
+  body.ds-standalone-nav #main-header #top-menu li.et_pb_button > a {
+    line-height: 1.7em;
+  }
+
+  /* Hamburger hidden on desktop */
+  body.ds-standalone-nav #main-header #et_mobile_nav_menu {
+    display: none;
+  }
+}
+
+/* Mobile (≤980px): swap the menu for the hamburger (matches Divi's breakpoint) */
+@media all and (max-width: 980px) {
+  body.ds-standalone-nav #main-header #top-menu {
+    display: none;
+  }
+
+  body.ds-standalone-nav #main-header #et_mobile_nav_menu {
+    display: block;
+  }
+
+  body.ds-standalone-nav #main-header .mobile_menu_bar {
+    position: relative;
+    display: block;
+    line-height: 0;
+  }
+
+  body.ds-standalone-nav #main-header .mobile_nav .select_page {
+    display: none;
+  }
+}
