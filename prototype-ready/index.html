@@ -742,25 +742,21 @@
     'use strict';
     var bar = document.querySelector('.pr-bar');
     if (!bar) return;
+    var darkSections = document.querySelectorAll('[data-nav-theme="dark"]');
     var pending = false;
 
     function check() {
       pending = false;
-      var r   = bar.getBoundingClientRect();
-      var cx  = r.left + r.width / 2;
-      // Sample at bar's bottom edge · that's where the underlying section
-      // first becomes visible. Subtract 1 to stay within the bar's z-stack.
-      var cy  = r.bottom - 1;
-      // elementsFromPoint returns every element stacked at (cx, cy),
-      // topmost first · the sticky bar is first, dark sections appear
-      // further down the list when the bar overlaps them.
-      var els = document.elementsFromPoint(cx, cy);
+      // Is the bar's bottom edge (where the section underneath first shows)
+      // inside a dark section? Pure geometry: unlike elementsFromPoint it
+      // can't be thrown off by overlays, extensions or pointer-events.
+      // The markup ships with pr-bar--on-dark because the page opens on the
+      // dark hero, so the first frame is already right.
+      var y = bar.getBoundingClientRect().bottom - 1;
       var dark = false;
-      for (var i = 0; i < els.length; i++) {
-        if (els[i].dataset && els[i].dataset.navTheme === 'dark') {
-          dark = true;
-          break;
-        }
+      for (var i = 0; i < darkSections.length; i++) {
+        var r = darkSections[i].getBoundingClientRect();
+        if (r.top <= y && r.bottom > y) { dark = true; break; }
       }
       bar.classList.toggle('pr-bar--on-dark', dark);
     }
@@ -771,6 +767,8 @@
 
     window.addEventListener('scroll', enqueue, { passive: true });
     window.addEventListener('resize', enqueue, { passive: true });
+    window.addEventListener('load', enqueue);
+    window.addEventListener('pageshow', enqueue);
     enqueue(); // run once on load
   }());
   </script>
