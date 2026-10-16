@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Tyler White, Director of Product Design</title>
+  <link rel="preconnect" href="https://use.typekit.net" crossorigin />
+  <link rel="stylesheet" href="https://use.typekit.net/fks5kmr.css" />
+  <style>
+    @font-face {
+      font-family: "Inter";
+      font-style: normal;
+      font-weight: 300 700;
+      font-display: block;
+      src: url("../assets/fonts/inter/InterVariable.woff2") format("woff2");
+    }
+    @font-face {
+      font-family: "JetBrains Mono";
+      font-style: normal;
+      font-weight: 400;
+      font-display: block;
+      src: url("../assets/fonts/jetbrains-mono/JetBrainsMono-Regular.woff2") format("woff2");
+    }
+
+    :root {
+      --page: #FCF7F4;
+      --ink: #09090B;
+      --body: #27272A;
+      --muted: #52525B;
+      --faint: #71717A;
+      --gold: #C59060;
+      --gold-soft: #E9B989;
+      --border: #E2D6CD;
+      --display: "alternate-gothic-atf", "Arial Narrow", Arial, sans-serif;
+      --sans: "Inter", system-ui, -apple-system, sans-serif;
+      --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    @page { size: letter; margin: 0; }
+    html, body {
+      background: #ddd8d3;
+      color: var(--body);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .page {
+      width: 8.5in;
+      height: 11in;
+      background: var(--page);
+      padding: 0.62in 0.68in 0.52in;
+      position: relative;
+      overflow: hidden;
+      page-break-after: always;
+    }
+    .page:last-child { page-break-after: auto; }
+
+    .eyebrow {
+      font-family: var(--mono);
+      font-size: 8.5pt;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      line-height: 1.3;
+    }
+
+    .mast {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 24px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--border);
+    }
+    h1 {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 44pt;
+      line-height: 0.88;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+    .headline {
+      margin-top: 8px;
+      font-size: 13pt;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+    }
+    .contact {
+      font-style: normal;
+      text-align: right;
+      padding-top: 2px;
+      font-size: 9pt;
+      line-height: 1.55;
+      color: var(--muted);
+    }
+    .contact a { color: inherit; text-decoration: none; }
+    .contact .label {
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .lede {
+      margin: 16px 0 0;
+      max-width: 7.1in;
+      font-size: 10.5pt;
+      line-height: 1.5;
+      color: var(--body);
+    }
+
+    .section { margin-top: 20px; }
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 13px;
+    }
+    .section-head h2 {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 13pt;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+    .section-head::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .company { margin-bottom: 15px; }
+    .company-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 3px;
+    }
+    .company-name {
+      font-size: 11.5pt;
+      font-weight: 650;
+      letter-spacing: -0.015em;
+      color: var(--ink);
+    }
+    .company-meta {
+      font-size: 9.5pt;
+      color: var(--muted);
+    }
+    .dates {
+      flex: 0 0 auto;
+      font-family: var(--mono);
+      font-size: 8pt;
+      letter-spacing: 0.04em;
+      color: var(--gold);
+      white-space: nowrap;
+    }
+
+    .role { margin: 8px 0 0; }
+    .role-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .role-title {
+      font-size: 10.5pt;
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .nested {
+      padding-left: 12px;
+      border-left: 1.5px solid var(--gold-soft);
+      margin-top: 8px;
+    }
+
+    ul {
+      margin: 5px 0 0;
+      padding-left: 1.05em;
+    }
+    li {
+      margin: 3px 0 0;
+      font-size: 10pt;
+      line-height: 1.42;
+      color: var(--body);
+    }
+
+    .page-2-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 6px;
+    }
+    .page-2-name {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 14pt;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+    .page-2-meta {
+      font-family: var(--mono);
+      font-size: 8pt;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 28px;
+      margin-top: 6px;
+    }
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 2px;
+    }
+    .skill {
+      font-size: 9pt;
+      line-height: 1.2;
+      color: var(--body);
+      background: #F6EFEA;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 5px 10px;
+    }
+    .edu p, .refs p {
+      font-size: 10pt;
+      line-height: 1.45;
+      color: var(--body);
+      margin-top: 6px;
+    }
+    .edu strong, .refs strong { color: var(--ink); font-weight: 650; }
+    .edu .sub, .refs .sub { color: var(--muted); }
+
+    .footer-mark {
+      position: absolute;
+      left: 0.68in;
+      right: 0.68in;
+      bottom: 0.32in;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--mono);
+      font-size: 7.5pt;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--faint);
+    }
+
+    @media print {
+      html, body { background: var(--page); }
+      .page { margin: 0; box-shadow: none; }
+    }
+    @media screen {
+      body { padding: 32px 0; }
+      .page {
+        margin: 0 auto 28px;
+        box-shadow: 0 12px 40px rgba(9,9,11,.10);
+      }
+    }
+  </style>
+</head>
+<body>
+  <article class="page">
+    <header class="mast">
+      <div>
+        <h1>Tyler White</h1>
+        <p class="headline">Director of Product Design</p>
+      </div>
+      <address class="contact">
+        <span class="label eyebrow">Contact</span>
+        Montreal, QC<br>
+        <a href="tel:+15148055586">(514) 805-5586</a><br>
+        <a href="mailto:tyler.philipp.white@gmail.com">tyler.philipp.white@gmail.com</a><br>
+        <a href="https://www.mrtylerwhite.com">www.mrtylerwhite.com</a><br>
+        <a href="https://www.linkedin.com/in/mrtylerwhite/">linkedin.com/in/mrtylerwhite</a>
+      </address>
+    </header>
+
+    <p class="lede">I build design practices that sit inside the product: strategy, craft, and the connections between product, engineering, customers, and the business. I hire and develop builders, hold the quality bar, and make the ROI of design visible through activation, adoption, and shipped outcomes.</p>
+
+    <section class="section">
+      <div class="section-head"><h2>Experience</h2></div>
+
+      <div class="company">
+        <div class="company-head">
+          <div>
+            <p class="company-name">CapIntel</p>
+            <p class="company-meta">Permanent Full-time · Montreal, Remote</p>
+          </div>
+          <p class="dates">Nov 2024 – Present</p>
+        </div>
+
+        <div class="role nested">
+          <div class="role-head">
+            <p class="role-title">Director of Product Design</p>
+            <p class="dates">Sep 2026 – Present</p>
+          </div>
+          <ul>
+            <li>Own product design strategy and grow a team of designers who operate as builders across the full product lifecycle.</li>
+            <li>Connect design, product, engineering, customers, and the business around measurable outcomes, not preference.</li>
+            <li>Hold the bar on craft while making the ROI of the design practice visible to the company.</li>
+          </ul>
+        </div>
+
+        <div class="role nested">
+          <div class="role-head">
+            <p class="role-title">Principal Product Designer</p>
+            <p class="dates">May 2026 – Sep 2026</p>
+          </div>
+          <ul>
+            <li>Set design direction across onboarding, advisor workflows, AI-powered experiences, and enterprise systems used by wealth firms.</li>
+            <li>Partnered with product and engineering through launch so complex, multi-product surfaces shipped with a shared quality bar.</li>
+          </ul>
+        </div>
+
+        <div class="role nested">
+          <div class="role-head">
+            <p class="role-title">Senior Product Designer</p>
+            <p class="dates">Nov 2024 – May 2026</p>
+          </div>
+          <ul>
+            <li>Owned advisor activation and time to first value. Built the analytics product and engineering used to measure activation and adoption.</li>
+            <li>Established reusable patterns and replaced preference-based design reviews with arguments tied to a business outcome.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="company">
+        <div class="company-head">
+          <div>
+            <p class="company-name">Design Table</p>
+            <p class="company-meta">Co-Host · Weekly conversations with operators on SaaS adoption, activation, and revenue</p>
+          </div>
+          <p class="dates">Apr 2025 – Present</p>
+        </div>
+        <ul>
+          <li>Co-host with Nick. A weekly show for product leaders on the decisions that actually move adoption and revenue.</li>
+        </ul>
+      </div>
+
+      <div class="company">
+        <div class="company-head">
+          <div>
+            <p class="company-name">Notch</p>
+            <p class="company-meta">Senior Product Designer · Toronto, Remote</p>
+          </div>
+          <p class="dates">Mar 2024 – Oct 2024</p>
+        </div>
+        <ul>
+          <li>Led the payment portal that made a payment method required before invoice access. On-time payments went up 30%.</li>
+          <li>Replaced a supplier-driven billing process with self-serve so customers could manage invoices, methods, and plans without a ticket.</li>
+          <li>Designed the error handling and business logic for a Stripe to Adyen migration with no broken payment days.</li>
+        </ul>
+      </div>
+    </section>
+
+    <p class="footer-mark"><span>mrtylerwhite.com</span><span>1 / 2</span></p>
+  </article>
+
+  <article class="page">
+    <header class="page-2-top">
+      <p class="page-2-name">Tyler White</p>
+      <p class="page-2-meta">Director of Product Design</p>
+    </header>
+
+    <section class="section" style="margin-top: 16px;">
+      <div class="section-head"><h2>Experience, continued</h2></div>
+
+      <div class="company">
+        <div class="company-head">
+          <div>
+            <p class="company-name">GlobalVision</p>
+            <p class="company-meta">Founding Product Designer · Montreal, QC</p>
+          </div>
+          <p class="dates">May 2020 – Mar 2024</p>
+        </div>
+        <ul>
+          <li>Founding designer on Verify, the automated proofreading product for pharma, medical, CPG, and agencies. Hit $1M ARR in year one.</li>
+          <li>Owned the product experience from beta through launch, including the design system and the working model between design and engineering.</li>
+          <li>Ran the research program with actual clients so the quality bar scaled with the team, not against it.</li>
+        </ul>
+      </div>
+
+      <div class="company">
+        <div class="company-head">
+          <div>
+            <p class="company-name">Stradigi AI</p>
+            <p class="company-meta">Montreal, QC</p>
+          </div>
+          <p class="dates">Mar 2016 – May 2020</p>
+        </div>
+        <div class="role nested">
+          <div class="role-head">
+            <p class="role-title">Director of Product Design</p>
+            <p class="dates">Feb 2018 – May 2020</p>
+          </div>
+          <ul>
+            <li>Built and led the design practice. Set design strategy for AI products across the company, not a single surface.</li>
+            <li>Hired and led a small team through research, systems, prototyping, and shipped work. The company raised $53M CAD Series A to expand in North America.</li>
+            <li>Owned art direction across the platform and got design, marketing, and engineering working from the same plan.</li>
+          </ul>
+        </div>
+        <div class="role nested">
+          <div class="role-head">
+            <p class="role-title">Product Designer</p>
+            <p class="dates">Mar 2016 – Feb 2018</p>
+          </div>
+          <ul>
+            <li>Designed mobile, web, and internal products during the agency-to-SaaS pivot. Built the reusable patterns that became the design system.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="company">
+        <div class="company-head">
+          <div>
+            <p class="company-name">JoMedia Inc.</p>
+            <p class="company-meta">Content Marketing Manager, then Web Designer · Montreal, QC</p>
+          </div>
+          <p class="dates">Nov 2014 – Mar 2016</p>
+        </div>
+        <ul>
+          <li>Increased conversion on product landing pages and checkout by 20%. Led design across physical and digital products for Everyday Happy.</li>
+        </ul>
+      </div>
+
+      <div class="company">
+        <div class="company-head">
+          <div>
+            <p class="company-name">Beezid.com</p>
+            <p class="company-meta">Lead Web Designer, then Junior Web Designer · Montreal, QC</p>
+          </div>
+          <p class="dates">Sep 2010 – Nov 2014</p>
+        </div>
+        <ul>
+          <li>Grew the user base from 1.5 million to 3 million. Wrote the HTML and CSS, owned conversion on the pages that made money, and shipped on time.</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="split">
+      <section class="section">
+        <div class="section-head"><h2>Leadership</h2></div>
+        <div class="skills">
+          <span class="skill">Design leadership</span>
+          <span class="skill">Practice building</span>
+          <span class="skill">Hiring and developing</span>
+          <span class="skill">Product strategy</span>
+          <span class="skill">Cross-functional alignment</span>
+          <span class="skill">Outcome-based reviews</span>
+          <span class="skill">Activation and adoption</span>
+          <span class="skill">Design systems</span>
+          <span class="skill">AI product experiences</span>
+          <span class="skill">Enterprise SaaS</span>
+        </div>
+      </section>
+      <div>
+        <section class="section">
+          <div class="section-head"><h2>Education</h2></div>
+          <div class="edu">
+            <p><strong>University of Ottawa</strong><br><span class="sub">BA, Psychology</span></p>
+            <p><strong>Self-taught designer</strong><br><span class="sub">HTML, CSS, and product design since 2010</span></p>
+          </div>
+        </section>
+        <section class="section">
+          <div class="section-head"><h2>References</h2></div>
+          <div class="refs">
+            <p><strong>Available upon request</strong><br><span class="sub">Hiring managers and peers from CapIntel, Notch, and GlobalVision.</span></p>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <p class="footer-mark"><span>mrtylerwhite.com</span><span>2 / 2</span></p>
+  </article>
+</body>
+</html>
