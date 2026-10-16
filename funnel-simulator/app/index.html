@@ -1,0 +1,953 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Funnel Simulator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#08080a;--bg-2:#0e0e11;--card:#141417;--card-2:#1a1a1e;--line:rgba(255,255,255,.09);--line-2:rgba(255,255,255,.15);
+  --ink:#f4f4f5;--muted:#a1a1aa;--faint:#6b6b74;--accent:#C59060;--accent-2:#E9B989;--accent-soft:rgba(197,144,96,.14);
+  --green:#4ade80;--red:#f87171;--amber:#fbbf24;--mkt:#7dd3fc;--prod:#c4b5fd;
+  --font:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;--mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  --top:58px;--kpi:64px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);font-family:var(--font);-webkit-font-smoothing:antialiased}
+body{overflow:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(1100px 520px at 50% -12%,rgba(197,144,96,.11),transparent 60%),radial-gradient(rgba(255,255,255,.05) 1px,transparent 1px) 0 0/22px 22px}
+button{font:inherit;color:inherit}
+.mono{font-family:var(--mono)}
+
+/* ── Top bar ── */
+.top{position:fixed;inset:0 0 auto 0;height:var(--top);z-index:40;display:flex;align-items:center;gap:10px;padding:0 14px;border-bottom:1px solid var(--line);background:rgba(8,8,10,.86);backdrop-filter:blur(12px)}
+.brand{display:flex;align-items:center;gap:10px;min-width:0;margin-right:auto}
+.logo{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;background:var(--accent-soft);border:1px solid rgba(197,144,96,.4);color:var(--accent-2);flex:none}
+.logo svg{width:15px;height:15px}
+.brand-t{min-width:0}
+.brand-t b{display:block;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.brand-t span{display:block;font:500 10px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
+.demo{font:600 10px var(--mono);letter-spacing:.1em;padding:3px 7px;border-radius:999px;color:var(--accent-2);border:1px solid rgba(197,144,96,.45);background:rgba(197,144,96,.08)}
+.seg{display:inline-flex;padding:3px;border-radius:10px;background:var(--card);border:1px solid var(--line)}
+.seg button{appearance:none;border:0;background:transparent;padding:6px 10px;border-radius:7px;font-size:12px;font-weight:500;color:var(--muted);cursor:pointer;white-space:nowrap}
+.seg button.on{background:var(--card-2);color:var(--ink);box-shadow:0 0 0 1px var(--line-2)}
+.btn{appearance:none;border:1px solid var(--line-2);background:var(--card);padding:7px 11px;border-radius:9px;font-size:12px;font-weight:500;cursor:pointer;display:inline-flex;align-items:center;gap:7px;white-space:nowrap}
+.btn:hover{border-color:rgba(197,144,96,.6)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#0a0a0a}
+.btn.on{border-color:var(--accent);box-shadow:0 0 0 3px rgba(197,144,96,.15)}
+.btn svg{width:14px;height:14px}
+.badge{min-width:18px;height:18px;padding:0 5px;border-radius:999px;background:var(--accent);color:#0a0a0a;font-size:10.5px;font-weight:700;display:inline-grid;place-items:center}
+.menu{position:relative}
+.menu-pop{position:absolute;right:0;top:calc(100% + 6px);min-width:220px;padding:6px;border-radius:12px;background:var(--bg-2);border:1px solid var(--line-2);box-shadow:0 20px 50px -20px #000;display:none}
+.menu-pop.open{display:block}
+.menu-pop button{display:flex;width:100%;text-align:left;padding:9px 10px;border:0;background:transparent;border-radius:8px;font-size:12.5px;cursor:pointer}
+.menu-pop button:hover{background:var(--card-2)}
+.menu-pop hr{border:0;border-top:1px solid var(--line);margin:5px 0}
+@media (max-width:900px){.hide-md{display:none!important}}
+@media (max-width:620px){.hide-sm{display:none!important}.top{gap:6px;padding:0 10px}}
+
+/* ── Main area ── */
+.main{position:fixed;left:0;right:0;top:var(--top);bottom:var(--kpi);overflow:hidden}
+.view{position:absolute;inset:0;overflow:auto;opacity:0;pointer-events:none;transition:opacity .25s}
+.view.on{opacity:1;pointer-events:auto}
+
+/* ── Overview ── */
+.ov{min-height:100%;padding:26px 22px 40px;display:flex;flex-direction:column;gap:20px}
+.ov-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.ov-head h1{margin:0;font-size:24px;letter-spacing:-.02em}
+.ov-head p{margin:4px 0 0;color:var(--muted);font-size:13.5px;max-width:640px}
+.lens-key{display:flex;gap:14px;font-size:11.5px;color:var(--muted)}
+.lens-key i{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:6px;vertical-align:0}
+.stages{position:relative;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:34px}
+.stages svg.ov-wires{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none;z-index:0}
+.stage{position:relative;z-index:1;display:flex;flex-direction:column;gap:10px;padding:14px;border-radius:16px;background:linear-gradient(180deg,var(--card-2),var(--card));border:1px solid var(--line-2);cursor:pointer;transition:border-color .2s,transform .2s,opacity .25s,box-shadow .2s;min-height:250px}
+.stage:hover{border-color:rgba(197,144,96,.7);transform:translateY(-2px);box-shadow:0 18px 40px -20px rgba(197,144,96,.45)}
+.stage .st-top{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.st-n{font:500 10.5px var(--mono);letter-spacing:.12em;color:var(--faint)}
+.st-lens{font:600 9.5px var(--mono);letter-spacing:.1em;text-transform:uppercase;padding:3px 6px;border-radius:999px}
+.st-lens.mkt{color:var(--mkt);background:rgba(125,211,252,.08);border:1px solid rgba(125,211,252,.25)}
+.st-lens.prod{color:var(--prod);background:rgba(196,181,253,.08);border:1px solid rgba(196,181,253,.25)}
+.stage h3{margin:0;font-size:15px;letter-spacing:-.01em}
+.stage .q{margin:0;font-size:12px;color:var(--muted);line-height:1.4;min-height:34px}
+.st-big{font-size:26px;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums;line-height:1}
+.st-big small{display:block;margin-top:4px;font-size:11px;font-weight:500;color:var(--faint);letter-spacing:0}
+.st-delta{font-size:11px;font-weight:600}
+.up{color:var(--green)}.down{color:var(--red)}
+.st-rows{display:flex;flex-direction:column;gap:5px;margin-top:auto}
+.st-row{display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--muted)}
+.st-row b{margin-left:auto;color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+.bar{height:4px;border-radius:999px;background:rgba(255,255,255,.07);overflow:hidden;flex:1;max-width:70px}
+.bar i{display:block;height:100%;border-radius:inherit;background:var(--accent)}
+.st-rate{display:flex;justify-content:space-between;gap:8px;font-size:11.5px;padding:7px 9px;border-radius:9px;background:rgba(197,144,96,.09);border:1px solid rgba(197,144,96,.3);color:var(--accent-2)}
+.st-rate b{font-variant-numeric:tabular-nums}
+.st-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;padding-top:10px;border-top:1px dashed var(--line);font-size:11px;color:var(--faint)}
+.st-sugg{color:var(--amber);font-weight:600}
+.st-open{color:var(--accent-2)}
+.stage.dim{opacity:.3}
+.ov-wire{fill:none;stroke:rgba(255,255,255,.14)}
+.ov-wire.loop{stroke-dasharray:3 6;stroke:rgba(197,144,96,.45)}
+.ov-dot{fill:var(--accent-2);filter:drop-shadow(0 0 4px rgba(233,185,137,.9))}
+.ov-lab rect{fill:#0b0b0d;stroke:rgba(197,144,96,.5)}
+.ov-lab text{fill:var(--accent-2);font:600 10.5px var(--font)}
+.ov-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.mini{padding:14px 16px;border-radius:14px;background:var(--card);border:1px solid var(--line)}
+.mini h4{margin:0 0 10px;font:500 10.5px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--faint);display:flex;justify-content:space-between;align-items:center}
+.mini h4 a{font-family:var(--font);letter-spacing:0;text-transform:none;color:var(--accent-2);cursor:pointer;font-size:11.5px}
+@media (max-width:1180px){.stages{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:34px}.ov-cards{grid-template-columns:1fr 1fr}}
+@media (max-width:720px){.stages{grid-template-columns:1fr;gap:26px}.stage{min-height:0}.ov-cards{grid-template-columns:1fr}.ov{padding:18px 14px 30px}}
+
+/* ── Canvas views (stage + full map) ── */
+.canvas-wrap{position:absolute;inset:0;overflow:hidden;touch-action:none}
+.canvas-wrap.scrolly{overflow:auto;touch-action:auto}
+.canvas{position:absolute;left:0;top:0;transform-origin:0 0}
+svg.wires{position:absolute;left:0;top:0;overflow:visible;pointer-events:none}
+.wire{fill:none;stroke:rgba(255,255,255,.14);transition:opacity .2s,stroke .2s}
+.wire.loop{stroke-dasharray:3 6;stroke:rgba(197,144,96,.45)}
+.wire.off{stroke-dasharray:2 5;stroke:rgba(251,191,36,.3)}
+.wire.hot{stroke:var(--accent)}
+.dot{fill:var(--accent-2);filter:drop-shadow(0 0 4px rgba(233,185,137,.9))}
+.elab rect{fill:#0b0b0d;stroke:rgba(197,144,96,.5)}
+.elab text{fill:var(--accent-2);font:600 10.5px var(--font);font-variant-numeric:tabular-nums}
+.dimmed .wire:not(.hot),.dimmed .dot:not(.hot),.dimmed .elab:not(.hot){opacity:.12}
+.node{position:absolute;width:210px;padding:11px 12px;border-radius:14px;background:linear-gradient(180deg,var(--card-2),var(--card));border:1px solid var(--line-2);box-shadow:0 14px 30px -18px #000;cursor:grab;user-select:none;touch-action:none;transition:border-color .2s,opacity .2s,box-shadow .2s}
+.node:hover,.node.hot{border-color:rgba(197,144,96,.75);box-shadow:0 0 0 4px rgba(197,144,96,.1),0 18px 40px -16px rgba(197,144,96,.35)}
+.node.sel{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent),0 0 0 6px rgba(197,144,96,.15)}
+.node.drag{cursor:grabbing;z-index:5}
+.node.off{border-style:dashed;border-color:rgba(251,191,36,.35);background:rgba(20,20,23,.6)}
+.node.off .n-v{color:var(--faint)}
+.node.virt{width:170px;background:transparent;border-style:dashed;cursor:pointer}
+.node.mkt{box-shadow:inset 3px 0 0 rgba(125,211,252,.55),0 14px 30px -18px #000}
+.node.prod{box-shadow:inset 3px 0 0 rgba(196,181,253,.55),0 14px 30px -18px #000}
+.dimmed .node:not(.hot):not(.sel){opacity:.3}
+.lens-dim{opacity:.22!important}
+.n-top{display:flex;align-items:center;gap:9px}
+.ico{flex:none;width:30px;height:30px;border-radius:8px;display:grid;place-items:center;background:rgba(255,255,255,.05);border:1px solid var(--line)}
+.ico svg{width:15px;height:15px}
+.n-t{font-size:12.5px;font-weight:600;line-height:1.25}
+.n-s{font-size:10.5px;color:var(--muted);margin-top:1px;line-height:1.3}
+.n-f{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 7px;margin-top:9px;padding-top:8px;border-top:1px dashed var(--line)}
+.n-v{font-size:15px;font-weight:700;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+.n-u{font-size:10px;color:var(--faint)}
+.n-c{margin-left:auto;font:600 10.5px var(--font);padding:3px 7px;border-radius:999px;background:var(--accent-2);color:#0a0a0a}
+.n-flag{position:absolute;top:-8px;right:10px;font:700 9.5px var(--font);padding:2px 6px;border-radius:999px;background:var(--amber);color:#0a0a0a}
+.lane{position:absolute;top:0;bottom:0;border-left:1px dashed var(--line)}
+.lane-h{position:absolute;font:500 10.5px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--faint);white-space:nowrap}
+.lane-h em{font-style:normal;color:var(--accent)}
+.stage-bar{position:absolute;left:0;right:0;top:0;z-index:6;display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:12px 16px;background:linear-gradient(180deg,rgba(8,8,10,.95),rgba(8,8,10,.6));border-bottom:1px solid var(--line)}
+.crumb{display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--muted);margin-right:auto}
+.crumb a{cursor:pointer;color:var(--muted)}
+.crumb a:hover{color:var(--ink)}
+.crumb b{color:var(--ink)}
+.chips{display:flex;gap:5px;overflow-x:auto;scrollbar-width:none;max-width:100%}
+.chips::-webkit-scrollbar{display:none}
+.chip{appearance:none;border:1px solid var(--line-2);background:var(--card);padding:6px 10px;border-radius:999px;font-size:11.5px;cursor:pointer;white-space:nowrap;color:var(--muted)}
+.chip.on{background:var(--accent);border-color:var(--accent);color:#0a0a0a;font-weight:600}
+.zoom{position:absolute;right:14px;bottom:14px;z-index:6;display:flex;flex-direction:column;gap:6px}
+.zoom button{width:34px;height:34px;border-radius:9px;border:1px solid var(--line-2);background:var(--card);cursor:pointer;font-size:15px}
+.hint{position:absolute;left:14px;bottom:14px;z-index:6;font-size:11px;color:var(--faint);background:rgba(8,8,10,.8);padding:6px 10px;border-radius:8px;border:1px solid var(--line)}
+.stage-sum{position:absolute;left:16px;right:16px;z-index:5;display:flex;gap:10px;flex-wrap:wrap}
+.pill-s{font-size:11.5px;padding:6px 10px;border-radius:999px;background:var(--card);border:1px solid var(--line);color:var(--muted)}
+.pill-s b{color:var(--ink);font-variant-numeric:tabular-nums}
+
+/* ── Side panels (insights + node) ── */
+.side{position:fixed;top:var(--top);bottom:var(--kpi);right:0;width:min(400px,100vw);z-index:35;background:rgba(12,12,14,.97);border-left:1px solid var(--line-2);transform:translateX(102%);transition:transform .3s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column;backdrop-filter:blur(12px)}
+.side.open{transform:none}
+.side-h{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid var(--line)}
+.side-h .x{margin-left:auto;width:30px;height:30px;border-radius:8px;border:1px solid var(--line-2);background:transparent;cursor:pointer}
+.tabs{display:flex;gap:4px;padding:10px 16px 0}
+.tabs button{appearance:none;border:0;background:transparent;padding:8px 10px;border-radius:8px 8px 0 0;font-size:12.5px;font-weight:500;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent}
+.tabs button.on{color:var(--ink);border-bottom-color:var(--accent)}
+.side-b{flex:1;overflow:auto;padding:14px 16px 28px;font-size:13px;line-height:1.5;color:#d4d4d8}
+.side-b h5{margin:18px 0 8px;font:500 10.5px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
+.side-b h5:first-child{margin-top:4px}
+.lever{display:grid;grid-template-columns:1fr auto;gap:4px 10px;padding:10px 0;border-bottom:1px solid var(--line);cursor:pointer}
+.lever:hover .lv-t{color:var(--accent-2)}
+.lv-t{font-size:12.5px;font-weight:500}
+.lv-v{font-size:12.5px;font-weight:700;color:var(--green);font-variant-numeric:tabular-nums}
+.lv-bar{grid-column:1/-1;height:5px;border-radius:999px;background:rgba(255,255,255,.06);overflow:hidden}
+.lv-bar i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2));border-radius:inherit}
+.lv-s{grid-column:1/-1;font-size:11px;color:var(--faint)}
+.sugg{padding:12px;border-radius:12px;background:var(--card);border:1px solid var(--line);margin-bottom:10px}
+.sugg.applied{border-color:rgba(74,222,128,.35)}
+.sg-top{display:flex;gap:10px;align-items:flex-start}
+.sg-t{font-size:13px;font-weight:600}
+.sg-imp{margin-left:auto;font-size:12.5px;font-weight:700;color:var(--green);white-space:nowrap}
+.sg-why{margin:6px 0 10px;font-size:12px;color:var(--muted)}
+.sg-act{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.sg-tag{font-size:10.5px;color:var(--faint);margin-left:auto}
+.kv{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.kv div{padding:10px 12px;border-radius:10px;background:var(--card);border:1px solid var(--line)}
+.kv b{display:block;font-size:17px;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+.kv small{font-size:11px;color:var(--muted)}
+.ctl{display:flex;flex-direction:column;gap:6px;margin:12px 0}
+.ctl-r{display:flex;justify-content:space-between;gap:10px;font-size:12px}
+.ctl-r output{font-weight:600;color:var(--accent-2);font-variant-numeric:tabular-nums}
+.ctl small{font-size:11px;color:var(--faint)}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:4px;border-radius:999px;background:rgba(255,255,255,.12);outline:none}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;background:var(--accent-2);box-shadow:0 0 0 4px rgba(197,144,96,.22);cursor:pointer}
+input[type=range]::-moz-range-thumb{width:16px;height:16px;border:0;border-radius:50%;background:var(--accent-2);cursor:pointer}
+input[type=number],input[type=text],select{width:100%;padding:9px 10px;border-radius:9px;border:1px solid var(--line-2);background:var(--card);color:var(--ink);font:500 13px var(--font)}
+.note{padding:10px 12px;border-radius:10px;font-size:12px;border:1px solid rgba(197,144,96,.3);background:rgba(197,144,96,.06);color:#f1d9bf}
+.flowrow{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:9px;background:var(--card);border:1px solid var(--line);margin-bottom:6px;font-size:12px;cursor:pointer}
+.flowrow em{margin-left:auto;font-style:normal;color:var(--accent-2);font-weight:600;font-variant-numeric:tabular-nums}
+.toggle{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:var(--card);cursor:pointer;font-size:12.5px}
+.toggle input{accent-color:var(--accent);width:16px;height:16px}
+.chart{width:100%;height:170px}
+
+/* ── KPI bar ── */
+.kpis{position:fixed;left:0;right:0;bottom:0;height:var(--kpi);z-index:30;display:flex;align-items:stretch;border-top:1px solid var(--line);background:rgba(8,8,10,.92);backdrop-filter:blur(12px);overflow-x:auto;scrollbar-width:none}
+.kpis::-webkit-scrollbar{display:none}
+.kpi{flex:1 0 auto;min-width:118px;padding:10px 16px;border-right:1px solid var(--line);display:flex;flex-direction:column;justify-content:center}
+.kpi b{font-size:17px;letter-spacing:-.01em;font-variant-numeric:tabular-nums;white-space:nowrap}
+.kpi small{font-size:10.5px;color:var(--muted);white-space:nowrap}
+.kpi .d{font-size:10.5px;font-weight:600;margin-left:6px}
+.kpi.hero b{color:var(--green)}
+
+/* ── Setup modal ── */
+.modal{position:fixed;inset:0;z-index:60;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);padding:16px}
+.modal.open{display:flex}
+.sheet{width:min(620px,100%);max-height:calc(100vh - 32px);overflow:auto;border-radius:18px;background:var(--bg-2);border:1px solid var(--line-2);box-shadow:0 40px 80px -30px #000}
+.sh-h{padding:20px 22px 6px}
+.sh-h h2{margin:0;font-size:19px;letter-spacing:-.015em}
+.sh-h p{margin:4px 0 0;color:var(--muted);font-size:13px}
+.steps{display:flex;gap:6px;padding:14px 22px 0}
+.steps span{flex:1;height:4px;border-radius:999px;background:rgba(255,255,255,.08)}
+.steps span.on{background:var(--accent)}
+.sh-b{padding:16px 22px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:560px){.grid2{grid-template-columns:1fr}}
+.fld{display:flex;flex-direction:column;gap:6px;font-size:12px;color:var(--muted)}
+.fld small{color:var(--faint)}
+.sh-f{display:flex;gap:8px;align-items:center;padding:14px 22px 20px;border-top:1px solid var(--line)}
+.connect{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.connect span{font-size:11.5px;padding:6px 10px;border-radius:999px;border:1px dashed var(--line-2);color:var(--muted)}
+.toast{position:fixed;left:50%;bottom:calc(var(--kpi) + 14px);transform:translateX(-50%) translateY(10px);z-index:70;padding:10px 14px;border-radius:10px;background:var(--card-2);border:1px solid rgba(197,144,96,.5);font-size:12.5px;opacity:0;transition:.25s;pointer-events:none}
+.toast.show{opacity:1;transform:translateX(-50%)}
+.credit{font-size:11px;color:var(--faint);text-align:center;padding:6px 0 0}
+@media (prefers-reduced-motion:reduce){.dot,.ov-dot{display:none}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="brand">
+    <div class="logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></div>
+    <div class="brand-t"><b id="pName">Habitly</b><span>Funnel simulator</span></div>
+    <span class="demo hide-sm" id="demoTag">DEMO</span>
+  </div>
+  <div class="seg" id="viewSeg"><button data-v="overview" class="on">Overview</button><button data-v="stage">Stages</button><button data-v="map" class="hide-sm">Full map</button></div>
+  <div class="seg hide-md" id="lensSeg"><button data-l="all" class="on">All</button><button data-l="mkt">Marketing</button><button data-l="prod">Product</button></div>
+  <button class="btn" id="setupBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 20h9"/><path d="M16.4 3.6a2 2 0 0 1 3 3L7.4 18.6a2 2 0 0 1-.9.5l-2.9.8.8-2.9a2 2 0 0 1 .5-.8z"/></svg><span class="hide-sm">Your numbers</span></button>
+  <button class="btn primary" id="insBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/></svg><span class="hide-sm">Insights</span><span class="badge" id="insCount">0</span></button>
+  <div class="menu">
+    <button class="btn" id="menuBtn" aria-label="More">⋯</button>
+    <div class="menu-pop" id="menuPop">
+      <button data-m="baseline">Set current as baseline</button>
+      <button data-m="tidy">Tidy layout (reset dragging)</button>
+      <hr>
+      <button data-m="export">Export funnel as JSON</button>
+      <button data-m="import">Import funnel JSON</button>
+      <hr>
+      <button data-m="demo">Reset to demo</button>
+    </div>
+  </div>
+  <input type="file" id="fileIn" accept="application/json" hidden>
+</header>
+
+<main class="main" id="main">
+  <section class="view on" id="v-overview"><div class="ov" id="ov"></div></section>
+  <section class="view" id="v-stage"><div class="canvas-wrap scrolly" id="stWrap"><div class="canvas" id="stCanvas"><svg class="wires" id="stWires"></svg></div></div><div class="stage-bar" id="stBar"></div></section>
+  <section class="view" id="v-map"><div class="canvas-wrap" id="mapWrap"><div class="canvas" id="mapCanvas"><svg class="wires" id="mapWires"></svg></div></div>
+    <div class="zoom"><button data-z="in" aria-label="Zoom in">+</button><button data-z="out" aria-label="Zoom out">−</button><button data-z="fit" aria-label="Fit">⤢</button></div>
+    <div class="hint hide-sm">Drag nodes to rearrange · drag the background to pan · scroll to zoom</div>
+  </section>
+</main>
+
+<aside class="side" id="ins" aria-label="Insights">
+  <div class="side-h"><b>Insights</b><button class="x" data-close="ins" aria-label="Close">×</button></div>
+  <div class="tabs" id="insTabs"><button data-t="levers" class="on">Levers</button><button data-t="sugg">Suggestions</button><button data-t="roi">ROI</button></div>
+  <div class="side-b" id="insBody"></div>
+</aside>
+
+<aside class="side" id="nd" aria-label="Node detail">
+  <div class="side-h"><div><div class="mono" style="font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)" id="ndKind"></div><b id="ndTitle" style="font-size:17px"></b></div><button class="x" data-close="nd" aria-label="Close">×</button></div>
+  <div class="side-b" id="ndBody"></div>
+</aside>
+
+<nav class="kpis" id="kpis"></nav>
+
+<div class="modal" id="setup"><div class="sheet" role="dialog" aria-label="Your numbers">
+  <div class="sh-h"><h2 id="suTitle">Make it yours</h2><p id="suSub">Four quick steps. Anything you skip keeps the demo value.</p></div>
+  <div class="steps" id="suSteps"><span></span><span></span><span></span><span></span></div>
+  <div class="sh-b" id="suBody"></div>
+  <div class="sh-f"><button class="btn" id="suBack">Back</button><button class="btn" id="suDemo" style="margin-left:auto">Use demo data</button><button class="btn primary" id="suNext">Next</button></div>
+</div></div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ════════════════════════════════════════════════════════════════════════
+   1. Icons
+   ════════════════════════════════════════════════════════════════════════ */
+const IC={
+search:'<circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>',
+share:'<circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4"/><path d="m15.4 6.5-6.8 4"/>',
+ad:'<rect width="20" height="14" x="2" y="5" rx="2"/><path d="M7 15V9l3 6V9"/><path d="M14 9h3"/><path d="M14 12h2"/><path d="M14 15h3"/>',
+hand:'<path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/><path d="m21 3 1 11h-2"/><path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3"/><path d="M3 4h8"/>',
+link:'<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>',
+target:'<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>',
+gift:'<rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"/>',
+book:'<path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>',
+home:'<path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/>',
+tag:'<path d="M12.6 2.6A2 2 0 0 0 11.2 2H4a2 2 0 0 0-2 2v7.2a2 2 0 0 0 .6 1.4l8.7 8.7a2.4 2.4 0 0 0 3.4 0l6.6-6.6a2.4 2.4 0 0 0 0-3.4z"/><circle cx="7.5" cy="7.5" r=".5"/>',
+layout:'<rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/>',
+mail:'<rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>',
+mails:'<rect width="16" height="13" x="6" y="4" rx="2"/><path d="m22 7-7.1 3.8a2 2 0 0 1-1.8 0L6 7"/><path d="M2 8v11c0 1.1.9 2 2 2h14"/>',
+magnet:'<path d="m6 15-4-4 6.75-6.77a7.79 7.79 0 0 1 11 11L13 22l-4-4 6.39-6.36a2.14 2.14 0 0 0-3-3L6 15"/><path d="m5 8 4 4"/><path d="m12 15 4 4"/>',
+user:'<path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>',
+play:'<polygon points="6 3 20 12 6 21 6 3"/>',
+check:'<path d="M20 6 9 17l-5-5"/>',
+star:'<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>',
+lock:'<rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>',
+card:'<rect width="20" height="14" x="2" y="5" rx="2"/><path d="M2 10h20"/>',
+users:'<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
+logout:'<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/>',
+undo:'<path d="M3 7v6h6"/><path d="M21 17a9 9 0 0 0-9-9 9 9 0 0 0-6 2.3L3 13"/>',
+send:'<path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/>',
+arrow:'<path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>',
+};
+const ico=k=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${IC[k]||IC.arrow}</svg>`;
+
+/* ════════════════════════════════════════════════════════════════════════
+   2. Funnel definition: stages, nodes, edges, rates
+   ════════════════════════════════════════════════════════════════════════ */
+const STAGES=[
+ {id:"acquire", n:"01", name:"Acquire", lens:"mkt", q:"How people find you"},
+ {id:"visit", n:"02", name:"Visit", lens:"mkt", q:"Where they land and decide"},
+ {id:"signup", n:"03", name:"Sign up", lens:"mkt", q:"Where an email or account is created"},
+ {id:"activate", n:"04", name:"Activate", lens:"prod", q:"Do new users reach the aha moment?"},
+ {id:"convert", n:"05", name:"Convert", lens:"prod", q:"Do they start paying?"},
+ {id:"retain", n:"06", name:"Retain & grow", lens:"prod", q:"Do they stay, and bring others?"},
+];
+const SI=Object.fromEntries(STAGES.map((s,i)=>[s.id,i]));
+
+/* Nodes. d = column inside its stage. opt = program toggle key. levers = rate/traffic keys editable here. */
+const NODES=[
+ {id:"seo",stage:"acquire",d:0,icon:"search",t:"Organic search",s:"Google, Bing, AI answers",unit:"visits",levers:["t_seo"],tip:"Compounding but slow. Content that answers a buyer's question beats content that chases volume."},
+ {id:"social",stage:"acquire",d:0,icon:"share",t:"Social",s:"Founder + brand posts",unit:"visits",levers:["t_social"],tip:"Post where your users already talk about the problem. Link to one landing page per campaign."},
+ {id:"ads",stage:"acquire",d:0,icon:"ad",t:"Paid ads",s:"Search + social ads",unit:"visits",levers:["adSpend","cpc"],tip:"Only scale spend once the landing page converts. A cheap click into a weak page is still expensive."},
+ {id:"partners",stage:"acquire",d:0,icon:"hand",t:"Partners & affiliates",s:"Newsletters, creators",unit:"visits",levers:["t_partners"],tip:"Partners convert well because the trust is borrowed. Give them a dedicated landing page."},
+ {id:"direct",stage:"acquire",d:0,icon:"link",t:"Direct & word of mouth",s:"Typed URL, dark social",unit:"visits",levers:["t_direct"],tip:"Usually your best traffic. Grows when the product is worth talking about."},
+ {id:"retarget",stage:"acquire",d:1,icon:"target",t:"Retargeting",s:"Ads to pricing + landing visitors",unit:"visits",opt:"retarget",levers:["rt_match","rt_return","rtSpend"],tip:"Target people who saw pricing or a landing page and left. Cap frequency so it doesn't get creepy."},
+ {id:"referral",stage:"acquire",d:1,icon:"gift",t:"Referral visits",s:"Invites from users",unit:"visits",opt:"referral",levers:["inv_click"],tip:"Referrals are your cheapest traffic. They come from activated users, so activation feeds acquisition."},
+
+ {id:"blog",stage:"visit",d:0,icon:"book",t:"Blog & guides",s:"Top of funnel content",unit:"visits",levers:["r_blog"],tip:"Each article needs one next step: a lead magnet or a relevant product CTA."},
+ {id:"home",stage:"visit",d:0,icon:"home",t:"Homepage",s:"/",unit:"visits",levers:["r_home"],tip:"Say what it does, who it's for, and show the product in the first screen."},
+ {id:"landing",stage:"visit",d:0,icon:"layout",t:"Landing pages",s:"One per campaign",unit:"visits",levers:["r_landing"],tip:"One audience, one promise, one button. Match the headline to the ad or post that sent them."},
+ {id:"pricing",stage:"visit",d:0,icon:"tag",t:"Pricing page",s:"/pricing",unit:"visits",levers:["r_pricing"],tip:"High intent. Show the free trial, the annual saving and answer the top objections inline."},
+ {id:"invite",stage:"visit",d:0,icon:"gift",t:"Invite landing",s:"Personal invite page",unit:"visits",opt:"referral",levers:["r_invite"],tip:"Show who invited them and what they both get."},
+
+ {id:"lead",stage:"signup",d:0,icon:"magnet",t:"Lead magnet",s:"Template, checklist, mini course",unit:"leads",opt:"leadMagnet",levers:["r_capture"],tip:"Captures people who aren't ready to sign up yet. Make it a small version of the product's promise."},
+ {id:"nurture",stage:"signup",d:1,icon:"mails",t:"Nurture drip",s:"5 emails → start a trial",unit:"leads",opt:"nurture",levers:["r_nurture"],tip:"Teach, then invite. Each email should end with one reason to start the trial today."},
+ {id:"signupN",stage:"signup",d:2,icon:"user",t:"Sign-up / trial start",s:"Account created",unit:"signups",levers:[],tip:"Ask for the minimum: email and password, or one-click Google. Everything else can come later."},
+
+ {id:"onb",stage:"activate",d:0,icon:"play",t:"Onboarding started",s:"First session",unit:"users",levers:["a_start"],tip:"Drop people into the product, not a settings page."},
+ {id:"onbDone",stage:"activate",d:1,icon:"check",t:"Setup complete",s:"Profile + first habit",unit:"users",levers:["a_complete"],tip:"Every extra setup step loses people. Cut or defer anything that isn't needed for first value."},
+ {id:"onbEmail",stage:"activate",d:1,icon:"mail",t:"Onboarding emails",s:"Behaviour-triggered nudges",unit:"users",opt:"onbEmails",levers:["a_recover"],tip:"Trigger on what people didn't do, not on a calendar. One action per email."},
+ {id:"aha",stage:"activate",d:2,icon:"star",t:"Activated (aha moment)",s:"3 habits logged in week 1",unit:"users",levers:["a_aha"],tip:"Define activation as the behaviour that predicts retention, then design onboarding to get there fast."},
+
+ {id:"paywall",stage:"convert",d:0,icon:"lock",t:"Trial ends / paywall",s:"Day 14 decision",unit:"users",levers:["c_act"],tip:"Show the progress they'll lose. Put the annual plan first with the monthly equivalent price."},
+ {id:"trialEmail",stage:"convert",d:1,icon:"mails",t:"Trial-ending emails",s:"Day 10, 13, 14",unit:"users",opt:"trialEmails",levers:["c_te"],tip:"Recap what they achieved, then make the decision easy. A short extension can win back the undecided."},
+ {id:"paid",stage:"convert",d:2,icon:"card",t:"New paid subscribers",s:"Monthly + annual",unit:"customers",levers:["c_nonact","price","annualPrice","annualShare"],tip:"Track which plan they pick. Annual buyers churn far less."},
+
+ {id:"subs",stage:"retain",d:0,icon:"users",t:"Active subscribers",s:"Paying customers",unit:"customers",levers:["churn","customers0"],tip:"Retention is the multiplier on everything above it. Small churn gains compound every month."},
+ {id:"churned",stage:"retain",d:1,icon:"logout",t:"Churned",s:"Cancelled this month",unit:"customers",levers:[],tip:"Ask why on the cancel screen. Offer a pause or a downgrade before they go."},
+ {id:"winback",stage:"retain",d:2,icon:"undo",t:"Win-back campaign",s:"Email + offer at 30 days",unit:"customers",opt:"winback",levers:["w_rate"],tip:"Lead with what changed in the product since they left."},
+ {id:"invites",stage:"retain",d:1,icon:"send",t:"Referral program",s:"Give a month, get a month",unit:"invites",opt:"referral",levers:["inv_rate","inv_per","refReward"],tip:"Ask right after a win inside the product, not in a settings page."},
+];
+const NI=Object.fromEntries(NODES.map(n=>[n.id,n]));
+
+/* Edges: from, to, label, rate key that drives it (for labels + drawer), loop = goes back up the funnel. */
+const EDGES=[
+ ["seo","blog","Lands on content"],["seo","home","Lands on homepage"],["seo","pricing","Lands on pricing"],
+ ["social","blog","Clicks a post link"],["social","landing","Campaign link"],["social","home","Profile link"],
+ ["ads","landing","Ad click","cpc"],["partners","landing","Partner link"],["partners","home","Partner link"],
+ ["direct","home","Types the URL"],["direct","pricing","Comes back to buy"],
+ ["retarget","landing","Ad click","rt_return",{opt:"retarget"}],["referral","invite","Invite link","inv_click",{opt:"referral"}],
+ ["blog","signupN","Signs up","r_blog",{key:1}],["home","signupN","Signs up","r_home",{key:1}],["landing","signupN","Signs up","r_landing",{key:1}],
+ ["pricing","signupN","Starts trial","r_pricing",{key:1}],["invite","signupN","Accepts invite","r_invite",{key:1,opt:"referral"}],
+ ["blog","lead","Downloads lead magnet","r_capture",{key:1,opt:"leadMagnet"}],["lead","nurture","Gets the drip","",{opt:"nurture"}],["nurture","signupN","Starts trial","r_nurture",{key:1,opt:"nurture"}],
+ ["lead","signupN","Signs up later (no drip)","",{opt:"leadNoNurture"}],
+ ["pricing","retarget","Leaves without signing up","rt_match",{opt:"retarget",loop:1}],["landing","retarget","Leaves without signing up","rt_match",{opt:"retarget",loop:1}],
+ ["signupN","onb","Starts onboarding","a_start",{key:1}],["onb","onbDone","Finishes setup","a_complete",{key:1}],["onbDone","aha","Hits the aha moment","a_aha",{key:1}],
+ ["signupN","onbEmail","Stalls in onboarding","",{opt:"onbEmails"}],["onbEmail","aha","Comes back + activates","a_recover",{key:1,opt:"onbEmails"}],
+ ["aha","paywall","Reaches the trial end"],["paywall","paid","Pays","c_act",{key:1}],["paywall","trialEmail","Undecided","",{opt:"trialEmails"}],["trialEmail","paid","Converts after emails","c_te",{key:1,opt:"trialEmails"}],
+ ["signupN","paid","Pays without activating","c_nonact"],
+ ["paid","subs","Joins the base"],["subs","churned","Cancels","churn",{key:1}],["churned","winback","Gets win-back","",{opt:"winback"}],["winback","subs","Comes back","w_rate",{key:1,opt:"winback"}],
+ ["aha","invites","Invites friends","inv_rate",{opt:"referral"}],["invites","referral","Invite clicks","inv_click",{opt:"referral",loop:1}],
+].map(([f,t,label,rate,o={}])=>({f,t,label,rate,...o,id:f+">"+t}));
+
+/* Parameter catalogue: label, format, range, rough typical range (labelled as rough). */
+const PARAMS={
+ t_seo:{l:"Organic search visits / mo",f:"n",min:0,max:200000,step:100},
+ t_social:{l:"Social visits / mo",f:"n",min:0,max:200000,step:100},
+ t_partners:{l:"Partner visits / mo",f:"n",min:0,max:100000,step:100},
+ t_direct:{l:"Direct visits / mo",f:"n",min:0,max:100000,step:100},
+ adSpend:{l:"Ad spend / mo",f:"$",min:0,max:100000,step:100},
+ cpc:{l:"Cost per click",f:"$2",min:0.2,max:10,step:0.05},
+ rtSpend:{l:"Retargeting spend / mo",f:"$",min:0,max:20000,step:50},
+ rt_match:{l:"Leavers you can retarget",f:"%",min:0,max:0.8,step:0.01,typ:"20–50%"},
+ rt_return:{l:"Retargeted who come back / mo",f:"%",min:0,max:0.2,step:0.005,typ:"2–8%"},
+ r_blog:{l:"Blog → sign up",f:"%",min:0,max:0.1,step:0.001,typ:"0.5–2%"},
+ r_home:{l:"Homepage → sign up",f:"%",min:0,max:0.25,step:0.001,typ:"2–8%"},
+ r_landing:{l:"Landing page → sign up",f:"%",min:0,max:0.4,step:0.001,typ:"5–15%"},
+ r_pricing:{l:"Pricing page → trial",f:"%",min:0,max:0.4,step:0.001,typ:"5–15%"},
+ r_invite:{l:"Invite page → sign up",f:"%",min:0,max:0.6,step:0.005,typ:"15–35%"},
+ r_capture:{l:"Blog → lead magnet",f:"%",min:0,max:0.15,step:0.001,typ:"1–5%"},
+ r_nurture:{l:"Nurtured lead → trial",f:"%",min:0,max:0.3,step:0.002,typ:"3–12%"},
+ a_start:{l:"Sign-ups who start onboarding",f:"%",min:0,max:1,step:0.01,typ:"80–95%"},
+ a_complete:{l:"Finish setup",f:"%",min:0,max:1,step:0.01,typ:"40–75%"},
+ a_aha:{l:"Reach the aha moment",f:"%",min:0,max:1,step:0.01,typ:"40–70%"},
+ a_recover:{l:"Stalled users won back by email",f:"%",min:0,max:0.4,step:0.005,typ:"5–15%"},
+ c_act:{l:"Activated users who pay",f:"%",min:0,max:0.6,step:0.005,typ:"10–30%"},
+ c_te:{l:"Undecided converted by emails",f:"%",min:0,max:0.2,step:0.005,typ:"2–8%"},
+ c_nonact:{l:"Non-activated users who pay",f:"%",min:0,max:0.1,step:0.001,typ:"0.5–3%"},
+ price:{l:"Monthly price",f:"$2",min:1,max:200,step:1},
+ annualPrice:{l:"Annual price",f:"$",min:0,max:2000,step:1},
+ annualShare:{l:"Buyers who choose annual",f:"%",min:0,max:1,step:0.01,typ:"20–45%"},
+ churn:{l:"Monthly churn (monthly plans)",f:"%",min:0.005,max:0.25,step:0.001,typ:"4–10% for B2C",down:1},
+ customers0:{l:"Paying customers today",f:"n",min:0,max:200000,step:10},
+ w_rate:{l:"Churned won back",f:"%",min:0,max:0.3,step:0.005,typ:"3–10%"},
+ inv_rate:{l:"Activated users who invite",f:"%",min:0,max:0.5,step:0.005,typ:"5–20%"},
+ inv_per:{l:"Invites per inviter",f:"x",min:0,max:10,step:0.1},
+ inv_click:{l:"Invites that get clicked",f:"%",min:0,max:1,step:0.01,typ:"20–50%"},
+ refReward:{l:"Reward cost per referred sign-up",f:"$",min:0,max:100,step:1},
+ otherCost:{l:"Other marketing cost / mo",f:"$",min:0,max:200000,step:100},
+};
+
+/* ════════════════════════════════════════════════════════════════════════
+   3. Demo data (a typical B2C subscription app)
+   ════════════════════════════════════════════════════════════════════════ */
+const DEMO={
+ name:"Habitly", tagline:"Habit tracker app · 14-day free trial", demo:true,
+ v:{t_seo:9000,t_social:4000,t_partners:1500,t_direct:2500,adSpend:6000,cpc:2,rtSpend:800,
+    rt_match:0.3,rt_return:0.05,r_blog:0.012,r_home:0.05,r_landing:0.1,r_pricing:0.09,r_invite:0.25,r_capture:0.03,r_nurture:0.07,
+    a_start:0.9,a_complete:0.58,a_aha:0.6,a_recover:0.1,c_act:0.18,c_te:0.05,c_nonact:0.015,
+    price:12,annualPrice:96,annualShare:0.25,churn:0.07,customers0:600,w_rate:0.08,inv_rate:0.12,inv_per:2.5,inv_click:0.35,refReward:5,otherCost:4000},
+ split:{seo:{blog:.7,home:.2,pricing:.1},social:{blog:.4,landing:.3,home:.3},partners:{landing:.6,home:.4},direct:{home:.7,pricing:.3}},
+ on:{leadMagnet:true,nurture:true,onbEmails:false,trialEmails:true,winback:false,retarget:false,referral:false},
+ pos:{stage:{},map:{}},
+};
+const clone=o=>JSON.parse(JSON.stringify(o));
+let P=clone(DEMO), BASE=null;
+try{const s=JSON.parse(localStorage.getItem("funnel-sim-v1")||"null"); if(s&&s.P&&s.P.v){P=s.P; BASE=s.BASE||null;}}catch(e){}
+function persist(){try{localStorage.setItem("funnel-sim-v1",JSON.stringify({P,BASE}))}catch(e){}}
+
+/* ════════════════════════════════════════════════════════════════════════
+   4. The model (monthly flows, steady state + 12-month projection)
+   ════════════════════════════════════════════════════════════════════════ */
+function simulate(p){
+  const v=p.v,on=p.on;
+  let rtVisits=0,refVisits=0,R;
+  for(let it=0;it<8;it++){
+    const V={},F={};
+    const add=(a,b,x)=>{if(!(x>0))x=0;F[a+">"+b]=(F[a+">"+b]||0)+x;V[b]=(V[b]||0)+x;};
+    V.seo=v.t_seo;V.social=v.t_social;V.partners=v.t_partners;V.direct=v.t_direct;
+    V.ads=v.cpc>0?v.adSpend/v.cpc:0;
+    V.retarget=on.retarget?rtVisits:0;V.referral=on.referral?refVisits:0;
+    for(const ch of ["seo","social","partners","direct"]){const sp=p.split[ch];const tot=Object.values(sp).reduce((a,b)=>a+b,0)||1;for(const pg in sp)add(ch,pg,V[ch]*sp[pg]/tot);}
+    add("ads","landing",V.ads);
+    if(on.retarget)add("retarget","landing",V.retarget);
+    if(on.referral)add("referral","invite",V.referral);
+    for(const pg of ["blog","home","landing","pricing"])V[pg]=V[pg]||0;
+    add("blog","signupN",V.blog*v.r_blog);add("home","signupN",V.home*v.r_home);add("landing","signupN",V.landing*v.r_landing);add("pricing","signupN",V.pricing*v.r_pricing);
+    if(on.referral)add("invite","signupN",(V.invite||0)*v.r_invite);
+    if(on.leadMagnet){add("blog","lead",V.blog*v.r_capture);
+      if(on.nurture){add("lead","nurture",V.lead);add("nurture","signupN",V.nurture*v.r_nurture);}
+      else add("lead","signupN",V.lead*v.r_nurture*0.25);}
+    const S=V.signupN||0;
+    add("signupN","onb",S*v.a_start);add("onb","onbDone",V.onb*v.a_complete);add("onbDone","aha",V.onbDone*v.a_aha);
+    const ahaOrganic=V.aha||0,stalled=Math.max(0,S-ahaOrganic);
+    if(on.onbEmails){add("signupN","onbEmail",stalled);add("onbEmail","aha",stalled*v.a_recover);}
+    const A=V.aha||0;
+    add("aha","paywall",A);add("paywall","paid",A*v.c_act);
+    const undecided=A*(1-v.c_act);
+    if(on.trialEmails){add("paywall","trialEmail",undecided);add("trialEmail","paid",undecided*v.c_te);}
+    add("signupN","paid",Math.max(0,S-A)*v.c_nonact);
+    const N=V.paid||0;
+    // retention
+    const as=v.annualShare,churnBlend=v.churn*(1-as)+v.churn*0.3*as;
+    const effChurn=churnBlend*(on.winback?(1-v.w_rate):1);
+    const arpu=v.price*(1-as)+(v.annualPrice/12)*as;
+    let C=v.customers0;const proj=[];for(let m=1;m<=12;m++){C=C*(1-effChurn)+N;proj.push(C*arpu);}
+    add("paid","subs",N);V.subs=C;
+    const churned=C*churnBlend;add("subs","churned",churned);
+    if(on.winback){add("churned","winback",churned);add("winback","subs",churned*v.w_rate);V.subs=C;}
+    if(on.referral){const inviters=A*v.inv_rate;add("aha","invites",inviters);V.invites=inviters*v.inv_per;F["invites>referral"]=0;add("invites","referral",V.invites*v.inv_click);}
+    if(on.retarget){const leavers=Math.max(0,V.pricing-(F["pricing>signupN"]||0))+Math.max(0,V.landing-(F["landing>signupN"]||0));
+      F["pricing>retarget"]=Math.max(0,V.pricing-(F["pricing>signupN"]||0))*v.rt_match;F["landing>retarget"]=Math.max(0,V.landing-(F["landing>signupN"]||0))*v.rt_match;
+      rtVisits=leavers*v.rt_match*v.rt_return;}
+    refVisits=on.referral?(V.invites||0)*v.inv_click:0;
+    V.referral=on.referral?refVisits:0;V.retarget=on.retarget?rtVisits:0;
+    const visits=V.seo+V.social+V.ads+V.partners+V.direct+(V.retarget||0)+(V.referral||0);
+    const refSignups=F["invite>signupN"]||0;
+    const cost=v.adSpend+v.otherCost+(on.retarget?v.rtSpend:0)+(on.referral?refSignups*v.refReward:0);
+    const mrr12=proj[11],mrr0=v.customers0*arpu;
+    const ltv=effChurn>0?arpu*0.8/effChurn:0,cac=N>0?cost/N:0;
+    R={V,F,S,A,N,visits,leads:V.lead||0,proj,mrr0,mrr12,arpu,effChurn,cost,ltv,cac,ltvcac:cac>0?ltv/cac:0,payback:arpu>0?cac/(arpu*0.8):0,rev12:proj.reduce((a,b)=>a+b,0),churned};
+  }
+  return R;
+}
+
+/* ════════════════════════════════════════════════════════════════════════
+   5. Levers + suggestions
+   ════════════════════════════════════════════════════════════════════════ */
+const LEVERS=["t_seo","t_social","t_partners","t_direct","adSpend","r_landing","r_home","r_pricing","r_blog","r_capture","r_nurture","a_complete","a_aha","a_recover","c_act","c_te","annualShare","churn","w_rate","inv_rate","r_invite","price"];
+function leverNode(k){const n=NODES.find(n=>n.levers.includes(k));return n?n.id:null;}
+function rankLevers(){
+  const base=simulate(P),out=[];
+  for(const k of LEVERS){
+    const node=leverNode(k);if(node&&NI[node].opt&&!isOn(NI[node].opt))continue;
+    const q=clone(P);const pm=PARAMS[k];
+    q.v[k]=pm.down?q.v[k]*0.9:Math.min(pm.max,q.v[k]*1.1);
+    const r=simulate(q);
+    let gain=r.mrr12-base.mrr12;
+    if(k==="adSpend")gain-=q.v.adSpend-P.v.adSpend;
+    out.push({k,gain,node,from:P.v[k],to:q.v[k]});
+  }
+  return out.sort((a,b)=>b.gain-a.gain);
+}
+function isOn(opt){return opt==="leadNoNurture"?(P.on.leadMagnet&&!P.on.nurture):!!P.on[opt];}
+
+const RULES=[
+ {id:"onb",stage:"activate",node:"onbEmail",when:p=>!p.on.onbEmails,t:"Add behaviour-triggered onboarding emails",
+  why:r=>`${fmt(r.S-r.A)} sign-ups a month stall before the aha moment. Emails triggered by what they didn't do bring a share of them back.`,apply:p=>{p.on.onbEmails=true},cost:"About 1 week to write and set up"},
+ {id:"winback",stage:"retain",node:"winback",when:p=>!p.on.winback,t:"Run a win-back campaign",
+  why:r=>`${fmt(r.churned)} subscribers cancel each month. A win-back email with what's new gets some of them back for almost no cost.`,apply:p=>{p.on.winback=true},cost:"About 2 days"},
+ {id:"ref",stage:"retain",node:"invites",when:p=>!p.on.referral,t:"Launch a referral loop",
+  why:r=>`${fmt(r.A)} people hit the aha moment each month. Ask them to invite a friend right after a win, and new users start bringing users.`,apply:p=>{p.on.referral=true},cost:"About 2 weeks of product work + rewards"},
+ {id:"rt",stage:"acquire",node:"retarget",when:p=>!p.on.retarget&&p.v.adSpend>0,t:"Retarget pricing and landing page visitors",
+  why:r=>`${fmt(Math.max(0,(r.V.pricing||0)+(r.V.landing||0)-(r.F["pricing>signupN"]||0)-(r.F["landing>signupN"]||0)))} high-intent visitors leave each month. A small retargeting budget brings some back.`,apply:p=>{p.on.retarget=true},cost:r=>`$${fmt(P.v.rtSpend)}/mo ad spend`},
+ {id:"te",stage:"convert",node:"trialEmail",when:p=>!p.on.trialEmails,t:"Add trial-ending emails",
+  why:r=>`${fmt(r.A*(1-P.v.c_act))} activated users reach the end of the trial undecided each month.`,apply:p=>{p.on.trialEmails=true},cost:"About 2 days"},
+ {id:"lm",stage:"signup",node:"lead",when:p=>!p.on.leadMagnet,t:"Add a lead magnet to the blog",
+  why:r=>`${fmt(r.V.blog||0)} blog visits a month leave with nothing. Capture the ones who aren't ready for a trial yet.`,apply:p=>{p.on.leadMagnet=true;p.on.nurture=true},cost:"About 1 week"},
+ {id:"nur",stage:"signup",node:"nurture",when:p=>p.on.leadMagnet&&!p.on.nurture,t:"Follow up leads with a nurture drip",
+  why:r=>`${fmt(r.leads)} leads a month get no follow-up.`,apply:p=>{p.on.nurture=true},cost:"About 3 days"},
+ {id:"annual",stage:"convert",node:"paid",when:p=>p.v.annualShare<0.3,t:"Lead with the annual plan",
+  why:r=>`Only ${pct(P.v.annualShare)} of buyers pick annual. Annual subscribers churn far less, so shifting the default compounds.`,apply:p=>{p.v.annualShare=0.35},cost:"A pricing page change",assume:"Assumes annual share rises to 35%"},
+ {id:"setup",stage:"activate",node:"onbDone",when:p=>p.v.a_complete<0.65,t:"Cut setup to the first moment of value",
+  why:r=>`${pct(1-P.v.a_complete)} of people who start onboarding never finish setup. Defer every step that isn't needed to see value.`,apply:p=>{p.v.a_complete=Math.min(0.95,p.v.a_complete+0.1)},cost:"1–2 sprints",assume:"Assumes +10 points on setup completion"},
+ {id:"lp",stage:"visit",node:"landing",when:p=>p.v.r_landing<0.12&&p.v.adSpend>0,t:"Match landing pages to each ad",
+  why:r=>`${fmt(r.V.landing||0)} landing visits a month convert at ${pct(P.v.r_landing)}. A headline that matches the ad usually lifts this.`,apply:p=>{p.v.r_landing=Math.min(0.4,p.v.r_landing*1.25)},cost:"About 1 week of design",assume:"Assumes a 25% relative lift"},
+];
+const CONVL={blog:"sign up",home:"sign up",landing:"sign up",pricing:"start trial",invite:"sign up",nurture:"start trial",signupN:"start onboarding",onb:"finish setup",onbDone:"reach aha",onbEmail:"come back",paywall:"pay",trialEmail:"convert",subs:"churn / mo",winback:"return"};
+let SUGC=null,SUGK="";
+function suggestions(){
+  const key=JSON.stringify([P.v,P.on]);if(SUGC&&SUGK===key)return SUGC;SUGK=key;
+  const base=simulate(P);
+  SUGC=RULES.filter(r=>r.when(P)).map(r=>{const q=clone(P);r.apply(q);const s=simulate(q);
+    const extraCost=s.cost-base.cost;return{...r,gain:s.mrr12-base.mrr12,net:(s.mrr12-base.mrr12)-extraCost,base};}).sort((a,b)=>b.net-a.net);
+  return SUGC;
+}
+
+/* ════════════════════════════════════════════════════════════════════════
+   6. Formatting
+   ════════════════════════════════════════════════════════════════════════ */
+const fmt=v=>{v=+v||0;const a=Math.abs(v);return a>=1e6?(v/1e6).toFixed(1)+"M":a>=1e4?Math.round(v/100)/10+"k":a>=100?Math.round(v).toLocaleString():a>=10?v.toFixed(0):a>=1?v.toFixed(1).replace(/\.0$/,""):a>0?v.toFixed(2):"0"};
+const money=v=>(v<0?"−":"")+"$"+fmt(Math.abs(v));
+const pct=r=>{const p=r*100;return(p>=10?p.toFixed(0):p>=1?p.toFixed(1).replace(/\.0$/,""):p.toFixed(2).replace(/0$/,""))+"%"};
+const showParam=(k,v)=>{const f=PARAMS[k].f;return f==="%"?pct(v):f==="$"?"$"+fmt(v):f==="$2"?"$"+(+v).toFixed(2):f==="x"?(+v).toFixed(1)+"×":fmt(v)};
+const sign=v=>v>0?"+":v<0?"−":"";
+const delta=(cur,base,isMoney,lowerBetter)=>{if(base==null)return"";const d=cur-base;if(Math.abs(d)<1e-9||Math.abs(d)/(Math.abs(base)||1)<0.001)return"";const good=lowerBetter?d<0:d>0;return`<span class="d ${good?"up":"down"}">${sign(d)}${isMoney?"$"+fmt(Math.abs(d)):fmt(Math.abs(d))}</span>`};
+
+/* ════════════════════════════════════════════════════════════════════════
+   7. State + render
+   ════════════════════════════════════════════════════════════════════════ */
+let R=simulate(P), RB=BASE?simulate(BASE):null;
+let view="overview", curStage="activate", lens="all", selected=null;
+const $=id=>document.getElementById(id);
+if(!BASE){BASE=clone(P);RB=R;}
+
+function update(opts={}){
+  R=simulate(P);RB=BASE?simulate(BASE):null;persist();
+  $("pName").textContent=P.name;$("demoTag").style.display=P.demo?"":"none";
+  renderKpis();
+  if(view==="overview")renderOverview();
+  if(view==="stage")renderStage(opts.keepPos);
+  if(view==="map")renderMap(opts.keepPos);
+  if($("ins").classList.contains("open"))renderInsights();
+  if(selected&&$("nd").classList.contains("open"))renderNode(selected);
+  $("insCount").textContent=suggestions().length;
+}
+
+function renderKpis(){
+  const b=RB;
+  const items=[
+    ["Visitors / mo",fmt(R.visits),delta(R.visits,b&&b.visits)],
+    ["Sign-ups / mo",fmt(R.S),delta(R.S,b&&b.S)],
+    ["Activation",pct(R.S?R.A/R.S:0),""],
+    ["New paid / mo",fmt(R.N),delta(R.N,b&&b.N)],
+    ["MRR in 12 mo",money(R.mrr12),delta(R.mrr12,b&&b.mrr12,true),"hero"],
+    ["LTV : CAC",R.ltvcac?R.ltvcac.toFixed(1)+"×":"—",""],
+    ["CAC",money(R.cac),delta(R.cac,b&&b.cac,true,true)],
+  ];
+  $("kpis").innerHTML=items.map(([l,v,d,c])=>`<div class="kpi ${c||""}"><b>${v}${d}</b><small>${l}${l.startsWith("MRR")?` · today ${money(R.mrr0)}`:""}</small></div>`).join("");
+}
+
+/* ── Overview ── */
+function stageStats(id,R){
+  const V=R.V,F=R.F;
+  switch(id){
+    case"acquire":{const ch=[["Organic",V.seo],["Social",V.social],["Paid ads",V.ads],["Partners",V.partners],["Direct",V.direct]];if(P.on.retarget)ch.push(["Retargeting",V.retarget]);if(P.on.referral)ch.push(["Referral",V.referral]);
+      return{big:R.visits,unit:"visits / mo",rows:ch.sort((a,b)=>b[1]-a[1]).slice(0,4).map(([l,x])=>[l,fmt(x),x/R.visits]),out:R.visits,base:null};}
+    case"visit":{const pg=[["Blog",V.blog],["Homepage",V.home],["Landing",V.landing],["Pricing",V.pricing]];if(P.on.referral)pg.push(["Invite",V.invite]);const tot=pg.reduce((a,b)=>a+(b[1]||0),0);
+      return{big:tot,unit:"page visits / mo",rows:pg.sort((a,b)=>b[1]-a[1]).slice(0,4).map(([l,x])=>[l,fmt(x),x/tot]),rate:["Visit → sign-up or lead",pct((R.S+R.leads)/(tot||1))],base:null};}
+    case"signup":{const src=[["Pages",(F["blog>signupN"]||0)+(F["home>signupN"]||0)+(F["landing>signupN"]||0)+(F["pricing>signupN"]||0)],["Nurtured leads",(F["nurture>signupN"]||0)+(F["lead>signupN"]||0)]];if(P.on.referral)src.push(["Invites",F["invite>signupN"]||0]);
+      return{big:R.S,unit:"sign-ups / mo",rows:src.map(([l,x])=>[l,fmt(x),x/(R.S||1)]).concat(P.on.leadMagnet?[["Leads captured",fmt(R.leads),null]]:[]),base:null};}
+    case"activate":return{big:R.A,unit:"activated / mo",rows:[["Start onboarding",pct(P.v.a_start),P.v.a_start],["Finish setup",pct(P.v.a_complete),P.v.a_complete],["Reach aha",pct(P.v.a_aha),P.v.a_aha]],rate:["Sign-up → activated",pct(R.A/(R.S||1))],base:null};
+    case"convert":return{big:R.N,unit:"new paid / mo",rows:[["Activated who pay",pct(P.v.c_act),P.v.c_act],["Annual plan",pct(P.v.annualShare),P.v.annualShare],["ARPU",money(R.arpu)+"/mo",null]],rate:["Trial → paid",pct(R.N/(R.S||1))],base:null};
+    case"retain":return{big:R.mrr12,unit:"MRR in 12 months",money:1,rows:[["Subscribers in 12 mo",fmt(R.V.subs),null],["Effective churn",pct(R.effChurn)+"/mo",null],["LTV",money(R.ltv),null]].concat(P.on.referral?[["Referral visits",fmt(R.V.referral)+"/mo",null]]:[]),rate:null,base:null};
+  }
+}
+function renderOverview(){
+  const sug=suggestions(),levers=rankLevers().slice(0,4);
+  const cnt=id=>sug.filter(s=>s.stage===id).length;
+  $("ov").innerHTML=`
+   <div class="ov-head"><div><h1>${esc(P.name)}</h1><p>${esc(P.tagline||"")}. Each card is a stage of the funnel. Click one to see the pages, emails and product steps inside it.</p></div>
+   <div class="lens-key"><span><i style="background:var(--mkt)"></i>Marketing</span><span><i style="background:var(--prod)"></i>Product</span></div></div>
+   <div class="stages" id="stagesEl"><svg class="ov-wires" id="ovWires"></svg>
+    ${STAGES.map(s=>{const st=stageStats(s.id,R),c=cnt(s.id);const bs=RB?stageStats(s.id,RB).big:st.big;const d=st.big-bs;
+      return`<div class="stage ${lens!=="all"&&s.lens!==lens?"dim":""}" data-stage="${s.id}">
+        <div class="st-top"><span class="st-n">${s.n}</span><span class="st-lens ${s.lens}">${s.lens==="mkt"?"Marketing":"Product"}</span></div>
+        <h3>${s.name}</h3><p class="q">${s.q}</p>
+        <div class="st-big">${st.money?money(st.big):fmt(st.big)}${Math.abs(d)>0.5?` <span class="st-delta ${d>0?"up":"down"}">${sign(d)}${st.money?"$":""}${fmt(Math.abs(d))}</span>`:""}<small>${st.unit}</small></div>
+        ${st.rate?`<div class="st-rate">${st.rate[0]}<b>${st.rate[1]}</b></div>`:""}
+        <div class="st-rows">${st.rows.map(([l,v,w])=>`<div class="st-row">${l}${w!=null?`<span class="bar"><i style="width:${Math.min(100,(w||0)*100)}%"></i></span>`:""}<b>${v}</b></div>`).join("")}</div>
+        <div class="st-foot">${c?`<span class="st-sugg">${c} suggestion${c>1?"s":""}</span>`:`<span>No open suggestions</span>`}<span class="st-open">Open →</span></div>
+      </div>`;}).join("")}
+   </div>
+   <div class="ov-cards">
+    <div class="mini"><h4>Biggest levers <a data-open="levers">All levers</a></h4>${levers.map(l=>`<div class="st-row" style="padding:5px 0;cursor:pointer" data-node="${l.node}">${PARAMS[l.k].l}<b class="up">+${money(l.gain)}</b></div>`).join("")}<div class="credit" style="text-align:left;margin-top:6px">Extra MRR in 12 months from a 10% improvement</div></div>
+    <div class="mini"><h4>Top suggestions <a data-open="sugg">All ${sug.length}</a></h4>${sug.slice(0,4).map(s=>`<div class="st-row" style="padding:5px 0;cursor:pointer" data-sugg="${s.id}">${s.t}<b class="${s.net>=0?"up":"down"}">${sign(s.net)}${money(Math.abs(s.net))}</b></div>`).join("")||"<div class='st-row'>Nothing obvious left. Tune the rates.</div>"}</div>
+    <div class="mini"><h4>12-month MRR <a data-open="roi">ROI</a></h4>${chartSVG()}</div>
+   </div>
+   <div class="credit">Rates are rough starting assumptions, not benchmarks. Replace them with your numbers in “Your numbers”. Built by Tyler White.</div>`;
+  $("ov").querySelectorAll(".stage").forEach(el=>el.addEventListener("click",()=>{curStage=el.dataset.stage;setView("stage")}));
+  $("ov").querySelectorAll("[data-open]").forEach(a=>a.addEventListener("click",()=>openInsights(a.dataset.open)));
+  $("ov").querySelectorAll("[data-node]").forEach(a=>a.addEventListener("click",()=>{const n=NI[a.dataset.node];curStage=n.stage;setView("stage");openNode(n.id)}));
+  $("ov").querySelectorAll("[data-sugg]").forEach(a=>a.addEventListener("click",()=>openInsights("sugg")));
+  requestAnimationFrame(drawOverviewWires);
+}
+function drawOverviewWires(){
+  const host=$("stagesEl");if(!host)return;const svg=$("ovWires");const hb=host.getBoundingClientRect();
+  const cards=[...host.querySelectorAll(".stage")].map(e=>{const b=e.getBoundingClientRect();return{x:b.left-hb.left,y:b.top-hb.top,w:b.width,h:b.height}});
+  const vals=[R.visits,R.visits,R.S,R.A,R.N];const mx=Math.max(...vals,1);
+  const labs=[null,"→ "+pct((R.S+R.leads)/(R.visits||1)),"→ "+pct(R.A/(R.S||1)),"→ "+pct(R.N/(R.A||1)),null];
+  let html="";
+  for(let i=0;i<cards.length-1;i++){
+    const a=cards[i],b=cards[i+1];let d;
+    const sameRow=Math.abs(a.y-b.y)<20;
+    if(sameRow)d=`M${a.x+a.w},${a.y+a.h/2} C${a.x+a.w+18},${a.y+a.h/2} ${b.x-18},${b.y+b.h/2} ${b.x},${b.y+b.h/2}`;
+    else if(Math.abs(a.x-b.x)<20)d=`M${a.x+a.w/2},${a.y+a.h} L${b.x+b.w/2},${b.y}`;
+    else d=`M${a.x+a.w/2},${a.y+a.h} C${a.x+a.w/2},${a.y+a.h+40} ${b.x+b.w/2},${b.y-40} ${b.x+b.w/2},${b.y}`;
+    const w=1.5+5*Math.sqrt(vals[i]/mx);
+    html+=`<path class="ov-wire" d="${d}" style="stroke-width:${w}"/>`;
+    const n=Math.min(6,2+Math.round(Math.log10(vals[i]+1)));
+    for(let k=0;k<n;k++)html+=`<circle class="ov-dot" r="${2+w*0.35}"><animateMotion dur="2.4s" begin="${(-2.4/n*k).toFixed(2)}s" repeatCount="indefinite" path="${d}"/></circle>`;
+    if(false&&labs[i]){const mx2=sameRow?(a.x+a.w+b.x)/2:(a.x+a.w/2+b.x+b.w/2)/2,my=sameRow?(a.y+a.h/2+b.y+b.h/2)/2-16:(a.y+a.h+b.y)/2;const tw=labs[i].length*6.3+14;
+      html+=`<g class="ov-lab"><rect x="${mx2-tw/2}" y="${my-10}" width="${tw}" height="20" rx="10"/><text x="${mx2}" y="${my+3.5}" text-anchor="middle">${labs[i]}</text></g>`;}
+  }
+  if(P.on.referral){const a=cards[5],b=cards[0];const top=Math.min(a.y,b.y)-14;
+    const d=`M${a.x+a.w/2},${a.y} C${a.x+a.w/2},${top-30} ${b.x+b.w/2},${top-30} ${b.x+b.w/2},${b.y}`;
+    html+=`<path class="ov-wire loop" d="${d}" style="stroke-width:1.5"/><circle class="ov-dot" r="2.6"><animateMotion dur="5s" repeatCount="indefinite" path="${d}"/></circle>`;}
+  svg.innerHTML=html;
+}
+
+/* ── Shared node + edge rendering for canvases ── */
+function nodeHTML(n){
+  const off=n.opt&&!isOn(n.opt),v=R.V[n.id]||0;
+  const lever=n.levers.find(k=>PARAMS[k]&&PARAMS[k].f==="%");
+  const convE=EDGES.find(e=>e.f===n.id&&e.key&&e.rate&&(!e.opt||isOn(e.opt)));
+  const conv=convE?`<span class="n-c">${pct(P.v[convE.rate])} ${CONVL[n.id]||"convert"}</span>`:"";
+  const flag=suggestions().find(s=>s.node===n.id);
+  const val=n.id==="subs"?`<span class="n-v">${fmt(v)}</span><span class="n-u">in 12 mo</span>`:n.id==="paid"?`<span class="n-v">${fmt(v)}</span><span class="n-u">/ mo · ${money(R.arpu)} ARPU</span>`:n.id==="invites"?`<span class="n-v">${off?0:fmt(v)}</span><span class="n-u">invites / mo</span>`:`<span class="n-v">${off?0:fmt(v)}</span><span class="n-u">${n.unit} / mo</span>`;
+  return`${flag?`<span class="n-flag">Suggestion</span>`:""}<div class="n-top"><div class="ico">${ico(n.icon)}</div><div><div class="n-t">${n.t}</div><div class="n-s">${off?"Not set up · click to turn on":n.s}</div></div></div><div class="n-f">${val}${off?"":conv}</div>`;
+}
+function edgeVisible(e){return!e.opt||isOn(e.opt)||(NI[e.f].opt&&!isOn(NI[e.f].opt))||(NI[e.t].opt&&!isOn(NI[e.t].opt))}
+function edgePath(a,b,mode){
+  // a,b: {x,y,w,h}; mode: "h" (left→right) or "v" (top→down)
+  if(mode==="v"){
+    if(b.y>a.y+a.h-4){const x0=a.x+a.w/2,y0=a.y+a.h,x1=b.x+b.w/2,y1=b.y,dy=Math.max(30,(y1-y0)/2);return`M${x0},${y0} C${x0},${y0+dy} ${x1},${y1-dy} ${x1},${y1}`;}
+    if(Math.abs(b.y-a.y)<10){const l=a.x<b.x;const x0=l?a.x+a.w:a.x,x1=l?b.x:b.x+b.w,y=a.y+a.h/2;return`M${x0},${y} C${x0+(l?30:-30)},${y} ${x1+(l?-30:30)},${y} ${x1},${y}`;}
+    const x0=a.x+a.w,y0=a.y+a.h/2,x1=b.x+b.w,y1=b.y+b.h/2,gx=Math.max(x0,x1)+50;return`M${x0},${y0} C${gx},${y0} ${gx},${y1} ${x1},${y1}`;
+  }
+  if(b.y>a.y+a.h+40&&!(b.x>a.x+a.w+40&&b.y<a.y+a.h+200)){const x0=a.x+a.w/2,y0=a.y+a.h,x1=b.x+b.w/2,y1=b.y,dy=Math.max(40,(y1-y0)/2);return`M${x0},${y0} C${x0},${y0+dy} ${x1},${y1-dy} ${x1},${y1}`;}
+  if(b.x>a.x+a.w-4){const x0=a.x+a.w,y0=a.y+a.h/2,x1=b.x,y1=b.y+b.h/2,dx=Math.max(30,(x1-x0)/2);return`M${x0},${y0} C${x0+dx},${y0} ${x1-dx},${y1} ${x1},${y1}`;}
+  if(Math.abs(b.x-a.x)<10){const dn=a.y<b.y;const y0=dn?a.y+a.h:a.y,y1=dn?b.y:b.y+b.h,x=a.x+a.w/2;return`M${x},${y0} C${x},${y0+(dn?24:-24)} ${x},${y1+(dn?-24:24)} ${x},${y1}`;}
+  // backwards: loop under
+  const x0=a.x+a.w/2,y0=a.y+a.h,x1=b.x+b.w/2,y1=b.y+b.h,gy=Math.max(y0,y1)+60;return`M${x0},${y0} C${x0},${gy} ${x1},${gy} ${x1},${y1}`;
+}
+function drawWires(svg,boxes,edges,mode,size){
+  svg.setAttribute("width",size.w);svg.setAttribute("height",size.h);svg.setAttribute("viewBox",`0 0 ${size.w} ${size.h}`);
+  const flows=edges.map(e=>e.flow||0),mx=Math.max(1,...flows);let html="",labs="";
+  edges.forEach((e,i)=>{
+    const a=boxes[e.f],b=boxes[e.t];if(!a||!b)return;
+    const d=edgePath(a,b,mode),f=e.flow||0,rel=Math.sqrt(f/mx),off=e.opt&&!isOn(e.opt);
+    html+=`<path class="wire ${e.loop?"loop":""} ${off?"off":""}" data-e="${e.id}" d="${d}" style="stroke-width:${(1+rel*6).toFixed(2)}"/>`;
+    const n=off||f<=0?0:Math.min(8,Math.max(1,Math.round(1+Math.log10(f+1)*1.8)));
+    for(let k=0;k<n;k++){const dur=2.6;html+=`<circle class="dot" data-e="${e.id}" r="${(1.8+rel*2.6).toFixed(1)}"><animateMotion dur="${dur}s" begin="${(-(dur/n)*k-(i%5)*.3).toFixed(2)}s" repeatCount="indefinite" path="${d}"/></circle>`;}
+    if(e.key&&!off&&e.rate){labs+=`<g class="elab" data-e="${e.id}" data-d="${d}" data-txt="${pct(P.v[e.rate])} · ${fmt(f)}"></g>`;}
+  });
+  svg.innerHTML=html+labs;
+  // place labels at a clear point along each path
+  svg.querySelectorAll(".elab").forEach(g=>{
+    const tmp=document.createElementNS("http://www.w3.org/2000/svg","path");tmp.setAttribute("d",g.dataset.d);svg.appendChild(tmp);
+    const len=tmp.getTotalLength(),txt=g.dataset.txt,w=txt.length*6.2+14;
+    const clear=pt=>!Object.values(boxes).some(b=>pt.x+w/2>b.x-4&&pt.x-w/2<b.x+b.w+4&&pt.y+10>b.y-4&&pt.y-10<b.y+b.h+4);
+    let pt=null;for(const t of[.5,.4,.6,.3,.7,.22,.78])  {const q=tmp.getPointAtLength(len*t);if(clear(q)){pt=q;break}}
+    tmp.remove();if(!pt){g.remove();return;}
+    g.innerHTML=`<rect x="${pt.x-w/2}" y="${pt.y-10}" width="${w}" height="20" rx="10"/><text x="${pt.x}" y="${pt.y+3.5}" text-anchor="middle">${txt}</text>`;
+  });
+}
+function wireNodeEvents(el,n,canvas,store,redraw){
+  let sx,sy,ox,oy,moved=false,down=false;
+  el.addEventListener("pointerdown",ev=>{if(n.virt)return;down=true;moved=false;sx=ev.clientX;sy=ev.clientY;ox=parseFloat(el.style.left);oy=parseFloat(el.style.top);el.setPointerCapture(ev.pointerId);ev.stopPropagation();});
+  el.addEventListener("pointermove",ev=>{if(!down)return;const s=canvas.scale||1;const dx=(ev.clientX-sx)/s,dy=(ev.clientY-sy)/s;if(!moved&&Math.hypot(dx,dy)<4)return;moved=true;el.classList.add("drag");el.style.left=(ox+dx)+"px";el.style.top=(oy+dy)+"px";store[n.id]={x:ox+dx,y:oy+dy};redraw();});
+  el.addEventListener("pointerup",ev=>{if(!down)return;down=false;el.classList.remove("drag");if(moved){persist();return;}if(n.virt){curStage=n.goto;renderStage();return;}openNode(n.id);});
+  el.addEventListener("mouseenter",()=>hiNode(n.id,canvas));el.addEventListener("mouseleave",()=>hiNode(selected,canvas));
+}
+function hiNode(id,canvas){
+  const root=canvas.el;if(!root)return;
+  root.classList.toggle("dimmed",!!id);
+  root.querySelectorAll(".node").forEach(e=>e.classList.toggle("hot",!!id&&(e.dataset.id===id||EDGES.some(x=>(x.f===id&&x.t===e.dataset.id)||(x.t===id&&x.f===e.dataset.id)))));
+  root.querySelectorAll("[data-e]").forEach(e=>{const[f,t]=e.dataset.e.split(">");e.classList.toggle("hot",!!id&&(f===id||t===id))});
+}
+
+/* ── Stage view (drill-down) ── */
+const stCanvas={el:null,scale:1};
+function renderStage(keepPos){
+  const wrap=$("stWrap"),canvasEl=$("stCanvas"),svg=$("stWires");stCanvas.el=canvasEl;
+  const st=STAGES[SI[curStage]],vertical=wrap.clientWidth<760;
+  // stage bar
+  $("stBar").innerHTML=`<div class="crumb"><a data-go="overview">Overview</a> / <b>${st.n} ${st.name}</b></div><div class="chips">${STAGES.map(s=>`<button class="chip ${s.id===curStage?"on":""}" data-st="${s.id}">${s.name}</button>`).join("")}</div>`;
+  $("stBar").querySelector("[data-go]").onclick=()=>setView("overview");
+  $("stBar").querySelectorAll("[data-st]").forEach(b=>b.onclick=()=>{curStage=b.dataset.st;closeSide("nd");renderStage()});
+  // nodes in this stage + virtual neighbours
+  const inStage=NODES.filter(n=>n.stage===curStage);
+  const ids=new Set(inStage.map(n=>n.id));
+  const cross=EDGES.filter(e=>edgeVisible(e)&&(ids.has(e.f)!==ids.has(e.t)));
+  const virt={};
+  cross.forEach(e=>{const other=ids.has(e.f)?NI[e.t]:NI[e.f];const sid=other.stage;const before=SI[sid]<SI[curStage]||(e.loop&&ids.has(e.f)&&SI[sid]<=SI[curStage]);
+    const key=(ids.has(e.f)?"out-":"in-")+sid;if(!virt[key])virt[key]={id:"v-"+key,virt:1,goto:sid,dir:ids.has(e.f)?"out":"in",before:SI[sid]<SI[curStage],flow:0,edges:[]};
+    virt[key].flow+=R.F[e.id]||0;virt[key].edges.push(e);});
+  const V=Object.values(virt);
+  const cols={};V.filter(v=>v.dir==="in").forEach(v=>(cols[-1]=cols[-1]||[]).push(v));
+  inStage.forEach(n=>(cols[n.d]=cols[n.d]||[]).push(n));
+  V.filter(v=>v.dir==="out").forEach(v=>(cols[9]=cols[9]||[]).push(v));
+  const colKeys=Object.keys(cols).map(Number).sort((a,b)=>a-b);
+  // layout
+  const W=210,VW=170,gapC=vertical?70:110,gapR=22,pad=24,top=90;
+  const boxes={},els=[];
+  canvasEl.querySelectorAll(".node,.lane-h").forEach(e=>e.remove());
+  const make=(n)=>{const el=document.createElement("div");
+    if(n.virt){const s=STAGES[SI[n.goto]];el.className="node virt";el.innerHTML=`<div class="n-top"><div class="ico">${ico("arrow")}</div><div><div class="n-t">${n.dir==="in"?"From":"To"} ${s.name}</div><div class="n-s">${n.edges.length} connection${n.edges.length>1?"s":""} · open stage</div></div></div><div class="n-f"><span class="n-v">${fmt(n.flow)}</span><span class="n-u">/ mo</span></div>`;}
+    else{el.className="node "+STAGES[SI[n.stage]].lens+(n.opt&&!isOn(n.opt)?" off":"");el.innerHTML=nodeHTML(n);}
+    el.dataset.id=n.id;canvasEl.appendChild(el);return el;};
+  // measure + place
+  let x=pad,y=top,maxX=0,maxY=0;
+  const colEls=colKeys.map(c=>cols[c].map(n=>({n,el:make(n)})));
+  if(!vertical){
+    const heights=colEls.map(col=>col.reduce((s,{el})=>s+el.offsetHeight+gapR,0)-gapR);const H=Math.max(...heights);
+    colEls.forEach((col,i)=>{let yy=top+(H-heights[i])/2;col.forEach(({n,el})=>{const w=el.offsetWidth,h=el.offsetHeight;boxes[n.id]={x,y:yy,w,h};yy+=h+gapR;});x+=Math.max(...col.map(({el})=>el.offsetWidth))+gapC;});
+  }else{
+    colEls.forEach((col)=>{const avail=wrap.clientWidth-pad*2;const rowW=Math.min(avail,col.reduce((s,{el})=>s+el.offsetWidth+14,0)-14);let xx=pad+Math.max(0,(avail-rowW)/2);
+      let rowH=0;
+      col.forEach(({n,el})=>{const w=el.offsetWidth,h=el.offsetHeight;if(xx+w>pad+avail&&xx>pad){xx=pad;y+=rowH+14;rowH=0;}boxes[n.id]={x:xx,y,w,h};xx+=w+14;rowH=Math.max(rowH,h);});
+      y+=rowH+gapC;});
+  }
+  // apply saved drag positions
+  const store=P.pos.stage;
+  colEls.flat().forEach(({n,el})=>{if(store[n.id]&&!n.virt){boxes[n.id].x=store[n.id].x;boxes[n.id].y=store[n.id].y;}el.style.left=boxes[n.id].x+"px";el.style.top=boxes[n.id].y+"px";});
+  Object.values(boxes).forEach(b=>{maxX=Math.max(maxX,b.x+b.w);maxY=Math.max(maxY,b.y+b.h)});
+  // edges: internal + to virtual nodes
+  const edges=[];
+  EDGES.filter(e=>edgeVisible(e)&&ids.has(e.f)&&ids.has(e.t)).forEach(e=>edges.push({...e,flow:R.F[e.id]||0}));
+  V.forEach(v=>v.edges.forEach(e=>edges.push({...e,f:v.dir==="in"?v.id:e.f,t:v.dir==="out"?v.id:e.t,flow:R.F[e.id]||0})));
+  const size={w:maxX+pad+80,h:maxY+pad+80};
+  const scale=vertical?1:Math.min(1,(wrap.clientWidth-20)/size.w);stCanvas.scale=scale;
+  canvasEl.style.width=size.w+"px";canvasEl.style.height=size.h+"px";
+  canvasEl.style.transform=`translate(${Math.max(0,(wrap.clientWidth-size.w*scale)/2)}px,0) scale(${scale})`;
+  const redraw=()=>{colEls.flat().forEach(({n,el})=>{boxes[n.id].x=parseFloat(el.style.left);boxes[n.id].y=parseFloat(el.style.top)});drawWires(svg,boxes,edges,vertical?"v":"h",size);applyLens(canvasEl);};
+  colEls.flat().forEach(({n,el})=>wireNodeEvents(el,n,stCanvas,store,redraw));
+  redraw();
+  // summary pills
+  if(selected&&!ids.has(selected))selected=null;
+  hiNode(selected,stCanvas);
+}
+
+/* ── Full map ── */
+const mapCanvas={el:null,scale:.8,tx:20,ty:20};
+function renderMap(keepPos){
+  const wrap=$("mapWrap"),canvasEl=$("mapCanvas"),svg=$("mapWires");mapCanvas.el=canvasEl;
+  canvasEl.querySelectorAll(".node,.lane,.lane-h").forEach(e=>e.remove());
+  const colW=760,gapR=18,boxes={},items=[],blocks=[];
+  STAGES.forEach((s,si)=>{
+    const ns=NODES.filter(n=>n.stage===s.id),local={};let bh=0;
+    [0,1,2].forEach(d=>{let y=0;ns.filter(n=>n.d===d).forEach(n=>{const el=document.createElement("div");el.className="node "+s.lens+(n.opt&&!isOn(n.opt)?" off":"");el.innerHTML=nodeHTML(n);el.dataset.id=n.id;canvasEl.appendChild(el);
+      local[n.id]={x:30+d*235,y,w:el.offsetWidth,h:el.offsetHeight};y+=el.offsetHeight+gapR+(d===1?30:0);bh=Math.max(bh,y);items.push({n,el});});});
+    blocks.push({s,si,local,bh});
+  });
+  const rowH=[0,1].map(r=>Math.max(...blocks.filter(b=>Math.floor(b.si/3)===r).map(b=>b.bh)));
+  blocks.forEach(b=>{const col=b.si%3,row=Math.floor(b.si/3),ox=col*colW,oy=60+(row?rowH[0]+130:0);
+    const h=document.createElement("div");h.className="lane-h";h.style.left=(ox+30)+"px";h.style.top=(oy-36)+"px";h.innerHTML=`<em>${b.s.n}</em> ${b.s.name} · <span style="color:${b.s.lens==="mkt"?"var(--mkt)":"var(--prod)"}">${b.s.lens==="mkt"?"Marketing":"Product"}</span>`;canvasEl.appendChild(h);
+    for(const id in b.local){const L=b.local[id];boxes[id]={x:ox+L.x,y:oy+L.y,w:L.w,h:L.h};if(P.pos.map[id]){boxes[id].x=P.pos.map[id].x;boxes[id].y=P.pos.map[id].y;}}});
+  items.forEach(({n,el})=>{el.style.left=boxes[n.id].x+"px";el.style.top=boxes[n.id].y+"px"});
+  let maxX=0,maxY=0;Object.values(boxes).forEach(b=>{maxX=Math.max(maxX,b.x+b.w);maxY=Math.max(maxY,b.y+b.h)});
+  const size={w:maxX+120,h:maxY+160};canvasEl.style.width=size.w+"px";canvasEl.style.height=size.h+"px";
+  const edges=EDGES.filter(edgeVisible).map(e=>({...e,flow:R.F[e.id]||0}));
+  const redraw=()=>{items.forEach(({n,el})=>{boxes[n.id].x=parseFloat(el.style.left);boxes[n.id].y=parseFloat(el.style.top)});drawWires(svg,boxes,edges,"h",size);applyLens(canvasEl);};
+  items.forEach(({n,el})=>wireNodeEvents(el,n,mapCanvas,P.pos.map,redraw));
+  redraw();
+  mapCanvas.size=size;if(!keepPos&&!mapCanvas.fitted){fitMap();mapCanvas.fitted=true;}applyMapTransform();
+  hiNode(selected,mapCanvas);
+}
+function applyMapTransform(){$("mapCanvas").style.transform=`translate(${mapCanvas.tx}px,${mapCanvas.ty}px) scale(${mapCanvas.scale})`;}
+function fitMap(){const wrap=$("mapWrap"),s=mapCanvas.size||{w:3400,h:1200};mapCanvas.scale=Math.max(.2,Math.min(1,(wrap.clientWidth-40)/s.w,(wrap.clientHeight-40)/s.h));mapCanvas.tx=(wrap.clientWidth-s.w*mapCanvas.scale)/2;mapCanvas.ty=20;applyMapTransform();}
+(function mapPanZoom(){
+  const wrap=$("mapWrap");let pan=null;
+  wrap.addEventListener("pointerdown",e=>{if(e.target.closest(".node"))return;pan={x:e.clientX,y:e.clientY,tx:mapCanvas.tx,ty:mapCanvas.ty};wrap.setPointerCapture(e.pointerId);});
+  wrap.addEventListener("pointermove",e=>{if(!pan)return;mapCanvas.tx=pan.tx+e.clientX-pan.x;mapCanvas.ty=pan.ty+e.clientY-pan.y;applyMapTransform();});
+  wrap.addEventListener("pointerup",()=>pan=null);
+  wrap.addEventListener("wheel",e=>{e.preventDefault();const r=wrap.getBoundingClientRect(),mx=e.clientX-r.left,my=e.clientY-r.top;const k=Math.exp(-e.deltaY*0.0015),ns=Math.max(.2,Math.min(1.6,mapCanvas.scale*k));
+    mapCanvas.tx=mx-(mx-mapCanvas.tx)*ns/mapCanvas.scale;mapCanvas.ty=my-(my-mapCanvas.ty)*ns/mapCanvas.scale;mapCanvas.scale=ns;applyMapTransform();},{passive:false});
+  document.querySelectorAll("[data-z]").forEach(b=>b.addEventListener("click",()=>{if(b.dataset.z==="fit")return fitMap();const k=b.dataset.z==="in"?1.2:1/1.2;mapCanvas.scale=Math.max(.2,Math.min(1.6,mapCanvas.scale*k));applyMapTransform();}));
+})();
+function applyLens(root){root.querySelectorAll(".node").forEach(el=>{const n=NI[el.dataset.id];el.classList.toggle("lens-dim",!!n&&lens!=="all"&&STAGES[SI[n.stage]].lens!==lens)});}
+
+/* ── Node drawer (progressive disclosure of controls) ── */
+function openNode(id){selected=id;closeSide("ins");renderNode(id);$("nd").classList.add("open");const c=view==="map"?mapCanvas:stCanvas;hiNode(id,c);document.querySelectorAll(".node").forEach(e=>e.classList.toggle("sel",e.dataset.id===id));}
+function renderNode(id){
+  const n=NI[id],st=STAGES[SI[n.stage]],off=n.opt&&!isOn(n.opt);
+  $("ndKind").textContent=`${st.n} ${st.name} · ${st.lens==="mkt"?"Marketing":"Product"}`;$("ndTitle").textContent=n.t;
+  const ins=EDGES.filter(e=>e.t===id&&edgeVisible(e)),outs=EDGES.filter(e=>e.f===id&&edgeVisible(e));
+  const sug=suggestions().find(s=>s.node===id);
+  const row=(e,other,dir)=>`<div class="flowrow" data-go="${other}">${dir} ${NI[other].t}<span style="color:var(--faint)">· ${e.label}</span><em>${e.rate?showParam(e.rate,P.v[e.rate])+" · ":""}${fmt(R.F[e.id]||0)}</em></div>`;
+  $("ndBody").innerHTML=
+   `<div class="kv"><div><b>${off?0:fmt(R.V[id]||0)}</b><small>${n.unit} / month${id==="subs"?" (month 12)":""}</small></div>${id==="paid"?`<div><b>${money(R.N*R.arpu)}</b><small>new MRR / month</small></div>`:id==="subs"?`<div><b>${money(R.mrr12)}</b><small>MRR in 12 months</small></div>`:`<div><b>${pct((R.V[id]||0)/(R.visits||1))}</b><small>of all visitors</small></div>`}</div>`+
+   (n.opt?`<h5>Program</h5><label class="toggle"><input type="checkbox" id="optT" ${isOn(n.opt)?"checked":""}><span>${isOn(n.opt)?"On":"Off"}: ${n.t}</span></label>`:"")+
+   (sug?`<h5>Suggestion</h5><div class="note"><b>${sug.t}</b><br>${sug.why(R)}<br><span class="${sug.net>=0?"up":"down"}" style="font-weight:700">${sign(sug.net)}${money(Math.abs(sug.net))} MRR in 12 months</span></div>`:"")+
+   (n.levers.length&&!off?`<h5>Levers</h5>${n.levers.map(k=>ctl(k)).join("")}`:"")+
+   `<h5>Best practice</h5><p style="margin:0">${n.tip}</p>`+
+   (ins.length?`<h5>Comes from</h5>${ins.map(e=>row(e,e.f,"↑")).join("")}`:"")+
+   (outs.length?`<h5>Leads to</h5>${outs.map(e=>row(e,e.t,"↓")).join("")}`:"");
+  bindCtls($("ndBody"));
+  const t=$("optT");if(t)t.onchange=()=>{P.on[n.opt]=t.checked;if(n.opt==="leadMagnet"&&!t.checked)P.on.nurture=false;markEdited();update({keepPos:1});toast(`${n.t} ${t.checked?"on":"off"}`)};
+  $("ndBody").querySelectorAll("[data-go]").forEach(el=>el.onclick=()=>{const o=NI[el.dataset.go];if(view==="stage"&&o.stage!==curStage){curStage=o.stage;renderStage();}openNode(o.id)});
+}
+function ctl(k){const p=PARAMS[k],v=P.v[k];
+  return`<label class="ctl"><span class="ctl-r"><span>${p.l}</span><output id="o-${k}">${showParam(k,v)}</output></span><input type="range" data-k="${k}" min="${p.min}" max="${p.max}" step="${p.step}" value="${v}">${p.typ?`<small>Rough typical range: ${p.typ}</small>`:""}</label>`;}
+function bindCtls(root){root.querySelectorAll("input[data-k]").forEach(inp=>{inp.addEventListener("input",()=>{const k=inp.dataset.k;P.v[k]=+inp.value;$("o-"+k).textContent=showParam(k,P.v[k]);markEdited();throttledUpdate();});});}
+let tmr=null;function throttledUpdate(){if(tmr)return;tmr=setTimeout(()=>{tmr=null;const keep=selected;R=simulate(P);RB=BASE?simulate(BASE):null;persist();renderKpis();
+  if(view==="overview")renderOverview();else if(view==="stage")renderStage(1);else renderMap(1);
+  if($("ins").classList.contains("open"))renderInsights();$("insCount").textContent=suggestions().length;
+  if(keep){document.querySelectorAll(".node").forEach(e=>e.classList.toggle("sel",e.dataset.id===keep));}
+  // refresh numbers in the drawer without rebuilding sliders
+  const kv=$("ndBody").querySelector(".kv b");if(kv&&keep)kv.textContent=fmt(R.V[keep]||0);
+},90);}
+function markEdited(){if(P.demo){P.demo=false;P.name=P.name;}}
+
+/* ── Insights ── */
+let insTab="levers";
+function openInsights(tab){if(tab)insTab=tab;closeSide("nd");$("ins").classList.add("open");$("insBtn").classList.add("on");renderInsights();}
+function renderInsights(){
+  document.querySelectorAll("#insTabs button").forEach(b=>b.classList.toggle("on",b.dataset.t===insTab));
+  const body=$("insBody");
+  if(insTab==="levers"){const L=rankLevers();const mx=Math.max(1,...L.map(l=>l.gain));
+    body.innerHTML=`<h5>What a 10% improvement is worth</h5><p style="margin:0 0 6px;color:var(--muted);font-size:12px">Extra MRR in 12 months if each number gets 10% better (churn 10% lower). Paid ads include the extra spend.</p>`+
+    L.map(l=>`<div class="lever" data-node="${l.node}"><span class="lv-t">${PARAMS[l.k].l}</span><span class="lv-v ${l.gain<0?"down":""}">${l.gain>=0?"+":"−"}${money(Math.abs(l.gain))}</span><span class="lv-bar"><i style="width:${Math.max(2,l.gain/mx*100)}%"></i></span><span class="lv-s">${showParam(l.k,l.from)} → ${showParam(l.k,l.to)} · ${STAGES[SI[NI[l.node].stage]].name}</span></div>`).join("");
+    body.querySelectorAll(".lever").forEach(el=>el.onclick=()=>{const n=NI[el.dataset.node];curStage=n.stage;setView("stage");openNode(n.id)});}
+  if(insTab==="sugg"){const S=suggestions();
+    body.innerHTML=`<h5>Best-practice gaps, ranked by net gain</h5>`+(S.length?S.map(s=>`<div class="sugg"><div class="sg-top"><div class="sg-t">${s.t}</div><div class="sg-imp ${s.net>=0?"":"down"}">${sign(s.net)}${money(Math.abs(s.net))}</div></div><div class="sg-why">${s.net<0?`<b style="color:var(--red)">Not worth it at these numbers.</b> `:""}${s.why(R)}${s.assume?` <i style="color:var(--faint)">${s.assume}.</i>`:""}</div><div class="sg-act"><button class="btn primary" data-apply="${s.id}">Apply</button><button class="btn" data-see="${s.node}">Show me</button><span class="sg-tag">${typeof s.cost==="function"?s.cost(R):s.cost}</span></div></div>`).join(""):`<p>No gaps left from the checklist. Use the levers to tune rates.</p>`)+
+    `<p style="font-size:11.5px;color:var(--faint)">Net gain is extra MRR in 12 months minus any new monthly cost. Apply changes the model, so compare against your baseline in ROI. A negative number means the change costs more than it earns at your current numbers.</p>`;
+    body.querySelectorAll("[data-apply]").forEach(b=>b.onclick=()=>{const r=RULES.find(x=>x.id===b.dataset.apply);const before=R.mrr12;r.apply(P);markEdited();update({keepPos:1});toast(`Applied: ${r.t} · ${sign(R.mrr12-before)}${money(Math.abs(R.mrr12-before))} MRR in 12 mo`);});
+    body.querySelectorAll("[data-see]").forEach(b=>b.onclick=()=>{const n=NI[b.dataset.see];curStage=n.stage;setView("stage");openNode(n.id)});}
+  if(insTab==="roi"){const b=RB,dM=R.mrr12-b.mrr12,d12=R.rev12-b.rev12,dCost=(R.cost-b.cost)*12;
+    body.innerHTML=`<h5>Current vs baseline</h5><div class="kv"><div><b class="${dM>=0?"up":"down"}">${sign(dM)}${money(Math.abs(dM))}</b><small>MRR in 12 months</small></div><div><b class="${d12>=0?"up":"down"}">${sign(d12)}${money(Math.abs(d12))}</b><small>extra revenue, 12 months</small></div><div><b>${sign(dCost)}${money(Math.abs(dCost))}</b><small>extra running cost, 12 months</small></div><div><b>${money(R.cac)}</b><small>CAC (baseline ${money(b.cac)})</small></div></div>
+    <label class="ctl"><span class="ctl-r"><span>One-time cost of these changes</span><output id="o-oc">$${fmt(P.oneTime||0)}</output></span><input type="range" id="oneTime" min="0" max="100000" step="500" value="${P.oneTime||0}"><small>Design, engineering and copy time</small></label>
+    <div class="kv" id="roiOut"></div>
+    <h5>MRR over 12 months</h5>${chartSVG(true)}
+    <div style="display:flex;gap:8px;margin-top:10px"><button class="btn" id="setBase">Set current as baseline</button><button class="btn" id="resetBase">Back to baseline</button></div>
+    <p style="font-size:11.5px;color:var(--faint)">Baseline is a snapshot. Change anything, then read the difference here.</p>`;
+    const roiOut=()=>{const oc=P.oneTime||0,net=d12-dCost-oc;$("roiOut").innerHTML=`<div><b class="${net>=0?"up":"down"}">${sign(net)}${money(Math.abs(net))}</b><small>net return, year one</small></div><div><b>${oc>0?(net/oc*100).toFixed(0)+"%":"—"}</b><small>ROI on the one-time cost</small></div><div><b>${dM>0&&oc>0?Math.max(1,Math.ceil(oc/(dM/2))) +" mo":"—"}</b><small>rough payback</small></div><div><b>${R.ltvcac?R.ltvcac.toFixed(1)+"×":"—"}</b><small>LTV : CAC (baseline ${b.ltvcac?b.ltvcac.toFixed(1)+"×":"—"})</small></div>`;};
+    roiOut();$("oneTime").oninput=e=>{P.oneTime=+e.target.value;$("o-oc").textContent="$"+fmt(P.oneTime);persist();roiOut();};
+    $("setBase").onclick=()=>{BASE=clone(P);update();toast("Baseline saved");};
+    $("resetBase").onclick=()=>{const pos=P.pos;P=clone(BASE);P.pos=pos;update();toast("Back to baseline");};}
+}
+function chartSVG(big){
+  const W=360,H=big?170:120,p=8;const a=R.proj,b=RB?RB.proj:null;const all=a.concat(b||[]).concat([R.mrr0]);const mx=Math.max(...all)*1.08,mn=Math.min(...all)*0.9;
+  const pt=(arr)=>[R.mrr0,...arr].map((v,i)=>`${(p+i*(W-2*p)/12).toFixed(1)},${(H-p-(v-mn)/(mx-mn||1)*(H-2*p-14)).toFixed(1)}`).join(" ");
+  const bpts=b?[RB.mrr0,...b].map((v,i)=>`${(p+i*(W-2*p)/12).toFixed(1)},${(H-p-(v-mn)/(mx-mn||1)*(H-2*p-14)).toFixed(1)}`).join(" "):"";
+  return`<svg class="chart" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" style="height:${H}px">
+   <defs><linearGradient id="cg" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#C59060" stop-opacity=".35"/><stop offset="1" stop-color="#C59060" stop-opacity="0"/></linearGradient></defs>
+   <polygon points="${p},${H-p} ${pt(a)} ${W-p},${H-p}" fill="url(#cg)"/>
+   ${b?`<polyline points="${bpts}" fill="none" stroke="rgba(255,255,255,.35)" stroke-dasharray="4 4" stroke-width="1.5"/>`:""}
+   <polyline points="${pt(a)}" fill="none" stroke="#E9B989" stroke-width="2.2"/>
+   <text x="${W-p}" y="14" text-anchor="end" fill="#E9B989" font-size="11" font-weight="600" font-family="Inter">${money(R.mrr12)}</text>
+   <text x="${p}" y="14" fill="#6b6b74" font-size="10.5" font-family="Inter">${b?"dashed = baseline":""}</text></svg>`;
+}
+
+/* ── Setup wizard ── */
+let suStep=0;const SU=[
+ {t:"Your product",s:"What you sell and how people pay.",body:()=>`<div class="grid2">
+   <label class="fld">Product name<input type="text" id="f-name" value="${esc(P.name)}"></label>
+   <label class="fld">One line description<input type="text" id="f-tag" value="${esc(P.tagline||"")}"></label>
+   ${num("price")}${num("annualPrice")}${num("annualShare",1)}${num("customers0")}</div>`},
+ {t:"Traffic",s:"Monthly visits by source. Use last month from your analytics.",body:()=>`<div class="grid2">${num("t_seo")}${num("t_social")}${num("t_partners")}${num("t_direct")}${num("adSpend")}${num("cpc")}${num("otherCost")}</div>
+   <h5 style="margin-top:16px;color:var(--faint);font:500 10.5px var(--mono);letter-spacing:.12em;text-transform:uppercase">Connect later (in the Claude skill)</h5><div class="connect"><span>Google Analytics 4</span><span>Search Console</span><span>Stripe</span><span>Kit / Mailchimp / Customer.io</span><span>Mixpanel / Amplitude</span></div>`},
+ {t:"Conversion rates",s:"Leave anything you don't know. The demo value stays.",body:()=>`<div class="grid2">${["r_home","r_landing","r_pricing","r_blog","a_complete","a_aha","c_act","churn"].map(k=>num(k,1)).join("")}</div>`},
+ {t:"What you already run",s:"Turn on the programs you have today. The rest become suggestions.",body:()=>`<div class="grid2">${[["leadMagnet","Lead magnet"],["nurture","Nurture drip"],["onbEmails","Onboarding emails"],["trialEmails","Trial-ending emails"],["winback","Win-back campaign"],["retarget","Retargeting ads"],["referral","Referral program"]].map(([k,l])=>`<label class="toggle"><input type="checkbox" data-on="${k}" ${P.on[k]?"checked":""}>${l}</label>`).join("")}</div>`},
+];
+function num(k,isPct){const p=PARAMS[k];const v=P.v[k];return`<label class="fld">${p.l}<input type="number" data-num="${k}" ${isPct||p.f==="%"?`data-pct="1" step="0.1" value="${+(v*100).toFixed(2)}"`:`step="${p.step}" value="${v}"`}>${p.typ?`<small>${p.f==="%"?"Percent · ":""}rough range ${p.typ}</small>`:p.f==="%"?"<small>Percent</small>":""}</label>`;}
+function renderSetup(){const s=SU[suStep];$("suTitle").textContent=s.t;$("suSub").textContent=s.s;$("suBody").innerHTML=s.body();
+  $("suSteps").querySelectorAll("span").forEach((e,i)=>e.classList.toggle("on",i<=suStep));$("suBack").style.visibility=suStep?"visible":"hidden";$("suNext").textContent=suStep===SU.length-1?"See my funnel":"Next";}
+function readSetup(){const b=$("suBody");const nm=$("f-name");if(nm){P.name=nm.value||P.name;P.tagline=$("f-tag").value;}
+  b.querySelectorAll("[data-num]").forEach(i=>{if(i.value==="")return;const k=i.dataset.num;let v=+i.value;if(i.dataset.pct)v=v/100;P.v[k]=v;});
+  b.querySelectorAll("[data-on]").forEach(i=>P.on[i.dataset.on]=i.checked);if(!P.on.leadMagnet)P.on.nurture=false;}
+$("setupBtn").onclick=()=>{suStep=0;renderSetup();$("setup").classList.add("open")};
+$("suBack").onclick=()=>{readSetup();suStep=Math.max(0,suStep-1);renderSetup()};
+$("suNext").onclick=()=>{readSetup();P.demo=false;if(suStep<SU.length-1){suStep++;renderSetup();}else{$("setup").classList.remove("open");BASE=clone(P);update();setView("overview");toast("Your funnel is ready. Baseline saved.");}};
+$("suDemo").onclick=()=>{P=clone(DEMO);BASE=clone(P);$("setup").classList.remove("open");mapCanvas.fitted=false;update();toast("Demo data loaded")};
+$("setup").addEventListener("click",e=>{if(e.target.id==="setup")$("setup").classList.remove("open")});
+
+/* ── Chrome: views, lens, menus, toasts ── */
+function setView(v){view=v;document.querySelectorAll(".view").forEach(e=>e.classList.toggle("on",e.id==="v-"+v));document.querySelectorAll("#viewSeg button").forEach(b=>b.classList.toggle("on",b.dataset.v===v));
+  if(v==="overview")renderOverview();if(v==="stage")renderStage();if(v==="map")renderMap();}
+document.querySelectorAll("#viewSeg button").forEach(b=>b.onclick=()=>{closeSide("nd");setView(b.dataset.v)});
+document.querySelectorAll("#lensSeg button").forEach(b=>b.onclick=()=>{lens=b.dataset.l;document.querySelectorAll("#lensSeg button").forEach(x=>x.classList.toggle("on",x===b));if(view==="overview")renderOverview();else document.querySelectorAll(".canvas").forEach(applyLens);});
+$("insBtn").onclick=()=>$("ins").classList.contains("open")?closeSide("ins"):openInsights();
+document.querySelectorAll("#insTabs button").forEach(b=>b.onclick=()=>{insTab=b.dataset.t;renderInsights()});
+document.querySelectorAll("[data-close]").forEach(b=>b.onclick=()=>closeSide(b.dataset.close));
+function closeSide(id){$(id).classList.remove("open");if(id==="ins")$("insBtn").classList.remove("on");if(id==="nd"){selected=null;document.querySelectorAll(".node").forEach(e=>e.classList.remove("sel"));hiNode(null,view==="map"?mapCanvas:stCanvas);}}
+$("menuBtn").onclick=e=>{e.stopPropagation();$("menuPop").classList.toggle("open")};
+document.addEventListener("click",()=>$("menuPop").classList.remove("open"));
+$("menuPop").querySelectorAll("[data-m]").forEach(b=>b.onclick=()=>{const m=b.dataset.m;
+  if(m==="baseline"){BASE=clone(P);update();toast("Baseline saved");}
+  if(m==="tidy"){P.pos={stage:{},map:{}};mapCanvas.fitted=false;update();toast("Layout tidied");}
+  if(m==="demo"){P=clone(DEMO);BASE=clone(P);mapCanvas.fitted=false;update();setView("overview");toast("Demo data loaded");}
+  if(m==="export"){const blob=new Blob([JSON.stringify({schema:"funnel-sim/1",product:{name:P.name,tagline:P.tagline},values:P.v,trafficSplit:P.split,programs:P.on,layout:P.pos},null,2)],{type:"application/json"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=(P.name||"funnel").toLowerCase().replace(/[^a-z0-9]+/g,"-")+"-funnel.json";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);toast("Exported");}
+  if(m==="import")$("fileIn").click();});
+$("fileIn").onchange=async e=>{const f=e.target.files[0];if(!f)return;try{const j=JSON.parse(await f.text());const q=clone(DEMO);q.demo=false;q.name=j.product?.name||q.name;q.tagline=j.product?.tagline||"";Object.assign(q.v,j.values||{});Object.assign(q.on,j.programs||{});if(j.trafficSplit)q.split=j.trafficSplit;if(j.layout)q.pos=j.layout;P=q;BASE=clone(P);mapCanvas.fitted=false;update();setView("overview");toast("Imported "+P.name);}catch(err){toast("That file isn't a funnel export")}e.target.value="";};
+document.addEventListener("keydown",e=>{if(e.key==="Escape"){closeSide("nd");closeSide("ins");$("setup").classList.remove("open");}});
+let toastT;function toast(t){const el=$("toast");el.textContent=t;el.classList.add("show");clearTimeout(toastT);toastT=setTimeout(()=>el.classList.remove("show"),2600);}
+function esc(s){return String(s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
+let rz;window.addEventListener("resize",()=>{clearTimeout(rz);rz=setTimeout(()=>{if(view==="overview")drawOverviewWires();if(view==="stage")renderStage(1);if(view==="map")fitMap();},120)});
+
+update();setView("overview");
+(document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(()=>{if(view==="overview")drawOverviewWires();});
+</script>
+</body>
+</html>

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>The Funnel Simulator for SaaS Builders | Tyler White</title>
+  <meta name="description" content="A free funnel simulator for B2C SaaS. Plug in your traffic and conversion rates, watch every visitor flow to paid, and see the one lever that moves revenue most." />
+  <link rel="canonical" href="https://www.mrtylerwhite.com/funnel-simulator/" />
+
+  <link rel="icon" href="/wp-content/uploads/2025/05/cropped-Favicon-2-32x32.png" sizes="32x32" />
+  <link rel="icon" href="/wp-content/uploads/2025/05/cropped-Favicon-2-192x192.png" sizes="192x192" />
+  <link rel="apple-touch-icon" href="/wp-content/uploads/2025/05/cropped-Favicon-2-180x180.png" />
+  <meta name="msapplication-TileImage" content="/wp-content/uploads/2025/05/cropped-Favicon-2-270x270.png" />
+
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="The Funnel Simulator for SaaS Builders | Tyler White" />
+  <meta property="og:description" content="A free funnel simulator for B2C SaaS. Plug in your traffic and conversion rates, watch every visitor flow to paid, and see the one lever that moves revenue most." />
+  <meta property="og:url" content="https://www.mrtylerwhite.com/funnel-simulator/" />
+  <meta property="og:site_name" content="Mr. Tyler White" />
+  <meta property="og:image" content="https://www.mrtylerwhite.com/assets/images/funnel-simulator/og.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="The Funnel Simulator for SaaS Builders | Tyler White" />
+  <meta name="twitter:description" content="A free funnel simulator for B2C SaaS. Plug in your traffic and conversion rates, watch every visitor flow to paid, and see the one lever that moves revenue most." />
+  <meta name="twitter:image" content="https://www.mrtylerwhite.com/assets/images/funnel-simulator/og.jpg" />
+  <meta name="twitter:site" content="@mrtylerwhite" />
+
+  <link rel="preload" href="/assets/fonts/instrument-serif/InstrumentSerif-Regular.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preconnect" href="https://use.typekit.net" crossorigin />
+<link rel="stylesheet" href="https://use.typekit.net/fks5kmr.css" />
+<link rel="stylesheet" href="/assets/css/dist/critical.css" />
+  <link rel="stylesheet" href="/assets/css/system/pages/roi-case-study-template.css?v=20260714a" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="/assets/css/system/pages/roi-case-study-template.css?v=20260714a"></noscript>
+  <link rel="stylesheet" href="/assets/css/system/site-footer.css" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="/assets/css/system/site-footer.css"></noscript>
+<!-- partial:head -->
+<style id="page-transitions">
+/* Page transitions (details.so port). Inline on purpose: Chrome decides whether
+   to run a cross-page transition as the new page first renders, and an opt-in
+   inside an external stylesheet is sometimes not applied yet, so the transition
+   was skipped at random. Text entrance (.ds-enter) lives in page-transitions.css. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.5s;
+  animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+/* Nav stays in place while the page crossfades. Named on the glass pill, and the
+   group re-applies the glass blur, which a snapshot can't capture. */
+#main-header .et_menu_container,
+.fck-site-header .fck-nav {
+  view-transition-name: site-header;
+}
+::view-transition-group(site-header) {
+  animation-duration: 0.5s;
+  animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border-radius: 10px;
+  -webkit-backdrop-filter: blur(20px) saturate(1.8);
+  backdrop-filter: blur(20px) saturate(1.8);
+}
+</style>
+<!-- /partial:head -->
+<style>
+body.funnel-simulator-page .fs-form { display:flex; flex-direction:column; gap:8px; padding:8px 20px 22px; }
+body.funnel-simulator-page .fs-form__label { font-size:13px; font-weight:600; color:#1b1b1b; margin-top:6px; }
+body.funnel-simulator-page .fs-form__input { font:inherit; font-size:16px; padding:12px 14px; border:1px solid rgba(0,0,0,.14); border-radius:10px; background:#fff; color:#111; }
+body.funnel-simulator-page .fs-form__input:focus { outline:2px solid #111; outline-offset:1px; border-color:transparent; }
+body.funnel-simulator-page .fs-form__btn { margin-top:12px; font:inherit; font-size:16px; font-weight:600; padding:14px 18px; border:0; border-radius:999px; background:#111; color:#fff; cursor:pointer; transition:transform .15s ease, opacity .15s ease; }
+body.funnel-simulator-page .fs-form__btn:hover:not(:disabled) { transform:translateY(-1px); }
+body.funnel-simulator-page .fs-form__btn:disabled { opacity:.6; cursor:wait; }
+body.funnel-simulator-page .fs-form__error { margin:4px 0 0; font-size:14px; color:#b42318; }
+body.funnel-simulator-page .fs-form__fine { margin:6px 0 0; font-size:12.5px; color:rgba(0,0,0,.55); text-align:center; }
+body.funnel-simulator-page { overflow-x:clip; }
+body.funnel-simulator-page .rcst-chat__window { height:auto; max-height:none; }
+body.funnel-simulator-page .fs-form, body.funnel-simulator-page .fs-preview { flex-shrink:0; }
+html:has(body.funnel-simulator-page) { overflow-x:clip; }
+body.funnel-simulator-page .fs-preview { margin:0 20px 20px; border-radius:12px; overflow:hidden; border:1px solid rgba(0,0,0,.08); box-shadow:0 12px 30px -12px rgba(0,0,0,.35); }
+body.funnel-simulator-page .fs-preview img { display:block; width:100%; height:auto; }
+</style>
+</head>
+<body class="roi-case-study-template funnel-simulator-page">
+
+  
+  <div class="pr-bar" role="banner">
+    <div class="pr-bar__inner">
+      <a href="/" class="pr-bar__wordmark" aria-label="Back to mrtylerwhite.com">
+        <img src="/wp-content/uploads/2025/12/logo-mrtylerwhite-1.svg" width="69" height="20" alt="Mr. Tyler White" />
+      </a>
+      <a href="#fs-capture" class="pr-bar__cta">Get the Funnel Simulator</a>
+    </div>
+  </div>
+
+  <main id="main-content" class="rcst-main">
+
+    <section class="rcst-hero" aria-labelledby="rcst-hero-heading">
+      <div class="rcst-hero__stage">
+        <div class="rcst-hero__copy">
+          <p class="rcst-eyebrow ds-enter">Free Funnel Simulator</p>
+          <h1 id="rcst-hero-heading" class="rcst-hero__title ds-enter ds-enter-d1">See exactly where your funnel leaks. Before you buy more traffic.</h1>
+          <p class="rcst-hero__sub ds-enter ds-enter-d2">Plug in your traffic and conversion rates. Watch every visitor move from first click to paid, retained customer. Then the simulator ranks the one lever that moves revenue the most, so your next week of work goes where the money actually is.</p>
+        </div>
+
+        <div class="rcst-hero__visual">
+          <div class="rcst-hero__scene-bg" aria-hidden="true">
+            <img
+              src="/assets/images/roi-case-study-template/background-chat.png"
+              alt=""
+              width="1024"
+              height="710"
+              decoding="async"
+            />
+          </div>
+
+          <!-- Kit: tag 24704531 + sequence 2932269 via /api/subscribe/funnel-simulator -->
+          <div class="rcst-chat-shell" id="fs-capture">
+            <div class="rcst-chat" role="region" aria-label="Get the Funnel Simulator">
+              <div class="rcst-chat__window">
+                <div class="rcst-chat__dots" aria-hidden="true">
+                  <span></span><span></span><span></span>
+                </div>
+                <div class="rcst-chat__intro">
+                  <div class="rcst-chat__brand">
+                    <span class="rcst-chat__icon" aria-hidden="true">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h18l-7 8v6l-4 2v-8z"></path></svg>
+                    </span>
+                    <span class="rcst-chat__brand-name">Get the Funnel Simulator</span>
+                  </div>
+                </div>
+                <form class="fs-form" data-fs-form novalidate>
+                  <label class="fs-form__label" for="fs-first">First name</label>
+                  <input class="fs-form__input" id="fs-first" name="firstName" type="text" autocomplete="given-name" required placeholder="Tyler" />
+                  <label class="fs-form__label" for="fs-email">Email</label>
+                  <input class="fs-form__input" id="fs-email" name="email" type="email" autocomplete="email" required placeholder="you@company.com" />
+                  <button class="fs-form__btn" type="submit" data-fs-submit>Send me the simulator</button>
+                  <p class="fs-form__error" data-fs-error role="alert" hidden></p>
+                  <p class="fs-form__fine">Free. Lands in your inbox in about a minute. Unsubscribe anytime.</p>
+                </form>
+                <figure class="fs-preview">
+                  <img src="/assets/images/funnel-simulator/preview.jpg" width="960" height="441" alt="The Funnel Simulator showing six funnel stages from acquire to retain, with the biggest revenue levers ranked below" loading="lazy" decoding="async" />
+                </figure>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="rcst-how" aria-labelledby="rcst-how-heading">
+      <div class="rcst-how__inner">
+        <p class="rcst-eyebrow">How it works</p>
+        <h2 id="rcst-how-heading" class="rcst-how__title">From guessing to knowing your next lever</h2>
+        <ol class="rcst-how__steps">
+          <li class="rcst-how__step">
+            <span class="rcst-how__num" aria-hidden="true">01</span>
+            <h3 class="rcst-how__step-title">Tell me your name and email</h3>
+            <p class="rcst-how__step-body">Two fields. The simulator link lands in your inbox right away, so you can bookmark it and come back with real numbers.</p>
+          </li>
+          <li class="rcst-how__step">
+            <span class="rcst-how__num" aria-hidden="true">02</span>
+            <h3 class="rcst-how__step-title">Load the demo or plug in your numbers</h3>
+            <p class="rcst-how__step-body">Start with a sample B2C SaaS funnel, or enter your own traffic, signup, activation, paid and retention rates. Every stage animates as people flow through it.</p>
+          </li>
+          <li class="rcst-how__step">
+            <span class="rcst-how__num" aria-hidden="true">03</span>
+            <h3 class="rcst-how__step-title">Pull the lever that matters</h3>
+            <p class="rcst-how__step-body">The simulator ranks every stage by revenue impact. One clear answer to where the next hour of work should go, instead of another debate about it.</p>
+          </li>
+        </ol>
+        <p class="rcst-how__nudge">
+          <a href="#fs-capture" class="rcst-how__nudge-link">Get the Funnel Simulator &rarr;</a>
+        </p>
+      </div>
+    </section>
+
+
+  </main>
+
+  <!-- partial:footer theme="dark" -->
+<footer class="site-footer" role="contentinfo" data-nav-theme="dark">
+  <div class="site-footer__inner">
+    <div class="site-footer__brand">
+      <img class="site-footer__wordmark" src="/wp-content/uploads/2025/12/logo-mrtylerwhite-1.svg" width="69" height="20" alt="Mr. Tyler White" />
+      <p class="site-footer__tagline">Product design, growth systems, and prototypes that help teams make better decisions.</p>
+    </div>
+    <nav class="site-footer__col" aria-label="Explore">
+      <span class="site-footer__col-heading">Explore</span>
+      <a href="/about/">About Me</a>
+      <a href="/case-studies/">Case Studies</a>
+      <a href="/newsletter/">Newsletter</a>
+      <a href="/letters/">Letters</a>
+      <a href="https://www.designtablepodcast.com/" target="_blank" rel="noopener noreferrer">Podcast</a>
+      <a href="/builder-kickoff/">Builder Kickoff™</a>
+    </nav>
+    <nav class="site-footer__col" aria-label="Resources">
+      <span class="site-footer__col-heading">Resources</span>
+      <a href="/wp-content/uploads/2024/08/TylerWhite-Resume-2024.pdf" target="_blank" rel="noopener noreferrer">Download CV</a>
+      <a href="https://www.linkedin.com/in/mrtylerwhite/" target="_blank" rel="noopener noreferrer">Let&#8217;s Connect</a>
+      <a href="https://www.designtablepodcast.com/" target="_blank" rel="noopener noreferrer">The Design Table</a>
+      <a href="/roi-case-study-template/">The 15 Minute Case Study</a>
+    </nav>
+    <div class="site-footer__cta-block">
+      <span class="site-footer__col-heading">Free Strategy Call</span>
+      <p class="site-footer__cta-copy">Want help turning messy product, growth, or design problems into a clearer plan? Book a 30-minute call and we&#8217;ll figure out where the biggest leverage is.</p>
+      <a href="https://cal.com/mrtylerwhite/30min" class="site-footer__cta-btn" target="_blank" rel="noopener noreferrer">Book a free strategy call</a>
+    </div>
+  </div>
+  <div class="site-footer__bottom">
+    <p class="site-footer__copy">&#169; 2026 Tyler White. Made with taste, caffeine, and a suspicious number of prototypes.</p>
+    <nav class="site-footer__legal" aria-label="Legal">
+      <a href="/privacy-policy/">Privacy Policy</a>
+    </nav>
+  </div>
+</footer>
+<!-- /partial:footer -->
+
+  <script src="/assets/js/gtm-defer.js" defer></script>
+  <script src="/assets/js/analytics.js" defer></script>
+<script src="/assets/js/hotjar.js" defer></script>
+  <script>
+  (function () {
+    'use strict';
+    var form = document.querySelector('[data-fs-form]');
+    if (!form) return;
+    var btn = form.querySelector('[data-fs-submit]');
+    var err = form.querySelector('[data-fs-error]');
+    var EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    function fail(msg) { err.textContent = msg; err.hidden = false; btn.disabled = false; btn.textContent = 'Send me the simulator'; }
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      err.hidden = true;
+      var firstName = form.firstName.value.trim();
+      var email = form.email.value.trim();
+      if (!firstName) return fail('Add your first name so I know who I am talking to.');
+      if (!EMAIL.test(email)) return fail('That email does not look right. Mind checking it?');
+      btn.disabled = true; btn.textContent = 'Sending...';
+      try {
+        var res = await fetch('/api/subscribe/funnel-simulator/', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ firstName: firstName, email: email })
+        });
+        var data = await res.json().catch(function () { return {}; });
+        if (!res.ok || !data.success) return fail(data.error || 'Something broke on my end. Try again in a moment.');
+        if (window.dataLayer) window.dataLayer.push({ event: 'generate_lead', lead_magnet: 'funnel_simulator' });
+        window.location.href = '/funnel-simulator/thank-you/';
+      } catch (x) { fail('Something broke on my end. Try again in a moment.'); }
+    });
+  }());
+  </script>
+
+  <script>
+  (function () {
+    'use strict';
+    var bar = document.querySelector('.pr-bar');
+    if (!bar) return;
+    var pending = false;
+
+    function check() {
+      pending = false;
+      var r = bar.getBoundingClientRect();
+      var cx = r.left + r.width / 2;
+      var cy = r.bottom - 1;
+      var els = document.elementsFromPoint(cx, cy);
+      var dark = false;
+      for (var i = 0; i < els.length; i++) {
+        if (els[i].dataset && els[i].dataset.navTheme === 'dark') {
+          dark = true;
+          break;
+        }
+      }
+      bar.classList.toggle('pr-bar--on-dark', dark);
+    }
+
+    function enqueue() {
+      if (!pending) { pending = true; requestAnimationFrame(check); }
+    }
+
+    window.addEventListener('scroll', enqueue, { passive: true });
+    window.addEventListener('resize', enqueue, { passive: true });
+    enqueue();
+  }());
+  </script>
+</body>
+</html>
