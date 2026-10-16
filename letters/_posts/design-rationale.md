@@ -103,7 +103,7 @@ That's how you earn your seat at the table. Not by winning the review. By making
 
 ## Turn your rationale into a case study
 
-Your design decisions are the strongest material you have for a portfolio or a promotion packet. Most designers just never write them down.
+Your design decisions are the strongest material you have for a portfolio or a [promotion packet](/letters/product-designer-salary/). Most designers just never write them down.
 
 [The 15 Minute Case Study](/roi-case-study-template/) is a free Claude Skill that pulls the rationale out of your rough notes and turns it into the business story: what you decided, what you traded off, and what changed because of it.
 

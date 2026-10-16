@@ -141,4 +141,8 @@ Barely. A simple site with a clear structure beats a beautiful one that makes pe
 
 Yes, if you label them as estimates and keep them conservative. Visible, honest math reads as confidence. Inflated numbers read as fiction.
 
+### Should a product designer portfolio include side projects?
+
+Only if they show a decision and an outcome. A side project with real users and a number beats a client project with neither. A concept redesign with no users usually hurts more than it helps.
+
 <!-- cta -->

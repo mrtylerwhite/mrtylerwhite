@@ -52,19 +52,39 @@ const TOPICS = {
 const CTAS = {
   "case-study": {
     eyebrow: "Free Claude Skill",
-    title: "Turn your last project into a case study that shows what it was worth.",
+    title: "Show what your last project was worth.",
     body: "The 15 Minute Case Study. Paste your rough notes, answer the hard questions, walk away with the business story.",
     href: "/roi-case-study-template/",
     label: "Get the 15 Minute Case Study",
   },
   "builder-kickoff": {
     eyebrow: "Builder Kickoff™ · $97",
-    title: "Run the kickoff once. Walk out with the PRD and the prototype prompt.",
+    title: "Run the kickoff.\nGet the PRD.",
     body: "Seven short lessons. Record your next kickoff, and get the PRD, the business case and the prototype direction the same day.",
-    href: "/prototype-ready/",
+    href: "/builder-kickoff/",
     label: "See how Builder Kickoff works",
   },
   newsletter: null,
+};
+
+// Small product mock beside each CTA (decorative; hidden from screen readers).
+const CHECK = `<svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const ctaStep = (title, meta, state) => `<div class="cta-step cta-step--${state}"><span class="cta-step__ico">${state === "done" ? CHECK : '<span class="cta-spin"></span>'}</span><span class="cta-step__text"><span class="cta-step__title">${title}</span><span class="cta-step__meta">${meta}</span></span><span class="cta-step__state">${state === "done" ? "Done" : "Running"}</span></div>`;
+const CTA_ART = {
+  "builder-kickoff": `<div class="letter-cta__art" aria-hidden="true"><div class="cta-card">
+    <div class="cta-card__head"><span class="cta-card__dot"></span>Builder Kickoff&trade; workflow</div>
+    ${ctaStep("Kickoff recorded", "60 min &middot; 4 people", "done")}
+    ${ctaStep("Problem and bet", "Recovery 35% &rarr; 60%", "done")}
+    ${ctaStep("PRD drafted", "From the transcript", "done")}
+    ${ctaStep("Prototype prompt", "Writing&hellip;", "live")}
+  </div></div>`,
+  "case-study": `<div class="letter-cta__art" aria-hidden="true"><div class="cta-card cta-card--chat">
+    <div class="cta-card__head"><span class="cta-card__dot"></span>The 15 Minute Case Study</div>
+    <div class="cta-msg cta-msg--ai">What actually changed after you shipped?</div>
+    <div class="cta-msg cta-msg--you">Billing tickets dropped by about half.</div>
+    <div class="cta-msg cta-msg--ai">From what baseline, over how long?</div>
+    <div class="cta-step cta-step--done cta-step--result"><span class="cta-step__ico">${CHECK}</span><span class="cta-step__text"><span class="cta-step__title">Business story drafted</span><span class="cta-step__meta">Decision &middot; tradeoff &middot; result</span></span></div>
+  </div></div>`,
 };
 
 const esc = (s = "") =>
@@ -123,6 +143,7 @@ function newsletterBlock(location, { floating = true } = {}) {
     <p class="letter-signup__title">Get credit for the work you already ship.</p>
     <p class="letter-signup__body">Every Saturday: how to turn your design work into numbers execs actually fund.</p>
     <form class="letter-signup__form" data-newsletter-form data-track-location="${location}" method="post" action="${KIT_FORM}" novalidate>
+      <input type="hidden" name="fields[signup_source]" value="${location}" data-signup-source />
       <label class="screen-reader-text" for="nl-${location}">Email address</label>
       <div class="letter-signup__field">
         <input id="nl-${location}" class="letter-signup__input" name="email_address" type="email" autocomplete="email" placeholder="Enter your email address..." required />
@@ -137,11 +158,14 @@ function newsletterBlock(location, { floating = true } = {}) {
 function ctaBlock(key) {
   const c = CTAS[key];
   if (!c) return newsletterBlock("letters_end");
-  return `<aside class="letter-cta" aria-label="${esc(c.label)}">
+  const art = CTA_ART[key] || "";
+  return `<aside class="letter-cta${art ? " letter-cta--art" : ""}" aria-label="${esc(c.label)}">
+  <div class="letter-cta__text">
   <p class="ds-eyebrow letter-cta__eyebrow">${esc(c.eyebrow)}</p>
-  <p class="letter-cta__title">${esc(c.title)}</p>
+  <p class="letter-cta__title">${esc(c.title).replace(/\n/g, "<br />")}</p>
   <p class="letter-cta__body">${esc(c.body)}</p>
   <a class="letter-cta__btn" href="${c.href}" data-track-event="letters_cta_click" data-track-location="${key}">${esc(c.label)} &rarr;</a>
+  </div>${art}
 </aside>`;
 }
 
@@ -640,7 +664,14 @@ for (const name of fs.readdirSync(OUT_DIR)) {
 }
 
 for (const post of all) {
-  const related = published.filter((p) => p.slug !== post.slug && p.topic === post.topic).slice(0, 3);
+  // "Keep reading": same topic first, then letters this one links to, then the newest, so every letter shows three.
+  const others = published.filter((p) => p.slug !== post.slug);
+  const linked = new Set([...post.body.matchAll(/\]\(\/letters\/([a-z0-9-]+)\/\)/g)].map((m) => m[1]));
+  const related = [
+    ...others.filter((p) => p.topic === post.topic),
+    ...others.filter((p) => p.topic !== post.topic && linked.has(p.slug)),
+    ...others.filter((p) => p.topic !== post.topic && !linked.has(p.slug)),
+  ].slice(0, 3);
   write(`letters/${post.slug}/index.html`, postPage(post, related));
 }
 write("letters/index.html", indexPage(published));

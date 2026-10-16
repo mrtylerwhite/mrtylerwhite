@@ -77,6 +77,36 @@ The weak column describes what you made. The strong column describes what change
 
 If you don't have the number yet, that's not a writing problem. It's a measurement problem, and you can still fix it. Start with [the UX metrics that actually make it into the exec deck](/letters/ux-metrics/).
 
+## Before and after: the opening paragraph
+
+Same project, two openings. Also illustrative.
+
+**Weak:**
+
+> In Q3 I joined the billing team to redesign the payment experience. I conducted user research, created personas and mapped the user journey before moving into wireframes and high-fidelity designs.
+
+**Strong:**
+
+> Ledgerly was losing about $600K a year to customers who wanted to stay. Their card expired, the payment failed, and the only fix was emailing support. We had two sprints to change that.
+
+The weak one is a list of activities. Every designer did research. Every designer made wireframes. Nobody keeps reading to find out you have a process.
+
+The strong one puts the money, the user and the deadline in three sentences. Now the reader wants to know what you did about it.
+
+## Before and after: the results section
+
+**Weak:**
+
+> The redesign was well received, and stakeholders were happy with the new experience.
+
+**Strong:**
+
+> Failed payment recovery went from 35% to 58% in the first month of a 10% rollout. Billing tickets dropped by about half. We shipped to everyone before the January price change.
+
+Well received by who? Happy based on what?
+
+The strong version has a baseline, a result, a timeframe and a business reason it mattered. That's four things a hiring manager can repeat to their boss. The weak version gives them nothing to repeat.
+
 ## The "what went wrong" section
 
 I always include a slide that says what went wrong.

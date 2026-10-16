@@ -45,6 +45,9 @@
       }
       if (btn) btn.disabled = true;
       try {
+        // Record where the signup came from in Kit (Signup Source field): location + page path
+        var src = form.querySelector("[data-signup-source]");
+        if (src && src.value.indexOf("/") === -1) src.value = src.value + " " + window.location.pathname;
         var res = await fetch(form.action, {
           method: "POST",
           body: new URLSearchParams(new FormData(form)),

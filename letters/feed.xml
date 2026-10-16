@@ -6,6 +6,20 @@
   <atom:link href="https://www.mrtylerwhite.com/letters/feed.xml" rel="self" type="application/rss+xml" />
   <description>Tyler White on proving what design is worth: PRDs and kickoffs, case studies that show impact, and AI workflows for product designers.</description>
   <item>
+    <title>What is a PRD? The doc that decides what gets built</title>
+    <link>https://www.mrtylerwhite.com/letters/what-is-a-prd/</link>
+    <guid isPermaLink="true">https://www.mrtylerwhite.com/letters/what-is-a-prd/</guid>
+    <pubDate>Thu, 15 Oct 2026 12:00:00 GMT</pubDate>
+    <description>What a PRD (product requirements document) is, what goes in one, who writes it and when, and how it differs from a BRD, a product brief and a spec.</description>
+  </item>
+  <item>
+    <title>Product designer salary in 2026, and what actually moves you up a band</title>
+    <link>https://www.mrtylerwhite.com/letters/product-designer-salary/</link>
+    <guid isPermaLink="true">https://www.mrtylerwhite.com/letters/product-designer-salary/</guid>
+    <pubDate>Mon, 12 Oct 2026 12:00:00 GMT</pubDate>
+    <description>What product designers earn in 2026 in the US and Canada, by level and company, and the skills that move you from mid-level pay to senior pay.</description>
+  </item>
+  <item>
     <title>The PRD template I actually use (and how to fill it from one kickoff call)</title>
     <link>https://www.mrtylerwhite.com/letters/prd-template/</link>
     <guid isPermaLink="true">https://www.mrtylerwhite.com/letters/prd-template/</guid>

@@ -113,7 +113,7 @@ Notice that the loop starts with a conversation and a PRD, not with Cursor.
 
 Building fast only helps if you're building the right thing. That's decided in the kickoff: what you're solving, what you're not, how much time you have, what tradeoffs you'll accept. Here's [how I run that kickoff](/letters/project-kickoff-meeting/).
 
-[Builder Kickoff™](/prototype-ready/) packages the whole front half of this loop. You run the session, record it, and get the PRD and a prototype prompt you can drop straight into Claude or Cursor the same day.
+[Builder Kickoff™](/builder-kickoff/) packages the whole front half of this loop. You run the session, record it, and get the PRD and a prototype prompt you can drop straight into Claude or Cursor the same day.
 
 ## Cursor for designers FAQ
 

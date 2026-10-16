@@ -70,6 +70,44 @@ It's lighter than a PRD. A brief decides whether to do the work. A [PRD](/letter
 
 One page. If it runs longer, you're writing the PRD early, and locking in a solution before anyone's challenged the problem.
 
+## Product brief example (filled in)
+
+Here's the template filled in for Ledgerly, the fictional invoicing app from my Builder Kickoff™ demo. Fictional company, realistic numbers, so you can see the shape without anyone's confidential detail.
+
+```markdown ledgerly-product-brief.md
+# Self-serve card update: Product Brief
+
+## Problem
+- Customers lose their account when a card payment fails, and there's no way to fix it in the product.
+- Who: account owners at small agencies and studios, at the moment a renewal fails.
+- How we know: about $600K in ARR lost to involuntary churn last year. 30 to 40 support tickets a week asking how to update a card.
+
+## Why now
+- A Studio plan price increase lands in January. Broken billing right before a price change is how you lose people who wanted to stay.
+
+## Outcome
+- Solved = a customer fixes a failed payment in the product, before they get locked out.
+- Success metric: failed payment recovery from 35% -> 60%.
+- Also watching: involuntary churn from 1.4% a month to under 1%, billing tickets down by half.
+
+## The bet
+- If owners can update their card in the product, recovery moves from 35% to 60% before the January price change.
+
+## Constraints
+- Two sprints. One engineer full time, the engineering lead reviewing, plus design.
+- Only account owners can change billing. Use the existing owner flag. No new roles.
+- Stripe Elements already exists in signup.
+
+## Not doing
+- SMS reminders. PayPal or bank transfer. A redesign of the whole billing page. A billing role for non-owners.
+
+## Open questions
+- Magic link in the reminder email so people can update without logging in? Owner: engineering lead, after a security review.
+- Fixing the card from the paywall after cancellation: in or out? Decide by end of sprint one.
+```
+
+Notice how much of that is constraints and not-doing. That's where the brief earns its keep. The problem section takes two minutes to write. The not-doing list is what saves you a month.
+
 ## The design brief questions that actually matter
 
 A design brief sits on top of the product brief. It doesn't repeat the business case. It adds what design needs to do good work inside it:
@@ -123,7 +161,7 @@ You don't need permission to fix this. You need to show up earlier.
 
 **Make your reasoning visible.** When you push back on a brief, say why in one line, not one slide deck. I wrote about [explaining design decisions without defending them](/letters/design-rationale/).
 
-That's the shift [Builder Kickoff™](/prototype-ready/) is built around. You stop waiting to be handed a brief and start being the person who writes it.
+That's the shift [Builder Kickoff™](/builder-kickoff/) is built around. You stop waiting to be handed a brief and start being the person who writes it.
 
 ## Product brief FAQ
 

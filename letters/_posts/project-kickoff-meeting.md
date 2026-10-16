@@ -76,6 +76,59 @@ Two rules make this work.
 
 **Rule two: someone writes it down live.** Not after. Not "I'll send notes." Live, in the doc, where everyone can see it. Better yet, record the whole thing.
 
+## Kickoff meeting template (copy and paste)
+
+Open this doc on the shared screen and fill it in live. When the hour is up, it's done.
+
+```markdown kickoff-notes.md
+# [Project] Kickoff
+Date · Facilitator · Recording link
+
+## Problem (one sentence)
+- What's broken, for who, and how we know
+
+## The bet
+- If we ship this, ___ moves from ___ to ___ by ___.
+
+## Appetite
+- Time: ___ · Team: ___
+
+## Constraints
+-
+
+## In scope
+-
+
+## Maybe (decide by ___)
+-
+
+## Out
+-
+
+## Smallest version worth building
+-
+
+## Open questions
+| Question | Owner | By when |
+|---|---|---|
+|  |  |  |
+```
+
+And the invite. Send it two days before, so people show up with answers instead of opinions.
+
+```text kickoff-invite.txt
+Subject: [Project] kickoff: 60 minutes, one decision
+
+We're kicking off [project] on [date]. The goal is to leave with one agreed problem, a success metric, a scope list and an owner for every open question.
+
+Before the call, bring:
+- Product: the problem in one sentence, and how we know it's real
+- Engineering: known constraints and dependencies
+- Design: screenshots or recordings of the current experience
+
+No mockups until the last 20 minutes. I'll record it and share the notes the same day.
+```
+
 ## Who should be in the kickoff
 
 Small room. Three roles, minimum:
@@ -118,7 +171,7 @@ This is the part that changed everything for me.
 
 If you record the kickoff, the transcript already contains almost every decision your PRD asks for. The problem, the bet, the constraints, the out-of-scope list. It's all in there, in the team's own words.
 
-I've been running a version of this I call [Builder Kickoff™](/prototype-ready/) for a couple of years now. A structured facilitation session, not a brainstorm, where you bring together your PM and engineer and extract the actual problem before anyone starts building.
+I've been running a version of this I call [Builder Kickoff™](/builder-kickoff/) for a couple of years now. A structured facilitation session, not a brainstorm, where you bring together your PM and engineer and extract the actual problem before anyone starts building.
 
 The transcript goes into a Claude skill that drafts the PRD and the prototype prompt the same day. From there, I build the risky part in code. Here's [why I use Cursor instead of Figma Make](/letters/cursor-for-designers/) for that step.
 
@@ -141,5 +194,9 @@ If nobody else is forcing decisions, yes. Whoever facilitates the kickoff frames
 ### What if a stakeholder won't commit to a constraint?
 
 Write down "undecided" with their name and a date next to it. Public, owned uncertainty gets resolved. Private uncertainty becomes rework.
+
+### What should a kickoff meeting agenda include?
+
+Six blocks: the problem, the bet, constraints, what you're not doing, the smallest version, and open questions with owners. The 60-minute agenda above times each one, and the template gives you somewhere to write it down live.
 
 <!-- cta -->

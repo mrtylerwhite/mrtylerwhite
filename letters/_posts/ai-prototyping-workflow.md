@@ -145,7 +145,7 @@ The thinking upstream is the bottleneck now. What are we actually solving? What 
 
 Here's [how I run a project kickoff meeting](/letters/project-kickoff-meeting/) that forces those answers, and [the UX metrics](/letters/ux-metrics/) I'd use to know if it worked.
 
-[Builder Kickoff™](/prototype-ready/) is the front half of this workflow, packaged. Run the session, record it, and get the PRD and a prototype prompt you can paste straight into step 1.
+[Builder Kickoff™](/builder-kickoff/) is the front half of this workflow, packaged. Run the session, record it, and get the PRD and a prototype prompt you can paste straight into step 1.
 
 ## Try it this week
 

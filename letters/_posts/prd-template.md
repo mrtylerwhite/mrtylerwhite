@@ -40,7 +40,7 @@ A good PRD flips that order. Constraints first. Ideas second. Design starts insi
 
 ## The PRD template (copy and paste)
 
-These are the same sections the [Builder Kickoff™](/prototype-ready/) skill generates. Steal the whole thing.
+These are the same sections the [Builder Kickoff™](/builder-kickoff/) skill generates. Steal the whole thing.
 
 ```markdown prd.md
 # [Feature name] PRD

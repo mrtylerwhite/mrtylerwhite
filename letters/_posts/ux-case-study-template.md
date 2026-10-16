@@ -60,6 +60,26 @@ Whether they'd trust your judgment in the messy middle of a real project.
 
 Notice where the screens are. Near the end, attached to a decision. That's on purpose.
 
+## The template, filled in
+
+Here's what a finished one looks like. This is illustrative: Ledgerly is the fictional invoicing app from my Builder Kickoff™ demo. The shape is what matters.
+
+| Section | Example |
+|---|---|
+| Headline | Cut involuntary churn by letting customers fix a failed card themselves |
+| The decision | Give account owners a self-serve way to update a failed card in two sprints, instead of waiting for a full billing redesign. |
+| Context | Ledgerly lost about $600K in ARR a year to customers whose card failed. The only fix was emailing support. A price increase was coming in January. |
+| The constraint | Two sprints, one engineer. Only account owners can touch billing, and nobody was going to build a new role for this. |
+| What we tried first | A banner that appeared after Stripe's final retry failed. |
+| What went wrong | By the final retry, most accounts were a day from the paywall. The banner showed up too late to matter. |
+| What we changed | Show the banner on the first failed attempt, add branded expiry emails at 14 and 3 days, and retry the payment the moment a new card is saved. |
+| What happened after | Failed payment recovery went from 35% to 58% in the first month of a 10% rollout. Billing tickets dropped by about half. |
+| What I'd do differently | Fix the paywall path in the same release. The cancelled accounts were the ones we most wanted back. |
+
+Nine rows. Read it top to bottom and you know what was at stake, what got decided, what broke and what it was worth. That's the whole job.
+
+Want more before-and-after rewrites? They're in [UX case study examples](/letters/ux-case-study-examples/).
+
 ## Five questions that pressure-test the story
 
 Before you write a single sentence, answer these for the project:
@@ -126,7 +146,7 @@ Both, built from the same structure. The page gets you shortlisted. The deck car
 
 ### Can I use this template for internal case studies?
 
-Yes. It works for promotion packets and team updates too. Swap "hiring manager" for "your manager" and the same five questions apply.
+Yes. It works for [promotion packets](/letters/product-designer-salary/) and team updates too. Swap "hiring manager" for "your manager" and the same five questions apply.
 
 ### What if the project never shipped?
 

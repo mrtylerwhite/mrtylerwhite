@@ -106,7 +106,7 @@ Write it during the kickoff, not after.
 
 If you run a [project kickoff meeting](/letters/project-kickoff-meeting/) that forces the room to answer what you're solving, what you're not solving, how much time you have and what tradeoffs you'll accept, you've already got most of the PRD. Record the call and the transcript has the rest.
 
-That's what [Builder Kickoff™](/prototype-ready/) is built for. You run the session once, and walk out with the PRD, the business case and the prototype direction the same day. No separate BRD to keep in sync.
+That's what [Builder Kickoff™](/builder-kickoff/) is built for. You run the session once, and walk out with the PRD, the business case and the prototype direction the same day. No separate BRD to keep in sync.
 
 ## PRD vs BRD FAQ
 
@@ -125,5 +125,9 @@ Usually the product lead, with engineering and design signing off on feasibility
 ### How do I measure whether the PRD's goals were met?
 
 Pick the success metric before you build, with a baseline and a target. If you need help choosing, start with [the UX metrics that actually make it into the exec deck](/letters/ux-metrics/).
+
+### Do agile teams still need a PRD?
+
+A short one, yes. Agile killed the 40-page spec. The need to agree on the problem, the bet and the scope never went away. A one-page PRD written during the kickoff covers it in an afternoon.
 
 <!-- cta -->

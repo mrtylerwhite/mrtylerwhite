@@ -142,4 +142,8 @@ One or two. More than that and nobody remembers what success was supposed to mea
 
 Before you build, in the kickoff. If you wait until after launch, you'll pick whatever number looks best, and everyone will know it.
 
+### What's the difference between UX metrics and product metrics?
+
+They overlap. UX metrics describe how people experience a feature: task success, time on task, errors. Product metrics describe what the business gets: activation, retention, revenue. Leadership listens to the second kind, so connect the first to it.
+
 <!-- cta -->
