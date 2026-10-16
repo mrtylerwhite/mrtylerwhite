@@ -114,6 +114,8 @@ If your onboarding redesign cut support tickets by 400 a month, and each ticket 
 
 That's not fluff. That's math.
 
+<!-- video:q6zoDGZ0Pgo -->
+
 ## Product designer salary FAQ
 
 ### How much does a product designer make in the US?

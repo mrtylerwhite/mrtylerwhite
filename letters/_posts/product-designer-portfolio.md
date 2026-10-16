@@ -40,6 +40,8 @@ It's about them, and what changes once they work with you.
 
 This is the line someone reads in the three seconds before they decide to keep scrolling or close the tab. Make it count.
 
+<!-- video:dTIP7g9j8r8 -->
+
 ## 2. The proof strip: numbers before narrative
 
 Right under the hero, three stats.

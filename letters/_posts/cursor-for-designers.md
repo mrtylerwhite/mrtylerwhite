@@ -107,6 +107,8 @@ Anyone can generate screens now. Fewer people can build something that holds up 
 
 I wrote up the full day-to-day version in [the AI prototyping workflow I actually use](/letters/ai-prototyping-workflow/).
 
+<!-- video:lWOCng5xmeE -->
+
 ## The step before Cursor matters most
 
 Notice that the loop starts with a conversation and a PRD, not with Cursor.

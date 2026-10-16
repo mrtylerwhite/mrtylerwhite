@@ -46,6 +46,8 @@ The fix isn't more metrics. It's translating the ones you have into the four thi
 
 Every UX metric you track should sit in one of those rows. If it doesn't, ask what it's actually proving.
 
+<!-- video:1zJGFE2hFS8 -->
+
 ## The adoption metric everyone forgets
 
 A feature ships. The work is solid. The UX makes sense. Everyone moves on.

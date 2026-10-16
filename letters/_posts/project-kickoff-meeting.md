@@ -76,6 +76,8 @@ Two rules make this work.
 
 **Rule two: someone writes it down live.** Not after. Not "I'll send notes." Live, in the doc, where everyone can see it. Better yet, record the whole thing.
 
+<!-- video:jMFZon1zh4w -->
+
 ## Kickoff meeting template (copy and paste)
 
 Open this doc on the shared screen and fill it in live. When the hour is up, it's done.

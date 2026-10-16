@@ -1,0 +1,101 @@
+{
+  "dTIP7g9j8r8": {
+    "title": "Live Portfolio Review: Your Hero Section Is Costing You The Interview",
+    "description": "Tyler and Nick roast real, anonymized product design portfolio hero sections and show how to rewrite generic hero copy into a clear, specific positioning line.",
+    "uploadDate": "2026-07-29T06:00:27-07:00",
+    "seconds": 1992,
+    "takeaways": [
+      "Generic hero copy tells a recruiter nothing. Say what you do and who you do it for.",
+      "Run the dream job exercise: write the hero for the one job you want, then cut everything that doesn't serve it.",
+      "Expert in X beats curious about X. Pick the niche and own it."
+    ]
+  },
+  "q6zoDGZ0Pgo": {
+    "title": "Product Design Money Talk: How To Go From $50 To $95 An Hour Doing The Same Work",
+    "description": "Tyler and Nick talk salaries, raises and freelance rates, including the three times revenue framework for asking for a raise with numbers.",
+    "uploadDate": "2026-09-02T06:00:26-07:00",
+    "seconds": 1384,
+    "takeaways": [
+      "Ask for a raise with the three times revenue framework. Show what you bring in against what you cost.",
+      "Benchmark the band before you apply, and negotiate while you still have a job.",
+      "Freelancing? Raise your rate with every new client until the rejections start. That's your ceiling."
+    ]
+  },
+  "lLkZCxNWHMY": {
+    "title": "How a Product Design Director Uses AI to Explore 10 Ideas At Once",
+    "description": "Tyler walks through his full AI prototyping process: ten directions in one clickable prototype, flow mapping first, and checking ideas against the real codebase.",
+    "uploadDate": "2026-10-14T06:00:37-07:00",
+    "seconds": 2213,
+    "takeaways": [
+      "Ask Claude for ten directions in one prototype with a toggle, then narrow with engineering and product in the room.",
+      "Map the flow and edge cases in FigJam before you prompt anything.",
+      "Check ideas against the real app with a GitHub connector so you only scope what fits."
+    ]
+  },
+  "lWOCng5xmeE": {
+    "title": "I Spent a Month Trying to Quit Figma. It Failed.",
+    "description": "Tyler and Nick on vibe coding, designers touching code, and why polished product design still needs taste and craft that AI tools miss.",
+    "uploadDate": "2026-06-10T06:00:09-07:00",
+    "seconds": 2165,
+    "takeaways": [
+      "A month of trying to skip Figma fell apart on polish. Spacing, type and the small pixel calls AI still misses.",
+      "Filter new tools by your own workflow, never by the latest demo.",
+      "Transcripts as context are the boring AI unlock that actually saves time."
+    ]
+  },
+  "1zJGFE2hFS8": {
+    "title": "The 4 Real Reasons Companies Hire Designers (And How to Prove Your Value), Part 1",
+    "description": "The business reasons companies hire designers, and how to connect UX work to revenue, conversion, adoption and cost reduction in your case studies.",
+    "uploadDate": "2026-02-04T06:00:03-08:00",
+    "seconds": 1695,
+    "takeaways": [
+      "Companies hire designers to make money or save money. Frame every metric as one of the two.",
+      "Make money: conversion, MRR, adoption. Save money: support costs and operational waste.",
+      "No access to metrics? Benchmark your impact and say what you would have measured."
+    ]
+  },
+  "Ngecrqddzdw": {
+    "title": "The ROI LIE: Why Designers Struggle to Prove Their Value",
+    "description": "Nick Groeneveld and Tyler White on perceived versus actual design value, customer sentiment, and measuring design impact in terms non-designers trust.",
+    "uploadDate": "2025-03-19T08:06:56-07:00",
+    "seconds": 2472,
+    "takeaways": [
+      "Perceived value and actual ROI are two different numbers. Your case study needs the second one.",
+      "Customer sentiment is the impact data most designers ignore, and it's often the easiest to get.",
+      "Measure impact in the words your stakeholders already use."
+    ]
+  },
+  "qblC-AT54h0": {
+    "title": "Stop Boring Stakeholders: How to Present Design (and Yourself) Like a Pro",
+    "description": "How to present design work and yourself with impact: framing reviews from the business side, managing stakeholder expectations, and handling objections.",
+    "uploadDate": "2025-05-28T07:05:45-07:00",
+    "seconds": 2556,
+    "takeaways": [
+      "Frame the review from the business side first. Design best practices come second.",
+      "Bring stakeholders in early so objections show up before the meeting.",
+      "Prep people ahead of time and document decisions in the open. That's how trust gets built."
+    ]
+  },
+  "jMFZon1zh4w": {
+    "title": "(Live) Senior Product Designers Solve a Real User Adoption Problem",
+    "description": "A live working session where Tyler and Nick tackle low feature adoption and weak upgrade conversion, from awareness and email sequencing to pricing tiers.",
+    "uploadDate": "2025-11-19T06:01:17-08:00",
+    "seconds": 3183,
+    "takeaways": [
+      "Watch a real working session on one problem: low feature adoption and weak upgrades.",
+      "Score your adoption levers before picking a fix. Awareness, in-app nudges, email, pricing tiers.",
+      "Product blames awareness, design blames UX, marketing blames messaging. The session gets them on the same problem."
+    ]
+  },
+  "f8n0h5JiXVY": {
+    "title": "Designers vs. Product Managers: Will They Become One?",
+    "description": "Tyler and Nick on the blurring line between designers and product managers, founders taking over the PM role, and what a PM's real value is.",
+    "uploadDate": "2025-07-09T11:39:25-07:00",
+    "seconds": 2394,
+    "takeaways": [
+      "At small startups, founders are taking over the PM role and designers pick up the rest.",
+      "The design, engineering and PM trio still matters, even on smaller teams.",
+      "A PM's real value is shielding the team so decisions actually get made."
+    ]
+  }
+}

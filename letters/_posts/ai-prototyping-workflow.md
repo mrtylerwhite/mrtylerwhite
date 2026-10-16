@@ -114,6 +114,8 @@ way to figure out what doesn't work.
 
 The most important line is "do not generate a solution yet." Skip it and you get a confident answer to a question you haven't finished asking.
 
+<!-- video:lLkZCxNWHMY -->
+
 <!-- newsletter -->
 
 ## Where AI prototyping breaks (and where people get burned)

@@ -93,6 +93,8 @@ If you need help picking that signal, start with [the UX metrics that actually m
 
 **Don't defend standards.** State them and move on.
 
+<!-- video:qblC-AT54h0 -->
+
 ## The real fix happens upstream
 
 Most of the pushback you get in design reviews is a symptom. The decision should have been made earlier, with the right people in the room.

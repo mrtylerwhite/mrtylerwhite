@@ -54,6 +54,49 @@ function asset(p) {
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const POSTS_DIR = path.join(ROOT, "letters", "_posts");
 const OUT_DIR = path.join(ROOT, "letters");
+
+// ── Podcast videos ────────────────────────────────────────────────────────
+// Drop <!-- video:YOUTUBE_ID --> on its own line in a post. Metadata and the
+// takeaways shown under the player live in letters/_videos.json. Renders a
+// click-to-load thumbnail (no YouTube JS until play) plus VideoObject schema.
+const VIDEOS_FILE = path.join(ROOT, "letters", "_videos.json");
+const VIDEOS = fs.existsSync(VIDEOS_FILE) ? JSON.parse(fs.readFileSync(VIDEOS_FILE, "utf8")) : {};
+const PLAY_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.14v13.72a1 1 0 0 0 1.52.85l10.6-6.86a1 1 0 0 0 0-1.7L9.52 4.3A1 1 0 0 0 8 5.14Z" fill="currentColor"/></svg>';
+function videoBlock(id) {
+  const v = VIDEOS[id];
+  const mins = Math.round(v.seconds / 60);
+  const watch = `https://www.youtube.com/watch?v=${id}`;
+  return `<figure class="letter-video" data-video-id="${id}">
+  <div class="letter-video__frame">
+    <button class="letter-video__play" type="button" aria-label="Play video: ${esc(v.title)}">
+      <img src="https://i.ytimg.com/vi/${id}/maxresdefault.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async" />
+      <span class="letter-video__btn">${PLAY_ICON}</span>
+    </button>
+  </div>
+  <figcaption class="letter-video__cap">
+    <span class="letter-video__eyebrow">The Design Table Podcast &middot; ${mins} min</span>
+    <span class="letter-video__title">${esc(v.title)}</span>
+    <ul class="letter-video__takeaways">${v.takeaways.map((t) => `<li>${esc(t)}</li>`).join("")}</ul>
+    <a class="letter-video__link" href="${watch}" target="_blank" rel="noopener noreferrer">Watch on YouTube &rarr;</a>
+  </figcaption>
+</figure>`;
+}
+function videoSchema(id) {
+  const v = VIDEOS[id];
+  const m = Math.floor(v.seconds / 60), sec = v.seconds % 60;
+  return {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    name: v.title,
+    description: v.description,
+    thumbnailUrl: [`https://i.ytimg.com/vi/${id}/maxresdefault.jpg`, `https://i.ytimg.com/vi/${id}/hqdefault.jpg`],
+    uploadDate: v.uploadDate,
+    duration: `PT${m}M${sec}S`,
+    contentUrl: `https://www.youtube.com/watch?v=${id}`,
+    embedUrl: `https://www.youtube.com/embed/${id}`,
+    publisher: { "@type": "Organization", name: "The Design Table Podcast", url: "https://www.designtablepodcast.com" },
+  };
+}
 const SITE = "https://www.mrtylerwhite.com";
 const KIT_FORM = "https://app.kit.com/forms/4969496/subscriptions";
 const AUTHOR_IMG = "/assets/images/tyler-white-avatar.webp";
@@ -384,6 +427,12 @@ function renderBody(post) {
     if (!FIGURES[name]) throw new Error(`${post.slug}: unknown figure "${name}"`);
     return FIGURES[name];
   });
+  const videos = [];
+  html = html.replace(/<!-- video:([A-Za-z0-9_-]{11}) -->/g, (mm, id) => {
+    if (!VIDEOS[id]) throw new Error(`${post.slug}: video ${id} missing from letters/_videos.json`);
+    videos.push(id);
+    return videoBlock(id);
+  });
   if (html.includes("<!-- newsletter -->")) html = html.replace("<!-- newsletter -->", newsletterBlock("letters_inline"));
   else {
     let n = 0;
@@ -391,7 +440,7 @@ function renderBody(post) {
   }
   if (html.includes("<!-- cta -->")) html = html.replace("<!-- cta -->", ctaBlock(post.cta));
   else html += `\n${ctaBlock(post.cta)}`;
-  return { html, toc };
+  return { html, toc, videos };
 }
 
 function headCommon({ title, description, canonical, ogImage, ogType, noindex, jsonld, extraHead = "" }) {
@@ -465,7 +514,7 @@ function tile(post, cls) {
 }
 
 function postPage(post, related) {
-  const { html, toc } = renderBody(post);
+  const { html, toc, videos } = renderBody(post);
   const canonical = post.url;
   const jsonld = [
     {
@@ -492,6 +541,7 @@ function postPage(post, related) {
         { "@type": "ListItem", position: 3, name: post.title, item: canonical },
       ],
     },
+    ...videos.map(videoSchema),
   ];
 
   const tocHtml = toc.length >= 3
@@ -568,7 +618,7 @@ ${html}
   });
 })();
 </script>
-${html.includes("data-code-block") ? `<script src="${asset("/assets/js/code-block.js")}" defer></script>\n` : ""}${html.includes("letter-fig") ? `<script src="${asset("/assets/js/letter-figures.js")}" defer></script>\n` : ""}${shellClose}`;
+${html.includes("data-code-block") ? `<script src="${asset("/assets/js/code-block.js")}" defer></script>\n` : ""}${html.includes("letter-fig") ? `<script src="${asset("/assets/js/letter-figures.js")}" defer></script>\n` : ""}${html.includes("letter-video") ? `<script src="${asset("/assets/js/letter-video.js")}" defer></script>\n` : ""}${shellClose}`;
 }
 
 function listItem(post) {
