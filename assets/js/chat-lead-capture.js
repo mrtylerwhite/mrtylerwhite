@@ -113,6 +113,16 @@
       });
     }
 
+    // Clicking anywhere in the composer panel focuses the input (the input itself
+    // is a thin strip at the top of the panel, so clicks lower down were lost).
+    if (this.composerEl && this.input) {
+      this.composerEl.addEventListener("click", function (e) {
+        if (self.input.disabled) return;
+        if (e.target.closest && e.target.closest("[data-chat-submit]")) return;
+        if (document.activeElement !== self.input) self.input.focus();
+      });
+    }
+
     if (this.input) {
       this.input.addEventListener("focus", function () {
         self.consumeVisibilityFocus();
