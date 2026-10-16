@@ -1244,3 +1244,274 @@ img.letters-feature__art {
   .letter-signup,
   .letter-cta { padding: 22px; }
 }
+
+/* ── Inline figures (<!-- figure:name --> in a post) ──────────────────────────
+   Rebuilt from Tailark's illustration primitives (tailark.com/illustrations/flow):
+   bg-muted tray, bg-illustration cards with ring-1 + shadow-md, h-1 skeleton lines,
+   foreground/15 connectors with a travelling gradient beam, black/75 node. */
+.letter-fig { margin: 36px 0 44px; }
+.tk-tray {
+  display: flex;
+  justify-content: center;
+  padding: 48px 32px;
+  overflow: hidden;
+  border-radius: 12px;
+  background: rgba(9, 9, 11, 0.05);
+}
+#page-container .letter__body .letter-fig figcaption {
+  margin: 12px 4px 0;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--ds-color-faint);
+}
+.tk-stage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: Inter, var(--ds-font-body);
+  color: #09090b;
+  transform: scale(0.95);
+}
+.tk-lines {
+  position: absolute;
+  inset: 0;
+  margin: 0 auto;
+  height: 100%;
+  pointer-events: none;
+}
+.tk-lines path { stroke: rgba(9, 9, 11, 0.15); stroke-linecap: round; }
+.tk-lines .tk-beam, .tk-lines .tk-pulse, .tk-lines .tk-flow { stroke: inherit; }
+.tk-card {
+  position: relative;
+  z-index: 10;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.075),
+    0 4px 6px -1px rgba(0, 0, 0, 0.065),
+    0 2px 4px -2px rgba(0, 0, 0, 0.065);
+}
+
+/* Skeleton lines (h-1 rounded-full bg-foreground/10) */
+.tk-skel { display: flex; flex-direction: column; gap: 6px; }
+.tk-row { display: flex; gap: 8px; }
+.tk-row--1 { gap: 4px; }
+.tk-mt4 { margin-top: 16px; }
+.tk-skel i { display: block; height: 4px; border-radius: 999px; background: rgba(9, 9, 11, 0.1); }
+.tk-skel .tk-f { flex: 1; }
+.tk-skel .tk-w8 { width: 32px; }
+.tk-skel .tk-full { width: 100%; }
+.tk-skel .tk-3 { width: 33.333%; }
+.tk-skel .tk-23 { width: 66.666%; }
+
+/* Merge: three usage cards → node → document */
+.tk-stage--merge { min-width: 480px; }
+.tk-lines--merge { width: 60%; }
+.tk-grid3 { position: relative; z-index: 10; display: grid; grid-template-columns: repeat(3, 112px); gap: 12px; }
+.tk-usage { display: flex; flex-direction: column; gap: 12px; padding: 12px; }
+.tk-usage__head { display: flex; align-items: center; justify-content: space-between; gap: 6px; }
+.tk-usage__title { font-size: 12px; line-height: 1.25; font-weight: 500; }
+.tk-usage__ico { flex: none; width: 14px; height: 14px; color: #09090b; }
+.tk-node {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  margin: 96px 0 80px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.75);
+  box-shadow: 0 0 0 1px #000, 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 8px 10px -6px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(8px);
+}
+.tk-node__ico { width: 24px; height: 24px; color: #E9B989; }
+.tk-node--split { margin: 72px 0; }
+.tk-node--split .tk-node__ico { width: 20px; height: 20px; }
+.tk-doc-wrap { position: relative; }
+.tk-doc {
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 96px;
+  box-sizing: border-box;
+  padding: 12px;
+  border-radius: 6px 15% 6px 6px;
+}
+.tk-doc__title { font-size: 12px; font-weight: 600; }
+.tk-doc__bar { width: 32px; height: 4px; margin-top: 4px; border-radius: 999px; background: #09090b; }
+.tk-tag {
+  position: absolute;
+  right: -28px;
+  bottom: 16px;
+  z-index: 2;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: #C59060;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 10px 15px -3px rgba(120, 72, 30, 0.25), inset 0 0 0 1px rgba(9, 9, 11, 0.15);
+}
+
+/* Pills */
+.tk-pill { display: flex; align-items: center; gap: 8px; width: fit-content; padding: 6px 12px 6px 6px; border-radius: 999px; white-space: nowrap; }
+.tk-pill__label { font-size: 12px; line-height: 16px; font-weight: 600; }
+.tk-pill--tile { padding: 4px 12px 4px 4px; border-radius: 12px; }
+.tk-pill__sub { font-size: 10px; line-height: 14px; color: rgba(9, 9, 11, 0.5); }
+.tk-ico { width: 16px; height: 16px; flex: none; }
+.tk-ico--muted { color: #71717a; }
+.tk-ico--brown { color: #C59060; }
+.tk-tile { position: relative; display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 8px; }
+.tk-tile::after { content: ""; position: absolute; inset: 0; border: 1px solid rgba(9, 9, 11, 0.05); border-radius: 8px; }
+.tk-tile--muted { background: rgba(113, 113, 122, 0.1); color: #71717a; }
+.tk-tile--brown { background: rgba(197, 144, 96, 0.14); color: #C59060; }
+
+/* Fan: trigger → dark pill → three outputs */
+.tk-stage--fan { min-width: 480px; min-height: 264px; }
+.tk-lines--fan { width: 80%; }
+.tk-fan { position: relative; z-index: 10; display: flex; align-items: center; gap: 48px; }
+.tk-dark-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px 6px 6px;
+  border-radius: 999px;
+  background: rgba(9, 9, 11, 0.88);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  box-shadow: 0 0 0 1px #000, 0 10px 15px -3px rgba(0, 0, 0, 0.15), 0 4px 6px -4px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(8px);
+}
+.tk-outs { display: flex; flex-direction: column; gap: 56px; }
+.tk-outs .tk-pill { padding: 8px 16px 8px 12px; }
+
+/* Split: source → node → three outputs */
+.tk-stage--split { min-width: 600px; }
+.tk-lines--split { width: 50%; }
+.tk-split-outs { position: relative; z-index: 10; display: grid; grid-template-columns: repeat(3, 150px); justify-items: center; }
+.tk-split-outs .tk-pill { padding: 4px 12px 4px 4px; }
+.tk-split-outs .tk-ico { width: 28px; height: 28px; padding: 6px; box-sizing: border-box; border-radius: 999px; background: rgba(113, 113, 122, 0.1); }
+.tk-split-outs .tk-ico--brown { background: rgba(197, 144, 96, 0.14); }
+
+/* Beams (Tailark: beam-move, source-to-logo, logo-to-outputs) */
+.tk-beam { stroke-width: 1; stroke-dasharray: 80 300; stroke-dashoffset: 680; animation: tk-beam-move 6.4s linear infinite; }
+.tk-beam--ink { stroke: #09090b !important; }
+.tk-beam--late { animation-delay: 2s; filter: drop-shadow(0 1px 2px rgba(197, 144, 96, 0.45)); }
+@keyframes tk-beam-move { 100% { stroke-dashoffset: -780px; } }
+.tk-pulse { stroke-width: 1.5; stroke-dasharray: 0.3 2; stroke-dashoffset: 1.3; animation: tk-pulse 2.6s linear infinite; }
+.tk-pulse--out { animation-delay: 0.9s; }
+@keyframes tk-pulse { 0% { stroke-dashoffset: 1.3; } 100% { stroke-dashoffset: -1; } }
+.tk-flow { stroke-dasharray: 4 40; stroke-dashoffset: 40; animation: tk-out 3s linear infinite; }
+.tk-flow--in { stroke-dasharray: 4 30; stroke-dashoffset: 30; animation: tk-in 2s linear infinite; }
+@keyframes tk-in { 0% { stroke-dashoffset: 400px; } 100% { stroke-dashoffset: 0; } }
+@keyframes tk-out { 0% { stroke-dashoffset: 550px; } 10% { stroke-dashoffset: 400px; } 100% { stroke-dashoffset: 0; } }
+.lf-armed:not(.is-in) .tk-beam, .lf-armed:not(.is-in) .tk-pulse, .lf-armed:not(.is-in) .tk-flow { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) {
+  .tk-beam, .tk-pulse, .tk-flow { animation: none; opacity: 0; }
+}
+
+@media (max-width: 760px) {
+  .tk-tray { padding: 32px 12px; }
+  .tk-stage--merge { zoom: 0.8; }
+  .tk-stage--fan { zoom: 0.62; }
+  .tk-stage--split { zoom: 0.58; }
+}
+@media (max-width: 480px) {
+  .tk-stage--merge { zoom: 0.62; }
+  .tk-stage--fan { zoom: 0.58; }
+  .tk-stage--split { zoom: 0.55; }
+}
+
+/* ── Figures: extra motion ─────────────────────────────────────────────────── */
+/* Faster, overlapping beams */
+.tk-beam { animation-duration: 4.2s; }
+.tk-beam--late { animation-delay: 1.2s; }
+.tk-pulse { animation-duration: 1.8s; }
+.tk-pulse--out { animation-delay: 0.6s; }
+.tk-flow { animation-duration: 2.4s; }
+.tk-flow--in { animation-duration: 1.6s; }
+
+/* Node: ping ring + slow breathe */
+.tk-node::before,
+.tk-node::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  border: 1px solid rgba(197, 144, 96, 0.55);
+  animation: tk-ping 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+  pointer-events: none;
+}
+.tk-node::after { animation-delay: 1.2s; }
+@keyframes tk-ping { 0% { transform: scale(1); opacity: 0.9; } 100% { transform: scale(1.9); opacity: 0; } }
+.tk-node__ico { animation: tk-breathe 2.4s ease-in-out infinite; }
+@keyframes tk-breathe { 0%, 100% { transform: scale(1); filter: drop-shadow(0 0 0 rgba(233, 185, 137, 0)); } 50% { transform: scale(1.12); filter: drop-shadow(0 0 6px rgba(233, 185, 137, 0.7)); } }
+.tk-dark-pill .tk-ico { animation: tk-wiggle 2.8s ease-in-out infinite; transform-origin: 30% 70%; }
+@keyframes tk-wiggle { 0%, 70%, 100% { transform: rotate(0); } 78% { transform: rotate(-14deg); } 86% { transform: rotate(10deg); } 94% { transform: rotate(-4deg); } }
+
+/* Gentle float on cards and pills, each slightly out of phase */
+.tk-usage, .tk-doc, .tk-outs .tk-pill, .tk-split-outs .tk-pill, .tk-stage--split > .tk-pill, .tk-fan > .tk-pill {
+  animation: tk-float 4.5s ease-in-out infinite;
+}
+.tk-usage:nth-child(2), .tk-outs .tk-pill:nth-child(2), .tk-split-outs .tk-pill:nth-child(2) { animation-delay: -1.5s; }
+.tk-usage:nth-child(3), .tk-outs .tk-pill:nth-child(3), .tk-split-outs .tk-pill:nth-child(3) { animation-delay: -3s; }
+.tk-doc { animation-delay: -0.8s; }
+@keyframes tk-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+
+/* Skeleton shimmer */
+.tk-skel i {
+  background: linear-gradient(90deg, rgba(9, 9, 11, 0.1) 0%, rgba(9, 9, 11, 0.1) 40%, rgba(197, 144, 96, 0.35) 50%, rgba(9, 9, 11, 0.1) 60%, rgba(9, 9, 11, 0.1) 100%);
+  background-size: 300% 100%;
+  animation: tk-shimmer 2.8s linear infinite;
+}
+@keyframes tk-shimmer { 0% { background-position: 100% 0; } 100% { background-position: -50% 0; } }
+
+/* RESULT tag and the fix icon */
+.tk-tag { animation: tk-tag 3.2s ease-in-out infinite; transform-origin: left center; }
+@keyframes tk-tag { 0%, 60%, 100% { transform: rotate(0) scale(1); } 68% { transform: rotate(-6deg) scale(1.12); } 76% { transform: rotate(4deg) scale(1.05); } 84% { transform: rotate(0) scale(1); } }
+.tk-split-outs .tk-ico--brown { animation: tk-spin 3.2s cubic-bezier(0.6, 0, 0.4, 1) infinite; }
+@keyframes tk-spin { 0%, 55% { transform: rotate(0); } 100% { transform: rotate(360deg); } }
+.tk-outs .tk-ico--brown { animation: tk-nudge 2.4s ease-in-out infinite; }
+@keyframes tk-nudge { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(2px); } }
+
+/* Entrance: cards rise in, outputs pop in after the node */
+.lf-armed .tk-grid3 > *, .lf-armed .tk-node, .lf-armed .tk-doc-wrap, .lf-armed .tk-fan > *, .lf-armed .tk-outs > *, .lf-armed .tk-stage--split > .tk-pill, .lf-armed .tk-split-outs > * {
+  opacity: 0;
+  translate: 0 14px;
+  scale: 0.96;
+  transition: opacity 0.5s ease, translate 0.7s cubic-bezier(0.2, 0.8, 0.2, 1), scale 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.lf-armed.is-in .tk-grid3 > *, .lf-armed.is-in .tk-node, .lf-armed.is-in .tk-doc-wrap, .lf-armed.is-in .tk-fan > *, .lf-armed.is-in .tk-outs > *, .lf-armed.is-in .tk-stage--split > .tk-pill, .lf-armed.is-in .tk-split-outs > * {
+  opacity: 1; translate: 0 0; scale: 1;
+}
+.lf-armed.is-in .tk-grid3 > :nth-child(2), .lf-armed.is-in .tk-fan > :nth-child(2), .lf-armed.is-in .tk-outs > :nth-child(1), .lf-armed.is-in .tk-split-outs > :nth-child(1) { transition-delay: 0.12s; }
+.lf-armed.is-in .tk-grid3 > :nth-child(3), .lf-armed.is-in .tk-outs > :nth-child(2), .lf-armed.is-in .tk-split-outs > :nth-child(2) { transition-delay: 0.24s; }
+.lf-armed.is-in .tk-outs > :nth-child(3), .lf-armed.is-in .tk-split-outs > :nth-child(3) { transition-delay: 0.36s; }
+.lf-armed.is-in .tk-node { transition-delay: 0.35s; }
+.lf-armed.is-in .tk-doc-wrap { transition-delay: 0.55s; }
+.lf-armed.is-in .tk-fan > :nth-child(3) .tk-pill { transition-delay: 0.3s; }
+.lf-armed .tk-split-outs > * { transition-delay: 0s; }
+.lf-armed.is-in .tk-split-outs > :nth-child(1) { transition-delay: 0.5s; }
+.lf-armed.is-in .tk-split-outs > :nth-child(2) { transition-delay: 0.62s; }
+.lf-armed.is-in .tk-split-outs > :nth-child(3) { transition-delay: 0.74s; }
+.lf-armed.is-in .tk-outs > :nth-child(1) { transition-delay: 0.45s; }
+.lf-armed.is-in .tk-outs > :nth-child(2) { transition-delay: 0.57s; }
+.lf-armed.is-in .tk-outs > :nth-child(3) { transition-delay: 0.69s; }
+
+/* Hold every loop until the figure is on screen */
+.lf-armed:not(.is-in) .tk-node::before, .lf-armed:not(.is-in) .tk-node::after, .lf-armed:not(.is-in) .tk-node__ico,
+.lf-armed:not(.is-in) .tk-skel i, .lf-armed:not(.is-in) .tk-usage, .lf-armed:not(.is-in) .tk-doc, .lf-armed:not(.is-in) .tk-pill,
+.lf-armed:not(.is-in) .tk-tag, .lf-armed:not(.is-in) .tk-ico { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  .tk-node::before, .tk-node::after { display: none; }
+  .tk-node__ico, .tk-dark-pill .tk-ico, .tk-usage, .tk-doc, .tk-pill, .tk-skel i, .tk-tag, .tk-ico { animation: none !important; }
+}

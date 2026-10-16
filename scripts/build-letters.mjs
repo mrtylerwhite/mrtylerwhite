@@ -87,6 +87,93 @@ const CTA_ART = {
   </div></div>`,
 };
 
+// ── Inline figures ────────────────────────────────────────────────────────
+// Drop <!-- figure:name --> on its own line in a post to place one of these.
+// Built from Tailark's illustration primitives (tailark.com/illustrations/flow):
+// muted tray, white ring-1 cards, h-1 skeleton lines, foreground/15 connectors
+// with an animated gradient beam, and a black/75 node. Brand brown replaces their accent colours.
+const lucideIcon = (cls, paths) =>
+  `<svg class="${cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${paths}</svg>`;
+const ICON = {
+  split: '<path d="M16 3h5v5"/><path d="M8 3H3v5"/><path d="M12 22v-8.3a4 4 0 0 0-1.172-2.872L3 3"/><path d="m15 9 6-6"/>',
+  scale: '<path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/>',
+  alert: '<path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/>',
+  check: '<circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>',
+  dashboard: '<rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/>',
+  wand: '<path d="m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.64a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72"/><path d="m14 7 3 3"/><path d="M5 6v4"/><path d="M19 14v4"/><path d="M10 2v2"/><path d="M7 8H3"/><path d="M21 16h-4"/><path d="M11 3H9"/>',
+  trend: '<path d="M16 7h6v6"/><path d="m22 7-8.5 8.5-5-5L2 17"/>',
+  users: '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
+  pen: '<path d="M12 20h9"/><path d="M16.376 3.622a1 1 0 0 1 3.002 3.002L7.368 18.635a2 2 0 0 1-.855.506l-2.872.838a.5.5 0 0 1-.62-.62l.838-2.872a2 2 0 0 1 .506-.854z"/>',
+  rocket: '<path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>',
+  lightbulb: '<path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/>',
+  search: '<circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>',
+  refresh: '<path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/>',
+};
+const skel = `<div class="tk-skel"><div class="tk-row"><i class="tk-f"></i><i class="tk-w8"></i></div><div class="tk-row"><i class="tk-f"></i><i class="tk-w8"></i></div><div class="tk-row"><i class="tk-full"></i></div><div class="tk-row tk-row--1"><i class="tk-3"></i><i class="tk-3"></i></div><div class="tk-row tk-row--1 tk-mt4"><i class="tk-23"></i><i class="tk-3"></i></div><div class="tk-row tk-row--1"><i class="tk-3"></i><i class="tk-3"></i></div></div>`;
+const usageCard = (l1, l2, icon) => `<div class="tk-card tk-usage"><div class="tk-usage__head"><div class="tk-usage__title">${l1}<br>${l2}</div>${lucideIcon("tk-usage__ico", ICON[icon])}</div>${skel}</div>`;
+const pill = (label, icon, tone, sub = "") => `<div class="tk-card tk-pill${sub ? " tk-pill--tile" : ""}">${sub ? `<div class="tk-tile tk-tile--${tone}">${lucideIcon("tk-ico", ICON[icon])}</div><div><div class="tk-pill__label">${label}</div><div class="tk-pill__sub">${sub}</div></div>` : `${lucideIcon(`tk-ico tk-ico--${tone}`, ICON[icon])}<span class="tk-pill__label">${label}</span>`}</div>`;
+const beamGrad = (id, x1, y1, x2, y2) => `<linearGradient id="${id}" gradientUnits="userSpaceOnUse" x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}"><stop offset="0%" stop-color="#C59060" stop-opacity="0"/><stop offset="50%" stop-color="#E9B989"/><stop offset="100%" stop-color="#C59060"/></linearGradient>`;
+
+const FIGURES = {
+  // Tailark flow: three usage cards → node → invoice
+  "timeline-vs-decisions": `<figure class="letter-fig">
+  <div class="tk-tray"><div class="tk-stage tk-stage--merge" aria-hidden="true">
+    <svg class="tk-lines tk-lines--merge" viewBox="0 0 227 274" fill="none">
+      <path d="M226 2.5V62C226 73.05 217.05 82 206 82H140.5C129.45 82 120.5 90.95 120.5 102V151"/>
+      <path d="M112.5 0.5V273"/>
+      <path d="M0.5 1V62.5C0.5 73.55 9.45 82.5 20.5 82.5H84.5C95.55 82.5 104.5 91.45 104.5 102.5V151"/>
+      <path class="tk-beam" d="M226 2.5V62C226 73.05 217.05 82 206 82H140.5C129.45 82 120.5 90.95 120.5 102V151" stroke="url(#tkf1-r)"/>
+      <path class="tk-beam tk-beam--late" d="M112.5 0.5V273" stroke="url(#tkf1-v)"/>
+      <path class="tk-beam tk-beam--ink" d="M0.5 1V62.5C0.5 73.55 9.45 82.5 20.5 82.5H84.5C95.55 82.5 104.5 91.45 104.5 102.5V151"/>
+      <defs>${beamGrad("tkf1-r", 226, 0, 120, 151)}${beamGrad("tkf1-v", 112, 30, 112, 320)}</defs>
+    </svg>
+    <div class="tk-grid3">${usageCard("The", "decision", "split")}${usageCard("The", "tradeoff", "scale")}${usageCard("What went", "wrong", "alert")}</div>
+    <div class="tk-node">${lucideIcon("tk-node__ico", ICON.check)}</div>
+    <div class="tk-doc-wrap"><div class="tk-tag">RESULT</div><div class="tk-card tk-doc"><div class="tk-doc__title">CASE STUDY</div>${skel}<div class="tk-doc__bar"></div></div></div>
+  </div></div>
+  <figcaption>Build the case study from the decisions. The result has somewhere to land.</figcaption>
+</figure>`,
+  // Tailark flow: trigger pill → dark pill → three outputs
+  "title-rewrite": `<figure class="letter-fig">
+  <div class="tk-tray"><div class="tk-stage tk-stage--fan" aria-hidden="true">
+    <svg class="tk-lines tk-lines--fan" viewBox="0 0 400 240" fill="none">
+      <path d="M60 120 H160"/><path d="M220 120 H260"/>
+      <path d="M260 120 Q280 120 290 100 L310 50 Q320 30 340 30"/><path d="M260 120 H340"/><path d="M260 120 Q280 120 290 140 L310 190 Q320 210 340 210"/>
+      <path class="tk-pulse" pathLength="1" d="M60 120 H160" stroke="url(#tkf2-in)"/>
+      <path class="tk-pulse tk-pulse--out" pathLength="1" d="M220 120 H260 Q280 120 290 100 L310 50 Q320 30 340 30" stroke="url(#tkf2-o1)"/>
+      <path class="tk-pulse tk-pulse--out" pathLength="1" d="M220 120 H340" stroke="url(#tkf2-o2)"/>
+      <path class="tk-pulse tk-pulse--out" pathLength="1" d="M220 120 H260 Q280 120 290 140 L310 190 Q320 210 340 210" stroke="url(#tkf2-o3)"/>
+      <defs>${beamGrad("tkf2-in", 220, 120, 160, 120)}${beamGrad("tkf2-o1", 220, 120, 320, 60)}${beamGrad("tkf2-o2", 220, 120, 340, 120)}${beamGrad("tkf2-o3", 220, 120, 320, 180)}</defs>
+    </svg>
+    <div class="tk-fan">
+      ${pill("Dashboard 2.0", "dashboard", "muted")}
+      <div class="tk-dark-pill">${lucideIcon("tk-ico tk-ico--brown", ICON.wand)}<span>Rewrite the title</span></div>
+      <div class="tk-outs">${pill("The result", "trend", "brown")}${pill("Who it helped", "users", "brown")}${pill("What you did", "pen", "brown")}</div>
+    </div>
+  </div></div>
+  <figcaption>Result first. Who it helped. What you did, last.</figcaption>
+</figure>`,
+  // Tailark flow: data source → node → three outputs
+  "what-went-wrong-slide": `<figure class="letter-fig">
+  <div class="tk-tray"><div class="tk-stage tk-stage--split" aria-hidden="true">
+    <svg class="tk-lines tk-lines--split" viewBox="0 0 173 165" fill="none">
+      <path d="M92.5 81.5V119.18C92.5 128.01 99.66 135.18 108.5 135.18H156.5C165.34 135.18 172.5 142.34 172.5 151.18V164.5"/>
+      <path d="M80.5 81.5V119.18C80.5 128.01 73.34 135.18 64.5 135.18H16.5C7.66 135.18 0.5 142.34 0.5 151.18V164.5"/>
+      <path d="M86.5 81V164.5"/><path d="M86.5 0.5V80.5"/>
+      <path class="tk-flow tk-flow--in" d="M86.5 0.5V80.5" stroke="url(#tkf3-src)"/>
+      <path class="tk-flow" d="M92.5 81.5V119.18C92.5 128.01 99.66 135.18 108.5 135.18H156.5C165.34 135.18 172.5 142.34 172.5 151.18V164.5" stroke="url(#tkf3-r)"/>
+      <path class="tk-flow" d="M80.5 81.5V119.18C80.5 128.01 73.34 135.18 64.5 135.18H16.5C7.66 135.18 0.5 142.34 0.5 151.18V164.5" stroke="url(#tkf3-l)"/>
+      <path class="tk-flow" d="M86.5 81V164.5" stroke="url(#tkf3-c)"/>
+      <defs>${beamGrad("tkf3-src", 86.5, 0, 86.5, 81)}${beamGrad("tkf3-c", 86.5, 81, 86.5, 165)}${beamGrad("tkf3-r", 92, 81, 173, 165)}${beamGrad("tkf3-l", 81, 81, 0, 165)}</defs>
+    </svg>
+    ${pill("What we launched", "rocket", "muted", "Version one")}
+    <div class="tk-node tk-node--split">${lucideIcon("tk-node__ico", ICON.alert)}</div>
+    <div class="tk-split-outs">${pill("The bet", "lightbulb", "muted")}${pill("The signal", "search", "muted")}${pill("The fix", "refresh", "brown")}</div>
+  </div></div>
+  <figcaption>What we launched, why we bet on it, how we found out it missed, what we changed. That slide makes the rest of the deck believable.</figcaption>
+</figure>`,
+};
+
 const esc = (s = "") =>
   String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
@@ -276,6 +363,10 @@ function renderBody(post) {
     )
     .replace(/<\/table>/g, "</table></div></div></div>");
 
+  html = html.replace(/<!-- figure:([a-z0-9-]+) -->/g, (mm, name) => {
+    if (!FIGURES[name]) throw new Error(`${post.slug}: unknown figure "${name}"`);
+    return FIGURES[name];
+  });
   if (html.includes("<!-- newsletter -->")) html = html.replace("<!-- newsletter -->", newsletterBlock("letters_inline"));
   else {
     let n = 0;
@@ -460,7 +551,7 @@ ${html}
   });
 })();
 </script>
-${html.includes("data-code-block") ? '<script src="/assets/js/code-block.js" defer></script>\n' : ""}${shellClose}`;
+${html.includes("data-code-block") ? '<script src="/assets/js/code-block.js" defer></script>\n' : ""}${html.includes("letter-fig") ? '<script src="/assets/js/letter-figures.js" defer></script>\n' : ""}${shellClose}`;
 }
 
 function listItem(post) {

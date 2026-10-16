@@ -46,9 +46,13 @@ Strong case studies follow the decisions:
 
 Now the screens have a job. The research has a job. The metric has a job. They're not random stops on a museum tour anymore. They support the decision.
 
+<!-- figure:timeline-vs-decisions -->
+
 **2. The headline is the result, not the project name.**
 
 A project name asks for trust before you've earned it. A result earns the click.
+
+<!-- figure:title-rewrite -->
 
 **3. The screens are receipts.**
 
@@ -116,6 +120,8 @@ Not buried. Not apologized for. Not treated like a weird little secret you hope 
 A real slide.
 
 Here's what we launched. Here's why we thought it would work. Here's how we found out it didn't. Here's what we changed after reality punched the first version in the mouth.
+
+<!-- figure:what-went-wrong-slide -->
 
 That slide does a lot of work. It tells people you're not precious. It tells them you can read the room after launch. It tells them you don't need the project to look perfect for your judgment to look credible.
 
