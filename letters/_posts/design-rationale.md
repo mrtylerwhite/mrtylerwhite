@@ -93,7 +93,7 @@ If you need help picking that signal, start with [the UX metrics that actually m
 
 **Don't defend standards.** State them and move on.
 
-<!-- video:qblC-AT54h0 -->
+<!-- video:DrCn7wQe2Rw -->
 
 ## The real fix happens upstream
 

@@ -54,28 +54,6 @@
       "No access to metrics? Benchmark your impact and say what you would have measured."
     ]
   },
-  "Ngecrqddzdw": {
-    "title": "The ROI LIE: Why Designers Struggle to Prove Their Value",
-    "description": "Nick Groeneveld and Tyler White on perceived versus actual design value, customer sentiment, and measuring design impact in terms non-designers trust.",
-    "uploadDate": "2025-03-19T08:06:56-07:00",
-    "seconds": 2472,
-    "takeaways": [
-      "Perceived value and actual ROI are two different numbers. Your case study needs the second one.",
-      "Customer sentiment is the impact data most designers ignore, and it's often the easiest to get.",
-      "Measure impact in the words your stakeholders already use."
-    ]
-  },
-  "qblC-AT54h0": {
-    "title": "Stop Boring Stakeholders: How to Present Design (and Yourself) Like a Pro",
-    "description": "How to present design work and yourself with impact: framing reviews from the business side, managing stakeholder expectations, and handling objections.",
-    "uploadDate": "2025-05-28T07:05:45-07:00",
-    "seconds": 2556,
-    "takeaways": [
-      "Frame the review from the business side first. Design best practices come second.",
-      "Bring stakeholders in early so objections show up before the meeting.",
-      "Prep people ahead of time and document decisions in the open. That's how trust gets built."
-    ]
-  },
   "jMFZon1zh4w": {
     "title": "(Live) Senior Product Designers Solve a Real User Adoption Problem",
     "description": "A live working session where Tyler and Nick tackle low feature adoption and weak upgrade conversion, from awareness and email sequencing to pricing tiers.",
@@ -87,15 +65,26 @@
       "Product blames awareness, design blames UX, marketing blames messaging. The session gets them on the same problem."
     ]
   },
-  "f8n0h5JiXVY": {
-    "title": "Designers vs. Product Managers: Will They Become One?",
-    "description": "Tyler and Nick on the blurring line between designers and product managers, founders taking over the PM role, and what a PM's real value is.",
-    "uploadDate": "2025-07-09T11:39:25-07:00",
-    "seconds": 2394,
+  "DrCn7wQe2Rw": {
+    "title": "Your Stakeholders Don't Care About UX. Now What?!",
+    "description": "Tyler and Nick on stakeholders who want to skip research and just ship, why designers work like an insurance policy, and how to reframe design in the language executives respond to.",
+    "uploadDate": "2026-02-18T06:00:17-08:00",
+    "seconds": 1683,
     "takeaways": [
-      "At small startups, founders are taking over the PM role and designers pick up the rest.",
-      "The design, engineering and PM trio still matters, even on smaller teams.",
-      "A PM's real value is shielding the team so decisions actually get made."
+      "Your job works like an insurance policy between an idea and production. Say it that way.",
+      "Reframe research as risk reduction. That's language executives already respond to.",
+      "Sell design through the company's goals and KPIs, and stop apologizing for your process."
+    ]
+  },
+  "wp1pifLvVyY": {
+    "title": "The 4 Real Reasons Companies Hire Designers (And How to Prove Your Value), Part 2",
+    "description": "Part 2: the overlooked reasons designers get hired, from time savings and operational efficiency to risk reduction and compliance, with real examples from construction and pharma.",
+    "uploadDate": "2026-02-11T06:01:34-08:00",
+    "seconds": 1628,
+    "takeaways": [
+      "Time saved is impact. Translate the hours into money and it lands in any case study.",
+      "Risk reduction counts too. Compliance issues, errors and lawsuits that never happened.",
+      "Real examples from construction workflows and pharma packaging show impact well past the visuals."
     ]
   }
 }

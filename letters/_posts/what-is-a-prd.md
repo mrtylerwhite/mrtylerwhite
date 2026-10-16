@@ -81,8 +81,6 @@ But owning it and writing it alone are different jobs. The PRDs that survive con
 
 When product writes it alone, engineering finds the constraints in week two. When design writes it alone, it reads like a pitch deck. When nobody writes it, you get three different features built from three different memories of the same meeting.
 
-<!-- video:f8n0h5JiXVY -->
-
 ## When does a PRD get written?
 
 Before anyone builds. That sounds obvious.

@@ -66,7 +66,7 @@ This is the one most designers leave out, and it's the one that builds the most 
 
 Show the metric too early and it feels disconnected. Too late and people are gone. Put it at the moment the reader understands why it mattered.
 
-<!-- video:Ngecrqddzdw -->
+<!-- video:wp1pifLvVyY -->
 
 ## Before and after: case study headlines
 
