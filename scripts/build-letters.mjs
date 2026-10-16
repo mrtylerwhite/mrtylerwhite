@@ -65,7 +65,6 @@ const PLAY_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.14v
 function videoBlock(id) {
   const v = VIDEOS[id];
   const mins = Math.round(v.seconds / 60);
-  const watch = `https://www.youtube.com/watch?v=${id}`;
   return `<figure class="letter-video" data-video-id="${id}">
   <div class="letter-video__frame">
     <button class="letter-video__play" type="button" aria-label="Play video: ${esc(v.title)}">
@@ -77,7 +76,6 @@ function videoBlock(id) {
     <span class="letter-video__eyebrow">The Design Table Podcast &middot; ${mins} min</span>
     <span class="letter-video__title">${esc(v.title)}</span>
     <ul class="letter-video__takeaways">${v.takeaways.map((t) => `<li>${esc(t)}</li>`).join("")}</ul>
-    <a class="letter-video__link" href="${watch}" target="_blank" rel="noopener noreferrer">Watch on YouTube &rarr;</a>
   </figcaption>
 </figure>`;
 }
@@ -577,6 +575,7 @@ ${shellOpen("letters-page letter-page")}
 <main class="letter" id="main-content">
   <article class="letter__article">
     <header class="letter__header">
+      <a class="letter__back ds-enter" href="/letters/" data-track-event="letters_back_click"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>All letters</a>
       <h1 class="letter__title ds-enter ds-enter-d1">${esc(post.title)}</h1>
       ${post.subtitle ? `<p class="letter__subtitle ds-enter ds-enter-d1">${esc(post.subtitle)}</p>` : ""}
       <div class="letter__byline ds-enter ds-enter-d2">
