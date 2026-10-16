@@ -79,7 +79,7 @@
 											<nav id="top-menu-nav">
 						<ul id="top-menu" class="nav"><li id="menu-item-30" class="anim-link menu-item menu-item-type-post_type menu-item-object-page menu-item-30"><a href="/about/">About Me</a></li>
 <li id="menu-item-3458" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item menu-item-3458"><a href="/letters/" aria-current="page">Letters</a></li>
-<li id="menu-item-3464" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3464"><a href="https://www.designtablepodcast.com/" target="_blank" rel="noopener noreferrer">Podcast</a></li><li id="menu-item-4000" class="site-nav-workshop menu-item menu-item-type-custom menu-item-object-custom menu-item-4000"><a href="/prototype-ready/">Builder Kickoff™</a></li>
+<li id="menu-item-3464" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3464"><a href="https://www.designtablepodcast.com/" target="_blank" rel="noopener noreferrer">Podcast</a></li><li id="menu-item-4000" class="site-nav-workshop menu-item menu-item-type-custom menu-item-object-custom menu-item-4000"><a href="/builder-kickoff/">Builder Kickoff™</a></li>
 
 <li id="menu-item-54" class="et_pb_button menu-item menu-item-type-custom menu-item-object-custom menu-item-54"><a href="/roi-case-study-template/" data-track-event="case_study_kit_cta_click" data-track-location="nav">The 15 Minute Case Study</a></li>
 </ul>						</nav>
@@ -97,10 +97,7 @@
 					</header>
 <!-- /partial:header -->
 <main class="letters" id="main-content">
-  <header class="letters__head">
-    <h1 class="letters__title ds-enter">Letters</h1>
-    <p class="letters__lede ds-enter ds-enter-d1">The long version of The ROI of Design. Templates, examples and the reasoning behind them.</p>
-  </header>
+  <h1 class="screen-reader-text">Letters</h1>
 
 
 
@@ -256,15 +253,20 @@
     </section>
     <aside class="letters-sidebar">
       <aside class="letter-signup" aria-label="Newsletter">
-  <p class="ds-eyebrow letter-signup__eyebrow">The ROI of Design</p>
-  <p class="letter-signup__title">The short version lands in your inbox every Saturday.</p>
-  <p class="letter-signup__body">One idea a week on proving what design is worth. No fluff, no theory, unsubscribe whenever.</p>
-  <form class="letter-signup__form" data-newsletter-form data-track-location="letters_sidebar" method="post" action="https://app.kit.com/forms/4969496/subscriptions" novalidate>
-    <label class="screen-reader-text" for="nl-letters_sidebar">Email address</label>
-    <input id="nl-letters_sidebar" class="letter-signup__input" name="email_address" type="email" autocomplete="email" placeholder="you@company.com" required />
-    <button class="letter-signup__btn" type="submit">Subscribe</button>
-    <p class="letter-signup__error" data-newsletter-error role="alert" aria-live="polite"></p>
-  </form>
+  
+  <div class="letter-signup__inner">
+    <p class="ds-eyebrow letter-signup__eyebrow">The ROI of Design</p>
+    <p class="letter-signup__title">Get credit for the work you already ship.</p>
+    <p class="letter-signup__body">Every Saturday: how to turn your design work into numbers execs actually fund.</p>
+    <form class="letter-signup__form" data-newsletter-form data-track-location="letters_sidebar" method="post" action="https://app.kit.com/forms/4969496/subscriptions" novalidate>
+      <label class="screen-reader-text" for="nl-letters_sidebar">Email address</label>
+      <div class="letter-signup__field">
+        <input id="nl-letters_sidebar" class="letter-signup__input" name="email_address" type="email" autocomplete="email" placeholder="Enter your email address..." required />
+        <button class="letter-signup__btn" type="submit">Subscribe <span aria-hidden="true">&rarr;</span></button>
+      </div>
+      <p class="letter-signup__error" data-newsletter-error role="alert" aria-live="polite"></p>
+    </form>
+  </div>
 </aside>
     </aside>
   </div>
@@ -314,7 +316,7 @@
       <a href="/newsletter/">Newsletter</a>
       <a href="/letters/" aria-current="page">Letters</a>
       <a href="https://www.designtablepodcast.com/" target="_blank" rel="noopener noreferrer">Podcast</a>
-      <a href="/prototype-ready/">Builder Kickoff™</a>
+      <a href="/builder-kickoff/">Builder Kickoff™</a>
     </nav>
     <nav class="site-footer__col" aria-label="Resources">
       <span class="site-footer__col-heading">Resources</span>
@@ -340,6 +342,7 @@
 </div>
 <script src="/assets/js/mobile-menu-a11y.js" defer></script>
 <script src="/assets/js/newsletter-form.js" defer></script>
+<script src="/assets/js/signup-float.js" defer></script>
 <script src="/assets/js/gtm-defer.js" defer></script>
 <script src="/assets/js/analytics.js" defer></script>
 <script src="/assets/js/hotjar.js" defer></script>

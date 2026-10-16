@@ -80,7 +80,7 @@
 											<nav id="top-menu-nav">
 						<ul id="top-menu" class="nav"><li id="menu-item-30" class="anim-link menu-item menu-item-type-post_type menu-item-object-page menu-item-30"><a href="/about/">About Me</a></li>
 <li id="menu-item-3458" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3458"><a href="/letters/">Letters</a></li>
-<li id="menu-item-3464" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3464"><a href="https://www.designtablepodcast.com/" target="_blank" rel="noopener noreferrer">Podcast</a></li><li id="menu-item-4000" class="site-nav-workshop menu-item menu-item-type-custom menu-item-object-custom menu-item-4000"><a href="/prototype-ready/">Builder Kickoff™</a></li>
+<li id="menu-item-3464" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3464"><a href="https://www.designtablepodcast.com/" target="_blank" rel="noopener noreferrer">Podcast</a></li><li id="menu-item-4000" class="site-nav-workshop menu-item menu-item-type-custom menu-item-object-custom menu-item-4000"><a href="/builder-kickoff/">Builder Kickoff™</a></li>
 
 <li id="menu-item-54" class="et_pb_button menu-item menu-item-type-custom menu-item-object-custom menu-item-54"><a href="/roi-case-study-template/" data-track-event="case_study_kit_cta_click" data-track-location="nav">The 15 Minute Case Study</a></li>
 </ul>						</nav>
@@ -129,7 +129,7 @@
 <p>And here&#39;s the gap nobody likes admitting: you can&#39;t state an outcome you never measured. Most weak case studies aren&#39;t a writing problem. They&#39;re a measurement problem that showed up late.</p>
 <p>The fix isn&#39;t more metrics. It&#39;s translating the ones you have into the four things the business runs on.</p>
 <h2 id="the-four-kinds-of-ux-metrics-leadership-cares-about">The four kinds of UX metrics leadership cares about</h2>
-<div class="letter-table"><table>
+<div class="letter-table"><div class="letter-table__card"><div class="letter-table__dots" aria-hidden="true"><span></span><span></span><span></span></div><div class="letter-table__scroll"><table>
 <thead>
 <tr>
 <th>Category</th>
@@ -157,7 +157,7 @@
 <td>Is it making or protecting money?</td>
 <td>Conversion rate, trial to paid, expansion, deals unblocked</td>
 </tr>
-</tbody></table></div>
+</tbody></table></div></div></div>
 <p>Every UX metric you track should sit in one of those rows. If it doesn&#39;t, ask what it&#39;s actually proving.</p>
 <h2 id="the-adoption-metric-everyone-forgets">The adoption metric everyone forgets</h2>
 <p>A feature ships. The work is solid. The UX makes sense. Everyone moves on.</p>
@@ -179,16 +179,21 @@
 <p>That&#39;s not fluff. That&#39;s math.</p>
 <p>Reduce that by even 25% and it&#39;s real money and real time returned to the team.</p>
 <p>Here&#39;s the important part: <strong>you&#39;re not claiming results. You&#39;re showing expected impact.</strong> Label it clearly, show your assumptions, and keep the numbers conservative. Leadership trusts a modest estimate with visible math far more than a big number with none.</p>
-<aside class="letter-signup" aria-label="Newsletter">
-  <p class="ds-eyebrow letter-signup__eyebrow">The ROI of Design</p>
-  <p class="letter-signup__title">The short version lands in your inbox every Saturday.</p>
-  <p class="letter-signup__body">One idea a week on proving what design is worth. No fluff, no theory, unsubscribe whenever.</p>
-  <form class="letter-signup__form" data-newsletter-form data-track-location="letters_inline" method="post" action="https://app.kit.com/forms/4969496/subscriptions" novalidate>
-    <label class="screen-reader-text" for="nl-letters_inline">Email address</label>
-    <input id="nl-letters_inline" class="letter-signup__input" name="email_address" type="email" autocomplete="email" placeholder="you@company.com" required />
-    <button class="letter-signup__btn" type="submit">Subscribe</button>
-    <p class="letter-signup__error" data-newsletter-error role="alert" aria-live="polite"></p>
-  </form>
+<aside class="letter-signup letter-signup--float" aria-label="Newsletter" data-signup-float>
+  <div class="letter-signup__float" aria-hidden="true"><span class="letter-signup__bubble letter-signup__bubble--1" data-depth="0.6"><img src="/assets/images/readers/nick-groeneveld.webp" alt="" width="96" height="96" loading="lazy" decoding="async" /></span><span class="letter-signup__bubble letter-signup__bubble--2" data-depth="1"><img src="/assets/images/readers/stav-lipman.webp" alt="" width="96" height="96" loading="lazy" decoding="async" /></span><span class="letter-signup__bubble letter-signup__bubble--3" data-depth="0.8"><img src="/assets/images/readers/nidhi-arora.webp" alt="" width="96" height="96" loading="lazy" decoding="async" /></span><span class="letter-signup__bubble letter-signup__bubble--4" data-depth="0.45"><img src="/assets/images/readers/laila-albuquerque.webp" alt="" width="96" height="96" loading="lazy" decoding="async" /></span><span class="letter-signup__bubble letter-signup__bubble--5" data-depth="0.9"><img src="/assets/images/readers/aline-a.webp" alt="" width="96" height="96" loading="lazy" decoding="async" /></span></div>
+  <div class="letter-signup__inner">
+    <p class="ds-eyebrow letter-signup__eyebrow">The ROI of Design</p>
+    <p class="letter-signup__title">Get credit for the work you already ship.</p>
+    <p class="letter-signup__body">Every Saturday: how to turn your design work into numbers execs actually fund.</p>
+    <form class="letter-signup__form" data-newsletter-form data-track-location="letters_inline" method="post" action="https://app.kit.com/forms/4969496/subscriptions" novalidate>
+      <label class="screen-reader-text" for="nl-letters_inline">Email address</label>
+      <div class="letter-signup__field">
+        <input id="nl-letters_inline" class="letter-signup__input" name="email_address" type="email" autocomplete="email" placeholder="Enter your email address..." required />
+        <button class="letter-signup__btn" type="submit">Subscribe <span aria-hidden="true">&rarr;</span></button>
+      </div>
+      <p class="letter-signup__error" data-newsletter-error role="alert" aria-live="polite"></p>
+    </form>
+  </div>
 </aside>
 
 <h2 id="ux-kpis-vs-ux-metrics">UX KPIs vs UX metrics</h2>
@@ -302,7 +307,7 @@
       <a href="/newsletter/">Newsletter</a>
       <a href="/letters/">Letters</a>
       <a href="https://www.designtablepodcast.com/" target="_blank" rel="noopener noreferrer">Podcast</a>
-      <a href="/prototype-ready/">Builder Kickoff™</a>
+      <a href="/builder-kickoff/">Builder Kickoff™</a>
     </nav>
     <nav class="site-footer__col" aria-label="Resources">
       <span class="site-footer__col-heading">Resources</span>
@@ -328,6 +333,7 @@
 </div>
 <script src="/assets/js/mobile-menu-a11y.js" defer></script>
 <script src="/assets/js/newsletter-form.js" defer></script>
+<script src="/assets/js/signup-float.js" defer></script>
 <script src="/assets/js/gtm-defer.js" defer></script>
 <script src="/assets/js/analytics.js" defer></script>
 <script src="/assets/js/hotjar.js" defer></script>

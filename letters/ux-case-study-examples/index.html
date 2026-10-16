@@ -80,7 +80,7 @@
 											<nav id="top-menu-nav">
 						<ul id="top-menu" class="nav"><li id="menu-item-30" class="anim-link menu-item menu-item-type-post_type menu-item-object-page menu-item-30"><a href="/about/">About Me</a></li>
 <li id="menu-item-3458" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3458"><a href="/letters/">Letters</a></li>
-<li id="menu-item-3464" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3464"><a href="https://www.designtablepodcast.com/" target="_blank" rel="noopener noreferrer">Podcast</a></li><li id="menu-item-4000" class="site-nav-workshop menu-item menu-item-type-custom menu-item-object-custom menu-item-4000"><a href="/prototype-ready/">Builder Kickoff™</a></li>
+<li id="menu-item-3464" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3464"><a href="https://www.designtablepodcast.com/" target="_blank" rel="noopener noreferrer">Podcast</a></li><li id="menu-item-4000" class="site-nav-workshop menu-item menu-item-type-custom menu-item-object-custom menu-item-4000"><a href="/builder-kickoff/">Builder Kickoff™</a></li>
 
 <li id="menu-item-54" class="et_pb_button menu-item menu-item-type-custom menu-item-object-custom menu-item-54"><a href="/roi-case-study-template/" data-track-event="case_study_kit_cta_click" data-track-location="nav">The 15 Minute Case Study</a></li>
 </ul>						</nav>
@@ -146,7 +146,7 @@
 <p>Show the metric too early and it feels disconnected. Too late and people are gone. Put it at the moment the reader understands why it mattered.</p>
 <h2 id="before-and-after-case-study-headlines">Before and after: case study headlines</h2>
 <p>These are illustrative rewrites, not real projects. The pattern is what matters.</p>
-<div class="letter-table"><table>
+<div class="letter-table"><div class="letter-table__card"><div class="letter-table__dots" aria-hidden="true"><span></span><span></span><span></span></div><div class="letter-table__scroll"><table>
 <thead>
 <tr>
 <th>Weak headline</th>
@@ -169,7 +169,7 @@
 <td>Design system migration</td>
 <td>Shipped features 30% faster by killing 40 one-off components</td>
 </tr>
-</tbody></table></div>
+</tbody></table></div></div></div>
 <p>The weak column describes what you made. The strong column describes what changed. Only one of those gets read.</p>
 <p>If you don&#39;t have the number yet, that&#39;s not a writing problem. It&#39;s a measurement problem, and you can still fix it. Start with <a href="/letters/ux-metrics/">the UX metrics that actually make it into the exec deck</a>.</p>
 <h2 id="the-what-went-wrong-section">The &quot;what went wrong&quot; section</h2>
@@ -179,16 +179,21 @@
 <p>Here&#39;s what we launched. Here&#39;s why we thought it would work. Here&#39;s how we found out it didn&#39;t. Here&#39;s what we changed after reality punched the first version in the mouth.</p>
 <p>That slide does a lot of work. It tells people you&#39;re not precious. It tells them you can read the room after launch. It tells them you don&#39;t need the project to look perfect for your judgment to look credible.</p>
 <p>Nobody needs another goddamn case study where every project magically starts with ambiguity and ends with a clean business impact slide. That&#39;s a bedtime story for recruiters.</p>
-<aside class="letter-signup" aria-label="Newsletter">
-  <p class="ds-eyebrow letter-signup__eyebrow">The ROI of Design</p>
-  <p class="letter-signup__title">The short version lands in your inbox every Saturday.</p>
-  <p class="letter-signup__body">One idea a week on proving what design is worth. No fluff, no theory, unsubscribe whenever.</p>
-  <form class="letter-signup__form" data-newsletter-form data-track-location="letters_inline" method="post" action="https://app.kit.com/forms/4969496/subscriptions" novalidate>
-    <label class="screen-reader-text" for="nl-letters_inline">Email address</label>
-    <input id="nl-letters_inline" class="letter-signup__input" name="email_address" type="email" autocomplete="email" placeholder="you@company.com" required />
-    <button class="letter-signup__btn" type="submit">Subscribe</button>
-    <p class="letter-signup__error" data-newsletter-error role="alert" aria-live="polite"></p>
-  </form>
+<aside class="letter-signup letter-signup--float" aria-label="Newsletter" data-signup-float>
+  <div class="letter-signup__float" aria-hidden="true"><span class="letter-signup__bubble letter-signup__bubble--1" data-depth="0.6"><img src="/assets/images/readers/nick-groeneveld.webp" alt="" width="96" height="96" loading="lazy" decoding="async" /></span><span class="letter-signup__bubble letter-signup__bubble--2" data-depth="1"><img src="/assets/images/readers/stav-lipman.webp" alt="" width="96" height="96" loading="lazy" decoding="async" /></span><span class="letter-signup__bubble letter-signup__bubble--3" data-depth="0.8"><img src="/assets/images/readers/nidhi-arora.webp" alt="" width="96" height="96" loading="lazy" decoding="async" /></span><span class="letter-signup__bubble letter-signup__bubble--4" data-depth="0.45"><img src="/assets/images/readers/laila-albuquerque.webp" alt="" width="96" height="96" loading="lazy" decoding="async" /></span><span class="letter-signup__bubble letter-signup__bubble--5" data-depth="0.9"><img src="/assets/images/readers/aline-a.webp" alt="" width="96" height="96" loading="lazy" decoding="async" /></span></div>
+  <div class="letter-signup__inner">
+    <p class="ds-eyebrow letter-signup__eyebrow">The ROI of Design</p>
+    <p class="letter-signup__title">Get credit for the work you already ship.</p>
+    <p class="letter-signup__body">Every Saturday: how to turn your design work into numbers execs actually fund.</p>
+    <form class="letter-signup__form" data-newsletter-form data-track-location="letters_inline" method="post" action="https://app.kit.com/forms/4969496/subscriptions" novalidate>
+      <label class="screen-reader-text" for="nl-letters_inline">Email address</label>
+      <div class="letter-signup__field">
+        <input id="nl-letters_inline" class="letter-signup__input" name="email_address" type="email" autocomplete="email" placeholder="Enter your email address..." required />
+        <button class="letter-signup__btn" type="submit">Subscribe <span aria-hidden="true">&rarr;</span></button>
+      </div>
+      <p class="letter-signup__error" data-newsletter-error role="alert" aria-live="polite"></p>
+    </form>
+  </div>
 </aside>
 
 <h2 id="a-ux-case-study-example-structured-by-decisions">A UX case study example, structured by decisions</h2>
@@ -304,7 +309,7 @@
       <a href="/newsletter/">Newsletter</a>
       <a href="/letters/">Letters</a>
       <a href="https://www.designtablepodcast.com/" target="_blank" rel="noopener noreferrer">Podcast</a>
-      <a href="/prototype-ready/">Builder Kickoff™</a>
+      <a href="/builder-kickoff/">Builder Kickoff™</a>
     </nav>
     <nav class="site-footer__col" aria-label="Resources">
       <span class="site-footer__col-heading">Resources</span>
@@ -330,6 +335,7 @@
 </div>
 <script src="/assets/js/mobile-menu-a11y.js" defer></script>
 <script src="/assets/js/newsletter-form.js" defer></script>
+<script src="/assets/js/signup-float.js" defer></script>
 <script src="/assets/js/gtm-defer.js" defer></script>
 <script src="/assets/js/analytics.js" defer></script>
 <script src="/assets/js/hotjar.js" defer></script>

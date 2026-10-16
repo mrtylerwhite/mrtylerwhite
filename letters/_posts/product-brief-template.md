@@ -38,7 +38,7 @@ It's lighter than a PRD. A brief decides whether to do the work. A [PRD](/letter
 
 ## The product brief template (copy and paste)
 
-```markdown
+```markdown product-brief.md
 # [Initiative name] Product Brief
 
 ## Problem

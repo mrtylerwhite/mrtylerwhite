@@ -19,7 +19,7 @@
   <meta name="twitter:description" content="A real AI prototyping workflow for product designers: load context, explore 4-5 directions to kill bad ideas fast, test in code, then polish. Prompt included." />
   <meta name="twitter:image" content="https://www.mrtylerwhite.com/assets/images/letters/ai-prototyping-workflow.jpg" />
   <link rel="alternate" type="application/rss+xml" title="Letters · Tyler White" href="https://www.mrtylerwhite.com/letters/feed.xml" />
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"The AI prototyping workflow I actually use (and where it breaks)","description":"A real AI prototyping workflow for product designers: load context, explore 4-5 directions to kill bad ideas fast, test in code, then polish. Prompt included.","datePublished":"2026-03-25","dateModified":"2026-10-15","image":"https://www.mrtylerwhite.com/assets/images/letters/ai-prototyping-workflow.jpg","mainEntityOfPage":"https://www.mrtylerwhite.com/letters/ai-prototyping-workflow/","url":"https://www.mrtylerwhite.com/letters/ai-prototyping-workflow/","keywords":"ai prototyping","wordCount":1209,"author":{"@type":"Person","name":"Tyler White","url":"https://www.mrtylerwhite.com/about/","jobTitle":"Director of Product Design"},"publisher":{"@type":"Person","name":"Tyler White","url":"https://www.mrtylerwhite.com/"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"The AI prototyping workflow I actually use (and where it breaks)","description":"A real AI prototyping workflow for product designers: load context, explore 4-5 directions to kill bad ideas fast, test in code, then polish. Prompt included.","datePublished":"2026-03-25","dateModified":"2026-10-15","image":"https://www.mrtylerwhite.com/assets/images/letters/ai-prototyping-workflow.jpg","mainEntityOfPage":"https://www.mrtylerwhite.com/letters/ai-prototyping-workflow/","url":"https://www.mrtylerwhite.com/letters/ai-prototyping-workflow/","keywords":"ai prototyping","wordCount":1210,"author":{"@type":"Person","name":"Tyler White","url":"https://www.mrtylerwhite.com/about/","jobTitle":"Director of Product Design"},"publisher":{"@type":"Person","name":"Tyler White","url":"https://www.mrtylerwhite.com/"}}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.mrtylerwhite.com/"},{"@type":"ListItem","position":2,"name":"Letters","item":"https://www.mrtylerwhite.com/letters/"},{"@type":"ListItem","position":3,"name":"The AI prototyping workflow I actually use (and where it breaks)","item":"https://www.mrtylerwhite.com/letters/ai-prototyping-workflow/"}]}</script>
 
   <link rel="icon" href="/wp-content/uploads/2025/05/cropped-Favicon-2-32x32.png" sizes="32x32" />
@@ -35,6 +35,9 @@
   <link rel="stylesheet" href="/assets/css/system/nav-standalone.css" />
   <link rel="stylesheet" href="/assets/css/system/pages/letters.css" />
   <link rel="stylesheet" href="/assets/css/system/site-footer.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&display=swap" />
 <!-- partial:head -->
 <style id="page-transitions">
 /* Page transitions (details.so port). Inline on purpose: Chrome decides whether
@@ -80,7 +83,7 @@
 											<nav id="top-menu-nav">
 						<ul id="top-menu" class="nav"><li id="menu-item-30" class="anim-link menu-item menu-item-type-post_type menu-item-object-page menu-item-30"><a href="/about/">About Me</a></li>
 <li id="menu-item-3458" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3458"><a href="/letters/">Letters</a></li>
-<li id="menu-item-3464" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3464"><a href="https://www.designtablepodcast.com/" target="_blank" rel="noopener noreferrer">Podcast</a></li><li id="menu-item-4000" class="site-nav-workshop menu-item menu-item-type-custom menu-item-object-custom menu-item-4000"><a href="/prototype-ready/">Builder Kickoff™</a></li>
+<li id="menu-item-3464" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3464"><a href="https://www.designtablepodcast.com/" target="_blank" rel="noopener noreferrer">Podcast</a></li><li id="menu-item-4000" class="site-nav-workshop menu-item menu-item-type-custom menu-item-object-custom menu-item-4000"><a href="/builder-kickoff/">Builder Kickoff™</a></li>
 
 <li id="menu-item-54" class="et_pb_button menu-item menu-item-type-custom menu-item-object-custom menu-item-54"><a href="/roi-case-study-template/" data-track-event="case_study_kit_cta_click" data-track-location="nav">The 15 Minute Case Study</a></li>
 </ul>						</nav>
@@ -147,54 +150,30 @@
 <p>What used to take hours now takes about 20 to 30 minutes to explore and kill bad ideas early.</p>
 <h2 id="the-exploration-prompt">The exploration prompt</h2>
 <p>Here&#39;s the prompt I use for step 2. Copy it and adapt it.</p>
-<pre><code class="language-text">I&#39;m a product designer working on a feature inside an existing system
-with real constraints (design system, data models, user expectations).
-
-I&#39;ve provided context including product behavior, requirements, and research.
-Do not generate a solution yet.
-
-First, confirm you understand:
-- the goal of the feature
-- the constraints of the system
-- the expected user behavior
-
-Then, generate 4-5 different solution directions.
-These are not final designs. These are exploration paths.
-
-For each direction:
-- describe how inputs flow through the system
-- explain how outputs are affected
-- call out where the logic might break or fail
-- identify any edge cases or missing states
-
-After generating directions, evaluate:
-- which concepts are worth exploring further
-- which should be killed early
-- where the system behavior might confuse users
-
-Do not optimize for polish. Optimize for:
-- exposing bad ideas quickly
-- revealing logic gaps
-- identifying points of failure
-
-Assume this will be used in a real production system, engineering
-constraints are non-trivial, and anything that looks right but doesn&#39;t
-hold up logically is wrong.
-
-I&#39;m not looking for a perfect solution. I&#39;m looking for the fastest
-way to figure out what doesn&#39;t work.
-</code></pre>
+<figure class="cb is-first-active" data-code-block>
+  <div class="cb-bar">
+    <div class="cb-tabs" role="tablist" aria-label="Code files"><button type="button" role="tab" class="cb-tab" id="cb-5-tab" aria-controls="cb-5" aria-selected="true" tabindex="0"><svg class="cb-tab__icon" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg><span>exploration-prompt.txt</span></button></div>
+    <button type="button" class="cb-copy" aria-label="Copy code"><svg class="cb-copy__icon" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg><svg class="cb-copy__done" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span class="cb-copy__label">Copy</span></button>
+  </div>
+  <div class="cb-panel" role="tabpanel" id="cb-5" aria-labelledby="cb-5-tab"><div class="cb-scroll" tabindex="0"><pre class="cb-pre" data-lang="text"><code><span class="cb-line"><span>I'm a product designer working on a feature inside an existing system</span></span><span class="cb-line"><span>with real constraints (design system, data models, user expectations).</span></span><span class="cb-line"><span></span></span><span class="cb-line"><span>I've provided context including product behavior, requirements, and research.</span></span><span class="cb-line"><span>Do not generate a solution yet.</span></span><span class="cb-line"><span></span></span><span class="cb-line"><span>First, confirm you understand:</span></span><span class="cb-line"><span><span class="cb-tok-mark">-</span> the goal of the feature</span></span><span class="cb-line"><span><span class="cb-tok-mark">-</span> the constraints of the system</span></span><span class="cb-line"><span><span class="cb-tok-mark">-</span> the expected user behavior</span></span><span class="cb-line"><span></span></span><span class="cb-line"><span>Then, generate 4-5 different solution directions.</span></span><span class="cb-line"><span>These are not final designs. These are exploration paths.</span></span><span class="cb-line"><span></span></span><span class="cb-line"><span>For each direction:</span></span><span class="cb-line"><span><span class="cb-tok-mark">-</span> describe how inputs flow through the system</span></span><span class="cb-line"><span><span class="cb-tok-mark">-</span> explain how outputs are affected</span></span><span class="cb-line"><span><span class="cb-tok-mark">-</span> call out where the logic might break or fail</span></span><span class="cb-line"><span><span class="cb-tok-mark">-</span> identify any edge cases or missing states</span></span><span class="cb-line"><span></span></span><span class="cb-line"><span>After generating directions, evaluate:</span></span><span class="cb-line"><span><span class="cb-tok-mark">-</span> which concepts are worth exploring further</span></span><span class="cb-line"><span><span class="cb-tok-mark">-</span> which should be killed early</span></span><span class="cb-line"><span><span class="cb-tok-mark">-</span> where the system behavior might confuse users</span></span><span class="cb-line"><span></span></span><span class="cb-line"><span>Do not optimize for polish. Optimize for:</span></span><span class="cb-line"><span><span class="cb-tok-mark">-</span> exposing bad ideas quickly</span></span><span class="cb-line"><span><span class="cb-tok-mark">-</span> revealing logic gaps</span></span><span class="cb-line"><span><span class="cb-tok-mark">-</span> identifying points of failure</span></span><span class="cb-line"><span></span></span><span class="cb-line"><span>Assume this will be used in a real production system, engineering</span></span><span class="cb-line"><span>constraints are non-trivial, and anything that looks right but doesn't</span></span><span class="cb-line"><span>hold up logically is wrong.</span></span><span class="cb-line"><span></span></span><span class="cb-line"><span>I'm not looking for a perfect solution. I'm looking for the fastest</span></span><span class="cb-line"><span>way to figure out what doesn't work.</span></span></code></pre></div></div>
+  <span class="cb-status screen-reader-text" role="status" aria-live="polite"></span>
+</figure>
 <p>The most important line is &quot;do not generate a solution yet.&quot; Skip it and you get a confident answer to a question you haven&#39;t finished asking.</p>
-<aside class="letter-signup" aria-label="Newsletter">
-  <p class="ds-eyebrow letter-signup__eyebrow">The ROI of Design</p>
-  <p class="letter-signup__title">The short version lands in your inbox every Saturday.</p>
-  <p class="letter-signup__body">One idea a week on proving what design is worth. No fluff, no theory, unsubscribe whenever.</p>
-  <form class="letter-signup__form" data-newsletter-form data-track-location="letters_inline" method="post" action="https://app.kit.com/forms/4969496/subscriptions" novalidate>
-    <label class="screen-reader-text" for="nl-letters_inline">Email address</label>
-    <input id="nl-letters_inline" class="letter-signup__input" name="email_address" type="email" autocomplete="email" placeholder="you@company.com" required />
-    <button class="letter-signup__btn" type="submit">Subscribe</button>
-    <p class="letter-signup__error" data-newsletter-error role="alert" aria-live="polite"></p>
-  </form>
+<aside class="letter-signup letter-signup--float" aria-label="Newsletter" data-signup-float>
+  <div class="letter-signup__float" aria-hidden="true"><span class="letter-signup__bubble letter-signup__bubble--1" data-depth="0.6"><img src="/assets/images/readers/nick-groeneveld.webp" alt="" width="96" height="96" loading="lazy" decoding="async" /></span><span class="letter-signup__bubble letter-signup__bubble--2" data-depth="1"><img src="/assets/images/readers/stav-lipman.webp" alt="" width="96" height="96" loading="lazy" decoding="async" /></span><span class="letter-signup__bubble letter-signup__bubble--3" data-depth="0.8"><img src="/assets/images/readers/nidhi-arora.webp" alt="" width="96" height="96" loading="lazy" decoding="async" /></span><span class="letter-signup__bubble letter-signup__bubble--4" data-depth="0.45"><img src="/assets/images/readers/laila-albuquerque.webp" alt="" width="96" height="96" loading="lazy" decoding="async" /></span><span class="letter-signup__bubble letter-signup__bubble--5" data-depth="0.9"><img src="/assets/images/readers/aline-a.webp" alt="" width="96" height="96" loading="lazy" decoding="async" /></span></div>
+  <div class="letter-signup__inner">
+    <p class="ds-eyebrow letter-signup__eyebrow">The ROI of Design</p>
+    <p class="letter-signup__title">Get credit for the work you already ship.</p>
+    <p class="letter-signup__body">Every Saturday: how to turn your design work into numbers execs actually fund.</p>
+    <form class="letter-signup__form" data-newsletter-form data-track-location="letters_inline" method="post" action="https://app.kit.com/forms/4969496/subscriptions" novalidate>
+      <label class="screen-reader-text" for="nl-letters_inline">Email address</label>
+      <div class="letter-signup__field">
+        <input id="nl-letters_inline" class="letter-signup__input" name="email_address" type="email" autocomplete="email" placeholder="Enter your email address..." required />
+        <button class="letter-signup__btn" type="submit">Subscribe <span aria-hidden="true">&rarr;</span></button>
+      </div>
+      <p class="letter-signup__error" data-newsletter-error role="alert" aria-live="polite"></p>
+    </form>
+  </div>
 </aside>
 
 <h2 id="where-ai-prototyping-breaks-and-where-people-get-burned">Where AI prototyping breaks (and where people get burned)</h2>
@@ -203,7 +182,7 @@ way to figure out what doesn&#39;t work.
 <p>Anything beyond quick UI needs to be checked. Every time.</p>
 <p>If you don&#39;t, you&#39;ll present something that looks good but is wrong. That&#39;s how you lose trust and look sloppy, fast.</p>
 <h2 id="ai-prototyping-tools-what-i-use-each-one-for">AI prototyping tools: what I use each one for</h2>
-<div class="letter-table"><table>
+<div class="letter-table"><div class="letter-table__card"><div class="letter-table__dots" aria-hidden="true"><span></span><span></span><span></span></div><div class="letter-table__scroll"><table>
 <thead>
 <tr>
 <th>Tool</th>
@@ -226,7 +205,7 @@ way to figure out what doesn&#39;t work.
 <td>Voice chat</td>
 <td>Talking a messy product idea out before writing anything</td>
 </tr>
-</tbody></table></div>
+</tbody></table></div></div></div>
 <p>The tool matters less than the order. Context, then exploration, then real testing, then polish.</p>
 <h2 id="faster-building-makes-the-kickoff-matter-more">Faster building makes the kickoff matter more</h2>
 <p>Here&#39;s the uncomfortable part. When building gets cheap, building the wrong thing gets cheap too. Teams are shipping more than ever, and a lot of it isn&#39;t translating into business impact.</p>
@@ -291,6 +270,7 @@ way to figure out what doesn&#39;t work.
   });
 })();
 </script>
+<script src="/assets/js/code-block.js" defer></script>
 <!-- partial:footer -->
 <footer class="site-footer" role="contentinfo">
   <div class="site-footer__inner">
@@ -305,7 +285,7 @@ way to figure out what doesn&#39;t work.
       <a href="/newsletter/">Newsletter</a>
       <a href="/letters/">Letters</a>
       <a href="https://www.designtablepodcast.com/" target="_blank" rel="noopener noreferrer">Podcast</a>
-      <a href="/prototype-ready/">Builder Kickoff™</a>
+      <a href="/builder-kickoff/">Builder Kickoff™</a>
     </nav>
     <nav class="site-footer__col" aria-label="Resources">
       <span class="site-footer__col-heading">Resources</span>
@@ -331,6 +311,7 @@ way to figure out what doesn&#39;t work.
 </div>
 <script src="/assets/js/mobile-menu-a11y.js" defer></script>
 <script src="/assets/js/newsletter-form.js" defer></script>
+<script src="/assets/js/signup-float.js" defer></script>
 <script src="/assets/js/gtm-defer.js" defer></script>
 <script src="/assets/js/analytics.js" defer></script>
 <script src="/assets/js/hotjar.js" defer></script>

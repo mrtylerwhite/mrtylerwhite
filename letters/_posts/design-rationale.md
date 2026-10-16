@@ -56,7 +56,7 @@ And sometimes it's the opposite: a genuine bet gets presented like a standard, a
 
 Keep it short enough that someone will actually read it. This format works:
 
-```markdown
+```markdown decision-record.md
 ## Decision: [what we chose]
 
 - Context: what problem this solves, in one sentence

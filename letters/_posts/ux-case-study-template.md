@@ -25,7 +25,7 @@ Whether they'd trust your judgment in the messy middle of a real project.
 
 ## The UX case study template (copy and paste)
 
-```markdown
+```markdown case-study.md
 # [Result-first headline: what changed, for who]
 
 ## The decision

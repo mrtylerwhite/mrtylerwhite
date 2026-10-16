@@ -74,29 +74,6 @@
 .letters-tile--ai-workflow::before { background: radial-gradient(120% 90% at 50% 0%, rgba(36, 200, 220, 0.35), transparent 60%); }
 .letters-tile--career::before { background: radial-gradient(120% 90% at 100% 100%, rgba(197, 144, 96, 0.45), transparent 60%); }
 
-/* ── Index: head ──────────────────────────────────────────────────────────── */
-.letters__head {
-  max-width: var(--letters-wide);
-  margin: 0 auto 24px;
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 24px;
-  flex-wrap: wrap;
-}
-#page-container .letters__title {
-  margin: 0;
-  font-size: 40px !important;
-  line-height: 1 !important;
-}
-.letters__lede {
-  margin: 0;
-  max-width: 460px;
-  font-size: 15px;
-  line-height: 20px;
-  color: var(--ds-color-muted);
-}
-
 /* ── Index: topic chips ──────────────────────────────────────────── */
 .letters-chips {
   margin: 16px 0 8px;
@@ -554,47 +531,264 @@ img.letters-feature__art {
   padding: 0.1em 0.35em;
   border-radius: 4px;
 }
-.letter__body pre {
-  margin: 24px 0;
-  padding: 20px 22px;
-  background: var(--ds-color-dark);
-  color: #f4f4f5;
-  border-radius: var(--ds-radius-md);
-  overflow-x: auto;
-  font-size: 14px;
-  line-height: 1.6;
+/* Code block: Tailark Quartz "Code Demo 4", dark theme, matched 1:1 to
+   tailark.com/view/code-demo-4?theme=dark (card, editor, tab shape, vesper tokens).
+   Markup from scripts/build-letters.mjs, behaviour in /assets/js/code-block.js */
+.cb {
+  --cb-card: #0b0b0d;
+  --cb-editor: #0e0e10;
+  --cb-line: rgba(255, 255, 255, 0.07);
+  --cb-ring: rgba(255, 255, 255, 0.075);
+  --cb-fg: #ffffff;
+  --cb-fg-75: rgba(255, 255, 255, 0.75);
+  --cb-hover: rgba(255, 255, 255, 0.05);
+  --cb-icon: #e17100;     /* amber-600 */
+  --cb-orange: #ffc799;   /* vesper keys, numbers */
+  --cb-mint: #99ffe4;     /* vesper strings */
+  --cb-muted: #a0a0a0;    /* vesper punctuation */
+  --cb-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  position: relative;
+  margin: 32px 0;
+  padding: 0 4px 4px;
+  overflow: hidden;
+  background: var(--cb-card);
+  color: var(--cb-fg);
+  border-radius: 18px;
+  box-shadow: 0 0 0 1px var(--cb-ring), 0 10px 15px -3px rgba(0, 0, 0, 0.094), 0 4px 6px -4px rgba(0, 0, 0, 0.094);
+  color-scheme: dark;
 }
-.letter__body pre code { background: none; padding: 0; color: inherit; font-size: inherit; }
+
+/* Tab bar: 40px tall, the active tab drops 1px over the editor's top border */
+.cb-bar {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  height: 40px;
+}
+.cb-tabs {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  height: 100%;
+  min-width: 0;
+  flex: 1;
+}
+.cb .cb-tab,
+.cb .cb-copy {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  padding: 0 12px;
+  border: 0;
+  background: transparent;
+  color: var(--cb-fg-75);
+  font-family: var(--cb-mono);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: normal;
+  text-transform: none;
+  white-space: nowrap;
+  cursor: pointer;
+  outline: none;
+}
+.cb .cb-tab {
+  height: 36px;
+  margin-bottom: -1px;
+  border: 1px solid transparent;
+  border-bottom: 0;
+  border-radius: 14px 14px 0 0;
+}
+.cb .cb-tab:first-child { border-top-left-radius: 14px; }
+.cb .cb-tab__icon { flex: none; color: var(--cb-icon); }
+.cb .cb-tab[aria-selected="false"]:hover,
+.cb .cb-tab[aria-selected="false"]:focus-visible {
+  background: var(--cb-hover);
+  border-radius: 10px;
+  height: 32px;
+  margin-bottom: 3px;
+}
+.cb .cb-tab[aria-selected="true"] {
+  z-index: 1;
+  background: var(--cb-editor);
+  border-color: var(--cb-line);
+}
+/* Concave corners where the active tab flows into the editor */
+.cb .cb-tab[aria-selected="true"]::before,
+.cb .cb-tab[aria-selected="true"]::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
+}
+.cb .cb-tab[aria-selected="true"]::after {
+  right: -17px;
+  background: radial-gradient(circle at 100% 0, var(--cb-card) 15px, var(--cb-line) 15px, var(--cb-line) 16px, var(--cb-editor) 16.5px);
+}
+.cb .cb-tab[aria-selected="true"]::before {
+  left: -17px;
+  background: radial-gradient(circle at 0 0, var(--cb-card) 15px, var(--cb-line) 15px, var(--cb-line) 16px, var(--cb-editor) 16.5px);
+}
+.cb .cb-tab[aria-selected="true"]:first-child::before {
+  left: -1px;
+  bottom: -16px;
+  border-left: 1px solid var(--cb-line);
+  background: var(--cb-editor);
+}
+
+.cb .cb-copy {
+  flex: none;
+  height: 32px;
+  margin-bottom: 4px;
+  border-radius: 10px;
+}
+.cb .cb-copy:hover,
+.cb .cb-copy:focus-visible { background: var(--cb-hover); color: var(--cb-fg); }
+.cb-copy__done { display: none; }
+.cb.is-copied .cb-copy { color: var(--cb-mint); }
+.cb.is-copied .cb-copy__icon { display: none; }
+.cb.is-copied .cb-copy__done { display: block; }
+.cb .cb-tab:focus-visible,
+.cb .cb-copy:focus-visible,
+.cb-scroll:focus-visible { box-shadow: 0 0 0 2px var(--ds-color-focus, #2563eb); }
+
+/* Editor: h-96 max, scrolls inside, fades at an edge only while there's more */
+.cb-panel {
+  position: relative;
+  background: var(--cb-editor);
+  border: 1px solid var(--cb-line);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.cb.is-first-active .cb-panel { border-top-left-radius: 0; }
+.cb-panel[hidden] { display: none; }
+.cb-scroll {
+  max-height: 384px;
+  overflow: auto;
+  outline: none;
+  scrollbar-width: none;
+  --cb-fade-top: #000;
+  --cb-fade-bottom: #000;
+  -webkit-mask-image: linear-gradient(to bottom, var(--cb-fade-top), #000 20%, #000 80%, var(--cb-fade-bottom));
+  mask-image: linear-gradient(to bottom, var(--cb-fade-top), #000 20%, #000 80%, var(--cb-fade-bottom));
+}
+.cb-scroll::-webkit-scrollbar { display: none; }
+.cb-scroll.fade-top { --cb-fade-top: transparent; }
+.cb-scroll.fade-bottom { --cb-fade-bottom: transparent; }
+
+.letter__body .cb-pre {
+  margin: 0;
+  padding: 8px 8px 8px;
+  background: none;
+  color: var(--cb-fg);
+  border: 0;
+  border-radius: 0;
+  overflow: visible;
+  font-family: var(--cb-mono);
+  font-size: 13px;
+  line-height: 17px;
+  white-space: pre;
+  counter-reset: cb-line;
+  tab-size: 4;
+}
+.letter__body .cb-pre code {
+  display: block;
+  min-width: max-content;
+  background: none;
+  padding: 0;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  border-radius: 0;
+}
+.cb-line {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  min-height: 17px;
+}
+.cb-line::before {
+  counter-increment: cb-line;
+  content: counter(cb-line);
+  width: 24px;
+  font-size: 12px;
+  text-align: right;
+  opacity: 0.35;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.cb-tok-head { color: var(--cb-orange); }
+.cb-tok-key { color: var(--cb-orange); }
+.cb-tok-ph { color: var(--cb-mint); }
+.cb-tok-mark { color: var(--cb-muted); }
+.cb-tok-strong { font-weight: 500; }
+
+/* Table: Tailark Mist "Features 1", matched to oss.tailark.com/view/mist-features-1.
+   Gray tray (foreground/5, 24px radius) > white faux-browser card > fully gridded table. */
 .letter-table {
-  margin: 24px 0;
-  overflow-x: auto;
-  border: 1px solid var(--ds-color-border);
-  border-radius: var(--ds-radius-md);
-  background: var(--ds-color-surface);
+  --lt-ink: #09090b;
+  --lt-grid: #e4e4e7;
+  margin: 32px 0 40px;
 }
-.letter__body table {
+.letter-table__card {
+  position: relative;
+  padding: 24px;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  box-shadow:
+    inset 0 0 0 1px #fff,
+    0 0 0 1px rgba(9, 9, 11, 0.05),
+    0 2px 6px -2px rgba(9, 9, 11, 0.04),
+    0 16px 40px -16px rgba(9, 9, 11, 0.12);
+}
+.letter-table__dots {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 24px;
+}
+.letter-table__dots span {
+  width: 8px;
+  height: 8px;
+  box-sizing: border-box;
+  background: #f4f4f5;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 999px;
+}
+.letter-table__scroll { overflow-x: auto; }
+.letter__body .letter-table table {
   width: 100%;
+  margin: 0;
   border-collapse: collapse;
-  font-size: 15px;
-  line-height: 1.45;
+  color: var(--lt-ink);
+  font-family: var(--ds-font-body);
+  font-size: 14px;
+  line-height: 20px;
 }
-.letter__body th,
-.letter__body td {
+.letter__body .letter-table th,
+.letter__body .letter-table td {
   text-align: left;
-  vertical-align: top;
-  padding: 12px 14px;
-  border-bottom: 1px solid var(--ds-color-border);
+  vertical-align: middle;
+  border: 1px solid var(--lt-grid);
 }
-.letter__body th {
-  font-family: var(--ds-font-mono);
-  font-size: 11px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--ds-color-faint);
+.letter__body .letter-table thead { background: #f6efe9; } /* warm, between --ds-color-page and --ds-color-surface-inset */
+.letter__body .letter-table th {
+  padding: 12px;
   font-weight: 500;
-  background: var(--ds-color-surface-raised);
+  font-size: 14px;
+  letter-spacing: normal;
+  text-transform: none;
+  color: var(--lt-ink);
+  background: none;
 }
-.letter__body tr:last-child td { border-bottom: 0; }
+.letter__body .letter-table td { padding: 8px; }
+.letter__body .letter-table td strong { font-weight: 600; }
 
 /* ── Signup + CTA blocks ──────────────────────────────────────────────────── */
 .letter-signup,
@@ -604,8 +798,8 @@ img.letters-feature__art {
   border-radius: var(--ds-radius-lg);
 }
 .letter-signup {
-  background: var(--ds-color-surface);
-  border: 1px solid var(--ds-color-border);
+  background: var(--ds-color-dark);
+  border: 1px solid var(--ds-color-border-on-dark);
 }
 .letter-cta {
   background: var(--ds-color-dark);
@@ -614,13 +808,15 @@ img.letters-feature__art {
 #page-container .letter-signup__title,
 #page-container .letter-cta__title {
   margin: 4px 0 8px;
-  font-family: var(--ds-font-display);
-  font-weight: var(--ds-font-weight-heading, 700);
+  font-family: var(--ds-font-heading);
+  /* Same treatment as the letter H1/H2s: bold, tight tracking */
+  font-weight: 700 !important;
+  letter-spacing: -0.05em;
   font-size: 28px !important;
   line-height: 1.02 !important;
   text-transform: uppercase;
 }
-#page-container .letter-signup__title { color: var(--ds-color-text-strong) !important; }
+#page-container .letter-signup__title { color: var(--ds-color-on-dark) !important; }
 #page-container .letter-cta__title { color: var(--ds-color-on-dark) !important; }
 /* Parent class keeps these above `.letter__body p` when the blocks sit inside the article */
 #page-container .letter-signup .letter-signup__body,
@@ -629,7 +825,8 @@ img.letters-feature__art {
   font-size: 15px;
   line-height: 20px;
 }
-#page-container .letter-signup .letter-signup__body { color: var(--ds-color-muted); }
+#page-container .letter-signup .letter-signup__body { color: var(--ds-color-on-dark-muted); }
+.letter-signup .letter-signup__error { color: #ff8a80; }
 #page-container .letter-cta .letter-cta__body { color: var(--ds-color-on-dark-muted); }
 .letter-signup__form {
   display: flex;
@@ -683,6 +880,148 @@ img.letters-feature__art {
 .letters-sidebar .letter-signup { padding: 24px; }
 .letters-sidebar #page-container .letter-signup__title,
 #page-container .letters-sidebar .letter-signup__title { font-size: 24px !important; }
+
+.letter-signup__btn span { margin-left: 6px; transition: transform var(--ds-dur-fast, 150ms) var(--ds-ease-out, ease-out); }
+.letter-signup__btn:hover span { transform: translateX(3px); }
+
+/* Pill field: input + button in one white capsule, same as the /newsletter/ hero form */
+.letter-signup__field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 999px;
+  box-shadow: 0 5px 40px rgba(0, 0, 0, 0.05);
+  transition: border-color 0.35s, box-shadow 0.35s;
+}
+.letter-signup__field:hover,
+.letter-signup__field:focus-within {
+  border-color: #c59060;
+  box-shadow: 0 0 0 6px rgba(197, 144, 96, 0.2), 0 5px 40px rgba(0, 0, 0, 0.05);
+}
+.letter-signup .letter-signup__field .letter-signup__input {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 44px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  box-shadow: none;
+  font: 400 15px var(--ds-font-body);
+}
+.letter-signup .letter-signup__field .letter-signup__input::placeholder { color: rgba(0, 0, 0, 0.45); }
+.letter-signup .letter-signup__field .letter-signup__input:focus { outline: none; }
+.letter-signup .letter-signup__field .letter-signup__btn {
+  flex: none;
+  height: 44px;
+  margin: 0;
+  padding: 0 20px;
+  border-radius: 999px;
+  justify-content: center;
+  background: #000;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: background-color 0.35s;
+}
+.letter-signup .letter-signup__field .letter-signup__btn:hover { background: #1a1a1a; }
+.letter-signup .letter-signup__field .letter-signup__btn:focus-visible { outline: 2px solid #c59060; outline-offset: 3px; }
+/* Stacked: phones and the narrow index sidebar */
+.letters-sidebar .letter-signup__field,
+.letters-solo .letter-signup__field {
+  flex-direction: column;
+  align-items: stretch;
+  border-radius: 22px;
+  padding: 10px;
+}
+@media (max-width: 480px) {
+  .letter-signup__field { flex-direction: column; align-items: stretch; border-radius: 22px; padding: 10px; }
+}
+
+/* Floating variant (in-article + end of letter): warm card, centred copy,
+   pill form, reader avatars floating round the edges. Parallax: /assets/js/signup-float.js */
+.letter-signup--float {
+  --letter-signup-bg: var(--ds-color-dark);
+  position: relative;
+  overflow: hidden;
+  margin: 56px 0;
+  padding: 64px 40px 52px;
+  background: var(--letter-signup-bg);
+  border: 0;
+  border-radius: 28px;
+  text-align: center;
+  isolation: isolate;
+}
+.letter-signup--float .letter-signup__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 420px;
+  margin: 0 auto;
+}
+#page-container .letter-signup--float .letter-signup__title {
+  margin: 8px 0 12px;
+  font-size: 46px !important;
+  line-height: 0.98 !important;
+}
+#page-container .letter-signup--float .letter-signup__body {
+  margin: 0 auto 24px;
+  max-width: 360px;
+}
+.letter-signup--float .letter-signup__error { text-align: center; }
+
+.letter-signup__float {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+.letter-signup__bubble {
+  position: absolute;
+  display: block;
+  width: var(--size);
+  height: var(--size);
+  will-change: transform;
+}
+.letter-signup__bubble img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 999px;
+  border: 3px solid #fff;
+  box-shadow: 0 16px 34px -12px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.08);
+  background: var(--ds-color-surface-inset);
+  animation:
+    letter-signup-pop 700ms var(--ds-ease-out, cubic-bezier(0.2, 0.8, 0.2, 1)) both,
+    letter-signup-bob var(--bob, 7s) ease-in-out var(--delay, 0s) infinite alternate;
+  animation-delay: var(--pop, 0ms), var(--delay, 0s);
+}
+.letter-signup__bubble--1 { --size: 76px; left: 4%;  top: 10%;    --bob: 7s;   --delay: -1s; --pop: 0ms; }
+.letter-signup__bubble--2 { --size: 60px; left: 11%; bottom: 13%; --bob: 8.5s; --delay: -4s; --pop: 90ms; }
+.letter-signup__bubble--3 { --size: 68px; right: 8%; top: 10%;    --bob: 6.5s; --delay: -2s; --pop: 180ms; }
+.letter-signup__bubble--4 { --size: 84px; right: 4%; bottom: 12%; --bob: 9s;   --delay: -6s; --pop: 270ms; }
+.letter-signup__bubble--5 { --size: 42px; left: 3%;  top: 50%;    --bob: 7.5s; --delay: -3s; --pop: 360ms; }
+@keyframes letter-signup-bob {
+  from { transform: translate3d(0, -7px, 0) rotate(-2deg); }
+  to   { transform: translate3d(0, 7px, 0) rotate(2deg); }
+}
+@keyframes letter-signup-pop {
+  from { opacity: 0; scale: 0.6; }
+  to   { opacity: 1; scale: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .letter-signup__bubble img { animation: none; }
+}
+/* Not enough side room for the bubbles: hide them, the avatar row still shows */
+@media (max-width: 820px) {
+  .letter-signup__float { display: none; }
+  .letter-signup--float { padding: 40px 22px 32px; border-radius: 24px; }
+  #page-container .letter-signup--float .letter-signup__title { font-size: 36px !important; }
+}
 
 /* Visually hidden, still read by screen readers (Divi's version isn't loaded here) */
 .letters-page .screen-reader-text {
@@ -739,7 +1078,6 @@ img.letters-feature__art {
 @media (max-width: 720px) {
   .letters,
   .letter { padding: 112px 16px 72px; }
-  #page-container .letters__title { font-size: 34px !important; }
   .letters-feature { height: 360px; }
   /* With a cover: drawing on top, text below it, nothing overlapping */
   .letters-feature:has(img.letters-feature__art) { height: auto; }
@@ -768,7 +1106,15 @@ img.letters-feature__art {
   #page-container .letter__body p,
   #page-container .letter__body li { font-size: 18px; }
   #page-container .letter__body h2 { font-size: 30px !important; }
-  .letter__body pre { white-space: pre-wrap; word-break: break-word; font-size: 13px; }
+  .letter-table__card { padding: 16px; }
+  .letter-table__dots { margin-bottom: 16px; }
+  .letter__body .letter-table th,
+  .letter__body .letter-table td { min-width: 150px; }
+  .letter__body .cb-pre { white-space: pre-wrap; overflow-wrap: anywhere; }
+  .letter__body .cb-pre code { min-width: 0; }
+  .cb-line { grid-template-columns: 36px 1fr; }
+  .cb .cb-copy__label { display: none; }
+  .cb .cb-copy { padding: 0 10px; }
   .letter-signup,
   .letter-cta { padding: 22px; }
 }

@@ -73,7 +73,7 @@ What used to take hours now takes about 20 to 30 minutes to explore and kill bad
 
 Here's the prompt I use for step 2. Copy it and adapt it.
 
-```text
+```text exploration-prompt.txt
 I'm a product designer working on a feature inside an existing system
 with real constraints (design system, data models, user expectations).
 

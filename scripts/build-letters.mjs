@@ -103,17 +103,34 @@ const fmtDate = (iso) =>
 const slugifyHeading = (text) =>
   text.toLowerCase().replace(/<[^>]+>/g, "").replace(/&[a-z#0-9]+;/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
-function newsletterBlock(location) {
-  return `<aside class="letter-signup" aria-label="Newsletter">
-  <p class="ds-eyebrow letter-signup__eyebrow">The ROI of Design</p>
-  <p class="letter-signup__title">The short version lands in your inbox every Saturday.</p>
-  <p class="letter-signup__body">One idea a week on proving what design is worth. No fluff, no theory, unsubscribe whenever.</p>
-  <form class="letter-signup__form" data-newsletter-form data-track-location="${location}" method="post" action="${KIT_FORM}" novalidate>
-    <label class="screen-reader-text" for="nl-${location}">Email address</label>
-    <input id="nl-${location}" class="letter-signup__input" name="email_address" type="email" autocomplete="email" placeholder="you@company.com" required />
-    <button class="letter-signup__btn" type="submit">Subscribe</button>
-    <p class="letter-signup__error" data-newsletter-error role="alert" aria-live="polite"></p>
-  </form>
+// Reader avatars from the Senja testimonials widget, saved locally at 192px.
+const READERS = ["nick-groeneveld", "stav-lipman", "nidhi-arora", "laila-albuquerque", "aline-a"].map(
+  (slug) => `/assets/images/readers/${slug}.webp`
+);
+
+// Wide placements get floating avatar bubbles that drift with the cursor
+// (/assets/js/signup-float.js); the narrow sidebar keeps just the avatar row.
+function newsletterBlock(location, { floating = true } = {}) {
+  const bubbles = floating
+    ? `<div class="letter-signup__float" aria-hidden="true">${READERS.map(
+        (src, i) => `<span class="letter-signup__bubble letter-signup__bubble--${i + 1}" data-depth="${[0.6, 1, 0.8, 0.45, 0.9][i]}"><img src="${src}" alt="" width="96" height="96" loading="lazy" decoding="async" /></span>`
+      ).join("")}</div>`
+    : "";
+  return `<aside class="letter-signup${floating ? " letter-signup--float" : ""}" aria-label="Newsletter"${floating ? " data-signup-float" : ""}>
+  ${bubbles}
+  <div class="letter-signup__inner">
+    <p class="ds-eyebrow letter-signup__eyebrow">The ROI of Design</p>
+    <p class="letter-signup__title">Get credit for the work you already ship.</p>
+    <p class="letter-signup__body">Every Saturday: how to turn your design work into numbers execs actually fund.</p>
+    <form class="letter-signup__form" data-newsletter-form data-track-location="${location}" method="post" action="${KIT_FORM}" novalidate>
+      <label class="screen-reader-text" for="nl-${location}">Email address</label>
+      <div class="letter-signup__field">
+        <input id="nl-${location}" class="letter-signup__input" name="email_address" type="email" autocomplete="email" placeholder="Enter your email address..." required />
+        <button class="letter-signup__btn" type="submit">Subscribe <span aria-hidden="true">&rarr;</span></button>
+      </div>
+      <p class="letter-signup__error" data-newsletter-error role="alert" aria-live="polite"></p>
+    </form>
+  </div>
 </aside>`;
 }
 
@@ -126,6 +143,78 @@ function ctaBlock(key) {
   <p class="letter-cta__body">${esc(c.body)}</p>
   <a class="letter-cta__btn" href="${c.href}" data-track-event="letters_cta_click" data-track-location="${key}">${esc(c.label)} &rarr;</a>
 </aside>`;
+}
+
+// ── Code blocks ───────────────────────────────────────────────────────────
+// Fences render as Tailark's Quartz "Code Demo 4" (dark): file tabs over a
+// scrolling editor with line numbers, plus a copy button.
+// Name the file in the info string: ```markdown prd-template.md
+// Adjacent fences with no prose between them merge into one card with a tab each.
+// Behaviour lives in /assets/js/code-block.js.
+
+// Lucide icons at Tailark's size-3: braces for data, hash for markdown, file-text otherwise.
+const lucide = (paths) =>
+  `<svg class="cb-tab__icon" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${paths}</svg>`;
+const ICONS = {
+  braces: lucide('<path d="M8 3H7a2 2 0 0 0-2 2v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5c0 1.1.9 2 2 2h1"/><path d="M16 21h1a2 2 0 0 0 2-2v-5c0-1.1.9-2 2-2a2 2 0 0 1-2-2V5a2 2 0 0 0-2-2h-1"/>'),
+  hash: lucide('<line x1="4" x2="20" y1="9" y2="9"/><line x1="4" x2="20" y1="15" y2="15"/><line x1="10" x2="8" y1="3" y2="21"/><line x1="16" x2="14" y1="3" y2="21"/>'),
+  file: lucide('<path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/>'),
+};
+const LANG_ICON = { json: "braces", js: "braces", ts: "braces", markdown: "hash", md: "hash" };
+const DEFAULT_FILE = { markdown: "template.md", md: "template.md", text: "prompt.txt", txt: "prompt.txt", json: "data.json" };
+const COPY_ICON = `<svg class="cb-copy__icon" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>`;
+const CHECK_ICON = `<svg class="cb-copy__done" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>`;
+
+// Light markdown highlighting: headings, list markers, "Label:" keys, [placeholders], **bold**.
+function highlightLine(line, lang) {
+  let s = esc(line);
+  if (lang !== "markdown" && lang !== "md") {
+    return s.replace(/^(\s*)(-|\d+\.)(\s)/, '$1<span class="cb-tok-mark">$2</span>$3');
+  }
+  if (/^#{1,6}\s/.test(line)) return `<span class="cb-tok-head">${s}</span>`;
+  s = s.replace(/^(\s*)(-|\*|\d+\.)(\s)/, '$1<span class="cb-tok-mark">$2</span>$3');
+  s = s.replace(/(<\/span>\s)([A-Z][A-Za-z0-9 /&;'’-]{1,40}:)(?=\s|$)/, '$1<span class="cb-tok-key">$2</span>');
+  s = s.replace(/\*\*([^*]+)\*\*/g, '<span class="cb-tok-strong">**$1**</span>');
+  s = s.replace(/\[([^\]]+)\]/g, '<span class="cb-tok-ph">[$1]</span>');
+  return s;
+}
+
+let codeBlockSeq = 0;
+
+function renderCodeBlock(text, info = "") {
+  const [rawLang = "text", fileName] = info.trim().split(/\s+/);
+  const lang = rawLang.toLowerCase();
+  const file = fileName || DEFAULT_FILE[lang] || `snippet.${lang}`;
+  const lines = text.replace(/\n$/, "").split("\n");
+  const body = lines.map((l) => `<span class="cb-line"><span>${highlightLine(l, lang)}</span></span>`).join("");
+  return {
+    id: `cb-${++codeBlockSeq}`,
+    tab: `${ICONS[LANG_ICON[lang] || "file"]}<span>${esc(file)}</span>`,
+    html: `<pre class="cb-pre" data-lang="${esc(lang)}"><code>${body}</code></pre>`,
+  };
+}
+
+function codeCardHtml(blocks) {
+  const tabs = blocks
+    .map(
+      (b, i) =>
+        `<button type="button" role="tab" class="cb-tab" id="${b.id}-tab" aria-controls="${b.id}" aria-selected="${i === 0}" tabindex="${i === 0 ? 0 : -1}">${b.tab}</button>`
+    )
+    .join("");
+  const panels = blocks
+    .map(
+      (b, i) =>
+        `<div class="cb-panel" role="tabpanel" id="${b.id}" aria-labelledby="${b.id}-tab"${i === 0 ? "" : " hidden"}><div class="cb-scroll" tabindex="0">${b.html}</div></div>`
+    )
+    .join("");
+  return `<figure class="cb is-first-active" data-code-block>
+  <div class="cb-bar">
+    <div class="cb-tabs" role="tablist" aria-label="Code files">${tabs}</div>
+    <button type="button" class="cb-copy" aria-label="Copy code">${COPY_ICON}${CHECK_ICON}<span class="cb-copy__label">Copy</span></button>
+  </div>
+  ${panels}
+  <span class="cb-status screen-reader-text" role="status" aria-live="polite"></span>
+</figure>`;
 }
 
 function renderBody(post) {
@@ -145,8 +234,23 @@ function renderBody(post) {
       ? `<a href="${esc(href)}"${t} target="_blank" rel="noopener noreferrer">${text}</a>`
       : `<a href="${esc(href)}"${t}>${text}</a>`;
   };
+  const codeBlocks = [];
+  renderer.code = function ({ text, lang }) {
+    codeBlocks.push(renderCodeBlock(text, lang));
+    return `<!--codeblock:${codeBlocks.length - 1}-->\n`;
+  };
   let html = marked.parse(post.body, { renderer, gfm: true });
-  html = html.replace(/<table>/g, '<div class="letter-table"><table>').replace(/<\/table>/g, "</table></div>");
+  // Merge runs of adjacent fences into one tabbed card, then swap in the markup.
+  html = html.replace(/<!--codeblock:\d+-->(?:\s*<!--codeblock:\d+-->)*/g, (run) =>
+    codeCardHtml([...run.matchAll(/codeblock:(\d+)/g)].map((m) => codeBlocks[Number(m[1])]))
+  );
+  // Tables sit in Tailark Mist's tray + faux-browser card (three window dots).
+  html = html
+    .replace(
+      /<table>/g,
+      '<div class="letter-table"><div class="letter-table__card"><div class="letter-table__dots" aria-hidden="true"><span></span><span></span><span></span></div><div class="letter-table__scroll"><table>'
+    )
+    .replace(/<\/table>/g, "</table></div></div></div>");
 
   if (html.includes("<!-- newsletter -->")) html = html.replace("<!-- newsletter -->", newsletterBlock("letters_inline"));
   else {
@@ -158,7 +262,7 @@ function renderBody(post) {
   return { html, toc };
 }
 
-function headCommon({ title, description, canonical, ogImage, ogType, noindex, jsonld }) {
+function headCommon({ title, description, canonical, ogImage, ogType, noindex, jsonld, extraHead = "" }) {
   const img = ogImage.startsWith("http") ? ogImage : SITE + ogImage;
   return `<!DOCTYPE html>
 <html lang="en">
@@ -196,7 +300,7 @@ ${jsonld.map((j) => `  <script type="application/ld+json">${JSON.stringify(j)}</
   <link rel="stylesheet" href="/assets/css/system/nav-standalone.css" />
   <link rel="stylesheet" href="/assets/css/system/pages/letters.css" />
   <link rel="stylesheet" href="/assets/css/system/site-footer.css" />
-<!-- partial:head -->
+${extraHead}<!-- partial:head -->
 <!-- /partial:head -->
 </head>`;
 }
@@ -214,6 +318,7 @@ const shellClose = `<!-- partial:footer -->
 </div>
 <script src="/assets/js/mobile-menu-a11y.js" defer></script>
 <script src="/assets/js/newsletter-form.js" defer></script>
+<script src="/assets/js/signup-float.js" defer></script>
 <script src="/assets/js/gtm-defer.js" defer></script>
 <script src="/assets/js/analytics.js" defer></script>
 <script src="/assets/js/hotjar.js" defer></script>
@@ -279,6 +384,12 @@ function postPage(post, related) {
     ogType: "article",
     noindex: post.draft === true,
     jsonld,
+    extraHead: html.includes("data-code-block")
+      ? `  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&display=swap" />
+`
+      : "",
   })}
 ${shellOpen("letters-page letter-page")}
 <main class="letter" id="main-content">
@@ -325,7 +436,7 @@ ${html}
   });
 })();
 </script>
-${shellClose}`;
+${html.includes("data-code-block") ? '<script src="/assets/js/code-block.js" defer></script>\n' : ""}${shellClose}`;
 }
 
 function listItem(post) {
@@ -373,10 +484,7 @@ function indexPage(posts) {
   })}
 ${shellOpen("letters-page letters-index")}
 <main class="letters" id="main-content">
-  <header class="letters__head">
-    <h1 class="letters__title ds-enter">Letters</h1>
-    <p class="letters__lede ds-enter ds-enter-d1">The long version of The ROI of Design. Templates, examples and the reasoning behind them.</p>
-  </header>
+  <h1 class="screen-reader-text">Letters</h1>
 
 
 
@@ -417,9 +525,9 @@ ${shellOpen("letters-page letters-index")}
       <p class="letters-empty" hidden>No letters match that yet.</p>
     </section>
     <aside class="letters-sidebar">
-      ${newsletterBlock("letters_sidebar")}
+      ${newsletterBlock("letters_sidebar", { floating: false })}
     </aside>
-  </div>` : `<div class="letters-solo">${newsletterBlock("letters_sidebar")}</div>`}
+  </div>` : `<div class="letters-solo">${newsletterBlock("letters_sidebar", { floating: false })}</div>`}
 </main>
 <script>
 (function () {
@@ -473,7 +581,7 @@ function feed(posts) {
   <title>Letters · Tyler White</title>
   <link>${SITE}/letters/</link>
   <atom:link href="${SITE}/letters/feed.xml" rel="self" type="application/rss+xml" />
-  <description>The long version of the ROI of Design newsletter.</description>
+  <description>Tyler White on proving what design is worth: PRDs and kickoffs, case studies that show impact, and AI workflows for product designers.</description>
 ${items}
 </channel>
 </rss>

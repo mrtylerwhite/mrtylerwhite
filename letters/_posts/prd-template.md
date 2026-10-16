@@ -42,7 +42,7 @@ A good PRD flips that order. Constraints first. Ideas second. Design starts insi
 
 These are the same sections the [Builder Kickoff™](/prototype-ready/) skill generates. Steal the whole thing.
 
-```markdown
+```markdown prd.md
 # [Feature name] PRD
 
 ## 1. Metadata

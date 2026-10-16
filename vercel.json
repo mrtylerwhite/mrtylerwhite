@@ -6,51 +6,119 @@
     {
       "source": "/(.*)\\.(jpg|jpeg|png|gif|webp|svg|ico|woff|woff2|ttf|eot|mp4|webm)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
       ]
     },
     {
       "source": "/(.*)\\.(css|js)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=86400, must-revalidate" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, must-revalidate"
+        }
       ]
     },
     {
       "source": "/(.*)\\.skill",
       "headers": [
-        { "key": "Content-Type", "value": "application/octet-stream" },
-        { "key": "Content-Disposition", "value": "attachment" },
-        { "key": "Cache-Control", "value": "public, max-age=86400, must-revalidate" }
+        {
+          "key": "Content-Type",
+          "value": "application/octet-stream"
+        },
+        {
+          "key": "Content-Disposition",
+          "value": "attachment"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, must-revalidate"
+        }
       ]
     },
     {
       "source": "/(.*\\.html|.*/)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
       ]
     },
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" }
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=()"
+        }
       ]
     },
     {
       "source": "/(letters/_posts|partials)/(.*)",
       "headers": [
-        { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
       ]
     }
   ],
   "redirects": [
-    { "source": "/casestudies/eye-care-provider/", "destination": "/casestudies/eyecare-provider/", "permanent": true },
-    { "source": "/sample-page/", "destination": "/", "permanent": true },
-    { "source": "/home-2/", "destination": "/", "permanent": true },
-    { "source": "/podcast/", "destination": "https://www.designtablepodcast.com/", "permanent": true },
-    { "source": "/podcast", "destination": "https://www.designtablepodcast.com/", "permanent": true },
-    { "source": "/join/", "destination": "https://buy.stripe.com/3cI28k4zf5wJ9286Krebu01", "permanent": true },
-    { "source": "/join", "destination": "https://buy.stripe.com/3cI28k4zf5wJ9286Krebu01", "permanent": true }
+    {
+      "source": "/prototype-ready",
+      "destination": "/builder-kickoff/",
+      "permanent": true
+    },
+    {
+      "source": "/prototype-ready/",
+      "destination": "/builder-kickoff/",
+      "permanent": true
+    },
+    {
+      "source": "/casestudies/eye-care-provider/",
+      "destination": "/casestudies/eyecare-provider/",
+      "permanent": true
+    },
+    {
+      "source": "/sample-page/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/home-2/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/podcast/",
+      "destination": "https://www.designtablepodcast.com/",
+      "permanent": true
+    },
+    {
+      "source": "/podcast",
+      "destination": "https://www.designtablepodcast.com/",
+      "permanent": true
+    },
+    {
+      "source": "/join/",
+      "destination": "https://buy.stripe.com/3cI28k4zf5wJ9286Krebu01",
+      "permanent": true
+    },
+    {
+      "source": "/join",
+      "destination": "https://buy.stripe.com/3cI28k4zf5wJ9286Krebu01",
+      "permanent": true
+    }
   ]
 }

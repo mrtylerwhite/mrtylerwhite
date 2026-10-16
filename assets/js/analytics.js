@@ -76,7 +76,7 @@
     if (p === "/roi-case-study-template/") trackEvent("roi_skill_page_view", { page: p });
     if (p === "/roi-case-study-skill/thank-you/") trackEvent("roi_skill_thank_you_view", { page: p });
     if (p === "/free-case-study-kit/") trackEvent("free_case_study_kit_thank_you_view", { page: p });
-    if (p === "/prototype-ready/") trackEvent("builder_kickoff_page_view", { page: p });
+    if (p === "/builder-kickoff/") trackEvent("builder_kickoff_page_view", { page: p });
     if (p === "/builder-kickoff/thank-you/") {
       var txnId = purchaseTransactionId();
       var props = { value: BUILDER_KICKOFF_VALUE, currency: BUILDER_KICKOFF_CURRENCY, page: p };
@@ -161,14 +161,14 @@
     }
 
     if (
-      (href === "/prototype-ready/" || href.indexOf("/prototype-ready/#") === 0) &&
+      (href === "/builder-kickoff/" || href.indexOf("/builder-kickoff/#") === 0) &&
       el.closest(".fck-next")
     ) {
       trackEvent("builder_kickoff_upsell_click", { location: linkLocation(el) });
       return;
     }
 
-    if (href === "/prototype-ready/" || href.indexOf("/prototype-ready/#") === 0) {
+    if (href === "/builder-kickoff/" || href.indexOf("/builder-kickoff/#") === 0) {
       trackEvent("builder_kickoff_cta_click", { location: linkLocation(el) });
       return;
     }
@@ -216,7 +216,7 @@
     }
 
     if (
-      href === "/prototype-ready/" &&
+      href === "/builder-kickoff/" &&
       (el.closest("#menu-item-4000") || el.closest(".fck-nav") || el.closest(".site-footer") || el.closest("#top-menu"))
     ) {
       trackEvent("workshop_nav_click", { location: linkLocation(el) });
@@ -242,7 +242,7 @@
   }
 
   function observeBuilderPrice() {
-    if (path() !== "/prototype-ready/") return;
+    if (path() !== "/builder-kickoff/") return;
     var nodes = document.querySelectorAll(".workshop-card__price-tag, .pr-ticket__price");
     if (!nodes.length || !("IntersectionObserver" in window)) return;
     var seen = false;
