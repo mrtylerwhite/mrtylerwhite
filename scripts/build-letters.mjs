@@ -32,7 +32,24 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import crypto from "crypto";
 import { marked } from "marked";
+
+// Cache-busting: Vercel serves CSS/JS with max-age=86400, so an unchanged URL keeps
+// browsers on a stale file for up to a day. Append a short content hash instead,
+// so any change to the file gives it a new URL.
+const ASSET_ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
+const assetHashes = new Map();
+function asset(p) {
+  if (!assetHashes.has(p)) {
+    const file = path.join(ASSET_ROOT, p);
+    const hash = fs.existsSync(file)
+      ? crypto.createHash("md5").update(fs.readFileSync(file)).digest("hex").slice(0, 8)
+      : null;
+    assetHashes.set(p, hash ? `${p}?v=${hash}` : p);
+  }
+  return assetHashes.get(p);
+}
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const POSTS_DIR = path.join(ROOT, "letters", "_posts");
@@ -411,10 +428,10 @@ ${jsonld.map((j) => `  <script type="application/ld+json">${JSON.stringify(j)}</
   <link rel="stylesheet" href="/wp-content/plugins/divi-100-hamburger-menu/assets/css/style.css" />
   <link rel="preconnect" href="https://use.typekit.net" crossorigin />
   <link rel="stylesheet" href="https://use.typekit.net/fks5kmr.css" />
-  <link rel="stylesheet" href="/assets/css/dist/critical.css" />
-  <link rel="stylesheet" href="/assets/css/system/nav-standalone.css" />
-  <link rel="stylesheet" href="/assets/css/system/pages/letters.css" />
-  <link rel="stylesheet" href="/assets/css/system/site-footer.css" />
+  <link rel="stylesheet" href="${asset("/assets/css/dist/critical.css")}" />
+  <link rel="stylesheet" href="${asset("/assets/css/system/nav-standalone.css")}" />
+  <link rel="stylesheet" href="${asset("/assets/css/system/pages/letters.css")}" />
+  <link rel="stylesheet" href="${asset("/assets/css/system/site-footer.css")}" />
 ${extraHead}<!-- partial:head -->
 <!-- /partial:head -->
 </head>`;
@@ -431,12 +448,12 @@ const shellOpen = (extraClass) => `<body class="${extraClass} ${BODY_CLASSES}">
 const shellClose = `<!-- partial:footer -->
 <!-- /partial:footer -->
 </div>
-<script src="/assets/js/mobile-menu-a11y.js" defer></script>
-<script src="/assets/js/newsletter-form.js" defer></script>
-<script src="/assets/js/signup-float.js" defer></script>
-<script src="/assets/js/gtm-defer.js" defer></script>
-<script src="/assets/js/analytics.js" defer></script>
-<script src="/assets/js/hotjar.js" defer></script>
+<script src="${asset("/assets/js/mobile-menu-a11y.js")}" defer></script>
+<script src="${asset("/assets/js/newsletter-form.js")}" defer></script>
+<script src="${asset("/assets/js/signup-float.js")}" defer></script>
+<script src="${asset("/assets/js/gtm-defer.js")}" defer></script>
+<script src="${asset("/assets/js/analytics.js")}" defer></script>
+<script src="${asset("/assets/js/hotjar.js")}" defer></script>
 </body>
 </html>
 `;
@@ -551,7 +568,7 @@ ${html}
   });
 })();
 </script>
-${html.includes("data-code-block") ? '<script src="/assets/js/code-block.js" defer></script>\n' : ""}${html.includes("letter-fig") ? '<script src="/assets/js/letter-figures.js" defer></script>\n' : ""}${shellClose}`;
+${html.includes("data-code-block") ? `<script src="${asset("/assets/js/code-block.js")}" defer></script>\n` : ""}${html.includes("letter-fig") ? `<script src="${asset("/assets/js/letter-figures.js")}" defer></script>\n` : ""}${shellClose}`;
 }
 
 function listItem(post) {
