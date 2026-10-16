@@ -6,6 +6,7 @@ subtitle: A PRD is a record of decisions. Most teams treat it as a request for d
 slug: what-is-a-prd
 date: 2026-10-15
 topic: kickoffs
+cover: /assets/images/letters/what-is-a-prd.jpg
 keyword: what is a prd
 cta: builder-kickoff
 ---
