@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>The Funnel Simulator for SaaS Builders | Tyler White</title>
-  <meta name="description" content="A free funnel simulator for B2C SaaS. Plug in your traffic and conversion rates, watch every visitor flow to paid, and see the one lever that moves revenue most." />
+  <meta name="description" content="A free Claude skill that builds a funnel simulator for your SaaS. Plug in your traffic and conversion rates, watch every visitor flow to paid, and see the one lever that moves revenue most." />
   <link rel="canonical" href="https://www.mrtylerwhite.com/funnel-simulator/" />
 
   <link rel="icon" href="/wp-content/uploads/2025/05/cropped-Favicon-2-32x32.png" sizes="32x32" />
@@ -16,7 +16,7 @@
   <meta property="og:locale" content="en_US" />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="The Funnel Simulator for SaaS Builders | Tyler White" />
-  <meta property="og:description" content="A free funnel simulator for B2C SaaS. Plug in your traffic and conversion rates, watch every visitor flow to paid, and see the one lever that moves revenue most." />
+  <meta property="og:description" content="A free Claude skill that builds a funnel simulator for your SaaS. Plug in your traffic and conversion rates, watch every visitor flow to paid, and see the one lever that moves revenue most." />
   <meta property="og:url" content="https://www.mrtylerwhite.com/funnel-simulator/" />
   <meta property="og:site_name" content="Mr. Tyler White" />
   <meta property="og:image" content="https://www.mrtylerwhite.com/assets/images/funnel-simulator/og.jpg" />
@@ -25,7 +25,7 @@
   <meta property="og:image:type" content="image/jpeg" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="The Funnel Simulator for SaaS Builders | Tyler White" />
-  <meta name="twitter:description" content="A free funnel simulator for B2C SaaS. Plug in your traffic and conversion rates, watch every visitor flow to paid, and see the one lever that moves revenue most." />
+  <meta name="twitter:description" content="A free Claude skill that builds a funnel simulator for your SaaS. Plug in your traffic and conversion rates, watch every visitor flow to paid, and see the one lever that moves revenue most." />
   <meta name="twitter:image" content="https://www.mrtylerwhite.com/assets/images/funnel-simulator/og.jpg" />
   <meta name="twitter:site" content="@mrtylerwhite" />
 
@@ -66,23 +66,6 @@
 }
 </style>
 <!-- /partial:head -->
-<style>
-body.funnel-simulator-page .fs-form { display:flex; flex-direction:column; gap:8px; padding:8px 20px 22px; }
-body.funnel-simulator-page .fs-form__label { font-size:13px; font-weight:600; color:#1b1b1b; margin-top:6px; }
-body.funnel-simulator-page .fs-form__input { font:inherit; font-size:16px; padding:12px 14px; border:1px solid rgba(0,0,0,.14); border-radius:10px; background:#fff; color:#111; }
-body.funnel-simulator-page .fs-form__input:focus { outline:2px solid #111; outline-offset:1px; border-color:transparent; }
-body.funnel-simulator-page .fs-form__btn { margin-top:12px; font:inherit; font-size:16px; font-weight:600; padding:14px 18px; border:0; border-radius:999px; background:#111; color:#fff; cursor:pointer; transition:transform .15s ease, opacity .15s ease; }
-body.funnel-simulator-page .fs-form__btn:hover:not(:disabled) { transform:translateY(-1px); }
-body.funnel-simulator-page .fs-form__btn:disabled { opacity:.6; cursor:wait; }
-body.funnel-simulator-page .fs-form__error { margin:4px 0 0; font-size:14px; color:#b42318; }
-body.funnel-simulator-page .fs-form__fine { margin:6px 0 0; font-size:12.5px; color:rgba(0,0,0,.55); text-align:center; }
-body.funnel-simulator-page { overflow-x:clip; }
-body.funnel-simulator-page .rcst-chat__window { height:auto; max-height:none; }
-body.funnel-simulator-page .fs-form, body.funnel-simulator-page .fs-preview { flex-shrink:0; }
-html:has(body.funnel-simulator-page) { overflow-x:clip; }
-body.funnel-simulator-page .fs-preview { margin:0 20px 20px; border-radius:12px; overflow:hidden; border:1px solid rgba(0,0,0,.08); box-shadow:0 12px 30px -12px rgba(0,0,0,.35); }
-body.funnel-simulator-page .fs-preview img { display:block; width:100%; height:auto; }
-</style>
 </head>
 <body class="roi-case-study-template funnel-simulator-page">
 
@@ -92,7 +75,7 @@ body.funnel-simulator-page .fs-preview img { display:block; width:100%; height:a
       <a href="/" class="pr-bar__wordmark" aria-label="Back to mrtylerwhite.com">
         <img src="/wp-content/uploads/2025/12/logo-mrtylerwhite-1.svg" width="69" height="20" alt="Mr. Tyler White" />
       </a>
-      <a href="#fs-capture" class="pr-bar__cta">Get the Funnel Simulator</a>
+      <a href="#chat-capture" class="pr-bar__cta" data-start-chat>Get the Funnel Simulator</a>
     </div>
   </div>
 
@@ -101,9 +84,14 @@ body.funnel-simulator-page .fs-preview img { display:block; width:100%; height:a
     <section class="rcst-hero" aria-labelledby="rcst-hero-heading">
       <div class="rcst-hero__stage">
         <div class="rcst-hero__copy">
-          <p class="rcst-eyebrow ds-enter">Free Funnel Simulator</p>
+          <p class="rcst-eyebrow ds-enter">Free Claude Skill</p>
           <h1 id="rcst-hero-heading" class="rcst-hero__title ds-enter ds-enter-d1">See exactly where your funnel leaks. Before you buy more traffic.</h1>
           <p class="rcst-hero__sub ds-enter ds-enter-d2">Plug in your traffic and conversion rates. Watch every visitor move from first click to paid, retained customer. Then the simulator ranks the one lever that moves revenue the most, so your next week of work goes where the money actually is.</p>
+        </div>
+
+        <div class="rcst-hero__testimonial">
+          <script src="https://widget.senja.io/widget/a304c01f-7703-4d9c-abd5-60e2922171ce/platform.js" type="text/javascript" async></script>
+          <div class="senja-embed" data-id="a304c01f-7703-4d9c-abd5-60e2922171ce" data-mode="shadow" data-lazyload="false" style="display: block; width: 100%;"></div>
         </div>
 
         <div class="rcst-hero__visual">
@@ -118,32 +106,57 @@ body.funnel-simulator-page .fs-preview img { display:block; width:100%; height:a
           </div>
 
           <!-- Kit: tag 24704531 + sequence 2932269 via /api/subscribe/funnel-simulator -->
-          <div class="rcst-chat-shell" id="fs-capture">
-            <div class="rcst-chat" role="region" aria-label="Get the Funnel Simulator">
+          <div class="rcst-chat-shell" id="chat-capture">
+            <div
+              class="rcst-chat"
+              data-chat-lead-capture
+              data-subscribe-api="/api/subscribe/funnel-simulator/"
+              data-success-redirect="/funnel-simulator/thank-you/"
+              data-magnet-name="The Funnel Simulator"
+              data-button-text="Get the Funnel Simulator"
+              data-track-prefix="funnel_sim"
+              data-intro='["Most founders guess where their funnel leaks. This shows you exactly where, with your own numbers.","What&#39;s your first name?"]'
+              role="region"
+              aria-label="Funnel Simulator chat"
+            >
               <div class="rcst-chat__window">
                 <div class="rcst-chat__dots" aria-hidden="true">
                   <span></span><span></span><span></span>
                 </div>
+
                 <div class="rcst-chat__intro">
                   <div class="rcst-chat__brand">
                     <span class="rcst-chat__icon" aria-hidden="true">
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h18l-7 8v6l-4 2v-8z"></path></svg>
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m2 7 10 6 10-6"></path></svg>
                     </span>
                     <span class="rcst-chat__brand-name">Get the Funnel Simulator</span>
                   </div>
                 </div>
-                <form class="fs-form" data-fs-form novalidate>
-                  <label class="fs-form__label" for="fs-first">First name</label>
-                  <input class="fs-form__input" id="fs-first" name="firstName" type="text" autocomplete="given-name" required placeholder="Tyler" />
-                  <label class="fs-form__label" for="fs-email">Email</label>
-                  <input class="fs-form__input" id="fs-email" name="email" type="email" autocomplete="email" required placeholder="you@company.com" />
-                  <button class="fs-form__btn" type="submit" data-fs-submit>Send me the simulator</button>
-                  <p class="fs-form__error" data-fs-error role="alert" hidden></p>
-                  <p class="fs-form__fine">Free Claude skill plus a live demo. Lands in your inbox in about a minute.</p>
-                </form>
-                <figure class="fs-preview">
-                  <img src="/assets/images/funnel-simulator/preview.jpg" width="960" height="441" alt="The Funnel Simulator showing six funnel stages from acquire to retain, with the biggest revenue levers ranked below" loading="lazy" decoding="async" />
-                </figure>
+
+                <div class="rcst-chat__thread" data-chat-messages aria-live="polite" aria-relevant="additions"></div>
+
+                <p class="rcst-chat__error" data-chat-error role="alert" hidden></p>
+
+                <div class="rcst-chat__composer rcst-chat__composer--hidden" data-chat-composer>
+                  <div class="rcst-chat__composer-panel">
+                    <label class="screen-reader-text" data-chat-label for="chat-lead-input">Your response</label>
+                    <span class="rcst-chat__composer-idle" data-chat-idle-hint>Start with your first name</span>
+                    <input
+                      id="chat-lead-input"
+                      class="rcst-chat__input"
+                      type="text"
+                      data-chat-input
+                      placeholder="Start with your first name"
+                      disabled
+                      autocomplete="name"
+                    />
+                    <div class="rcst-chat__composer-bar">
+                      <button type="button" class="rcst-chat__send" data-chat-submit disabled aria-label="Continue">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 7-7 7 7"></path><path d="M12 19V5"></path></svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -159,7 +172,7 @@ body.funnel-simulator-page .fs-preview img { display:block; width:100%; height:a
           <li class="rcst-how__step">
             <span class="rcst-how__num" aria-hidden="true">01</span>
             <h3 class="rcst-how__step-title">Tell me your name and email</h3>
-            <p class="rcst-how__step-body">Two fields. The Claude skill and a live demo land in your inbox right away.</p>
+            <p class="rcst-how__step-body">A quick intro in the chat. The Claude skill and a live demo land in your inbox right away.</p>
           </li>
           <li class="rcst-how__step">
             <span class="rcst-how__num" aria-hidden="true">02</span>
@@ -173,7 +186,7 @@ body.funnel-simulator-page .fs-preview img { display:block; width:100%; height:a
           </li>
         </ol>
         <p class="rcst-how__nudge">
-          <a href="#fs-capture" class="rcst-how__nudge-link">Get the Funnel Simulator &rarr;</a>
+          <a href="#chat-capture" class="rcst-how__nudge-link" data-start-chat>Get the Funnel Simulator &rarr;</a>
         </p>
       </div>
     </section>
@@ -222,36 +235,7 @@ body.funnel-simulator-page .fs-preview img { display:block; width:100%; height:a
   <script src="/assets/js/gtm-defer.js" defer></script>
   <script src="/assets/js/analytics.js" defer></script>
 <script src="/assets/js/hotjar.js" defer></script>
-  <script>
-  (function () {
-    'use strict';
-    var form = document.querySelector('[data-fs-form]');
-    if (!form) return;
-    var btn = form.querySelector('[data-fs-submit]');
-    var err = form.querySelector('[data-fs-error]');
-    var EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    function fail(msg) { err.textContent = msg; err.hidden = false; btn.disabled = false; btn.textContent = 'Send me the simulator'; }
-    form.addEventListener('submit', async function (e) {
-      e.preventDefault();
-      err.hidden = true;
-      var firstName = form.firstName.value.trim();
-      var email = form.email.value.trim();
-      if (!firstName) return fail('Add your first name so I know who I am talking to.');
-      if (!EMAIL.test(email)) return fail('That email does not look right. Mind checking it?');
-      btn.disabled = true; btn.textContent = 'Sending...';
-      try {
-        var res = await fetch('/api/subscribe/funnel-simulator/', {
-          method: 'POST', headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ firstName: firstName, email: email })
-        });
-        var data = await res.json().catch(function () { return {}; });
-        if (!res.ok || !data.success) return fail(data.error || 'Something broke on my end. Try again in a moment.');
-        if (window.dataLayer) window.dataLayer.push({ event: 'generate_lead', lead_magnet: 'funnel_simulator' });
-        window.location.href = '/funnel-simulator/thank-you/';
-      } catch (x) { fail('Something broke on my end. Try again in a moment.'); }
-    });
-  }());
-  </script>
+  <script src="/assets/js/chat-lead-capture.js?v=12" defer></script>
 
   <script>
   (function () {

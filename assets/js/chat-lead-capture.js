@@ -3,6 +3,13 @@
  *
  * Server POST via data-subscribe-api (default /api/subscribe/roi-case-study).
  * Optional data-success-redirect on root (default /roi-case-study-skill/thank-you/).
+ *
+ * Reusable per lead magnet via data attributes on the [data-chat-lead-capture] root.
+ * Every one is optional; the defaults are the 15 Minute Case Study copy.
+ *   data-magnet-name   Name used in replies ("I'll send X your way", "X is on its way")
+ *   data-button-text   Send button label on the email step
+ *   data-intro         JSON array of opening assistant messages
+ *   data-track-prefix  Analytics event prefix (default roi_skill)
  */
 (function () {
   "use strict";
@@ -39,8 +46,8 @@
     }
   }
 
-  function redirectAfterKitSuccess(url) {
-    track("roi_skill_redirect_thank_you", { page: window.location.pathname });
+  function redirectAfterKitSuccess(url, prefix) {
+    track((prefix || "roi_skill") + "_redirect_thank_you", { page: window.location.pathname });
     try {
       sessionStorage.setItem(RCST_THANK_YOU_KEY, "1");
     } catch (_) {}
@@ -71,6 +78,14 @@
       root.getAttribute("data-subscribe-api") || "/api/subscribe/roi-case-study/";
     this.successRedirect =
       root.getAttribute("data-success-redirect") || "/roi-case-study-skill/thank-you/";
+    this.magnetName = root.getAttribute("data-magnet-name") || "The 15 Minute Case Study";
+    this.buttonText = root.getAttribute("data-button-text") || "Get the 15 Minute Case Study";
+    this.trackPrefix = root.getAttribute("data-track-prefix") || "roi_skill";
+    this.introMessages = INTRO_MESSAGES;
+    try {
+      var intro = JSON.parse(root.getAttribute("data-intro") || "null");
+      if (Array.isArray(intro) && intro.length) this.introMessages = intro;
+    } catch (_) {}
 
     this.state = "idle";
     this.firstName = "";
@@ -103,7 +118,7 @@
         self.consumeVisibilityFocus();
         if (self.chatEngaged || self.input.disabled) return;
         self.chatEngaged = true;
-        track("roi_skill_chat_start", { page: window.location.pathname });
+        track(self.trackPrefix + "_chat_start", { page: window.location.pathname });
       });
 
       this.input.addEventListener("keydown", function (e) {
@@ -364,12 +379,12 @@
     }
     if (token !== this.introToken) return;
 
-    for (var i = 0; i < INTRO_MESSAGES.length; i++) {
+    for (var i = 0; i < this.introMessages.length; i++) {
       if (i > 0 && !prefersReducedMotion()) {
         await delay(INTRO_MESSAGE_GAP);
       }
       if (token !== this.introToken) return;
-      this.addMessage("assistant", INTRO_MESSAGES[i]);
+      this.addMessage("assistant", this.introMessages[i]);
     }
 
     if (token !== this.introToken) return;
@@ -387,8 +402,8 @@
     this.root.classList.remove("rcst-chat--success");
 
     var existing = this.messagesEl ? this.messagesEl.children.length : 0;
-    for (var i = existing; i < INTRO_MESSAGES.length; i++) {
-      this.addMessage("assistant", INTRO_MESSAGES[i]);
+    for (var i = existing; i < this.introMessages.length; i++) {
+      this.addMessage("assistant", this.introMessages[i]);
     }
 
     this.openNameComposer();
@@ -413,7 +428,7 @@
   ChatLeadCapture.prototype.markChatEngaged = function () {
     if (this.chatEngaged) return;
     this.chatEngaged = true;
-    track("roi_skill_chat_start", { page: window.location.pathname });
+    track(this.trackPrefix + "_chat_start", { page: window.location.pathname });
   };
 
   ChatLeadCapture.prototype.focusInput = function (opts) {
@@ -539,14 +554,14 @@
         return;
       }
       this.firstName = name.charAt(0).toUpperCase() + name.slice(1);
-      track("roi_skill_name_submitted", { page: window.location.pathname });
+      track(this.trackPrefix + "_name_submitted", { page: window.location.pathname });
       this.addMessage("user", name);
       this.busy = true;
       this.setComposer({ disabled: true, placeholder: "One moment…" });
 
       await delay(300);
       await this.addMessages([
-        "Nice to meet you, " + this.firstName + ", I'll send The 15 Minute Case Study your way.",
+        "Nice to meet you, " + this.firstName + ", I'll send " + this.magnetName + " your way.",
         "Where should I send it? Drop your email below.",
       ]);
 
@@ -556,7 +571,7 @@
         type: "email",
         placeholder: "you@company.com",
         ariaLabel: "Your email address",
-        buttonText: "Get the 15 Minute Case Study",
+        buttonText: this.buttonText,
         disabled: false,
       });
       this.armVisibilityFocus();
@@ -578,7 +593,7 @@
         return;
       }
 
-      track("roi_skill_email_submitted", { page: window.location.pathname });
+      track(this.trackPrefix + "_email_submitted", { page: window.location.pathname });
       this.addMessage("user", email);
       await this.submitToKit(email);
     }
@@ -590,7 +605,7 @@
       type: "email",
       placeholder: "you@company.com",
       ariaLabel: "Your email address",
-      buttonText: "Get the 15 Minute Case Study",
+      buttonText: this.buttonText,
       disabled: false,
     });
     this.armVisibilityFocus();
@@ -624,7 +639,7 @@
       }
 
       if (res.ok && data && data.success === true) {
-        track("roi_skill_submit_success", { page: window.location.pathname });
+        track(this.trackPrefix + "_submit_success", { page: window.location.pathname });
         // generate_lead is a GA4 recommended event — mark it as a key event in
         // GA4 Admin › Events › generate_lead › toggle "Mark as key event"
         track("generate_lead", { page: window.location.pathname });
@@ -634,15 +649,15 @@
         await delay(400);
         this.addMessage(
           "assistant",
-          "Done. Check your inbox. The 15 Minute Case Study is on its way."
+          "Done. Check your inbox. " + this.magnetName + " is on its way."
         );
         await delay(750);
-        redirectAfterKitSuccess(this.successRedirect);
+        redirectAfterKitSuccess(this.successRedirect, this.trackPrefix);
         this.busy = false;
         return;
       }
 
-      track("roi_skill_submit_error", {
+      track(this.trackPrefix + "_submit_error", {
         page: window.location.pathname,
         reason: res.ok ? "api_rejected" : "http_" + res.status,
       });
@@ -656,7 +671,7 @@
       this.showError(errMsg);
       this.resetEmailComposer();
     } catch (_) {
-      track("roi_skill_submit_error", { page: window.location.pathname, reason: "network" });
+      track(this.trackPrefix + "_submit_error", { page: window.location.pathname, reason: "network" });
       this.state = "email";
       this.showError("Something went wrong. Please try again.");
       this.resetEmailComposer();
