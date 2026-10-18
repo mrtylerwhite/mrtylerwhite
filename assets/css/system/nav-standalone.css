@@ -48,6 +48,13 @@ body.ds-standalone-nav .et_pb_button::before {
 
 /* Pill: relative positioning makes critical.css's `top: 2em` apply, and auto
    margins center its 90% width. */
+body.ds-standalone-nav #main-header,
+body.ds-standalone-nav #main-header *,
+body.ds-standalone-nav #main-header *::before,
+body.ds-standalone-nav #main-header *::after {
+  box-sizing: border-box;
+}
+
 body.ds-standalone-nav #main-header .container.et_menu_container {
   position: relative;
   margin-left: auto;
@@ -109,7 +116,8 @@ body.ds-standalone-nav #main-header #logo {
   }
 
   body.ds-standalone-nav #main-header #top-menu li {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     position: relative;
     font-size: 14px;
     line-height: 1em;
@@ -118,13 +126,13 @@ body.ds-standalone-nav #main-header #logo {
   body.ds-standalone-nav #main-header #top-menu a {
     display: block;
     position: relative;
+    text-decoration: none;
   }
 
-  /* Plain links: the same 10px top/bottom as other pages (the customizer's
-     desktop rule would otherwise add 15px at the bottom). */
+  /* Plain links: 10px 12px matches the homepage. The customizer used to
+     supply the horizontal 12px; letters no longer load that file. */
   body.ds-standalone-nav #main-header #top-menu > li:not(.et_pb_button):not(.site-nav-workshop) > a {
-    padding-top: 10px !important;
-    padding-bottom: 10px !important;
+    padding: 10px 12px !important;
   }
 
   /* Join the Newsletter pill: Divi core sets .et_pb_button line-height:1.7em
@@ -142,6 +150,10 @@ body.ds-standalone-nav #main-header #logo {
 
 /* Mobile (≤980px): swap the menu for the hamburger (matches Divi's breakpoint) */
 @media all and (max-width: 980px) {
+  body.ds-standalone-nav.et_header_style_left #main-header .logo_container {
+    padding: 0 5%;
+  }
+
   body.ds-standalone-nav #main-header #top-menu {
     display: none;
   }
@@ -150,10 +162,18 @@ body.ds-standalone-nav #main-header #logo {
     display: block;
   }
 
+  /* The customizer insets the hamburger with 5% right padding. */
+  body.ds-standalone-nav #main-header #et-top-navigation {
+    padding-right: 5%;
+  }
+
   body.ds-standalone-nav #main-header .mobile_menu_bar {
     position: relative;
     display: block;
     line-height: 0;
+    /* .5em matches the customizer, which is what makes the closed pill 63px tall. */
+    margin: 0.5em 0;
+    padding-bottom: 0;
   }
 
   body.ds-standalone-nav #main-header .mobile_nav .select_page {

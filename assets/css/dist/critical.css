@@ -1436,11 +1436,24 @@ body.et_pb_pagebuilder_layout,
   font-size: 14px !important;
   color: var(--ds-color-muted) !important;
   letter-spacing: 0 !important;
+  text-decoration: none !important;
   text-transform: none !important;
   transition: color var(--ds-dur-fast) var(--ds-ease-out);
 }
 #page-container #main-header #top-menu > li:not(.et_pb_button) > a:hover {
   color: var(--ds-color-text-strong) !important;
+  text-decoration: none !important;
+}
+#page-container #main-header #top-menu > li:not(.et_pb_button):not(.site-nav-workshop) > a:hover,
+#page-container #main-header #top-menu > li:not(.et_pb_button):not(.site-nav-workshop) > a:focus-visible {
+  background: #efe7dd;
+}
+
+/* Horizontal padding used to come from the Divi customizer. Letters no longer
+   load that file, so the links collapsed together and the dark CTA lost its pill. */
+#page-container #main-header #top-menu > li:not(.et_pb_button):not(.site-nav-workshop) > a {
+  padding: 10px 12px !important;
+  border-radius: 999px;
 }
 
 /* ── Header bar ─────────────────────────────────────────────────────────────── */
@@ -1469,7 +1482,9 @@ body.et_fixed_nav #page-container #main-header {
   flex-direction: row !important;
   align-items: center !important;
   top: 2em !important;
+  box-sizing: border-box !important;
   width: 90% !important;
+  max-width: 1100px !important;
   padding: 8px 8px !important;
   background: rgba(255, 255, 255, 0.3) !important;
   color: black !important;
@@ -1523,6 +1538,10 @@ body.et_fixed_nav #page-container #main-header {
   position: static !important;
   top: auto !important;
   margin: 0 !important;
+  height: 23px !important;
+  max-height: 23px !important;
+  width: auto !important;
+  padding: 0 16px 0 0 !important;
 }
 
 /* ── Eyebrow / kicker global override ────────────────────────────────────── */
@@ -1621,6 +1640,7 @@ body.et_fixed_nav #page-container #main-header {
 #page-container #main-header #top-menu li.menu-item-54 {
   background-color: #000000 !important;
   border: none !important;
+  border-radius: 999px !important;
   box-shadow: none !important;
 }
 #page-container #main-header #top-menu li.et_pb_button:not(.et_pb_button_secondary) a,
@@ -1629,6 +1649,8 @@ body.et_fixed_nav #page-container #main-header {
   font-family: var(--ds-font-body) !important;
   font-weight: 500 !important;
   font-size: 14px !important;
+  padding: 4px 12px !important;
+  border-radius: 999px !important;
   text-decoration: none !important;
 }
 #page-container #main-header #top-menu li.et_pb_button:not(.et_pb_button_secondary):hover,

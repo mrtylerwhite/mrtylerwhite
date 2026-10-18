@@ -54,13 +54,13 @@ function asset(p) {
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 
 // ── Letters CSS bundle ────────────────────────────────────────────────────
-// One render-blocking stylesheet instead of five. Same files, same order, so
-// the cascade is unchanged. Relative url()s in the Divi cache are made absolute.
+// One render-blocking stylesheet. The old Divi customizer and the full
+// hamburger plugin file are left out: the nav is drawn by critical.css and
+// nav-standalone.css, and the icon only needs hamburger-icon.css.
 const LETTERS_BUNDLE = "/assets/css/dist/letters.bundle.css";
 (function buildLettersBundle() {
   const parts = [
-    ["/wp-content/et-cache/global/et-divi-customizer-global.min.css", "/wp-content/et-cache/global/"],
-    ["/wp-content/plugins/divi-100-hamburger-menu/assets/css/style.css", "/wp-content/plugins/divi-100-hamburger-menu/assets/css/"],
+    ["/assets/css/system/hamburger-icon.css", "/assets/css/system/"],
     ["/assets/css/dist/critical.css", "/assets/css/dist/"],
     ["/assets/css/system/nav-standalone.css", "/assets/css/system/"],
     ["/assets/css/system/pages/letters.css", "/assets/css/system/pages/"],
