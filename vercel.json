@@ -76,6 +76,16 @@
   ],
   "redirects": [
     {
+      "source": "/checkout",
+      "destination": "/builder-kickoff/",
+      "permanent": true
+    },
+    {
+      "source": "/checkout/",
+      "destination": "/builder-kickoff/",
+      "permanent": true
+    },
+    {
       "source": "/prototype-ready",
       "destination": "/builder-kickoff/",
       "permanent": true
