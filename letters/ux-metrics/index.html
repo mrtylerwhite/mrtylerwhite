@@ -28,14 +28,14 @@
   <link rel="apple-touch-icon" href="/wp-content/uploads/2025/05/cropped-Favicon-2-180x180.png" />
 
   <link rel="preload" href="/assets/fonts/instrument-serif/InstrumentSerif-Regular.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="/wp-content/et-cache/global/et-divi-customizer-global.min.css" />
-  <link rel="stylesheet" href="/wp-content/plugins/divi-100-hamburger-menu/assets/css/style.css" />
   <link rel="preconnect" href="https://use.typekit.net" crossorigin />
-  <link rel="stylesheet" href="https://use.typekit.net/fks5kmr.css" />
-  <link rel="stylesheet" href="/assets/css/dist/critical.css?v=c47b6e35" />
-  <link rel="stylesheet" href="/assets/css/system/nav-standalone.css?v=2b415a41" />
-  <link rel="stylesheet" href="/assets/css/system/pages/letters.css?v=c6dabd9d" />
-  <link rel="stylesheet" href="/assets/css/system/site-footer.css?v=2a5d33c5" />
+  <link rel="preconnect" href="https://p.typekit.net" crossorigin />
+  <link rel="preload" as="style" href="https://use.typekit.net/fks5kmr.css" fetchpriority="low" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="https://use.typekit.net/fks5kmr.css" /></noscript>
+  <link rel="stylesheet" href="/assets/css/dist/letters.bundle.css?v=82d6869e" />
+  <link rel="stylesheet" href="/assets/css/system/site-footer.css?v=2a5d33c5" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="/assets/css/system/site-footer.css?v=2a5d33c5" /></noscript>
+  <link rel="preload" as="image" href="/assets/images/letters/ux-metrics.webp" type="image/webp" fetchpriority="high" />
 <!-- partial:head -->
 <style id="page-transitions">
 /* Page transitions (details.so port). Inline on purpose: Chrome decides whether
@@ -113,7 +113,7 @@
         <button type="button" class="letter__share" data-share-url="https://www.mrtylerwhite.com/letters/ux-metrics/">Share</button>
       </div>
     </header>
-    <img class="letter__cover" src="/assets/images/letters/ux-metrics.jpg" alt="" width="1200" height="630" />
+    <picture><source srcset="/assets/images/letters/ux-metrics.webp" type="image/webp" /><img src="/assets/images/letters/ux-metrics.jpg" class="letter__cover" alt="" width="1200" height="630" fetchpriority="high" decoding="async" /></picture>
     <nav class="letter-toc" aria-label="In this letter">
         <p class="letter-toc__label">In this letter</p>
         <ol><li><a href="#why-most-ux-metrics-never-make-it-into-the-exec-deck">Why most UX metrics never make it into the exec deck</a></li><li><a href="#the-four-kinds-of-ux-metrics-leadership-cares-about">The four kinds of UX metrics leadership cares about</a></li><li><a href="#the-adoption-metric-everyone-forgets">The adoption metric everyone forgets</a></li><li><a href="#how-to-estimate-impact-when-you-dont-have-perfect-data">How to estimate impact when you don&#39;t have perfect data</a></li><li><a href="#ux-kpis-vs-ux-metrics">UX KPIs vs UX metrics</a></li><li><a href="#ux-metrics-to-stop-leading-with">UX metrics to stop leading with</a></li><li><a href="#how-to-put-ux-metrics-in-a-case-study">How to put UX metrics in a case study</a></li><li><a href="#influence-comes-from-small-clear-wins">Influence comes from small, clear wins</a></li><li><a href="#ux-metrics-faq">UX metrics FAQ</a></li></ol>
@@ -164,7 +164,7 @@
 <figure class="letter-video" data-video-id="1zJGFE2hFS8">
   <div class="letter-video__frame">
     <button class="letter-video__play" type="button" aria-label="Play video: The 4 Real Reasons Companies Hire Designers (And How to Prove Your Value), Part 1">
-      <img src="https://i.ytimg.com/vi/1zJGFE2hFS8/maxresdefault.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async" />
+      <picture><source srcset="https://i.ytimg.com/vi_webp/1zJGFE2hFS8/sddefault.webp" type="image/webp" /><img src="https://i.ytimg.com/vi/1zJGFE2hFS8/sddefault.jpg" alt="" width="640" height="480" loading="lazy" decoding="async" /></picture>
       <span class="letter-video__btn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.14v13.72a1 1 0 0 0 1.52.85l10.6-6.86a1 1 0 0 0 0-1.7L9.52 4.3A1 1 0 0 0 8 5.14Z" fill="currentColor"/></svg></span>
     </button>
   </div>
@@ -282,7 +282,7 @@
       <span class="letters-list__sub">Engineers don't justify their linter in a design review. Some design calls deserve the same treatment. The rest need one clear line, not a slide deck.</span>
       <span class="letters-list__meta"><time datetime="2026-09-16">Sep 16, 2026</time> · Case Studies</span>
     </span>
-    <img class="letters-list__thumb" src="/assets/images/letters/design-rationale.jpg" alt="" loading="lazy" width="320" height="200" />
+    <picture><source srcset="/assets/images/letters/design-rationale.webp" type="image/webp" /><img src="/assets/images/letters/design-rationale.jpg" class="letters-list__thumb" alt="" loading="lazy" decoding="async" width="320" height="200" /></picture>
   </a>
 </li><li class="letters-list__item" data-topic="case-studies">
   <a class="letters-list__link" href="/letters/ux-case-study-examples/">
@@ -291,7 +291,7 @@
       <span class="letters-list__sub">Most case studies describe what got built. The ones that land show what changed because of it. Here's what separates them, with before-and-after examples.</span>
       <span class="letters-list__meta"><time datetime="2026-08-26">Aug 26, 2026</time> · Case Studies</span>
     </span>
-    <img class="letters-list__thumb" src="/assets/images/letters/ux-case-study-examples.jpg" alt="" loading="lazy" width="320" height="200" />
+    <picture><source srcset="/assets/images/letters/ux-case-study-examples.webp" type="image/webp" /><img src="/assets/images/letters/ux-case-study-examples.jpg" class="letters-list__thumb" alt="" loading="lazy" decoding="async" width="320" height="200" /></picture>
   </a>
 </li><li class="letters-list__item" data-topic="case-studies">
   <a class="letters-list__link" href="/letters/ux-case-study-template/">
@@ -300,7 +300,7 @@
       <span class="letters-list__sub">Copy the template, answer five uncomfortable questions, and you'll have the case study. The screens come last.</span>
       <span class="letters-list__meta"><time datetime="2026-08-19">Aug 19, 2026</time> · Case Studies</span>
     </span>
-    <img class="letters-list__thumb" src="/assets/images/letters/ux-case-study-template.jpg" alt="" loading="lazy" width="320" height="200" />
+    <picture><source srcset="/assets/images/letters/ux-case-study-template.webp" type="image/webp" /><img src="/assets/images/letters/ux-case-study-template.jpg" class="letters-list__thumb" alt="" loading="lazy" decoding="async" width="320" height="200" /></picture>
   </a>
 </li></ul>
       </section>
@@ -364,6 +364,6 @@
 <script src="/assets/js/signup-float.js?v=de188029" defer></script>
 <script src="/assets/js/gtm-defer.js?v=ab490304" defer></script>
 <script src="/assets/js/analytics.js?v=d85a8237" defer></script>
-<script src="/assets/js/hotjar.js?v=5969c077" defer></script>
+<script src="/assets/js/hotjar.js?v=d4b66f12" defer></script>
 </body>
 </html>

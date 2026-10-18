@@ -33,9 +33,12 @@ const IMPORT_RE = /@import\s+url\(\s*["']?([^"')]+)["']?\s*\)\s*;?/g;
 const FONT_PRELOAD =
   '<link rel="preload" href="/assets/fonts/instrument-serif/InstrumentSerif-Regular.woff2" as="font" type="font/woff2" crossorigin />\n';
 
+// Typekit loads without blocking render (preload + swap to stylesheet on load).
 const TYPEKIT_LINKS =
   '<link rel="preconnect" href="https://use.typekit.net" crossorigin />\n' +
-  '<link rel="stylesheet" href="https://use.typekit.net/fks5kmr.css" />\n';
+  '<link rel="preconnect" href="https://p.typekit.net" crossorigin />\n' +
+  '<link rel="preload" as="style" href="https://use.typekit.net/fks5kmr.css" fetchpriority="low" onload="this.onload=null;this.rel=\'stylesheet\'" />\n' +
+  '<noscript><link rel="stylesheet" href="https://use.typekit.net/fks5kmr.css" /></noscript>\n';
 
 function readCss(relPath) {
   return fs.readFileSync(path.join(ROOT, relPath), "utf8");
@@ -49,8 +52,9 @@ function applyTypekit(html) {
   // Drop any existing kit links so rebuilds can re-place them correctly
   // (an earlier pass could trap them inside <noscript>).
   let next = html
-    .replace(/<link\s+rel="preconnect"\s+href="https:\/\/use\.typekit\.net"[^>]*>\s*/gi, "")
-    .replace(/<link\s+rel="stylesheet"\s+href="https:\/\/use\.typekit\.net\/fks5kmr\.css"[^>]*>\s*/gi, "");
+    .replace(/<noscript><link\s+rel="stylesheet"\s+href="https:\/\/use\.typekit\.net\/fks5kmr\.css"[^>]*><\/noscript>\s*/gi, "")
+    .replace(/<link\s+rel="preconnect"\s+href="https:\/\/(use|p)\.typekit\.net"[^>]*>\s*/gi, "")
+    .replace(/<link\s+rel="(stylesheet|preload)"\s+(as="style"\s+)?href="https:\/\/use\.typekit\.net\/fks5kmr\.css"[^>]*>\s*/gi, "");
 
   const injectBefore = (pattern) => {
     if (!pattern.test(next)) return false;
@@ -64,6 +68,11 @@ function applyTypekit(html) {
   }
   if (injectBefore(/(<link\s+rel=["']stylesheet["']\s+href=["']\/assets\/css\/system\/index\.css["'][^>]*>)/i)) {
     return next;
+  }
+  // Pages like the print resume have no critical.css link. Put the kit back
+  // rather than dropping the font.
+  if (html.includes("use.typekit.net") && /<head[^>]*>/i.test(next)) {
+    return next.replace(/<head[^>]*>/i, (head) => `${head}\n${TYPEKIT_LINKS.trimEnd()}`);
   }
   return next;
 }

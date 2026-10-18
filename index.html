@@ -109,9 +109,12 @@ body.custom-background { background-color: #f9f9fe; }
 
 <link rel="preload" href="/assets/fonts/inter/InterVariable.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="preload" href="/assets/fonts/instrument-serif/InstrumentSerif-Regular.woff2" as="font" type="font/woff2" crossorigin />
-<link rel="preload" as="image" href="/wp-content/uploads/2026/07/home-hero.jpg" type="image/jpeg" fetchpriority="high" />
+<link rel="preload" as="image" href="/wp-content/uploads/2026/07/home-hero.webp" type="image/webp" media="(min-width: 981px)" fetchpriority="high" />
+<link rel="preload" as="image" href="/wp-content/uploads/2026/07/home-hero-1200.webp" type="image/webp" media="(max-width: 980px)" fetchpriority="high" />
 <link rel="preconnect" href="https://use.typekit.net" crossorigin />
-<link rel="stylesheet" href="https://use.typekit.net/fks5kmr.css" />
+<link rel="preconnect" href="https://p.typekit.net" crossorigin />
+<link rel="preload" as="style" href="https://use.typekit.net/fks5kmr.css" fetchpriority="low" onload="this.onload=null;this.rel='stylesheet'" />
+<noscript><link rel="stylesheet" href="https://use.typekit.net/fks5kmr.css" /></noscript>
 <link rel="stylesheet" href="/assets/css/dist/critical.css" />
 <link rel="stylesheet" href="/assets/css/system/site-footer.css" media="print" onload="this.media='all'" />
 <noscript><link rel="stylesheet" href="/assets/css/system/site-footer.css" /></noscript>
@@ -199,6 +202,15 @@ body.home #page-container .et_pb_text_8 .notion-sub_header-block {
       rgba(6, 5, 4, 0.08) 100%
     ),
     url("/wp-content/uploads/2026/07/home-hero.jpg");
+    background-image:
+    linear-gradient(
+      90deg,
+      rgba(6, 5, 4, 0.92) 0%,
+      rgba(6, 5, 4, 0.78) 34%,
+      rgba(6, 5, 4, 0.28) 58%,
+      rgba(6, 5, 4, 0.08) 100%
+    ),
+    image-set(url("/wp-content/uploads/2026/07/home-hero.webp") type("image/webp"), url("/wp-content/uploads/2026/07/home-hero.jpg") type("image/jpeg"));
   background-repeat: no-repeat;
   background-size: cover;
   background-position: right center;
@@ -326,6 +338,15 @@ body.home #page-container #cta_builder_kickoff:active {
         rgba(6, 5, 4, 0.55) 100%
       ),
       url("/wp-content/uploads/2026/07/home-hero.jpg");
+    background-image:
+      linear-gradient(
+        180deg,
+        rgba(6, 5, 4, 0.88) 0%,
+        rgba(6, 5, 4, 0.72) 42%,
+        rgba(6, 5, 4, 0.35) 72%,
+        rgba(6, 5, 4, 0.55) 100%
+      ),
+      image-set(url("/wp-content/uploads/2026/07/home-hero-1200.webp") type("image/webp"), url("/wp-content/uploads/2026/07/home-hero.jpg") type("image/jpeg"));
     background-position: 72% center;
   }
 

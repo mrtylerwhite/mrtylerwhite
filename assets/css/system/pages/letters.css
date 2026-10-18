@@ -1641,3 +1641,6 @@ img.letters-feature__art {
 .letter__back:hover { color: #09090b; box-shadow: 0 0 0 1px rgba(9, 9, 11, 0.16), 0 2px 6px rgba(9, 9, 11, 0.06); }
 .letter__back:hover svg { transform: translateX(-2px); }
 .letter__back:focus-visible { outline: 2px solid var(--letters-gold, #c59060); outline-offset: 2px; }
+
+/* <picture> wrappers (WebP covers, video thumbs) stay layout-neutral */
+.letters-page picture { display: contents; }

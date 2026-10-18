@@ -27,14 +27,14 @@
   <link rel="apple-touch-icon" href="/wp-content/uploads/2025/05/cropped-Favicon-2-180x180.png" />
 
   <link rel="preload" href="/assets/fonts/instrument-serif/InstrumentSerif-Regular.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="/wp-content/et-cache/global/et-divi-customizer-global.min.css" />
-  <link rel="stylesheet" href="/wp-content/plugins/divi-100-hamburger-menu/assets/css/style.css" />
   <link rel="preconnect" href="https://use.typekit.net" crossorigin />
-  <link rel="stylesheet" href="https://use.typekit.net/fks5kmr.css" />
-  <link rel="stylesheet" href="/assets/css/dist/critical.css?v=c47b6e35" />
-  <link rel="stylesheet" href="/assets/css/system/nav-standalone.css?v=2b415a41" />
-  <link rel="stylesheet" href="/assets/css/system/pages/letters.css?v=c6dabd9d" />
-  <link rel="stylesheet" href="/assets/css/system/site-footer.css?v=2a5d33c5" />
+  <link rel="preconnect" href="https://p.typekit.net" crossorigin />
+  <link rel="preload" as="style" href="https://use.typekit.net/fks5kmr.css" fetchpriority="low" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="https://use.typekit.net/fks5kmr.css" /></noscript>
+  <link rel="stylesheet" href="/assets/css/dist/letters.bundle.css?v=82d6869e" />
+  <link rel="stylesheet" href="/assets/css/system/site-footer.css?v=2a5d33c5" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="/assets/css/system/site-footer.css?v=2a5d33c5" /></noscript>
+  <link rel="preload" as="image" href="/assets/images/letters/prd-template.webp" type="image/webp" fetchpriority="high" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&display=swap" />
@@ -115,7 +115,7 @@
         <button type="button" class="letter__share" data-share-url="https://www.mrtylerwhite.com/letters/prd-template/">Share</button>
       </div>
     </header>
-    <img class="letter__cover" src="/assets/images/letters/prd-template.jpg" alt="" width="1200" height="630" />
+    <picture><source srcset="/assets/images/letters/prd-template.webp" type="image/webp" /><img src="/assets/images/letters/prd-template.jpg" class="letter__cover" alt="" width="1200" height="630" fetchpriority="high" decoding="async" /></picture>
     <nav class="letter-toc" aria-label="In this letter">
         <p class="letter-toc__label">In this letter</p>
         <ol><li><a href="#what-a-prd-is-actually-for">What a PRD is actually for</a></li><li><a href="#the-prd-template-copy-and-paste">The PRD template (copy and paste)</a></li><li><a href="#why-most-prds-go-stale-by-thursday">Why most PRDs go stale by Thursday</a></li><li><a href="#how-to-fill-this-template-in-one-kickoff-call">How to fill this template in one kickoff call</a></li><li><a href="#prd-example-filled-in">PRD example (filled in)</a></li><li><a href="#who-should-write-the-prd">Who should write the PRD?</a></li><li><a href="#prd-template-faq">PRD template FAQ</a></li></ol>
@@ -290,7 +290,7 @@
       <span class="letters-list__sub">A PRD is a record of decisions. Most teams treat it as a request for decisions, which is why theirs go stale by Thursday.</span>
       <span class="letters-list__meta"><time datetime="2026-10-15">Oct 15, 2026</time> · Kickoffs &amp; PRDs</span>
     </span>
-    <img class="letters-list__thumb" src="/assets/images/letters/what-is-a-prd.jpg" alt="" loading="lazy" width="320" height="200" />
+    <picture><source srcset="/assets/images/letters/what-is-a-prd.webp" type="image/webp" /><img src="/assets/images/letters/what-is-a-prd.jpg" class="letters-list__thumb" alt="" loading="lazy" decoding="async" width="320" height="200" /></picture>
   </a>
 </li><li class="letters-list__item" data-topic="kickoffs">
   <a class="letters-list__link" href="/letters/project-kickoff-meeting/">
@@ -299,7 +299,7 @@
       <span class="letters-list__sub">Most kickoffs are expensive brainstorms. Here's the agenda that makes the room decide, and the outputs you should have before anyone opens Figma.</span>
       <span class="letters-list__meta"><time datetime="2026-07-08">Jul 8, 2026</time> · Kickoffs &amp; PRDs</span>
     </span>
-    <img class="letters-list__thumb" src="/assets/images/letters/project-kickoff-meeting.jpg" alt="" loading="lazy" width="320" height="200" />
+    <picture><source srcset="/assets/images/letters/project-kickoff-meeting.webp" type="image/webp" /><img src="/assets/images/letters/project-kickoff-meeting.jpg" class="letters-list__thumb" alt="" loading="lazy" decoding="async" width="320" height="200" /></picture>
   </a>
 </li><li class="letters-list__item" data-topic="kickoffs">
   <a class="letters-list__link" href="/letters/product-brief-template/">
@@ -308,7 +308,7 @@
       <span class="letters-list__sub">The brief usually shows up as a Jira ticket with the decisions already baked in. Here's the template, and how to stop it arriving half-wrong.</span>
       <span class="letters-list__meta"><time datetime="2026-07-01">Jul 1, 2026</time> · Kickoffs &amp; PRDs</span>
     </span>
-    <img class="letters-list__thumb" src="/assets/images/letters/product-brief-template.jpg" alt="" loading="lazy" width="320" height="200" />
+    <picture><source srcset="/assets/images/letters/product-brief-template.webp" type="image/webp" /><img src="/assets/images/letters/product-brief-template.jpg" class="letters-list__thumb" alt="" loading="lazy" decoding="async" width="320" height="200" /></picture>
   </a>
 </li></ul>
       </section>
@@ -372,6 +372,6 @@
 <script src="/assets/js/signup-float.js?v=de188029" defer></script>
 <script src="/assets/js/gtm-defer.js?v=ab490304" defer></script>
 <script src="/assets/js/analytics.js?v=d85a8237" defer></script>
-<script src="/assets/js/hotjar.js?v=5969c077" defer></script>
+<script src="/assets/js/hotjar.js?v=d4b66f12" defer></script>
 </body>
 </html>
