@@ -64,7 +64,6 @@ body.custom-background { background-color: #f9f9fe; }
 
 
 <link rel="preload" href="/assets/fonts/inter/InterVariable.woff2" as="font" type="font/woff2" crossorigin />
-<link rel="preload" href="/assets/fonts/instrument-serif/InstrumentSerif-Regular.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="preload" as="image" href="/wp-content/uploads/2026/07/home-hero.webp" type="image/webp" media="(min-width: 981px)" fetchpriority="high" />
 <link rel="preload" as="image" href="/wp-content/uploads/2026/07/home-hero-1200.webp" type="image/webp" media="(max-width: 980px)" fetchpriority="high" />
 <link rel="stylesheet" href="/assets/css/dist/home-deferred.css" media="print" onload="this.media='all'" />
@@ -152,28 +151,37 @@ body.home #page-container .et_pb_text_8 .notion-sub_header-block {
   max-width: none !important;
   min-height: min(92vh, 820px);
   background-color: #0a0a0a !important;
-  background-image:
-    linear-gradient(
-      90deg,
-      rgba(6, 5, 4, 0.92) 0%,
-      rgba(6, 5, 4, 0.78) 34%,
-      rgba(6, 5, 4, 0.28) 58%,
-      rgba(6, 5, 4, 0.08) 100%
-    ),
-    url("/wp-content/uploads/2026/07/home-hero.jpg");
-    background-image:
-    linear-gradient(
-      90deg,
-      rgba(6, 5, 4, 0.92) 0%,
-      rgba(6, 5, 4, 0.78) 34%,
-      rgba(6, 5, 4, 0.28) 58%,
-      rgba(6, 5, 4, 0.08) 100%
-    ),
-    image-set(url("/wp-content/uploads/2026/07/home-hero.webp") type("image/webp"), url("/wp-content/uploads/2026/07/home-hero.jpg") type("image/jpeg"));
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: right center;
   color: #f4f0ea;
+}
+
+/* The photo is a real image so it can be the largest paint. The wash sits above it. */
+.hero-cntn.et_pb_section_0 .home-hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  margin: 0;
+  display: block;
+  pointer-events: none;
+}
+.hero-cntn.et_pb_section_0 .home-hero__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: right center;
+}
+.hero-cntn.et_pb_section_0::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    rgba(6, 5, 4, 0.92) 0%,
+    rgba(6, 5, 4, 0.78) 34%,
+    rgba(6, 5, 4, 0.28) 58%,
+    rgba(6, 5, 4, 0.08) 100%
+  );
 }
 
 /* Kill Divi section padding / any parent inset that frames the hero */
@@ -288,25 +296,18 @@ body.home #page-container #cta_builder_kickoff:active {
 @media screen and (max-width: 980px) {
   body.home .hero-cntn.et_pb_section_0 {
     min-height: min(78vh, 720px);
-    background-image:
-      linear-gradient(
-        180deg,
-        rgba(6, 5, 4, 0.88) 0%,
-        rgba(6, 5, 4, 0.72) 42%,
-        rgba(6, 5, 4, 0.35) 72%,
-        rgba(6, 5, 4, 0.55) 100%
-      ),
-      url("/wp-content/uploads/2026/07/home-hero.jpg");
-    background-image:
-      linear-gradient(
-        180deg,
-        rgba(6, 5, 4, 0.88) 0%,
-        rgba(6, 5, 4, 0.72) 42%,
-        rgba(6, 5, 4, 0.35) 72%,
-        rgba(6, 5, 4, 0.55) 100%
-      ),
-      image-set(url("/wp-content/uploads/2026/07/home-hero-1200.webp") type("image/webp"), url("/wp-content/uploads/2026/07/home-hero.jpg") type("image/jpeg"));
-    background-position: 72% center;
+  }
+  body.home .hero-cntn.et_pb_section_0::after {
+    background: linear-gradient(
+      180deg,
+      rgba(6, 5, 4, 0.88) 0%,
+      rgba(6, 5, 4, 0.72) 42%,
+      rgba(6, 5, 4, 0.35) 72%,
+      rgba(6, 5, 4, 0.55) 100%
+    );
+  }
+  body.home .hero-cntn.et_pb_section_0 .home-hero__media img {
+    object-position: 72% center;
   }
 
   body.home .hero-cntn .et_pb_row_0.et_pb_row {
@@ -317,7 +318,9 @@ body.home #page-container #cta_builder_kickoff:active {
 @media screen and (max-width: 767px) {
   body.home .hero-cntn.et_pb_section_0 {
     min-height: min(88vh, 680px);
-    background-position: 78% center;
+  }
+  body.home .hero-cntn.et_pb_section_0 .home-hero__media img {
+    object-position: 78% center;
   }
 
   body.home .hero-cntn .et_pb_row_0.et_pb_row {
@@ -1308,9 +1311,11 @@ body.home #page-container #cta_builder_kickoff:active {
 					<div class="et-l et-l--post">
 			<div class="et_builder_inner_content et_pb_gutters3">
 		<div class="et_pb_section et_pb_section_0 hero-cntn et_pb_with_background et_section_regular" data-nav-theme="dark">
-				
-				
-				
+				<picture class="home-hero__media">
+					<source media="(max-width: 980px)" srcset="/wp-content/uploads/2026/07/home-hero-1200.webp" type="image/webp" />
+					<source srcset="/wp-content/uploads/2026/07/home-hero.webp" type="image/webp" />
+					<img src="/wp-content/uploads/2026/07/home-hero-1200.webp" alt="" width="1200" height="747" fetchpriority="high" decoding="async" />
+				</picture>
 				<div class="et_pb_row et_pb_row_0 hero-intro et_pb_equal_columns et_pb_gutters2">
 				<div class="et_pb_column et_pb_column_2_3 et_pb_column_0  et_pb_css_mix_blend_mode_passthrough">
 				
@@ -1323,7 +1328,7 @@ body.home #page-container #cta_builder_kickoff:active {
 				
 				
 				<div class="et_pb_text_inner"><p class="ds-eyebrow ds-reveal">Director of Product Design · B2B SaaS</p>
-<h1 class="ds-reveal ds-reveal-d1">Designers who understand business will win the next decade</h1>
+<h1>Designers who understand business will win the next decade</h1>
 <p class="ds-reveal ds-reveal-d2">I help product designers think beyond the mockup, prototype the right thing, and explain why the work actually matters.</p>
 <p class="home-hero__punch ds-reveal ds-reveal-d3">Design products people love enough to keep paying for.</p></div>
 			</div><div class="et_pb_module et_pb_code et_pb_code_0  et_pb_text_align_left ds-reveal ds-reveal-d4">
@@ -1343,7 +1348,7 @@ body.home #page-container #cta_builder_kickoff:active {
 				
 				
 				
-				<span class="et_pb_image_wrap "><picture><source media="(min-width: 981px)" type="image/webp" srcset="/wp-content/uploads/2026/01/hm-profile-hero-2.webp 498w, /wp-content/uploads/2026/01/hm-profile-hero-2-480x583.webp 480w" sizes="(min-width: 481px) 498px, 100vw"><source media="(min-width: 981px)" srcset="/wp-content/uploads/2026/01/hm-profile-hero-2.png 498w, /wp-content/uploads/2026/01/hm-profile-hero-2-480x583.png 480w" sizes="(min-width: 481px) 498px, 100vw"><img decoding="async" width="498" height="605" alt="Tyler White" class="wp-image-3721" loading="eager" fetchpriority="high"></picture></span>
+				<span class="et_pb_image_wrap "><picture><source media="(min-width: 981px)" type="image/webp" srcset="/wp-content/uploads/2026/01/hm-profile-hero-2.webp 498w, /wp-content/uploads/2026/01/hm-profile-hero-2-480x583.webp 480w" sizes="(min-width: 481px) 498px, 100vw"><source media="(min-width: 981px)" srcset="/wp-content/uploads/2026/01/hm-profile-hero-2.png 498w, /wp-content/uploads/2026/01/hm-profile-hero-2-480x583.png 480w" sizes="(min-width: 481px) 498px, 100vw"><img decoding="async" width="498" height="605" alt="Tyler White" class="wp-image-3721" loading="lazy"></picture></span>
 			</div>
 			</div>
 				
