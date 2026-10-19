@@ -1,0 +1,37 @@
+# Tyler White
+
+> Tyler White is a Director of Product Design based in Montreal with 16 years in product design, and the creator of the Builder Kickoff™. He writes about how product designers scope the right problem, build the business case for design, and prove what design is worth: PRDs, kickoffs, case studies, UX metrics and AI workflows for designers.
+
+## Letters
+
+- [What Is a PRD?](https://www.mrtylerwhite.com/letters/what-is-a-prd/): What a product requirements document is, what goes in one, who writes it and how it differs from a BRD, brief and spec.
+- [PRD Template](https://www.mrtylerwhite.com/letters/prd-template/): A free, copy-paste PRD template and how to fill it from one kickoff meeting.
+- [PRD vs BRD](https://www.mrtylerwhite.com/letters/prd-vs-brd/): What each document covers, who owns it, and why most teams need only one.
+- [Product Brief and Design Brief Template](https://www.mrtylerwhite.com/letters/product-brief-template/): A free product brief template plus the design brief questions that matter.
+- [Project Kickoff Meeting Agenda](https://www.mrtylerwhite.com/letters/project-kickoff-meeting/): A 60-minute kickoff agenda that forces real decisions.
+- [Design Rationale](https://www.mrtylerwhite.com/letters/design-rationale/): How to write and present design rationale, with a reusable decision record format.
+- [UX Case Study Template](https://www.mrtylerwhite.com/letters/ux-case-study-template/): A free case study template structured around decisions and outcomes.
+- [UX Case Study Examples](https://www.mrtylerwhite.com/letters/ux-case-study-examples/): What strong case studies that prove impact have in common.
+- [UX Metrics](https://www.mrtylerwhite.com/letters/ux-metrics/): The UX metrics and KPIs leadership cares about, and how to estimate impact without perfect data.
+- [Product Designer Portfolio Homepage](https://www.mrtylerwhite.com/letters/product-designer-portfolio/): How to structure a portfolio homepage that sells.
+- [Product Designer Salary 2026](https://www.mrtylerwhite.com/letters/product-designer-salary/): US and Canada salary ranges by level, and the skills that move pay.
+- [AI Prototyping Workflow](https://www.mrtylerwhite.com/letters/ai-prototyping-workflow/): A real AI prototyping workflow for product designers, prompt included.
+- [Cursor for Designers](https://www.mrtylerwhite.com/letters/cursor-for-designers/): Why Tyler moved from Figma Make to Cursor for product prototypes.
+- [All Letters](https://www.mrtylerwhite.com/letters/): The full archive.
+
+## Products and free resources
+
+- [Builder Kickoff™ Course](https://www.mrtylerwhite.com/builder-kickoff/): A 20-minute recorded course on running the session that turns a business problem into a scoped decision, then a PRD and a prototype prompt.
+- [The 15 Minute Case Study](https://www.mrtylerwhite.com/roi-case-study-template/): A free Claude skill that turns rough project notes into a case study.
+- [The Funnel Simulator](https://www.mrtylerwhite.com/funnel-simulator/): A free Claude skill that builds a funnel simulator for a SaaS product.
+- [The ROI of Design Newsletter](https://www.mrtylerwhite.com/newsletter/): A weekly newsletter on scoping, framing and building the business case for design work.
+
+## About
+
+- [About Tyler White](https://www.mrtylerwhite.com/about/): Background and approach.
+- [Case Studies](https://www.mrtylerwhite.com/case-studies/): B2B SaaS product design case studies focused on measurable outcomes.
+- [Resume](https://www.mrtylerwhite.com/resume/): Director of Product Design resume.
+
+## Podcast
+
+- [The Design Table Podcast](https://www.youtube.com/@designtablepodcast): Podcast co-hosted by Tyler White and Nick Groeneveld on product design careers, AI workflows and practice. Episodes are also embedded in the related letters.
