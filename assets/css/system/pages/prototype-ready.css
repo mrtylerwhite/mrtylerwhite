@@ -2399,3 +2399,94 @@ body.prototype-ready .pr-bar--on-dark .pr-bar__cta:focus-visible {
   color: #000000 !important;
   text-decoration: none;
 }
+
+/* ── "Before Figma" board: live motion (kanban-live.js adds .is-live) ───────── */
+body.prototype-ready .pr-kanban3__card { position: relative; overflow: hidden; }
+body.prototype-ready .pr-kanban3__card,
+body.prototype-ready .pr-kanban3__dot,
+body.prototype-ready .pr-kanban3__flag,
+body.prototype-ready .pr-kanban3__avatar,
+body.prototype-ready .pr-kanban3__board { animation-play-state: paused; }
+
+/* Entrance: cards deal in */
+body.prototype-ready .pr-kanban3.kb-armed:not(.is-live) .pr-kanban3__card { opacity: 0; translate: 0 18px; scale: 0.97; }
+body.prototype-ready .pr-kanban3__card { transition: opacity 0.5s ease, translate 0.7s cubic-bezier(0.2, 0.8, 0.2, 1), scale 0.7s cubic-bezier(0.2, 0.8, 0.2, 1); }
+body.prototype-ready .pr-kanban3.is-live .pr-kanban3__card:nth-child(2) { transition-delay: 0.15s; }
+body.prototype-ready .pr-kanban3.is-live .pr-kanban3__card:nth-child(3) { transition-delay: 0.3s; }
+
+body.prototype-ready .pr-kanban3.is-live .pr-kanban3__card,
+body.prototype-ready .pr-kanban3.is-live .pr-kanban3__dot,
+body.prototype-ready .pr-kanban3.is-live .pr-kanban3__flag,
+body.prototype-ready .pr-kanban3.is-live .pr-kanban3__avatar,
+body.prototype-ready .pr-kanban3.is-live .pr-kanban3__board { animation-play-state: running; }
+
+/* Each card takes a turn being "picked up" */
+body.prototype-ready .pr-kanban3__card { animation: kb-lift 9s ease-in-out infinite; }
+body.prototype-ready .pr-kanban3__card:nth-child(2) { animation-delay: 3s; }
+body.prototype-ready .pr-kanban3__card:nth-child(3) { animation-delay: 6s; }
+@keyframes kb-lift {
+  0%, 22%, 100% { transform: translateY(0) rotate(0); box-shadow: 0 1px 3px rgba(0, 0, 0, 0.065); border-color: var(--ds-color-border); }
+  6%, 15% { transform: translateY(-6px) rotate(-0.8deg); box-shadow: 0 18px 32px -12px rgba(120, 72, 30, 0.28), 0 0 0 1px rgba(197, 144, 96, 0.45); border-color: rgba(197, 144, 96, 0.6); }
+}
+
+/* Progress bar fills along the bottom of the active card */
+body.prototype-ready .pr-kanban3__card::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(90deg, #C59060, #E9B989);
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: kb-progress 9s ease-in-out infinite;
+  animation-play-state: inherit;
+}
+body.prototype-ready .pr-kanban3__card:nth-child(2)::after { animation-delay: 3s; }
+body.prototype-ready .pr-kanban3__card:nth-child(3)::after { animation-delay: 6s; }
+@keyframes kb-progress { 0% { transform: scaleX(0); opacity: 1; } 18% { transform: scaleX(1); opacity: 1; } 24%, 100% { transform: scaleX(1); opacity: 0; } }
+
+/* Sheen sweeps across each card as it lifts */
+body.prototype-ready .pr-kanban3__card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 35%, rgba(233, 185, 137, 0.22) 50%, transparent 65%);
+  transform: translateX(-120%);
+  animation: kb-sheen 9s ease-in-out infinite;
+  animation-play-state: inherit;
+  pointer-events: none;
+}
+body.prototype-ready .pr-kanban3__card:nth-child(2)::before { animation-delay: 3s; }
+body.prototype-ready .pr-kanban3__card:nth-child(3)::before { animation-delay: 6s; }
+@keyframes kb-sheen { 0% { transform: translateX(-120%); } 14%, 100% { transform: translateX(120%); } }
+
+/* Status dot pings */
+body.prototype-ready .pr-kanban3__dot { position: relative; animation: kb-dot 2s ease-in-out infinite; }
+@keyframes kb-dot { 0%, 100% { box-shadow: 0 0 0 0 rgba(233, 155, 60, 0.55); } 60% { box-shadow: 0 0 0 7px rgba(233, 155, 60, 0); } }
+
+/* Flags wave */
+body.prototype-ready .pr-kanban3__flag { transform-origin: 20% 90%; animation: kb-flag 2.4s ease-in-out infinite; }
+body.prototype-ready .pr-kanban3__card:nth-child(2) .pr-kanban3__flag { animation-delay: 0.4s; }
+body.prototype-ready .pr-kanban3__card:nth-child(3) .pr-kanban3__flag { animation-delay: 0.8s; }
+@keyframes kb-flag { 0%, 100% { transform: skewY(0) rotate(0); } 25% { transform: skewY(-8deg) rotate(-4deg); } 50% { transform: skewY(5deg) rotate(2deg); } 75% { transform: skewY(-3deg); } }
+
+/* Avatars bob, out of phase */
+body.prototype-ready .pr-kanban3__avatar { animation: kb-bob 3s ease-in-out infinite; }
+body.prototype-ready .pr-kanban3__avatar + .pr-kanban3__avatar { animation-delay: -1.5s; }
+@keyframes kb-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-2px); } }
+
+/* Comment count bumps when kanban-live.js ticks it */
+body.prototype-ready .pr-kanban3__stats span.is-bump { animation: kb-bump 0.5s cubic-bezier(0.3, 1.6, 0.5, 1); color: #C59060; }
+@keyframes kb-bump { 0% { transform: scale(1); } 40% { transform: scale(1.35); } 100% { transform: scale(1); } }
+
+@media (prefers-reduced-motion: reduce) {
+  body.prototype-ready .pr-kanban3__card,
+  body.prototype-ready .pr-kanban3__card::before,
+  body.prototype-ready .pr-kanban3__card::after,
+  body.prototype-ready .pr-kanban3__dot,
+  body.prototype-ready .pr-kanban3__flag,
+  body.prototype-ready .pr-kanban3__avatar { animation: none !important; }
+  body.prototype-ready .pr-kanban3:not(.is-live) .pr-kanban3__card { opacity: 1; translate: none; scale: none; }
+}

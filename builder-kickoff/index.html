@@ -30,14 +30,16 @@
   <link rel="preload" href="/assets/fonts/instrument-serif/InstrumentSerif-Regular.woff2" as="font" type="font/woff2" crossorigin />
 
   <!-- Design system bundle -->
-  <link rel="preconnect" href="https://use.typekit.net" crossorigin />
-<link rel="stylesheet" href="https://use.typekit.net/fks5kmr.css" />
+<link rel="preconnect" href="https://use.typekit.net" crossorigin />
+<link rel="preconnect" href="https://p.typekit.net" crossorigin />
+<link rel="preload" as="style" href="https://use.typekit.net/fks5kmr.css" fetchpriority="low" onload="this.onload=null;this.rel='stylesheet'" />
+<noscript><link rel="stylesheet" href="https://use.typekit.net/fks5kmr.css" /></noscript>
 <link rel="stylesheet" href="/assets/css/dist/critical.css" />
   <!-- Reveal styles loaded directly so scroll animations work even if critical.css is cached pre-launch -->
   <link rel="stylesheet" href="/assets/css/system/scroll-reveal.css" />
 
   <!-- Page styles -->
-  <link rel="stylesheet" href="/assets/css/system/pages/prototype-ready.css?v=20260904r" />
+  <link rel="stylesheet" href="/assets/css/system/pages/prototype-ready.css?v=20261016a" />
   <link rel="stylesheet" href="/assets/css/system/site-footer.css" />
   <link rel="preload" as="image" href="/wp-content/uploads/2026/07/builder-kickoff-hero.jpg" type="image/jpeg" />
 <!-- partial:head -->
@@ -736,6 +738,7 @@
   <!-- /Dynamic first-Saturday date ---------------------------------------->
   <script src="/assets/js/workshop-card.js" defer></script>
   <script src="/assets/js/scroll-reveal.js" defer></script>
+  <script src="/assets/js/kanban-live.js" defer></script>
 
   <!-- Page-scoped: sticky nav contrast detection -->
   <script>
