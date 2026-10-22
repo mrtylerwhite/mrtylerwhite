@@ -248,12 +248,22 @@ const ICON = {
   rocket: '<path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>',
   lightbulb: '<path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/>',
   search: '<circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>',
+  filter: '<polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/>',
+  user: '<path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>',
+  calendar: '<path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/>',
+  x: '<path d="M18 6 6 18"/><path d="m6 6 12 12"/>',
+  message: '<path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/>',
   refresh: '<path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/>',
 };
 const skel = `<div class="tk-skel"><div class="tk-row"><i class="tk-f"></i><i class="tk-w8"></i></div><div class="tk-row"><i class="tk-f"></i><i class="tk-w8"></i></div><div class="tk-row"><i class="tk-full"></i></div><div class="tk-row tk-row--1"><i class="tk-3"></i><i class="tk-3"></i></div><div class="tk-row tk-row--1 tk-mt4"><i class="tk-23"></i><i class="tk-3"></i></div><div class="tk-row tk-row--1"><i class="tk-3"></i><i class="tk-3"></i></div></div>`;
 const usageCard = (l1, l2, icon) => `<div class="tk-card tk-usage"><div class="tk-usage__head"><div class="tk-usage__title">${l1}<br>${l2}</div>${lucideIcon("tk-usage__ico", ICON[icon])}</div>${skel}</div>`;
 const pill = (label, icon, tone, sub = "") => `<div class="tk-card tk-pill${sub ? " tk-pill--tile" : ""}">${sub ? `<div class="tk-tile tk-tile--${tone}">${lucideIcon("tk-ico", ICON[icon])}</div><div><div class="tk-pill__label">${label}</div><div class="tk-pill__sub">${sub}</div></div>` : `${lucideIcon(`tk-ico tk-ico--${tone}`, ICON[icon])}<span class="tk-pill__label">${label}</span>`}</div>`;
 const beamGrad = (id, x1, y1, x2, y2) => `<linearGradient id="${id}" gradientUnits="userSpaceOnUse" x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}"><stop offset="0%" stop-color="#C59060" stop-opacity="0"/><stop offset="50%" stop-color="#E9B989"/><stop offset="100%" stop-color="#C59060"/></linearGradient>`;
+
+const tilePill = (label, sub, icon, tone, d, extra = "") => `<div class="tk-card tk-pill tk-pill--tile tk-rise${extra}" style="--d:${d}s"><div class="tk-tile tk-tile--${tone}">${lucideIcon("tk-ico", ICON[icon])}</div><div><div class="tk-pill__label">${label}</div><div class="tk-pill__sub">${sub}</div></div></div>`;
+const browserBar = `<div class="tk-browser__bar"><i></i><i></i><i></i></div>`;
+const statCard = (num, label, d) => `<div class="tk-card tk-stat tk-rise" style="--d:${d}s"><div class="tk-stat__num">${num}</div><div class="tk-stat__label">${label}</div></div>`;
+const gridCard = (year, outcome, dx, d) => `<div class="tk-gcard tk-rise" style="--d:${d}s;--dx:${dx}px"><div class="tk-card tk-gcard__in"><div class="tk-gcard__top"><span class="tk-dot tk-dot--${outcome}"></span><span class="tk-gcard__year">${year}</span></div><div class="tk-skel"><div class="tk-row"><i class="tk-full"></i></div><div class="tk-row tk-row--1"><i class="tk-23"></i><i class="tk-3"></i></div></div></div></div>`;
 
 const FIGURES = {
   // Tailark flow: three usage cards → node → invoice
@@ -312,6 +322,74 @@ const FIGURES = {
     <div class="tk-split-outs">${pill("The bet", "lightbulb", "muted")}${pill("The signal", "search", "muted")}${pill("The fix", "refresh", "brown")}</div>
   </div></div>
   <figcaption>What we launched, why we bet on it, how we found out it missed, what we changed. That slide makes the rest of the deck believable.</figcaption>
+</figure>`,
+  // Tailark flow: three visitors → filter node → keep one, lose the rest
+  "portfolio-filter": `<figure class="letter-fig">
+  <div class="tk-tray"><div class="tk-stage tk-stage--filter" aria-hidden="true">
+    <div class="tk-flow-row">
+      <div class="tk-col">${tilePill("Recruiter", "Skimming ten tabs", "user", "muted", 0.1)}${tilePill("Hiring manager", "Needs retention fixed", "user", "brown", 0.22)}${tilePill("Casual visitor", "Just looking", "user", "muted", 0.34)}</div>
+      <svg class="tk-lines tk-lines--static" width="64" height="164" viewBox="0 0 64 164" fill="none">
+        <path d="M0 22C32 22 32 82 64 82"/><path d="M0 82H64"/><path d="M0 142C32 142 32 82 64 82"/>
+        <path class="tk-pulse" pathLength="1" d="M0 22C32 22 32 82 64 82" stroke="url(#tkp1-a)"/>
+        <path class="tk-pulse" pathLength="1" d="M0 82H64" stroke="url(#tkp1-b)"/>
+        <path class="tk-pulse" pathLength="1" d="M0 142C32 142 32 82 64 82" stroke="url(#tkp1-c)"/>
+        <defs>${beamGrad("tkp1-a", 0, 22, 64, 82)}${beamGrad("tkp1-b", 0, 82, 64, 82)}${beamGrad("tkp1-c", 0, 142, 64, 82)}</defs>
+      </svg>
+      <div class="tk-node tk-node--inline tk-rise" style="--d:0.5s">${lucideIcon("tk-node__ico", ICON.filter)}</div>
+      <svg class="tk-lines tk-lines--static" width="64" height="164" viewBox="0 0 64 164" fill="none">
+        <path d="M0 82C32 82 32 42 64 42"/><path d="M0 82C32 82 32 122 64 122"/>
+        <path class="tk-pulse tk-pulse--out" pathLength="1" d="M0 82C32 82 32 42 64 42" stroke="url(#tkp1-d)"/>
+        <defs>${beamGrad("tkp1-d", 0, 82, 64, 42)}</defs>
+      </svg>
+      <div class="tk-col tk-col--outs">${tilePill("Keeps scrolling", "Your kind of problem", "check", "brown", 0.75)}${tilePill("Closes the tab", "Not a fit. Good.", "x", "muted", 0.85, " tk-leave")}</div>
+    </div>
+  </div></div>
+  <figcaption>A highlight reel tries to keep everyone. A filter keeps the right reader and lets the rest go.</figcaption>
+</figure>`,
+  // Tailark browser card: hero line, then three numbers count up under it while a scan line sweeps the page
+  "proof-strip": `<figure class="letter-fig">
+  <div class="tk-tray"><div class="tk-stage tk-stage--proof" aria-hidden="true">
+    <div class="tk-card tk-browser tk-rise" style="--d:0.05s">
+      ${browserBar}
+      <div class="tk-browser__body">
+        <div class="tk-hero"><span class="tk-tag tk-tag--inline">HERO</span><div class="tk-hero__line"><i></i></div><div class="tk-hero__line tk-hero__line--short"><i></i></div></div>
+        <div class="tk-stats">${statCard('<span class="tk-count tk-count--a"></span>%', "Fewer tickets", 0.45)}${statCard('<span class="tk-count tk-count--b"></span>&times;', "Activation", 0.6)}${statCard('<span class="tk-count tk-count--c"></span> days', "Faster setup", 0.75)}</div>
+        <div class="tk-faded"><div class="tk-faded__card"></div><div class="tk-faded__card"></div><div class="tk-faded__card"></div></div>
+      </div>
+      <div class="tk-scan"></div>
+    </div>
+  </div></div>
+  <figcaption>Three numbers right under the hero. They know the shape of your impact before they read a word. (Numbers are illustrative.)</figcaption>
+</figure>`,
+  // Tailark segmented toggle: the same six case studies re-sort from date to outcome
+  "outcome-grid": `<figure class="letter-fig">
+  <div class="tk-tray"><div class="tk-stage tk-stage--sort" aria-hidden="true">
+    <div class="tk-toggle tk-rise"><span class="tk-toggle__thumb"></span><span class="tk-toggle__opt tk-toggle__opt--date">By date</span><span class="tk-toggle__opt tk-toggle__opt--out">By outcome</span></div>
+    <div class="tk-cols"><span><i class="tk-dot tk-dot--conv"></i>Conversion</span><span><i class="tk-dot tk-dot--ret"></i>Retention</span><span><i class="tk-dot tk-dot--adopt"></i>Adoption</span></div>
+    <div class="tk-sortgrid">${gridCard("2024", "conv", 132, 0.2)}${gridCard("2025", "ret", -132, 0.28)}${gridCard("2023", "adopt", 0, 0.36)}${gridCard("2021", "conv", 132, 0.44)}${gridCard("2022", "ret", -132, 0.52)}${gridCard("2020", "adopt", 0, 0.6)}</div>
+  </div></div>
+  <figcaption>Same six projects. Sorted by date, they tell your career story. Sorted by outcome, they answer the reader's problem.</figcaption>
+</figure>`,
+  // Tailark flow: case study ends on one button → click → a conversation
+  "exit-path": `<figure class="letter-fig">
+  <div class="tk-tray"><div class="tk-stage tk-stage--exit" aria-hidden="true">
+    <div class="tk-flow-row">
+      <div class="tk-card tk-doc tk-doc--exit tk-rise" style="--d:0.1s">
+        <div class="tk-doc__title">CASE STUDY</div>
+        <div class="tk-rhythm"><span>Problem</span><span>Constraint</span><span>Decision</span><span>Number</span></div>
+        ${skel}
+        <div class="tk-cta-btn">${lucideIcon("tk-ico", ICON.calendar)}<span>Book a call</span></div>
+        <svg class="tk-cursor" viewBox="0 0 24 24" fill="#09090b" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"><path d="M4 3l7 17 2.5-7.5L21 10z"/></svg>
+      </div>
+      <svg class="tk-lines tk-lines--static" width="72" height="40" viewBox="0 0 72 40" fill="none">
+        <path d="M0 20H72"/>
+        <path class="tk-pulse tk-pulse--click" pathLength="1" d="M0 20H72" stroke="url(#tkp4-a)"/>
+        <defs>${beamGrad("tkp4-a", 0, 20, 72, 20)}</defs>
+      </svg>
+      ${tilePill("Conversation started", "No hunting for a contact page", "message", "brown", 0.6, " tk-booked")}
+    </div>
+  </div></div>
+  <figcaption>Every case study ends on one obvious next step. Nobody who just read your proof should have to go looking for you.</figcaption>
 </figure>`,
 };
 

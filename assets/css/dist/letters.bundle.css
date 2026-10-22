@@ -3470,6 +3470,156 @@ img.letters-feature__art {
   .tk-node__ico, .tk-dark-pill .tk-ico, .tk-usage, .tk-doc, .tk-pill, .tk-skel i, .tk-tag, .tk-ico { animation: none !important; }
 }
 
+/* ── Figures, set 2 (portfolio letter): filter, proof strip, sort, exit path ──
+   Same Tailark primitives as above. .tk-rise items enter in sequence via --d. */
+.tk-lines--static { position: relative; inset: auto; margin: 0; height: auto; flex: none; display: block; }
+.lf-armed .tk-rise {
+  opacity: 0;
+  translate: 0 14px;
+  scale: 0.96;
+  transition: opacity 0.5s ease, translate 0.7s cubic-bezier(0.2, 0.8, 0.2, 1), scale 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition-delay: var(--d, 0s);
+}
+.lf-armed.is-in .tk-rise { opacity: 1; translate: 0 0; scale: 1; }
+.tk-flow-row { position: relative; z-index: 10; display: flex; align-items: center; }
+.tk-col { display: flex; flex-direction: column; gap: 16px; }
+.tk-col .tk-pill, .tk-booked { height: 44px; box-sizing: border-box; min-width: 168px; }
+.tk-col--outs { gap: 36px; }
+.tk-node--inline { margin: 0; flex: none; }
+.tk-col .tk-pill, .tk-booked { animation: tk-float 4.5s ease-in-out infinite; }
+.tk-col .tk-pill:nth-child(2) { animation-delay: -1.5s; }
+.tk-col .tk-pill:nth-child(3) { animation-delay: -3s; }
+
+/* Filter: the non-fit output drifts off and comes back, on a loop */
+.tk-stage--filter { min-width: 540px; }
+.tk-leave .tk-pill__label { color: rgba(9, 9, 11, 0.55); }
+.lf-armed.is-in .tk-leave { animation: tk-leave 4.2s ease-in-out 1.6s infinite; }
+@keyframes tk-leave {
+  0%, 15% { transform: translateX(0); opacity: 1; }
+  55% { transform: translateX(26px); opacity: 0; }
+  56% { transform: translateX(-10px); opacity: 0; }
+  85%, 100% { transform: translateX(0); opacity: 1; }
+}
+
+/* Proof strip: browser card, hero, counting stats, scan line */
+@property --tk-a { syntax: "<integer>"; inherits: false; initial-value: 34; }
+@property --tk-b { syntax: "<integer>"; inherits: false; initial-value: 2; }
+@property --tk-c { syntax: "<integer>"; inherits: false; initial-value: 8; }
+.tk-stage--proof { min-width: 440px; }
+.tk-browser { position: relative; width: 420px; overflow: hidden; border-radius: 12px; }
+.tk-browser__bar { display: flex; gap: 5px; padding: 10px 12px; border-bottom: 1px solid rgba(9, 9, 11, 0.06); }
+.tk-browser__bar i { width: 7px; height: 7px; border-radius: 999px; background: rgba(9, 9, 11, 0.12); }
+.tk-browser__body { display: flex; flex-direction: column; gap: 18px; padding: 18px 20px 20px; }
+.tk-hero { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+.tk-tag--inline { position: static; margin-bottom: 4px; font-size: 9px; padding: 1px 6px; animation: none; }
+.tk-hero__line { width: 88%; height: 9px; border-radius: 999px; background: rgba(9, 9, 11, 0.08); overflow: hidden; }
+.tk-hero__line--short { width: 56%; }
+.tk-hero__line i { display: block; height: 100%; border-radius: inherit; background: #09090b; transform-origin: left center; }
+.lf-armed .tk-hero__line i { transform: scaleX(0); transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) 0.25s; }
+.lf-armed .tk-hero__line--short i { transition-delay: 0.4s; }
+.lf-armed.is-in .tk-hero__line i { transform: scaleX(1); }
+.tk-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.tk-stat { padding: 12px; border-radius: 10px; }
+.tk-stat__num { font-size: 24px; line-height: 1; font-weight: 600; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; color: #09090b; }
+.tk-stat:first-child .tk-stat__num { color: #C59060; }
+.tk-stat__label { margin-top: 6px; font-size: 10px; line-height: 12px; color: rgba(9, 9, 11, 0.5); }
+.tk-count--a { counter-reset: tka var(--tk-a); }
+.tk-count--a::before { content: counter(tka); }
+.tk-count--b { counter-reset: tkb var(--tk-b); }
+.tk-count--b::before { content: counter(tkb); }
+.tk-count--c { counter-reset: tkc var(--tk-c); }
+.tk-count--c::before { content: counter(tkc); }
+.lf-armed .tk-count--a { --tk-a: 0; transition: --tk-a 1.4s cubic-bezier(0.2, 0.8, 0.2, 1) 0.6s; }
+.lf-armed .tk-count--b { --tk-b: 0; transition: --tk-b 1s steps(2) 0.75s; }
+.lf-armed .tk-count--c { --tk-c: 30; transition: --tk-c 1.4s cubic-bezier(0.2, 0.8, 0.2, 1) 0.9s; }
+.lf-armed.is-in .tk-count--a { --tk-a: 34; }
+.lf-armed.is-in .tk-count--b { --tk-b: 2; }
+.lf-armed.is-in .tk-count--c { --tk-c: 8; }
+.tk-faded { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; opacity: 0.5; }
+.tk-faded__card { height: 34px; border-radius: 8px; background: rgba(9, 9, 11, 0.05); }
+.tk-scan {
+  position: absolute; left: 0; right: 0; top: 30px; height: 46px; pointer-events: none;
+  background: linear-gradient(180deg, rgba(197, 144, 96, 0) 0%, rgba(197, 144, 96, 0.16) 85%, rgba(197, 144, 96, 0.55) 100%);
+  opacity: 0;
+}
+.lf-armed.is-in .tk-scan { animation: tk-scan 4s ease-in-out 1.8s infinite; }
+@keyframes tk-scan { 0% { transform: translateY(-40px); opacity: 0; } 10% { opacity: 1; } 60% { transform: translateY(200px); opacity: 1; } 70%, 100% { transform: translateY(220px); opacity: 0; } }
+
+/* Sort: date order ⇄ outcome order on a loop */
+.tk-stage--sort { min-width: 420px; }
+.tk-toggle { position: relative; z-index: 10; display: grid; grid-template-columns: 1fr 1fr; padding: 3px; border-radius: 999px; background: #fff; box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.075), 0 4px 6px -1px rgba(0, 0, 0, 0.065); font-size: 12px; font-weight: 600; }
+.tk-toggle__opt { position: relative; z-index: 1; padding: 5px 14px; text-align: center; white-space: nowrap; color: rgba(9, 9, 11, 0.5); }
+.tk-toggle__opt--out { color: #fff; }
+.tk-toggle__thumb { position: absolute; top: 3px; bottom: 3px; left: 50%; width: calc(50% - 3px); border-radius: 999px; background: rgba(9, 9, 11, 0.88); }
+.tk-cols { position: relative; z-index: 10; display: grid; grid-template-columns: repeat(3, 120px); gap: 12px; margin: 22px 0 10px; font-size: 11px; font-weight: 600; }
+.tk-cols span { display: flex; align-items: center; gap: 6px; }
+.tk-dot { display: inline-block; width: 7px; height: 7px; border-radius: 999px; flex: none; }
+.tk-dot--conv { background: #C59060; }
+.tk-dot--ret { background: #09090b; }
+.tk-dot--adopt { background: #a1a1aa; }
+.tk-sortgrid { position: relative; z-index: 10; display: grid; grid-template-columns: repeat(3, 120px); grid-auto-rows: 64px; gap: 12px; }
+.tk-gcard__in { height: 100%; box-sizing: border-box; padding: 10px; display: flex; flex-direction: column; gap: 9px; border-radius: 10px; }
+.tk-gcard__top { display: flex; align-items: center; gap: 6px; }
+.tk-gcard__year { font-size: 11px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.lf-armed.is-in .tk-gcard__in { animation: tk-sort 7s cubic-bezier(0.6, 0, 0.3, 1) 1.2s infinite; }
+@keyframes tk-sort {
+  0%, 36% { transform: translateX(var(--dx, 0px)); }
+  46%, 90% { transform: translateX(0); }
+  100% { transform: translateX(var(--dx, 0px)); }
+}
+.tk-gcard__in { --dx: inherit; }
+.lf-armed.is-in .tk-toggle__thumb { animation: tk-thumb 7s cubic-bezier(0.6, 0, 0.3, 1) 1.2s infinite; }
+@keyframes tk-thumb { 0%, 36% { transform: translateX(calc(-100% + 0px)); } 46%, 90% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
+.lf-armed.is-in .tk-toggle__opt--date { animation: tk-opt-on 7s 1.2s infinite; }
+.lf-armed.is-in .tk-toggle__opt--out { animation: tk-opt-off 7s 1.2s infinite; }
+@keyframes tk-opt-on { 0%, 38% { color: #fff; } 44%, 92% { color: rgba(9, 9, 11, 0.5); } 98%, 100% { color: #fff; } }
+@keyframes tk-opt-off { 0%, 38% { color: rgba(9, 9, 11, 0.5); } 44%, 92% { color: #fff; } 98%, 100% { color: rgba(9, 9, 11, 0.5); } }
+.lf-armed.is-in .tk-cols { animation: tk-cols 7s 1.2s infinite; }
+@keyframes tk-cols { 0%, 38% { opacity: 0.15; } 46%, 90% { opacity: 1; } 100% { opacity: 0.15; } }
+
+/* Exit path: rhythm chips light in order, cursor clicks the one button, beam to the booked pill */
+.tk-stage--exit { min-width: 510px; }
+.tk-doc--exit { position: relative; width: 236px; gap: 12px; padding: 14px; border-radius: 10px; }
+.tk-rhythm { display: flex; flex-wrap: nowrap; gap: 3px; }
+.tk-rhythm span { padding: 2px 4px; border-radius: 4px; font-size: 8.5px; white-space: nowrap; font-weight: 600; background: rgba(9, 9, 11, 0.05); color: rgba(9, 9, 11, 0.55); }
+.lf-armed.is-in .tk-rhythm span { animation: tk-chip 0.4s ease forwards; }
+.lf-armed.is-in .tk-rhythm span:nth-child(1) { animation-delay: 0.6s; }
+.lf-armed.is-in .tk-rhythm span:nth-child(2) { animation-delay: 0.8s; }
+.lf-armed.is-in .tk-rhythm span:nth-child(3) { animation-delay: 1s; }
+.lf-armed.is-in .tk-rhythm span:nth-child(4) { animation-delay: 1.2s; }
+@keyframes tk-chip { to { background: rgba(197, 144, 96, 0.16); color: #8a5a2e; } }
+.tk-cta-btn { display: flex; align-items: center; justify-content: center; gap: 6px; padding: 8px 10px; border-radius: 8px; background: #C59060; color: #fff; font-size: 12px; font-weight: 600; box-shadow: 0 6px 12px -4px rgba(120, 72, 30, 0.35); }
+.tk-cta-btn .tk-ico { width: 14px; height: 14px; }
+.tk-cursor { position: absolute; z-index: 3; left: 150px; bottom: 6px; width: 18px; height: 18px; filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.25)); opacity: 0; }
+.lf-armed.is-in .tk-cursor { animation: tk-cursor 4.6s ease-in-out 1.4s infinite; }
+@keyframes tk-cursor {
+  0% { opacity: 0; transform: translate(70px, 40px); }
+  12% { opacity: 1; }
+  38% { opacity: 1; transform: translate(0, 0) scale(1); }
+  44% { transform: translate(0, 0) scale(0.82); }
+  50% { transform: translate(0, 0) scale(1); }
+  80% { opacity: 1; transform: translate(0, 0); }
+  100% { opacity: 0; transform: translate(10px, 14px); }
+}
+.lf-armed.is-in .tk-cta-btn { animation: tk-press 4.6s ease-in-out 1.4s infinite; }
+@keyframes tk-press { 0%, 40% { transform: scale(1); } 44% { transform: scale(0.95); box-shadow: 0 2px 4px -2px rgba(120, 72, 30, 0.35); } 50%, 100% { transform: scale(1); } }
+.tk-pulse--click { animation-delay: 3.4s; }
+.lf-armed.is-in .tk-booked .tk-tile { animation: tk-booked 4.6s ease-in-out 1.4s infinite; }
+@keyframes tk-booked { 0%, 55% { box-shadow: 0 0 0 0 rgba(197, 144, 96, 0); } 65% { box-shadow: 0 0 0 6px rgba(197, 144, 96, 0.22); } 85%, 100% { box-shadow: 0 0 0 0 rgba(197, 144, 96, 0); } }
+
+.lf-armed:not(.is-in) .tk-col .tk-pill, .lf-armed:not(.is-in) .tk-booked { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) {
+  .tk-col .tk-pill, .tk-booked, .tk-leave, .tk-scan, .tk-gcard__in, .tk-toggle__thumb, .tk-toggle__opt, .tk-cols, .tk-cursor, .tk-cta-btn, .tk-booked .tk-tile { animation: none !important; }
+}
+@media (max-width: 760px) {
+  .tk-stage--filter { zoom: 0.6; }
+  .tk-stage--proof, .tk-stage--sort, .tk-stage--exit { zoom: 0.72; }
+}
+@media (max-width: 480px) {
+  .tk-stage--filter { zoom: 0.56; }
+  .tk-stage--proof, .tk-stage--sort, .tk-stage--exit { zoom: 0.64; }
+}
+
 /* ── Podcast video (click-to-load YouTube) ───────────────────────────────── */
 .letter-video {
   margin: 40px 0 48px;
@@ -3598,3 +3748,19 @@ img.letters-feature__art {
 
 /* <picture> wrappers (WebP covers, video thumbs) stay layout-neutral */
 .letters-page picture { display: contents; }
+
+/* ── List thumbs: keep the <picture> in its own grid cell ───────────────────
+   A global picture { display: contents } let its <source> take the thumb column
+   and pushed the image onto a new row. Pin text and picture to row one. */
+.letters-list__link > picture { display: block; grid-row: 1; grid-column: 2; }
+.letters-list__link > .letters-list__text { grid-row: 1; grid-column: 1; }
+.letters-list__link > picture .letters-list__thumb { display: block; }
+
+/* Keep reading: image on the left, copy on the right */
+.letters-related .letters-list__link { grid-template-columns: 160px minmax(0, 1fr); align-items: center; }
+.letters-related .letters-list__link > picture,
+.letters-related .letters-list__link > .letters-list__thumb { grid-column: 1; grid-row: 1; }
+.letters-related .letters-list__link > .letters-list__text { grid-column: 2; }
+@media (max-width: 720px) {
+  .letters-related .letters-list__link { grid-template-columns: 96px minmax(0, 1fr); }
+}

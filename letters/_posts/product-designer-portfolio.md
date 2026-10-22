@@ -5,7 +5,7 @@ description: How to structure a product designer portfolio homepage: a one-line 
 subtitle: Most portfolio homepages are a highlight reel. Yours should be a filter. Here's the structure, section by section.
 slug: product-designer-portfolio
 date: 2026-08-12
-updated: 2026-10-15
+updated: 2026-10-22
 topic: case-studies
 cover: /assets/images/letters/product-designer-portfolio.jpg
 keyword: product designer portfolio
@@ -25,6 +25,8 @@ A highlight reel tries to show everything you've done. A filter tells the right 
 It's actually the kindest thing you can do for a hiring manager skimming ten portfolios at the end of a long day.
 
 Here's how the homepage is laid out, piece by piece.
+
+<!-- figure:portfolio-filter -->
 
 ## 1. The hero: one sentence, no ambiguity
 
@@ -50,6 +52,8 @@ Not screenshots. Numbers.
 
 Before anyone reads a single case study, they already know the shape of your impact.
 
+<!-- figure:proof-strip -->
+
 This is the section most portfolios skip entirely, and it's the one doing the most work. Nobody reads your homepage. They scan it. Give them a reason to keep going in the first five seconds or lose them to the next tab.
 
 Don't have three numbers? That's not a portfolio problem. It's a measurement problem, and it's fixable. Start with [the UX metrics that actually make it into the exec deck](/letters/ux-metrics/).
@@ -64,11 +68,15 @@ Someone scanning for a person who can move the metric they care about finds the 
 
 Chronological order tells a story about your career. Outcome order tells a story about their problem. Only one of those gets the callback.
 
+<!-- figure:outcome-grid -->
+
 ## 4. Case study previews: the headline is the result
 
 Not a project name. Not a client name. The result it produced.
 
 A project name asks for trust before you've earned it. A result earns the click first.
+
+<!-- figure:title-rewrite -->
 
 "Dashboard redesign" is a label. "Got account managers back into the product every Monday" is a reason to click. I've got more before-and-after rewrites in [UX case study examples](/letters/ux-case-study-examples/).
 
@@ -93,6 +101,8 @@ A specific next step. Reach out. Book a call. See the next case study.
 The homepage's job doesn't end when someone finishes reading. It ends when they take the next step toward actually talking to you. Someone who just read proof that you move metrics should never have to hunt for how to contact you.
 
 Make the path obvious. Make it short.
+
+<!-- figure:exit-path -->
 
 ## One structure, repeated on purpose
 
