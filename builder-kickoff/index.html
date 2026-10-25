@@ -779,5 +779,123 @@
   <script src="/assets/js/gtm-defer.js" defer></script>
   <script src="/assets/js/analytics.js" defer></script>
 <script src="/assets/js/hotjar.js" defer></script>
+<script>
+(function () {
+  'use strict';
+  var EARLY_URL = 'https://mrtylerwhite.kit.com/products/builder-kickoff-early-access';
+  var DEADLINE = '202610312359';
+
+  function pad(n) { return n.length === 1 ? '0' + n : n; }
+
+  function torontoStamp() {
+    var fmt = new Intl.DateTimeFormat('en-US', {
+      timeZone: 'America/Toronto',
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      hourCycle: 'h23'
+    });
+    var map = {};
+    fmt.formatToParts(new Date()).forEach(function (part) { map[part.type] = part.value; });
+    return map.year + pad(map.month) + pad(map.day) + pad(map.hour) + pad(map.minute);
+  }
+
+  function earlyOpen() {
+    try {
+      return torontoStamp() <= DEADLINE;
+    } catch (err) {
+      return false;
+    }
+  }
+
+  function replacePrices(root) {
+    var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (node) {
+        if (!node.nodeValue || node.nodeValue.indexOf('$97') === -1) return NodeFilter.FILTER_REJECT;
+        var el = node.parentNode;
+        while (el && el !== root) {
+          if (el.nodeName === 'SCRIPT' || el.nodeName === 'STYLE' || el.nodeName === 'NOSCRIPT') {
+            return NodeFilter.FILTER_REJECT;
+          }
+          el = el.parentNode;
+        }
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var nodes = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+    nodes.forEach(function (node) {
+      var text = node.nodeValue;
+      var finder = /\$97(?!\d)/g;
+      if (!finder.test(text)) return;
+      finder.lastIndex = 0;
+      var frag = document.createDocumentFragment();
+      var last = 0;
+      var match;
+      while ((match = finder.exec(text))) {
+        if (match.index > last) frag.appendChild(document.createTextNode(text.slice(last, match.index)));
+        var price = document.createElement('span');
+        price.className = 'bk-early-price';
+        price.appendChild(document.createTextNode('$27'));
+        price.appendChild(document.createTextNode(' '));
+        var was = document.createElement('s');
+        was.textContent = '$97';
+        price.appendChild(was);
+        frag.appendChild(price);
+        last = match.index + match[0].length;
+      }
+      if (last < text.length) frag.appendChild(document.createTextNode(text.slice(last)));
+      node.parentNode.replaceChild(frag, node);
+    });
+  }
+
+  function fireView() {
+    function send() {
+      if (typeof window.trackEvent === 'function') {
+        window.trackEvent('kickoff_early_view');
+        return;
+      }
+      window.dataLayer = window.dataLayer || [];
+      if (typeof window.gtag === 'function') window.gtag('event', 'kickoff_early_view');
+      else window.dataLayer.push({ event: 'kickoff_early_view' });
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', send);
+    else send();
+  }
+
+  try {
+    if (new URLSearchParams(window.location.search).get('offer') !== 'early') return;
+    if (!earlyOpen()) return;
+
+    var firstCta = null;
+    var anchors = document.getElementsByTagName('a');
+    for (var i = 0; i < anchors.length; i++) {
+      var href = anchors[i].getAttribute('href') || '';
+      if (href.indexOf('builder-kickoff-course') === -1) continue;
+      if (!firstCta) firstCta = anchors[i];
+      anchors[i].setAttribute('href', EARLY_URL);
+    }
+
+    replacePrices(document.body);
+
+    if (firstCta) {
+      var banner = document.createElement('p');
+      banner.className = 'bk-early-banner';
+      banner.textContent = 'Subscriber early access. $27 until October 31. In return, two honest answers after you watch it.';
+      var bar = firstCta;
+      while (bar && !(bar.classList && bar.classList.contains('pr-bar'))) bar = bar.parentNode;
+      if (bar) bar.insertBefore(banner, bar.firstChild);
+      else firstCta.parentNode.insertBefore(banner, firstCta);
+    }
+
+    var style = document.createElement('style');
+    style.textContent = '.bk-early-banner{box-sizing:border-box;width:90%;max-width:1100px;margin:0 auto .45rem;padding:.45rem .8rem;background:#c59060;color:#1c140e;border-radius:6px;font-family:var(--ds-font-body),sans-serif;font-size:13px;font-weight:600;line-height:1.4;text-align:center}.bk-early-price s{text-decoration:line-through;text-decoration-thickness:1px;opacity:.55;font-weight:500;margin-left:.15em}.pr-ticket__purchase-price .bk-early-price s{font-size:.45em}';
+    document.head.appendChild(style);
+    fireView();
+  } catch (err) {}
+})();
+</script>
 </body>
 </html>
