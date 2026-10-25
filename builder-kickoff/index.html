@@ -869,29 +869,17 @@
     if (new URLSearchParams(window.location.search).get('offer') !== 'early') return;
     if (!earlyOpen()) return;
 
-    var firstCta = null;
     var anchors = document.getElementsByTagName('a');
     for (var i = 0; i < anchors.length; i++) {
       var href = anchors[i].getAttribute('href') || '';
       if (href.indexOf('builder-kickoff-course') === -1) continue;
-      if (!firstCta) firstCta = anchors[i];
       anchors[i].setAttribute('href', EARLY_URL);
     }
 
     replacePrices(document.body);
 
-    if (firstCta) {
-      var banner = document.createElement('p');
-      banner.className = 'bk-early-banner';
-      banner.textContent = 'Subscriber early access. $27 until October 31. In return, two honest answers after you watch it.';
-      var bar = firstCta;
-      while (bar && !(bar.classList && bar.classList.contains('pr-bar'))) bar = bar.parentNode;
-      if (bar) bar.insertBefore(banner, bar.firstChild);
-      else firstCta.parentNode.insertBefore(banner, firstCta);
-    }
-
     var style = document.createElement('style');
-    style.textContent = '.bk-early-banner{box-sizing:border-box;width:90%;max-width:1100px;margin:0 auto .45rem;padding:.45rem .8rem;background:#c59060;color:#1c140e;border-radius:6px;font-family:var(--ds-font-body),sans-serif;font-size:13px;font-weight:600;line-height:1.4;text-align:center}.bk-early-price s{text-decoration:line-through;text-decoration-thickness:1px;opacity:.55;font-weight:500;margin-left:.15em}.pr-ticket__purchase-price .bk-early-price s{font-size:.45em}';
+    style.textContent = '.bk-early-price s{text-decoration:line-through;text-decoration-thickness:1px;opacity:.55;font-weight:500;margin-left:.15em}.pr-ticket__purchase-price .bk-early-price s{font-size:.45em}';
     document.head.appendChild(style);
     fireView();
   } catch (err) {}
