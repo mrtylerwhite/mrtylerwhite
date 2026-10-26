@@ -75,7 +75,7 @@ If you need help picking that signal, start with [the UX metrics that actually m
 
 ## Where design rationale should live
 
-**In the PRD.** Decisions made at kickoff belong in the doc everyone reads. Here's [the PRD template I use](/letters/prd-template/), which has a decision table built into the ROI section.
+**In the PRD.** Decisions made at kickoff belong in the doc everyone reads. (New to PRDs? Start with [what a PRD is](/letters/what-is-a-prd/), and [how it differs from a BRD](/letters/prd-vs-brd/).) Here's [the PRD template I use](/letters/prd-template/), which has a decision table built into the ROI section.
 
 **In the case study.** Rationale is the most interesting part of a case study, and the part most designers bury. Structure it around decisions, not the timeline. Here's [the UX case study template](/letters/ux-case-study-template/) that does exactly that.
 

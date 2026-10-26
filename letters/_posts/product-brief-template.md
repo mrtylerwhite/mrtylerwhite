@@ -34,7 +34,7 @@ A product brief answers one question before anyone commits time:
 
 **Is this problem worth solving, and what does solved look like?**
 
-It's lighter than a PRD. A brief decides whether to do the work. A [PRD](/letters/prd-template/) decides how the work gets done. If you're fuzzy on how those two relate to the business case doc, I broke that down in [PRD vs BRD](/letters/prd-vs-brd/).
+It's lighter than a [PRD](/letters/what-is-a-prd/). A brief decides whether to do the work. A [PRD](/letters/prd-template/) decides how the work gets done. If you're fuzzy on how those two relate to the business case doc, I broke that down in [PRD vs BRD](/letters/prd-vs-brd/).
 
 ## The product brief template (copy and paste)
 

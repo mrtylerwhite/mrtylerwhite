@@ -45,7 +45,7 @@ Skip the fundamentals and the tool just ships the wrong thing faster. Know them 
 
 I use Claude as my main tool, connected to GitHub, Atlassian, Figma and Slack, so it has real context. It knows the product, the constraints and how things actually work.
 
-When I start a feature I don't jump into design. I load context first. PRD, notes, screenshots, anything that shows how the product behaves. I feed it in step by step and tell it to wait.
+When I start a feature I don't jump into design. I load context first. [PRD](/letters/what-is-a-prd/), notes, screenshots, anything that shows how the product behaves. I feed it in step by step and tell it to wait.
 
 If you don't have a PRD yet, start with [the PRD template I use](/letters/prd-template/). The quality of everything after this step depends on it.
 
