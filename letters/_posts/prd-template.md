@@ -24,7 +24,7 @@ So here's the template I use, the exact sections, copy and paste it. And then th
 
 ## What a PRD is actually for
 
-A PRD (product requirements document) is supposed to answer one question for everyone who touches the work:
+A [PRD (product requirements document)](/letters/what-is-a-prd/) is supposed to answer one question for everyone who touches the work:
 
 **What are we building, why, and how will we know it worked?**
 

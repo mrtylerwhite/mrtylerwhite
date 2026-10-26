@@ -1,7 +1,7 @@
 ---
 title: What is a PRD? The doc that decides what gets built
-seoTitle: What Is a PRD? Product Requirements Document Explained
-description: What a PRD (product requirements document) is, what goes in one, who writes it and when, and how it differs from a BRD, a product brief and a spec.
+seoTitle: What Is a PRD? Meaning and What Goes in One
+description: PRD stands for product requirements document: the doc that says what a team is building, why, and how they'll know it worked. Here's what goes in one.
 subtitle: A PRD is a record of decisions. Most teams treat it as a request for decisions, which is why theirs go stale by Thursday.
 slug: what-is-a-prd
 date: 2026-10-15
@@ -11,7 +11,7 @@ keyword: what is a prd
 cta: builder-kickoff
 ---
 
-A **PRD**, or **product requirements document**, is the doc that says what a team is building, why, and how they'll know it worked.
+**PRD** stands for **product requirements document**. It's the doc that says what a team is building, why, and how they'll know it worked.
 
 That's the textbook answer. Here's the useful one.
 

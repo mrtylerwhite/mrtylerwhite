@@ -151,7 +151,7 @@ A kickoff isn't done when the hour is up. It's done when you have these:
 - The smallest version worth building
 - An owner and a date for every open question
 
-That list is basically a PRD. Which is why I stopped writing PRDs after kickoffs and started filling them in during them. Here's [the PRD template I actually use](/letters/prd-template/), section by section.
+That list is basically a [PRD](/letters/what-is-a-prd/). Which is why I stopped writing PRDs after kickoffs and started filling them in during them. Here's [the PRD template I actually use](/letters/prd-template/), section by section.
 
 <!-- newsletter -->
 
