@@ -6,6 +6,13 @@
   <atom:link href="https://www.mrtylerwhite.com/letters/feed.xml" rel="self" type="application/rss+xml" />
   <description>Tyler White on proving what design is worth: PRDs and kickoffs, case studies that show impact, and AI workflows for product designers.</description>
   <item>
+    <title>The ROI of design: how to calculate it for one feature, not the whole industry</title>
+    <link>https://www.mrtylerwhite.com/letters/roi-of-design/</link>
+    <guid isPermaLink="true">https://www.mrtylerwhite.com/letters/roi-of-design/</guid>
+    <pubDate>Mon, 26 Oct 2026 12:00:00 GMT</pubDate>
+    <description>How to calculate the ROI of design for a real feature: the formula, worked examples for revenue, retention and cost, and the baseline to set first.</description>
+  </item>
+  <item>
     <title>What is a PRD? The doc that decides what gets built</title>
     <link>https://www.mrtylerwhite.com/letters/what-is-a-prd/</link>
     <guid isPermaLink="true">https://www.mrtylerwhite.com/letters/what-is-a-prd/</guid>

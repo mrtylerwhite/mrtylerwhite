@@ -391,6 +391,67 @@ const FIGURES = {
   </div></div>
   <figcaption>Every case study ends on one obvious next step. Nobody who just read your proof should have to go looking for you.</figcaption>
 </figure>`,
+  // Tailark flow (same as portfolio-filter): three levers → ROI node → keep the money, drop the vibes
+  "roi-levers": `<figure class="letter-fig">
+  <div class="tk-tray"><div class="tk-stage tk-stage--filter" aria-hidden="true">
+    <div class="tk-flow-row">
+      <div class="tk-col">${tilePill("Revenue", "More people buy", "trend", "brown", 0.1)}${tilePill("Retention", "Fewer people leave", "users", "brown", 0.22)}${tilePill("Cost", "Cheaper to run", "scale", "brown", 0.34)}</div>
+      <svg class="tk-lines tk-lines--static" width="64" height="164" viewBox="0 0 64 164" fill="none">
+        <path d="M0 22C32 22 32 82 64 82"/><path d="M0 82H64"/><path d="M0 142C32 142 32 82 64 82"/>
+        <path class="tk-pulse" pathLength="1" d="M0 22C32 22 32 82 64 82" stroke="url(#tkr1-a)"/>
+        <path class="tk-pulse" pathLength="1" d="M0 82H64" stroke="url(#tkr1-b)"/>
+        <path class="tk-pulse" pathLength="1" d="M0 142C32 142 32 82 64 82" stroke="url(#tkr1-c)"/>
+        <defs>${beamGrad("tkr1-a", 0, 22, 64, 82)}${beamGrad("tkr1-b", 0, 82, 64, 82)}${beamGrad("tkr1-c", 0, 142, 64, 82)}</defs>
+      </svg>
+      <div class="tk-node tk-node--inline tk-rise" style="--d:0.5s">${lucideIcon("tk-node__ico", ICON.check)}</div>
+      <svg class="tk-lines tk-lines--static" width="64" height="164" viewBox="0 0 64 164" fill="none">
+        <path d="M0 82C32 82 32 42 64 42"/><path d="M0 82C32 82 32 122 64 122"/>
+        <path class="tk-pulse tk-pulse--out" pathLength="1" d="M0 82C32 82 32 42 64 42" stroke="url(#tkr1-d)"/>
+        <defs>${beamGrad("tkr1-d", 0, 82, 64, 42)}</defs>
+      </svg>
+      <div class="tk-col tk-col--outs">${tilePill("ROI", "(value &minus; cost) / cost", "check", "brown", 0.75)}${tilePill("“Users loved it”", "Not a number. Doesn&rsquo;t count.", "x", "muted", 0.85, " tk-leave")}</div>
+    </div>
+  </div></div>
+  <figcaption>Every design decision that matters moves money one of three ways. Anything else is a vibe.</figcaption>
+</figure>`,
+  // Tailark flow (same as title-rewrite): feature request → set the baseline → metric, baseline, target
+  "baseline-first": `<figure class="letter-fig">
+  <div class="tk-tray"><div class="tk-stage tk-stage--fan" aria-hidden="true">
+    <svg class="tk-lines tk-lines--fan" viewBox="0 0 400 240" fill="none">
+      <path d="M60 120 H160"/><path d="M220 120 H260"/>
+      <path d="M260 120 Q280 120 290 100 L310 50 Q320 30 340 30"/><path d="M260 120 H340"/><path d="M260 120 Q280 120 290 140 L310 190 Q320 210 340 210"/>
+      <path class="tk-pulse" pathLength="1" d="M60 120 H160" stroke="url(#tkr2-in)"/>
+      <path class="tk-pulse tk-pulse--out" pathLength="1" d="M220 120 H260 Q280 120 290 100 L310 50 Q320 30 340 30" stroke="url(#tkr2-o1)"/>
+      <path class="tk-pulse tk-pulse--out" pathLength="1" d="M220 120 H340" stroke="url(#tkr2-o2)"/>
+      <path class="tk-pulse tk-pulse--out" pathLength="1" d="M220 120 H260 Q280 120 290 140 L310 190 Q320 210 340 210" stroke="url(#tkr2-o3)"/>
+      <defs>${beamGrad("tkr2-in", 220, 120, 160, 120)}${beamGrad("tkr2-o1", 220, 120, 320, 60)}${beamGrad("tkr2-o2", 220, 120, 340, 120)}${beamGrad("tkr2-o3", 220, 120, 320, 180)}</defs>
+    </svg>
+    <div class="tk-fan">
+      ${pill("Feature request", "message", "muted")}
+      <div class="tk-dark-pill">${lucideIcon("tk-ico tk-ico--brown", ICON.calendar)}<span>Kickoff</span></div>
+      <div class="tk-outs">${pill("The metric", "search", "brown")}${pill("The baseline", "dashboard", "brown")}${pill("The target", "trend", "brown")}</div>
+    </div>
+  </div></div>
+  <figcaption>Pick the metric, write down the baseline, agree on the target. Before anyone opens Figma.</figcaption>
+</figure>`,
+  // Tailark flow (same as timeline-vs-decisions): three numbers → node → the receipt
+  "roi-receipt": `<figure class="letter-fig">
+  <div class="tk-tray"><div class="tk-stage tk-stage--merge" aria-hidden="true">
+    <svg class="tk-lines tk-lines--merge" viewBox="0 0 227 274" fill="none">
+      <path d="M226 2.5V62C226 73.05 217.05 82 206 82H140.5C129.45 82 120.5 90.95 120.5 102V151"/>
+      <path d="M112.5 0.5V273"/>
+      <path d="M0.5 1V62.5C0.5 73.55 9.45 82.5 20.5 82.5H84.5C95.55 82.5 104.5 91.45 104.5 102.5V151"/>
+      <path class="tk-beam" d="M226 2.5V62C226 73.05 217.05 82 206 82H140.5C129.45 82 120.5 90.95 120.5 102V151" stroke="url(#tkr3-r)"/>
+      <path class="tk-beam tk-beam--late" d="M112.5 0.5V273" stroke="url(#tkr3-v)"/>
+      <path class="tk-beam tk-beam--ink" d="M0.5 1V62.5C0.5 73.55 9.45 82.5 20.5 82.5H84.5C95.55 82.5 104.5 91.45 104.5 102.5V151"/>
+      <defs>${beamGrad("tkr3-r", 226, 0, 120, 151)}${beamGrad("tkr3-v", 112, 30, 112, 320)}</defs>
+    </svg>
+    <div class="tk-grid3">${usageCard("The", "baseline", "dashboard")}${usageCard("The", "change", "trend")}${usageCard("What it", "cost", "scale")}</div>
+    <div class="tk-node">${lucideIcon("tk-node__ico", ICON.check)}</div>
+    <div class="tk-doc-wrap"><div class="tk-tag">THE RECEIPT</div><div class="tk-card tk-doc"><div class="tk-doc__title">ROI OF DESIGN</div>${skel}<div class="tk-doc__bar"></div></div></div>
+  </div></div>
+  <figcaption>Baseline, change, cost. Put all three in the case study and the number explains itself.</figcaption>
+</figure>`,
 };
 
 const esc = (s = "") =>
