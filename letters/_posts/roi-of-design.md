@@ -42,9 +42,9 @@ There is real research on this. [McKinsey tracked 300 companies over five years]
 
 Great. Put it on a poster.
 
-It still doesn't answer the question your VP is actually asking, which is "should we spend two sprints on this?" A study about other companies is a reason to care about design in general. It's not a reason to fund your project in particular.
+Your VP still doesn't give a shit. They're asking one question: "should we spend two sprints on this?" A study about 300 other companies can't answer that. Your numbers can.
 
-Here's the uncomfortable part. Most designers can *describe* the ROI of design. Very few can *produce* it for their own work. Describing it gets you a nod in the meeting. Producing it gets you the budget.
+Most designers can *describe* the ROI of design. Very few can *produce* it for their own work. Describing it gets you a nod in the meeting. Producing it gets you the budget.
 
 ## The three places design ROI shows up
 
@@ -115,11 +115,11 @@ I learned this one the expensive way.
 
 I spent six weeks on a dashboard redesign. Stakeholder interviews. Competitive analysis. Three rounds of iteration. The handoff was the cleanest thing I'd ever shipped.
 
-Six months later, nobody was using it.
+Six months later, nobody was using it. I'm still annoyed about that one.
 
 The design wasn't the problem. Nobody had defined what success looked like before I started. We didn't have a problem statement. We had a feature request. So there was no baseline, no target, and no ROI to calculate. Just a very clean dashboard and a lot of silence.
 
-That's what happens when you go looking for the "before" number after launch. You end up reverse-engineering it from memory and vibes.
+That's what happens when you go looking for the "before" number after launch. You end up reverse-engineering it from memory, vibes and whatever bullshit number makes the slide look good.
 
 That's not proof. That's a vibe.
 
@@ -131,7 +131,7 @@ Start with one sentence: *what would need to be true for this feature to matter?
 
 Then write the metric, baseline and target into the success metric section of the PRD. Here's [the PRD template I use](/letters/prd-template/), and [the kickoff agenda](/letters/project-kickoff-meeting/) that forces the room to pick a number.
 
-If you only remember one thing from this letter, make it this one. **You can't calculate a return on something you never measured the start of.**
+**You can't calculate a return on something you never measured the start of.**
 
 <!-- newsletter -->
 
