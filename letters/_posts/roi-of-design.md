@@ -64,46 +64,27 @@ The numbers below are illustrative. Swap in yours. The structure is the part to 
 
 ### Example 1: cost (a confusing billing screen)
 
-- Support gets **120 tickets a month** about the billing screen
-- Each takes **12 minutes** to resolve
-- That's **24 hours a month** of support time
-- At a loaded cost of **$40 an hour**, that's **$960 a month**
+Support gets **120 tickets a month** about the billing screen. Each takes **12 minutes**, at a loaded cost of **$40 an hour**. That's **$960 a month**. The redesign cuts the tickets in half, and the work costs **$8,000**.
 
-The redesign cuts those tickets in half. That's **$480 a month**, or **$5,760 a year**, saved.
+<!-- figure:roi-ex-cost -->
 
-The work cost about **$8,000** in design and engineering time.
-
-Year-one ROI: ($5,760 − $8,000) ÷ $8,000 = **−28%**.
-
-Negative. Over two years it's **+44%**, and it pays for itself in about 17 months.
-
-Say that out loud. Not every good redesign pays back in a quarter, and the designer who admits it is the one whose next number gets believed.
+Negative in year one. Say that out loud. Not every good redesign pays back in a quarter, and the designer who admits it is the one whose next number gets believed.
 
 The same math works on your own time, by the way. I caught myself after a client call, scrubbing the recording and rewriting insights I'd already worked out in the room. Say that packaging takes **45 minutes** a call, two calls a week. That's **6 hours a month**. At a conservative **$75 an hour**, it's **$5,400 a year** of designer time spent turning thinking into a shareable format. One tiny repeated task.
 
 ### Example 2: revenue (a trial onboarding flow)
 
-- **1,000 trials** start every month
-- **8%** convert to paid
-- Average contract value is **$1,200 a year**
+**1,000 trials** start every month, **8%** convert, and a customer is worth **$1,200 a year**. A new onboarding flow moves conversion to **9%**, and the work costs **$15,000**.
 
-The new onboarding flow moves conversion from 8% to 9%. One point.
-
-That's **10 extra customers a month**, or **$12,000 in new annual recurring revenue** from every monthly cohort. Over a year of cohorts, that's **$144,000 in ARR**.
-
-The work cost **$15,000**.
-
-ROI: ($144,000 − $15,000) ÷ $15,000 = **860%**.
+<!-- figure:roi-ex-revenue -->
 
 A one-point lift sounds boring in a design review. It doesn't sound boring in a revenue meeting.
 
 ### Example 3: retention (fixing the first week)
 
-- **2,000 customers** at **$1,200 a year**
-- Monthly churn is **2%**, so **40 customers** leave every month
-- Exit surveys keep naming the same setup step
+You have **2,000 customers** at **$1,200 a year**, monthly churn of **2%**, and exit surveys keep naming the same setup step. The fix brings churn down to **1.8%**.
 
-The fix drops churn to **1.8%**. That's **4 fewer customers lost a month**, or **$4,800 in ARR kept** every month. **$57,600 a year.**
+<!-- figure:roi-ex-retention -->
 
 Nobody throws a launch party for customers who didn't leave. Finance notices anyway.
 

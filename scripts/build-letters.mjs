@@ -236,6 +236,8 @@ const CTA_ART = {
 const lucideIcon = (cls, paths) =>
   `<svg class="${cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${paths}</svg>`;
 const ICON = {
+  receipt: '<path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 17.5v-11"/>',
+  signature: '<path d="m21 17-2.156-1.868A.5.5 0 0 0 18 15.5v.5a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1c0-2.545-3.991-3.97-8.5-4a1 1 0 0 0 0 5c4.153 0 4.745-11.295 5.708-13.5a2.5 2.5 0 1 1 3.31 3.284"/><path d="M3 21h18"/>',
   split: '<path d="M16 3h5v5"/><path d="M8 3H3v5"/><path d="M12 22v-8.3a4 4 0 0 0-1.172-2.872L3 3"/><path d="m15 9 6-6"/>',
   scale: '<path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/>',
   alert: '<path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/>',
@@ -264,6 +266,29 @@ const tilePill = (label, sub, icon, tone, d, extra = "") => `<div class="tk-card
 const browserBar = `<div class="tk-browser__bar"><i></i><i></i><i></i></div>`;
 const statCard = (num, label, d) => `<div class="tk-card tk-stat tk-rise" style="--d:${d}s"><div class="tk-stat__num">${num}</div><div class="tk-stat__label">${label}</div></div>`;
 const gridCard = (year, outcome, dx, d) => `<div class="tk-gcard tk-rise" style="--d:${d}s;--dx:${dx}px"><div class="tk-card tk-gcard__in"><div class="tk-gcard__top"><span class="tk-dot tk-dot--${outcome}"></span><span class="tk-gcard__year">${year}</span></div><div class="tk-skel"><div class="tk-row"><i class="tk-full"></i></div><div class="tk-row tk-row--1"><i class="tk-23"></i><i class="tk-3"></i></div></div></div></div>`;
+
+
+
+// Tailark "Invoice" (tailark.com/illustrations/workspace): stacked card, mono amount,
+// mini signed document, label rows fading out at the bottom. Real numbers instead of placeholders.
+const invMini = `<div class="tk-invc__mini" aria-hidden="true"><div class="tk-invc__mr"><i class="tk-invc__dot"></i><i style="width:16px"></i></div><div class="tk-invc__mg"><div class="tk-invc__mr"><i style="width:10px"></i><i style="width:24px"></i></div><div class="tk-invc__mr"><i style="width:10px"></i><i style="width:24px"></i></div></div><div class="tk-invc__mg"><div class="tk-invc__mr"><i style="width:100%"></i></div><div class="tk-invc__mr"><i style="width:66%"></i><i style="width:33%"></i></div></div>${lucideIcon("tk-invc__sig", ICON.signature)}</div>`;
+const invoiceCard = (id, amount, sub, roi, rows, caption) => `<figure class="letter-fig">
+  <div class="tk-tray"><div class="tk-invc-stage" aria-hidden="true"><div class="tk-invc-stack"><span class="tk-invc-ghost tk-invc-ghost--1"></span><span class="tk-invc-ghost tk-invc-ghost--2"></span>
+    <div class="tk-invc">
+      <div class="tk-invc__top">
+        <div>
+          ${lucideIcon("tk-invc__logo", ICON.receipt)}
+          <div class="tk-invc__id">${id}</div>
+          <div class="tk-invc__amount" data-count="${amount.replace(/[^0-9]/g, "")}" data-prefix="${amount.startsWith("$") ? "$" : ""}">${amount}</div>
+          <div class="tk-invc__due">${sub}${roi ? ` <span class="tk-invc__roi">${roi}</span>` : ""}</div>
+        </div>
+        ${invMini}
+      </div>
+      <div class="tk-invc__rows">${rows.map(([k, v], n) => `<div class="tk-invc__row" style="--d:${(0.55 + n * 0.09).toFixed(2)}s"><span>${k}</span><b>${v}</b></div>`).join("")}</div>
+    </div>
+  </div></div></div>
+  <figcaption>${caption}</figcaption>
+</figure>`;
 
 const FIGURES = {
   // Tailark flow: three usage cards → node → invoice
@@ -452,6 +477,15 @@ const FIGURES = {
   </div></div>
   <figcaption>Baseline, change, cost. Put all three in the case study and the number explains itself.</figcaption>
 </figure>`,
+  "roi-ex-cost": invoiceCard("ROI-001 &middot; COST", "$5,760", "Saved a year", "+44% in 2 yrs",
+    [["Tickets", "120 &rarr; 60 a month"], ["Time", "12 min each"], ["Rate", "$40 an hour"], ["Cost", "$8,000"], ["Year one", "&minus;28%"]],
+    "Half the tickets, $5,760 a year back. Negative in year one, +44% over two. Illustrative numbers."),
+  "roi-ex-revenue": invoiceCard("ROI-002 &middot; REVENUE", "$144,000", "New ARR in a year", "860% ROI",
+    [["Trials", "1,000 a month"], ["Trial to paid", "8% &rarr; 9%"], ["Contract", "$1,200 a year"], ["New customers", "10 a month"], ["Cost", "$15,000"]],
+    "One extra point of conversion, 10 more customers a month, every month. Illustrative numbers."),
+  "roi-ex-retention": invoiceCard("ROI-003 &middot; RETENTION", "$57,600", "ARR kept a year", "",
+    [["Customers", "2,000"], ["Contract", "$1,200 a year"], ["Monthly churn", "2% &rarr; 1.8%"], ["Lost a month", "40 &rarr; 36"], ["Kept a month", "$4,800"]],
+    "Four fewer customers leaving every month. Nobody throws a party for that. Finance notices anyway. Illustrative numbers."),
 };
 
 const esc = (s = "") =>
@@ -786,10 +820,10 @@ function postPage(post, related) {
     ogType: "article",
     noindex: post.draft === true,
     jsonld,
-    extraHead: coverPreload(post.cover) + (html.includes("data-code-block")
+    extraHead: coverPreload(post.cover) + (html.includes("data-code-block") || html.includes("tk-invc")
       ? `  <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&display=swap" />
 `
       : ""),
   })}
