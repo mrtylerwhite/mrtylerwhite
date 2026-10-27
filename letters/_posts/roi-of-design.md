@@ -88,6 +88,14 @@ You have **2,000 customers** at **$1,200 a year**, monthly churn of **2%**, and 
 
 Nobody throws a launch party for customers who didn't leave. Finance notices anyway.
 
+## ROI of design calculator: is it worth the bet?
+
+Run your own numbers. Start with the bet: how many weeks the team is willing to spend, and who's on it. Then the change you expect the work to cause.
+
+If the math doesn't hold, don't stretch the timeline. Cut the scope until it fits the bet.
+
+<!-- roi-calculator -->
+
 ## Set the baseline before you build
 
 This is where most ROI of design calculations die.

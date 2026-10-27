@@ -3818,3 +3818,35 @@ img.letters-feature__art {
   .tk-invc__top { gap: 14px; }
   .tk-invc__row { grid-template-columns: 104px 1fr; }
 }
+
+/* ROI of design calculator: the invoice card, made interactive */
+.roi-calc { margin: 24px 0 32px; }
+.roi-calc .tk-invc-stack { max-width: 420px; }
+.roi-calc .tk-invc-stage { transform: none; }
+.roi-calc__tabs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin: -6px 0 20px; padding: 3px; border-radius: 999px; background: #f4f4f5; box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.05); }
+.roi-calc__tabs button { appearance: none; border: 0; margin: 0; padding: 6px 10px; border-radius: 999px; background: transparent; font: 600 12px/1.2 Inter, var(--ds-font-body); color: rgba(9, 9, 11, 0.55); cursor: pointer; transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease; }
+.roi-calc__tabs button[aria-selected="true"] { background: rgba(9, 9, 11, 0.88); color: #fff; box-shadow: 0 4px 8px -2px rgba(0, 0, 0, 0.25); }
+.roi-calc__tabs button:focus-visible { outline: 2px solid #C59060; outline-offset: 2px; }
+.roi-calc__group { padding-top: 14px; margin-top: 14px; border-top: 1px dashed #e4e4e7; }
+.roi-calc .tk-invc__top { margin-bottom: 4px; }
+.roi-calc__label { margin-bottom: 6px; font-family: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: #71717a; }
+.roi-calc__row { grid-template-columns: 1fr auto; gap: 12px; }
+.roi-calc__row label { color: #52525b; }
+.roi-calc__in { display: inline-flex; align-items: baseline; justify-content: flex-end; gap: 3px; min-width: 120px; padding: 2px 0; border-bottom: 1px dotted #d4d4d8; transition: border-color 0.2s ease; }
+.roi-calc__in:focus-within { border-bottom: 1px solid #C59060; }
+.roi-calc__in i { font-style: normal; color: #a1a1aa; font-size: 12px; }
+.roi-calc__in input { width: 76px; padding: 0; border: 0; background: transparent; text-align: right; font: 600 13px/1.45 Inter, var(--ds-font-body); font-variant-numeric: tabular-nums; color: #09090b; -moz-appearance: textfield; }
+.roi-calc__in input::-webkit-outer-spin-button, .roi-calc__in input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.roi-calc__in input:focus { outline: none; }
+.roi-calc__result .tk-invc__row { grid-template-columns: 1fr auto; }
+.roi-calc__result .tk-invc__row b { text-align: right; }
+#page-container .letter__body .roi-calc__verdict { margin: 12px 0 0; padding: 10px 12px; border-radius: 10px; background: rgba(197, 144, 96, 0.12); color: #6b4423; font-size: 13px; line-height: 1.45; font-weight: 500; }
+.roi-calc.is-negative .tk-invc__roi { background: #f4f4f5; color: #09090b; text-shadow: none; box-shadow: inset 0 0 0 1px rgba(9, 9, 11, 0.08); }
+#page-container .letter__body .roi-calc.is-negative .roi-calc__verdict { background: #f4f4f5; color: #3f3f46; }
+.roi-calc .tk-invc { animation: none; }
+@media (max-width: 600px) {
+  .roi-calc__in { min-width: 100px; }
+  .roi-calc__in input { width: 64px; }
+}
+.roi-calc [hidden] { display: none !important; }
+.roi-calc__in input { width: 7ch; field-sizing: content; min-width: 2ch; }

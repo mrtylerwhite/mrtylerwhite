@@ -288,6 +288,67 @@ const invoiceCard = (id, amount, sub, roi, rows, caption) => `<figure class="let
   <figcaption>${caption}</figcaption>
 </figure>`;
 
+
+// ROI of design calculator: fixed time, variable scope. Start from the bet (weeks x people x cost),
+// then the change you expect, then the verdict. Same invoice card as the worked examples.
+const calcIn = (id, label, val, suffix, step = "any", prefix = "") => `<div class="tk-invc__row roi-calc__row"><label for="rc-${id}">${label}</label><span class="roi-calc__in">${prefix ? `<i>${prefix}</i>` : ""}<input id="rc-${id}" name="${id}" type="number" inputmode="decimal" min="0" step="${step}" value="${val}" />${suffix ? `<i>${suffix}</i>` : ""}</span></div>`;
+const ROI_CALCULATOR = `<div class="tk-tray roi-calc" data-roi-calc>
+  <div class="tk-invc-stage"><div class="tk-invc-stack"><span class="tk-invc-ghost tk-invc-ghost--1" aria-hidden="true"></span><span class="tk-invc-ghost tk-invc-ghost--2" aria-hidden="true"></span>
+    <form class="tk-invc roi-calc__card" novalidate onsubmit="return false">
+      <div class="roi-calc__tabs" role="tablist" aria-label="What the work moves">
+        <button type="button" role="tab" aria-selected="true" data-lever="cost">Cost</button>
+        <button type="button" role="tab" aria-selected="false" data-lever="revenue">Revenue</button>
+        <button type="button" role="tab" aria-selected="false" data-lever="retention">Retention</button>
+      </div>
+      <div class="tk-invc__top">
+        <div>
+          ${lucideIcon("tk-invc__logo", ICON.receipt)}
+          <div class="tk-invc__id">ROI-004 &middot; YOURS</div>
+          <output class="tk-invc__amount" data-out="value" aria-live="polite">$5,760</output>
+          <div class="tk-invc__due"><span data-out="valueLabel">Saved in year one</span> <span class="tk-invc__roi" data-out="roiChip">&minus;28% ROI</span></div>
+        </div>
+      </div>
+      <div class="roi-calc__group">
+        <div class="roi-calc__label">The bet</div>
+        <div class="tk-invc__rows">
+          ${calcIn("weeks", "Weeks", 1, "wks", "0.5")}
+          ${calcIn("people", "People on it", 2, "", "1")}
+          ${calcIn("rate", "Weekly cost each", 4000, "", "100", "$")}
+        </div>
+      </div>
+      <div class="roi-calc__group">
+        <div class="roi-calc__label">The change</div>
+        <div class="tk-invc__rows" data-lever-fields="cost">
+          ${calcIn("tickets", "Tickets a month", 120, "", "1")}
+          ${calcIn("minutes", "Minutes each", 12, "min", "1")}
+          ${calcIn("support", "Support cost", 40, "/hr", "1", "$")}
+          ${calcIn("cut", "Tickets cut by", 50, "%", "1")}
+        </div>
+        <div class="tk-invc__rows" data-lever-fields="revenue" hidden>
+          ${calcIn("trials", "Trials a month", 1000, "", "1")}
+          ${calcIn("convFrom", "Trial to paid now", 8, "%", "0.1")}
+          ${calcIn("convTo", "After the change", 9, "%", "0.1")}
+          ${calcIn("acvR", "Contract value", 1200, "/yr", "1", "$")}
+        </div>
+        <div class="tk-invc__rows" data-lever-fields="retention" hidden>
+          ${calcIn("customers", "Customers", 2000, "", "1")}
+          ${calcIn("churnFrom", "Monthly churn now", 2, "%", "0.1")}
+          ${calcIn("churnTo", "After the change", 1.8, "%", "0.1")}
+          ${calcIn("acvC", "Contract value", 1200, "/yr", "1", "$")}
+        </div>
+      </div>
+      <div class="roi-calc__group roi-calc__result">
+        <div class="tk-invc__rows">
+          <div class="tk-invc__row"><span>The bet costs</span><b data-out="cost">$8,000</b></div>
+          <div class="tk-invc__row"><span>Worth betting up to</span><b data-out="maxWeeks">0.7 wks</b></div>
+          <div class="tk-invc__row"><span>Pays back in</span><b data-out="payback">17 months</b></div>
+        </div>
+        <p class="roi-calc__verdict" data-out="verdict">Doesn&rsquo;t pay back this year. Cut scope until it fits the bet.</p>
+      </div>
+    </form>
+  </div></div>
+</div>`;
+
 const FIGURES = {
   // Tailark flow: three usage cards → node → invoice
   "timeline-vs-decisions": `<figure class="letter-fig">
@@ -675,6 +736,7 @@ function renderBody(post) {
     )
     .replace(/<\/table>/g, "</table></div></div></div>");
 
+  html = html.replace(/<!-- roi-calculator -->/g, ROI_CALCULATOR);
   html = html.replace(/<!-- figure:([a-z0-9-]+) -->/g, (mm, name) => {
     if (!FIGURES[name]) throw new Error(`${post.slug}: unknown figure "${name}"`);
     return FIGURES[name];
@@ -871,7 +933,7 @@ ${html}
   });
 })();
 </script>
-${html.includes("data-code-block") ? `<script src="${asset("/assets/js/code-block.js")}" defer></script>\n` : ""}${html.includes("letter-fig") ? `<script src="${asset("/assets/js/letter-figures.js")}" defer></script>\n` : ""}${html.includes("letter-video") ? `<script src="${asset("/assets/js/letter-video.js")}" defer></script>\n` : ""}${shellClose}`;
+${html.includes("data-code-block") ? `<script src="${asset("/assets/js/code-block.js")}" defer></script>\n` : ""}${html.includes("letter-fig") ? `<script src="${asset("/assets/js/letter-figures.js")}" defer></script>\n` : ""}${html.includes("letter-video") ? `<script src="${asset("/assets/js/letter-video.js")}" defer></script>\n` : ""}${html.includes("data-roi-calc") ? `<script src="${asset("/assets/js/roi-calculator.js")}" defer></script>\n` : ""}${shellClose}`;
 }
 
 function listItem(post) {
