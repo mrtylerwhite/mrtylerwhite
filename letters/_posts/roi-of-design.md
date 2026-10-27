@@ -34,6 +34,8 @@ If a redesign costs $10,000 in design and engineering time and creates $30,000 i
 
 That's it. The math is easy. The hard part is getting honest numbers for the two inputs, and having them before anyone asks.
 
+<!-- figure:roi-levers -->
+
 ## Why the industry stats don't help you
 
 There is real research on this. [McKinsey tracked 300 companies over five years](https://www.mckinsey.com/capabilities/growth-marketing-and-sales/our-insights/the-business-value-of-design) and found the top quartile on design grew revenue 32 percentage points faster than their industry peers.
@@ -121,7 +123,13 @@ That's what happens when you go looking for the "before" number after launch. Yo
 
 That's not proof. That's a vibe.
 
-The fix is boring and it works: agree on the metric, the baseline and the target **at kickoff**, before anyone opens Figma. Start with one sentence: *what would need to be true for this feature to matter?* Not ship. Not look good. Matter. Write them into the success metric section of the PRD. Here's [the PRD template I use](/letters/prd-template/), and [the kickoff agenda](/letters/project-kickoff-meeting/) that forces the room to pick a number.
+The fix is boring and it works: agree on the metric, the baseline and the target **at kickoff**, before anyone opens Figma.
+
+Start with one sentence: *what would need to be true for this feature to matter?* Not ship. Not look good. Matter.
+
+<!-- figure:baseline-first -->
+
+Then write the metric, baseline and target into the success metric section of the PRD. Here's [the PRD template I use](/letters/prd-template/), and [the kickoff agenda](/letters/project-kickoff-meeting/) that forces the room to pick a number.
 
 If you only remember one thing from this letter, make it this one. **You can't calculate a return on something you never measured the start of.**
 
@@ -158,6 +166,8 @@ One version gets you "nice work." The other gets you the next project, and the b
 ## Put the number where it counts
 
 Your ROI of design calculation is the strongest thing you can put in a case study, a portfolio or a promotion packet. Most designers have the raw material sitting in their project notes. They just never did the math.
+
+<!-- figure:roi-receipt -->
 
 [The 15 Minute Case Study](/roi-case-study-template/) is a free Claude Skill that walks you through it: what changed, from what baseline, worth how much. Or it shows you that you never measured it. Either way, you'll know before your manager asks.
 
