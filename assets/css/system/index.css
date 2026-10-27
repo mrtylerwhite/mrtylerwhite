@@ -1,8 +1,8 @@
 /* Phase 1 system entrypoint (no build step for page CSS beyond critical bundle) */
-@import url("/assets/css/dist/critical.css");
-@import url("/assets/css/system/typography.css");
-@import url("/assets/css/system/layout.css");
-@import url("/assets/css/system/components/forms.css");
-@import url("/assets/css/system/components/controls.css");
-@import url("/assets/css/system/components/cards.css");
-@import url("/assets/css/system/components/testimonials.css");
+@import url("/assets/css/dist/critical.css?v=bb2cecba");
+@import url("/assets/css/system/typography.css?v=44c4b920");
+@import url("/assets/css/system/layout.css?v=901660a7");
+@import url("/assets/css/system/components/forms.css?v=24a2d1b4");
+@import url("/assets/css/system/components/controls.css?v=e0823ea4");
+@import url("/assets/css/system/components/cards.css?v=3e167c89");
+@import url("/assets/css/system/components/testimonials.css?v=9ef75533");

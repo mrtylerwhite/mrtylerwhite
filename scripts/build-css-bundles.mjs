@@ -6,6 +6,7 @@
  * node scripts/build-css-bundles.mjs
  */
 
+import crypto from "crypto";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -40,6 +41,31 @@ const TYPEKIT_LINKS =
   '<link rel="preload" as="style" href="https://use.typekit.net/fks5kmr.css" fetchpriority="low" onload="this.onload=null;this.rel=\'stylesheet\'" />\n' +
   '<noscript><link rel="stylesheet" href="https://use.typekit.net/fks5kmr.css" /></noscript>\n';
 
+// Cache-busting: every local /assets/*.css|js link gets ?v=<md5 of the file>
+// (same scheme as build-letters.mjs), so a changed file always gets a new URL.
+const assetHashes = new Map();
+function assetVersion(urlPath) {
+  if (!assetHashes.has(urlPath)) {
+    const file = path.join(ROOT, urlPath);
+    assetHashes.set(
+      urlPath,
+      fs.existsSync(file) ? crypto.createHash("md5").update(fs.readFileSync(file)).digest("hex").slice(0, 8) : null
+    );
+  }
+  return assetHashes.get(urlPath);
+}
+
+function versioned(urlPath) {
+  const v = assetVersion(urlPath);
+  return v ? `${urlPath}?v=${v}` : urlPath;
+}
+
+const ASSET_LINK_RE = /((?:href|src)=["'])(\/assets\/[^"'?#]+\.(?:css|js))(?:\?v=[^"'#]*)?(["'])/g;
+
+function applyAssetVersions(html) {
+  return html.replace(ASSET_LINK_RE, (m, open, urlPath, close) => `${open}${versioned(urlPath)}${close}`);
+}
+
 function readCss(relPath) {
   return fs.readFileSync(path.join(ROOT, relPath), "utf8");
 }
@@ -63,10 +89,10 @@ function applyTypekit(html) {
   };
 
   // Prefer the first live stylesheet tag (media/onload attrs allowed).
-  if (injectBefore(/(<link\s+rel=["']stylesheet["']\s+href=["']\/assets\/css\/dist\/critical\.css["'][^>]*>)/i)) {
+  if (injectBefore(/(<link\s+rel=["']stylesheet["']\s+href=["']\/assets\/css\/dist\/critical\.css(?:\?v=[^"']*)?["'][^>]*>)/i)) {
     return next;
   }
-  if (injectBefore(/(<link\s+rel=["']stylesheet["']\s+href=["']\/assets\/css\/system\/index\.css["'][^>]*>)/i)) {
+  if (injectBefore(/(<link\s+rel=["']stylesheet["']\s+href=["']\/assets\/css\/system\/index\.css(?:\?v=[^"']*)?["'][^>]*>)/i)) {
     return next;
   }
   // Pages like the print resume have no critical.css link. Put the kit back
@@ -81,13 +107,13 @@ function applyFontPreload(html) {
   if (html.includes("InstrumentSerif-Regular.woff2")) return html;
   if (html.includes('/assets/css/dist/critical.css')) {
     return html.replace(
-      /(<link\s+rel=["']stylesheet["']\s+href=["']\/assets\/css\/dist\/critical\.css["']\s*\/?>)/i,
+      /(<link\s+rel=["']stylesheet["']\s+href=["']\/assets\/css\/dist\/critical\.css(?:\?v=[^"']*)?["']\s*\/?>)/i,
       FONT_PRELOAD + "$1"
     );
   }
   if (html.includes('/assets/css/system/index.css')) {
     return html.replace(
-      /(<link\s+rel=["']stylesheet["']\s+href=["']\/assets\/css\/system\/index\.css["']\s*\/?>)/i,
+      /(<link\s+rel=["']stylesheet["']\s+href=["']\/assets\/css\/system\/index\.css(?:\?v=[^"']*)?["']\s*\/?>)/i,
       FONT_PRELOAD + "$1"
     );
   }
@@ -138,15 +164,19 @@ function buildBundle() {
 function patchIndexCss() {
   const indexPath = path.join(ROOT, "assets/css/system/index.css");
   let css = readCss("assets/css/system/index.css");
-  const next = `/* Phase 1 system entrypoint (no build step for page CSS beyond critical bundle) */
-@import url("/assets/css/dist/critical.css");
-@import url("/assets/css/system/typography.css");
-@import url("/assets/css/system/layout.css");
-@import url("/assets/css/system/components/forms.css");
-@import url("/assets/css/system/components/controls.css");
-@import url("/assets/css/system/components/cards.css");
-@import url("/assets/css/system/components/testimonials.css");
-`;
+  const imports = [
+    "/assets/css/dist/critical.css",
+    "/assets/css/system/typography.css",
+    "/assets/css/system/layout.css",
+    "/assets/css/system/components/forms.css",
+    "/assets/css/system/components/controls.css",
+    "/assets/css/system/components/cards.css",
+    "/assets/css/system/components/testimonials.css",
+  ];
+  const next =
+    "/* Phase 1 system entrypoint (no build step for page CSS beyond critical bundle) */\n" +
+    imports.map((p) => `@import url("${versioned(p)}");`).join("\n") +
+    "\n";
   if (css !== next) {
     fs.writeFileSync(indexPath, next, "utf8");
     return true;
@@ -160,7 +190,8 @@ function patchHtmlLinks() {
     let html = fs.readFileSync(file, "utf8");
     const linked = applyCriticalLink(html);
     const withTypekit = applyTypekit(linked);
-    const next = applyFontPreload(withTypekit);
+    const withPreload = applyFontPreload(withTypekit);
+    const next = applyAssetVersions(withPreload);
     if (next !== html) {
       fs.writeFileSync(file, next, "utf8");
       htmlChanged++;
