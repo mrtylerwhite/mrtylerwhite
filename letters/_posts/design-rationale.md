@@ -70,7 +70,7 @@ Keep it short enough that someone will actually read it. This format works:
 
 That last field is the one that ends arguments. "We'll revisit if week-two usage is under 20%" turns a standoff into an experiment. Nobody has to win. You just have to agree on what you're watching.
 
-If you need help picking that signal, start with [the UX metrics that actually make it into the exec deck](/letters/ux-metrics/).
+If you need help picking that signal, start with [the UX metrics that actually make it into the exec deck](/letters/ux-metrics/). To put a dollar value on the bet, use [the ROI of design math](/letters/roi-of-design/).
 
 <!-- newsletter -->
 

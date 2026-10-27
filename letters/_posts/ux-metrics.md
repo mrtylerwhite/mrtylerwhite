@@ -81,6 +81,8 @@ Reduce that by even 25% and it's real money and real time returned to the team.
 
 Here's the important part: **you're not claiming results. You're showing expected impact.** Label it clearly, show your assumptions, and keep the numbers conservative. Leadership trusts a modest estimate with visible math far more than a big number with none.
 
+For the full formula, three worked examples and a calculator to run your own numbers, see [how to calculate the ROI of design](/letters/roi-of-design/).
+
 <!-- newsletter -->
 
 ## UX KPIs vs UX metrics

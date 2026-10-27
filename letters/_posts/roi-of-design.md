@@ -1,10 +1,11 @@
 ---
 title: "The ROI of design: how to calculate it for one feature, not the whole industry"
 seoTitle: ROI of Design: How to Actually Calculate It
-description: How to calculate the ROI of design for a real feature: the formula, worked examples for revenue, retention and cost, and the baseline to set first.
+description: Calculate the ROI of design for a real feature: the formula, worked examples for revenue, retention and cost, and a free calculator to run your own.
 subtitle: Every article on design ROI quotes the same industry stats. Your CFO doesn't care about 300 other companies. Here's the math for the thing you actually shipped.
 slug: roi-of-design
 date: 2026-10-26
+updated: 2026-10-27
 topic: case-studies
 cover: /assets/images/letters/roi-of-design.jpg
 keyword: roi of design
@@ -183,6 +184,10 @@ Say so, and show when it pays back. Plenty of good work, like accessibility or r
 ### How long does it take to see design ROI?
 
 Cost savings and conversion changes often show up within a month or two. Retention takes longer, usually a full quarter, because you need enough time to see who didn't leave.
+
+### Is there an ROI of design calculator?
+
+Yes, [the one above](#roi-of-design-calculator-is-it-worth-the-bet). Enter how many weeks and people you'd bet on the work, then the change you expect in cost, revenue or retention. It shows the year-one value, the ROI, how many weeks the work is worth and when it pays back.
 
 ### Who should calculate the ROI of design, the designer or the PM?
 

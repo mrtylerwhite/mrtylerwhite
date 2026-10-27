@@ -111,7 +111,7 @@ The strong one puts the money, the user and the deadline in three sentences. Now
 
 Well received by who? Happy based on what?
 
-The strong version has a baseline, a result, a timeframe and a business reason it mattered. That's four things a hiring manager can repeat to their boss. The weak version gives them nothing to repeat.
+The strong version has a baseline, a result, a timeframe and a business reason it mattered. (If you need to turn that result into dollars, here's [how to calculate the ROI of design](/letters/roi-of-design/).) That's four things a hiring manager can repeat to their boss. The weak version gives them nothing to repeat.
 
 ## The "what went wrong" section
 

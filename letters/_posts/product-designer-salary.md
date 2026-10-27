@@ -87,7 +87,7 @@ In practice that comes down to three things.
 
 Adoption, retention, efficiency or revenue. Pick the one your feature actually moves and measure it before you ship. A designer who can say activation went from 31% to 38% sounds senior. A designer who says users loved it sounds like they're guessing.
 
-If you don't know which numbers leadership cares about, start with [the UX metrics that make it into the exec deck](/letters/ux-metrics/).
+If you don't know which numbers leadership cares about, start with [the UX metrics that make it into the exec deck](/letters/ux-metrics/). Then turn the change into money with [the ROI of design formula](/letters/roi-of-design/).
 
 **2. Write it down before anyone asks.**
 
