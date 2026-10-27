@@ -11,22 +11,22 @@ body.home #page-container #main-content .et-l--post :where(h1, h2, h3, h4, h5, h
   text-transform: uppercase !important;
   text-shadow: none !important;
   line-height: var(--ds-line-height-heading, 0.94) !important;
-  margin-bottom: 0.35em !important;
+  margin-bottom: var(--ds-gap-title) !important;
 }
 
-body.home #page-container #main-content .et-l--post h1 { letter-spacing: var(--ds-tracking-h1) !important; }
-body.home #page-container #main-content .et-l--post h2 { letter-spacing: var(--ds-tracking-h2) !important; }
-body.home #page-container #main-content .et-l--post h3 { letter-spacing: var(--ds-tracking-h3) !important; }
-body.home #page-container #main-content .et-l--post h4 { letter-spacing: var(--ds-tracking-h4) !important; }
-body.home #page-container #main-content .et-l--post h5 { letter-spacing: var(--ds-tracking-h5) !important; }
-body.home #page-container #main-content .et-l--post h6 { letter-spacing: var(--ds-tracking-h6) !important; }
+body.home #page-container #main-content .et-l--post h1 { letter-spacing: var(--ds-tracking-h1) !important; line-height: var(--ds-leading-h1) !important; }
+body.home #page-container #main-content .et-l--post h2 { letter-spacing: var(--ds-tracking-h2) !important; line-height: var(--ds-leading-h2) !important; }
+body.home #page-container #main-content .et-l--post h3 { letter-spacing: var(--ds-tracking-h3) !important; line-height: var(--ds-leading-h3) !important; text-transform: none !important; }
+body.home #page-container #main-content .et-l--post h4 { letter-spacing: var(--ds-tracking-h4) !important; line-height: var(--ds-leading-h4) !important; text-transform: none !important; }
+body.home #page-container #main-content .et-l--post h5 { letter-spacing: var(--ds-tracking-h5) !important; line-height: var(--ds-leading-h5) !important; text-transform: none !important; }
+body.home #page-container #main-content .et-l--post h6 { letter-spacing: var(--ds-tracking-h6) !important; line-height: var(--ds-leading-h6) !important; text-transform: none !important; }
 
 /* A. Hero display heading */
 body.home #page-container .hero-cntn .et_pb_text_0 h1 {
   font-family: var(--ds-font-display) !important;
   font-weight: var(--ds-font-weight-heading, 800) !important;
   font-size: var(--ds-size-h1) !important;
-  line-height: var(--ds-line-height-heading, 0.94) !important;
+  line-height: var(--ds-leading-h1) !important;
   letter-spacing: var(--ds-tracking-h1) !important;
   text-transform: uppercase !important;
   text-shadow: none !important;
@@ -37,12 +37,14 @@ body.home #page-container .hero-cntn .et_pb_text_0 h1 {
 @media screen and (max-width: 980px) {
   body.home #page-container .hero-cntn .et_pb_text_0 h1 {
     font-size: var(--ds-size-h1) !important;
+    line-height: var(--ds-leading-h1) !important;
   }
 }
 
 @media screen and (max-width: 767px) {
   body.home #page-container .hero-cntn .et_pb_text_0 h1 {
     font-size: var(--ds-size-h1) !important;
+    line-height: var(--ds-leading-h1) !important;
   }
 }
 
@@ -54,8 +56,8 @@ body.home #page-container .et_pb_text_8 .notion-sub_header-block {
   font-family: var(--ds-font-display) !important;
   font-weight: var(--ds-font-weight-heading, 800) !important;
   font-size: var(--ds-size-h3) !important;
-  line-height: var(--ds-line-height-heading, 0.94) !important;
+  line-height: var(--ds-leading-h3) !important;
   letter-spacing: var(--ds-tracking-h3) !important;
-  text-transform: uppercase !important;
+  text-transform: none !important;
   text-shadow: none !important;
 }

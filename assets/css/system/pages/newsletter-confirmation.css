@@ -78,13 +78,13 @@ body:has(#post-newsletter-confirmation) #main-content {
 
 /* Site h1 (Futura via headings.css) — sizing aligned with newsletter .nl-saasify-headline */
 #post-newsletter-confirmation .nl-conf-hero__title {
-  margin: 0 0 1.25rem;
+  margin: 0 0 var(--ds-gap-title);
   padding: 0 0 0;
   max-width: 18ch;
   color: var(--nl-conf-text);
   text-align: center;
-  font-size: clamp(2.6875rem, 4vw + 1rem, 4.375rem);
-  line-height: 0.85;
+  font-size: var(--ds-size-h1);
+  line-height: var(--ds-leading-h1);
 }
 
 #post-newsletter-confirmation .nl-conf-hero__title strong {
@@ -128,5 +128,8 @@ body:has(#post-newsletter-confirmation) #main-content {
 
   #post-newsletter-confirmation .nl-conf-hero__title {
     max-width: none;
+    font-size: var(--ds-size-h1);
+    line-height: var(--ds-leading-h1);
+    margin: 0 0 var(--ds-gap-title);
   }
 }

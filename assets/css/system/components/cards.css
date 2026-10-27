@@ -55,11 +55,12 @@
 
 /* Internals */
 .ds-card__eyebrow{
-  margin: 0 0 var(--ds-space-2);
-  font-size: 12px;
-  letter-spacing: .06em;
+  margin: 0 0 var(--ds-gap-eyebrow-sm);
+  font-size: var(--ds-size-eyebrow-sm);
+  letter-spacing: var(--ds-tracking-eyebrow-sm);
   text-transform: uppercase;
   color: rgba(0,0,0,.55);
+  line-height: var(--ds-leading-eyebrow-sm);
 }
 
 .ds-card__title{

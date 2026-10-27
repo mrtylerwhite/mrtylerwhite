@@ -94,27 +94,62 @@
   --ds-font-heading: "alternate-gothic-atf", "Arial Narrow", Arial, sans-serif;
   --ds-font-heading-bold: "alternate-gothic-atf", "Arial Narrow", Arial, sans-serif;
   --ds-font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
-  --ds-font-size-body: 17px;
-  --ds-line-height-body: 1.5;
+  --ds-font-size-body: var(--ds-size-body-md);
+  --ds-line-height-body: var(--ds-leading-body);
   --ds-font-weight-heading: 700; /* Bold in kit today; bump to 800 when Heavy is published */
-  --ds-line-height-heading: 0.94; /* King Kong–style tight leading */
+  --ds-line-height-heading: 0.96; /* fallback; per-level leading below */
 
   /* Condensed display tracking — tight, but not colliding.
      King Kong uses ~-0.08em; we sit a touch looser for readability. */
   --ds-tracking-h1: -0.05em;
   --ds-tracking-h2: -0.05em;
-  --ds-tracking-h3: -0.045em;
-  --ds-tracking-h4: -0.035em;
-  --ds-tracking-h5: -0.025em;
-  --ds-tracking-h6: -0.015em;
+  /* H3 and smaller are sentence case, so they get mixed-case tracking. */
+  --ds-tracking-h3: -0.01em;
+  --ds-tracking-h4: -0.01em;
+  --ds-tracking-h5: -0.005em;
+  --ds-tracking-h6: 0em;
 
-  /* Size ramp inspired by King Kong (tempered — not billboard-scale) */
-  --ds-size-h1: clamp(2.75rem, 1.2rem + 6vw, 5.5rem);
-  --ds-size-h2: clamp(2.125rem, 1rem + 4vw, 3.75rem);
-  --ds-size-h3: clamp(1.75rem, 0.9rem + 2.8vw, 3rem);
-  --ds-size-h4: clamp(1.375rem, 0.85rem + 1.6vw, 2.25rem);
-  --ds-size-h5: clamp(1.25rem, 0.9rem + 1vw, 1.75rem);
-  --ds-size-h6: clamp(1.125rem, 0.95rem + 0.6vw, 1.5rem);
+  /* Type scale — sizes and leading follow faizur.com/proposal-kit.
+     Phone values here; tablet (48rem) and desktop (64rem) steps below.
+     Fonts and heading tracking stay ours (condensed caps need tighter). */
+  --ds-size-display: 2.75rem;
+  --ds-size-h1: 2.5rem;
+  --ds-size-h2: 2rem;
+  --ds-size-h3: 1.625rem;
+  --ds-size-h4: 1.375rem;
+  --ds-size-h5: 1.25rem;
+  --ds-size-h6: 1.125rem;
+
+  --ds-leading-display: 0.96;
+  --ds-leading-h1: 0.96;
+  --ds-leading-h2: 1;
+  --ds-leading-h3: 1.125;
+  --ds-leading-h4: 1.125;
+  --ds-leading-h5: 1.182;
+  --ds-leading-h6: 1.2;
+
+  /* Eyebrow: section label (above section titles) and small (cards) */
+  --ds-size-eyebrow: 0.875rem;
+  --ds-leading-eyebrow: 1.125rem;
+  --ds-tracking-eyebrow: 0.1429em;
+  --ds-size-eyebrow-sm: 0.75rem;
+  --ds-leading-eyebrow-sm: 1rem;
+  --ds-tracking-eyebrow-sm: 0.1667em;
+
+  /* Body: lg = subtitles / intros, md = paragraphs, sm = notes */
+  --ds-size-body-lg: clamp(1.125rem, 1.081rem + 0.188vw, 1.25rem);
+  --ds-size-body-md: clamp(1rem, 0.956rem + 0.188vw, 1.125rem);
+  --ds-size-body-sm: 0.875rem;
+  --ds-leading-body: 1.4;
+  --ds-tracking-body-lg: -0.0114em;
+  --ds-tracking-body-md: -0.0139em;
+  --ds-tracking-body-sm: 0.0107em;
+
+  /* Rhythm: eyebrow → title → subtitle → CTA */
+  --ds-gap-eyebrow: 20px;
+  --ds-gap-eyebrow-sm: 12px;
+  --ds-gap-title: 16px;
+  --ds-gap-subtitle: 32px;
 
   /* ── Spacing (8-px grid) ───────────────────────────────── */
   --ds-space-1: 4px;
@@ -167,10 +202,26 @@
   --ds-bp-small-max: 479px;
 }
 
-/* Desktop: H1 at 80% of the base clamp */
-@media (min-width: 981px) {
+/* Tablet step */
+@media (min-width: 48rem) {
   :root {
-    --ds-size-h1: clamp(2.2rem, 0.96rem + 4.8vw, 4.4rem);
+    --ds-size-display: 3.75rem;
+    --ds-size-h1: 3rem;
+    --ds-size-h2: 2.5rem;
+    --ds-size-h3: 1.875rem;
+    --ds-size-h4: 1.5rem;
+  }
+}
+
+/* Desktop: fluid between 1024px and ~1664px */
+@media (min-width: 64rem) {
+  :root {
+    --ds-size-display: clamp(3.75rem, 0.6731rem + 4.8077vw, 5rem);
+    --ds-size-h1: clamp(3rem, 1.1538rem + 2.8846vw, 3.75rem);
+    --ds-size-h2: clamp(2.5rem, 1.2692rem + 1.9231vw, 3rem);
+    --ds-size-h3: clamp(1.875rem, 1.5673rem + 0.4808vw, 2rem);
+    --ds-size-h4: clamp(1.5rem, 0.8846rem + 0.9615vw, 1.75rem);
+    --ds-size-h5: clamp(1.25rem, 0.9423rem + 0.4808vw, 1.375rem);
   }
 }
 
@@ -181,10 +232,6 @@
     --ds-hero-clearance: 136px;
     --ds-tracking-h1: -0.035em;
     --ds-tracking-h2: -0.035em;
-    --ds-tracking-h3: -0.03em;
-    --ds-tracking-h4: -0.025em;
-    --ds-tracking-h5: -0.015em;
-    --ds-tracking-h6: -0.01em;
   }
 }
 
@@ -192,10 +239,6 @@
   :root {
     --ds-tracking-h1: -0.025em;
     --ds-tracking-h2: -0.025em;
-    --ds-tracking-h3: -0.02em;
-    --ds-tracking-h4: -0.015em;
-    --ds-tracking-h5: -0.01em;
-    --ds-tracking-h6: 0;
   }
 }
 
@@ -344,13 +387,13 @@ body.et_pb_pagebuilder_layout,
 .ds-eyebrow,
 #page-container .ds-eyebrow {
   display: block;
-  margin: 0 0 4px;
+  margin: 0 0 var(--ds-gap-eyebrow);
   color: #c59060;
   font-family: var(--ds-font-mono, "JetBrains Mono", ui-monospace, monospace);
-  font-size: 11px;
-  line-height: 1.35;
+  font-size: var(--ds-size-eyebrow);
+  line-height: var(--ds-leading-eyebrow);
   font-weight: 500;
-  letter-spacing: 0.18em;
+  letter-spacing: var(--ds-tracking-eyebrow);
   text-transform: uppercase;
   text-shadow: none;
 }
@@ -359,7 +402,7 @@ body.et_pb_pagebuilder_layout,
 .hero-cntn sup,
 #page-container .hero-cntn sup {
   display: block;
-  margin: 0 0 8px;
+  margin: 0 0 var(--ds-gap-eyebrow);
   padding: 0;
   border: none;
   background: transparent;
@@ -367,12 +410,12 @@ body.et_pb_pagebuilder_layout,
   -webkit-backdrop-filter: none;
   color: #c59060 !important;
   font-family: var(--ds-font-mono, "JetBrains Mono", ui-monospace, monospace) !important;
-  font-size: 11px !important;
+  font-size: var(--ds-size-eyebrow) !important;
   font-weight: 500 !important;
-  letter-spacing: 0.18em !important;
+  letter-spacing: var(--ds-tracking-eyebrow) !important;
   text-transform: uppercase !important;
   text-shadow: none !important;
-  line-height: 1.35 !important;
+  line-height: var(--ds-leading-eyebrow) !important;
 }
 
 /* /assets/css/system/page-transitions.css */
@@ -478,6 +521,7 @@ body.et_pb_pagebuilder_layout,
 .et-db #page-container h1,
 #et-boc h1 {
   font-size: var(--ds-size-h1) !important;
+  line-height: var(--ds-leading-h1) !important;
   letter-spacing: var(--ds-tracking-h1) !important;
   text-wrap: balance;
 }
@@ -487,6 +531,7 @@ body.et_pb_pagebuilder_layout,
 .et-db #page-container h2,
 #et-boc h2 {
   font-size: var(--ds-size-h2) !important;
+  line-height: var(--ds-leading-h2) !important;
   letter-spacing: var(--ds-tracking-h2) !important;
 }
 
@@ -495,6 +540,7 @@ body.et_pb_pagebuilder_layout,
 .et-db #page-container h3,
 #et-boc h3 {
   font-size: var(--ds-size-h3) !important;
+  line-height: var(--ds-leading-h3) !important;
   letter-spacing: var(--ds-tracking-h3) !important;
 }
 
@@ -503,6 +549,7 @@ body.et_pb_pagebuilder_layout,
 .et-db #page-container h4,
 #et-boc h4 {
   font-size: var(--ds-size-h4) !important;
+  line-height: var(--ds-leading-h4) !important;
   letter-spacing: var(--ds-tracking-h4) !important;
 }
 
@@ -511,6 +558,7 @@ body.et_pb_pagebuilder_layout,
 .et-db #page-container h5,
 #et-boc h5 {
   font-size: var(--ds-size-h5) !important;
+  line-height: var(--ds-leading-h5) !important;
   letter-spacing: var(--ds-tracking-h5) !important;
 }
 
@@ -519,12 +567,21 @@ body.et_pb_pagebuilder_layout,
 .et-db #page-container h6,
 #et-boc h6 {
   font-size: var(--ds-size-h6) !important;
+  line-height: var(--ds-leading-h6) !important;
   letter-spacing: var(--ds-tracking-h6) !important;
 }
 
-/* Tighten heading → body gap site-wide. Kept em-relative but trimmed from
-   0.5em so large display titles don't open up an oversized gap (e.g. a 46px
-   case-card title now sits ~16px above its description instead of ~23px). */
+/* Uppercase is reserved for H1/H2 section titles. H3 and smaller (card and
+   sub-section titles) read in sentence case. Same selectors as the base reset,
+   declared later, so this wins over it. */
+#page-container :is(h3, h4, h5, h6),
+#main-content :is(h3, h4, h5, h6),
+.et-db #page-container :is(h3, h4, h5, h6),
+#et-boc :is(h3, h4, h5, h6),
+.ds-section-title {
+  text-transform: none !important;
+}
+/* Title → subtitle/body gap: one fixed step (16px) at every heading size. */
 #page-container h2,
 #page-container h3,
 #page-container h4,
@@ -535,7 +592,7 @@ body.et_pb_pagebuilder_layout,
 #main-content h4,
 #main-content h5,
 #main-content h6 {
-  margin-bottom: 0.35em !important;
+  margin-bottom: var(--ds-gap-title) !important;
 }
 
 /* The signature move: italic <em> inside headings */
@@ -588,6 +645,7 @@ body.et_pb_pagebuilder_layout,
   font-weight: 400;
   font-size: var(--ds-font-size-body);
   line-height: var(--ds-line-height-body);
+  letter-spacing: var(--ds-tracking-body-md);
 }
 
 /* ── Nav links ──────────────────────────────────────────────────────────────── */
@@ -725,12 +783,12 @@ body.et_fixed_nav #page-container #main-header {
 .hero-cntn sup,
 #page-container .hero-cntn sup {
   font-family: var(--ds-font-mono) !important;
-  font-size: 11px !important;
+  font-size: var(--ds-size-eyebrow) !important;
   font-weight: 500 !important;
-  letter-spacing: 0.18em !important;
+  letter-spacing: var(--ds-tracking-eyebrow) !important;
   text-transform: uppercase !important;
   color: #c59060 !important;
-  line-height: 1.35 !important;
+  line-height: var(--ds-leading-eyebrow) !important;
 }
 
 /* ── .ds- typography utilities aligned to new tokens ─────────────────────── */
@@ -739,7 +797,7 @@ body.et_fixed_nav #page-container #main-header {
   font-weight: var(--ds-font-weight-heading, 800) !important;
   letter-spacing: var(--ds-tracking-h1) !important;
   text-transform: uppercase !important;
-  line-height: var(--ds-line-height-heading, 0.94);
+  line-height: var(--ds-leading-h1);
   color: var(--ds-color-text-strong);
   font-size: var(--ds-size-h1);
 }
@@ -749,9 +807,9 @@ body.et_fixed_nav #page-container #main-header {
   font-weight: var(--ds-font-weight-heading, 800) !important;
   letter-spacing: var(--ds-tracking-h2) !important;
   text-transform: uppercase !important;
-  line-height: var(--ds-line-height-heading, 0.94);
+  line-height: var(--ds-leading-h2);
   color: var(--ds-color-text-strong);
-  font-size: clamp(2rem, 4vw, 4rem);
+  font-size: var(--ds-size-h2);
 }
 
 .ds-section-title {
@@ -759,9 +817,9 @@ body.et_fixed_nav #page-container #main-header {
   font-weight: var(--ds-font-weight-heading, 800) !important;
   letter-spacing: var(--ds-tracking-h3) !important;
   text-transform: uppercase !important;
-  line-height: var(--ds-line-height-heading, 0.94);
+  line-height: var(--ds-leading-h3);
   color: var(--ds-color-text-strong);
-  font-size: clamp(1.75rem, 3vw, 2.75rem);
+  font-size: var(--ds-size-h3);
 }
 
 /* ── Newsletter font override ─────────────────────────────────────────────── */
@@ -1114,10 +1172,10 @@ body.ds-standalone-nav #main-header #logo {
 .letters-list__meta,
 .letters-feature__eyebrow {
   font-family: var(--ds-font-mono);
-  font-size: 11px;
-  line-height: 16px;
+  font-size: var(--ds-size-eyebrow-sm);
+  line-height: var(--ds-leading-eyebrow-sm);
   font-weight: 500;
-  letter-spacing: 0.08em;
+  letter-spacing: var(--ds-tracking-eyebrow-sm);
   text-transform: uppercase;
   color: var(--ds-color-faint);
 }
@@ -1191,12 +1249,12 @@ body.ds-standalone-nav #main-header #logo {
   color: var(--ds-color-muted);
 }
 
-/* ── Index: feature panel (1100 x 400, text bottom-left over the art) ─────── */
+/* ── Index: feature panel (1100 x 400+, text centred left, equal top/bottom) ─ */
 .letters-feature {
   position: relative;
-  display: block;
+  display: flex; align-items: center;
   max-width: var(--letters-wide);
-  height: 400px;
+  min-height: 400px;
   margin: 0 auto 48px;
   border-radius: var(--ds-radius-xl);
   overflow: hidden;
@@ -1234,29 +1292,29 @@ img.letters-feature__art {
   background: linear-gradient(90deg, rgba(0, 0, 0, 0.62) 0%, rgba(0, 0, 0, 0.25) 55%, transparent 100%);
 }
 .letters-feature__text {
-  position: absolute;
-  left: 48px;
-  bottom: 48px;
+  position: relative;
+  margin: 48px;
+  align-self: center;
   width: min(520px, calc(100% - 96px));
   display: flex;
   flex-direction: column;
 }
 .letters-feature__eyebrow {
   color: rgba(255, 255, 255, 0.7);
-  margin-bottom: 12px;
+  margin-bottom: var(--ds-gap-eyebrow-sm);
 }
 .letters-feature__title {
   font-family: var(--ds-font-display);
   font-weight: var(--ds-font-weight-heading, 700);
-  font-size: 40px;
-  line-height: 1;
+  font-size: var(--ds-size-h2);
+  line-height: var(--ds-leading-h2);
   text-transform: uppercase;
   color: #ffffff;
 }
 .letters-feature__sub {
   margin-top: 8px;
-  font-size: 15px;
-  line-height: 20px;
+  font-size: var(--ds-size-body-md);
+  line-height: var(--ds-leading-body);
   color: rgba(255, 255, 255, 0.75);
 }
 .letters-feature__cta {
@@ -1432,8 +1490,8 @@ img.letters-feature__art {
   text-underline-offset: 3px;
 }
 .letters-list__sub {
-  font-size: 15px;
-  line-height: 20px;
+  font-size: var(--ds-size-body-sm);
+  line-height: var(--ds-leading-body);
   color: var(--ds-color-muted);
 }
 .letters-list__meta { margin-top: 4px; }
@@ -1454,13 +1512,13 @@ img.letters-feature__art {
 }
 #page-container .letter__title {
   margin: 0;
-  font-size: 44px !important;
-  line-height: 1.02 !important;
+  font-size: var(--ds-size-h1) !important;
+  line-height: var(--ds-leading-h1) !important;
 }
 #page-container .letter__subtitle {
-  margin: 12px 0 0;
-  font-size: 18px;
-  line-height: 24px;
+  margin: var(--ds-gap-title) 0 0;
+  font-size: var(--ds-size-body-lg);
+  line-height: var(--ds-leading-body);
   font-weight: 400;
   color: var(--ds-color-muted);
 }
@@ -1590,13 +1648,13 @@ img.letters-feature__art {
 }
 #page-container .letter__body h2 {
   margin: 56px 0 12px !important;
-  font-size: 28px !important;
-  line-height: 1.25 !important;
+  font-size: var(--ds-size-h3) !important;
+  line-height: var(--ds-leading-h3) !important;
 }
 #page-container .letter__body h3 {
   margin: 36px 0 8px !important;
-  font-size: 21px !important;
-  line-height: 1.35 !important;
+  font-size: var(--ds-size-h4) !important;
+  line-height: var(--ds-leading-h4) !important;
 }
 #page-container .letter__body h2 + h3 { margin-top: 16px !important; }
 .letter__body blockquote {
@@ -1891,9 +1949,9 @@ img.letters-feature__art {
 @media (max-width: 720px) {
   .letters,
   .letter { padding: 112px 16px 72px; }
-  .letters-feature { height: 360px; }
+  .letters-feature { min-height: 360px; }
   /* With a cover: drawing on top, text below it, nothing overlapping */
-  .letters-feature:has(img.letters-feature__art) { height: auto; }
+  .letters-feature:has(img.letters-feature__art) { min-height: 0; flex-direction: column; align-items: stretch; }
   img.letters-feature__art {
     position: static;
     display: block;
@@ -1905,21 +1963,21 @@ img.letters-feature__art {
   }
   .letters-feature:has(img.letters-feature__art) .letters-feature__text {
     position: static;
-    width: auto;
-    padding: 0 24px 28px;
+    width: auto; margin: 0;
+    padding: 24px;
   }
-  .letters-feature__text { left: 24px; bottom: 24px; width: calc(100% - 48px); }
-  .letters-feature__title { font-size: 32px; }
+  .letters-feature__text { margin: 24px; width: calc(100% - 48px); }
+  .letters-feature__title { font-size: var(--ds-size-h2); }
   .letters-popular__grid { grid-template-columns: minmax(0, 1fr); }
   .letters-list__link { grid-template-columns: minmax(0, 1fr) 96px; gap: 16px; padding: 20px 0; }
   .letters-list__thumb { width: 96px; height: 64px; }
   .letters-list__title { font-size: 17px; line-height: 24px; }
-  #page-container .letter__title { font-size: 36px !important; }
-  #page-container .letter__subtitle { font-size: 17px; }
+  #page-container .letter__title { font-size: var(--ds-size-h1) !important; }
+  #page-container .letter__subtitle { font-size: var(--ds-size-body-lg); }
   #page-container .letter__body p,
   #page-container .letter__body li { font-size: 18px; }
-  #page-container .letter__body h2 { font-size: 24px !important; margin-top: 44px !important; }
-  #page-container .letter__body h3 { font-size: 19px !important; }
+  #page-container .letter__body h2 { font-size: var(--ds-size-h3) !important; margin-top: 44px !important; }
+  #page-container .letter__body h3 { font-size: var(--ds-size-h4) !important; }
   .letter-table__card { padding: 16px; }
   .letter-table__dots { margin-bottom: 16px; }
   .letter__body .letter-table th,

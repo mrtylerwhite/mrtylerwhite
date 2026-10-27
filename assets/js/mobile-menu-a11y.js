@@ -83,9 +83,56 @@
       "--mow-nav-right",
       "--mow-nav-width",
       "--mow-nav-bottom",
+      "--mow-nav-top",
+      "--mow-nav-height",
       "--mow-nav-margin-left",
       "--mow-nav-margin-right",
     ];
+
+    // Backdrop blur can't reach through the Divi header, so the menu's frosted
+    // glass is a separate layer on <body>, kept under the card (see
+    // mobile-open-menu.css: .mow-backdrop).
+    var veil = document.createElement("div");
+    veil.className = "mow-backdrop";
+    veil.setAttribute("aria-hidden", "true");
+    document.body.appendChild(veil);
+
+    function syncVeil() {
+      var menu = menuEl();
+      if (!menu) return;
+      var r = menu.getBoundingClientRect();
+      veil.style.left = r.left + "px";
+      veil.style.top = r.top + "px";
+      veil.style.width = r.width + "px";
+      veil.style.height = r.height + "px";
+    }
+
+    // Social links (the site's own profiles), inserted before the CTA buttons.
+    var socialLinks = [
+      ["LinkedIn", "https://www.linkedin.com/in/mrtylerwhite/"],
+      ["Instagram", "https://www.instagram.com/mrtylerwhite"],
+    ];
+
+    function ensureSocial() {
+      var menu = menuEl();
+      if (!menu || menu.querySelector(".mow-social")) return;
+      var li = document.createElement("li");
+      li.className = "mow-social";
+      var label = document.createElement("p");
+      label.className = "mow-social__label";
+      label.textContent = "Social";
+      li.appendChild(label);
+      socialLinks.forEach(function (item) {
+        var a = document.createElement("a");
+        a.href = item[1];
+        a.target = "_blank";
+        a.rel = "noopener noreferrer";
+        a.textContent = item[0];
+        li.appendChild(a);
+      });
+      var firstCta = menu.querySelector(":scope > li.site-nav-workshop, :scope > li.et_pb_button");
+      menu.insertBefore(li, firstCta);
+    }
 
     function clearDrawerLayout() {
       if (!header) return;
@@ -96,18 +143,24 @@
 
     function syncDrawerLayout() {
       if (!header || !navShell) return;
-      if (!isOpen() || !mobileMq.matches) {
+      if (!mobileMq.matches) {
         clearDrawerLayout();
         return;
       }
+      // Keep the last measurement while closed so the card doesn't jump
+      // during its close animation; the next open re-measures.
+      if (!isOpen()) return;
 
       var rect = navShell.getBoundingClientRect();
       header.style.setProperty("--mow-nav-left", rect.left + "px");
       header.style.setProperty("--mow-nav-right", "auto");
       header.style.setProperty("--mow-nav-width", rect.width + "px");
       header.style.setProperty("--mow-nav-bottom", rect.bottom + "px");
+      header.style.setProperty("--mow-nav-top", rect.top + "px");
+      header.style.setProperty("--mow-nav-height", rect.height + "px");
       header.style.setProperty("--mow-nav-margin-left", "0");
       header.style.setProperty("--mow-nav-margin-right", "0");
+      syncVeil();
     }
 
     function scheduleDrawerLayout() {
@@ -115,8 +168,29 @@
       window.requestAnimationFrame(syncDrawerLayout);
     }
 
+    // While the card animates closed, keep the pill un-blurred (see
+    // mobile-open-menu.css) so the fixed card isn't re-anchored mid-animation.
+    var wasOpen = false;
+    var closingTimer = null;
+    function markClosing(open) {
+      if (!header) return;
+      if (open) {
+        window.clearTimeout(closingTimer);
+        header.removeAttribute("data-menu-closing");
+      } else if (wasOpen) {
+        header.setAttribute("data-menu-closing", "");
+        window.clearTimeout(closingTimer);
+        closingTimer = window.setTimeout(function () {
+          header.removeAttribute("data-menu-closing");
+        }, 350);
+      }
+      wasOpen = open;
+    }
+
     function syncAria() {
       var open = isOpen();
+      markClosing(open);
+      ensureSocial();
       toggle.setAttribute("aria-expanded", open ? "true" : "false");
       toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
       var menu = menuEl();
@@ -131,8 +205,6 @@
       }
       if (open) {
         scheduleDrawerLayout();
-      } else {
-        clearDrawerLayout();
       }
     }
 

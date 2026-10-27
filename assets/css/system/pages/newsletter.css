@@ -119,6 +119,10 @@ body:has(#post-newsletter) #main-content {
   text-align: center;
 }
 
+#post-newsletter .nl-saasify-title > .ds-eyebrow {
+  margin-bottom: var(--ds-gap-eyebrow);
+}
+
 #post-newsletter .nl-saasify-title sup {
   position: relative;
   top: auto;
@@ -126,11 +130,11 @@ body:has(#post-newsletter) #main-content {
   vertical-align: baseline;
   display: inline-table;
   font-family: Figtree, "Open Sans", Arial, sans-serif;
-  font-size: 14px;
+  font-size: var(--ds-size-eyebrow);
   font-style: normal;
   font-weight: 500;
-  line-height: normal;
-  letter-spacing: -0.5px;
+  line-height: var(--ds-leading-eyebrow);
+  letter-spacing: var(--ds-tracking-eyebrow);
   text-transform: none;
   color: #2b180a !important;
   background-color: rgba(255, 255, 255, 0.28);
@@ -143,11 +147,11 @@ body:has(#post-newsletter) #main-content {
 
 /* Headline */
 #post-newsletter .nl-saasify-headline {
-  margin: 8px 0 8px;
+  margin: 0 0 var(--ds-gap-title);
   padding-bottom: 0;
   max-width: 980px;
-  font-size: clamp(2.6875rem, 4vw + 1rem, 4.375rem);
-  line-height: 0.85;
+  font-size: var(--ds-size-h1);
+  line-height: var(--ds-leading-h1);
   text-align: center;
   color: var(--nl-text);
 }
@@ -158,9 +162,10 @@ body:has(#post-newsletter) #main-content {
   max-width: 660px;
   width: 80%;
   font-family: Lato, "Open Sans", Arial, sans-serif;
-  font-size: 18px;
-  line-height: 26px;
+  font-size: var(--ds-size-body-lg);
+  line-height: var(--ds-leading-body);
   color: var(--nl-text-body);
+  letter-spacing: var(--ds-tracking-body-lg);
 }
 
 /* Senja / social proof */
@@ -384,15 +389,17 @@ body:has(#post-newsletter) #main-content {
   }
 
   #post-newsletter .nl-saasify-headline {
-    font-size: clamp(2.5rem, 6vw, 4.0625rem);
+    font-size: var(--ds-size-h1);
+    line-height: var(--ds-leading-h1);
   }
 
   #post-newsletter .nl-saasify-lede {
     width: 100%;
     max-width: 600px;
-    font-size: 17px;
-    line-height: 24px;
+    font-size: var(--ds-size-body-lg);
+    line-height: var(--ds-leading-body);
     margin-bottom: 28px;
+    letter-spacing: var(--ds-tracking-body-lg);
   }
 
   #post-newsletter .nl-saasify-senja {
@@ -411,22 +418,25 @@ body:has(#post-newsletter) #main-content {
   }
 
   #post-newsletter .nl-saasify-title sup {
-    font-size: 13px;
+    font-size: var(--ds-size-eyebrow);
     padding: 8px 14px;
+    line-height: var(--ds-leading-eyebrow);
+    letter-spacing: var(--ds-tracking-eyebrow);
   }
 
   #post-newsletter .nl-saasify-headline {
-    font-size: clamp(2rem, 9vw, 2.6875rem);
-    line-height: 0.9;
-    margin-bottom: 8px;
+    font-size: var(--ds-size-h1);
+    line-height: var(--ds-leading-h1);
+    margin-bottom: var(--ds-gap-title);
   }
 
   #post-newsletter .nl-saasify-lede {
-    font-size: 15px;
-    line-height: 20px;
+    font-size: var(--ds-size-body-lg);
+    line-height: var(--ds-leading-body);
     margin-bottom: 24px;
     width: 100%;
     max-width: 100%;
+    letter-spacing: var(--ds-tracking-body-lg);
   }
 
   #post-newsletter .nl-saasify-senja {

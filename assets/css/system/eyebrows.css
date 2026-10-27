@@ -6,13 +6,13 @@
 .ds-eyebrow,
 #page-container .ds-eyebrow {
   display: block;
-  margin: 0 0 4px;
+  margin: 0 0 var(--ds-gap-eyebrow);
   color: #c59060;
   font-family: var(--ds-font-mono, "JetBrains Mono", ui-monospace, monospace);
-  font-size: 11px;
-  line-height: 1.35;
+  font-size: var(--ds-size-eyebrow);
+  line-height: var(--ds-leading-eyebrow);
   font-weight: 500;
-  letter-spacing: 0.18em;
+  letter-spacing: var(--ds-tracking-eyebrow);
   text-transform: uppercase;
   text-shadow: none;
 }
@@ -21,7 +21,7 @@
 .hero-cntn sup,
 #page-container .hero-cntn sup {
   display: block;
-  margin: 0 0 8px;
+  margin: 0 0 var(--ds-gap-eyebrow);
   padding: 0;
   border: none;
   background: transparent;
@@ -29,10 +29,10 @@
   -webkit-backdrop-filter: none;
   color: #c59060 !important;
   font-family: var(--ds-font-mono, "JetBrains Mono", ui-monospace, monospace) !important;
-  font-size: 11px !important;
+  font-size: var(--ds-size-eyebrow) !important;
   font-weight: 500 !important;
-  letter-spacing: 0.18em !important;
+  letter-spacing: var(--ds-tracking-eyebrow) !important;
   text-transform: uppercase !important;
   text-shadow: none !important;
-  line-height: 1.35 !important;
+  line-height: var(--ds-leading-eyebrow) !important;
 }

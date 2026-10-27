@@ -8,11 +8,11 @@
 .ds-eyebrow{
   margin: 0;
   font-family: var(--ds-font-body);
-  font-size: 12px;
+  font-size: var(--ds-size-eyebrow);
   font-weight: 600;
-  letter-spacing: .06em;
+  letter-spacing: var(--ds-tracking-eyebrow);
   text-transform: uppercase;
-  line-height: 1.35;
+  line-height: var(--ds-leading-eyebrow);
   color: rgba(0,0,0,.55);
 }
 
@@ -22,10 +22,10 @@
   font-weight: var(--ds-font-weight-heading, 800);
   letter-spacing: var(--ds-tracking-h1);
   text-transform: uppercase;
-  line-height: 1.12;
+  line-height: var(--ds-leading-h1);
   color: var(--ds-color-dark-2);
   overflow-wrap: anywhere;
-  font-size: clamp(1.625rem, 0.35vw + 1.45rem, 2.75rem);
+  font-size: var(--ds-size-h1);
 }
 
 .ds-page-title{
@@ -34,10 +34,10 @@
   font-weight: var(--ds-font-weight-heading, 800);
   letter-spacing: var(--ds-tracking-h2);
   text-transform: uppercase;
-  line-height: 1.15;
+  line-height: var(--ds-leading-h2);
   color: var(--ds-color-dark-2);
   overflow-wrap: anywhere;
-  font-size: clamp(1.5rem, 0.22vw + 1.28rem, 2rem);
+  font-size: var(--ds-size-h2);
 }
 
 .ds-section-title{
@@ -46,10 +46,10 @@
   font-weight: var(--ds-font-weight-heading, 800);
   letter-spacing: var(--ds-tracking-h3);
   text-transform: uppercase;
-  line-height: 1.2;
+  line-height: var(--ds-leading-h3);
   color: var(--ds-color-dark-2);
   overflow-wrap: anywhere;
-  font-size: clamp(1.25rem, 0.18vw + 1.06rem, 1.5rem);
+  font-size: var(--ds-size-h3);
 }
 
 .ds-card-title{
@@ -74,17 +74,18 @@
   margin: 0;
   font-family: var(--ds-font-body);
   font-weight: 500;
-  line-height: 1.65;
+  line-height: var(--ds-leading-body);
+  letter-spacing: var(--ds-tracking-body-lg);
   color: var(--ds-color-text);
-  font-size: clamp(0.9375rem, 0.12vw + 0.88rem, 1.0625rem);
+  font-size: var(--ds-size-body-lg);
 }
 
 .ds-body--small{
   margin: 0;
   font-family: var(--ds-font-body);
-  font-size: 13px;
+  font-size: var(--ds-size-body-sm);
   font-weight: 500;
-  line-height: 1.55;
+  line-height: var(--ds-leading-body);
   color: var(--ds-color-text);
 }
 

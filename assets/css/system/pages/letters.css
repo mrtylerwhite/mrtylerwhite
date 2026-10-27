@@ -39,10 +39,10 @@
 .letters-list__meta,
 .letters-feature__eyebrow {
   font-family: var(--ds-font-mono);
-  font-size: 11px;
-  line-height: 16px;
+  font-size: var(--ds-size-eyebrow-sm);
+  line-height: var(--ds-leading-eyebrow-sm);
   font-weight: 500;
-  letter-spacing: 0.08em;
+  letter-spacing: var(--ds-tracking-eyebrow-sm);
   text-transform: uppercase;
   color: var(--ds-color-faint);
 }
@@ -116,12 +116,12 @@
   color: var(--ds-color-muted);
 }
 
-/* ── Index: feature panel (1100 x 400, text bottom-left over the art) ─────── */
+/* ── Index: feature panel (1100 x 400+, text centred left, equal top/bottom) ─ */
 .letters-feature {
   position: relative;
-  display: block;
+  display: flex; align-items: center;
   max-width: var(--letters-wide);
-  height: 400px;
+  min-height: 400px;
   margin: 0 auto 48px;
   border-radius: var(--ds-radius-xl);
   overflow: hidden;
@@ -159,29 +159,29 @@ img.letters-feature__art {
   background: linear-gradient(90deg, rgba(0, 0, 0, 0.62) 0%, rgba(0, 0, 0, 0.25) 55%, transparent 100%);
 }
 .letters-feature__text {
-  position: absolute;
-  left: 48px;
-  bottom: 48px;
+  position: relative;
+  margin: 48px;
+  align-self: center;
   width: min(520px, calc(100% - 96px));
   display: flex;
   flex-direction: column;
 }
 .letters-feature__eyebrow {
   color: rgba(255, 255, 255, 0.7);
-  margin-bottom: 12px;
+  margin-bottom: var(--ds-gap-eyebrow-sm);
 }
 .letters-feature__title {
   font-family: var(--ds-font-display);
   font-weight: var(--ds-font-weight-heading, 700);
-  font-size: 40px;
-  line-height: 1;
+  font-size: var(--ds-size-h2);
+  line-height: var(--ds-leading-h2);
   text-transform: uppercase;
   color: #ffffff;
 }
 .letters-feature__sub {
   margin-top: 8px;
-  font-size: 15px;
-  line-height: 20px;
+  font-size: var(--ds-size-body-md);
+  line-height: var(--ds-leading-body);
   color: rgba(255, 255, 255, 0.75);
 }
 .letters-feature__cta {
@@ -357,8 +357,8 @@ img.letters-feature__art {
   text-underline-offset: 3px;
 }
 .letters-list__sub {
-  font-size: 15px;
-  line-height: 20px;
+  font-size: var(--ds-size-body-sm);
+  line-height: var(--ds-leading-body);
   color: var(--ds-color-muted);
 }
 .letters-list__meta { margin-top: 4px; }
@@ -379,13 +379,13 @@ img.letters-feature__art {
 }
 #page-container .letter__title {
   margin: 0;
-  font-size: 44px !important;
-  line-height: 1.02 !important;
+  font-size: var(--ds-size-h1) !important;
+  line-height: var(--ds-leading-h1) !important;
 }
 #page-container .letter__subtitle {
-  margin: 12px 0 0;
-  font-size: 18px;
-  line-height: 24px;
+  margin: var(--ds-gap-title) 0 0;
+  font-size: var(--ds-size-body-lg);
+  line-height: var(--ds-leading-body);
   font-weight: 400;
   color: var(--ds-color-muted);
 }
@@ -515,13 +515,13 @@ img.letters-feature__art {
 }
 #page-container .letter__body h2 {
   margin: 56px 0 12px !important;
-  font-size: 28px !important;
-  line-height: 1.25 !important;
+  font-size: var(--ds-size-h3) !important;
+  line-height: var(--ds-leading-h3) !important;
 }
 #page-container .letter__body h3 {
   margin: 36px 0 8px !important;
-  font-size: 21px !important;
-  line-height: 1.35 !important;
+  font-size: var(--ds-size-h4) !important;
+  line-height: var(--ds-leading-h4) !important;
 }
 #page-container .letter__body h2 + h3 { margin-top: 16px !important; }
 .letter__body blockquote {
@@ -1203,9 +1203,9 @@ img.letters-feature__art {
 @media (max-width: 720px) {
   .letters,
   .letter { padding: 112px 16px 72px; }
-  .letters-feature { height: 360px; }
+  .letters-feature { min-height: 360px; }
   /* With a cover: drawing on top, text below it, nothing overlapping */
-  .letters-feature:has(img.letters-feature__art) { height: auto; }
+  .letters-feature:has(img.letters-feature__art) { min-height: 0; flex-direction: column; align-items: stretch; }
   img.letters-feature__art {
     position: static;
     display: block;
@@ -1217,21 +1217,21 @@ img.letters-feature__art {
   }
   .letters-feature:has(img.letters-feature__art) .letters-feature__text {
     position: static;
-    width: auto;
-    padding: 0 24px 28px;
+    width: auto; margin: 0;
+    padding: 24px;
   }
-  .letters-feature__text { left: 24px; bottom: 24px; width: calc(100% - 48px); }
-  .letters-feature__title { font-size: 32px; }
+  .letters-feature__text { margin: 24px; width: calc(100% - 48px); }
+  .letters-feature__title { font-size: var(--ds-size-h2); }
   .letters-popular__grid { grid-template-columns: minmax(0, 1fr); }
   .letters-list__link { grid-template-columns: minmax(0, 1fr) 96px; gap: 16px; padding: 20px 0; }
   .letters-list__thumb { width: 96px; height: 64px; }
   .letters-list__title { font-size: 17px; line-height: 24px; }
-  #page-container .letter__title { font-size: 36px !important; }
-  #page-container .letter__subtitle { font-size: 17px; }
+  #page-container .letter__title { font-size: var(--ds-size-h1) !important; }
+  #page-container .letter__subtitle { font-size: var(--ds-size-body-lg); }
   #page-container .letter__body p,
   #page-container .letter__body li { font-size: 18px; }
-  #page-container .letter__body h2 { font-size: 24px !important; margin-top: 44px !important; }
-  #page-container .letter__body h3 { font-size: 19px !important; }
+  #page-container .letter__body h2 { font-size: var(--ds-size-h3) !important; margin-top: 44px !important; }
+  #page-container .letter__body h3 { font-size: var(--ds-size-h4) !important; }
   .letter-table__card { padding: 16px; }
   .letter-table__dots { margin-bottom: 16px; }
   .letter__body .letter-table th,
@@ -1728,8 +1728,8 @@ img.letters-feature__art {
 }
 .letter-video__eyebrow {
   font-family: var(--ds-font-mono, "Geist Mono", ui-monospace, monospace);
-  font-size: 11px;
-  letter-spacing: 0.08em;
+  font-size: var(--ds-size-eyebrow-sm);
+  letter-spacing: var(--ds-tracking-eyebrow-sm);
   text-transform: uppercase;
   color: #8a6a4d;
 }
@@ -1925,3 +1925,10 @@ img.letters-feature__art {
 #page-container .roi-calc__in input:focus-visible,
 .roi-calc__in input:focus,
 .roi-calc__in input:focus-visible { outline: none !important; box-shadow: none !important; border: 0 !important; }
+
+/* Signup box title is card-sized, so sentence case (uppercase is for section
+   titles). The large floating signup keeps its uppercase display title. */
+#page-container .letter-signup:not(.letter-signup--float) .letter-signup__title {
+  text-transform: none;
+  letter-spacing: var(--ds-tracking-h3);
+}

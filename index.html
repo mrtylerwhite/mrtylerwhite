@@ -69,6 +69,7 @@ body.custom-background { background-color: #f9f9fe; }
 <link rel="stylesheet" href="/assets/css/dist/home-deferred.css" media="print" onload="this.media='all'" />
 <noscript><link rel="stylesheet" href="/assets/css/dist/home-deferred.css" /></noscript>
 <style id="home-no-divi-animation">body.home .et_animated{opacity:1 !important;animation:none !important}</style>
+<link rel="preload" href="/assets/fonts/instrument-serif/InstrumentSerif-Regular.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="preconnect" href="https://use.typekit.net" crossorigin />
 <link rel="preconnect" href="https://p.typekit.net" crossorigin />
 <link rel="preload" as="style" href="https://use.typekit.net/fks5kmr.css" fetchpriority="low" onload="this.onload=null;this.rel='stylesheet'" />
@@ -78,7 +79,7 @@ body.custom-background { background-color: #f9f9fe; }
 <noscript><link rel="stylesheet" href="/assets/css/system/site-footer.css" /></noscript>
 <link rel="stylesheet" href="/assets/css/system/senja-embed.css" media="print" onload="this.media='all'" />
 <noscript><link rel="stylesheet" href="/assets/css/system/senja-embed.css" /></noscript>
-<link rel="stylesheet" href="/assets/css/system/pages/home-case-cards.css?v=20260627" media="print" onload="this.media='all'" /><noscript><link rel="stylesheet" href="/assets/css/system/pages/home-case-cards.css?v=20260627" /></noscript>
+<link rel="stylesheet" href="/assets/css/system/pages/home-case-cards.css?v=20261027a" media="print" onload="this.media='all'" /><noscript><link rel="stylesheet" href="/assets/css/system/pages/home-case-cards.css?v=20261027a" /></noscript>
 <style id="home-typography-inline">
 /*
   Homepage typography
@@ -92,15 +93,21 @@ body.home #page-container #main-content .et-l--post :where(h1, h2, h3, h4, h5, h
     text-transform: uppercase !important;
   text-shadow: none !important;
   line-height: var(--ds-line-height-heading, 0.94) !important;
-  margin-bottom: 0.35em !important;
+  margin-bottom: var(--ds-gap-title) !important;
 }
+body.home #page-container #main-content .et-l--post h1 { line-height: var(--ds-leading-h1) !important; }
+body.home #page-container #main-content .et-l--post h2 { line-height: var(--ds-leading-h2) !important; }
+body.home #page-container #main-content .et-l--post h3 { line-height: var(--ds-leading-h3) !important; text-transform: none !important; }
+body.home #page-container #main-content .et-l--post h4 { line-height: var(--ds-leading-h4) !important; text-transform: none !important; }
+body.home #page-container #main-content .et-l--post h5 { line-height: var(--ds-leading-h5) !important; text-transform: none !important; }
+body.home #page-container #main-content .et-l--post h6 { line-height: var(--ds-leading-h6) !important; text-transform: none !important; }
 
 /* A. Hero display heading */
 body.home #page-container .hero-cntn .et_pb_text_0 h1 {
   font-family: var(--ds-font-display) !important;
   font-weight: var(--ds-font-weight-heading, 800) !important;
   font-size: var(--ds-size-h1) !important;
-  line-height: var(--ds-line-height-heading, 0.94) !important;
+  line-height: var(--ds-leading-h1) !important;
   letter-spacing: var(--ds-tracking-h1) !important;
   text-transform: uppercase !important;
   text-shadow: none !important;
@@ -112,12 +119,14 @@ body.home #page-container .hero-cntn .et_pb_text_0 h1 {
 @media screen and (max-width: 980px) {
   body.home #page-container .hero-cntn .et_pb_text_0 h1 {
     font-size: var(--ds-size-h1) !important;
+    line-height: var(--ds-leading-h1) !important;
   }
 }
 
 @media screen and (max-width: 767px) {
   body.home #page-container .hero-cntn .et_pb_text_0 h1 {
     font-size: var(--ds-size-h1) !important;
+    line-height: var(--ds-leading-h1) !important;
   }
 }
 
@@ -129,9 +138,9 @@ body.home #page-container .et_pb_text_8 .notion-sub_header-block {
   font-family: var(--ds-font-display) !important;
   font-weight: var(--ds-font-weight-heading, 800) !important;
   font-size: var(--ds-size-h3) !important;
-  line-height: var(--ds-line-height-heading, 0.94) !important;
+  line-height: var(--ds-leading-h3) !important;
   letter-spacing: var(--ds-tracking-h3) !important;
-  text-transform: uppercase !important;
+  text-transform: none !important;
   text-shadow: none !important;
 }
 </style>
@@ -381,7 +390,7 @@ body.home #page-container .home-hub {
 @media screen and (min-width: 981px) {
   body.home #page-container .hero-cntn .et_pb_text_0 h1 {
     font-size: var(--ds-size-h1) !important;
-    line-height: 1.02 !important;
+    line-height: var(--ds-leading-h1) !important;
   }
 
   body.home #page-container .hero-cntn .et_pb_column_1 {
@@ -418,7 +427,8 @@ body.home #page-container .home-hub {
   body.home #page-container .hero-cntn .et_pb_text_0 h1 {
     font-size: var(--ds-size-h1) !important;
     text-align: center !important;
-  }
+    line-height: var(--ds-leading-h1) !important;
+}
 
   body.home #page-container .hero-cntn .et_pb_text_0,
   body.home #page-container .hero-cntn .et_pb_text_0 .et_pb_text_inner {
@@ -566,36 +576,38 @@ body.home #page-container .hero-cntn .home-hero__punch {
 
 /* ── Shared hub typography ──────────────────────────────────────── */
 body.home #page-container .home-hub__eyebrow {
-  margin: 0 0 0.4375rem;
+  margin: 0 0 var(--ds-gap-eyebrow);
   font-family: var(--ds-font-mono);
-  font-size: 11px;
+  font-size: var(--ds-size-eyebrow);
   font-weight: 500;
-  letter-spacing: 0.12em;
+  letter-spacing: var(--ds-tracking-eyebrow);
   text-transform: uppercase;
   color: #c59060;
+  line-height: var(--ds-leading-eyebrow);
 }
 
 body.home #page-container .home-hub__title {
-  margin: 0 0 1rem;
+  margin: 0 0 var(--ds-gap-title);
   font-family: var(--ds-font-display) !important;
   font-weight: var(--ds-font-weight-heading, 800) !important;
-  font-size: clamp(1.75rem, 3.5vw, 2.75rem) !important;
-  line-height: var(--ds-line-height-heading, 0.94) !important;
+  font-size: var(--ds-size-h2) !important;
+  line-height: var(--ds-leading-h2) !important;
   letter-spacing: var(--ds-tracking-h2) !important;
   text-transform: uppercase !important;
   color: var(--ds-color-text-strong) !important;
 }
 
 body.home #page-container .home-hub__title--proof {
-  font-size: clamp(2rem, 4vw, 3rem) !important;
+  font-size: var(--ds-size-h2) !important;
 }
 
 body.home #page-container .home-hub__lead {
   margin: 0;
   max-width: 40rem;
-  font-size: 1.0625rem;
-  line-height: 1.7;
+  font-size: var(--ds-size-body-lg);
+  line-height: var(--ds-leading-body);
   color: var(--ds-color-muted);
+  letter-spacing: var(--ds-tracking-body-lg);
 }
 
 body.home #page-container .home-hub-section {
@@ -653,8 +665,8 @@ body.home #page-container .home-v3-band--close .home-hub__eyebrow--dark {
 body.home #page-container .home-hub--enemy .home-hub__title--cinematic {
   margin-bottom: 0;
   color: #fff !important;
-  font-size: clamp(2.25rem, 4vw, 3.5rem) !important;
-  line-height: 1.08 !important;
+  font-size: var(--ds-size-h1) !important;
+  line-height: var(--ds-leading-h1) !important;
   text-wrap: balance;
 }
 
@@ -663,12 +675,13 @@ body.home #page-container .home-hub--enemy .home-hub__title--cinematic .home-hub
 }
 
 body.home #page-container .home-hub__enemy-copy {
-  margin: 1.5rem auto 0;
+  margin: var(--ds-gap-title) auto 0;
   max-width: 680px;
   font-family: var(--ds-font-body);
-  font-size: clamp(1rem, 2vw, 1.0625rem);
-  line-height: 1.65;
+  font-size: var(--ds-size-body-lg);
+  line-height: var(--ds-leading-body);
   color: rgba(255, 255, 255, 0.62);
+  letter-spacing: var(--ds-tracking-body-lg);
 }
 
 body.home #page-container .home-hub__enemy-close {
@@ -701,7 +714,7 @@ body.home #page-container .home-bento__primary {
 body.home #page-container .home-bento__cell {
   display: flex;
   flex-direction: column;
-  gap: 0.875rem;
+  gap: 0;
   min-width: 0;
   height: 100%;
   padding: 2rem 2.125rem;
@@ -734,12 +747,12 @@ body.home #page-container a.home-bento__cell--workshop:hover {
 }
 
 body.home #page-container .home-bento__eyebrow {
-  margin: 0;
+  margin: 0 0 var(--ds-gap-eyebrow-sm);
   font-family: var(--ds-font-mono);
-  font-size: 11px;
+  font-size: var(--ds-size-eyebrow-sm);
   font-weight: 600;
-  line-height: 1.15;
-  letter-spacing: 0.14em;
+  line-height: var(--ds-leading-eyebrow-sm);
+  letter-spacing: var(--ds-tracking-eyebrow-sm);
   text-transform: uppercase;
   color: #c59060;
 }
@@ -749,13 +762,13 @@ body.home #page-container .home-bento__eyebrow--light {
 }
 
 body.home #page-container .home-bento__primary .home-bento__title {
-  margin: 0;
+  margin: 0 0 var(--ds-gap-title) !important;
   font-family: var(--ds-font-display) !important;
   font-weight: var(--ds-font-weight-heading, 800) !important;
-  font-size: clamp(1.725rem, 2.875vw, 2.3rem) !important;
-  line-height: var(--ds-line-height-heading, 0.94) !important;
+  font-size: var(--ds-size-h3) !important;
+  line-height: var(--ds-leading-h3) !important;
   letter-spacing: var(--ds-tracking-h3) !important;
-  text-transform: uppercase !important;
+  text-transform: none !important;
 }
 
 body.home #page-container .home-bento__cell--kit .home-bento__title {
@@ -766,13 +779,15 @@ body.home #page-container .home-bento__cell--workshop .home-bento__title {
   color: #fff !important;
 }
 
+
 body.home #page-container .home-bento__copy {
   margin: 0;
   flex: 1;
   max-width: 36rem;
-  font-size: 1rem;
-  line-height: 1.65;
+  font-size: var(--ds-size-body-md);
+  line-height: var(--ds-leading-body);
   color: var(--ds-color-muted);
+  letter-spacing: var(--ds-tracking-body-md);
 }
 
 body.home #page-container .home-bento__copy--light {
@@ -783,7 +798,7 @@ body.home #page-container .home-bento__btn {
   display: inline-flex;
   align-items: center;
   align-self: flex-start;
-  margin-top: 0.5rem;
+  margin-top: var(--ds-gap-subtitle);
   min-height: 44px;
   padding: 0 1.375rem;
   border-radius: 999px;
@@ -1017,7 +1032,7 @@ body.home #page-container .case-work .et_pb_row_6 {
 /* ── SECTION 08: Final close ────────────────────────────────────── */
 body.home #page-container .home-hub__title--close {
   color: #fff !important;
-  font-size: clamp(2rem, 4vw, 3rem) !important;
+  font-size: var(--ds-size-h2) !important;
   text-wrap: balance;
 }
 
@@ -1212,6 +1227,7 @@ body.home #page-container #cta_builder_kickoff:active {
 
   body.home #page-container .home-bento__cell {
     padding: 1.625rem 1.5rem;
+    gap: 0;
   }
 
   body.home #page-container .home-bento__cell--workshop {

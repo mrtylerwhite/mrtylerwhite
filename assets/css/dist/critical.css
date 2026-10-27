@@ -58,27 +58,62 @@
   --ds-font-heading: "alternate-gothic-atf", "Arial Narrow", Arial, sans-serif;
   --ds-font-heading-bold: "alternate-gothic-atf", "Arial Narrow", Arial, sans-serif;
   --ds-font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
-  --ds-font-size-body: 17px;
-  --ds-line-height-body: 1.5;
+  --ds-font-size-body: var(--ds-size-body-md);
+  --ds-line-height-body: var(--ds-leading-body);
   --ds-font-weight-heading: 700; /* Bold in kit today; bump to 800 when Heavy is published */
-  --ds-line-height-heading: 0.94; /* King Kong–style tight leading */
+  --ds-line-height-heading: 0.96; /* fallback; per-level leading below */
 
   /* Condensed display tracking — tight, but not colliding.
      King Kong uses ~-0.08em; we sit a touch looser for readability. */
   --ds-tracking-h1: -0.05em;
   --ds-tracking-h2: -0.05em;
-  --ds-tracking-h3: -0.045em;
-  --ds-tracking-h4: -0.035em;
-  --ds-tracking-h5: -0.025em;
-  --ds-tracking-h6: -0.015em;
+  /* H3 and smaller are sentence case, so they get mixed-case tracking. */
+  --ds-tracking-h3: -0.01em;
+  --ds-tracking-h4: -0.01em;
+  --ds-tracking-h5: -0.005em;
+  --ds-tracking-h6: 0em;
 
-  /* Size ramp inspired by King Kong (tempered — not billboard-scale) */
-  --ds-size-h1: clamp(2.75rem, 1.2rem + 6vw, 5.5rem);
-  --ds-size-h2: clamp(2.125rem, 1rem + 4vw, 3.75rem);
-  --ds-size-h3: clamp(1.75rem, 0.9rem + 2.8vw, 3rem);
-  --ds-size-h4: clamp(1.375rem, 0.85rem + 1.6vw, 2.25rem);
-  --ds-size-h5: clamp(1.25rem, 0.9rem + 1vw, 1.75rem);
-  --ds-size-h6: clamp(1.125rem, 0.95rem + 0.6vw, 1.5rem);
+  /* Type scale — sizes and leading follow faizur.com/proposal-kit.
+     Phone values here; tablet (48rem) and desktop (64rem) steps below.
+     Fonts and heading tracking stay ours (condensed caps need tighter). */
+  --ds-size-display: 2.75rem;
+  --ds-size-h1: 2.5rem;
+  --ds-size-h2: 2rem;
+  --ds-size-h3: 1.625rem;
+  --ds-size-h4: 1.375rem;
+  --ds-size-h5: 1.25rem;
+  --ds-size-h6: 1.125rem;
+
+  --ds-leading-display: 0.96;
+  --ds-leading-h1: 0.96;
+  --ds-leading-h2: 1;
+  --ds-leading-h3: 1.125;
+  --ds-leading-h4: 1.125;
+  --ds-leading-h5: 1.182;
+  --ds-leading-h6: 1.2;
+
+  /* Eyebrow: section label (above section titles) and small (cards) */
+  --ds-size-eyebrow: 0.875rem;
+  --ds-leading-eyebrow: 1.125rem;
+  --ds-tracking-eyebrow: 0.1429em;
+  --ds-size-eyebrow-sm: 0.75rem;
+  --ds-leading-eyebrow-sm: 1rem;
+  --ds-tracking-eyebrow-sm: 0.1667em;
+
+  /* Body: lg = subtitles / intros, md = paragraphs, sm = notes */
+  --ds-size-body-lg: clamp(1.125rem, 1.081rem + 0.188vw, 1.25rem);
+  --ds-size-body-md: clamp(1rem, 0.956rem + 0.188vw, 1.125rem);
+  --ds-size-body-sm: 0.875rem;
+  --ds-leading-body: 1.4;
+  --ds-tracking-body-lg: -0.0114em;
+  --ds-tracking-body-md: -0.0139em;
+  --ds-tracking-body-sm: 0.0107em;
+
+  /* Rhythm: eyebrow → title → subtitle → CTA */
+  --ds-gap-eyebrow: 20px;
+  --ds-gap-eyebrow-sm: 12px;
+  --ds-gap-title: 16px;
+  --ds-gap-subtitle: 32px;
 
   /* ── Spacing (8-px grid) ───────────────────────────────── */
   --ds-space-1: 4px;
@@ -131,10 +166,26 @@
   --ds-bp-small-max: 479px;
 }
 
-/* Desktop: H1 at 80% of the base clamp */
-@media (min-width: 981px) {
+/* Tablet step */
+@media (min-width: 48rem) {
   :root {
-    --ds-size-h1: clamp(2.2rem, 0.96rem + 4.8vw, 4.4rem);
+    --ds-size-display: 3.75rem;
+    --ds-size-h1: 3rem;
+    --ds-size-h2: 2.5rem;
+    --ds-size-h3: 1.875rem;
+    --ds-size-h4: 1.5rem;
+  }
+}
+
+/* Desktop: fluid between 1024px and ~1664px */
+@media (min-width: 64rem) {
+  :root {
+    --ds-size-display: clamp(3.75rem, 0.6731rem + 4.8077vw, 5rem);
+    --ds-size-h1: clamp(3rem, 1.1538rem + 2.8846vw, 3.75rem);
+    --ds-size-h2: clamp(2.5rem, 1.2692rem + 1.9231vw, 3rem);
+    --ds-size-h3: clamp(1.875rem, 1.5673rem + 0.4808vw, 2rem);
+    --ds-size-h4: clamp(1.5rem, 0.8846rem + 0.9615vw, 1.75rem);
+    --ds-size-h5: clamp(1.25rem, 0.9423rem + 0.4808vw, 1.375rem);
   }
 }
 
@@ -145,10 +196,6 @@
     --ds-hero-clearance: 136px;
     --ds-tracking-h1: -0.035em;
     --ds-tracking-h2: -0.035em;
-    --ds-tracking-h3: -0.03em;
-    --ds-tracking-h4: -0.025em;
-    --ds-tracking-h5: -0.015em;
-    --ds-tracking-h6: -0.01em;
   }
 }
 
@@ -156,10 +203,6 @@
   :root {
     --ds-tracking-h1: -0.025em;
     --ds-tracking-h2: -0.025em;
-    --ds-tracking-h3: -0.02em;
-    --ds-tracking-h4: -0.015em;
-    --ds-tracking-h5: -0.01em;
-    --ds-tracking-h6: 0;
   }
 }
 
@@ -574,13 +617,13 @@ body.et_pb_pagebuilder_layout,
 .ds-eyebrow,
 #page-container .ds-eyebrow {
   display: block;
-  margin: 0 0 4px;
+  margin: 0 0 var(--ds-gap-eyebrow);
   color: #c59060;
   font-family: var(--ds-font-mono, "JetBrains Mono", ui-monospace, monospace);
-  font-size: 11px;
-  line-height: 1.35;
+  font-size: var(--ds-size-eyebrow);
+  line-height: var(--ds-leading-eyebrow);
   font-weight: 500;
-  letter-spacing: 0.18em;
+  letter-spacing: var(--ds-tracking-eyebrow);
   text-transform: uppercase;
   text-shadow: none;
 }
@@ -589,7 +632,7 @@ body.et_pb_pagebuilder_layout,
 .hero-cntn sup,
 #page-container .hero-cntn sup {
   display: block;
-  margin: 0 0 8px;
+  margin: 0 0 var(--ds-gap-eyebrow);
   padding: 0;
   border: none;
   background: transparent;
@@ -597,12 +640,12 @@ body.et_pb_pagebuilder_layout,
   -webkit-backdrop-filter: none;
   color: #c59060 !important;
   font-family: var(--ds-font-mono, "JetBrains Mono", ui-monospace, monospace) !important;
-  font-size: 11px !important;
+  font-size: var(--ds-size-eyebrow) !important;
   font-weight: 500 !important;
-  letter-spacing: 0.18em !important;
+  letter-spacing: var(--ds-tracking-eyebrow) !important;
   text-transform: uppercase !important;
   text-shadow: none !important;
-  line-height: 1.35 !important;
+  line-height: var(--ds-leading-eyebrow) !important;
 }
 
 /* ----- assets/css/system/content-rhythm.css ----- */
@@ -610,7 +653,7 @@ body.et_pb_pagebuilder_layout,
   Eyebrow → title → body spacing on marketing blocks
 */
 
-/* Heading → paragraph gap: collapse p margin-top so the gap is heading margin-bottom only (0.5em) */
+/* Heading → paragraph gap: collapse p margin-top so the gap is heading margin-bottom only (--ds-gap-title) */
 #page-container .et_pb_text_inner > :where(h1, h2, h3, h4, h5, h6) + p {
   margin-top: 0 !important;
 }
@@ -624,7 +667,13 @@ body.et_pb_pagebuilder_layout,
 }
 
 .hero-cntn .et_pb_text_0 .et_pb_text_inner > h1 + p {
-  margin-top: 16px;
+  margin-top: var(--ds-gap-title);
+}
+
+/* Hero subtitle reads one step up from body copy */
+#page-container .hero-cntn .et_pb_text_0 .et_pb_text_inner > h1 + p {
+  font-size: var(--ds-size-body-lg) !important;
+  letter-spacing: var(--ds-tracking-body-lg);
 }
 
 #page-container .case-work .et_pb_text_inner > .ds-eyebrow + :is(h3, h4, h5, h6) {
@@ -645,22 +694,18 @@ body.et_pb_pagebuilder_layout,
 #page-container .et_pb_text_2 .et_pb_text_inner > h3 + p,
 #page-container .et_pb_text_7 .et_pb_text_inner > h3 + p,
 #page-container .et_pb_text_8 .et_pb_text_inner > h3 + p {
-  margin-top: 16px;
+  margin-top: var(--ds-gap-title);
 }
 
 /* "Design as a growth system" bottom CTA section.
    Heading (et_pb_text_8), paragraph (et_pb_text_9) and CTA are separate Divi
    modules, so the heading→paragraph gap is module spacing + the serif heading's
    ~32px line-box leading (reads as ~47px). Group them like the case cards:
-   eyebrow→heading ~12px, heading→paragraph ~19px, paragraph→CTA ~26px.
+   heading→paragraph ~16px, paragraph→CTA ~32px.
    Margins only — layout, columns, type and the left image collage untouched. */
-body.home #page-container .et_pb_text_8 .et_pb_text_inner > .ds-eyebrow {
-  margin-bottom: 8px !important;
-}
-
 body.home #page-container .et_pb_text_9 {
   margin-top: -28px !important;
-  margin-bottom: 26px !important;
+  margin-bottom: var(--ds-gap-subtitle) !important;
 }
 
 /* The heading clamps to its 2rem floor on narrower viewports, shrinking the
@@ -683,14 +728,6 @@ body.home #page-container .et_pb_text_2 .et_pb_text_inner > h3 {
   }
 }
 
-/* Large standalone editorial headings (homepage testimonials h3,
-   /case-studies/ intro h2) read ~3px eyebrow→heading because the serif heading's
-   top line-box leading eats into the eyebrow margin. Nudge the eyebrow so these
-   match the cards' ~7px rhythm. */
-body.home #page-container .et_pb_text_7 .et_pb_text_inner > .ds-eyebrow,
-body.page-id-2147 #page-container .et_pb_text_0 .et_pb_text_inner > .ds-eyebrow {
-  margin-bottom: 7px !important;
-}
 
 /* -------------------------------------------------------------------------- */
 /* Site-wide hero clearance below the floating nav                            */
@@ -717,313 +754,374 @@ body.page-id-2147 #page-container .et_pb_text_0 .et_pb_text_inner > .ds-eyebrow 
 
 /* ----- assets/css/system/mobile-open-menu.css ----- */
 /*
-  Opened mobile menu only (max-width: 980px).
-  Overrides Divi customizer (et-divi-customizer-global.min.css).
-  Closed floating nav + desktop #top-menu are untouched.
+  Mobile / tablet menu (max-width: 980px), after faizur.com's menu, with this
+  site's type.
+
+  The menu is one dark frosted-glass card that grows out of the burger's corner
+  to cover the nav pill, with the logo and close button sitting on top of it.
+  Page links are large display type, then a hairline, a small Social list, and
+  the two CTAs as full-width pills. Items fade up one by one as the card opens.
+
+  The frost is a separate layer on <body> (.mow-backdrop, created and sized by
+  the JS) because backdrop blur can't reach through the Divi header.
+
+  Geometry comes from mobile-menu-a11y.js, which measures the nav pill into
+  --mow-nav-* on #main-header while the menu is open (and keeps the last
+  values while it animates closed).
+
+  Overrides the Divi customizer (et-divi-customizer-global.min.css).
+  Desktop #top-menu is untouched.
 */
 
 @media screen and (max-width: 980px) {
   :root {
-    --mow-drawer-bg: #fffaf4;
-    --mow-drawer-footer-bg: #fbf8f2;
-    --mow-drawer-border: rgba(45, 31, 22, 0.1);
-    --mow-drawer-divider: rgba(45, 31, 22, 0.08);
-    --mow-drawer-text: #22160f;
-    --mow-drawer-muted: rgba(34, 22, 15, 0.72);
-    --mow-drawer-shadow: 0 20px 64px rgba(45, 31, 22, 0.12);
+    --mow-card-bg: rgba(28, 24, 21, 0.72);
+    --mow-card-edge: rgba(255, 255, 255, 0.06);
+    --mow-card-shadow: 0 24px 64px rgba(0, 0, 0, 0.28);
+    --mow-divider: rgba(255, 255, 255, 0.1);
+    --mow-text: #fcf7f4;
+    --mow-muted: rgba(252, 247, 244, 0.5);
+    --mow-ink: #1f1a16;
+    --mow-soft: rgba(255, 255, 255, 0.12);
+    --mow-soft-hover: rgba(255, 255, 255, 0.16);
+    --mow-soft-edge: inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    --mow-ease-out: cubic-bezier(0.215, 0.61, 0.355, 1);
+    --mow-ease-in-out: cubic-bezier(0.455, 0.03, 0.515, 0.955);
     --mow-nav-max-width: 1100px;
   }
 
-  /*
-   * Shared nav/drawer geometry (--mow-nav-* on #main-header from mobile-menu-a11y.js when open).
-   * Fallback width/bottom mirror Divi .container until the nav shell is measured.
-   */
+  /* Fallbacks until the pill is measured */
   #page-container #main-header {
     --mow-nav-width: min(var(--mow-nav-max-width), 90vw);
-    --mow-nav-bottom: calc(env(safe-area-inset-top, 0px) + 5.5rem);
+    --mow-nav-height: 4.5rem;
+    --mow-nav-top: 2em;
   }
 
-  /* Let position:fixed use the viewport (backdrop-filter creates a containing block).
-     Also: the floating pill is normally translucent (rgba glass) and inset from
-     the edges — while the drawer is open, make it a solid, full-bleed bar flush
-     with the drawer below so no page content shows through around it. */
-  #page-container #main-header:has(.mobile_nav.opened) .et_menu_container {
+  /* ── Nav pill while open ────────────────────────────────────────────────
+     The card covers the pill, so the pill goes clear and the logo and close
+     button sit on the card. Its backdrop blur is dropped while open and while
+     the card animates closed ([data-menu-closing], 350ms, set by the JS):
+     a backdrop-filter would re-anchor the fixed card to the pill mid-animation. */
+  html body #page-container #main-header:has(.mobile_nav.opened) .et_menu_container,
+  html body #page-container #main-header[data-menu-closing] .et_menu_container {
     -webkit-backdrop-filter: none !important;
     backdrop-filter: none !important;
-    background-color: var(--mow-drawer-bg) !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    width: 100% !important;
-    margin: 0 !important;
-    border-radius: 0 !important;
-    border: none !important;
+    background: transparent !important;
+    border-color: transparent !important;
     box-shadow: none !important;
   }
 
-  /* On dark-hero pages the logo/nav render light-on-dark for contrast — keep
-     the opaque bar dark there instead of switching to the light drawer color. */
-  #page-container #main-header.main-header--on-dark:has(.mobile_nav.opened) .et_menu_container {
-    background-color: #0a0a0a !important;
+  /* Logo and close button paint above the card */
+  #page-container #main-header .logo_container,
+  #page-container #main-header .mobile_nav .mobile_menu_bar {
+    position: relative;
+    z-index: 2;
   }
 
-  /* Customizer CSS gives .et_mobile_menu height:100vh + backdrop-filter:blur(10px)
-     unconditionally (only opacity is gated on .closed vs .opened) — opacity:0
-     alone doesn't reliably suppress a backdrop-filter's visual effect, so the
-     closed drawer can still blur the page behind it. Fully remove it from
-     rendering when closed. */
+  /* Logo and close button go white on the dark card */
+  html body #page-container #main-header:has(.mobile_nav.opened) #logo {
+    filter: brightness(0) invert(1) !important;
+  }
+
+  /* Icon class repeated to outrank the homepage's on-dark burger rule */
+  html body #page-container #main-header:has(.mobile_nav.opened) .et_divi_100_custom_hamburger_menu__icon.et_divi_100_custom_hamburger_menu__icon.et_divi_100_custom_hamburger_menu__icon div,
+  html body #page-container #main-header:has(.mobile_nav.opened) .et_divi_100_custom_hamburger_menu__icon div::before,
+  html body #page-container #main-header:has(.mobile_nav.opened) .et_divi_100_custom_hamburger_menu__icon div::after {
+    background: var(--mow-text) !important;
+  }
+
+  /* ── Card ─────────────────────────────────────────────────────────────────
+     Tinted glass over .mow-backdrop. Always rendered so it can animate;
+     .closed hides it with visibility. */
+  #page-container #main-header .mobile_nav .et_mobile_menu,
+  #page-container #main-header .mobile_nav #mobile_menu {
+    --mow-card-top: calc(var(--mow-nav-top) - 4px);
+    position: fixed !important;
+    top: var(--mow-card-top) !important;
+    left: calc(var(--mow-nav-left, 5vw) - 4px) !important;
+    right: auto !important;
+    z-index: 1 !important;
+    width: calc(var(--mow-nav-width, 90vw) + 8px) !important;
+    max-width: none !important;
+    height: auto !important;
+    max-height: calc(100dvh - var(--mow-card-top) - 16px) !important;
+    margin: 0 !important;
+    padding: calc(var(--mow-nav-height) + 12px) 24px 24px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    background-color: var(--mow-card-bg) !important;
+    border: none !important;
+    outline: 1px solid var(--mow-card-edge);
+    outline-offset: -1px;
+    border-radius: 28px !important;
+    box-shadow: var(--mow-card-shadow) !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+
+  /* Closed: a burger-sized circle in the top-right corner */
   #page-container #main-header .mobile_nav.closed .et_mobile_menu,
-  #page-container #main-header .mobile_nav.closed #mobile_menu {
-    display: none !important;
+  #page-container #main-header .mobile_nav.closed #mobile_menu,
+  .mow-backdrop {
+    visibility: hidden !important;
+    pointer-events: none !important;
+    clip-path: inset(12px 12px calc(100% - 64px) calc(100% - 64px) round 26px);
+    opacity: 0 !important;
+    transition: clip-path 0.25s var(--mow-ease-in-out) 0.05s,
+      opacity 0.15s var(--mow-ease-in-out) 0.15s,
+      visibility 0s linear 0.3s !important;
   }
 
   #page-container #main-header .mobile_nav.opened .et_mobile_menu,
-  #page-container #main-header .mobile_nav.opened #mobile_menu {
-    position: fixed !important;
-    top: var(--mow-nav-bottom) !important;
-    left: 0 !important;
-    right: 0 !important;
-    width: 100vw !important;
+  #page-container #main-header .mobile_nav.opened #mobile_menu,
+  body:has(#main-header .mobile_nav.opened) .mow-backdrop {
+    visibility: visible !important;
+    opacity: 1 !important;
+    clip-path: inset(0 round 28px);
+    transition: clip-path 0.4s var(--mow-ease-out),
+      opacity 0.15s var(--mow-ease-out),
+      visibility 0s !important;
+  }
+
+  /* Frost layer: sits under the header (z 99999), sized to the card by the JS */
+  .mow-backdrop {
+    display: block;
+    position: fixed;
+    z-index: 99998;
+    pointer-events: none;
+    border-radius: 28px;
+    -webkit-backdrop-filter: blur(24px) saturate(1.5);
+    backdrop-filter: blur(24px) saturate(1.5);
+  }
+
+  /* ── Items: fade up and un-blur, 30ms apart, as the card opens ───────────── */
+  #page-container #main-header .mobile_nav .et_mobile_menu > li {
+    opacity: 0;
+    translate: 0 8px;
+    filter: blur(4px);
+    transition: opacity 0.1s var(--mow-ease-in-out),
+      translate 0.1s var(--mow-ease-in-out),
+      filter 0.1s var(--mow-ease-in-out);
+  }
+
+  #page-container #main-header .mobile_nav.opened .et_mobile_menu > li {
+    opacity: 1;
+    translate: none;
+    filter: none;
+    transition: opacity 0.3s var(--mow-ease-out), translate 0.4s var(--mow-ease-out),
+      filter 0.3s var(--mow-ease-out);
+    transition-delay: calc(0.15s + var(--mow-i, 0) * 30ms);
+  }
+
+  #page-container #main-header .mobile_nav .et_mobile_menu > li:nth-child(2) { --mow-i: 1; }
+  #page-container #main-header .mobile_nav .et_mobile_menu > li:nth-child(3) { --mow-i: 2; }
+  #page-container #main-header .mobile_nav .et_mobile_menu > li:nth-child(4) { --mow-i: 3; }
+  #page-container #main-header .mobile_nav .et_mobile_menu > li:nth-child(5) { --mow-i: 4; }
+  #page-container #main-header .mobile_nav .et_mobile_menu > li:nth-child(6) { --mow-i: 5; }
+  #page-container #main-header .mobile_nav .et_mobile_menu > li:nth-child(7) { --mow-i: 6; }
+  #page-container #main-header .mobile_nav .et_mobile_menu > li:nth-child(8) { --mow-i: 7; }
+
+  /* Every item resets Divi/customizer list chrome */
+  #page-container #main-header .mobile_nav .et_mobile_menu > li {
+    position: static !important;
+    inset: auto !important;
+    flex: 0 0 auto;
+    width: 100% !important;
     max-width: none !important;
-    height: calc(100dvh - var(--mow-nav-bottom)) !important;
-    max-height: calc(100dvh - var(--mow-nav-bottom)) !important;
     margin: 0 !important;
     padding: 0 !important;
-    display: flex !important;
-    flex-direction: column !important;
-    overflow: hidden !important;
-    background-color: var(--mow-drawer-bg) !important;
     border: none !important;
     border-radius: 0 !important;
+    background: transparent !important;
     box-shadow: none !important;
-    -webkit-backdrop-filter: none !important;
-    backdrop-filter: none !important;
-    z-index: 99998 !important;
-    border-top: none !important;
-    transform: none !important;
-    overscroll-behavior: contain;
+    display: block !important;
   }
 
-  #page-container #main-header .mobile_nav.opened #mobile_menu {
-    background-color: var(--mow-drawer-bg) !important;
-  }
-
-  /* Scrollable nav links */
-  #page-container #main-header .mobile_nav.opened .et_mobile_menu > li:not(.et_pb_button):not(.site-nav-workshop) {
-    flex: 0 0 auto;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    border: none;
-    border-bottom: 1px solid var(--mow-drawer-divider);
-  }
-
-  #page-container #main-header .mobile_nav.opened .et_mobile_menu > li:not(.et_pb_button):not(.site-nav-workshop):last-of-type {
-    border-bottom: none;
-  }
-
-  #page-container #main-header .mobile_nav.opened .et_mobile_menu li:not(.et_pb_button):not(.site-nav-workshop) > a {
-    display: flex !important;
-    align-items: center;
-    min-height: 4.25rem;
-    padding: 0 1.75rem !important;
-    color: var(--mow-drawer-text) !important;
-    font-family: "Geist", "Figtree", var(--ds-font-body, "Open Sans", Arial, sans-serif) !important;
-    font-size: clamp(1.25rem, 5vw, 1.625rem) !important;
-    font-weight: 600 !important;
-    line-height: 1.12 !important;
-    letter-spacing: -0.015em !important;
+  /* ── Page links: large display type, no row dividers ─────────────────────── */
+  #page-container #main-header .mobile_nav .et_mobile_menu > li:not(.et_pb_button):not(.site-nav-workshop):not(.mow-social) > a {
+    display: block !important;
+    padding: 0 0 16px !important;
+    color: var(--mow-text) !important;
+    font-family: var(--ds-font-display) !important;
+    font-weight: var(--ds-font-weight-heading, 700) !important;
+    font-size: var(--ds-size-h3) !important;
+    line-height: 1 !important;
+    letter-spacing: var(--ds-tracking-h3) !important;
     text-transform: none !important;
     text-decoration: none !important;
-    border-bottom: none !important;
+    border: none !important;
     background: transparent !important;
     opacity: 1 !important;
-    transition: background-color 0.15s ease !important;
+    transition: opacity 0.25s var(--mow-ease-out) !important;
   }
 
-  #page-container #main-header .mobile_nav.opened .et_mobile_menu li:not(.et_pb_button):not(.site-nav-workshop) > a:hover,
-  #page-container #main-header .mobile_nav.opened .et_mobile_menu li:not(.et_pb_button):not(.site-nav-workshop) > a:focus-visible {
-    background-color: rgba(45, 31, 22, 0.04) !important;
+  /* Current page reads dimmed and isn't a target */
+  #page-container #main-header .mobile_nav .et_mobile_menu > li:is(.current-menu-item, .current_page_item) > a {
+    opacity: 0.45 !important;
   }
 
-  #page-container #main-header .mobile_nav.opened .et_mobile_menu li:not(.et_pb_button):not(.site-nav-workshop) > a:focus-visible {
-    outline: 2px solid #2d1f16 !important;
-    outline-offset: 2px !important;
+  @media (hover: hover) {
+    #page-container #main-header .mobile_nav .et_mobile_menu:has(> li:not(.et_pb_button):not(.site-nav-workshop):not(.mow-social) > a:hover)
+      > li:not(.et_pb_button):not(.site-nav-workshop):not(.mow-social) > a:not(:hover) {
+      opacity: 0.45 !important;
+    }
   }
 
-  #page-container #main-header .mobile_nav.opened .et_mobile_menu {
-    overflow-y: auto !important;
-    -webkit-overflow-scrolling: touch;
+  #page-container #main-header .mobile_nav .et_mobile_menu > li a:focus-visible {
+    outline: 2px solid var(--mow-text) !important;
+    outline-offset: 3px !important;
+    border-radius: 6px;
   }
 
-  /*
-   * Footer CTA block (inside drawer).
-   * Overrides customizer: position:absolute; bottom:10em; width:90%
-   * Builder Kickoff (site-nav-workshop) + The Value Gut-Check (menu-item-54)
-   * are the only two buttons — Download CV was removed from the nav entirely.
-   */
-  #page-container #main-header .mobile_nav.opened .et_mobile_menu > li.site-nav-workshop,
-  #page-container #main-header .mobile_nav.opened .et_mobile_menu > li.menu-item-54 {
-    position: static !important;
-    bottom: auto !important;
-    top: auto !important;
-    left: auto !important;
-    right: auto !important;
-    width: 100% !important;
-    max-width: none !important;
-    margin: 0 !important;
-    flex: 0 0 auto;
-    z-index: 1;
-    border: none !important;
-    background-color: var(--mow-drawer-footer-bg) !important;
+  /* ── Social: hairline above, small label, quiet links ─────────────────────── */
+  #page-container #main-header .mobile_nav .et_mobile_menu > li.mow-social {
+    margin-top: 8px !important;
+    padding-top: 24px !important;
+    border-top: 1px solid var(--mow-divider) !important;
+    display: flex !important;
+    flex-direction: column;
   }
 
-  #page-container #main-header .mobile_nav.opened .et_mobile_menu > li.site-nav-workshop {
-    margin-top: auto !important;
-    padding: 1rem 1.25rem 0 !important;
-    border-top: 1px solid var(--mow-drawer-divider) !important;
-  }
-
-  #page-container #main-header .mobile_nav.opened .et_mobile_menu > li.menu-item-54 {
-    padding: 24px 1.25rem 1.25rem !important;
-  }
-
-  #page-container #main-header .mobile_nav.opened .et_mobile_menu > li.et_pb_button,
-  #page-container #main-header .mobile_nav.opened .et_mobile_menu > li.site-nav-workshop {
-    display: block !important;
-  }
-
-  #page-container #main-header .mobile_nav.opened .et_mobile_menu .et_pb_button {
-    position: static !important;
-    width: 100% !important;
-    margin: 0 !important;
+  #page-container #main-header .mobile_nav .et_mobile_menu .mow-social__label {
+    margin: 0 0 var(--ds-gap-eyebrow) !important;
     padding: 0 !important;
-    display: block !important;
-    text-align: center !important;
-    border-radius: 999px !important;
-    box-shadow: none !important;
+    font-family: var(--ds-font-mono) !important;
+    font-size: var(--ds-size-eyebrow-sm) !important;
+    line-height: var(--ds-leading-eyebrow-sm) !important;
+    letter-spacing: var(--ds-tracking-eyebrow-sm) !important;
+    font-weight: 500 !important;
+    text-transform: uppercase;
+    color: var(--mow-muted) !important;
   }
 
-  /* Same block treatment as .et_pb_button, but margin-top/padding stay as set above (footer-group rule) so it pins to the bottom with its own inset */
-  #page-container #main-header .mobile_nav.opened .et_mobile_menu li.site-nav-workshop {
-    position: static !important;
-    width: 100% !important;
-    margin-right: 0 !important;
-    margin-bottom: 0 !important;
-    margin-left: 0 !important;
-    display: block !important;
-    text-align: center !important;
-    border-radius: 999px !important;
-    box-shadow: none !important;
+  #page-container #main-header .mobile_nav .et_mobile_menu .mow-social a {
+    display: block;
+    padding: 0 0 8px !important;
+    font-family: var(--ds-font-body) !important;
+    font-size: var(--ds-size-body-sm) !important;
+    line-height: 1.4 !important;
+    letter-spacing: var(--ds-tracking-body-sm) !important;
+    color: var(--mow-text) !important;
+    text-decoration: none !important;
+    transition: opacity 0.25s var(--mow-ease-out);
   }
 
-  #page-container #main-header .mobile_nav.opened .et_mobile_menu .et_pb_button a,
-  #page-container #main-header .mobile_nav.opened .et_mobile_menu li.site-nav-workshop > a {
+  @media (hover: hover) {
+    #page-container #main-header .mobile_nav .et_mobile_menu .mow-social:has(a:hover) a:not(:hover) {
+      opacity: 0.5;
+    }
+  }
+
+  /* ── CTAs: full-width pills ───────────────────────────────────────────────── */
+  #page-container #main-header .mobile_nav .et_mobile_menu > li.site-nav-workshop {
+    padding-top: 16px !important;
+  }
+
+  #page-container #main-header .mobile_nav .et_mobile_menu > li.menu-item-54 {
+    padding-top: 8px !important;
+  }
+
+  #page-container #main-header .mobile_nav .et_mobile_menu > li.et_pb_button > a,
+  #page-container #main-header .mobile_nav .et_mobile_menu > li.site-nav-workshop > a {
     display: flex !important;
     align-items: center;
     justify-content: center;
     width: 100% !important;
-    min-height: 2.75rem;
-    padding: 0.625rem 1rem !important;
-    font-size: 0.875rem !important;
-    font-weight: 600 !important;
+    min-height: 3rem;
+    padding: 0.75rem 1.25rem !important;
+    font-family: var(--ds-font-body) !important;
+    font-size: var(--ds-size-body-sm) !important;
+    font-weight: 500 !important;
     line-height: 1.25 !important;
-    letter-spacing: 0 !important;
+    letter-spacing: var(--ds-tracking-body-sm) !important;
     text-transform: none !important;
     text-decoration: none !important;
+    border: none !important;
     border-radius: 999px !important;
     box-sizing: border-box !important;
     box-shadow: none !important;
+    transition: background-color 0.2s var(--mow-ease-out), scale 0.15s var(--mow-ease-out) !important;
   }
 
-  /* Secondary: light outline pill */
-  #page-container #main-header .mobile_nav.opened .et_mobile_menu li.site-nav-workshop > a {
-    color: var(--mow-drawer-text) !important;
+  #page-container #main-header .mobile_nav .et_mobile_menu > li.et_pb_button > a:active,
+  #page-container #main-header .mobile_nav .et_mobile_menu > li.site-nav-workshop > a:active {
+    scale: 0.98;
+  }
+
+  /* Secondary: glass pill (his email pill) */
+  #page-container #main-header .mobile_nav .et_mobile_menu > li.site-nav-workshop > a {
+    color: var(--mow-text) !important;
+    background-color: var(--mow-soft) !important;
+    box-shadow: var(--mow-soft-edge) !important;
+  }
+
+  #page-container #main-header .mobile_nav .et_mobile_menu > li.site-nav-workshop > a:hover {
+    background-color: var(--mow-soft-hover) !important;
+  }
+
+  /* Primary: cream pill */
+  #page-container #main-header .mobile_nav .et_mobile_menu > li.menu-item-54.et_pb_button > a {
+    color: var(--mow-ink) !important;
+    background-color: var(--mow-text) !important;
+  }
+
+  #page-container #main-header .mobile_nav .et_mobile_menu > li.menu-item-54.et_pb_button > a:hover {
     background-color: #ffffff !important;
-    border: 1px solid rgba(45, 31, 22, 0.12) !important;
-  }
-
-  #page-container #main-header .mobile_nav.opened .et_mobile_menu li.site-nav-workshop > a:hover,
-  #page-container #main-header .mobile_nav.opened .et_mobile_menu li.site-nav-workshop > a:focus-visible {
-    background-color: rgba(255, 255, 255, 0.92) !important;
-    border-color: rgba(45, 31, 22, 0.2) !important;
-  }
-
-  #page-container #main-header .mobile_nav.opened .et_mobile_menu li.site-nav-workshop > a:focus-visible {
-    outline: 2px solid #2d1f16 !important;
-    outline-offset: 2px !important;
-  }
-
-  /* Primary: compact dark pill */
-  #page-container #main-header .mobile_nav.opened .et_mobile_menu li.menu-item-54.et_pb_button a {
-    color: #fffaf4 !important;
-    background-color: #1f1a16 !important;
-    border: 1px solid #1f1a16 !important;
-  }
-
-  #page-container #main-header .mobile_nav.opened .et_mobile_menu li.menu-item-54.et_pb_button a:hover,
-  #page-container #main-header .mobile_nav.opened .et_mobile_menu li.menu-item-54.et_pb_button a:focus-visible {
-    background-color: #2d1f16 !important;
-    border-color: #2d1f16 !important;
-  }
-
-  #page-container #main-header .mobile_nav.opened .et_mobile_menu li.menu-item-54.et_pb_button a:focus-visible {
-    outline: 2px solid #c59060 !important;
-    outline-offset: 2px !important;
   }
 
   #page-container #main-header .mobile_nav.opened button.mobile_menu_bar.mobile_menu_bar_toggle:focus-visible {
-    outline: 2px solid #2d1f16 !important;
+    outline: 2px solid var(--mow-text) !important;
     outline-offset: 3px !important;
-  }
-
-  /* Close icon in header */
-  body.et_divi_100_custom_hamburger_menu #page-container .mobile_nav.opened .et_divi_100_custom_hamburger_menu__icon div,
-  body.et_divi_100_custom_hamburger_menu #page-container .mobile_nav.opened .et_divi_100_custom_hamburger_menu__icon.et_divi_100_custom_hamburger_menu__icon--toggled div {
-    background: #2d1f16 !important;
-  }
-
-  body.et_divi_100_custom_hamburger_menu--type-2 #page-container .mobile_nav.opened .et_divi_100_custom_hamburger_menu__icon div:before,
-  body.et_divi_100_custom_hamburger_menu--type-2 #page-container .mobile_nav.opened .et_divi_100_custom_hamburger_menu__icon div:after {
-    background: #2d1f16 !important;
   }
 }
 
+/* Tablet: CTAs side by side */
 @media screen and (min-width: 768px) and (max-width: 980px) {
   #page-container #main-header {
     --mow-nav-width: min(var(--mow-nav-max-width), 80vw);
-    --mow-nav-bottom: calc(env(safe-area-inset-top, 0px) + 6.75rem);
   }
 
-  #page-container #main-header .mobile_nav.opened .et_mobile_menu,
-  #page-container #main-header .mobile_nav.opened #mobile_menu {
+  #page-container #main-header .mobile_nav .et_mobile_menu,
+  #page-container #main-header .mobile_nav #mobile_menu {
     display: grid !important;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     align-content: start !important;
-    align-items: start !important;
-    column-gap: 0.75rem;
+    column-gap: 0;
   }
 
-  #page-container #main-header .mobile_nav.opened .et_mobile_menu > li:not(.et_pb_button):not(.site-nav-workshop) {
+  #page-container #main-header .mobile_nav .et_mobile_menu > li:not(.et_pb_button):not(.site-nav-workshop) {
     grid-column: 1 / -1;
   }
 
-  #page-container #main-header .mobile_nav.opened .et_mobile_menu > li.site-nav-workshop {
-    grid-column: 1 / 2 !important;
-    margin-top: 0 !important;
-    padding: 1rem 0 1.25rem 1.25rem !important;
+  /* Pills sit side by side, spaced by padding */
+  #page-container #main-header .mobile_nav .et_mobile_menu > li.site-nav-workshop {
+    padding-right: 4px !important;
   }
 
-  #page-container #main-header .mobile_nav.opened .et_mobile_menu > li.menu-item-54 {
-    grid-column: 2 / 3 !important;
-    padding: 1rem 1.25rem 1.25rem 0 !important;
+  #page-container #main-header .mobile_nav .et_mobile_menu > li.menu-item-54 {
+    padding-top: 16px !important;
+    padding-left: 4px !important;
   }
 }
 
-@media screen and (max-width: 767px) {
-  #page-container #main-header {
-    --mow-nav-width: min(var(--mow-nav-max-width), 90vw);
-    --mow-nav-bottom: calc(env(safe-area-inset-top, 0px) + 5.5rem);
+@media screen and (max-width: 980px) and (prefers-reduced-motion: reduce) {
+  #page-container #main-header .mobile_nav .et_mobile_menu,
+  #page-container #main-header .mobile_nav #mobile_menu,
+  #page-container #main-header .mobile_nav .et_mobile_menu > li,
+  .mow-backdrop {
+    transition: none !important;
+  }
+}
+
+@media screen and (min-width: 981px) {
+  .mow-backdrop {
+    display: none;
   }
 }
 
@@ -1315,6 +1413,7 @@ button.mobile_menu_bar.mobile_menu_bar_toggle:focus {
 .et-db #page-container h1,
 #et-boc h1 {
   font-size: var(--ds-size-h1) !important;
+  line-height: var(--ds-leading-h1) !important;
   letter-spacing: var(--ds-tracking-h1) !important;
   text-wrap: balance;
 }
@@ -1324,6 +1423,7 @@ button.mobile_menu_bar.mobile_menu_bar_toggle:focus {
 .et-db #page-container h2,
 #et-boc h2 {
   font-size: var(--ds-size-h2) !important;
+  line-height: var(--ds-leading-h2) !important;
   letter-spacing: var(--ds-tracking-h2) !important;
 }
 
@@ -1332,6 +1432,7 @@ button.mobile_menu_bar.mobile_menu_bar_toggle:focus {
 .et-db #page-container h3,
 #et-boc h3 {
   font-size: var(--ds-size-h3) !important;
+  line-height: var(--ds-leading-h3) !important;
   letter-spacing: var(--ds-tracking-h3) !important;
 }
 
@@ -1340,6 +1441,7 @@ button.mobile_menu_bar.mobile_menu_bar_toggle:focus {
 .et-db #page-container h4,
 #et-boc h4 {
   font-size: var(--ds-size-h4) !important;
+  line-height: var(--ds-leading-h4) !important;
   letter-spacing: var(--ds-tracking-h4) !important;
 }
 
@@ -1348,6 +1450,7 @@ button.mobile_menu_bar.mobile_menu_bar_toggle:focus {
 .et-db #page-container h5,
 #et-boc h5 {
   font-size: var(--ds-size-h5) !important;
+  line-height: var(--ds-leading-h5) !important;
   letter-spacing: var(--ds-tracking-h5) !important;
 }
 
@@ -1356,12 +1459,21 @@ button.mobile_menu_bar.mobile_menu_bar_toggle:focus {
 .et-db #page-container h6,
 #et-boc h6 {
   font-size: var(--ds-size-h6) !important;
+  line-height: var(--ds-leading-h6) !important;
   letter-spacing: var(--ds-tracking-h6) !important;
 }
 
-/* Tighten heading → body gap site-wide. Kept em-relative but trimmed from
-   0.5em so large display titles don't open up an oversized gap (e.g. a 46px
-   case-card title now sits ~16px above its description instead of ~23px). */
+/* Uppercase is reserved for H1/H2 section titles. H3 and smaller (card and
+   sub-section titles) read in sentence case. Same selectors as the base reset,
+   declared later, so this wins over it. */
+#page-container :is(h3, h4, h5, h6),
+#main-content :is(h3, h4, h5, h6),
+.et-db #page-container :is(h3, h4, h5, h6),
+#et-boc :is(h3, h4, h5, h6),
+.ds-section-title {
+  text-transform: none !important;
+}
+/* Title → subtitle/body gap: one fixed step (16px) at every heading size. */
 #page-container h2,
 #page-container h3,
 #page-container h4,
@@ -1372,7 +1484,7 @@ button.mobile_menu_bar.mobile_menu_bar_toggle:focus {
 #main-content h4,
 #main-content h5,
 #main-content h6 {
-  margin-bottom: 0.35em !important;
+  margin-bottom: var(--ds-gap-title) !important;
 }
 
 /* The signature move: italic <em> inside headings */
@@ -1425,6 +1537,7 @@ body.et_pb_pagebuilder_layout,
   font-weight: 400;
   font-size: var(--ds-font-size-body);
   line-height: var(--ds-line-height-body);
+  letter-spacing: var(--ds-tracking-body-md);
 }
 
 /* ── Nav links ──────────────────────────────────────────────────────────────── */
@@ -1562,12 +1675,12 @@ body.et_fixed_nav #page-container #main-header {
 .hero-cntn sup,
 #page-container .hero-cntn sup {
   font-family: var(--ds-font-mono) !important;
-  font-size: 11px !important;
+  font-size: var(--ds-size-eyebrow) !important;
   font-weight: 500 !important;
-  letter-spacing: 0.18em !important;
+  letter-spacing: var(--ds-tracking-eyebrow) !important;
   text-transform: uppercase !important;
   color: #c59060 !important;
-  line-height: 1.35 !important;
+  line-height: var(--ds-leading-eyebrow) !important;
 }
 
 /* ── .ds- typography utilities aligned to new tokens ─────────────────────── */
@@ -1576,7 +1689,7 @@ body.et_fixed_nav #page-container #main-header {
   font-weight: var(--ds-font-weight-heading, 800) !important;
   letter-spacing: var(--ds-tracking-h1) !important;
   text-transform: uppercase !important;
-  line-height: var(--ds-line-height-heading, 0.94);
+  line-height: var(--ds-leading-h1);
   color: var(--ds-color-text-strong);
   font-size: var(--ds-size-h1);
 }
@@ -1586,9 +1699,9 @@ body.et_fixed_nav #page-container #main-header {
   font-weight: var(--ds-font-weight-heading, 800) !important;
   letter-spacing: var(--ds-tracking-h2) !important;
   text-transform: uppercase !important;
-  line-height: var(--ds-line-height-heading, 0.94);
+  line-height: var(--ds-leading-h2);
   color: var(--ds-color-text-strong);
-  font-size: clamp(2rem, 4vw, 4rem);
+  font-size: var(--ds-size-h2);
 }
 
 .ds-section-title {
@@ -1596,9 +1709,9 @@ body.et_fixed_nav #page-container #main-header {
   font-weight: var(--ds-font-weight-heading, 800) !important;
   letter-spacing: var(--ds-tracking-h3) !important;
   text-transform: uppercase !important;
-  line-height: var(--ds-line-height-heading, 0.94);
+  line-height: var(--ds-leading-h3);
   color: var(--ds-color-text-strong);
-  font-size: clamp(1.75rem, 3vw, 2.75rem);
+  font-size: var(--ds-size-h3);
 }
 
 /* ── Newsletter font override ─────────────────────────────────────────────── */

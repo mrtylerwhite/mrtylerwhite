@@ -92,12 +92,13 @@ body.prototype-ready .pr-section-header--center, body.page-id-3101 .pr-section-h
 }
 
 body.prototype-ready .pr-section-header .ds-eyebrow, body.page-id-3101 .pr-section-header .ds-eyebrow {
-  margin-bottom: 0.25rem;
+  margin-bottom: var(--ds-gap-eyebrow);
 }
 
 body.prototype-ready .pr-section h2, body.page-id-3101 .pr-section h2 {
-  font-size: clamp(1.875rem, 3vw, 2.75rem) !important;
+  font-size: var(--ds-size-h2) !important;
   margin-bottom: 0 !important;
+  line-height: var(--ds-leading-h2) !important;
 }
 
 /* ── Body copy ──────────────────────────────────────────────────── */
@@ -307,18 +308,18 @@ body.prototype-ready .pr-hero__copy {
 }
 
 body.prototype-ready #page-container .pr-hero__copy .ds-eyebrow {
-  margin: 0 0 12px !important;
+  margin: 0 0 var(--ds-gap-eyebrow) !important;
   color: #c59060 !important;
 }
 
 body.prototype-ready #page-container .pr-hero__title {
   /* Longer, King Kong-style headline -- sized against kingkong.co/quantum-growth/
      (~28px mobile floor, ~54px desktop ceiling) rather than the old short-tagline scale. */
-  font-size: clamp(1.75rem, 1rem + 3.2vw, 3.4rem) !important;
-  line-height: 0.9 !important;
+  font-size: var(--ds-size-h1) !important;
+  line-height: var(--ds-leading-h1) !important;
   letter-spacing: -0.02em !important;
   margin-top: 0 !important;
-  margin-bottom: 1rem !important;
+  margin-bottom: var(--ds-gap-title) !important;
   color: var(--ds-color-on-dark) !important;
   text-wrap: balance;
 }
@@ -340,11 +341,12 @@ body.prototype-ready .pr-hero__video {
 }
 
 body.prototype-ready .pr-hero__sub {
-  font-size: 1.0625rem;
-  line-height: 1.65;
+  font-size: var(--ds-size-body-lg);
+  line-height: var(--ds-leading-body);
   color: var(--ds-color-on-dark-muted);
   max-width: 46ch;
-  margin-bottom: 2rem;
+  margin-bottom: var(--ds-gap-subtitle);
+  letter-spacing: var(--ds-tracking-body-lg);
 }
 
 /* Hero primary CTA — solid dark pill on light wash */
@@ -429,10 +431,10 @@ body.prototype-ready .workshop-card__timestamp {
 
 body.prototype-ready .workshop-card__title {
   font-family: var(--ds-font-body);
-  font-size: 1.375rem;
+  font-size: var(--ds-size-h4);
   font-weight: 700;
   letter-spacing: -0.025em;
-  line-height: 1.15;
+  line-height: var(--ds-leading-h4);
   color: var(--ds-color-text-strong);
   margin: 0 0 0.875rem;
 }
@@ -686,7 +688,7 @@ body.prototype-ready .pr-problem .pr-section-header {
 }
 
 body.prototype-ready .pr-problem .pr-two-col__main .ds-eyebrow, body.page-id-3101 .pr-problem .pr-two-col__main .ds-eyebrow {
-  margin-bottom: 0.3125rem;
+  margin-bottom: var(--ds-gap-eyebrow);
 }
 
 body.prototype-ready .pr-problem .pr-two-col__main h2, body.page-id-3101 .pr-problem .pr-two-col__main h2 {
@@ -940,7 +942,7 @@ body.prototype-ready .pr-tldr__copy {
 }
 
 body.prototype-ready .pr-tldr .pr-eyebrow-light, body.page-id-3101 .pr-tldr .pr-eyebrow-light {
-  margin-bottom: 0.3125rem;
+  margin-bottom: var(--ds-gap-eyebrow);
 }
 
 body.prototype-ready .pr-tldr h2 {
@@ -1390,9 +1392,10 @@ body.prototype-ready .pr-ticket-section .pr-section-header, body.page-id-3101 .p
 }
 
 body.prototype-ready .pr-ticket-section .pr-section-header h2, body.page-id-3101 .pr-ticket-section .pr-section-header h2 {
-  font-size: clamp(1.875rem, 3vw, 2.75rem) !important;
+  font-size: var(--ds-size-h2) !important;
   margin-bottom: 0 !important;
   text-wrap: balance;
+  line-height: var(--ds-leading-h2) !important;
 }
 
 body.prototype-ready .pr-ticket {
@@ -1438,8 +1441,8 @@ body.prototype-ready .pr-ticket__title {
   font-family: var(--ds-font-display) !important;
   font-weight: var(--ds-font-weight-heading, 800) !important;
   font-size: 2rem !important;
-  letter-spacing: var(--ds-tracking-h1) !important;
-  text-transform: uppercase !important;
+  letter-spacing: var(--ds-tracking-h3) !important;
+  text-transform: none !important;
   line-height: var(--ds-line-height-heading, 0.94) !important;
   margin-bottom: 0.35rem !important;
 }
@@ -1655,7 +1658,7 @@ body.prototype-ready .pr-why__intro {
 }
 
 body.prototype-ready .pr-why__intro .ds-eyebrow {
-  margin-bottom: 0.3125rem;
+  margin-bottom: var(--ds-gap-eyebrow);
 }
 
 body.prototype-ready .pr-why__intro h2 {
@@ -1876,7 +1879,7 @@ body.prototype-ready .pr-cred__layout {
 }
 
 body.prototype-ready .pr-cred__content .ds-eyebrow {
-  margin-bottom: 0.25rem;
+  margin-bottom: var(--ds-gap-eyebrow);
 }
 
 body.prototype-ready .pr-cred__content h2 {
@@ -2008,7 +2011,7 @@ body.prototype-ready .pr-final, body.page-id-3101 .pr-final {
 }
 
 body.prototype-ready .pr-final .pr-eyebrow-light, body.page-id-3101 .pr-final .pr-eyebrow-light {
-  margin-bottom: 0.5rem;
+  margin-bottom: var(--ds-gap-eyebrow);
 }
 
 body.prototype-ready .pr-final .pr-heading-light, body.page-id-3101 .pr-final .pr-heading-light {
@@ -2020,11 +2023,12 @@ body.prototype-ready .pr-final .pr-heading-light, body.page-id-3101 .pr-final .p
 }
 
 body.prototype-ready .pr-final__sub, body.page-id-3101 .pr-final__sub {
-  font-size: 1.0625rem;
+  font-size: var(--ds-size-body-lg);
   color: rgba(255, 255, 255, 0.6);
   max-width: 46ch;
-  margin: 0 auto 2.25rem;
-  line-height: 1.65;
+  margin: 0 auto var(--ds-gap-subtitle);
+  line-height: var(--ds-leading-body);
+  letter-spacing: var(--ds-tracking-body-lg);
 }
 
 body.prototype-ready .pr-final__cta, body.page-id-3101 .pr-final__cta {
@@ -2489,4 +2493,16 @@ body.prototype-ready .pr-kanban3__stats span.is-bump { animation: kb-bump 0.5s c
   body.prototype-ready .pr-kanban3__flag,
   body.prototype-ready .pr-kanban3__avatar { animation: none !important; }
   body.prototype-ready .pr-kanban3:not(.is-live) .pr-kanban3__card { opacity: 1; translate: none; scale: none; }
+}
+
+/* Eyebrow → title → subtitle rhythm: the eyebrow and title own the gaps
+   (--ds-gap-eyebrow / --ds-gap-title), so drop the browser's default
+   heading top margin and the subtitle's own top margin. */
+body.prototype-ready :is(.ds-eyebrow, .pr-eyebrow-light) + :is(h1, h2, h3),
+body.page-id-3101 :is(.ds-eyebrow, .pr-eyebrow-light) + :is(h1, h2, h3) {
+  margin-top: 0 !important;
+}
+
+body.prototype-ready #page-container .pr-hero__title + .pr-hero__sub {
+  margin-top: 0;
 }

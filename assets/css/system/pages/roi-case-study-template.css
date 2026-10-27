@@ -193,34 +193,36 @@ body.roi-case-study-template .rcst-hero__testimonial {
 }
 
 body.roi-case-study-template .rcst-eyebrow {
-  margin: 0 0 1.125rem;
+  margin: 0 0 var(--ds-gap-eyebrow);
   font-family: var(--ds-font-mono);
-  font-size: 10px;
-  letter-spacing: 0.12em;
+  font-size: var(--ds-size-eyebrow);
+  letter-spacing: var(--ds-tracking-eyebrow);
   text-transform: uppercase;
   color: var(--ds-color-muted);
+  line-height: var(--ds-leading-eyebrow);
 }
 
 body.roi-case-study-template .rcst-hero__title {
-  margin: 0 0 1rem;
+  margin: 0 0 var(--ds-gap-title);
   max-width: none;
   font-family: var(--ds-font-body) !important;
   font-weight: 600 !important;
-  font-size: clamp(2.5rem, 4.5vw, 3.75rem) !important;
-  line-height: 1.1 !important;
+  font-size: var(--ds-size-h1) !important;
+  line-height: var(--ds-leading-h1) !important;
   letter-spacing: normal !important;
   color: var(--rcst-foreground) !important;
   text-wrap: balance;
 }
 
 body.roi-case-study-template .rcst-hero__sub {
-  margin: 0 0 1.75rem;
+  margin: 0 0 var(--ds-gap-subtitle);
   max-width: none;
   font-family: var(--ds-font-body);
-  font-size: 1.0625rem;
-  line-height: 1.6;
+  font-size: var(--ds-size-body-lg);
+  line-height: var(--ds-leading-body);
   color: var(--rcst-muted);
   text-wrap: balance;
+  letter-spacing: var(--ds-tracking-body-lg);
 }
 
 body.roi-case-study-template .rcst-hero__testimonial {
@@ -732,8 +734,8 @@ body.roi-case-study-template .rcst-how__title {
   max-width: none;
   font-family: var(--ds-font-display);
   font-weight: var(--ds-font-weight-heading, 800);
-  font-size: clamp(1.875rem, 4vw, 2.5rem);
-  line-height: var(--ds-line-height-heading, 0.94);
+  font-size: var(--ds-size-h2);
+  line-height: var(--ds-leading-h2);
   letter-spacing: var(--ds-tracking-h2);
   text-transform: uppercase;
   color: var(--rcst-foreground);
@@ -748,8 +750,8 @@ body.roi-case-study-template #main-content .rcst-how__title {
 body.roi-case-study-template #main-content .rcst-how__step-title {
   font-family: var(--ds-font-display) !important;
   font-weight: var(--ds-font-weight-heading, 800) !important;
-  font-size: clamp(1.375rem, 1.8vw, 1.625rem) !important;
-  line-height: 1.08 !important;
+  font-size: var(--ds-size-h4) !important;
+  line-height: var(--ds-leading-h4) !important;
   letter-spacing: var(--ds-tracking-h4) !important;
   margin-bottom: 0.75rem !important;
 }
@@ -952,11 +954,12 @@ body.roi-case-study-template .rcst-bridge__inner {
 
 body.roi-case-study-template .rcst-bridge__eyebrow {
   font-family: var(--ds-font-mono);
-  font-size: 10px;
-  letter-spacing: 0.14em;
+  font-size: var(--ds-size-eyebrow);
+  letter-spacing: var(--ds-tracking-eyebrow);
   text-transform: uppercase;
   color: #c59060;
-  margin: 0 0 1rem;
+  margin: 0 0 var(--ds-gap-eyebrow);
+  line-height: var(--ds-leading-eyebrow);
 }
 
 body.roi-case-study-template .rcst-bridge__heading {

@@ -2,7 +2,7 @@
   Eyebrow → title → body spacing on marketing blocks
 */
 
-/* Heading → paragraph gap: collapse p margin-top so the gap is heading margin-bottom only (0.5em) */
+/* Heading → paragraph gap: collapse p margin-top so the gap is heading margin-bottom only (--ds-gap-title) */
 #page-container .et_pb_text_inner > :where(h1, h2, h3, h4, h5, h6) + p {
   margin-top: 0 !important;
 }
@@ -16,7 +16,13 @@
 }
 
 .hero-cntn .et_pb_text_0 .et_pb_text_inner > h1 + p {
-  margin-top: 16px;
+  margin-top: var(--ds-gap-title);
+}
+
+/* Hero subtitle reads one step up from body copy */
+#page-container .hero-cntn .et_pb_text_0 .et_pb_text_inner > h1 + p {
+  font-size: var(--ds-size-body-lg) !important;
+  letter-spacing: var(--ds-tracking-body-lg);
 }
 
 #page-container .case-work .et_pb_text_inner > .ds-eyebrow + :is(h3, h4, h5, h6) {
@@ -37,22 +43,18 @@
 #page-container .et_pb_text_2 .et_pb_text_inner > h3 + p,
 #page-container .et_pb_text_7 .et_pb_text_inner > h3 + p,
 #page-container .et_pb_text_8 .et_pb_text_inner > h3 + p {
-  margin-top: 16px;
+  margin-top: var(--ds-gap-title);
 }
 
 /* "Design as a growth system" bottom CTA section.
    Heading (et_pb_text_8), paragraph (et_pb_text_9) and CTA are separate Divi
    modules, so the heading→paragraph gap is module spacing + the serif heading's
    ~32px line-box leading (reads as ~47px). Group them like the case cards:
-   eyebrow→heading ~12px, heading→paragraph ~19px, paragraph→CTA ~26px.
+   heading→paragraph ~16px, paragraph→CTA ~32px.
    Margins only — layout, columns, type and the left image collage untouched. */
-body.home #page-container .et_pb_text_8 .et_pb_text_inner > .ds-eyebrow {
-  margin-bottom: 8px !important;
-}
-
 body.home #page-container .et_pb_text_9 {
   margin-top: -28px !important;
-  margin-bottom: 26px !important;
+  margin-bottom: var(--ds-gap-subtitle) !important;
 }
 
 /* The heading clamps to its 2rem floor on narrower viewports, shrinking the
@@ -75,14 +77,6 @@ body.home #page-container .et_pb_text_2 .et_pb_text_inner > h3 {
   }
 }
 
-/* Large standalone editorial headings (homepage testimonials h3,
-   /case-studies/ intro h2) read ~3px eyebrow→heading because the serif heading's
-   top line-box leading eats into the eyebrow margin. Nudge the eyebrow so these
-   match the cards' ~7px rhythm. */
-body.home #page-container .et_pb_text_7 .et_pb_text_inner > .ds-eyebrow,
-body.page-id-2147 #page-container .et_pb_text_0 .et_pb_text_inner > .ds-eyebrow {
-  margin-bottom: 7px !important;
-}
 
 /* -------------------------------------------------------------------------- */
 /* Site-wide hero clearance below the floating nav                            */

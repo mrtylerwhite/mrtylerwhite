@@ -52,6 +52,7 @@
 .et-db #page-container h1,
 #et-boc h1 {
   font-size: var(--ds-size-h1) !important;
+  line-height: var(--ds-leading-h1) !important;
   letter-spacing: var(--ds-tracking-h1) !important;
   text-wrap: balance;
 }
@@ -61,6 +62,7 @@
 .et-db #page-container h2,
 #et-boc h2 {
   font-size: var(--ds-size-h2) !important;
+  line-height: var(--ds-leading-h2) !important;
   letter-spacing: var(--ds-tracking-h2) !important;
 }
 
@@ -69,6 +71,7 @@
 .et-db #page-container h3,
 #et-boc h3 {
   font-size: var(--ds-size-h3) !important;
+  line-height: var(--ds-leading-h3) !important;
   letter-spacing: var(--ds-tracking-h3) !important;
 }
 
@@ -77,6 +80,7 @@
 .et-db #page-container h4,
 #et-boc h4 {
   font-size: var(--ds-size-h4) !important;
+  line-height: var(--ds-leading-h4) !important;
   letter-spacing: var(--ds-tracking-h4) !important;
 }
 
@@ -85,6 +89,7 @@
 .et-db #page-container h5,
 #et-boc h5 {
   font-size: var(--ds-size-h5) !important;
+  line-height: var(--ds-leading-h5) !important;
   letter-spacing: var(--ds-tracking-h5) !important;
 }
 
@@ -93,12 +98,21 @@
 .et-db #page-container h6,
 #et-boc h6 {
   font-size: var(--ds-size-h6) !important;
+  line-height: var(--ds-leading-h6) !important;
   letter-spacing: var(--ds-tracking-h6) !important;
 }
 
-/* Tighten heading → body gap site-wide. Kept em-relative but trimmed from
-   0.5em so large display titles don't open up an oversized gap (e.g. a 46px
-   case-card title now sits ~16px above its description instead of ~23px). */
+/* Uppercase is reserved for H1/H2 section titles. H3 and smaller (card and
+   sub-section titles) read in sentence case. Same selectors as the base reset,
+   declared later, so this wins over it. */
+#page-container :is(h3, h4, h5, h6),
+#main-content :is(h3, h4, h5, h6),
+.et-db #page-container :is(h3, h4, h5, h6),
+#et-boc :is(h3, h4, h5, h6),
+.ds-section-title {
+  text-transform: none !important;
+}
+/* Title → subtitle/body gap: one fixed step (16px) at every heading size. */
 #page-container h2,
 #page-container h3,
 #page-container h4,
@@ -109,7 +123,7 @@
 #main-content h4,
 #main-content h5,
 #main-content h6 {
-  margin-bottom: 0.35em !important;
+  margin-bottom: var(--ds-gap-title) !important;
 }
 
 /* The signature move: italic <em> inside headings */
@@ -162,6 +176,7 @@ body.et_pb_pagebuilder_layout,
   font-weight: 400;
   font-size: var(--ds-font-size-body);
   line-height: var(--ds-line-height-body);
+  letter-spacing: var(--ds-tracking-body-md);
 }
 
 /* ── Nav links ──────────────────────────────────────────────────────────────── */
@@ -299,12 +314,12 @@ body.et_fixed_nav #page-container #main-header {
 .hero-cntn sup,
 #page-container .hero-cntn sup {
   font-family: var(--ds-font-mono) !important;
-  font-size: 11px !important;
+  font-size: var(--ds-size-eyebrow) !important;
   font-weight: 500 !important;
-  letter-spacing: 0.18em !important;
+  letter-spacing: var(--ds-tracking-eyebrow) !important;
   text-transform: uppercase !important;
   color: #c59060 !important;
-  line-height: 1.35 !important;
+  line-height: var(--ds-leading-eyebrow) !important;
 }
 
 /* ── .ds- typography utilities aligned to new tokens ─────────────────────── */
@@ -313,7 +328,7 @@ body.et_fixed_nav #page-container #main-header {
   font-weight: var(--ds-font-weight-heading, 800) !important;
   letter-spacing: var(--ds-tracking-h1) !important;
   text-transform: uppercase !important;
-  line-height: var(--ds-line-height-heading, 0.94);
+  line-height: var(--ds-leading-h1);
   color: var(--ds-color-text-strong);
   font-size: var(--ds-size-h1);
 }
@@ -323,9 +338,9 @@ body.et_fixed_nav #page-container #main-header {
   font-weight: var(--ds-font-weight-heading, 800) !important;
   letter-spacing: var(--ds-tracking-h2) !important;
   text-transform: uppercase !important;
-  line-height: var(--ds-line-height-heading, 0.94);
+  line-height: var(--ds-leading-h2);
   color: var(--ds-color-text-strong);
-  font-size: clamp(2rem, 4vw, 4rem);
+  font-size: var(--ds-size-h2);
 }
 
 .ds-section-title {
@@ -333,9 +348,9 @@ body.et_fixed_nav #page-container #main-header {
   font-weight: var(--ds-font-weight-heading, 800) !important;
   letter-spacing: var(--ds-tracking-h3) !important;
   text-transform: uppercase !important;
-  line-height: var(--ds-line-height-heading, 0.94);
+  line-height: var(--ds-leading-h3);
   color: var(--ds-color-text-strong);
-  font-size: clamp(1.75rem, 3vw, 2.75rem);
+  font-size: var(--ds-size-h3);
 }
 
 /* ── Newsletter font override ─────────────────────────────────────────────── */
