@@ -4,19 +4,20 @@
 
 ## Letters
 
-- [What Is a PRD?](https://www.mrtylerwhite.com/letters/what-is-a-prd/): What a product requirements document is, what goes in one, who writes it and how it differs from a BRD, brief and spec.
-- [PRD Template](https://www.mrtylerwhite.com/letters/prd-template/): A free, copy-paste PRD template and how to fill it from one kickoff meeting.
-- [PRD vs BRD](https://www.mrtylerwhite.com/letters/prd-vs-brd/): What each document covers, who owns it, and why most teams need only one.
-- [Product Brief and Design Brief Template](https://www.mrtylerwhite.com/letters/product-brief-template/): A free product brief template plus the design brief questions that matter.
-- [Project Kickoff Meeting Agenda](https://www.mrtylerwhite.com/letters/project-kickoff-meeting/): A 60-minute kickoff agenda that forces real decisions.
-- [Design Rationale](https://www.mrtylerwhite.com/letters/design-rationale/): How to write and present design rationale, with a reusable decision record format.
-- [UX Case Study Template](https://www.mrtylerwhite.com/letters/ux-case-study-template/): A free case study template structured around decisions and outcomes.
-- [UX Case Study Examples](https://www.mrtylerwhite.com/letters/ux-case-study-examples/): What strong case studies that prove impact have in common.
-- [UX Metrics](https://www.mrtylerwhite.com/letters/ux-metrics/): The UX metrics and KPIs leadership cares about, and how to estimate impact without perfect data.
-- [Product Designer Portfolio Homepage](https://www.mrtylerwhite.com/letters/product-designer-portfolio/): How to structure a portfolio homepage that sells.
-- [Product Designer Salary 2026](https://www.mrtylerwhite.com/letters/product-designer-salary/): US and Canada salary ranges by level, and the skills that move pay.
-- [AI Prototyping Workflow](https://www.mrtylerwhite.com/letters/ai-prototyping-workflow/): A real AI prototyping workflow for product designers, prompt included.
-- [Cursor for Designers](https://www.mrtylerwhite.com/letters/cursor-for-designers/): Why Tyler moved from Figma Make to Cursor for product prototypes.
+- [ROI of Design: How to Actually Calculate It](https://www.mrtylerwhite.com/letters/roi-of-design/): Calculate the ROI of design for a real feature: the formula, worked examples for revenue, retention and cost, and a free calculator to run your own.
+- [What Is a PRD? Meaning and What Goes in One](https://www.mrtylerwhite.com/letters/what-is-a-prd/): PRD stands for product requirements document: the doc that says what a team is building, why, and how they'll know it worked. Here's what goes in one.
+- [Product Designer Salary 2026: US and Canada Ranges](https://www.mrtylerwhite.com/letters/product-designer-salary/): What product designers earn in 2026 in the US and Canada, by level and company, and the skills that move you from mid-level pay to senior pay.
+- [PRD Template I Actually Use (Free, Copy-Paste)](https://www.mrtylerwhite.com/letters/prd-template/): A free PRD template to copy and paste, plus how to fill it from one kickoff meeting so engineering gets a doc they'll actually read. Example included.
+- [Design Rationale: Explaining Design Decisions](https://www.mrtylerwhite.com/letters/design-rationale/): How to write and present design rationale: which calls aren't up for debate, how to document the ones that are, and a decision record format to reuse.
+- [UX Case Study Examples That Prove Impact](https://www.mrtylerwhite.com/letters/ux-case-study-examples/): What strong UX case study examples have in common: a structure built around decisions, results placed where they land, and a slide about what went wrong.
+- [UX Case Study Template Built Around Decisions](https://www.mrtylerwhite.com/letters/ux-case-study-template/): A free UX case study template structured around decisions and outcomes, plus five questions that pressure-test the story before your next portfolio review.
+- [Product Designer Portfolio Homepage That Sells](https://www.mrtylerwhite.com/letters/product-designer-portfolio/): How to structure a product designer portfolio homepage: a one-line hero, a proof strip, case studies sorted by outcome and result-first headlines.
+- [Project Kickoff Meeting Agenda and Template](https://www.mrtylerwhite.com/letters/project-kickoff-meeting/): A project kickoff meeting agenda that forces real decisions in 60 minutes: the four questions to ask, who should be in the room, and what you leave with.
+- [Product Brief and Design Brief Template](https://www.mrtylerwhite.com/letters/product-brief-template/): A free product brief template plus the design brief questions that matter, so design gets pulled in before the decisions are made, not after.
+- [Cursor for Designers: Why I Left Figma Make](https://www.mrtylerwhite.com/letters/cursor-for-designers/): Why I switched from Figma Make to Cursor for real product prototypes: the credit burn, the spec-driven loop that replaced it, and when Figma still wins.
+- [PRD vs BRD: Key Differences and Which You Need](https://www.mrtylerwhite.com/letters/prd-vs-brd/): A BRD explains why the business wants it. A PRD explains what the product will do. See the differences side by side, and which one your team needs.
+- [UX Metrics That Make It Into the Exec Deck](https://www.mrtylerwhite.com/letters/ux-metrics/): The UX metrics and KPIs leadership cares about: adoption, retention, efficiency and revenue, plus how to estimate impact without perfect data.
+- [AI Prototyping Workflow for Product Designers](https://www.mrtylerwhite.com/letters/ai-prototyping-workflow/): A real AI prototyping workflow for product designers: load context, explore 4-5 directions to kill bad ideas fast, test in code, then polish. Prompt included.
 - [All Letters](https://www.mrtylerwhite.com/letters/): The full archive.
 
 ## Products and free resources

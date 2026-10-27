@@ -3,6 +3,7 @@ title: The PRD template I actually use (and how to fill it from one kickoff call
 seoTitle: PRD Template I Actually Use (Free, Copy-Paste)
 description: A free PRD template to copy and paste, plus how to fill it from one kickoff meeting so engineering gets a doc they'll actually read. Example included.
 subtitle: Most PRDs die because they're written after the decisions get made. Here's the template, and how to fill it while the room is still deciding.
+answer: The best PRD template is short: metadata, objective, problem and context, ROI analysis, scope and open questions. The trick is timing. Fill it in during the kickoff call, while the decisions are being made, not days later from memory.
 slug: prd-template
 date: 2026-10-08
 topic: kickoffs
@@ -78,7 +79,7 @@ These are the same sections the [Builder Kickoff™](/builder-kickoff/) skill ge
 
 Six sections. Most of them fit on one screen.
 
-If your PRD needs a table of contents, it's not a PRD anymore. It's a novel. And nobody on your team is reading a fucking novel before sprint planning.
+Even [Atlassian's PRD guide](<https://www.atlassian.com/agile/product-management/requirements>) lists "one page, one source" as the first benefit of a well-written PRD. If your PRD needs a table of contents, it's not a PRD anymore. It's a novel. And nobody on your team is reading a fucking novel before sprint planning.
 
 ## Why most PRDs go stale by Thursday
 

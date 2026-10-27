@@ -3,6 +3,7 @@ title: Product brief template (and the design brief questions that actually matt
 seoTitle: Product Brief and Design Brief Template
 description: A free product brief template plus the design brief questions that matter, so design gets pulled in before the decisions are made, not after.
 subtitle: The brief usually shows up as a Jira ticket with the decisions already baked in. Here's the template, and how to stop it arriving half-wrong.
+answer: A product brief answers one question before anyone commits time: is this problem worth solving, and what does solved look like? It covers the problem, why now, the outcome, the bet, constraints, what you're not doing and open questions. A brief decides whether to do the work. A PRD decides how.
 slug: product-brief-template
 date: 2026-07-01
 updated: 2026-10-15
@@ -33,7 +34,7 @@ A product brief answers one question before anyone commits time:
 
 **Is this problem worth solving, and what does solved look like?**
 
-It's lighter than a [PRD](/letters/what-is-a-prd/). A brief decides whether to do the work. A [PRD](/letters/prd-template/) decides how the work gets done. If you're fuzzy on how those two relate to the business case doc, I broke that down in [PRD vs BRD](/letters/prd-vs-brd/).
+It's lighter than a [PRD](/letters/what-is-a-prd/), and that's the point. Even [Atlassian's PRD guide](<https://www.atlassian.com/agile/product-management/requirements>) pushes product owners to stay at the level of higher-level requirements and leave implementation details to the team. A brief sits one step above that. It decides whether to do the work. A [PRD](/letters/prd-template/) decides how the work gets done. If you're fuzzy on how those two relate to the business case doc, I broke that down in [PRD vs BRD](/letters/prd-vs-brd/).
 
 ## The product brief template (copy and paste)
 

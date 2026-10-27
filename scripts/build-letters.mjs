@@ -827,6 +827,49 @@ function tile(post, cls, eager = false) {
     : `<span class="${cls} letters-tile letters-tile--${post.topic}" aria-hidden="true"><span>${esc(TOPICS[post.topic])}</span></span>`;
 }
 
+
+// ── AI-search helpers ────────────────────────────────────────────────────
+// Author identity, shared by every letter's schema so AI search can tie the byline to one person.
+const AUTHOR = {
+  "@type": "Person",
+  name: "Tyler White",
+  url: `${SITE}/about/`,
+  jobTitle: "Director of Product Design",
+  sameAs: ["https://www.linkedin.com/in/mrtylerwhite/", "https://x.com/mrtylerwhite", "https://www.instagram.com/mrtylerwhite"],
+};
+const plainText = (md) =>
+  md
+    .replace(/<!--[\s\S]*?-->/g, "")
+    .replace(/```[\s\S]*?```/g, "")
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, "")
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, "$1")
+    .replace(/[*_`]+/g, "")
+    .replace(/^\s*[-*]\s+/gm, "")
+    .replace(/^\s*\d+\.\s+/gm, "")
+    .replace(/\s+/g, " ")
+    .trim();
+// The "## … FAQ" section, split on "### question" headings, becomes FAQPage schema.
+function faqSchema(post) {
+  const m = post.body.match(/^##\s+[^\n]*FAQ[^\n]*\n([\s\S]*?)(?=^##\s|$(?![\s\S]))/m);
+  if (!m) return null;
+  const items = [...m[1].matchAll(/^###\s+(.+)\n([\s\S]*?)(?=^###\s|$(?![\s\S]))/gm)]
+    .map(([, q, a]) => ({ q: plainText(q), a: plainText(a) }))
+    .filter((x) => x.q && x.a);
+  if (items.length < 2) return null;
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((x) => ({ "@type": "Question", name: x.q, acceptedAnswer: { "@type": "Answer", text: x.a } })),
+  };
+}
+const ANSWER_CSS = `  <style>
+  .letter-answer{margin:24px 0 0;padding:16px 20px;border-radius:var(--ds-radius-md,12px);background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.075),0 1px 3px rgba(0,0,0,.05);border-left:3px solid #C59060}
+  .letter-answer__label{margin:0 0 6px;font-family:var(--ds-font-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#8a5a2e}
+  #page-container .letter-answer p.letter-answer__text{margin:0;font-size:17px;line-height:1.55;color:var(--ds-color-text-strong,#09090b)}
+  @media (max-width:600px){#page-container .letter-answer p.letter-answer__text{font-size:16px}}
+  </style>
+`;
+
 function postPage(post, related) {
   const { html, toc, videos } = renderBody(post);
   const canonical = post.url;
@@ -843,7 +886,8 @@ function postPage(post, related) {
       url: canonical,
       keywords: post.keyword || undefined,
       wordCount: post.words,
-      author: { "@type": "Person", name: "Tyler White", url: `${SITE}/about/`, jobTitle: "Director of Product Design" },
+      abstract: post.answer ? plainText(post.answer) : undefined,
+      author: AUTHOR,
       publisher: { "@type": "Person", name: "Tyler White", url: `${SITE}/` },
     },
     {
@@ -856,7 +900,8 @@ function postPage(post, related) {
       ],
     },
     ...videos.map(videoSchema),
-  ];
+    faqSchema(post),
+  ].filter(Boolean);
 
   const tocHtml = toc.length >= 3
     ? `<nav class="letter-toc" aria-label="In this letter">
@@ -880,7 +925,7 @@ function postPage(post, related) {
     ogType: "article",
     noindex: post.draft === true,
     jsonld,
-    extraHead: coverPreload(post.cover) + (html.includes("data-code-block") || html.includes("tk-invc")
+    extraHead: coverPreload(post.cover) + (post.answer ? ANSWER_CSS : "") + (html.includes("data-code-block") || html.includes("tk-invc")
       ? `  <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&display=swap" />
@@ -904,6 +949,7 @@ ${shellOpen("letters-page letter-page")}
       </div>
     </header>
     ${post.cover ? coverPicture(post.cover, 'class="letter__cover" alt="" width="1200" height="630" fetchpriority="high" decoding="async"') : ""}
+    ${post.answer ? `<aside class="letter-answer" aria-label="The short answer"><p class="letter-answer__label">The short answer</p><p class="letter-answer__text">${marked.parseInline(post.answer)}</p></aside>` : ""}
     ${tocHtml}
     <div class="letter__body">
 ${html}
@@ -1151,6 +1197,17 @@ for (const post of all) {
 write("letters/index.html", indexPage(published));
 write("letters/feed.xml", feed(published));
 write("letters-sitemap.xml", sitemap(published));
+// llms.txt: keep the "## Letters" section in sync with the published letters (newest first).
+{
+  const llmsPath = path.join(ROOT, "llms.txt");
+  if (fs.existsSync(llmsPath)) {
+    const llms = fs.readFileSync(llmsPath, "utf8");
+    const lines = published.map((p) => `- [${p.seoTitle}](${p.url}): ${p.description}`);
+    lines.push(`- [All Letters](${SITE}/letters/): The full archive.`);
+    const next = llms.replace(/## Letters\n[\s\S]*?(?=\n## )/, `## Letters\n\n${lines.join("\n")}\n`);
+    if (next !== llms) { fs.writeFileSync(llmsPath, next); console.log("  updated → llms.txt"); }
+  }
+}
 registerSitemap("sitemap.xml");
 registerSitemap("sitemap_index.xml");
 

@@ -3,6 +3,7 @@ title: The UX case study template I'd use (built around decisions, not screens)
 seoTitle: UX Case Study Template Built Around Decisions
 description: A free UX case study template structured around decisions and outcomes, plus five questions that pressure-test the story before your next portfolio review.
 subtitle: Copy the template, answer five uncomfortable questions, and you'll have the case study. The screens come last.
+answer: A good UX case study template is built around one decision: the decision, short context, the constraint that made it hard, what you tried first, what went wrong, what you changed, what happened after and what you'd do differently.
 slug: ux-case-study-template
 date: 2026-08-19
 updated: 2026-10-15
@@ -19,7 +20,7 @@ Context. Problem. Research. Wireframes. Final design. Results.
 
 Fill that in and you get a museum tour. Every room in order. Nobody remembers any of them.
 
-The template below is different on purpose. It's built around the decisions you made, because that's what hiring managers and stakeholders are actually trying to judge. Not whether you did research.
+The template below is different on purpose. It's built around the decisions you made, because that's what hiring managers and stakeholders are actually trying to judge. [Nielsen Norman Group's portfolio advice](<https://www.nngroup.com/videos/ux-portfolios/>) puts it simply: tell a story for the hiring manager. Not whether you did research.
 
 Whether they'd trust your judgment in the messy middle of a real project.
 

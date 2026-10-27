@@ -3,6 +3,7 @@ title: UX metrics that actually make it into the exec deck
 seoTitle: UX Metrics That Make It Into the Exec Deck
 description: The UX metrics and KPIs leadership cares about: adoption, retention, efficiency and revenue, plus how to estimate impact without perfect data.
 subtitle: Anyone can ship now. The question is whether it made money. Here are the UX metrics that answer that, and the math to use when you don't have clean data.
+answer: The UX metrics leadership cares about fall into four groups: adoption, retention, efficiency and revenue. Tie every metric you report to one of them, set one or two KPIs with a baseline before you build, and use conservative math when the data isn't clean.
 slug: ux-metrics
 date: 2026-04-01
 updated: 2026-10-15
@@ -45,6 +46,8 @@ The fix isn't more metrics. It's translating the ones you have into the four thi
 | **Revenue** | Is it making or protecting money? | Conversion rate, trial to paid, expansion, deals unblocked |
 
 Every UX metric you track should sit in one of those rows. If it doesn't, ask what it's actually proving.
+
+This isn't a new idea. Google's [HEART framework](<https://research.google/pubs/measuring-the-user-experience-on-a-large-scale-user-centered-metrics-for-web-applications/>) (Rodden, Hutchinson and Fu, CHI 2010) groups user experience metrics into happiness, engagement, adoption, retention and task success, and maps each one back to a product goal. Same move. Start from the goal, then pick the number.
 
 <!-- video:1zJGFE2hFS8 -->
 

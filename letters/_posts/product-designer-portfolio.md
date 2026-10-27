@@ -3,6 +3,7 @@ title: The product designer portfolio homepage structure that sells before anyon
 seoTitle: Product Designer Portfolio Homepage That Sells
 description: How to structure a product designer portfolio homepage: a one-line hero, a proof strip, case studies sorted by outcome and result-first headlines.
 subtitle: Most portfolio homepages are a highlight reel. Yours should be a filter. Here's the structure, section by section.
+answer: A product designer portfolio homepage should work as a filter, not a highlight reel: a one-line hero, a proof strip of numbers, case studies sorted by outcome, result-first headlines, the same rhythm inside every case study, and one clear next step at the end.
 slug: product-designer-portfolio
 date: 2026-08-12
 updated: 2026-10-22
@@ -19,7 +20,7 @@ Mine is a filter.
 
 Different job. Different structure.
 
-A highlight reel tries to show everything you've done. A filter tells the right person, in a few seconds, that you solve their problem, and gives everyone else permission to leave. That sounds harsh.
+A highlight reel tries to show everything you've done. A filter tells the right person, in a few seconds, that you solve their problem, and gives everyone else permission to leave. That sounds harsh. It's also what [Nielsen Norman Group tells portfolio builders](<https://www.nngroup.com/videos/ux-portfolios/>): tell a story for your user, and your user is the hiring manager.
 
 It's actually the kindest thing you can do for a hiring manager skimming ten portfolios at the end of a long day.
 

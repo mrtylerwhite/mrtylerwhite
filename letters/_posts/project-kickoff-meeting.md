@@ -3,6 +3,7 @@ title: How to run a project kickoff meeting that actually kicks something off
 seoTitle: Project Kickoff Meeting Agenda and Template
 description: A project kickoff meeting agenda that forces real decisions in 60 minutes: the four questions to ask, who should be in the room, and what you leave with.
 subtitle: Most kickoffs are expensive brainstorms. Here's the agenda that makes the room decide, and the outputs you should have before anyone opens Figma.
+answer: A project kickoff meeting has to answer four questions: what are we solving, what are we not solving, how much time do we really have, and which tradeoffs will we accept. Run it as a 60-minute, timeboxed agenda and leave with the decisions written down.
 slug: project-kickoff-meeting
 date: 2026-07-08
 updated: 2026-10-15
@@ -40,6 +41,8 @@ Nobody makes the hard call, because keeping options open feels safer in the mome
 So design moves forward. Engineering builds. And a few weeks later everyone's circling back to questions that should have been answered on day one.
 
 **A kickoff that ends in "cool, we're aligned" usually means you agreed to keep talking.**
+
+Even good kickoff templates lean this way. [Atlassian's project kickoff play](<https://www.atlassian.com/team-playbook/plays/project-kickoff>) gives 60 of its 90 minutes to refining the vision, mission and what "done" means. Useful for alignment. It still doesn't force the scope and tradeoff calls.
 
 ## The four questions every kickoff has to answer
 

@@ -83,7 +83,7 @@ The trick is putting the "why" inside the PRD instead of in a separate file:
 - **ROI analysis** covers the bet, the team cost, and the decision between options
 - **Out of scope** covers what the business agreed not to pay for
 
-That's the structure in my template. One doc. One source of truth. Business case and requirements can't drift apart because they're on the same page.
+That's the structure in my template. One doc. One source of truth. (That's also how [Atlassian describes a PRD](<https://www.atlassian.com/agile/product-management/requirements>): a single source of truth for cross-functional teams.) Business case and requirements can't drift apart because they're on the same page.
 
 **Use a separate BRD** when you genuinely need approval before any product work starts. Big budget decisions, regulated industries, new product lines, or anything that needs a finance sign-off before a team gets assigned.
 

@@ -3,6 +3,7 @@ title: "Design rationale: how to explain design decisions without defending them
 seoTitle: Design Rationale: Explaining Design Decisions
 description: How to write and present design rationale: which calls aren't up for debate, how to document the ones that are, and a decision record format to reuse.
 subtitle: Engineers don't justify their linter in a design review. Some design calls deserve the same treatment. The rest need one clear line, not a slide deck.
+answer: Design rationale is the short, written reason behind a design decision. Treat standards like accessibility as settled and don't re-argue them. For real bets, write one line on the tradeoff, the evidence and what would change your mind, and keep it in the PRD and the case study.
 slug: design-rationale
 date: 2026-09-16
 updated: 2026-10-15
@@ -54,6 +55,8 @@ Most design arguments go badly because a standard gets treated like a bet. You e
 And sometimes it's the opposite: a genuine bet gets presented like a standard, and the room feels steamrolled. That's when you need real rationale.
 
 ## How to write design rationale for the bets
+
+Engineering solved this years ago. An [architecture decision record](<https://martinfowler.com/bliki/ArchitectureDecisionRecord.html>), a term Michael Nygard coined in 2011, is a short document that captures one decision, its context and the tradeoffs behind it. Design bets deserve the same.
 
 Keep it short enough that someone will actually read it. This format works:
 

@@ -3,6 +3,7 @@ title: "The ROI of design: how to calculate it for one feature, not the whole in
 seoTitle: ROI of Design: How to Actually Calculate It
 description: Calculate the ROI of design for a real feature: the formula, worked examples for revenue, retention and cost, and a free calculator to run your own.
 subtitle: Every article on design ROI quotes the same industry stats. Your CFO doesn't care about 300 other companies. Here's the math for the thing you actually shipped.
+answer: The ROI of design is the money a design decision makes, keeps or saves, compared with what the work cost: (value created − cost of the work) ÷ cost of the work. Pick the lever (revenue, retention or cost), record the baseline before you build, then measure the change.
 slug: roi-of-design
 date: 2026-10-26
 updated: 2026-10-27

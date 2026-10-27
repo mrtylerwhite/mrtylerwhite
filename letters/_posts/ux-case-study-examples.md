@@ -3,6 +3,7 @@ title: UX case study examples that prove what the work was worth
 seoTitle: UX Case Study Examples That Prove Impact
 description: What strong UX case study examples have in common: a structure built around decisions, results placed where they land, and a slide about what went wrong.
 subtitle: Most case studies describe what got built. The ones that land show what changed because of it. Here's what separates them, with before-and-after examples.
+answer: Strong UX case study examples are organized around decisions, not the timeline. The headline is the result, the screens are evidence, there's an honest section on what went wrong, and the number appears where it explains the decision.
 slug: ux-case-study-examples
 date: 2026-08-26
 updated: 2026-10-15
@@ -29,6 +30,8 @@ All the shit that mattered, delivered in the least useful order possible.
 I've looked at a lot of UX case studies. The good ones aren't better designed. They're better structured. Here's what they have in common.
 
 ## What strong UX case study examples have in common
+
+[Nielsen Norman Group's portfolio advice](<https://www.nngroup.com/videos/ux-portfolios/>) boils it down to one line: tell a story for your user, the hiring manager. Here's what that looks like in practice.
 
 **1. They're organized around decisions, not the timeline.**
 

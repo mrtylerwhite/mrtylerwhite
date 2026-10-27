@@ -3,6 +3,7 @@ title: The AI prototyping workflow I actually use (and where it breaks)
 seoTitle: AI Prototyping Workflow for Product Designers
 description: A real AI prototyping workflow for product designers: load context, explore 4-5 directions to kill bad ideas fast, test in code, then polish. Prompt included.
 subtitle: Speed doesn't let you skip the fundamentals. It tells you, fast, which ones were real. Here's the workflow, the prompt, and the places it'll burn you.
+answer: AI prototyping works when you load context before asking for anything, generate four or five directions in separate threads, stress test the survivors, build the risky part in real code, then polish in Figma. The tool matters less than the order: context, exploration, real testing, polish.
 slug: ai-prototyping-workflow
 date: 2026-03-25
 updated: 2026-10-15
@@ -169,7 +170,7 @@ For logic-heavy features, it already has for me. Wireframes weren't proving anyt
 
 ### How do I stop AI from making things up?
 
-Load real context first, tell it to wait before generating, ask it to flag assumptions, and check everything beyond simple UI against the actual product.
+Load real context first, tell it to wait before generating, ask it to flag assumptions, and check everything beyond simple UI against the actual product. Anthropic's own [guide to reducing hallucinations](<https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-hallucinations>) recommends the same basics: let the model say "I don't know," ground it in real documents and ask it to back claims with quotes.
 
 ### How long does this workflow take?
 

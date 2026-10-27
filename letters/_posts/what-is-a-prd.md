@@ -16,6 +16,8 @@ popular: true
 
 That's the textbook answer. Here's the useful one.
 
+[Atlassian's definition](<https://www.atlassian.com/agile/product-management/requirements>) is a good baseline: a PRD sets out the product's purpose, key features, user needs and success criteria, and acts as a single source of truth for the team.
+
 A good PRD is a record of decisions that were already made, with the people who made them in the room.
 
 A bad PRD is a list of things somebody hopes will be true. It gets written after the meeting, from memory, by whoever lost the coin toss. Then engineering reads it, finds three things nobody agreed to, and the real decisions move into Slack.

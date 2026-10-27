@@ -3,6 +3,7 @@ title: Cursor for designers: why I left Figma Make for real product work
 seoTitle: Cursor for Designers: Why I Left Figma Make
 description: Why I switched from Figma Make to Cursor for real product prototypes: the credit burn, the spec-driven loop that replaced it, and when Figma still wins.
 subtitle: Figma Make is great until the thing has to actually work. Here's the loop I use instead, and what building in code exposed that mocks never did.
+answer: Cursor beats Figma Make for real product prototypes because you build on real logic, not just screens. Talk the product out, write a PRD as the source of truth, build one piece at a time, use it and fix what breaks. Figma still owns visual polish and the design system.
 slug: cursor-for-designers
 date: 2026-04-22
 updated: 2026-10-15
@@ -53,7 +54,7 @@ So the tool didn't fail me. My process did. That's what forced the switch to Cur
 
 **Step 5: Fix what breaks.** Then go back to step 3.
 
-That's spec-driven development, and for real products it's a better loop. No fake certainty. Just truth. Truth is uncomfortable at first. But it's way faster.
+That's [spec-driven development](<https://github.blog/ai-and-ml/generative-ai/spec-driven-development-with-ai-get-started-with-a-new-open-source-toolkit/>), where the spec becomes the source of truth your tools and AI agents build and test against. For real products it's a better loop. No fake certainty. Just truth. Truth is uncomfortable at first. But it's way faster.
 
 ## Everything broke once it was real
 
