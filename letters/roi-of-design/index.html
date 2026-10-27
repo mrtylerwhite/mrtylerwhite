@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ROI of Design: How to Actually Calculate It | Tyler White</title>
+  <meta name="description" content="How to calculate the ROI of design for a real feature: the formula, worked examples for revenue, retention and cost, and the baseline to set first." />
+  <link rel="canonical" href="https://www.mrtylerwhite.com/letters/roi-of-design/" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Mr. Tyler White" />
+  <meta property="og:title" content="ROI of Design: How to Actually Calculate It | Tyler White" />
+  <meta property="og:description" content="How to calculate the ROI of design for a real feature: the formula, worked examples for revenue, retention and cost, and the baseline to set first." />
+  <meta property="og:url" content="https://www.mrtylerwhite.com/letters/roi-of-design/" />
+  <meta property="og:image" content="https://www.mrtylerwhite.com/assets/images/og-home.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@mrtylerwhite" />
+  <meta name="twitter:title" content="ROI of Design: How to Actually Calculate It | Tyler White" />
+  <meta name="twitter:description" content="How to calculate the ROI of design for a real feature: the formula, worked examples for revenue, retention and cost, and the baseline to set first." />
+  <meta name="twitter:image" content="https://www.mrtylerwhite.com/assets/images/og-home.jpg" />
+  <link rel="alternate" type="application/rss+xml" title="Letters · Tyler White" href="https://www.mrtylerwhite.com/letters/feed.xml" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"The ROI of design: how to calculate it for one feature, not the whole industry","description":"How to calculate the ROI of design for a real feature: the formula, worked examples for revenue, retention and cost, and the baseline to set first.","datePublished":"2026-10-26","dateModified":"2026-10-26","image":"https://www.mrtylerwhite.com/assets/images/og-home.jpg","mainEntityOfPage":"https://www.mrtylerwhite.com/letters/roi-of-design/","url":"https://www.mrtylerwhite.com/letters/roi-of-design/","keywords":"roi of design","wordCount":1456,"author":{"@type":"Person","name":"Tyler White","url":"https://www.mrtylerwhite.com/about/","jobTitle":"Director of Product Design"},"publisher":{"@type":"Person","name":"Tyler White","url":"https://www.mrtylerwhite.com/"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.mrtylerwhite.com/"},{"@type":"ListItem","position":2,"name":"Letters","item":"https://www.mrtylerwhite.com/letters/"},{"@type":"ListItem","position":3,"name":"The ROI of design: how to calculate it for one feature, not the whole industry","item":"https://www.mrtylerwhite.com/letters/roi-of-design/"}]}</script>
+
+  <link rel="icon" href="/wp-content/uploads/2025/05/cropped-Favicon-2-32x32.png" sizes="32x32" />
+  <link rel="icon" href="/wp-content/uploads/2025/05/cropped-Favicon-2-192x192.png" sizes="192x192" />
+  <link rel="apple-touch-icon" href="/wp-content/uploads/2025/05/cropped-Favicon-2-180x180.png" />
+
+  <link rel="preconnect" href="https://use.typekit.net" crossorigin />
+  <link rel="preconnect" href="https://p.typekit.net" crossorigin />
+  <link rel="preload" as="style" href="https://use.typekit.net/fks5kmr.css" fetchpriority="low" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="https://use.typekit.net/fks5kmr.css" /></noscript>
+  <link rel="stylesheet" href="/assets/css/dist/letters.critical.css?v=6638ab8e" />
+  <link rel="stylesheet" href="/assets/css/dist/letters.bundle.css?v=4de5005f" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="/assets/css/dist/letters.bundle.css?v=4de5005f" /></noscript>
+  <link rel="stylesheet" href="/assets/css/system/site-footer.css?v=2a5d33c5" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="/assets/css/system/site-footer.css?v=2a5d33c5" /></noscript>
+<!-- partial:head -->
+<style id="page-transitions">
+/* Page transitions (details.so port). Inline on purpose: Chrome decides whether
+   to run a cross-page transition as the new page first renders, and an opt-in
+   inside an external stylesheet is sometimes not applied yet, so the transition
+   was skipped at random. Text entrance (.ds-enter) lives in page-transitions.css. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.5s;
+  animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+/* Nav stays in place while the page crossfades. Named on the glass pill, and the
+   group re-applies the glass blur, which a snapshot can't capture. */
+#main-header .et_menu_container,
+.fck-site-header .fck-nav {
+  view-transition-name: site-header;
+}
+::view-transition-group(site-header) {
+  animation-duration: 0.5s;
+  animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border-radius: 10px;
+  -webkit-backdrop-filter: blur(20px) saturate(1.8);
+  backdrop-filter: blur(20px) saturate(1.8);
+}
+</style>
+<!-- /partial:head -->
+</head>
+<body class="letters-page letter-page ds-standalone-nav et_fixed_nav et_show_nav et_header_style_left et_pb_svg_logo et_divi_100_custom_hamburger_menu et_divi_100_custom_hamburger_menu--style-2 et_divi_100_custom_hamburger_menu--type-1 et_button_no_icon et_button_custom_icon et_pb_button_helper_class">
+<div id="page-container">
+<!-- partial:header -->
+<header id="main-header" data-height-onload="30">
+			<div class="container clearfix et_menu_container">
+							<div class="logo_container">
+					<span class="logo_helper"></span>
+					<a href="/">
+						<img src="/wp-content/uploads/2025/12/logo-mrtylerwhite-1.svg" width="69" height="20" alt="Mr. Tyler White" id="logo" data-height-percentage="34" />
+					</a>
+				</div>
+							<div id="et-top-navigation" data-height="30" data-fixed-height="40">
+											<nav id="top-menu-nav">
+						<ul id="top-menu" class="nav"><li id="menu-item-30" class="anim-link menu-item menu-item-type-post_type menu-item-object-page menu-item-30"><a href="/about/">About Me</a></li>
+<li id="menu-item-3458" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3458"><a href="/letters/">Letters</a></li>
+<li id="menu-item-3464" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3464"><a href="https://www.designtablepodcast.com/" target="_blank" rel="noopener noreferrer">Podcast</a></li><li id="menu-item-4000" class="site-nav-workshop menu-item menu-item-type-custom menu-item-object-custom menu-item-4000"><a href="/builder-kickoff/">Builder Kickoff™</a></li>
+
+<li id="menu-item-54" class="et_pb_button menu-item menu-item-type-custom menu-item-object-custom menu-item-54"><a href="/roi-case-study-template/" data-track-event="case_study_kit_cta_click" data-track-location="nav">The 15 Minute Case Study</a></li>
+</ul>						</nav>
+
+
+
+
+					<div id="et_mobile_nav_menu">
+				<div class="mobile_nav closed">
+					<span class="select_page">Select Page</span>
+					<button type="button" class="mobile_menu_bar mobile_menu_bar_toggle" aria-label="Open menu" aria-controls="mobile_menu" aria-expanded="false"></button>
+				</div>
+			</div>				</div> <!-- #et-top-navigation -->
+			</div> <!-- .container -->
+					</header>
+<!-- /partial:header -->
+<main class="letter" id="main-content">
+  <article class="letter__article">
+    <header class="letter__header">
+      <a class="letter__back ds-enter" href="/letters/" data-track-event="letters_back_click"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>All letters</a>
+      <h1 class="letter__title ds-enter ds-enter-d1">The ROI of design: how to calculate it for one feature, not the whole industry</h1>
+      <p class="letter__subtitle ds-enter ds-enter-d1">Every article on design ROI quotes the same industry stats. Your CFO doesn't care about 300 other companies. Here's the math for the thing you actually shipped.</p>
+      <div class="letter__byline ds-enter ds-enter-d2">
+        <img class="letter__avatar" src="/assets/images/tyler-white-avatar.webp" alt="" width="36" height="36" />
+        <p><a href="/about/" rel="author">Tyler White</a><time datetime="2026-10-26">Oct 26, 2026</time></p>
+      </div>
+      <div class="letter__bar ds-enter ds-enter-d2">
+        <span>6 min read · <a href="/letters/#case-studies">Case Studies</a></span>
+        <button type="button" class="letter__share" data-share-url="https://www.mrtylerwhite.com/letters/roi-of-design/">Share</button>
+      </div>
+    </header>
+    
+    <nav class="letter-toc" aria-label="In this letter">
+        <p class="letter-toc__label">In this letter</p>
+        <ol><li><a href="#what-the-roi-of-design-actually-means">What the ROI of design actually means</a></li><li><a href="#why-the-industry-stats-dont-help-you">Why the industry stats don&#39;t help you</a></li><li><a href="#the-three-places-design-roi-shows-up">The three places design ROI shows up</a></li><li><a href="#how-to-calculate-the-roi-of-design-three-worked-examples">How to calculate the ROI of design: three worked examples</a></li><li><a href="#set-the-baseline-before-you-build">Set the baseline before you build</a></li><li><a href="#what-if-you-dont-have-clean-data">What if you don&#39;t have clean data?</a></li><li><a href="#how-to-present-the-roi-of-design-to-leadership">How to present the ROI of design to leadership</a></li><li><a href="#put-the-number-where-it-counts">Put the number where it counts</a></li><li><a href="#roi-of-design-faq">ROI of design FAQ</a></li></ol>
+      </nav>
+    <div class="letter__body">
+<p>Every article about the ROI of design quotes the same stat.</p>
+<p>Every $1 invested in UX returns $100.</p>
+<p>Try finding the original study. I&#39;ll wait.</p>
+<p>Even if it were true, it wouldn&#39;t help you. Nobody in a budget meeting is approving your project because of an industry average. They want to know what <em>this</em> feature did, or will do, for <em>this</em> business.</p>
+<p>That&#39;s the only ROI of design that matters. And you can calculate it with a spreadsheet and some honesty.</p>
+<h2 id="what-the-roi-of-design-actually-means">What the ROI of design actually means</h2>
+<p>The ROI of design is the return the business gets from a design decision, measured in money. Not &quot;better experience.&quot; Not &quot;users loved it.&quot; Money gained, money kept, or money saved.</p>
+<p>The formula is the same one finance uses for everything else:</p>
+<p><strong>ROI = (value created − cost of the work) ÷ cost of the work</strong></p>
+<p>If a redesign costs $10,000 in design and engineering time and creates $30,000 in value over a year, the ROI is 200%.</p>
+<p>That&#39;s it. The math is easy. The hard part is getting honest numbers for the two inputs, and having them before anyone asks.</p>
+<h2 id="why-the-industry-stats-dont-help-you">Why the industry stats don&#39;t help you</h2>
+<p>There is real research on this. <a href="https://www.mckinsey.com/capabilities/growth-marketing-and-sales/our-insights/the-business-value-of-design" target="_blank" rel="noopener noreferrer">McKinsey tracked 300 companies over five years</a> and found the top quartile on design grew revenue 32 percentage points faster than their industry peers.</p>
+<p>Great. Put it on a poster.</p>
+<p>It still doesn&#39;t answer the question your VP is actually asking, which is &quot;should we spend two sprints on this?&quot; A study about other companies is a reason to care about design in general. It&#39;s not a reason to fund your project in particular.</p>
+<p>Here&#39;s the uncomfortable part. Most designers can <em>describe</em> the ROI of design. Very few can <em>produce</em> it for their own work. Describing it gets you a nod in the meeting. Producing it gets you the budget.</p>
+<h2 id="the-three-places-design-roi-shows-up">The three places design ROI shows up</h2>
+<p>Every design decision that matters moves money in one of three ways.</p>
+<div class="letter-table"><div class="letter-table__card"><div class="letter-table__dots" aria-hidden="true"><span></span><span></span><span></span></div><div class="letter-table__scroll"><table>
+<thead>
+<tr>
+<th>Lever</th>
+<th>What changes</th>
+<th>Metrics that show it</th>
+<th>How to put a dollar value on it</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Revenue</strong></td>
+<td>More people buy, upgrade or expand</td>
+<td>Trial to paid, conversion rate, expansion, deals unblocked</td>
+<td>New customers × average contract value</td>
+</tr>
+<tr>
+<td><strong>Retention</strong></td>
+<td>Fewer people leave</td>
+<td>Churn rate, repeat usage, renewal rate</td>
+<td>Customers kept × average contract value</td>
+</tr>
+<tr>
+<td><strong>Cost</strong></td>
+<td>It&#39;s cheaper to run</td>
+<td>Support tickets, onboarding time, demo time, task time</td>
+<td>Hours saved × loaded hourly cost</td>
+</tr>
+</tbody></table></div></div></div>
+<p>If you can&#39;t put your project in one of those rows, it&#39;s worth asking whether the project matters.</p>
+<h2 id="how-to-calculate-the-roi-of-design-three-worked-examples">How to calculate the ROI of design: three worked examples</h2>
+<p>The numbers below are illustrative. Swap in yours. The structure is the part to steal.</p>
+<h3 id="example-1-cost-a-confusing-billing-screen">Example 1: cost (a confusing billing screen)</h3>
+<ul>
+<li>Support gets <strong>120 tickets a month</strong> about the billing screen</li>
+<li>Each takes <strong>12 minutes</strong> to resolve</li>
+<li>That&#39;s <strong>24 hours a month</strong> of support time</li>
+<li>At a loaded cost of <strong>$40 an hour</strong>, that&#39;s <strong>$960 a month</strong></li>
+</ul>
+<p>The redesign cuts those tickets in half. That&#39;s <strong>$480 a month</strong>, or <strong>$5,760 a year</strong>, saved.</p>
+<p>The work cost about <strong>$8,000</strong> in design and engineering time.</p>
+<p>Year-one ROI: ($5,760 − $8,000) ÷ $8,000 = <strong>−28%</strong>.</p>
+<p>Negative. Over two years it&#39;s <strong>+44%</strong>, and it pays for itself in about 17 months.</p>
+<p>Say that out loud. Not every good redesign pays back in a quarter, and the designer who admits it is the one whose next number gets believed.</p>
+<h3 id="example-2-revenue-a-trial-onboarding-flow">Example 2: revenue (a trial onboarding flow)</h3>
+<ul>
+<li><strong>1,000 trials</strong> start every month</li>
+<li><strong>8%</strong> convert to paid</li>
+<li>Average contract value is <strong>$1,200 a year</strong></li>
+</ul>
+<p>The new onboarding flow moves conversion from 8% to 9%. One point.</p>
+<p>That&#39;s <strong>10 extra customers a month</strong>, or <strong>$12,000 in new annual recurring revenue</strong> from every monthly cohort. Over a year of cohorts, that&#39;s <strong>$144,000 in ARR</strong>.</p>
+<p>The work cost <strong>$15,000</strong>.</p>
+<p>ROI: ($144,000 − $15,000) ÷ $15,000 = <strong>860%</strong>.</p>
+<p>A one-point lift sounds boring in a design review. It doesn&#39;t sound boring in a revenue meeting.</p>
+<h3 id="example-3-retention-fixing-the-first-week">Example 3: retention (fixing the first week)</h3>
+<ul>
+<li><strong>2,000 customers</strong> at <strong>$1,200 a year</strong></li>
+<li>Monthly churn is <strong>2%</strong>, so <strong>40 customers</strong> leave every month</li>
+<li>Exit surveys keep naming the same setup step</li>
+</ul>
+<p>The fix drops churn to <strong>1.8%</strong>. That&#39;s <strong>4 fewer customers lost a month</strong>, or <strong>$4,800 in ARR kept</strong> every month. <strong>$57,600 a year.</strong></p>
+<p>Nobody throws a launch party for customers who didn&#39;t leave. Finance notices anyway.</p>
+<h2 id="set-the-baseline-before-you-build">Set the baseline before you build</h2>
+<p>This is where most ROI of design calculations die.</p>
+<p>The feature ships. Someone asks what it did. You go looking for the &quot;before&quot; number and find out nobody wrote it down. Now you&#39;re reverse-engineering a baseline from memory and vibes.</p>
+<p>That&#39;s not proof. That&#39;s a vibe.</p>
+<p>The fix is boring and it works: agree on the metric, the baseline and the target <strong>at kickoff</strong>, before anyone opens Figma. Write them into the success metric section of the PRD. Here&#39;s <a href="/letters/prd-template/">the PRD template I use</a>, and <a href="/letters/project-kickoff-meeting/">the kickoff agenda</a> that forces the room to pick a number.</p>
+<p>If you only remember one thing from this letter, make it this one. <strong>You can&#39;t calculate a return on something you never measured the start of.</strong></p>
+<aside class="letter-signup letter-signup--float" aria-label="Newsletter" data-signup-float>
+  <div class="letter-signup__float" aria-hidden="true"><span class="letter-signup__bubble letter-signup__bubble--1" data-depth="0.6"><img src="/assets/images/readers/nick-groeneveld.webp" alt="" width="96" height="96" loading="lazy" decoding="async" /></span><span class="letter-signup__bubble letter-signup__bubble--2" data-depth="1"><img src="/assets/images/readers/stav-lipman.webp" alt="" width="96" height="96" loading="lazy" decoding="async" /></span><span class="letter-signup__bubble letter-signup__bubble--3" data-depth="0.8"><img src="/assets/images/readers/nidhi-arora.webp" alt="" width="96" height="96" loading="lazy" decoding="async" /></span><span class="letter-signup__bubble letter-signup__bubble--4" data-depth="0.45"><img src="/assets/images/readers/laila-albuquerque.webp" alt="" width="96" height="96" loading="lazy" decoding="async" /></span><span class="letter-signup__bubble letter-signup__bubble--5" data-depth="0.9"><img src="/assets/images/readers/aline-a.webp" alt="" width="96" height="96" loading="lazy" decoding="async" /></span></div>
+  <div class="letter-signup__inner">
+    <p class="ds-eyebrow letter-signup__eyebrow">The ROI of Design</p>
+    <p class="letter-signup__title">Get credit for the work you already ship.</p>
+    <p class="letter-signup__body">Every Saturday: how to turn your design work into numbers execs actually fund.</p>
+    <form class="letter-signup__form" data-newsletter-form data-track-location="letters_inline" method="post" action="https://app.kit.com/forms/4969496/subscriptions" novalidate>
+      <input type="hidden" name="fields[signup_source]" value="letters_inline" data-signup-source />
+      <label class="screen-reader-text" for="nl-letters_inline">Email address</label>
+      <div class="letter-signup__field">
+        <input id="nl-letters_inline" class="letter-signup__input" name="email_address" type="email" autocomplete="email" placeholder="Enter your email address..." required />
+        <button class="letter-signup__btn" type="submit">Subscribe <span aria-hidden="true">&rarr;</span></button>
+      </div>
+      <p class="letter-signup__error" data-newsletter-error role="alert" aria-live="polite"></p>
+    </form>
+  </div>
+</aside>
+
+<h2 id="what-if-you-dont-have-clean-data">What if you don&#39;t have clean data?</h2>
+<p>Most teams don&#39;t. You still have support logs, sales call notes, demo recordings and a calculator.</p>
+<p>Use conservative math, show every assumption, and label it as <strong>expected impact</strong>, not results. Leadership trusts a modest number with visible math far more than a big number with none. I walk through that approach, plus which metrics to stop leading with, in <a href="/letters/ux-metrics/">UX metrics that actually make it into the exec deck</a>.</p>
+<h2 id="how-to-present-the-roi-of-design-to-leadership">How to present the ROI of design to leadership</h2>
+<p>One sentence. Then the math.</p>
+<p><strong>&quot;We changed [X], which moved [metric] from [baseline] to [result], worth about [$] a year.&quot;</strong></p>
+<p>Then:</p>
+<ul>
+<li><strong>Show the math in one line.</strong> 10 customers × $1,200 × 12 months.</li>
+<li><strong>Name the assumption that could be wrong.</strong> It makes the rest of the number more believable, not less.</li>
+<li><strong>Say what it cost.</strong> Skip the cost side and you&#39;ve written a press release.</li>
+</ul>
+<p>One version gets you &quot;nice work.&quot; The other gets you the next project, and the budget to go with it.</p>
+<h2 id="put-the-number-where-it-counts">Put the number where it counts</h2>
+<p>Your ROI of design calculation is the strongest thing you can put in a case study, a portfolio or a promotion packet. Most designers have the raw material sitting in their project notes. They just never did the math.</p>
+<p><a href="/roi-case-study-template/">The 15 Minute Case Study</a> is a free Claude Skill that walks you through it: what changed, from what baseline, worth how much. Or it shows you that you never measured it. Either way, you&#39;ll know before your manager asks.</p>
+<p>If you want to set up the math before the next project instead of after, that&#39;s what <a href="/builder-kickoff/">Builder Kickoff™</a> is for. The decision, the metric and the ROI case get locked in the first session.</p>
+<h2 id="roi-of-design-faq">ROI of design FAQ</h2>
+<h3 id="what-is-the-roi-of-design">What is the ROI of design?</h3>
+<p>The financial return a business gets from a design decision: revenue gained, customers kept or costs saved, compared with what the design and build work cost. It&#39;s calculated with the standard ROI formula: (value − cost) ÷ cost.</p>
+<h3 id="how-do-you-measure-design-roi">How do you measure design ROI?</h3>
+<p>Pick the lever the work is supposed to move (revenue, retention or cost), record the baseline before you build, measure the same number after launch, and convert the difference to dollars using contract value or loaded hourly cost.</p>
+<h3 id="is-the-1-in-ux-returns-100-stat-real">Is the &quot;$1 in UX returns $100&quot; stat real?</h3>
+<p>It gets repeated constantly, usually without a source anyone can check. Don&#39;t use it in front of finance. A smaller number from your own product is far more persuasive than a big one from nowhere.</p>
+<h3 id="what-if-the-roi-of-a-design-project-is-negative">What if the ROI of a design project is negative?</h3>
+<p>Say so, and show when it pays back. Plenty of good work, like accessibility or reducing support load, pays back over years, not months. Being honest about the slow ones is what makes your big numbers credible.</p>
+<h3 id="how-long-does-it-take-to-see-design-roi">How long does it take to see design ROI?</h3>
+<p>Cost savings and conversion changes often show up within a month or two. Retention takes longer, usually a full quarter, because you need enough time to see who didn&#39;t leave.</p>
+<h3 id="who-should-calculate-the-roi-of-design-the-designer-or-the-pm">Who should calculate the ROI of design, the designer or the PM?</h3>
+<p>Whoever wants credit for the outcome. If you&#39;re a designer and you leave it to the PM, the PM tells the story, and the story usually doesn&#39;t mention design.</p>
+<aside class="letter-cta letter-cta--art" aria-label="Get the 15 Minute Case Study">
+  <div class="letter-cta__text">
+  <p class="ds-eyebrow letter-cta__eyebrow">Free Claude Skill</p>
+  <p class="letter-cta__title">Show what your last project was worth.</p>
+  <p class="letter-cta__body">The 15 Minute Case Study. Paste your rough notes, answer the hard questions, walk away with the business story.</p>
+  <a class="letter-cta__btn" href="/roi-case-study-template/" data-track-event="letters_cta_click" data-track-location="case-study">Get the 15 Minute Case Study &rarr;</a>
+  </div><div class="letter-cta__art" aria-hidden="true"><div class="cta-card cta-card--chat">
+    <div class="cta-card__head"><span class="cta-card__dot"></span>The 15 Minute Case Study</div>
+    <div class="cta-msg cta-msg--ai">What actually changed after you shipped?</div>
+    <div class="cta-msg cta-msg--you">Billing tickets dropped by about half.</div>
+    <div class="cta-msg cta-msg--ai">From what baseline, over how long?</div>
+    <div class="cta-step cta-step--done cta-step--result"><span class="cta-step__ico"><svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="cta-step__text"><span class="cta-step__title">Business story drafted</span><span class="cta-step__meta">Decision &middot; tradeoff &middot; result</span></span></div>
+  </div></div>
+</aside>
+
+    </div>
+    <footer class="letter__author">
+      <img class="letter__avatar letter__avatar--lg" src="/assets/images/tyler-white-avatar.webp" alt="" width="64" height="64" loading="lazy" />
+      <div>
+        <p class="letter__author-name">Tyler White</p>
+        <p class="letter__author-bio">Director of Product Design. 16 years in B2B SaaS, writing about how design decisions turn into revenue, retention and the seat at the table. Creator of Builder Kickoff™.</p>
+      </div>
+    </footer>
+  </article>
+  <section class="letters-related" aria-labelledby="related-heading">
+        <h2 id="related-heading" class="letters-label">Keep reading</h2>
+        <ul class="letters-list"><li class="letters-list__item" data-topic="case-studies">
+  <a class="letters-list__link" href="/letters/design-rationale/">
+    <span class="letters-list__text">
+      <span class="letters-list__title">Design rationale: how to explain design decisions without defending them</span>
+      <span class="letters-list__sub">Engineers don't justify their linter in a design review. Some design calls deserve the same treatment. The rest need one clear line, not a slide deck.</span>
+      <span class="letters-list__meta"><time datetime="2026-09-16">Sep 16, 2026</time> · Case Studies</span>
+    </span>
+    <picture><source srcset="/assets/images/letters/design-rationale-800.webp 800w, /assets/images/letters/design-rationale.webp 1536w" sizes="320px" type="image/webp" /><img src="/assets/images/letters/design-rationale.jpg" class="letters-list__thumb" alt="" loading="lazy" decoding="async" width="320" height="200" /></picture>
+  </a>
+</li><li class="letters-list__item" data-topic="case-studies">
+  <a class="letters-list__link" href="/letters/ux-case-study-examples/">
+    <span class="letters-list__text">
+      <span class="letters-list__title">UX case study examples that prove what the work was worth</span>
+      <span class="letters-list__sub">Most case studies describe what got built. The ones that land show what changed because of it. Here's what separates them, with before-and-after examples.</span>
+      <span class="letters-list__meta"><time datetime="2026-08-26">Aug 26, 2026</time> · Case Studies</span>
+    </span>
+    <picture><source srcset="/assets/images/letters/ux-case-study-examples-800.webp 800w, /assets/images/letters/ux-case-study-examples.webp 1536w" sizes="320px" type="image/webp" /><img src="/assets/images/letters/ux-case-study-examples.jpg" class="letters-list__thumb" alt="" loading="lazy" decoding="async" width="320" height="200" /></picture>
+  </a>
+</li><li class="letters-list__item" data-topic="case-studies">
+  <a class="letters-list__link" href="/letters/ux-case-study-template/">
+    <span class="letters-list__text">
+      <span class="letters-list__title">The UX case study template I'd use (built around decisions, not screens)</span>
+      <span class="letters-list__sub">Copy the template, answer five uncomfortable questions, and you'll have the case study. The screens come last.</span>
+      <span class="letters-list__meta"><time datetime="2026-08-19">Aug 19, 2026</time> · Case Studies</span>
+    </span>
+    <picture><source srcset="/assets/images/letters/ux-case-study-template-800.webp 800w, /assets/images/letters/ux-case-study-template.webp 1536w" sizes="320px" type="image/webp" /><img src="/assets/images/letters/ux-case-study-template.jpg" class="letters-list__thumb" alt="" loading="lazy" decoding="async" width="320" height="200" /></picture>
+  </a>
+</li></ul>
+      </section>
+</main>
+<script>
+(function () {
+  var btn = document.querySelector("[data-share-url]");
+  if (!btn) return;
+  btn.addEventListener("click", async function () {
+    var url = btn.getAttribute("data-share-url");
+    try {
+      if (navigator.share) { await navigator.share({ title: document.title, url: url }); return; }
+      await navigator.clipboard.writeText(url);
+      btn.textContent = "Link copied";
+      setTimeout(function () { btn.textContent = "Share"; }, 2000);
+    } catch (_) {}
+  });
+})();
+</script>
+<!-- partial:footer -->
+<footer class="site-footer" role="contentinfo">
+  <div class="site-footer__inner">
+    <div class="site-footer__brand">
+      <img class="site-footer__wordmark" src="/wp-content/uploads/2025/12/logo-mrtylerwhite-1.svg" width="69" height="20" alt="Mr. Tyler White" />
+      <p class="site-footer__tagline">Product design, growth systems, and prototypes that help teams make better decisions.</p>
+    </div>
+    <nav class="site-footer__col" aria-label="Explore">
+      <span class="site-footer__col-heading">Explore</span>
+      <a href="/about/">About Me</a>
+      <a href="/case-studies/">Case Studies</a>
+      <a href="/newsletter/">Newsletter</a>
+      <a href="/letters/">Letters</a>
+      <a href="https://www.designtablepodcast.com/" target="_blank" rel="noopener noreferrer">Podcast</a>
+      <a href="/builder-kickoff/">Builder Kickoff™</a>
+    </nav>
+    <nav class="site-footer__col" aria-label="Resources">
+      <span class="site-footer__col-heading">Resources</span>
+      <a href="/wp-content/uploads/2024/08/TylerWhite-Resume-2024.pdf" target="_blank" rel="noopener noreferrer">Download CV</a>
+      <a href="https://www.linkedin.com/in/mrtylerwhite/" target="_blank" rel="noopener noreferrer">Let&#8217;s Connect</a>
+      <a href="https://www.designtablepodcast.com/" target="_blank" rel="noopener noreferrer">The Design Table</a>
+      <a href="/roi-case-study-template/">The 15 Minute Case Study</a>
+    </nav>
+    <div class="site-footer__cta-block">
+      <span class="site-footer__col-heading">Free Strategy Call</span>
+      <p class="site-footer__cta-copy">Want help turning messy product, growth, or design problems into a clearer plan? Book a 30-minute call and we&#8217;ll figure out where the biggest leverage is.</p>
+      <a href="https://cal.com/mrtylerwhite/30min" class="site-footer__cta-btn" target="_blank" rel="noopener noreferrer">Book a free strategy call</a>
+    </div>
+  </div>
+  <div class="site-footer__bottom">
+    <p class="site-footer__copy">&#169; 2026 Tyler White. Made with taste, caffeine, and a suspicious number of prototypes.</p>
+    <nav class="site-footer__legal" aria-label="Legal">
+      <a href="/privacy-policy/">Privacy Policy</a>
+    </nav>
+  </div>
+</footer>
+<!-- /partial:footer -->
+</div>
+<script src="/assets/js/mobile-menu-a11y.js?v=83e02b6b" defer></script>
+<script src="/assets/js/newsletter-form.js?v=3270a8dc" defer></script>
+<script src="/assets/js/signup-float.js?v=de188029" defer></script>
+<script src="/assets/js/gtm-defer.js?v=ab490304" defer></script>
+<script src="/assets/js/analytics.js?v=d85a8237" defer></script>
+<script src="/assets/js/hotjar.js?v=d4b66f12" defer></script>
+</body>
+</html>
