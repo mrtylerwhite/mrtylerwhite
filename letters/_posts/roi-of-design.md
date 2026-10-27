@@ -6,6 +6,7 @@ subtitle: Every article on design ROI quotes the same industry stats. Your CFO d
 slug: roi-of-design
 date: 2026-10-26
 topic: case-studies
+cover: /assets/images/letters/roi-of-design.jpg
 keyword: roi of design
 cta: case-study
 source: 24846454, 24742867, 23947769, 22627381
