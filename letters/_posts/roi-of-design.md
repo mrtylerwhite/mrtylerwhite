@@ -59,6 +59,8 @@ Every design decision that matters moves money in one of three ways.
 
 If you can't put your project in one of those rows, it's worth asking whether the project matters.
 
+<!-- video:1zJGFE2hFS8 -->
+
 ## How to calculate the ROI of design: three worked examples
 
 The numbers below are illustrative. Swap in yours. The structure is the part to steal.
