@@ -1810,3 +1810,95 @@ img.letters-feature__art {
 @media (max-width: 720px) {
   .letters-related .letters-list__link { grid-template-columns: 96px minmax(0, 1fr); }
 }
+
+/* ── ROI calculation card ─────────────────────────────────────────────────
+   Receipt-style worked example. Same white faux-browser card as .letter-table
+   (Tailark Mist), rows with a dotted leader, a dashed divider, and the result
+   in a brand-brown pill like .tk-tag. */
+.roi-calc {
+  --rc-ink: #09090b;
+  --rc-muted: #71717a;
+  --rc-grid: #e4e4e7;
+  margin: 16px 0 28px;
+  padding: 24px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow:
+    inset 0 0 0 1px #fff,
+    0 0 0 1px rgba(9, 9, 11, 0.05),
+    0 2px 6px -2px rgba(9, 9, 11, 0.04),
+    0 16px 40px -16px rgba(9, 9, 11, 0.12);
+  font-family: var(--ds-font-body);
+  color: var(--rc-ink);
+}
+.roi-calc__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.roi-calc__dots { display: flex; gap: 6px; }
+.roi-calc__dots span {
+  width: 8px;
+  height: 8px;
+  box-sizing: border-box;
+  background: #f4f4f5;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 999px;
+}
+.roi-calc__label {
+  font-family: var(--ds-font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--rc-muted);
+}
+.roi-calc__row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 7px 0;
+  font-size: 15px;
+  line-height: 22px;
+}
+.roi-calc__row span:first-child { color: #3f3f46; }
+.roi-calc__row::after { content: none; }
+.roi-calc__lead {
+  flex: 1;
+  min-width: 16px;
+  border-bottom: 1px dotted #d4d4d8;
+  transform: translateY(-4px);
+}
+.roi-calc__row b {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.roi-calc__rule {
+  margin: 10px 0;
+  border-top: 1px dashed var(--rc-grid);
+}
+.roi-calc__rule--solid { border-top-style: solid; border-color: #d4d4d8; }
+.roi-calc__row--total { padding: 9px 0; font-size: 16px; }
+.roi-calc__row--total span:first-child { color: var(--rc-ink); font-weight: 600; }
+.roi-calc__pill {
+  padding: 3px 10px;
+  border-radius: 6px;
+  background: #C59060;
+  color: #fff;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 10px 15px -3px rgba(120, 72, 30, 0.25), inset 0 0 0 1px rgba(9, 9, 11, 0.15);
+  white-space: nowrap;
+}
+.roi-calc__pill--neg {
+  background: #f4f4f5;
+  color: var(--rc-ink);
+  text-shadow: none;
+  box-shadow: inset 0 0 0 1px rgba(9, 9, 11, 0.08);
+}
+@media (max-width: 600px) {
+  .roi-calc { padding: 16px; }
+  .roi-calc__row { font-size: 14px; }
+}

@@ -64,46 +64,64 @@ The numbers below are illustrative. Swap in yours. The structure is the part to 
 
 ### Example 1: cost (a confusing billing screen)
 
-- Support gets **120 tickets a month** about the billing screen
-- Each takes **12 minutes** to resolve
-- That's **24 hours a month** of support time
-- At a loaded cost of **$40 an hour**, that's **$960 a month**
+Support keeps getting tickets about the billing screen. The redesign cuts them in half.
 
-The redesign cuts those tickets in half. That's **$480 a month**, or **$5,760 a year**, saved.
+<div class="roi-calc">
+<div class="roi-calc__top"><div class="roi-calc__dots" aria-hidden="true"><span></span><span></span><span></span></div><span class="roi-calc__label">The math</span></div>
+<div class="roi-calc__row"><span>Support tickets a month</span><i class="roi-calc__lead"></i><b>120</b></div>
+<div class="roi-calc__row"><span>Time per ticket</span><i class="roi-calc__lead"></i><b>12 min</b></div>
+<div class="roi-calc__row"><span>Loaded support cost</span><i class="roi-calc__lead"></i><b>$40 an hour</b></div>
+<div class="roi-calc__rule"></div>
+<div class="roi-calc__row"><span>Support time</span><i class="roi-calc__lead"></i><b>24 hrs a month</b></div>
+<div class="roi-calc__row"><span>Cost today</span><i class="roi-calc__lead"></i><b>$960 a month</b></div>
+<div class="roi-calc__row"><span>Redesign cuts tickets by</span><i class="roi-calc__lead"></i><b>50%</b></div>
+<div class="roi-calc__row"><span>Saved</span><i class="roi-calc__lead"></i><b>$5,760 a year</b></div>
+<div class="roi-calc__row"><span>Cost of the work</span><i class="roi-calc__lead"></i><b>$8,000</b></div>
+<div class="roi-calc__rule roi-calc__rule--solid"></div>
+<div class="roi-calc__row roi-calc__row--total"><span>Year-one ROI</span><i class="roi-calc__lead"></i><b class="roi-calc__pill roi-calc__pill--neg">&minus;28%</b></div>
+<div class="roi-calc__row roi-calc__row--total"><span>Two-year ROI</span><i class="roi-calc__lead"></i><b class="roi-calc__pill">+44%</b></div>
+<div class="roi-calc__row"><span>Pays for itself in</span><i class="roi-calc__lead"></i><b>~17 months</b></div>
+</div>
 
-The work cost about **$8,000** in design and engineering time.
-
-Year-one ROI: ($5,760 − $8,000) ÷ $8,000 = **−28%**.
-
-Negative. Over two years it's **+44%**, and it pays for itself in about 17 months.
-
-Say that out loud. Not every good redesign pays back in a quarter, and the designer who admits it is the one whose next number gets believed.
+Negative in year one. Say that out loud. Not every good redesign pays back in a quarter, and the designer who admits it is the one whose next number gets believed.
 
 The same math works on your own time, by the way. I caught myself after a client call, scrubbing the recording and rewriting insights I'd already worked out in the room. Say that packaging takes **45 minutes** a call, two calls a week. That's **6 hours a month**. At a conservative **$75 an hour**, it's **$5,400 a year** of designer time spent turning thinking into a shareable format. One tiny repeated task.
 
 ### Example 2: revenue (a trial onboarding flow)
 
-- **1,000 trials** start every month
-- **8%** convert to paid
-- Average contract value is **$1,200 a year**
+A new onboarding flow moves trial-to-paid conversion by one point.
 
-The new onboarding flow moves conversion from 8% to 9%. One point.
-
-That's **10 extra customers a month**, or **$12,000 in new annual recurring revenue** from every monthly cohort. Over a year of cohorts, that's **$144,000 in ARR**.
-
-The work cost **$15,000**.
-
-ROI: ($144,000 − $15,000) ÷ $15,000 = **860%**.
+<div class="roi-calc">
+<div class="roi-calc__top"><div class="roi-calc__dots" aria-hidden="true"><span></span><span></span><span></span></div><span class="roi-calc__label">The math</span></div>
+<div class="roi-calc__row"><span>Trials a month</span><i class="roi-calc__lead"></i><b>1,000</b></div>
+<div class="roi-calc__row"><span>Trial to paid</span><i class="roi-calc__lead"></i><b>8% &rarr; 9%</b></div>
+<div class="roi-calc__row"><span>Average contract value</span><i class="roi-calc__lead"></i><b>$1,200 a year</b></div>
+<div class="roi-calc__rule"></div>
+<div class="roi-calc__row"><span>Extra customers</span><i class="roi-calc__lead"></i><b>10 a month</b></div>
+<div class="roi-calc__row"><span>New ARR per monthly cohort</span><i class="roi-calc__lead"></i><b>$12,000</b></div>
+<div class="roi-calc__row"><span>New ARR over a year</span><i class="roi-calc__lead"></i><b>$144,000</b></div>
+<div class="roi-calc__row"><span>Cost of the work</span><i class="roi-calc__lead"></i><b>$15,000</b></div>
+<div class="roi-calc__rule roi-calc__rule--solid"></div>
+<div class="roi-calc__row roi-calc__row--total"><span>ROI</span><i class="roi-calc__lead"></i><b class="roi-calc__pill">860%</b></div>
+</div>
 
 A one-point lift sounds boring in a design review. It doesn't sound boring in a revenue meeting.
 
 ### Example 3: retention (fixing the first week)
 
-- **2,000 customers** at **$1,200 a year**
-- Monthly churn is **2%**, so **40 customers** leave every month
-- Exit surveys keep naming the same setup step
+Exit surveys keep naming the same setup step. The fix brings monthly churn down from 2% to 1.8%.
 
-The fix drops churn to **1.8%**. That's **4 fewer customers lost a month**, or **$4,800 in ARR kept** every month. **$57,600 a year.**
+<div class="roi-calc">
+<div class="roi-calc__top"><div class="roi-calc__dots" aria-hidden="true"><span></span><span></span><span></span></div><span class="roi-calc__label">The math</span></div>
+<div class="roi-calc__row"><span>Customers</span><i class="roi-calc__lead"></i><b>2,000</b></div>
+<div class="roi-calc__row"><span>Average contract value</span><i class="roi-calc__lead"></i><b>$1,200 a year</b></div>
+<div class="roi-calc__row"><span>Monthly churn</span><i class="roi-calc__lead"></i><b>2% &rarr; 1.8%</b></div>
+<div class="roi-calc__rule"></div>
+<div class="roi-calc__row"><span>Customers lost a month</span><i class="roi-calc__lead"></i><b>40 &rarr; 36</b></div>
+<div class="roi-calc__row"><span>ARR kept a month</span><i class="roi-calc__lead"></i><b>$4,800</b></div>
+<div class="roi-calc__rule roi-calc__rule--solid"></div>
+<div class="roi-calc__row roi-calc__row--total"><span>ARR kept a year</span><i class="roi-calc__lead"></i><b class="roi-calc__pill">$57,600</b></div>
+</div>
 
 Nobody throws a launch party for customers who didn't leave. Finance notices anyway.
 

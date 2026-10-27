@@ -19,7 +19,7 @@
   <meta name="twitter:description" content="How to calculate the ROI of design for a real feature: the formula, worked examples for revenue, retention and cost, and the baseline to set first." />
   <meta name="twitter:image" content="https://www.mrtylerwhite.com/assets/images/letters/roi-of-design.jpg" />
   <link rel="alternate" type="application/rss+xml" title="Letters · Tyler White" href="https://www.mrtylerwhite.com/letters/feed.xml" />
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"The ROI of design: how to calculate it for one feature, not the whole industry","description":"How to calculate the ROI of design for a real feature: the formula, worked examples for revenue, retention and cost, and the baseline to set first.","datePublished":"2026-10-26","dateModified":"2026-10-26","image":"https://www.mrtylerwhite.com/assets/images/letters/roi-of-design.jpg","mainEntityOfPage":"https://www.mrtylerwhite.com/letters/roi-of-design/","url":"https://www.mrtylerwhite.com/letters/roi-of-design/","keywords":"roi of design","wordCount":1745,"author":{"@type":"Person","name":"Tyler White","url":"https://www.mrtylerwhite.com/about/","jobTitle":"Director of Product Design"},"publisher":{"@type":"Person","name":"Tyler White","url":"https://www.mrtylerwhite.com/"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"The ROI of design: how to calculate it for one feature, not the whole industry","description":"How to calculate the ROI of design for a real feature: the formula, worked examples for revenue, retention and cost, and the baseline to set first.","datePublished":"2026-10-26","dateModified":"2026-10-26","image":"https://www.mrtylerwhite.com/assets/images/letters/roi-of-design.jpg","mainEntityOfPage":"https://www.mrtylerwhite.com/letters/roi-of-design/","url":"https://www.mrtylerwhite.com/letters/roi-of-design/","keywords":"roi of design","wordCount":1781,"author":{"@type":"Person","name":"Tyler White","url":"https://www.mrtylerwhite.com/about/","jobTitle":"Director of Product Design"},"publisher":{"@type":"Person","name":"Tyler White","url":"https://www.mrtylerwhite.com/"}}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.mrtylerwhite.com/"},{"@type":"ListItem","position":2,"name":"Letters","item":"https://www.mrtylerwhite.com/letters/"},{"@type":"ListItem","position":3,"name":"The ROI of design: how to calculate it for one feature, not the whole industry","item":"https://www.mrtylerwhite.com/letters/roi-of-design/"}]}</script>
 
   <link rel="icon" href="/wp-content/uploads/2025/05/cropped-Favicon-2-32x32.png" sizes="32x32" />
@@ -31,8 +31,8 @@
   <link rel="preload" as="style" href="https://use.typekit.net/fks5kmr.css" fetchpriority="low" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript><link rel="stylesheet" href="https://use.typekit.net/fks5kmr.css" /></noscript>
   <link rel="stylesheet" href="/assets/css/dist/letters.critical.css?v=6638ab8e" />
-  <link rel="stylesheet" href="/assets/css/dist/letters.bundle.css?v=4de5005f" media="print" onload="this.media='all'" />
-  <noscript><link rel="stylesheet" href="/assets/css/dist/letters.bundle.css?v=4de5005f" /></noscript>
+  <link rel="stylesheet" href="/assets/css/dist/letters.bundle.css?v=57f2a415" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="/assets/css/dist/letters.bundle.css?v=57f2a415" /></noscript>
   <link rel="stylesheet" href="/assets/css/system/site-footer.css?v=2a5d33c5" media="print" onload="this.media='all'" />
   <noscript><link rel="stylesheet" href="/assets/css/system/site-footer.css?v=2a5d33c5" /></noscript>
   <link rel="preload" as="image" imagesrcset="/assets/images/letters/roi-of-design-800.webp 800w, /assets/images/letters/roi-of-design.webp 1536w" imagesizes="(max-width: 760px) 100vw, 728px" type="image/webp" fetchpriority="high" />
@@ -192,36 +192,57 @@
 <h2 id="how-to-calculate-the-roi-of-design-three-worked-examples">How to calculate the ROI of design: three worked examples</h2>
 <p>The numbers below are illustrative. Swap in yours. The structure is the part to steal.</p>
 <h3 id="example-1-cost-a-confusing-billing-screen">Example 1: cost (a confusing billing screen)</h3>
-<ul>
-<li>Support gets <strong>120 tickets a month</strong> about the billing screen</li>
-<li>Each takes <strong>12 minutes</strong> to resolve</li>
-<li>That&#39;s <strong>24 hours a month</strong> of support time</li>
-<li>At a loaded cost of <strong>$40 an hour</strong>, that&#39;s <strong>$960 a month</strong></li>
-</ul>
-<p>The redesign cuts those tickets in half. That&#39;s <strong>$480 a month</strong>, or <strong>$5,760 a year</strong>, saved.</p>
-<p>The work cost about <strong>$8,000</strong> in design and engineering time.</p>
-<p>Year-one ROI: ($5,760 − $8,000) ÷ $8,000 = <strong>−28%</strong>.</p>
-<p>Negative. Over two years it&#39;s <strong>+44%</strong>, and it pays for itself in about 17 months.</p>
-<p>Say that out loud. Not every good redesign pays back in a quarter, and the designer who admits it is the one whose next number gets believed.</p>
+<p>Support keeps getting tickets about the billing screen. The redesign cuts them in half.</p>
+<div class="roi-calc">
+<div class="roi-calc__top"><div class="roi-calc__dots" aria-hidden="true"><span></span><span></span><span></span></div><span class="roi-calc__label">The math</span></div>
+<div class="roi-calc__row"><span>Support tickets a month</span><i class="roi-calc__lead"></i><b>120</b></div>
+<div class="roi-calc__row"><span>Time per ticket</span><i class="roi-calc__lead"></i><b>12 min</b></div>
+<div class="roi-calc__row"><span>Loaded support cost</span><i class="roi-calc__lead"></i><b>$40 an hour</b></div>
+<div class="roi-calc__rule"></div>
+<div class="roi-calc__row"><span>Support time</span><i class="roi-calc__lead"></i><b>24 hrs a month</b></div>
+<div class="roi-calc__row"><span>Cost today</span><i class="roi-calc__lead"></i><b>$960 a month</b></div>
+<div class="roi-calc__row"><span>Redesign cuts tickets by</span><i class="roi-calc__lead"></i><b>50%</b></div>
+<div class="roi-calc__row"><span>Saved</span><i class="roi-calc__lead"></i><b>$5,760 a year</b></div>
+<div class="roi-calc__row"><span>Cost of the work</span><i class="roi-calc__lead"></i><b>$8,000</b></div>
+<div class="roi-calc__rule roi-calc__rule--solid"></div>
+<div class="roi-calc__row roi-calc__row--total"><span>Year-one ROI</span><i class="roi-calc__lead"></i><b class="roi-calc__pill roi-calc__pill--neg">&minus;28%</b></div>
+<div class="roi-calc__row roi-calc__row--total"><span>Two-year ROI</span><i class="roi-calc__lead"></i><b class="roi-calc__pill">+44%</b></div>
+<div class="roi-calc__row"><span>Pays for itself in</span><i class="roi-calc__lead"></i><b>~17 months</b></div>
+</div>
+
+<p>Negative in year one. Say that out loud. Not every good redesign pays back in a quarter, and the designer who admits it is the one whose next number gets believed.</p>
 <p>The same math works on your own time, by the way. I caught myself after a client call, scrubbing the recording and rewriting insights I&#39;d already worked out in the room. Say that packaging takes <strong>45 minutes</strong> a call, two calls a week. That&#39;s <strong>6 hours a month</strong>. At a conservative <strong>$75 an hour</strong>, it&#39;s <strong>$5,400 a year</strong> of designer time spent turning thinking into a shareable format. One tiny repeated task.</p>
 <h3 id="example-2-revenue-a-trial-onboarding-flow">Example 2: revenue (a trial onboarding flow)</h3>
-<ul>
-<li><strong>1,000 trials</strong> start every month</li>
-<li><strong>8%</strong> convert to paid</li>
-<li>Average contract value is <strong>$1,200 a year</strong></li>
-</ul>
-<p>The new onboarding flow moves conversion from 8% to 9%. One point.</p>
-<p>That&#39;s <strong>10 extra customers a month</strong>, or <strong>$12,000 in new annual recurring revenue</strong> from every monthly cohort. Over a year of cohorts, that&#39;s <strong>$144,000 in ARR</strong>.</p>
-<p>The work cost <strong>$15,000</strong>.</p>
-<p>ROI: ($144,000 − $15,000) ÷ $15,000 = <strong>860%</strong>.</p>
+<p>A new onboarding flow moves trial-to-paid conversion by one point.</p>
+<div class="roi-calc">
+<div class="roi-calc__top"><div class="roi-calc__dots" aria-hidden="true"><span></span><span></span><span></span></div><span class="roi-calc__label">The math</span></div>
+<div class="roi-calc__row"><span>Trials a month</span><i class="roi-calc__lead"></i><b>1,000</b></div>
+<div class="roi-calc__row"><span>Trial to paid</span><i class="roi-calc__lead"></i><b>8% &rarr; 9%</b></div>
+<div class="roi-calc__row"><span>Average contract value</span><i class="roi-calc__lead"></i><b>$1,200 a year</b></div>
+<div class="roi-calc__rule"></div>
+<div class="roi-calc__row"><span>Extra customers</span><i class="roi-calc__lead"></i><b>10 a month</b></div>
+<div class="roi-calc__row"><span>New ARR per monthly cohort</span><i class="roi-calc__lead"></i><b>$12,000</b></div>
+<div class="roi-calc__row"><span>New ARR over a year</span><i class="roi-calc__lead"></i><b>$144,000</b></div>
+<div class="roi-calc__row"><span>Cost of the work</span><i class="roi-calc__lead"></i><b>$15,000</b></div>
+<div class="roi-calc__rule roi-calc__rule--solid"></div>
+<div class="roi-calc__row roi-calc__row--total"><span>ROI</span><i class="roi-calc__lead"></i><b class="roi-calc__pill">860%</b></div>
+</div>
+
 <p>A one-point lift sounds boring in a design review. It doesn&#39;t sound boring in a revenue meeting.</p>
 <h3 id="example-3-retention-fixing-the-first-week">Example 3: retention (fixing the first week)</h3>
-<ul>
-<li><strong>2,000 customers</strong> at <strong>$1,200 a year</strong></li>
-<li>Monthly churn is <strong>2%</strong>, so <strong>40 customers</strong> leave every month</li>
-<li>Exit surveys keep naming the same setup step</li>
-</ul>
-<p>The fix drops churn to <strong>1.8%</strong>. That&#39;s <strong>4 fewer customers lost a month</strong>, or <strong>$4,800 in ARR kept</strong> every month. <strong>$57,600 a year.</strong></p>
+<p>Exit surveys keep naming the same setup step. The fix brings monthly churn down from 2% to 1.8%.</p>
+<div class="roi-calc">
+<div class="roi-calc__top"><div class="roi-calc__dots" aria-hidden="true"><span></span><span></span><span></span></div><span class="roi-calc__label">The math</span></div>
+<div class="roi-calc__row"><span>Customers</span><i class="roi-calc__lead"></i><b>2,000</b></div>
+<div class="roi-calc__row"><span>Average contract value</span><i class="roi-calc__lead"></i><b>$1,200 a year</b></div>
+<div class="roi-calc__row"><span>Monthly churn</span><i class="roi-calc__lead"></i><b>2% &rarr; 1.8%</b></div>
+<div class="roi-calc__rule"></div>
+<div class="roi-calc__row"><span>Customers lost a month</span><i class="roi-calc__lead"></i><b>40 &rarr; 36</b></div>
+<div class="roi-calc__row"><span>ARR kept a month</span><i class="roi-calc__lead"></i><b>$4,800</b></div>
+<div class="roi-calc__rule roi-calc__rule--solid"></div>
+<div class="roi-calc__row roi-calc__row--total"><span>ARR kept a year</span><i class="roi-calc__lead"></i><b class="roi-calc__pill">$57,600</b></div>
+</div>
+
 <p>Nobody throws a launch party for customers who didn&#39;t leave. Finance notices anyway.</p>
 <h2 id="set-the-baseline-before-you-build">Set the baseline before you build</h2>
 <p>This is where most ROI of design calculations die.</p>
