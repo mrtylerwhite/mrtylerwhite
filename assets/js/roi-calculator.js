@@ -87,6 +87,9 @@
   });
   function fit(el) { el.style.width = Math.max(String(el.value).length, 1) + 1 + "ch"; }
   Array.prototype.forEach.call(form.querySelectorAll("input"), fit);
+  Array.prototype.forEach.call(form.querySelectorAll(".roi-calc__in"), function (box) {
+    box.addEventListener("click", function (e) { if (e.target.tagName !== "INPUT") box.querySelector("input").focus(); });
+  });
   form.addEventListener("input", function (e) {
     if (e.target && e.target.tagName === "INPUT") fit(e.target);
     if (e.target && e.target.name === "weeks") touchedWeeks = true;
