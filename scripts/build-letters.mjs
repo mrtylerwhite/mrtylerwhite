@@ -273,18 +273,18 @@ const gridCard = (year, outcome, dx, d) => `<div class="tk-gcard tk-rise" style=
 // mini signed document, label rows fading out at the bottom. Real numbers instead of placeholders.
 const invMini = `<div class="tk-invc__mini" aria-hidden="true"><div class="tk-invc__mr"><i class="tk-invc__dot"></i><i style="width:16px"></i></div><div class="tk-invc__mg"><div class="tk-invc__mr"><i style="width:10px"></i><i style="width:24px"></i></div><div class="tk-invc__mr"><i style="width:10px"></i><i style="width:24px"></i></div></div><div class="tk-invc__mg"><div class="tk-invc__mr"><i style="width:100%"></i></div><div class="tk-invc__mr"><i style="width:66%"></i><i style="width:33%"></i></div></div>${lucideIcon("tk-invc__sig", ICON.signature)}</div>`;
 const invoiceCard = (id, amount, sub, roi, rows, caption) => `<figure class="letter-fig">
-  <div class="tk-tray"><div class="tk-invc-stage" aria-hidden="true"><div class="tk-invc-stack">
+  <div class="tk-tray"><div class="tk-invc-stage" aria-hidden="true"><div class="tk-invc-stack"><span class="tk-invc-ghost tk-invc-ghost--1"></span><span class="tk-invc-ghost tk-invc-ghost--2"></span>
     <div class="tk-invc">
       <div class="tk-invc__top">
         <div>
           ${lucideIcon("tk-invc__logo", ICON.receipt)}
           <div class="tk-invc__id">${id}</div>
-          <div class="tk-invc__amount">${amount}</div>
+          <div class="tk-invc__amount" data-count="${amount.replace(/[^0-9]/g, "")}" data-prefix="${amount.startsWith("$") ? "$" : ""}">${amount}</div>
           <div class="tk-invc__due">${sub}${roi ? ` <span class="tk-invc__roi">${roi}</span>` : ""}</div>
         </div>
         ${invMini}
       </div>
-      <div class="tk-invc__rows">${rows.map(([k, v]) => `<div class="tk-invc__row"><span>${k}</span>${v ? `<b>${v}</b>` : "<i></i>"}</div>`).join("")}</div>
+      <div class="tk-invc__rows">${rows.map(([k, v], n) => `<div class="tk-invc__row" style="--d:${(0.55 + n * 0.09).toFixed(2)}s"><span>${k}</span><b>${v}</b></div>`).join("")}</div>
     </div>
   </div></div></div>
   <figcaption>${caption}</figcaption>
@@ -478,13 +478,13 @@ const FIGURES = {
   <figcaption>Baseline, change, cost. Put all three in the case study and the number explains itself.</figcaption>
 </figure>`,
   "roi-ex-cost": invoiceCard("ROI-001 &middot; COST", "$5,760", "Saved a year", "+44% in 2 yrs",
-    [["Tickets", "120 &rarr; 60 a month"], ["Cost", "$8,000"], ["Year one", "&minus;28%"], ["Notes", ""]],
+    [["Tickets", "120 &rarr; 60 a month"], ["Time", "12 min each"], ["Rate", "$40 an hour"], ["Cost", "$8,000"], ["Year one", "&minus;28%"]],
     "Half the tickets, $5,760 a year back. Negative in year one, +44% over two. Illustrative numbers."),
   "roi-ex-revenue": invoiceCard("ROI-002 &middot; REVENUE", "$144,000", "New ARR in a year", "860% ROI",
-    [["Trial to paid", "8% &rarr; 9%"], ["New customers", "10 a month"], ["Cost", "$15,000"], ["Notes", ""]],
+    [["Trials", "1,000 a month"], ["Trial to paid", "8% &rarr; 9%"], ["Contract", "$1,200 a year"], ["New customers", "10 a month"], ["Cost", "$15,000"]],
     "One extra point of conversion, 10 more customers a month, every month. Illustrative numbers."),
   "roi-ex-retention": invoiceCard("ROI-003 &middot; RETENTION", "$57,600", "ARR kept a year", "",
-    [["Monthly churn", "2% &rarr; 1.8%"], ["Lost a month", "40 &rarr; 36"], ["Kept a month", "$4,800"], ["Notes", ""]],
+    [["Customers", "2,000"], ["Contract", "$1,200 a year"], ["Monthly churn", "2% &rarr; 1.8%"], ["Lost a month", "40 &rarr; 36"], ["Kept a month", "$4,800"]],
     "Four fewer customers leaving every month. Nobody throws a party for that. Finance notices anyway. Illustrative numbers."),
 };
 
