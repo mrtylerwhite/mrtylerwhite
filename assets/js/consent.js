@@ -1,14 +1,13 @@
 /**
  * Cookie consent for mrtylerwhite.com.
  *
- * Google Analytics (gtm-defer.js) and Hotjar (hotjar.js) are the only
- * non-essential trackers.
+ * Google Analytics (gtm-defer.js) is the only non-essential tracker.
  *
  * Visitors in the EU/EEA, UK, Switzerland and Quebec (mtw_geo=1, set by
- * middleware.js, or no cookie at all) are asked first, and both trackers stay
- * off until they accept: GA runs in Google Consent Mode "denied" (cookieless
- * pings) and Hotjar doesn't load. Everyone else (mtw_geo=0) gets analytics on
- * by default and can opt out from the footer.
+ * middleware.js, or no cookie at all) are asked first, and analytics stay off
+ * until they accept: GA runs in Google Consent Mode "denied" (cookieless
+ * pings). Everyone else (mtw_geo=0) gets analytics on by default and can opt
+ * out from the footer.
  *
  * To keep friction low the card waits for the first scroll or 3 seconds, uses
  * shorter copy on phones, and steps aside while the mobile menu is open.
@@ -42,7 +41,8 @@
     }
   }
 
-  // Removing consent also removes what GA and Hotjar already stored.
+  // Removing consent also removes what GA stored (and _hj cookies left over
+  // from when the site used Hotjar).
   function clearTrackingCookies() {
     var host = window.location.hostname;
     var domains = ["", host, "." + host, "." + host.replace(/^www\./, "")];
@@ -74,7 +74,7 @@
     if (value === "denied") clearTrackingCookies();
     document.dispatchEvent(new CustomEvent("mtw:consent", { detail: { analytics: value === "granted" } }));
     close();
-    // Hotjar can't be unloaded once running; a reload leaves the page clean.
+    // GA already ran with storage on; a reload restarts it cookieless.
     if (wasOn && value === "denied") window.location.reload();
   }
 
@@ -136,8 +136,8 @@
     card.setAttribute("aria-labelledby", "mtw-consent-label");
     card.innerHTML =
       '<p class="mtw-consent__label" id="mtw-consent-label">Cookies, briefly</p>' +
-      '<p class="mtw-consent__text"><span class="mtw-consent__long">I use Google Analytics and Hotjar to see which pages help and where people get stuck. ' +
-      "No ads, and your data is never sold. OK to turn them on?</span>" +
+      '<p class="mtw-consent__text"><span class="mtw-consent__long">I use Google Analytics to see which pages help and where people drop off. ' +
+      "No ads, and your data is never sold. OK to turn it on?</span>" +
       '<span class="mtw-consent__short">Analytics cookies help me see what&#8217;s useful. No ads.</span> ' +
       '<a href="/privacy-policy/#cookies">Privacy policy</a></p>' +
       '<div class="mtw-consent__actions">' +
