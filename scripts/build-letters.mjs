@@ -863,17 +863,16 @@ function faqSchema(post) {
   };
 }
 const ANSWER_CSS = `  <style>
-  .letter-answer{position:relative;margin:28px 0 0;padding:22px 22px 18px;border-radius:22px;background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.04),0 12px 32px -12px rgba(0,0,0,.14);overflow:hidden}
-  .letter-answer__spark{position:relative;display:block;width:22px;height:22px;color:#09090b}
-  .letter-answer__spark::before{content:"";position:absolute;left:50%;top:50%;width:84px;height:84px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(233,185,137,.55) 0%,rgba(233,185,137,.18) 40%,rgba(233,185,137,0) 70%);pointer-events:none}
-  .letter-answer__spark svg{position:relative;width:22px;height:22px;display:block}
-  #page-container .letter-answer p.letter-answer__title{margin:12px 0 16px;font-size:19px;line-height:1.35;font-weight:500;color:#09090b}
-  .letter-answer__bubble{border-radius:16px;background:#f6f5f3;box-shadow:0 0 0 1px rgba(0,0,0,.05)}
-  #page-container .letter-answer p.letter-answer__text{margin:0;padding:16px 18px;border-radius:16px;background:#fbfaf9;box-shadow:0 0 0 1px rgba(0,0,0,.06),0 1px 2px rgba(0,0,0,.03);font-size:16.5px;line-height:1.6;color:#27272a}
-  .letter-answer__foot{padding:11px 18px 12px;font-size:14px;color:#71717a}
-  .letter-answer__foot a{color:inherit;text-decoration:none}
-  .letter-answer__foot a:hover{color:#09090b}
-  @media (max-width:600px){.letter-answer{padding:18px 16px 14px;border-radius:18px}#page-container .letter-answer p.letter-answer__title{font-size:17px}#page-container .letter-answer p.letter-answer__text{font-size:16px;padding:14px 15px}.letter-answer__foot{padding:10px 15px 11px}}
+  .letter-answer{position:relative;margin:24px 0 0;padding:12px 12px 10px;border-radius:16px;background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.04),0 8px 24px -12px rgba(0,0,0,.12);overflow:hidden}
+  .letter-answer__head{display:flex;align-items:center;gap:8px;margin:2px 4px 10px}
+  .letter-answer__spark{position:relative;flex:none;display:block;width:15px;height:15px;color:#09090b}
+  .letter-answer__spark::before{content:"";position:absolute;left:50%;top:50%;width:56px;height:56px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(233,185,137,.5) 0%,rgba(233,185,137,.16) 40%,rgba(233,185,137,0) 70%);pointer-events:none}
+  .letter-answer__spark svg{position:relative;width:15px;height:15px;display:block}
+  #page-container .letter-answer p.letter-answer__title{margin:0;font-size:14px;line-height:1.3;font-weight:500;color:#09090b}
+  .letter-answer__bubble{border-radius:11px;background:#f6f5f3;box-shadow:0 0 0 1px rgba(0,0,0,.05)}
+  #page-container .letter-answer p.letter-answer__text{margin:0;padding:11px 13px;border-radius:11px;background:#fbfaf9;box-shadow:0 0 0 1px rgba(0,0,0,.06),0 1px 2px rgba(0,0,0,.03);font-size:15px;line-height:1.55;color:#27272a}
+  .letter-answer__foot{padding:6px 13px 7px;font-size:12.5px;color:#71717a}
+  @media (max-width:600px){#page-container .letter-answer p.letter-answer__text{font-size:14.5px}}
   </style>
 `;
 
@@ -956,7 +955,7 @@ ${shellOpen("letters-page letter-page")}
       </div>
     </header>
     ${post.cover ? coverPicture(post.cover, 'class="letter__cover" alt="" width="1200" height="630" fetchpriority="high" decoding="async"') : ""}
-    ${post.answer ? `<aside class="letter-answer" aria-label="The short answer"><span class="letter-answer__spark" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 1.5c.5 0 .9.35 1 .84.62 3.2 1.46 5.2 2.8 6.48 1.3 1.27 3.27 2.05 6.36 2.66a1.03 1.03 0 0 1 0 2.03c-3.09.6-5.06 1.38-6.36 2.65-1.34 1.29-2.18 3.28-2.8 6.49a1.03 1.03 0 0 1-2.02 0c-.62-3.2-1.46-5.2-2.8-6.49-1.3-1.27-3.27-2.05-6.36-2.65a1.03 1.03 0 0 1 0-2.03c3.09-.6 5.06-1.39 6.36-2.66 1.34-1.28 2.18-3.28 2.8-6.48.1-.5.5-.84 1.02-.84Z"/></svg></span><p class="letter-answer__title">The short answer</p><div class="letter-answer__bubble"><p class="letter-answer__text">${marked.parseInline(post.answer)}</p><div class="letter-answer__foot">The full breakdown is below ↓</div></div></aside>` : ""}
+    ${post.answer ? `<aside class="letter-answer" aria-label="The short answer"><div class="letter-answer__head"><span class="letter-answer__spark" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 1.5c.5 0 .9.35 1 .84.62 3.2 1.46 5.2 2.8 6.48 1.3 1.27 3.27 2.05 6.36 2.66a1.03 1.03 0 0 1 0 2.03c-3.09.6-5.06 1.38-6.36 2.65-1.34 1.29-2.18 3.28-2.8 6.49a1.03 1.03 0 0 1-2.02 0c-.62-3.2-1.46-5.2-2.8-6.49-1.3-1.27-3.27-2.05-6.36-2.65a1.03 1.03 0 0 1 0-2.03c3.09-.6 5.06-1.39 6.36-2.66 1.34-1.28 2.18-3.28 2.8-6.48.1-.5.5-.84 1.02-.84Z"/></svg></span><p class="letter-answer__title">The short answer</p></div><div class="letter-answer__bubble"><p class="letter-answer__text">${marked.parseInline(post.answer)}</p><div class="letter-answer__foot">The full breakdown is below ↓</div></div></aside>` : ""}
     ${tocHtml}
     <div class="letter__body">
 ${html}
