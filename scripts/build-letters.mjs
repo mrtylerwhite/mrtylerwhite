@@ -271,7 +271,6 @@ const gridCard = (year, outcome, dx, d) => `<div class="tk-gcard tk-rise" style=
 
 // Tailark "Invoice" (tailark.com/illustrations/workspace): stacked card, mono amount,
 // mini signed document, label rows fading out at the bottom. Real numbers instead of placeholders.
-const invMini = `<div class="tk-invc__mini" aria-hidden="true"><div class="tk-invc__mr"><i class="tk-invc__dot"></i><i style="width:16px"></i></div><div class="tk-invc__mg"><div class="tk-invc__mr"><i style="width:10px"></i><i style="width:24px"></i></div><div class="tk-invc__mr"><i style="width:10px"></i><i style="width:24px"></i></div></div><div class="tk-invc__mg"><div class="tk-invc__mr"><i style="width:100%"></i></div><div class="tk-invc__mr"><i style="width:66%"></i><i style="width:33%"></i></div></div>${lucideIcon("tk-invc__sig", ICON.signature)}</div>`;
 const invoiceCard = (id, amount, sub, roi, rows, caption) => `<figure class="letter-fig">
   <div class="tk-tray"><div class="tk-invc-stage" aria-hidden="true"><div class="tk-invc-stack"><span class="tk-invc-ghost tk-invc-ghost--1"></span><span class="tk-invc-ghost tk-invc-ghost--2"></span>
     <div class="tk-invc">
@@ -282,7 +281,6 @@ const invoiceCard = (id, amount, sub, roi, rows, caption) => `<figure class="let
           <div class="tk-invc__amount" data-count="${amount.replace(/[^0-9]/g, "")}" data-prefix="${amount.startsWith("$") ? "$" : ""}">${amount}</div>
           <div class="tk-invc__due">${sub}${roi ? ` <span class="tk-invc__roi">${roi}</span>` : ""}</div>
         </div>
-        ${invMini}
       </div>
       <div class="tk-invc__rows">${rows.map(([k, v], n) => `<div class="tk-invc__row" style="--d:${(0.55 + n * 0.09).toFixed(2)}s"><span>${k}</span><b>${v}</b></div>`).join("")}</div>
     </div>
