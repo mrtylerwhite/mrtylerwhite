@@ -816,6 +816,7 @@ const shellClose = `<!-- partial:footer -->
 <script src="${asset("/assets/js/signup-float.js")}" defer></script>
 <script src="${asset("/assets/js/gtm-defer.js")}" defer></script>
 <script src="${asset("/assets/js/analytics.js")}" defer></script>
+<script src="${asset("/assets/js/consent.js")}" defer></script>
 <script src="${asset("/assets/js/hotjar.js")}" defer></script>
 </body>
 </html>

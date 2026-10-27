@@ -1,7 +1,29 @@
 // Hotjar waits until the visitor scrolls or clicks, so it does not compete
-// with the first load (the script is about 64 KB).
+// with the first load (the script is about 64 KB). It only runs with cookie
+// consent (consent.js) or, outside the ask-first regions, by default.
 (function (h, o, t, j, a, r) {
   var loaded = false;
+
+  // Stored choice wins; with none, it's on only outside the ask-first
+  // regions (mtw_geo=0, set by middleware.js).
+  function granted() {
+    try {
+      var c = JSON.parse(h.localStorage.getItem("mtw-consent") || "null");
+      if (c && (c.v === "granted" || c.v === "denied")) return c.v === "granted";
+    } catch (_) {
+      /* fall through to region default */
+    }
+    return /(?:^|;\s*)mtw_geo=0(?:;|$)/.test(o.cookie);
+  }
+
+  if (!granted()) {
+    o.addEventListener("mtw:consent", function onConsent(e) {
+      if (!e.detail || !e.detail.analytics) return;
+      o.removeEventListener("mtw:consent", onConsent);
+      load();
+    });
+    return;
+  }
 
   function detach() {
     o.removeEventListener("pointerdown", load, true);

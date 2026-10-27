@@ -216,6 +216,32 @@ body.home #page-container .hero-cntn .et_pb_row_2.social-proof .et_pb_column_1_5
   }
 }
 
+/* Featured-in logos, 480–980px: the Divi customizer only wraps them below
+   480px, so in between each column went full width and the logos stacked
+   down the left. Same centered 3 + 2 wrap at every narrow width. */
+@media screen and (max-width: 980px) {
+  body.home #page-container .hero-cntn .et_pb_row_2.social-proof {
+    display: flex !important;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  body.home #page-container .hero-cntn .et_pb_row_2.social-proof .et_pb_column.et_pb_column_1_5 {
+    width: 30% !important;
+    margin: 0 1.5% 16px !important;
+    display: flex;
+    justify-content: center;
+  }
+
+  body.home #page-container .hero-cntn .et_pb_row_2.social-proof .et_pb_image.et_pb_module {
+    width: 121px;
+    max-width: 100%;
+    margin: 0 auto !important;
+    flex-shrink: 0;
+  }
+}
+
 body.home #page-container .hero-cntn .home-hero__punch {
   margin: 1rem 0 0;
   font-size: 1rem;
