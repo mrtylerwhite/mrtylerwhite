@@ -8,6 +8,7 @@ date: 2026-10-26
 topic: case-studies
 keyword: roi of design
 cta: case-study
+source: 24846454, 24742867, 23947769, 22627381
 ---
 
 Every article about the ROI of design quotes the same stat.
@@ -75,6 +76,8 @@ Negative. Over two years it's **+44%**, and it pays for itself in about 17 month
 
 Say that out loud. Not every good redesign pays back in a quarter, and the designer who admits it is the one whose next number gets believed.
 
+The same math works on your own time, by the way. I caught myself after a client call, scrubbing the recording and rewriting insights I'd already worked out in the room. Say that packaging takes **45 minutes** a call, two calls a week. That's **6 hours a month**. At a conservative **$75 an hour**, it's **$5,400 a year** of designer time spent turning thinking into a shareable format. One tiny repeated task.
+
 ### Example 2: revenue (a trial onboarding flow)
 
 - **1,000 trials** start every month
@@ -105,11 +108,19 @@ Nobody throws a launch party for customers who didn't leave. Finance notices any
 
 This is where most ROI of design calculations die.
 
-The feature ships. Someone asks what it did. You go looking for the "before" number and find out nobody wrote it down. Now you're reverse-engineering a baseline from memory and vibes.
+I learned this one the expensive way.
+
+I spent six weeks on a dashboard redesign. Stakeholder interviews. Competitive analysis. Three rounds of iteration. The handoff was the cleanest thing I'd ever shipped.
+
+Six months later, nobody was using it.
+
+The design wasn't the problem. Nobody had defined what success looked like before I started. We didn't have a problem statement. We had a feature request. So there was no baseline, no target, and no ROI to calculate. Just a very clean dashboard and a lot of silence.
+
+That's what happens when you go looking for the "before" number after launch. You end up reverse-engineering it from memory and vibes.
 
 That's not proof. That's a vibe.
 
-The fix is boring and it works: agree on the metric, the baseline and the target **at kickoff**, before anyone opens Figma. Write them into the success metric section of the PRD. Here's [the PRD template I use](/letters/prd-template/), and [the kickoff agenda](/letters/project-kickoff-meeting/) that forces the room to pick a number.
+The fix is boring and it works: agree on the metric, the baseline and the target **at kickoff**, before anyone opens Figma. Start with one sentence: *what would need to be true for this feature to matter?* Not ship. Not look good. Matter. Write them into the success metric section of the PRD. Here's [the PRD template I use](/letters/prd-template/), and [the kickoff agenda](/letters/project-kickoff-meeting/) that forces the room to pick a number.
 
 If you only remember one thing from this letter, make it this one. **You can't calculate a return on something you never measured the start of.**
 
@@ -117,7 +128,15 @@ If you only remember one thing from this letter, make it this one. **You can't c
 
 ## What if you don't have clean data?
 
-Most teams don't. You still have support logs, sales call notes, demo recordings and a calculator.
+Most teams think they don't. Usually the data is already there and nobody gave designers a fast way to get at it.
+
+Before a recent redesign, I had Claude read our codebase and list the Mixpanel events already firing on that page. Then I gave those exact event names to Mixpanel's agent and asked, in plain English, where people were dropping off. Two back-and-forths. Under an hour.
+
+My assumption about where the friction was? Wrong. The real drop-off was one step earlier in the flow. Skip that and I'd have spent two weeks polishing the wrong screen.
+
+One path is two weeks of work in the wrong direction. The other is a 45-minute conversation with your own data. And now the baseline exists before the work starts.
+
+When there truly is no tracking, you still have support logs, sales call notes, demo recordings and a calculator.
 
 Use conservative math, show every assumption, and label it as **expected impact**, not results. Leadership trusts a modest number with visible math far more than a big number with none. I walk through that approach, plus which metrics to stop leading with, in [UX metrics that actually make it into the exec deck](/letters/ux-metrics/).
 
