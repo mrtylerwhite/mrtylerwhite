@@ -1,0 +1,9 @@
+# Raw video originals: the site serves the -optimized versions next to them.
+wp-content/uploads/2022/11/TylerWhite-KeplerTeaser.mp4
+wp-content/uploads/2024/08/Payment-Portal-Jul3.mp4
+wp-content/uploads/2025/12/712465_Palm-Swaying-Background-Tranquil_By_Omri_Ohana_Artlist_HD.mp4
+# Build tooling and docs, never served.
+scripts/
+README.md
+PERFORMANCE_NOTES.md
+.env.example
