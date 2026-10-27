@@ -10,8 +10,8 @@ topic: case-studies
 cover: /assets/images/letters/ux-case-study-examples.jpg
 keyword: ux case study examples
 cta: case-study
-popular: true
 source: 24149534, 25364104
+popular: true
 ---
 
 There's a specific kind of silence that happens in a portfolio review.

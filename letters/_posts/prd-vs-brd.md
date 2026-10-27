@@ -11,6 +11,7 @@ cover: /assets/images/letters/prd-vs-brd.jpg
 keyword: prd vs brd
 cta: builder-kickoff
 source: 23657334
+popular: true
 ---
 
 Here's the short answer.

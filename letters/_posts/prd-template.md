@@ -9,7 +9,6 @@ topic: kickoffs
 cover: /assets/images/letters/prd-template.jpg
 keyword: prd template
 cta: builder-kickoff
-popular: true
 source: 23087793, 23657334
 ---
 

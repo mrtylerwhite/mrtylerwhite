@@ -10,7 +10,6 @@ topic: case-studies
 cover: /assets/images/letters/product-designer-portfolio.jpg
 keyword: product designer portfolio
 cta: case-study
-popular: true
 source: 25364104, 24149534
 ---
 

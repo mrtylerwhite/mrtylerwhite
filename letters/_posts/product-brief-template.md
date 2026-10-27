@@ -10,7 +10,6 @@ topic: kickoffs
 cover: /assets/images/letters/product-brief-template.jpg
 keyword: product brief template
 cta: builder-kickoff
-popular: true
 source: 24566874, 24752740
 ---
 

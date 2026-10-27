@@ -11,6 +11,7 @@ cover: /assets/images/letters/design-rationale.jpg
 keyword: design rationale
 cta: case-study
 source: 25878451, 24149534
+popular: true
 ---
 
 A stakeholder pushes back on a design decision.

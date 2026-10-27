@@ -9,6 +9,7 @@ topic: kickoffs
 cover: /assets/images/letters/what-is-a-prd.jpg
 keyword: what is a prd
 cta: builder-kickoff
+popular: true
 ---
 
 **PRD** stands for **product requirements document**. It's the doc that says what a team is building, why, and how they'll know it worked.
