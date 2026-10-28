@@ -5,7 +5,7 @@ title: "Cash flow, unstuck: the product decision behind a 30% jump in payment me
 seoTitle: "Notch Financial Customer Portal Case Study"
 description: "How one access rule in Notch Financial's customer portal raised payment method capture 30% and made supplier cash flow predictable."
 eyebrow: "Fintech · B2B AR/AP"
-subtitle: "Notch had automation in place, but suppliers were still getting paid late. The fix wasn't a feature. It was a rule the product had never enforced."
+subtitle: "Notch had automation in place, but suppliers were still getting paid late. The fix was a rule the product had never enforced."
 client: "Notch Financial"
 clientDesc: "B2B AR/AP automation platform"
 role: "Product Design Lead"
@@ -72,6 +72,6 @@ I'd put a support-ticket and complaint metric in place before launch, not after.
 
 ## What I learned
 
-The biggest fix wasn't a feature. It was changing the condition for access.
+The biggest fix was one access rule.
 
 Automation without commitment is incomplete. Once payment method capture was enforced, the automation Notch had already built could finally do its job. Most of the attention goes to new features. The highest-leverage fix is usually a decision nobody has revisited.

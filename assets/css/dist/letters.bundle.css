@@ -4004,18 +4004,59 @@ img.letters-feature__art {
 /* Early offer: slim, topic-matched, just before a letter's first H2.
    Inside the critical markers so build-letters puts it in the above-the-fold CSS. */
 .letter-offer {
+  position: relative;
+  isolation: isolate;
   display: flex;
   align-items: center;
   gap: 16px 24px;
   margin: 32px 0 40px;
-  padding: 16px 20px;
-  border-radius: var(--ds-radius-lg);
-  background: rgba(197, 144, 96, 0.1);
-  outline: 1px solid rgba(197, 144, 96, 0.25);
-  outline-offset: -1px;
+  padding: 28px 28px 34px;
+  border-radius: 28px;
+  background: #f4f4f5;
+}
+.letter-offer::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  left: 40px;
+  right: 40px;
+  bottom: 14px;
+  height: 18px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #fb7185 0%, #fbbf24 28%, #4ade80 52%, #38bdf8 76%, #a78bfa 100%);
+  filter: blur(12px);
+  opacity: 0.8;
+  pointer-events: none;
+}
+.letter-offer::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: 12px 12px 20px;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 12px 28px rgba(0, 0, 0, 0.06);
+  pointer-events: none;
+}
+.letter-offer__lead {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex: 1;
+  min-width: 0;
+}
+.letter-offer__icon {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 22%;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.28), 0 1px 1px rgba(31, 26, 22, 0.06), 0 8px 16px rgba(217, 119, 87, 0.28);
 }
 #page-container .letter-offer .letter-offer__text {
   flex: 1;
+  min-width: 0;
   margin: 0;
   padding: 0;
   font-family: var(--ds-font-body);
@@ -4032,9 +4073,11 @@ img.letters-feature__art {
   line-height: var(--ds-leading-eyebrow-sm);
   letter-spacing: var(--ds-tracking-eyebrow-sm);
   text-transform: uppercase;
-  color: #8c5b31;
+  color: #71717a;
 }
 #page-container .letter-offer .letter-offer__btn {
+  position: relative;
+  z-index: 2;
   flex-shrink: 0;
   padding: 10px 16px;
   border-radius: 999px;
@@ -4050,7 +4093,8 @@ img.letters-feature__art {
 }
 #page-container .letter-offer .letter-offer__btn:hover { background: #2d1f16; }
 @media (max-width: 600px) {
-  .letter-offer { flex-direction: column; align-items: stretch; }
+  .letter-offer { flex-direction: column; align-items: stretch; padding: 24px 22px 30px; }
+  .letter-offer::before { left: 28px; right: 28px; }
   #page-container .letter-offer .letter-offer__btn { text-align: center; }
 }
 /* critical:end */

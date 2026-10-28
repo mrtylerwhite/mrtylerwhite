@@ -85,7 +85,7 @@ These are illustrative rewrites, not real projects. The pattern is what matters.
 
 The weak column describes what you made. The strong column describes what changed. Only one of those gets read.
 
-If you don't have the number yet, that's not a writing problem. It's a measurement problem, and you can still fix it. Start with [the UX metrics that actually make it into the exec deck](/letters/ux-metrics/).
+If you don't have the number yet, better writing won't save it. You have a measurement gap, and you can still close it. Start with [the UX metrics that actually make it into the exec deck](/letters/ux-metrics/).
 
 ## Before and after: the opening paragraph
 

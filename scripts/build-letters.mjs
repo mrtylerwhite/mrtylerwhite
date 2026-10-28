@@ -629,8 +629,11 @@ function newsletterBlock(location, { floating = true } = {}) {
 function earlyOfferBlock(post) {
   const c = CTAS[post.cta];
   if (!c) return "";
+  const icon = post.cta === "case-study"
+    ? `<img class="letter-offer__icon" src="/assets/images/roi-case-study-template/claude-icon.svg" alt="" width="48" height="48" />`
+    : "";
   return `<aside class="letter-offer" aria-label="${esc(c.label)}">
-  <p class="letter-offer__text"><span class="letter-offer__eyebrow">${esc(c.offerEyebrow)}</span> ${esc(post.offer || c.offer)}</p>
+  <div class="letter-offer__lead">${icon}<p class="letter-offer__text"><span class="letter-offer__eyebrow">${esc(c.offerEyebrow)}</span> ${esc(post.offer || c.offer)}</p></div>
   <a class="letter-offer__btn" href="${c.href}" data-track-event="letters_offer_click" data-track-location="early_${post.cta}">${esc(c.label)} &rarr;</a>
 </aside>`;
 }

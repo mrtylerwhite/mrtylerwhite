@@ -57,7 +57,7 @@ Before anyone reads a single case study, they already know the shape of your imp
 
 This is the section most portfolios skip entirely, and it's the one doing the most work. Nobody reads your homepage. They scan it. Give them a reason to keep going in the first five seconds or lose them to the next tab.
 
-Don't have three numbers? That's not a portfolio problem. It's a measurement problem, and it's fixable. Start with [the UX metrics that actually make it into the exec deck](/letters/ux-metrics/).
+Don't have three numbers? Measure first, then come back to the portfolio. Start with [the UX metrics that actually make it into the exec deck](/letters/ux-metrics/).
 
 ## 3. The case study grid: sorted by outcome, not chronology
 

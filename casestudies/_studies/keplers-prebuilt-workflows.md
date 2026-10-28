@@ -27,13 +27,13 @@ This was not a tooling gap. It was an access bottleneck.
 
 As Director of UI and UX, I owned the decision to open machine learning workflows to non-technical users without giving up rigor or trust. That meant turning internal data science tools into a guided system analysts could run on their own: the workflow structure, which decisions needed user input, and what complexity to remove.
 
-The goal wasn't to teach machine learning. It was to remove the dependency on data scientists for routine analysis.
+The goal: analysts run routine models without waiting on data science.
 
 ## What we found
 
 We ran two research tracks in parallel.
 
-- **Business analysts:** how they actually made decisions. They spent days waiting on models they couldn't run. The bottleneck wasn't the model. It was access.
+- **Business analysts:** how they actually made decisions. They spent days waiting on models they couldn't run. The bottleneck was access.
 - **Data scientists:** how their internal tools worked, which technical parts could be simplified for analysts, and what had to stay intact for the experts.
 
 The phrase that came up most: "I just need the output. I don't need to understand how it works."

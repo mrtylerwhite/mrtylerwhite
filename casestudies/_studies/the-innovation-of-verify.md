@@ -27,13 +27,13 @@ The problem wasn't accuracy. It was speed, trust and scale.
 
 I was the founding product designer. That meant defining how document inspection would be automated in a regulated environment: shaping the inspection workflow, deciding where automation could safely replace manual review, and validating that results met the trust bar of compliance and regulatory teams.
 
-The goal wasn't faster proofreading. It was lower release risk without losing regulatory confidence.
+The goal was lower release risk without losing regulatory confidence.
 
 ## What we found
 
 We talked directly with pharmaceutical regulatory and compliance teams. Three findings shaped the product.
 
-1. **Reviewers compared documents side by side by hand,** sometimes for hours. The bottleneck wasn't attention. It was tooling.
+1. **Reviewers compared documents side by side by hand,** sometimes for hours. The bottleneck was tooling.
 2. **Compliance teams had to trust the output before acting on it.** The tool had to show its work: not just flag differences, but categorize them so reviewers could prioritize.
 3. **"Just make the software do it for me"** came up again and again. Reviewers didn't want to match graphics manually at all.
 
@@ -71,6 +71,6 @@ Behind it: double diamond to define the problem, several rounds of wireframes, F
 
 ## What I learned
 
-The most important design decision wasn't the automation. It was making the output trustworthy enough for compliance teams to act on.
+The most important design decision was making the output trustworthy enough for compliance teams to act on.
 
 Being willing to scrap a shipped feature is what made the product credible in a regulated environment.

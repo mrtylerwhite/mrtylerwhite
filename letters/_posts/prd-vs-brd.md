@@ -69,7 +69,7 @@ Scope changes during the build. The PRD gets updated. The BRD doesn't.
 
 Now the business case says one thing and the product does another. Two docs, zero truth. Congrats, you've built a very expensive way to argue. And when someone asks "did this work?", nobody can agree what the hell "work" was supposed to mean.
 
-That's not a documentation problem. It's a decision problem. The decisions got made in different rooms, by different people, at different times.
+Better docs won't fix it. The decisions got made in different rooms, by different people, at different times.
 
 <!-- newsletter -->
 

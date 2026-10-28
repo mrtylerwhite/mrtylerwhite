@@ -78,7 +78,7 @@ Say a feature takes 10 minutes to explain in a demo or a support conversation:
 
 At a conservative $75 an hour, that's roughly **$1,000 a month** in explanation cost. For one feature.
 
-That's not fluff. That's math.
+Finance can check that math. Let them.
 
 Reduce that by even 25% and it's real money and real time returned to the team.
 
