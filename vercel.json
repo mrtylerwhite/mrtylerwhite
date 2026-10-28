@@ -65,7 +65,7 @@
       ]
     },
     {
-      "source": "/(letters/_posts|partials)/(.*)",
+      "source": "/(letters/_posts|casestudies/_studies|partials)/(.*)",
       "headers": [
         {
           "key": "X-Robots-Tag",

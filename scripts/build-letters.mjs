@@ -1245,4 +1245,206 @@ write("letters-sitemap.xml", sitemap(published));
 registerSitemap("sitemap.xml");
 registerSitemap("sitemap_index.xml");
 
+// ── Case studies ──────────────────────────────────────────────────────────
+// Source:  casestudies/_studies/*.md   Output: casestudies/<slug>/index.html
+// Same single-column article as a letter, plus a project meta row, hero
+// media, a results strip and "More case studies". Front matter:
+//   order, slug, title, seoTitle, description, eyebrow, subtitle,
+//   client, clientDesc, role, focus,
+//   heroVideo + poster  |  heroImage
+//   stats   "value|label ;; value|label"  (real numbers only)
+//   note    optional context callout (older projects, missing data)
+//   cta     case-study | builder-kickoff
+const STUDIES_DIR = path.join(ROOT, "casestudies", "_studies");
+
+function parseStudy(file) {
+  const raw = fs.readFileSync(file, "utf8");
+  const m = raw.match(/^---\n([\s\S]*?)\n---\n?([\s\S]*)$/);
+  if (!m) throw new Error(`${path.relative(ROOT, file)}: missing front matter`);
+  const meta = {};
+  for (const line of m[1].split("\n")) {
+    const kv = line.match(/^([A-Za-z]+):\s*(.*)$/);
+    if (kv) meta[kv[1]] = kv[2].trim().replace(/^(["'])(.*)\1$/, "$2");
+  }
+  for (const key of ["title", "description", "slug", "client", "role", "cta"]) {
+    if (!meta[key]) throw new Error(`${path.relative(ROOT, file)}: front matter needs "${key}"`);
+  }
+  if (!(meta.cta in CTAS)) throw new Error(`${meta.slug}: unknown cta "${meta.cta}"`);
+  meta.order = Number(meta.order || 99);
+  meta.seoTitle = meta.seoTitle || meta.title;
+  meta.stats = (meta.stats || "").split(";;").map((s) => s.trim()).filter(Boolean).map((s) => {
+    const [value, label] = s.split("|").map((x) => x.trim());
+    return { value, label };
+  });
+  meta.body = m[2];
+  meta.words = m[2].split(/\s+/).filter(Boolean).length;
+  meta.readMins = Math.max(1, Math.round(meta.words / 230));
+  meta.url = `${SITE}/casestudies/${meta.slug}/`;
+  return meta;
+}
+
+function renderStudyBody(study) {
+  const renderer = new marked.Renderer();
+  renderer.heading = function ({ tokens, depth }) {
+    const html = this.parser.parseInline(tokens);
+    return `<h${depth} id="${slugifyHeading(html)}">${html}</h${depth}>\n`;
+  };
+  renderer.link = function ({ href, title, tokens }) {
+    const text = this.parser.parseInline(tokens);
+    const external = /^https?:\/\//.test(href) && !href.startsWith(SITE);
+    return external
+      ? `<a href="${esc(href)}" target="_blank" rel="noopener noreferrer">${text}</a>`
+      : `<a href="${esc(href)}">${text}</a>`;
+  };
+  renderer.image = ({ href, text }) =>
+    `<img src="${esc(href)}" alt="${esc(text)}" loading="lazy" decoding="async" />`;
+  let html = marked.parse(study.body, { renderer, gfm: true });
+  // A paragraph holding only images becomes a figure: one wide shot, or a grid.
+  html = html.replace(/<p>((?:\s*<img [^>]+>\s*)+)<\/p>/g, (mm, imgs) => {
+    const n = (imgs.match(/<img /g) || []).length;
+    return `<figure class="cs-media${n > 1 ? ` cs-media--grid cs-media--${Math.min(n, 4)}` : ""}">${imgs.trim()}</figure>`;
+  });
+  // A paragraph that is just one link reads as a button.
+  html = html.replace(/<p>(<a href="[^"]+"(?: target="_blank" rel="noopener noreferrer")?>)([^<]+)<\/a><\/p>/g,
+    (mm, open, label) => `<p class="cs-linkout">${open.replace("<a ", '<a class="cs-linkout__btn" data-track-event="case_study_link_click" ')}${label} <span aria-hidden="true">&rarr;</span></a></p>`);
+  // Same mid-read offer as the letters, before the third H2.
+  let n = 0;
+  html = html.replace(/<h2 /g, (mm) => (++n === 3 ? `${earlyOfferBlock(study)}\n<h2 ` : mm));
+  return `${html}\n${ctaBlock(study.cta)}`;
+}
+
+function studyHero(study) {
+  if (study.heroVideo) {
+    return `<figure class="cs-hero">
+      <video class="cs-hero__media" src="${esc(study.heroVideo)}" poster="${esc(study.poster || "")}" autoplay muted loop playsinline preload="metadata" aria-label="${esc(study.client)} product walkthrough"></video>
+      <button type="button" class="cs-hero__sound" data-cs-video-toggle aria-pressed="false">Play with sound</button>
+    </figure>`;
+  }
+  if (study.heroImage) {
+    return `<figure class="cs-hero"><img class="cs-hero__media" src="${esc(study.heroImage)}" alt="${esc(study.client)}: ${esc(study.focus || "project")}" fetchpriority="high" decoding="async" /></figure>`;
+  }
+  return "";
+}
+
+function studyCard(study) {
+  const img = study.poster || study.heroImage;
+  return `<li class="cs-card">
+    <a class="cs-card__link" href="/casestudies/${study.slug}/" data-track-event="case_study_more_click">
+      ${img ? `<img class="cs-card__img" src="${esc(img)}" alt="" loading="lazy" decoding="async" />` : ""}
+      <span class="cs-card__eyebrow">${esc(study.client)}</span>
+      <span class="cs-card__title">${esc(study.title)}</span>
+    </a>
+  </li>`;
+}
+
+function studyPage(study, more) {
+  const canonical = study.url;
+  const jsonld = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: study.title,
+      description: study.description,
+      image: SITE + (study.poster || study.heroImage || DEFAULT_OG),
+      mainEntityOfPage: canonical,
+      url: canonical,
+      author: AUTHOR,
+      about: { "@type": "Organization", name: study.client },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: `${SITE}/` },
+        { "@type": "ListItem", position: 2, name: "Case studies", item: `${SITE}/case-studies/` },
+        { "@type": "ListItem", position: 3, name: study.client, item: canonical },
+      ],
+    },
+  ];
+  const meta = [
+    ["Client", `${study.client}${study.clientDesc ? `<span>${esc(study.clientDesc)}</span>` : ""}`],
+    ["Role", esc(study.role)],
+    ["Focus", esc(study.focus || "")],
+    ["Read", `${study.readMins} min`],
+  ].filter(([, v]) => v);
+  const stats = study.stats.length
+    ? `<section class="cs-stats cs-stats--${Math.min(study.stats.length, 4)}" aria-label="Results at a glance">
+        ${study.stats.map((s) => `<div class="cs-stat"><p class="cs-stat__value">${esc(s.value)}</p><p class="cs-stat__label">${esc(s.label)}</p></div>`).join("")}
+      </section>`
+    : "";
+
+  return `${headCommon({
+    title: `${study.seoTitle} | Tyler White`,
+    description: study.description,
+    canonical,
+    ogImage: study.poster || study.heroImage || DEFAULT_OG,
+    ogType: "article",
+    noindex: false,
+    jsonld,
+    extraHead: study.poster || study.heroImage ? `  <link rel="preload" as="image" href="${esc(study.poster || study.heroImage)}" fetchpriority="high" />\n` : "",
+  })}
+${shellOpen("letters-page letter-page cs-page")}
+<main class="letter cs" id="main-content">
+  <article class="letter__article">
+    <header class="letter__header cs__header">
+      <a class="letter__back ds-enter" href="/case-studies/" data-track-event="case_study_back_click"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>All case studies</a>
+      ${study.eyebrow ? `<p class="cs__eyebrow ds-enter">${esc(study.eyebrow)}</p>` : ""}
+      <h1 class="letter__title ds-enter ds-enter-d1">${esc(study.title)}</h1>
+      ${study.subtitle ? `<p class="letter__subtitle ds-enter ds-enter-d1">${esc(study.subtitle)}</p>` : ""}
+      <dl class="cs-meta ds-enter ds-enter-d2">
+        ${meta.map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join("")}
+      </dl>
+    </header>
+    ${studyHero(study)}
+    ${stats}
+    ${study.note ? `<aside class="cs-note"><p><strong>Context.</strong> ${esc(study.note)}</p></aside>` : ""}
+    <div class="letter__body cs__body">
+${renderStudyBody(study)}
+    </div>
+    <footer class="letter__author">
+      <img class="letter__avatar letter__avatar--lg" src="${AUTHOR_IMG}" alt="" width="64" height="64" loading="lazy" />
+      <div>
+        <p class="letter__author-name">Tyler White</p>
+        <p class="letter__author-bio">Director of Product Design. 16 years in B2B SaaS, writing about how design decisions turn into revenue, retention and the seat at the table. Creator of Builder Kickoff™.</p>
+      </div>
+    </footer>
+  </article>
+  <section class="cs-more" aria-labelledby="more-heading">
+    <h2 id="more-heading" class="letters-label">More case studies</h2>
+    <ul class="cs-more__list">${more.map(studyCard).join("")}</ul>
+  </section>
+</main>
+<script>
+(function () {
+  var btn = document.querySelector("[data-cs-video-toggle]");
+  if (!btn) return;
+  var v = btn.parentNode.querySelector("video");
+  btn.addEventListener("click", function () {
+    var on = btn.getAttribute("aria-pressed") !== "true";
+    v.muted = !on;
+    if (on) { v.currentTime = 0; v.controls = true; v.play(); }
+    btn.setAttribute("aria-pressed", String(on));
+    btn.textContent = on ? "Mute" : "Play with sound";
+  });
+})();
+</script>
+${shellClose}`;
+}
+
+if (fs.existsSync(STUDIES_DIR)) {
+  const studies = fs
+    .readdirSync(STUDIES_DIR)
+    .filter((f) => f.endsWith(".md"))
+    .map((f) => parseStudy(path.join(STUDIES_DIR, f)))
+    .sort((a, b) => a.order - b.order);
+  for (const study of studies) {
+    const others = studies.filter((s) => s.slug !== study.slug);
+    const at = studies.indexOf(study);
+    // The next two in order, wrapping, so every page links forward.
+    const more = [...others.slice(at), ...others.slice(0, at)].slice(0, 2);
+    write(`casestudies/${study.slug}/index.html`, studyPage(study, more));
+  }
+  console.log(`Built ${studies.length} case stud${studies.length === 1 ? "y" : "ies"}.`);
+}
+
 console.log(`Built ${all.length} letter(s) (${published.length} published).`);
