@@ -19,7 +19,7 @@
   var RCST_FADE_MS = 320;
   var INTRO_MESSAGES = [
     "Most portfolios show the process. The best ones show the value. Let's turn yours into a business-impact story.",
-    "What's your first name?",
+    "Where should I send it? Drop your email and it's yours in a minute.",
   ];
   var INTRO_START_DELAY = 300;
   var INTRO_MESSAGE_GAP = 350;
@@ -126,6 +126,11 @@
     if (this.input) {
       this.input.addEventListener("focus", function () {
         self.consumeVisibilityFocus();
+      });
+
+      // chat_start = the visitor started typing. (Desktop auto-focuses the field
+      // when it scrolls into view, so focus alone isn't intent.)
+      this.input.addEventListener("input", function () {
         if (self.chatEngaged || self.input.disabled) return;
         self.chatEngaged = true;
         track(self.trackPrefix + "_chat_start", { page: window.location.pathname });
@@ -398,7 +403,7 @@
     }
 
     if (token !== this.introToken) return;
-    this.openNameComposer();
+    this.openEmailComposer();
     this.busy = false;
   };
 
@@ -416,30 +421,27 @@
       this.addMessage("assistant", this.introMessages[i]);
     }
 
-    this.openNameComposer();
+    this.openEmailComposer();
     this.busy = false;
   };
 
-  ChatLeadCapture.prototype.openNameComposer = function () {
-    this.state = "name";
+  // Email is the only question: one step from interest to lead. (A first-name
+  // step used to come first and lost ~4 in 5 visitors before they got here.)
+  // chat_start is tracked when the visitor focuses the field, not on open.
+  ChatLeadCapture.prototype.openEmailComposer = function () {
+    this.state = "email";
     this.setComposer({
-      label: "First name",
-      type: "text",
-      placeholder: "Start with your first name",
-      ariaLabel: "Start with your first name",
-      buttonText: "Continue",
+      label: "Email address",
+      type: "email",
+      placeholder: "you@company.com",
+      ariaLabel: "Your email address",
+      buttonText: this.buttonText,
       disabled: false,
       hideComposer: false,
     });
-    this.markChatEngaged();
     this.armVisibilityFocus();
   };
 
-  ChatLeadCapture.prototype.markChatEngaged = function () {
-    if (this.chatEngaged) return;
-    this.chatEngaged = true;
-    track(this.trackPrefix + "_chat_start", { page: window.location.pathname });
-  };
 
   ChatLeadCapture.prototype.focusInput = function (opts) {
     opts = opts || {};
@@ -556,39 +558,6 @@
     if (this.busy || this.state === "submitting" || this.state === "success") return;
     this.clearError();
 
-    if (this.state === "name") {
-      var name = this.input ? String(this.input.value).trim() : "";
-      if (!name) {
-        this.showError("Please enter your first name.");
-        this.focusInputIfDesktop();
-        return;
-      }
-      this.firstName = name.charAt(0).toUpperCase() + name.slice(1);
-      track(this.trackPrefix + "_name_submitted", { page: window.location.pathname });
-      this.addMessage("user", name);
-      this.busy = true;
-      this.setComposer({ disabled: true, placeholder: "One moment…" });
-
-      await delay(300);
-      await this.addMessages([
-        "Nice to meet you, " + this.firstName + ", I'll send " + this.magnetName + " your way.",
-        "Where should I send it? Drop your email below.",
-      ]);
-
-      this.state = "email";
-      this.setComposer({
-        label: "Email address",
-        type: "email",
-        placeholder: "you@company.com",
-        ariaLabel: "Your email address",
-        buttonText: this.buttonText,
-        disabled: false,
-      });
-      this.armVisibilityFocus();
-      this.focusInputIfDesktop();
-      this.busy = false;
-      return;
-    }
 
     if (this.state === "email") {
       var email = this.input ? String(this.input.value).trim() : "";
@@ -635,10 +604,9 @@
       var res = await fetch(this.subscribeApi, {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          firstName: this.firstName,
-          email: email,
-        }),
+        body: JSON.stringify(
+          this.firstName ? { firstName: this.firstName, email: email } : { email: email }
+        ),
       });
 
       var data = null;

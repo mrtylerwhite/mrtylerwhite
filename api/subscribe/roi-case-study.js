@@ -65,10 +65,10 @@ async function upsertKitSubscriber(apiKey, email, firstName) {
       "Content-Type": "application/json",
       "X-Kit-Api-Key": apiKey,
     },
-    body: JSON.stringify({
-      email_address: email,
-      first_name: firstName,
-    }),
+    // Only send first_name when we have one, so an existing name isn't wiped.
+    body: JSON.stringify(
+      firstName ? { email_address: email, first_name: firstName } : { email_address: email }
+    ),
   });
 }
 
@@ -107,11 +107,7 @@ module.exports = async function handler(req, res) {
 
   const firstName =
     typeof body.firstName === "string" ? body.firstName.trim() : "";
-  if (!firstName) {
-    return res
-      .status(400)
-      .json({ success: false, error: "First name is required." });
-  }
+  // First name is optional: the capture asks for email only.
 
   const email = typeof body.email === "string" ? body.email.trim() : "";
   if (!email || !EMAIL_RE.test(email)) {

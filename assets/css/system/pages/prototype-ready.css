@@ -1614,14 +1614,45 @@ body.prototype-ready a.pr-ticket__cta:hover {
   text-decoration: none;
 }
 
+/* The refund guarantee: readable body copy, not fine print */
 body.prototype-ready .pr-ticket__purchase-seats {
+  font-family: var(--ds-font-body);
+  font-size: var(--ds-size-body-sm);
+  line-height: var(--ds-leading-body);
+  letter-spacing: var(--ds-tracking-body-sm);
+  color: var(--ds-color-text);
+  margin-top: 0.75rem;
+  text-align: center;
+}
+
+/* One real testimonial right above the buy button */
+body.prototype-ready .pr-ticket__proof {
+  margin: 0 0 1rem;
+  padding: 0.875rem 1rem;
+  border-left: 2px solid #c59060;
+  background: rgba(197, 144, 96, 0.08);
+  border-radius: 0 10px 10px 0;
+  text-align: left;
+}
+
+body.prototype-ready .pr-ticket__proof blockquote {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-family: var(--ds-font-body);
+  font-size: var(--ds-size-body-sm);
+  line-height: var(--ds-leading-body);
+  color: var(--ds-color-text-strong);
+}
+
+body.prototype-ready .pr-ticket__proof figcaption {
+  margin-top: 0.375rem;
   font-family: var(--ds-font-mono);
-  font-size: 10px;
-  letter-spacing: 0.1em;
+  font-size: var(--ds-size-eyebrow-sm);
+  line-height: var(--ds-leading-eyebrow-sm);
+  letter-spacing: var(--ds-tracking-eyebrow-sm);
   text-transform: uppercase;
   color: var(--ds-color-muted);
-  margin-top: 0.625rem;
-  text-align: center;
 }
 
 body.prototype-ready .pr-ticket__footer {
