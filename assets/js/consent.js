@@ -97,7 +97,7 @@
     // Light frosted card on the site cream
     "padding:20px;border-radius:20px;background:rgba(252,247,244,.92);color:#1f1a16;" +
     "-webkit-backdrop-filter:blur(24px) saturate(1.4);backdrop-filter:blur(24px) saturate(1.4);" +
-    "box-shadow:0 24px 64px rgba(31,26,22,.16);outline:1px solid rgba(31,26,22,.08);outline-offset:-1px;" +
+    "box-shadow:0 24px 64px rgba(31,26,22,.16);" +
     "font-family:var(--ds-font-body,Inter,system-ui,sans-serif);font-size:14px;line-height:1.45;letter-spacing:.0107em;" +
     "opacity:0;translate:0 8px;transition:opacity .3s cubic-bezier(.215,.61,.355,1),translate .4s cubic-bezier(.215,.61,.355,1)}" +
     ".mtw-consent[data-shown]{opacity:1;translate:none}" +
