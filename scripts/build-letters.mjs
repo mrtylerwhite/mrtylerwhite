@@ -18,6 +18,7 @@
  *   topic        case-studies | kickoffs | ai-workflow | career
  *   keyword      primary search term (for the record and the automation)
  *   cta          case-study | builder-kickoff | newsletter
+ *   offer        optional one-line pitch for the early offer (defaults per cta)
  *   cover        optional image path; lists fall back to a typographic tile
  *   featured     true = hero on /letters/ (else the newest letter)
  *   popular      true = in the "Most popular" strip
@@ -27,6 +28,10 @@
  * In the body, `<!-- newsletter -->` places the inline signup and
  * `<!-- cta -->` places the call-to-action block. Without markers the signup
  * goes before the third H2 and the CTA goes at the end.
+ *
+ * Every letter with a cta also gets a slim early offer after its third
+ * paragraph (or first H2 if sooner), so readers who leave early (most of
+ * them) still see the matched offer.
  */
 
 import fs from "fs";
@@ -83,7 +88,8 @@ function readCssPart(file, base) {
   // Lines 1–803 are the shell, index, and post header/body. 1191–1247 is the
   // responsive padding that keeps the title under the nav. The rest is below
   // the fold (signup, related, figures, video).
-  const above = [...lettersCss.slice(0, 803), ...lettersCss.slice(1190, 1247)].join("\n");
+  const marked = (fs.readFileSync(path.join(ROOT, "assets/css/system/pages/letters.css"), "utf8").match(/\/\* critical:start \*\/[\s\S]*?\/\* critical:end \*\//g) || []).join("\n");
+  const above = [...lettersCss.slice(0, 803), ...lettersCss.slice(1190, 1247), marked].join("\n");
   const blocking = [
     ["/assets/css/system/hamburger-icon.css", "/assets/css/system/"],
     ["/assets/css/system/tokens.css", "/assets/css/system/"],
@@ -197,6 +203,8 @@ const CTAS = {
     body: "The 15 Minute Case Study. Paste your rough notes, answer the hard questions, walk away with the business story.",
     href: "/roi-case-study-template/",
     label: "Get the 15 Minute Case Study",
+    offerEyebrow: "Free Claude Skill",
+    offer: "Turn your last project into a case study that shows what it was worth, in 15 minutes.",
   },
   "builder-kickoff": {
     eyebrow: "Builder Kickoff™ · $97",
@@ -204,6 +212,8 @@ const CTAS = {
     body: "Seven short lessons. Record your next kickoff, and get the PRD, the business case and the prototype direction the same day.",
     href: "/builder-kickoff/",
     label: "See how Builder Kickoff works",
+    offerEyebrow: "Builder Kickoff™",
+    offer: "Run one kickoff and leave with the PRD, the business case and the prototype prompt.",
   },
   newsletter: null,
 };
@@ -615,6 +625,16 @@ function newsletterBlock(location, { floating = true } = {}) {
 </aside>`;
 }
 
+// Slim offer placed before the first H2 (see header comment).
+function earlyOfferBlock(post) {
+  const c = CTAS[post.cta];
+  if (!c) return "";
+  return `<aside class="letter-offer" aria-label="${esc(c.label)}">
+  <p class="letter-offer__text"><span class="letter-offer__eyebrow">${esc(c.offerEyebrow)}</span> ${esc(post.offer || c.offer)}</p>
+  <a class="letter-offer__btn" href="${c.href}" data-track-event="letters_offer_click" data-track-location="early_${post.cta}">${esc(c.label)} &rarr;</a>
+</aside>`;
+}
+
 function ctaBlock(key) {
   const c = CTAS[key];
   if (!c) return newsletterBlock("letters_end");
@@ -751,6 +771,17 @@ function renderBody(post) {
   else {
     let n = 0;
     html = html.replace(/<h2 /g, (mm) => (++n === 3 ? `${newsletterBlock("letters_inline")}\n<h2 ` : mm));
+  }
+  // Early offer: after the third paragraph or before the first H2, whichever
+  // comes first, so it lands in the first screen or two.
+  const early = earlyOfferBlock(post);
+  if (early) {
+    const h2At = html.search(/<h2 /);
+    let pAt = -1;
+    const re = /<\/p>/g;
+    for (let i = 0; i < 3; i++) { const m = re.exec(html); if (!m) break; pAt = m.index + 4; }
+    const at = pAt > 0 && (h2At < 0 || pAt < h2At) ? pAt : h2At;
+    if (at >= 0) html = `${html.slice(0, at)}\n${early}\n${html.slice(at)}`;
   }
   if (html.includes("<!-- cta -->")) html = html.replace("<!-- cta -->", ctaBlock(post.cta));
   else html += `\n${ctaBlock(post.cta)}`;

@@ -92,14 +92,14 @@ a,abbr,acronym,address,applet,b,big,blockquote,body,center,cite,code,dd,del,dfn,
 <link rel="stylesheet" href="/assets/css/system/index.css?v=d9f85923">
 <link rel="stylesheet" href="/assets/css/system/senja-embed.css?v=04092bc3" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="/assets/css/system/senja-embed.css?v=04092bc3"></noscript>
-<link rel="stylesheet" href="/assets/css/system/pages/newsletter.css?v=6d647902">
+<link rel="stylesheet" href="/assets/css/system/pages/newsletter.css?v=a783edd3">
 <link rel="stylesheet" href="/assets/css/system/site-footer.css?v=2a5d33c5" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="/assets/css/system/site-footer.css?v=2a5d33c5"></noscript>
 
 <!-- Google tag (gtag.js) deferred for performance -->
 <script src="/assets/js/gtm-defer.js?v=ca2c75ba" defer></script>
 <script src="/assets/js/analytics.js?v=d85a8237" defer></script>
-<script src="/assets/js/consent.js?v=ce54c5af" defer></script>
+<script src="/assets/js/consent.js?v=7bfbdbc7" defer></script>
 <link rel='shortlink' href="https://www.mrtylerwhite.com/newsletter/" />
 <meta name="generator" content="Site Kit by Google 1.178.0" /><meta name="viewport" content="width=device-width, initial-scale=1" /><style type="text/css" id="custom-background-css">
 body.custom-background { background-color: #f9f9fe; }
@@ -210,23 +210,24 @@ body.custom-background { background-color: #f9f9fe; }
 						<div class="nl-saasify-title">
 							<p class="ds-eyebrow ds-enter">The ROI of Design</p>
 							<h1 class="nl-saasify-headline ds-enter ds-enter-d1">Most design work doesn't fail at execution. It fails before anyone opens Figma.</h1>
-							<p class="nl-saasify-lede ds-enter ds-enter-d2">A weekly breakdown of how to scope, frame, and build the business case for your work. So your decisions stick.</p>
+							<p class="nl-saasify-lede ds-enter ds-enter-d2">One email every Saturday on how to scope, frame and build the business case for your design work, from a Director of Product Design who hires designers.</p>
 							<div class="nl-saasify-senja">
 								<script src="https://widget.senja.io/widget/40c06f2d-2eb6-4a86-ae11-d422541564f3/platform.js" type="text/javascript" async></script>
 <div class="senja-embed" data-id="40c06f2d-2eb6-4a86-ae11-d422541564f3" data-mode="shadow" data-lazyload="false" style="display: block; width: 100%;"></div>
 							</div>
 						</div>
 
-						<form id="newsletter-form" class="nl-saasify-form ds-enter ds-enter-d3" method="post" action="https://app.kit.com/forms/4969496/subscriptions" data-sv-form="4969496" data-uid="4969496" novalidate>
+						<form id="newsletter-form" class="nl-saasify-form ds-enter ds-enter-d3" data-newsletter-form data-track-location="newsletter_page" method="post" action="https://app.kit.com/forms/4969496/subscriptions" data-sv-form="4969496" data-uid="4969496" novalidate>
 							<div class="nl-saasify-input-container">
 								<label class="screen-reader-text" for="email">Email address</label>
 								<input id="email" name="email_address" type="email" autocomplete="email" placeholder="Enter your email address..." required class="nl-saasify-input" aria-describedby="form-error">
 								<button type="submit" id="subscribe-btn" class="nl-saasify-submit">Subscribe Now</button>
 							</div>
-							<p id="form-error" role="alert" aria-live="polite" class="nl-saasify-form-error"></p>
+							<p id="form-error" role="alert" aria-live="polite" class="nl-saasify-form-error" data-newsletter-error></p>
 						</form>
 
-						<p class="nl-saasify-caption">No fluff. No theory. Just mechanics you can use. Unsubscribe anytime.</p>
+						<p class="nl-saasify-caption">Five-minute read. Join 260+ readers. Unsubscribe anytime.</p>
+						<p class="nl-saasify-recent">Recent letters: <a href="/letters/roi-of-design/">The ROI of design, for one feature</a> &middot; <a href="/letters/ux-metrics/">UX metrics execs actually read</a> &middot; <a href="/letters/design-rationale/">Explaining design decisions</a></p>
 					</div>
 				</div>
 
@@ -327,59 +328,7 @@ body.custom-background { background-color: #f9f9fe; }
 </script><script type="text/javascript" src="/assets/js/divi-clickable.js?v=3c4aa36a" defer></script>
 <script type="text/javascript" src="/assets/js/mobile-menu-a11y.js?v=2b161847" id="mobile-menu-a11y-js" defer></script>
 <script type="text/javascript" src="/assets/js/senja-lazy.js?v=13c14b1a" defer></script>
-<script>
-(function () {
-  /* Same flow as SaaSifyOS KitSubscribeRedirect: browser POST to app.kit.com (server proxy hits bot guards). */
-  var thankYouUrl = new URL("/newsletter-confirmation/", window.location.origin).href;
-  var form = document.getElementById("newsletter-form");
-  var btn = document.getElementById("subscribe-btn");
-  var err = document.getElementById("form-error");
-  if (!form || !btn || !err) return;
-
-  form.addEventListener("submit", async function (e) {
-    e.preventDefault();
-    err.textContent = "";
-    var input = document.getElementById("email");
-    var email = input ? String(input.value).trim() : "";
-    if (!email) {
-      err.textContent = "Please enter your email.";
-      if (input) input.focus();
-      return;
-    }
-    btn.disabled = true;
-    try {
-      var res = await fetch(form.action, {
-        method: "POST",
-        body: new URLSearchParams(new FormData(form)),
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        redirect: "manual",
-        mode: "cors",
-      });
-      var ok =
-        res.type === "opaqueredirect" ||
-        res.status === 0 ||
-        (res.status >= 200 && res.status < 400);
-      if (ok) {
-        if (typeof window.trackEvent === "function") {
-          window.trackEvent("newsletter_submit_success", { location: "newsletter_page" });
-        }
-        window.location.assign(thankYouUrl);
-        return;
-      }
-      if (typeof window.trackEvent === "function") {
-        window.trackEvent("newsletter_submit_error", { location: "newsletter_page", reason: "http_" + res.status });
-      }
-      err.textContent = "Something went wrong. Please try again in a moment.";
-    } catch (_) {
-      if (typeof window.trackEvent === "function") {
-        window.trackEvent("newsletter_submit_error", { location: "newsletter_page", reason: "network" });
-      }
-      err.textContent = "Network error. Check your connection and try again.";
-    }
-    btn.disabled = false;
-  });
-})();
-</script><script src="/assets/js/scroll-reveal.js?v=7f35e6c2" defer></script>
+<script src="/assets/js/newsletter-form.js?v=642a9a06" defer></script><script src="/assets/js/scroll-reveal.js?v=7f35e6c2" defer></script>
 <script src="/assets/js/controls.js?v=9fa4c65f" defer></script>
 </body>
 </html>

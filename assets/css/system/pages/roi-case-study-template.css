@@ -1025,3 +1025,27 @@ body.roi-case-study-template .rcst-bridge__cta:hover {
 body.roi-case-study-template .rcst-bridge__cta:hover::before {
   animation-play-state: paused;
 }
+
+/* Phones: get the email field above the fold. Shorter subheading (the extra
+   clauses stay on desktop) and no opening chat bubble, which restates it,
+   so the email question is the first message. */
+@media screen and (max-width: 767px) {
+  body.roi-case-study-template .rcst-hero__more {
+    display: none;
+  }
+
+  body.roi-case-study-template .rcst-chat__thread > .rcst-chat__msg:first-child {
+    display: none;
+  }
+
+  /* The window was a fixed height with the thread stretched to fill it, which
+     parked the field at the bottom of an empty box. With one question it can
+     size to its content (max-height still caps it as replies arrive). */
+  body.roi-case-study-template .rcst-chat__window {
+    height: auto;
+  }
+
+  body.roi-case-study-template .rcst-chat__thread {
+    flex: 0 1 auto;
+  }
+}

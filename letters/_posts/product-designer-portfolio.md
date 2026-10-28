@@ -11,6 +11,7 @@ topic: case-studies
 cover: /assets/images/letters/product-designer-portfolio.jpg
 keyword: product designer portfolio
 cta: case-study
+offer: Your strongest portfolio piece is the one that shows what changed. Draft its business story in 15 minutes.
 source: 25364104, 24149534
 ---
 

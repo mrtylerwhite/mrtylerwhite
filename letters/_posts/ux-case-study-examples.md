@@ -11,6 +11,7 @@ topic: case-studies
 cover: /assets/images/letters/ux-case-study-examples.jpg
 keyword: ux case study examples
 cta: case-study
+offer: Turn your last project into a case study like these, in 15 minutes.
 source: 24149534, 25364104
 popular: true
 ---

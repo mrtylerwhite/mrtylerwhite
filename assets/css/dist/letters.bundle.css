@@ -3999,3 +3999,58 @@ img.letters-feature__art {
   text-transform: none;
   letter-spacing: var(--ds-tracking-h3);
 }
+
+/* critical:start */
+/* Early offer: slim, topic-matched, just before a letter's first H2.
+   Inside the critical markers so build-letters puts it in the above-the-fold CSS. */
+.letter-offer {
+  display: flex;
+  align-items: center;
+  gap: 16px 24px;
+  margin: 32px 0 40px;
+  padding: 16px 20px;
+  border-radius: var(--ds-radius-lg);
+  background: rgba(197, 144, 96, 0.1);
+  outline: 1px solid rgba(197, 144, 96, 0.25);
+  outline-offset: -1px;
+}
+#page-container .letter-offer .letter-offer__text {
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  font-family: var(--ds-font-body);
+  font-size: var(--ds-size-body-sm);
+  line-height: var(--ds-leading-body);
+  letter-spacing: var(--ds-tracking-body-sm);
+  color: var(--ds-color-text-strong);
+}
+.letter-offer__eyebrow {
+  display: block;
+  margin-bottom: 4px;
+  font-family: var(--ds-font-mono);
+  font-size: var(--ds-size-eyebrow-sm);
+  line-height: var(--ds-leading-eyebrow-sm);
+  letter-spacing: var(--ds-tracking-eyebrow-sm);
+  text-transform: uppercase;
+  color: #8c5b31;
+}
+#page-container .letter-offer .letter-offer__btn {
+  flex-shrink: 0;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: #1f1a16;
+  color: #fffaf4 !important;
+  font-family: var(--ds-font-body);
+  font-size: var(--ds-size-body-sm);
+  font-weight: 500;
+  line-height: 1.2;
+  text-decoration: none !important;
+  white-space: nowrap;
+  transition: background-color 0.2s ease;
+}
+#page-container .letter-offer .letter-offer__btn:hover { background: #2d1f16; }
+@media (max-width: 600px) {
+  .letter-offer { flex-direction: column; align-items: stretch; }
+  #page-container .letter-offer .letter-offer__btn { text-align: center; }
+}
+/* critical:end */

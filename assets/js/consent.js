@@ -10,7 +10,8 @@
  * out from the footer.
  *
  * To keep friction low the card waits for the first scroll or 3 seconds, uses
- * shorter copy on phones, and steps aside while the mobile menu is open.
+ * shorter copy on phones, and steps aside while the mobile menu is open or
+ * (on phones) while the visitor is typing in a form field.
  *
  * The choice lives in localStorage ("mtw-consent") for 12 months, then the
  * card asks again. Any element with [data-cookie-settings] (the footer link)
@@ -118,6 +119,8 @@
     ".mtw-consent__label,.mtw-consent__long{display:none}.mtw-consent__short{display:inline}" +
     ".mtw-consent__text{margin:0 0 10px;font-size:13px}.mtw-consent__btn{min-height:40px;padding:8px 14px}}" +
     "body:has(#main-header .mobile_nav.opened) .mtw-consent{opacity:0;translate:0 8px;pointer-events:none}" +
+    // Phones: step aside while the visitor is typing in a form field
+    "@media (max-width:767px){body:has(input:focus:not(.mtw-consent *),textarea:focus) .mtw-consent{opacity:0;translate:0 8px;pointer-events:none}}" +
     "@media (prefers-reduced-motion:reduce){.mtw-consent{transition:none}}";
 
   var card = null;

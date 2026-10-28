@@ -490,3 +490,22 @@ body:has(#post-newsletter) #main-content {
     padding-top: 1.5rem;
   }
 }
+
+/* Recent letters under the form: proof of what arrives each Saturday */
+#post-newsletter .nl-saasify-recent {
+  margin: 12px auto 0;
+  max-width: 560px;
+  padding: 0;
+  font-family: var(--ds-font-body);
+  font-size: var(--ds-size-body-sm);
+  line-height: var(--ds-leading-body);
+  text-align: center;
+  color: var(--nl-muted, var(--ds-color-muted));
+}
+
+#post-newsletter .nl-saasify-recent a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(0, 0, 0, 0.25);
+}
