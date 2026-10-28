@@ -128,8 +128,6 @@ They're judging your thinking, not your typography.
 
 So once the homepage is done, practice saying each decision in one clear line. I wrote about [explaining design decisions without defending them](/letters/design-rationale/).
 
-You can see how I lay out my own work on my [case studies page](/case-studies/).
-
 ## Start with one case study
 
 You don't need to rebuild the whole site this week. Take your strongest project and rewrite it so the headline is a result and the body follows decisions.

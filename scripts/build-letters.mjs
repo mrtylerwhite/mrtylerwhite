@@ -839,7 +839,7 @@ const shellOpen = (extraClass) => `<body class="${extraClass} ${BODY_CLASSES}">
 <!-- partial:header -->
 <!-- /partial:header -->`;
 
-const shellClose = `<!-- partial:footer -->
+const shellClose = `<!-- partial:footer hide="portfolio" -->
 <!-- /partial:footer -->
 </div>
 <script src="${asset("/assets/js/mobile-menu-a11y.js")}" defer></script>

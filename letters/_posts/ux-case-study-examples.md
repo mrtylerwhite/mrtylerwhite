@@ -169,8 +169,6 @@ If you're presenting live, there's one more skill worth building: explaining a c
 
 Structure matters on the portfolio homepage too. Sort by outcome, not by date, and make every preview headline a result. Here's [the product designer portfolio homepage structure](/letters/product-designer-portfolio/) I use.
 
-You can see how I write up my own work on my [case studies page](/case-studies/).
-
 ## Or skip the blank page entirely
 
 The hardest part of a case study is the first draft. You know the project. You just can't get it out of your head and onto the page in a shape that proves anything.
