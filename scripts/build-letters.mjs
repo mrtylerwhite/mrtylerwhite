@@ -18,7 +18,7 @@
  *   topic        case-studies | kickoffs | ai-workflow | career
  *   keyword      primary search term (for the record and the automation)
  *   cta          case-study | builder-kickoff | newsletter
- *   offer        optional one-line pitch for the early offer (defaults per cta)
+ *   offer        optional one-line pitch for the early offer (defaults per cta; "none" hides it)
  *   cover        optional image path; lists fall back to a typographic tile
  *   featured     true = hero on /letters/ (else the newest letter)
  *   popular      true = in the "Most popular" strip
@@ -546,6 +546,49 @@ const FIGURES = {
   </div></div>
   <figcaption>Baseline, change, cost. Put all three in the case study and the number explains itself.</figcaption>
 </figure>`,
+  // Tailark flow (same as roi-levers): three asks → the swap → in with a trade, or parked
+  "scope-swap": `<figure class="letter-fig">
+  <div class="tk-tray"><div class="tk-stage tk-stage--filter" aria-hidden="true">
+    <div class="tk-flow-row">
+      <div class="tk-col">${tilePill("CSV export", "Sales asked", "message", "brown", 0.1)}${tilePill("Dashboard view", "The VP asked", "user", "brown", 0.22)}${tilePill("Empty states", "You did it", "pen", "brown", 0.34)}</div>
+      <svg class="tk-lines tk-lines--static" width="64" height="164" viewBox="0 0 64 164" fill="none">
+        <path d="M0 22C32 22 32 82 64 82"/><path d="M0 82H64"/><path d="M0 142C32 142 32 82 64 82"/>
+        <path class="tk-pulse" pathLength="1" d="M0 22C32 22 32 82 64 82" stroke="url(#tks1-a)"/>
+        <path class="tk-pulse" pathLength="1" d="M0 82H64" stroke="url(#tks1-b)"/>
+        <path class="tk-pulse" pathLength="1" d="M0 142C32 142 32 82 64 82" stroke="url(#tks1-c)"/>
+        <defs>${beamGrad("tks1-a", 0, 22, 64, 82)}${beamGrad("tks1-b", 0, 82, 64, 82)}${beamGrad("tks1-c", 0, 142, 64, 82)}</defs>
+      </svg>
+      <div class="tk-node tk-node--inline tk-rise" style="--d:0.5s">${lucideIcon("tk-node__ico", ICON.scale)}</div>
+      <svg class="tk-lines tk-lines--static" width="64" height="164" viewBox="0 0 64 164" fill="none">
+        <path d="M0 82C32 82 32 42 64 42"/><path d="M0 82C32 82 32 122 64 122"/>
+        <path class="tk-pulse tk-pulse--out" pathLength="1" d="M0 82C32 82 32 42 64 42" stroke="url(#tks1-d)"/>
+        <defs>${beamGrad("tks1-d", 0, 82, 64, 42)}</defs>
+      </svg>
+      <div class="tk-col tk-col--outs">${tilePill("Dashboard in", "Bulk edit out. VP&rsquo;s call.", "check", "brown", 0.75)}${tilePill("Export parked", "Next cycle. Logged.", "x", "muted", 0.85, " tk-leave")}</div>
+    </div>
+  </div></div>
+  <figcaption>Every request goes through the same gate. Something comes in, something goes out, and somebody&rsquo;s name is on the call.</figcaption>
+</figure>`,
+  // Tailark flow (same as baseline-first): new request → the question → swap, park or re-bet
+  "scope-triage": `<figure class="letter-fig">
+  <div class="tk-tray"><div class="tk-stage tk-stage--fan" aria-hidden="true">
+    <svg class="tk-lines tk-lines--fan" viewBox="0 0 400 240" fill="none">
+      <path d="M60 120 H160"/><path d="M220 120 H260"/>
+      <path d="M260 120 Q280 120 290 100 L310 50 Q320 30 340 30"/><path d="M260 120 H340"/><path d="M260 120 Q280 120 290 140 L310 190 Q320 210 340 210"/>
+      <path class="tk-pulse" pathLength="1" d="M60 120 H160" stroke="url(#tks2-in)"/>
+      <path class="tk-pulse tk-pulse--out" pathLength="1" d="M220 120 H260 Q280 120 290 100 L310 50 Q320 30 340 30" stroke="url(#tks2-o1)"/>
+      <path class="tk-pulse tk-pulse--out" pathLength="1" d="M220 120 H340" stroke="url(#tks2-o2)"/>
+      <path class="tk-pulse tk-pulse--out" pathLength="1" d="M220 120 H260 Q280 120 290 140 L310 190 Q320 210 340 210" stroke="url(#tks2-o3)"/>
+      <defs>${beamGrad("tks2-in", 220, 120, 160, 120)}${beamGrad("tks2-o1", 220, 120, 320, 60)}${beamGrad("tks2-o2", 220, 120, 340, 120)}${beamGrad("tks2-o3", 220, 120, 320, 180)}</defs>
+    </svg>
+    <div class="tk-fan">
+      ${pill("Can we also&hellip;", "message", "muted")}
+      <div class="tk-dark-pill">${lucideIcon("tk-ico tk-ico--brown", ICON.split)}<span>Problem or solution?</span></div>
+      <div class="tk-outs">${pill("Swap it in", "scale", "brown")}${pill("Park it", "calendar", "brown")}${pill("Re-bet", "refresh", "brown")}</div>
+    </div>
+  </div></div>
+  <figcaption>Three honest answers to every also. A quiet yes isn&rsquo;t one of them.</figcaption>
+</figure>`,
   "roi-ex-cost": invoiceCard("ROI-001 &middot; COST", "$5,760", "Saved a year", "+44% in 2 yrs",
     [["Tickets", "120 &rarr; 60 a month"], ["Time", "12 min each"], ["Rate", "$40 an hour"], ["Cost", "$8,000"], ["Year one", "&minus;28%"]],
     "Half the tickets, $5,760 a year back. Negative in year one, +44% over two. Illustrative numbers."),
@@ -629,6 +672,7 @@ function newsletterBlock(location, { floating = true } = {}) {
 function earlyOfferBlock(post) {
   const c = CTAS[post.cta];
   if (!c) return "";
+  if (post.offer === "none") return "";
   const icon = post.cta === "case-study"
     ? `<img class="letter-offer__icon" src="/assets/images/roi-case-study-template/claude-icon.svg" alt="" width="48" height="48" />`
     : "";
@@ -724,6 +768,22 @@ function codeCardHtml(blocks) {
 </figure>`;
 }
 
+// ── FAQ accordion ─────────────────────────────────────────────────────────
+// The "## … FAQ" section's "### question" + answer pairs render as one column
+// of <details> rows (Tailark Quartz faqs-1, minus the two columns). The first
+// row starts open. FAQ schema still comes from the Markdown (faqSchema).
+const FAQ_CHEVRON = `<svg class="letter-faq__chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>`;
+function faqAccordion(html) {
+  return html.replace(/(<h2 [^>]*>[^<]*FAQ[^<]*<\/h2>\s*)([\s\S]*?)(?=<h2 |<!-- cta -->|<aside |$(?![\s\S]))/, (all, head, body) => {
+    const items = [...body.matchAll(/<h3 id="([^"]+)">([\s\S]*?)<\/h3>([\s\S]*?)(?=<h3 |$(?![\s\S]))/g)];
+    if (items.length < 2) return all;
+    const rows = items.map(([, id, q, a], i) =>
+      `<details class="letter-faq__item" name="letter-faq" id="${id}"${i === 0 ? " open" : ""}><summary class="letter-faq__q"><span>${q}</span>${FAQ_CHEVRON}</summary><div class="letter-faq__a">${a.trim()}</div></details>`
+    ).join("\n");
+    return `${head}<div class="letter-faq">\n${rows}\n</div>\n`;
+  });
+}
+
 function renderBody(post) {
   const toc = [];
   const renderer = new marked.Renderer();
@@ -759,6 +819,7 @@ function renderBody(post) {
     )
     .replace(/<\/table>/g, "</table></div></div></div>");
 
+  html = faqAccordion(html);
   html = html.replace(/<!-- roi-calculator -->/g, ROI_CALCULATOR);
   html = html.replace(/<!-- figure:([a-z0-9-]+) -->/g, (mm, name) => {
     if (!FIGURES[name]) throw new Error(`${post.slug}: unknown figure "${name}"`);
@@ -1016,7 +1077,7 @@ ${html}
   });
 })();
 </script>
-${html.includes("data-code-block") ? `<script src="${asset("/assets/js/code-block.js")}" defer></script>\n` : ""}${html.includes("letter-fig") ? `<script src="${asset("/assets/js/letter-figures.js")}" defer></script>\n` : ""}${html.includes("letter-video") ? `<script src="${asset("/assets/js/letter-video.js")}" defer></script>\n` : ""}${html.includes("data-roi-calc") ? `<script src="${asset("/assets/js/roi-calculator.js")}" defer></script>\n` : ""}${shellClose}`;
+${html.includes("data-code-block") ? `<script src="${asset("/assets/js/code-block.js")}" defer></script>\n` : ""}${html.includes("letter-fig") ? `<script src="${asset("/assets/js/letter-figures.js")}" defer></script>\n` : ""}${html.includes("letter-video") ? `<script src="${asset("/assets/js/letter-video.js")}" defer></script>\n` : ""}${html.includes("letter-faq__item") ? `<script src="${asset("/assets/js/letter-faq.js")}" defer></script>\n` : ""}${html.includes("data-roi-calc") ? `<script src="${asset("/assets/js/roi-calculator.js")}" defer></script>\n` : ""}${shellClose}`;
 }
 
 function listItem(post) {

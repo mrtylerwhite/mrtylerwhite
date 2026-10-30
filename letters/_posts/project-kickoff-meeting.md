@@ -163,7 +163,7 @@ That list is basically a [PRD](/letters/what-is-a-prd/). Which is why I stopped 
 
 **Treating "we'll figure it out" as an answer.** That's not an answer. That's bullshit with a calendar invite. It's a decision you've deferred to the worst possible moment, which is week three, in a Slack thread, with half the context missing.
 
-**Skipping the out-of-scope list.** Every line on it is an argument you won't have later. Every line you skip is scope creep with a head start.
+**Skipping the out-of-scope list.** Every line on it is an argument you won't have later. Every line you skip is [scope creep](/letters/scope-creep/) with a head start.
 
 **Letting the brief arrive pre-decided.** If the business problem showed up as a Jira ticket two weeks before design got pulled in, the kickoff is your one chance to reopen it. I wrote more about that in [how to write a product brief that doesn't arrive half-wrong](/letters/product-brief-template/).
 

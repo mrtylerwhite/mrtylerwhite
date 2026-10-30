@@ -134,7 +134,7 @@ The minute a feature has a price tag, the "nice to haves" start dying on their o
 
 **Step 4: Write down what you're not doing.**
 
-Out of scope is the most underrated section in any PRD. Every line in it is an argument you won't have in week three.
+Out of scope is the most underrated section in any PRD. Every line in it is an argument you won't have in week three. When the next request lands anyway, here's [how to handle scope creep without blowing the deadline](/letters/scope-creep/).
 
 **Step 5: Record the call.**
 

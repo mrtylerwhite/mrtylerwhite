@@ -2274,3 +2274,52 @@ img.letters-feature__art {
   .cs-media--3 { grid-template-columns: 1fr; }
   .cs-more__list { grid-template-columns: 1fr; }
 }
+
+/* ── FAQ accordion (Tailark Quartz faqs-1, one column) ───────────────────── */
+.letter-faq { margin: 8px 0 0; }
+#page-container .letter__body .letter-faq__item {
+  border-bottom: 1px solid var(--ds-color-border);
+  border-radius: 0;
+  transition: background .35s ease, box-shadow .35s ease, border-color .35s ease, margin .35s cubic-bezier(.22, 1, .36, 1), padding .35s cubic-bezier(.22, 1, .36, 1), border-radius .35s ease;
+}
+#page-container .letter__body .letter-faq__item[open] {
+  border-radius: 14px;
+  margin: 6px -20px;
+  padding: 0 20px;
+  background: #fff;
+  border: 1px solid var(--ds-color-border);
+  box-shadow: 0 1px 2px rgba(9, 9, 11, .04), 0 10px 28px -16px rgba(9, 9, 11, .16);
+}
+.letter-faq__item[open] + .letter-faq__item { border-top: 0; }
+.letter-faq__q {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 0;
+  cursor: pointer;
+  font-family: var(--ds-font-body);
+  font-size: 19px;
+  line-height: 1.4;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--ds-color-text-strong);
+}
+.letter-faq__q::-webkit-details-marker { display: none; }
+.letter-faq__q:hover .letter-faq__chev { color: var(--ds-color-text-strong); }
+.letter-faq__q span { transition: color .2s ease; }
+.letter-faq__q:hover span { color: #8c5b31; }
+.letter-faq__item[open] .letter-faq__chev { color: var(--letters-gold); }
+.letter-faq__q:focus-visible { outline: 2px solid var(--letters-gold); outline-offset: 4px; border-radius: 6px; }
+.letter-faq__chev { flex: none; color: var(--ds-color-muted); transition: transform .25s cubic-bezier(.22, 1, .36, 1), color .2s ease; }
+.letter-faq__item[open] .letter-faq__chev { transform: rotate(180deg); }
+.letter-faq__a { padding: 0 32px 20px 0; overflow: hidden; }
+#page-container .letter__body .letter-faq__a p { margin: 0 0 12px; color: var(--ds-color-muted); }
+#page-container .letter__body .letter-faq__a p:last-child { margin-bottom: 0; }
+@media (max-width: 760px) {
+  #page-container .letter__body .letter-faq__item[open] { margin: 6px -12px; padding: 0 12px; }
+  .letter-faq__q { font-size: 17px; padding: 18px 0; }
+  .letter-faq__a { padding-right: 0; }
+}
+@media (prefers-reduced-motion: reduce) { .letter-faq__chev, .letter-faq__item { transition: none; } }

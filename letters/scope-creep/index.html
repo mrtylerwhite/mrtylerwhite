@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scope Creep in Product Design: How to Handle It (Scripts) | Tyler White</title>
+  <meta name="description" content="How to handle scope creep in product design mid-project: the swap rule, word-for-word scripts for stakeholders, and a change log that protects the deadline." />
+  <link rel="canonical" href="https://www.mrtylerwhite.com/letters/scope-creep/" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Mr. Tyler White" />
+  <meta property="og:title" content="Scope Creep in Product Design: How to Handle It (Scripts) | Tyler White" />
+  <meta property="og:description" content="How to handle scope creep in product design mid-project: the swap rule, word-for-word scripts for stakeholders, and a change log that protects the deadline." />
+  <meta property="og:url" content="https://www.mrtylerwhite.com/letters/scope-creep/" />
+  <meta property="og:image" content="https://www.mrtylerwhite.com/assets/images/og-home.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@mrtylerwhite" />
+  <meta name="twitter:title" content="Scope Creep in Product Design: How to Handle It (Scripts) | Tyler White" />
+  <meta name="twitter:description" content="How to handle scope creep in product design mid-project: the swap rule, word-for-word scripts for stakeholders, and a change log that protects the deadline." />
+  <meta name="twitter:image" content="https://www.mrtylerwhite.com/assets/images/og-home.jpg" />
+  <link rel="alternate" type="application/rss+xml" title="Letters · Tyler White" href="https://www.mrtylerwhite.com/letters/feed.xml" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Scope creep in product design: how to stop saying yes to also","description":"How to handle scope creep in product design mid-project: the swap rule, word-for-word scripts for stakeholders, and a change log that protects the deadline.","datePublished":"2026-10-31","dateModified":"2026-10-31","image":"https://www.mrtylerwhite.com/assets/images/og-home.jpg","mainEntityOfPage":"https://www.mrtylerwhite.com/letters/scope-creep/","url":"https://www.mrtylerwhite.com/letters/scope-creep/","keywords":"scope creep in product design","wordCount":2307,"abstract":"Handle scope creep by keeping the time budget fixed and letting scope be the thing that moves. Treat every new request as a swap, never an add. Name what comes out to make room, write the trade down, and let the person who asked make the call.","author":{"@type":"Person","name":"Tyler White","url":"https://www.mrtylerwhite.com/about/","jobTitle":"Director of Product Design","sameAs":["https://www.linkedin.com/in/mrtylerwhite/","https://x.com/mrtylerwhite","https://www.instagram.com/mrtylerwhite"]},"publisher":{"@type":"Person","name":"Tyler White","url":"https://www.mrtylerwhite.com/"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.mrtylerwhite.com/"},{"@type":"ListItem","position":2,"name":"Letters","item":"https://www.mrtylerwhite.com/letters/"},{"@type":"ListItem","position":3,"name":"Scope creep in product design: how to stop saying yes to also","item":"https://www.mrtylerwhite.com/letters/scope-creep/"}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoObject","name":"Your Stakeholders Don't Care About UX. Now What?!","description":"Tyler and Nick on stakeholders who want to skip research and just ship, why designers work like an insurance policy, and how to reframe design in the language executives respond to.","thumbnailUrl":["https://i.ytimg.com/vi/DrCn7wQe2Rw/maxresdefault.jpg","https://i.ytimg.com/vi/DrCn7wQe2Rw/hqdefault.jpg"],"uploadDate":"2026-02-18T06:00:17-08:00","duration":"PT28M3S","contentUrl":"https://www.youtube.com/watch?v=DrCn7wQe2Rw","embedUrl":"https://www.youtube.com/embed/DrCn7wQe2Rw","publisher":{"@type":"Organization","name":"The Design Table Podcast","url":"https://www.designtablepodcast.com"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is scope creep in product design?","acceptedAnswer":{"@type":"Answer","text":"Scope creep is when a project's requirements grow after work has started, without the timeline or team growing to match. In product design it often arrives as small asks to \"also\" add something, feedback from stakeholders who missed the kickoff, or designers polishing past what was agreed."}},{"@type":"Question","name":"What causes scope creep in design projects?","acceptedAnswer":{"@type":"Answer","text":"Usually three things: no written time budget or out-of-scope list at the start, stakeholders who skipped the kickoff and reopen decisions later, and design changes that look cheap in Figma but cost real time downstream. AI prototyping tools add a fourth, because generating more options makes more of them feel shippable."}},{"@type":"Question","name":"How do you handle scope creep with stakeholders?","acceptedAnswer":{"@type":"Answer","text":"Keep the deadline fixed and treat every new request as a swap. Acknowledge the idea, name what would have to come out to make room, and let the person who asked choose. Then log the decision with their name and the date."}},{"@type":"Question","name":"How do you say no to a stakeholder without damaging the relationship?","acceptedAnswer":{"@type":"Answer","text":"Don't say no. Say what it costs. \"If this goes in, bulk edit comes out. Which would you rather ship?\" turns a rejection into a choice they control, and most people pick the original plan once they see the trade."}},{"@type":"Question","name":"How should freelance designers handle scope creep?","acceptedAnswer":{"@type":"Answer","text":"Treat anything outside the signed scope as a swap or a paid change order. Offer the client both options in writing, with the cost in days and dollars, and let them pick. Absorbing extras for free comes straight out of your effective hourly rate."}},{"@type":"Question","name":"Is scope creep always bad?","acceptedAnswer":{"@type":"Answer","text":"No. If new information changes the problem itself, adjusting is the right call. The difference is whether you re-bet out loud with the team, resetting scope against the same time budget, or let the project quietly grow."}},{"@type":"Question","name":"How do you prevent scope creep before it starts?","acceptedAnswer":{"@type":"Answer","text":"Agree on three things in the kickoff and write them down: how much time the problem is worth, what's out of scope, and the metric that defines success. Those give you something to point back to when the first also arrives."}}]}</script>
+
+  <link rel="icon" href="/wp-content/uploads/2025/05/cropped-Favicon-2-32x32.png" sizes="32x32" />
+  <link rel="icon" href="/wp-content/uploads/2025/05/cropped-Favicon-2-192x192.png" sizes="192x192" />
+  <link rel="apple-touch-icon" href="/wp-content/uploads/2025/05/cropped-Favicon-2-180x180.png" />
+
+  <link rel="preconnect" href="https://use.typekit.net" crossorigin />
+  <link rel="preconnect" href="https://p.typekit.net" crossorigin />
+  <link rel="preload" as="style" href="https://use.typekit.net/fks5kmr.css" fetchpriority="low" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="https://use.typekit.net/fks5kmr.css" /></noscript>
+  <link rel="stylesheet" href="/assets/css/dist/letters.critical.css?v=f4bb3cdb" />
+  <link rel="stylesheet" href="/assets/css/dist/letters.bundle.css?v=655c7080" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="/assets/css/dist/letters.bundle.css?v=655c7080" /></noscript>
+  <link rel="stylesheet" href="/assets/css/system/site-footer.css?v=2a5d33c5" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="/assets/css/system/site-footer.css?v=2a5d33c5" /></noscript>
+  <style>
+  .letter-answer{position:relative;margin:24px 0 0}
+  .letter-answer__head{margin:0 2px 8px}
+  #page-container .letter-answer p.letter-answer__title{margin:0;font-size:14px;line-height:1.3;font-weight:500;color:#09090b}
+  .letter-answer__bubble{border-radius:11px;background:#f3f1ee;box-shadow:0 0 0 1px rgba(0,0,0,.05)}
+  #page-container .letter-answer p.letter-answer__text{margin:0;padding:11px 13px;border-radius:11px;background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.07),0 1px 2px rgba(0,0,0,.04);font-size:15px;line-height:1.55;color:#27272a}
+  .letter-answer__foot{padding:6px 13px 7px;font-size:12.5px;color:#71717a}
+  @media (max-width:600px){#page-container .letter-answer p.letter-answer__text{font-size:14.5px}}
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&display=swap" />
+<!-- partial:head -->
+<style id="page-transitions">
+/* Page transitions (details.so port). Inline on purpose: Chrome decides whether
+   to run a cross-page transition as the new page first renders, and an opt-in
+   inside an external stylesheet is sometimes not applied yet, so the transition
+   was skipped at random. Text entrance (.ds-enter) lives in page-transitions.css. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.5s;
+  animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+/* Nav stays in place while the page crossfades. Named on the glass pill, and the
+   group re-applies the glass blur, which a snapshot can't capture. */
+#main-header .et_menu_container,
+.fck-site-header .fck-nav {
+  view-transition-name: site-header;
+}
+::view-transition-group(site-header) {
+  animation-duration: 0.5s;
+  animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border-radius: 10px;
+  -webkit-backdrop-filter: blur(20px) saturate(1.8);
+  backdrop-filter: blur(20px) saturate(1.8);
+}
+</style>
+<!-- /partial:head -->
+</head>
+<body class="letters-page letter-page ds-standalone-nav et_fixed_nav et_show_nav et_header_style_left et_pb_svg_logo et_divi_100_custom_hamburger_menu et_divi_100_custom_hamburger_menu--style-2 et_divi_100_custom_hamburger_menu--type-1 et_button_no_icon et_button_custom_icon et_pb_button_helper_class">
+<div id="page-container">
+<!-- partial:header -->
+<header id="main-header" data-height-onload="30">
+			<div class="container clearfix et_menu_container">
+							<div class="logo_container">
+					<span class="logo_helper"></span>
+					<a href="/">
+						<img src="/wp-content/uploads/2025/12/logo-mrtylerwhite-1.svg" width="69" height="20" alt="Mr. Tyler White" id="logo" data-height-percentage="34" />
+					</a>
+				</div>
+							<div id="et-top-navigation" data-height="30" data-fixed-height="40">
+											<nav id="top-menu-nav">
+						<ul id="top-menu" class="nav"><li id="menu-item-30" class="anim-link menu-item menu-item-type-post_type menu-item-object-page menu-item-30"><a href="/about/">About Me</a></li>
+<li id="menu-item-3458" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3458"><a href="/letters/">Letters</a></li>
+<li id="menu-item-3464" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3464"><a href="https://www.designtablepodcast.com/" target="_blank" rel="noopener noreferrer">Podcast</a></li><li id="menu-item-4000" class="site-nav-workshop menu-item menu-item-type-custom menu-item-object-custom menu-item-4000"><a href="/builder-kickoff/">Builder Kickoff™</a></li>
+
+<li id="menu-item-54" class="et_pb_button menu-item menu-item-type-custom menu-item-object-custom menu-item-54"><a href="/roi-case-study-template/" data-track-event="case_study_kit_cta_click" data-track-location="nav">The 15 Minute Case Study</a></li>
+</ul>						</nav>
+
+
+
+
+					<div id="et_mobile_nav_menu">
+				<div class="mobile_nav closed">
+					<span class="select_page">Select Page</span>
+					<button type="button" class="mobile_menu_bar mobile_menu_bar_toggle" aria-label="Open menu" aria-controls="mobile_menu" aria-expanded="false"></button>
+				</div>
+			</div>				</div> <!-- #et-top-navigation -->
+			</div> <!-- .container -->
+					</header>
+<!-- /partial:header -->
+<main class="letter" id="main-content">
+  <article class="letter__article">
+    <header class="letter__header">
+      <a class="letter__back ds-enter" href="/letters/" data-track-event="letters_back_click"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>All letters</a>
+      <h1 class="letter__title ds-enter ds-enter-d1">Scope creep in product design: how to stop saying yes to also</h1>
+      <p class="letter__subtitle ds-enter ds-enter-d1">Every project dies the same way. One small also at a time. Here's the rule that keeps the deadline, and exactly what to say when the next request lands.</p>
+      <div class="letter__byline ds-enter ds-enter-d2">
+        <img class="letter__avatar" src="/assets/images/tyler-white-avatar.webp" alt="" width="36" height="36" />
+        <p><a href="/about/" rel="author">Tyler White</a><time datetime="2026-10-31">Oct 31, 2026</time></p>
+      </div>
+      <div class="letter__bar ds-enter ds-enter-d2">
+        <span>10 min read · <a href="/letters/#kickoffs">Kickoffs &amp; PRDs</a></span>
+        <button type="button" class="letter__share" data-share-url="https://www.mrtylerwhite.com/letters/scope-creep/">Share</button>
+      </div>
+    </header>
+    
+    <aside class="letter-answer" aria-label="The short answer"><div class="letter-answer__head"><p class="letter-answer__title">The short answer</p></div><div class="letter-answer__bubble"><p class="letter-answer__text">Handle scope creep by keeping the time budget fixed and letting scope be the thing that moves. Treat every new request as a swap, never an add. Name what comes out to make room, write the trade down, and let the person who asked make the call.</p><div class="letter-answer__foot">The full breakdown is below ↓</div></div></aside>
+    <nav class="letter-toc" aria-label="In this letter">
+        <p class="letter-toc__label">In this letter</p>
+        <ol><li><a href="#why-scope-creep-hits-product-designers-hardest">Why scope creep hits product designers hardest</a></li><li><a href="#what-scope-creep-looks-like-in-product-design">What scope creep looks like in product design</a></li><li><a href="#what-one-small-also-actually-costs">What one small also actually costs</a></li><li><a href="#the-swap-rule-the-deadline-is-fixed-scope-is-the-variable">The swap rule: the deadline is fixed, scope is the variable</a></li><li><a href="#what-to-say-when-the-next-request-lands">What to say when the next request lands</a></li><li><a href="#keep-a-change-log-and-make-it-boring">Keep a change log, and make it boring</a></li><li><a href="#when-saying-yes-is-the-right-call">When saying yes is the right call</a></li><li><a href="#stop-it-before-the-project-starts">Stop it before the project starts</a></li><li><a href="#scope-creep-faq">Scope creep FAQ</a></li></ol>
+      </nav>
+    <div class="letter__body">
+<p>The message usually shows up on a Tuesday.</p>
+<p>&quot;Small thing. Can we also add a way to export this?&quot;</p>
+<p>Small thing. Also. Two words that have screwed more launch dates than any bug ever will.</p>
+<p>You say yes, because it is a small thing. Then sales wants a filter. Then the VP who skipped the kickoff wants a dashboard view. Then you notice the empty state looks rough and fix it too, because you&#39;re a designer and you can&#39;t help yourself.</p>
+<p>Nobody decided to blow the deadline. It happened one reasonable yes at a time.</p>
+<p>That&#39;s scope creep. Requirements that grow after the work has started, while the timeline and the team stay exactly the same size. And in product design it hits harder than almost anywhere else.</p>
+<h2 id="why-scope-creep-hits-product-designers-hardest">Why scope creep hits product designers hardest</h2>
+<p>Three reasons, and you&#39;ll recognize all of them.</p>
+<p><strong>Design is the first stop for every new idea.</strong> Nobody asks engineering to add a dashboard on a Tuesday. They ask the designer to &quot;just mock it up.&quot; Just. As if your time is free and the sprint is made of rubber. By the time an idea reaches a developer, it&#39;s already a frame in your file, and a frame in your file looks like a commitment.</p>
+<p><strong>Changing a design looks free.</strong> Moving a button in Figma takes ten seconds, so people assume the change costs ten seconds. It doesn&#39;t. Every change ripples into states, edge cases, copy, QA and the developer who already built the old version. The cost shows up later, on someone else&#39;s calendar, which is exactly why nobody sees it coming.</p>
+<p><strong>AI made it worse.</strong> When you can <a href="/letters/ai-prototyping-workflow/">prototype ten ideas in an afternoon</a>, every one of them starts to feel shippable. Your PM sees a variant and wants it. You see a better pattern and want it. Speed made options cheap. Shipping them costs exactly what it always did. I build a lot in <a href="/letters/cursor-for-designers/">Cursor instead of Figma</a>, and the faster my tools got, the more discipline I needed about what actually goes out the door.</p>
+<h2 id="what-scope-creep-looks-like-in-product-design">What scope creep looks like in product design</h2>
+<p>Most advice treats scope creep like a single problem. In design work it shows up as four different ones, and each needs a different response.</p>
+<div class="letter-table"><div class="letter-table__card"><div class="letter-table__dots" aria-hidden="true"><span></span><span></span><span></span></div><div class="letter-table__scroll"><table>
+<thead>
+<tr>
+<th>Type</th>
+<th>What it sounds like</th>
+<th>What&#39;s really happening</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>The also</td>
+<td>&quot;Can we also add export?&quot;</td>
+<td>A new feature riding along on an approved one</td>
+</tr>
+<tr>
+<td>The drive-by</td>
+<td>&quot;I saw the designs. Quick thought.&quot;</td>
+<td>A stakeholder who skipped the kickoff, reopening it</td>
+</tr>
+<tr>
+<td>The polish spiral</td>
+<td>Nobody says anything. You just keep going.</td>
+<td>You, gold-plating details nobody asked for</td>
+</tr>
+<tr>
+<td>The real discovery</td>
+<td>&quot;Users are actually stuck on step two.&quot;</td>
+<td>New information that changes the problem</td>
+</tr>
+</tbody></table></div></div></div>
+<p>The first three are creep. The fourth is learning, and you should act on it. More on that below.</p>
+<p>Notice the third one. A lot of scope creep in design is self-inflicted. You find a better pattern halfway through, or you can&#39;t stand shipping a rough edge, and suddenly the two-week project is in week four. Same damage. And you can&#39;t even blame the VP for this one. That&#39;s on you.</p>
+<h2 id="what-one-small-also-actually-costs">What one small also actually costs</h2>
+<p>Let&#39;s put a number on it, because &quot;it&#39;s just a small thing&quot; survives right up until somebody does the math.</p>
+<p>Say you&#39;ve got a two-week project. Ten working days. Three requests come in along the way:</p>
+<ul>
+<li>Export: two days of design, states and dev handoff</li>
+<li>A filter for sales: one and a half days</li>
+<li>Your own empty state cleanup: one day, if you&#39;re honest</li>
+</ul>
+<p>That&#39;s four and a half days. Nearly half the project, and not one person in the room said yes to a 45% longer timeline. They each said yes to one small thing.</p>
+<p>And it compounds. The launch slips, so the metric you promised moves later, so the <a href="/letters/roi-of-design/">ROI story for the work</a> gets weaker, so the next time you ask for time on a project, you get less of it. Scope creep eats this project, then it eats your credibility on the next one.</p>
+<p>These are illustrative numbers. Run your own on the last project that slipped. I&#39;d bet a coffee the pattern holds.</p>
+<h2 id="the-swap-rule-the-deadline-is-fixed-scope-is-the-variable">The swap rule: the deadline is fixed, scope is the variable</h2>
+<p>Here&#39;s the rule I run every project on.</p>
+<p><strong>Time is fixed. Scope is what moves.</strong></p>
+<p>You agree on the time budget up front. One sprint, two sprints, six weeks. That number doesn&#39;t change when a new idea shows up. So every new request becomes a swap, never an add.</p>
+<p>Something comes in. Something else goes out. The person who asked decides what.</p>
+<figure class="letter-fig">
+  <div class="tk-tray"><div class="tk-stage tk-stage--filter" aria-hidden="true">
+    <div class="tk-flow-row">
+      <div class="tk-col"><div class="tk-card tk-pill tk-pill--tile tk-rise" style="--d:0.1s"><div class="tk-tile tk-tile--brown"><svg class="tk-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></div><div><div class="tk-pill__label">CSV export</div><div class="tk-pill__sub">Sales asked</div></div></div><div class="tk-card tk-pill tk-pill--tile tk-rise" style="--d:0.22s"><div class="tk-tile tk-tile--brown"><svg class="tk-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div><div class="tk-pill__label">Dashboard view</div><div class="tk-pill__sub">The VP asked</div></div></div><div class="tk-card tk-pill tk-pill--tile tk-rise" style="--d:0.34s"><div class="tk-tile tk-tile--brown"><svg class="tk-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.376 3.622a1 1 0 0 1 3.002 3.002L7.368 18.635a2 2 0 0 1-.855.506l-2.872.838a.5.5 0 0 1-.62-.62l.838-2.872a2 2 0 0 1 .506-.854z"/></svg></div><div><div class="tk-pill__label">Empty states</div><div class="tk-pill__sub">You did it</div></div></div></div>
+      <svg class="tk-lines tk-lines--static" width="64" height="164" viewBox="0 0 64 164" fill="none">
+        <path d="M0 22C32 22 32 82 64 82"/><path d="M0 82H64"/><path d="M0 142C32 142 32 82 64 82"/>
+        <path class="tk-pulse" pathLength="1" d="M0 22C32 22 32 82 64 82" stroke="url(#tks1-a)"/>
+        <path class="tk-pulse" pathLength="1" d="M0 82H64" stroke="url(#tks1-b)"/>
+        <path class="tk-pulse" pathLength="1" d="M0 142C32 142 32 82 64 82" stroke="url(#tks1-c)"/>
+        <defs><linearGradient id="tks1-a" gradientUnits="userSpaceOnUse" x1="0" y1="22" x2="64" y2="82"><stop offset="0%" stop-color="#C59060" stop-opacity="0"/><stop offset="50%" stop-color="#E9B989"/><stop offset="100%" stop-color="#C59060"/></linearGradient><linearGradient id="tks1-b" gradientUnits="userSpaceOnUse" x1="0" y1="82" x2="64" y2="82"><stop offset="0%" stop-color="#C59060" stop-opacity="0"/><stop offset="50%" stop-color="#E9B989"/><stop offset="100%" stop-color="#C59060"/></linearGradient><linearGradient id="tks1-c" gradientUnits="userSpaceOnUse" x1="0" y1="142" x2="64" y2="82"><stop offset="0%" stop-color="#C59060" stop-opacity="0"/><stop offset="50%" stop-color="#E9B989"/><stop offset="100%" stop-color="#C59060"/></linearGradient></defs>
+      </svg>
+      <div class="tk-node tk-node--inline tk-rise" style="--d:0.5s"><svg class="tk-node__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg></div>
+      <svg class="tk-lines tk-lines--static" width="64" height="164" viewBox="0 0 64 164" fill="none">
+        <path d="M0 82C32 82 32 42 64 42"/><path d="M0 82C32 82 32 122 64 122"/>
+        <path class="tk-pulse tk-pulse--out" pathLength="1" d="M0 82C32 82 32 42 64 42" stroke="url(#tks1-d)"/>
+        <defs><linearGradient id="tks1-d" gradientUnits="userSpaceOnUse" x1="0" y1="82" x2="64" y2="42"><stop offset="0%" stop-color="#C59060" stop-opacity="0"/><stop offset="50%" stop-color="#E9B989"/><stop offset="100%" stop-color="#C59060"/></linearGradient></defs>
+      </svg>
+      <div class="tk-col tk-col--outs"><div class="tk-card tk-pill tk-pill--tile tk-rise" style="--d:0.75s"><div class="tk-tile tk-tile--brown"><svg class="tk-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg></div><div><div class="tk-pill__label">Dashboard in</div><div class="tk-pill__sub">Bulk edit out. VP&rsquo;s call.</div></div></div><div class="tk-card tk-pill tk-pill--tile tk-rise tk-leave" style="--d:0.85s"><div class="tk-tile tk-tile--muted"><svg class="tk-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></div><div><div class="tk-pill__label">Export parked</div><div class="tk-pill__sub">Next cycle. Logged.</div></div></div></div>
+    </div>
+  </div></div>
+  <figcaption>Every request goes through the same gate. Something comes in, something goes out, and somebody&rsquo;s name is on the call.</figcaption>
+</figure>
+
+<p>This does three things:</p>
+<ol>
+<li><strong>It turns a yes or no into a choice.</strong> Nobody&#39;s blocked. They&#39;re holding a tradeoff now.</li>
+<li><strong>It puts the cost on the table.</strong> &quot;Can we also&quot; is free when nobody names the price. A swap makes the price visible.</li>
+<li><strong>It keeps you off the hook.</strong> Nobody remembers you as the designer who blocked the VP. They remember you asked which of two things mattered more.</li>
+</ol>
+<p>Most stakeholders, once they see the trade, pick the original plan. The new idea goes on the list for next time, and nobody&#39;s annoyed.</p>
+<p>The swap rule only works if the time budget and the scope were written down at the start. If your kickoff ended with &quot;cool, we&#39;re aligned,&quot; you have nothing to swap against. I broke down <a href="/letters/project-kickoff-meeting/">how to run a project kickoff meeting</a> that forces those numbers onto the page.</p>
+<h2 id="what-to-say-when-the-next-request-lands">What to say when the next request lands</h2>
+<p>Here&#39;s the part nobody teaches. The actual goddamn words. One script per situation, so pick the tab that matches the mess you&#39;re in:</p>
+<ul>
+<li><strong>The also:</strong> don&#39;t say no. Say what it costs.</li>
+<li><strong>The drive-by:</strong> bring them back to what was already decided, out loud.</li>
+<li><strong>The polish spiral:</strong> a conversation with yourself.</li>
+<li><strong>The exec:</strong> make the cost public and hand them the decision.</li>
+<li><strong>The client:</strong> same swap, except the trade has a price tag in dollars.</li>
+</ul>
+<figure class="cb is-first-active" data-code-block>
+  <div class="cb-bar">
+    <div class="cb-tabs" role="tablist" aria-label="Code files"><button type="button" role="tab" class="cb-tab" id="cb-1-tab" aria-controls="cb-1" aria-selected="true" tabindex="0"><svg class="cb-tab__icon" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg><span>also.txt</span></button><button type="button" role="tab" class="cb-tab" id="cb-2-tab" aria-controls="cb-2" aria-selected="false" tabindex="-1"><svg class="cb-tab__icon" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg><span>drive-by.txt</span></button><button type="button" role="tab" class="cb-tab" id="cb-3-tab" aria-controls="cb-3" aria-selected="false" tabindex="-1"><svg class="cb-tab__icon" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg><span>polish.txt</span></button><button type="button" role="tab" class="cb-tab" id="cb-4-tab" aria-controls="cb-4" aria-selected="false" tabindex="-1"><svg class="cb-tab__icon" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg><span>exec.txt</span></button><button type="button" role="tab" class="cb-tab" id="cb-5-tab" aria-controls="cb-5" aria-selected="false" tabindex="-1"><svg class="cb-tab__icon" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg><span>client.txt</span></button></div>
+    <button type="button" class="cb-copy" aria-label="Copy code"><svg class="cb-copy__icon" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg><svg class="cb-copy__done" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span class="cb-copy__label">Copy</span></button>
+  </div>
+  <div class="cb-panel" role="tabpanel" id="cb-1" aria-labelledby="cb-1-tab"><div class="cb-scroll" tabindex="0"><pre class="cb-pre" data-lang="text"><code><span class="cb-line"><span>Love it. We're full for this cycle, so if export goes in, something comes out.</span></span><span class="cb-line"><span>Right now the options are the bulk edit flow or the onboarding tooltip.</span></span><span class="cb-line"><span>Which one would you rather drop? Or we park export for the next cycle.</span></span></code></pre></div></div><div class="cb-panel" role="tabpanel" id="cb-2" aria-labelledby="cb-2-tab" hidden><div class="cb-scroll" tabindex="0"><pre class="cb-pre" data-lang="text"><code><span class="cb-line"><span>Good catch. Quick context: in the kickoff we agreed this cycle is about</span></span><span class="cb-line"><span>getting new admins through setup, and dashboards were on the out list.</span></span><span class="cb-line"><span>Do you want to reopen that? If so, let's do it with Sam in the room,</span></span><span class="cb-line"><span>since it changes the timeline.</span></span></code></pre></div></div><div class="cb-panel" role="tabpanel" id="cb-3" aria-labelledby="cb-3-tab" hidden><div class="cb-scroll" tabindex="0"><pre class="cb-pre" data-lang="text"><code><span class="cb-line"><span>Does this change move the metric we agreed on?</span></span><span class="cb-line"><span>If no: write it down for later and stop touching it.</span></span><span class="cb-line"><span>If yes: it's a swap. What comes out?</span></span></code></pre></div></div><div class="cb-panel" role="tabpanel" id="cb-4" aria-labelledby="cb-4-tab" hidden><div class="cb-scroll" tabindex="0"><pre class="cb-pre" data-lang="text"><code><span class="cb-line"><span>Happy to add it. To be clear on the trade: adding the dashboard moves launch</span></span><span class="cb-line"><span>from the 14th to the 28th, or we cut bulk edit to hold the date.</span></span><span class="cb-line"><span>Your call. I'll update the plan and send it to the team either way.</span></span></code></pre></div></div><div class="cb-panel" role="tabpanel" id="cb-5" aria-labelledby="cb-5-tab" hidden><div class="cb-scroll" tabindex="0"><pre class="cb-pre" data-lang="text"><code><span class="cb-line"><span>Happy to add the export flow. It's outside the scope we signed, so here are</span></span><span class="cb-line"><span>two options: I swap it in for the reporting screen at no extra cost,</span></span><span class="cb-line"><span>or I add it as a change order at $1,200 and two extra days. Which works better?</span></span></code></pre></div></div>
+  <span class="cb-status screen-reader-text" role="status" aria-live="polite"></span>
+</figure>
+<p>Freelancers get eaten alive by scope creep because every unpaid also comes straight out of your hourly rate. A change order is a swap with an invoice attached. If you&#39;re absorbing extras to keep a client happy, you&#39;re giving yourself a quiet pay cut. Check <a href="/letters/product-designer-salary/">what product designers actually earn</a> and price your time like you mean it.</p>
+<p>Every script follows the same shape. Acknowledge the idea, name the trade, hand back the decision, write it down. You never argue about whether the idea is good. It might be great. Great ideas still cost time, and nobody gets a free sprint.</p>
+<p>If saying a tradeoff out loud makes your stomach drop, watch this. Nick and I spent a whole episode on what to do when stakeholders don&#39;t care about UX, and most of it applies here.</p>
+<figure class="letter-video" data-video-id="DrCn7wQe2Rw">
+  <div class="letter-video__frame">
+    <button class="letter-video__play" type="button" aria-label="Play video: Your Stakeholders Don't Care About UX. Now What?!">
+      <picture><source srcset="https://i.ytimg.com/vi_webp/DrCn7wQe2Rw/sddefault.webp" type="image/webp" /><img src="https://i.ytimg.com/vi/DrCn7wQe2Rw/sddefault.jpg" alt="" width="640" height="480" loading="lazy" decoding="async" /></picture>
+      <span class="letter-video__btn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.14v13.72a1 1 0 0 0 1.52.85l10.6-6.86a1 1 0 0 0 0-1.7L9.52 4.3A1 1 0 0 0 8 5.14Z" fill="currentColor"/></svg></span>
+    </button>
+  </div>
+  <figcaption class="letter-video__cap">
+    <span class="letter-video__eyebrow">The Design Table Podcast &middot; 28 min</span>
+    <span class="letter-video__title">Your Stakeholders Don't Care About UX. Now What?!</span>
+    <ul class="letter-video__takeaways"><li>Your job works like an insurance policy between an idea and production. Say it that way.</li><li>Reframe research as risk reduction. That's language executives already respond to.</li><li>Sell design through the company's goals and KPIs, and stop apologizing for your process.</li></ul>
+  </figcaption>
+</figure>
+
+<aside class="letter-signup letter-signup--float" aria-label="Newsletter" data-signup-float>
+  <div class="letter-signup__float" aria-hidden="true"><span class="letter-signup__bubble letter-signup__bubble--1" data-depth="0.6"><img src="/assets/images/readers/nick-groeneveld.webp" alt="" width="96" height="96" loading="lazy" decoding="async" /></span><span class="letter-signup__bubble letter-signup__bubble--2" data-depth="1"><img src="/assets/images/readers/stav-lipman.webp" alt="" width="96" height="96" loading="lazy" decoding="async" /></span><span class="letter-signup__bubble letter-signup__bubble--3" data-depth="0.8"><img src="/assets/images/readers/nidhi-arora.webp" alt="" width="96" height="96" loading="lazy" decoding="async" /></span><span class="letter-signup__bubble letter-signup__bubble--4" data-depth="0.45"><img src="/assets/images/readers/laila-albuquerque.webp" alt="" width="96" height="96" loading="lazy" decoding="async" /></span><span class="letter-signup__bubble letter-signup__bubble--5" data-depth="0.9"><img src="/assets/images/readers/aline-a.webp" alt="" width="96" height="96" loading="lazy" decoding="async" /></span></div>
+  <div class="letter-signup__inner">
+    <p class="ds-eyebrow letter-signup__eyebrow">The ROI of Design</p>
+    <p class="letter-signup__title">Get credit for the work you already ship.</p>
+    <p class="letter-signup__body">Every Saturday: how to turn your design work into numbers execs actually fund.</p>
+    <form class="letter-signup__form" data-newsletter-form data-track-location="letters_inline" method="post" action="https://app.kit.com/forms/4969496/subscriptions" novalidate>
+      <input type="hidden" name="fields[signup_source]" value="letters_inline" data-signup-source />
+      <label class="screen-reader-text" for="nl-letters_inline">Email address</label>
+      <div class="letter-signup__field">
+        <input id="nl-letters_inline" class="letter-signup__input" name="email_address" type="email" autocomplete="email" placeholder="Enter your email address..." required />
+        <button class="letter-signup__btn" type="submit">Subscribe <span aria-hidden="true">&rarr;</span></button>
+      </div>
+      <p class="letter-signup__error" data-newsletter-error role="alert" aria-live="polite"></p>
+    </form>
+  </div>
+</aside>
+
+<h2 id="keep-a-change-log-and-make-it-boring">Keep a change log, and make it boring</h2>
+<p>Scripts handle the moment. The change log handles the memory.</p>
+<p>Three weeks from now, someone will ask why export didn&#39;t ship. If the answer lives in a Slack thread, you&#39;ll lose that argument, and honestly, you&#39;ll deserve to. If it lives in a one-line entry with a name and a date, you won&#39;t.</p>
+<p>Keep it in the same doc as the plan. Ideally that&#39;s your PRD, under the out-of-scope list. Here&#39;s <a href="/letters/prd-template/">the PRD template I use</a> if you need one.</p>
+<figure class="cb is-first-active" data-code-block>
+  <div class="cb-bar">
+    <div class="cb-tabs" role="tablist" aria-label="Code files"><button type="button" role="tab" class="cb-tab" id="cb-6-tab" aria-controls="cb-6" aria-selected="true" tabindex="0"><svg class="cb-tab__icon" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><line x1="4" x2="20" y1="9" y2="9"/><line x1="4" x2="20" y1="15" y2="15"/><line x1="10" x2="8" y1="3" y2="21"/><line x1="16" x2="14" y1="3" y2="21"/></svg><span>scope-change-log.md</span></button></div>
+    <button type="button" class="cb-copy" aria-label="Copy code"><svg class="cb-copy__icon" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg><svg class="cb-copy__done" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span class="cb-copy__label">Copy</span></button>
+  </div>
+  <div class="cb-panel" role="tabpanel" id="cb-6" aria-labelledby="cb-6-tab"><div class="cb-scroll" tabindex="0"><pre class="cb-pre" data-lang="markdown"><code><span class="cb-line"><span><span class="cb-tok-head">## Scope changes</span></span></span><span class="cb-line"><span></span></span><span class="cb-line"><span>| Date | Request | Asked by | Decision | Trade |</span></span><span class="cb-line"><span>|---|---|---|---|---|</span></span><span class="cb-line"><span>| Oct 14 | CSV export | Priya (Sales) | Parked, next cycle | None |</span></span><span class="cb-line"><span>| Oct 16 | Dashboard view | Marc (VP) | In | Bulk edit cut |</span></span><span class="cb-line"><span>| Oct 20 | Fix empty states | Me | In | Took from buffer day |</span></span></code></pre></div></div>
+  <span class="cb-status screen-reader-text" role="status" aria-live="polite"></span>
+</figure>
+<p>Boring is the point. Boring wins arguments. A boring log means every change was a decision, with a name on it. No surprises at the retro.</p>
+<p>It also makes your case study easier later. &quot;We cut bulk edit to ship the dashboard, and here&#39;s why&quot; is exactly the kind of tradeoff hiring managers look for. There&#39;s a section for it in my <a href="/letters/ux-case-study-template/">UX case study template</a>, and I wrote about how to <a href="/letters/design-rationale/">explain design decisions without defending them</a>. The log is where both start.</p>
+<h2 id="when-saying-yes-is-the-right-call">When saying yes is the right call</h2>
+<p>Some scope changes are good news.</p>
+<p>If you learn something mid-project that changes the problem, ignoring it is worse than creep. Users stuck on step two when you&#39;re polishing step four is a reason to change course.</p>
+<p>The test is simple. <strong>Does this change the problem, or just add to the solution?</strong></p>
+<figure class="letter-fig">
+  <div class="tk-tray"><div class="tk-stage tk-stage--fan" aria-hidden="true">
+    <svg class="tk-lines tk-lines--fan" viewBox="0 0 400 240" fill="none">
+      <path d="M60 120 H160"/><path d="M220 120 H260"/>
+      <path d="M260 120 Q280 120 290 100 L310 50 Q320 30 340 30"/><path d="M260 120 H340"/><path d="M260 120 Q280 120 290 140 L310 190 Q320 210 340 210"/>
+      <path class="tk-pulse" pathLength="1" d="M60 120 H160" stroke="url(#tks2-in)"/>
+      <path class="tk-pulse tk-pulse--out" pathLength="1" d="M220 120 H260 Q280 120 290 100 L310 50 Q320 30 340 30" stroke="url(#tks2-o1)"/>
+      <path class="tk-pulse tk-pulse--out" pathLength="1" d="M220 120 H340" stroke="url(#tks2-o2)"/>
+      <path class="tk-pulse tk-pulse--out" pathLength="1" d="M220 120 H260 Q280 120 290 140 L310 190 Q320 210 340 210" stroke="url(#tks2-o3)"/>
+      <defs><linearGradient id="tks2-in" gradientUnits="userSpaceOnUse" x1="220" y1="120" x2="160" y2="120"><stop offset="0%" stop-color="#C59060" stop-opacity="0"/><stop offset="50%" stop-color="#E9B989"/><stop offset="100%" stop-color="#C59060"/></linearGradient><linearGradient id="tks2-o1" gradientUnits="userSpaceOnUse" x1="220" y1="120" x2="320" y2="60"><stop offset="0%" stop-color="#C59060" stop-opacity="0"/><stop offset="50%" stop-color="#E9B989"/><stop offset="100%" stop-color="#C59060"/></linearGradient><linearGradient id="tks2-o2" gradientUnits="userSpaceOnUse" x1="220" y1="120" x2="340" y2="120"><stop offset="0%" stop-color="#C59060" stop-opacity="0"/><stop offset="50%" stop-color="#E9B989"/><stop offset="100%" stop-color="#C59060"/></linearGradient><linearGradient id="tks2-o3" gradientUnits="userSpaceOnUse" x1="220" y1="120" x2="320" y2="180"><stop offset="0%" stop-color="#C59060" stop-opacity="0"/><stop offset="50%" stop-color="#E9B989"/><stop offset="100%" stop-color="#C59060"/></linearGradient></defs>
+    </svg>
+    <div class="tk-fan">
+      <div class="tk-card tk-pill"><svg class="tk-ico tk-ico--muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg><span class="tk-pill__label">Can we also&hellip;</span></div>
+      <div class="tk-dark-pill"><svg class="tk-ico tk-ico--brown" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 3h5v5"/><path d="M8 3H3v5"/><path d="M12 22v-8.3a4 4 0 0 0-1.172-2.872L3 3"/><path d="m15 9 6-6"/></svg><span>Problem or solution?</span></div>
+      <div class="tk-outs"><div class="tk-card tk-pill"><svg class="tk-ico tk-ico--brown" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg><span class="tk-pill__label">Swap it in</span></div><div class="tk-card tk-pill"><svg class="tk-ico tk-ico--brown" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg><span class="tk-pill__label">Park it</span></div><div class="tk-card tk-pill"><svg class="tk-ico tk-ico--brown" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg><span class="tk-pill__label">Re-bet</span></div></div>
+    </div>
+  </div></div>
+  <figcaption>Three honest answers to every also. A quiet yes isn&rsquo;t one of them.</figcaption>
+</figure>
+
+<ul>
+<li><strong>New information about the problem:</strong> stop and re-bet. Pull the team together, agree on what changed, and reset the scope against the same time budget.</li>
+<li><strong>More ideas for the solution:</strong> swap it in or park it.</li>
+</ul>
+<p>The re-bet matters. A quiet pivot that only the designer knows about is still scope creep. It just has a nicer haircut. If the bet changed, the success metric probably did too. Check it against the <a href="/letters/ux-metrics/">UX metrics that actually make it into the exec deck</a>.</p>
+<h2 id="stop-it-before-the-project-starts">Stop it before the project starts</h2>
+<p>Every script above works better when there&#39;s a written agreement to point back to. The time budget. The problem. The out list. A metric everyone said out loud.</p>
+<p>Without that, there was never a scope to creep. Just a free-for-all with a Jira board.</p>
+<p>Half the time the creep was baked in before you even got the project. The brief showed up pre-decided, with a solution already picked and nobody asking what it was worth. I wrote about <a href="/letters/product-brief-template/">how to write a product brief that doesn&#39;t arrive half-wrong</a>, and if you&#39;re fuzzy on what belongs in the doc that comes after it, start with <a href="/letters/what-is-a-prd/">what a PRD actually is</a>.</p>
+<p>That&#39;s also why I run <a href="/builder-kickoff/">Builder Kickoff™</a> before anyone opens Figma. The team commits the appetite first, the time the problem is worth, then maps the current flow and sorts every idea into in, maybe or out. Scope gets argued once, in the room, instead of one Slack message at a time.</p>
+<h2 id="scope-creep-faq">Scope creep FAQ</h2>
+<div class="letter-faq">
+<details class="letter-faq__item" name="letter-faq" id="what-is-scope-creep-in-product-design" open><summary class="letter-faq__q"><span>What is scope creep in product design?</span><svg class="letter-faq__chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="letter-faq__a"><p>Scope creep is when a project&#39;s requirements grow after work has started, without the timeline or team growing to match. In product design it often arrives as small asks to &quot;also&quot; add something, feedback from stakeholders who missed the kickoff, or designers polishing past what was agreed.</p></div></details>
+<details class="letter-faq__item" name="letter-faq" id="what-causes-scope-creep-in-design-projects"><summary class="letter-faq__q"><span>What causes scope creep in design projects?</span><svg class="letter-faq__chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="letter-faq__a"><p>Usually three things: no written time budget or out-of-scope list at the start, stakeholders who skipped the kickoff and reopen decisions later, and design changes that look cheap in Figma but cost real time downstream. AI prototyping tools add a fourth, because generating more options makes more of them feel shippable.</p></div></details>
+<details class="letter-faq__item" name="letter-faq" id="how-do-you-handle-scope-creep-with-stakeholders"><summary class="letter-faq__q"><span>How do you handle scope creep with stakeholders?</span><svg class="letter-faq__chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="letter-faq__a"><p>Keep the deadline fixed and treat every new request as a swap. Acknowledge the idea, name what would have to come out to make room, and let the person who asked choose. Then log the decision with their name and the date.</p></div></details>
+<details class="letter-faq__item" name="letter-faq" id="how-do-you-say-no-to-a-stakeholder-without-damaging-the-relationship"><summary class="letter-faq__q"><span>How do you say no to a stakeholder without damaging the relationship?</span><svg class="letter-faq__chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="letter-faq__a"><p>Don&#39;t say no. Say what it costs. &quot;If this goes in, bulk edit comes out. Which would you rather ship?&quot; turns a rejection into a choice they control, and most people pick the original plan once they see the trade.</p></div></details>
+<details class="letter-faq__item" name="letter-faq" id="how-should-freelance-designers-handle-scope-creep"><summary class="letter-faq__q"><span>How should freelance designers handle scope creep?</span><svg class="letter-faq__chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="letter-faq__a"><p>Treat anything outside the signed scope as a swap or a paid change order. Offer the client both options in writing, with the cost in days and dollars, and let them pick. Absorbing extras for free comes straight out of your effective hourly rate.</p></div></details>
+<details class="letter-faq__item" name="letter-faq" id="is-scope-creep-always-bad"><summary class="letter-faq__q"><span>Is scope creep always bad?</span><svg class="letter-faq__chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="letter-faq__a"><p>No. If new information changes the problem itself, adjusting is the right call. The difference is whether you re-bet out loud with the team, resetting scope against the same time budget, or let the project quietly grow.</p></div></details>
+<details class="letter-faq__item" name="letter-faq" id="how-do-you-prevent-scope-creep-before-it-starts"><summary class="letter-faq__q"><span>How do you prevent scope creep before it starts?</span><svg class="letter-faq__chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="letter-faq__a"><p>Agree on three things in the kickoff and write them down: how much time the problem is worth, what&#39;s out of scope, and the metric that defines success. Those give you something to point back to when the first also arrives.</p></div></details>
+</div>
+<aside class="letter-cta letter-cta--art" aria-label="See how Builder Kickoff works">
+  <div class="letter-cta__text">
+  <p class="ds-eyebrow letter-cta__eyebrow">Builder Kickoff™ · $97</p>
+  <p class="letter-cta__title">Run the kickoff.<br />Get the PRD.</p>
+  <p class="letter-cta__body">Seven short lessons. Record your next kickoff, and get the PRD, the business case and the prototype direction the same day.</p>
+  <a class="letter-cta__btn" href="/builder-kickoff/" data-track-event="letters_cta_click" data-track-location="builder-kickoff">See how Builder Kickoff works &rarr;</a>
+  </div><div class="letter-cta__art" aria-hidden="true"><div class="cta-card">
+    <div class="cta-card__head"><span class="cta-card__dot"></span>Builder Kickoff&trade; workflow</div>
+    <div class="cta-step cta-step--done"><span class="cta-step__ico"><svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="cta-step__text"><span class="cta-step__title">Kickoff recorded</span><span class="cta-step__meta">60 min &middot; 4 people</span></span><span class="cta-step__state">Done</span></div>
+    <div class="cta-step cta-step--done"><span class="cta-step__ico"><svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="cta-step__text"><span class="cta-step__title">Problem and bet</span><span class="cta-step__meta">Recovery 35% &rarr; 60%</span></span><span class="cta-step__state">Done</span></div>
+    <div class="cta-step cta-step--done"><span class="cta-step__ico"><svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="cta-step__text"><span class="cta-step__title">PRD drafted</span><span class="cta-step__meta">From the transcript</span></span><span class="cta-step__state">Done</span></div>
+    <div class="cta-step cta-step--live"><span class="cta-step__ico"><span class="cta-spin"></span></span><span class="cta-step__text"><span class="cta-step__title">Prototype prompt</span><span class="cta-step__meta">Writing&hellip;</span></span><span class="cta-step__state">Running</span></div>
+  </div></div>
+</aside>
+
+    </div>
+    <footer class="letter__author">
+      <img class="letter__avatar letter__avatar--lg" src="/assets/images/tyler-white-avatar.webp" alt="" width="64" height="64" loading="lazy" />
+      <div>
+        <p class="letter__author-name">Tyler White</p>
+        <p class="letter__author-bio">Director of Product Design. 16 years in B2B SaaS, writing about how design decisions turn into revenue, retention and the seat at the table. Creator of Builder Kickoff™.</p>
+      </div>
+    </footer>
+  </article>
+  <section class="letters-related" aria-labelledby="related-heading">
+        <h2 id="related-heading" class="letters-label">Keep reading</h2>
+        <ul class="letters-list"><li class="letters-list__item" data-topic="kickoffs">
+  <a class="letters-list__link" href="/letters/what-is-a-prd/">
+    <span class="letters-list__text">
+      <span class="letters-list__title">What is a PRD? The doc that decides what gets built</span>
+      <span class="letters-list__sub">A PRD is a record of decisions. Most teams treat it as a request for decisions, which is why theirs go stale by Thursday.</span>
+      <span class="letters-list__meta"><time datetime="2026-10-15">Oct 15, 2026</time> · Kickoffs &amp; PRDs</span>
+    </span>
+    <picture><source srcset="/assets/images/letters/what-is-a-prd-800.webp 800w, /assets/images/letters/what-is-a-prd.webp 1536w" sizes="320px" type="image/webp" /><img src="/assets/images/letters/what-is-a-prd.jpg" class="letters-list__thumb" alt="" loading="lazy" decoding="async" width="320" height="200" /></picture>
+  </a>
+</li><li class="letters-list__item" data-topic="kickoffs">
+  <a class="letters-list__link" href="/letters/prd-template/">
+    <span class="letters-list__text">
+      <span class="letters-list__title">The PRD template I actually use (and how to fill it from one kickoff call)</span>
+      <span class="letters-list__sub">Most PRDs die because they're written after the decisions get made. Here's the template, and how to fill it while the room is still deciding.</span>
+      <span class="letters-list__meta"><time datetime="2026-10-08">Oct 8, 2026</time> · Kickoffs &amp; PRDs</span>
+    </span>
+    <picture><source srcset="/assets/images/letters/prd-template-800.webp 800w, /assets/images/letters/prd-template.webp 1536w" sizes="320px" type="image/webp" /><img src="/assets/images/letters/prd-template.jpg" class="letters-list__thumb" alt="" loading="lazy" decoding="async" width="320" height="200" /></picture>
+  </a>
+</li><li class="letters-list__item" data-topic="kickoffs">
+  <a class="letters-list__link" href="/letters/project-kickoff-meeting/">
+    <span class="letters-list__text">
+      <span class="letters-list__title">How to run a project kickoff meeting that actually kicks something off</span>
+      <span class="letters-list__sub">Most kickoffs are expensive brainstorms. Here's the agenda that makes the room decide, and the outputs you should have before anyone opens Figma.</span>
+      <span class="letters-list__meta"><time datetime="2026-07-08">Jul 8, 2026</time> · Kickoffs &amp; PRDs</span>
+    </span>
+    <picture><source srcset="/assets/images/letters/project-kickoff-meeting-800.webp 800w, /assets/images/letters/project-kickoff-meeting.webp 1536w" sizes="320px" type="image/webp" /><img src="/assets/images/letters/project-kickoff-meeting.jpg" class="letters-list__thumb" alt="" loading="lazy" decoding="async" width="320" height="200" /></picture>
+  </a>
+</li></ul>
+      </section>
+</main>
+<script>
+(function () {
+  var btn = document.querySelector("[data-share-url]");
+  if (!btn) return;
+  btn.addEventListener("click", async function () {
+    var url = btn.getAttribute("data-share-url");
+    try {
+      if (navigator.share) { await navigator.share({ title: document.title, url: url }); return; }
+      await navigator.clipboard.writeText(url);
+      btn.textContent = "Link copied";
+      setTimeout(function () { btn.textContent = "Share"; }, 2000);
+    } catch (_) {}
+  });
+})();
+</script>
+<script src="/assets/js/code-block.js?v=0a038c1a" defer></script>
+<script src="/assets/js/letter-figures.js?v=d73a4a52" defer></script>
+<script src="/assets/js/letter-video.js?v=6f8f1ff5" defer></script>
+<script src="/assets/js/letter-faq.js?v=22e4ceb3" defer></script>
+<!-- partial:footer hide="portfolio" -->
+<footer class="site-footer" role="contentinfo">
+  <div class="site-footer__inner">
+    <div class="site-footer__brand">
+      <img class="site-footer__wordmark" src="/wp-content/uploads/2025/12/logo-mrtylerwhite-1.svg" width="69" height="20" alt="Mr. Tyler White" />
+      <p class="site-footer__tagline">Product design, growth systems, and prototypes that help teams make better decisions.</p>
+    </div>
+    <nav class="site-footer__col" aria-label="Explore">
+      <span class="site-footer__col-heading">Explore</span>
+      <a href="/about/">About Me</a>
+      <a href="/newsletter/">Newsletter</a>
+      <a href="/letters/">Letters</a>
+      <a href="https://www.designtablepodcast.com/" target="_blank" rel="noopener noreferrer">Podcast</a>
+      <a href="/builder-kickoff/">Builder Kickoff™</a>
+    </nav>
+    <nav class="site-footer__col" aria-label="Resources">
+      <span class="site-footer__col-heading">Resources</span>
+      <a href="/wp-content/uploads/2024/08/TylerWhite-Resume-2024.pdf" target="_blank" rel="noopener noreferrer">Download CV</a>
+      <a href="https://www.linkedin.com/in/mrtylerwhite/" target="_blank" rel="noopener noreferrer">Let&#8217;s Connect</a>
+      <a href="https://www.designtablepodcast.com/" target="_blank" rel="noopener noreferrer">The Design Table</a>
+      <a href="/roi-case-study-template/">The 15 Minute Case Study</a>
+    </nav>
+    <div class="site-footer__cta-block">
+      <span class="site-footer__col-heading">Free Strategy Call</span>
+      <p class="site-footer__cta-copy">Want help turning messy product, growth, or design problems into a clearer plan? Book a 30-minute call and we&#8217;ll figure out where the biggest leverage is.</p>
+      <a href="https://cal.com/mrtylerwhite/30min" class="site-footer__cta-btn" target="_blank" rel="noopener noreferrer">Book a free strategy call</a>
+    </div>
+  </div>
+  <div class="site-footer__bottom">
+    <p class="site-footer__copy">&#169; 2026 Tyler White. Made with taste, caffeine, and a suspicious number of prototypes.</p>
+    <nav class="site-footer__legal" aria-label="Legal">
+      <a href="/privacy-policy/">Privacy Policy</a>
+      <a href="/privacy-policy/#cookies" data-cookie-settings>Cookie settings</a>
+    </nav>
+  </div>
+</footer>
+<!-- /partial:footer -->
+</div>
+<script src="/assets/js/mobile-menu-a11y.js?v=2b161847" defer></script>
+<script src="/assets/js/newsletter-form.js?v=642a9a06" defer></script>
+<script src="/assets/js/signup-float.js?v=de188029" defer></script>
+<script src="/assets/js/gtm-defer.js?v=ca2c75ba" defer></script>
+<script src="/assets/js/analytics.js?v=d85a8237" defer></script>
+<script src="/assets/js/consent.js?v=6a4de25c" defer></script>
+</body>
+</html>

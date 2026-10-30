@@ -4,6 +4,7 @@
 
 ## Letters
 
+- [Scope Creep in Product Design: How to Handle It (Scripts)](https://www.mrtylerwhite.com/letters/scope-creep/): How to handle scope creep in product design mid-project: the swap rule, word-for-word scripts for stakeholders, and a change log that protects the deadline.
 - [ROI of Design: How to Actually Calculate It](https://www.mrtylerwhite.com/letters/roi-of-design/): Calculate the ROI of design for a real feature: the formula, worked examples for revenue, retention and cost, and a free calculator to run your own.
 - [What Is a PRD? Meaning and What Goes in One](https://www.mrtylerwhite.com/letters/what-is-a-prd/): PRD stands for product requirements document: the doc that says what a team is building, why, and how they'll know it worked. Here's what goes in one.
 - [Product Designer Salary 2026: US and Canada Ranges](https://www.mrtylerwhite.com/letters/product-designer-salary/): What product designers earn in 2026 in the US and Canada, by level and company, and the skills that move you from mid-level pay to senior pay.
