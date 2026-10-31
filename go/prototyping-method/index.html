@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0a0a0a" />
+  <meta name="color-scheme" content="dark" />
   <title>Prototyping Method for $27 | Tyler White</title>
   <meta name="description" content="The AI prototyping workflow a Director of Product Design uses: load real context, kill bad ideas fast, build the risky part in code and put a number on it. $27, 30-day guarantee." />
   <!-- Paid-traffic landing page: keep it out of search so it doesn't compete with /builder-kickoff/ -->
@@ -25,270 +27,226 @@
   <noscript><link rel="stylesheet" href="https://use.typekit.net/fks5kmr.css" /></noscript>
   <link rel="stylesheet" href="/assets/css/dist/critical.css?v=bb2cecba" />
   <link rel="stylesheet" href="/assets/css/system/scroll-reveal.css?v=db262e9d" />
-  <link rel="stylesheet" href="/assets/css/system/pages/slo.css?v=2" />
+  <link rel="stylesheet" href="/assets/css/system/pages/slo-dark.css?v=1" />
 </head>
-<body class="slo">
-
-  <div class="slo-bar">Prototyping Method <span>✦</span> $27 <span>✦</span> 30-day money-back guarantee</div>
-
+<body class="tk">
   <main id="page-container">
 
-    <!-- 1. Hero -->
-    <section class="slo-hero" aria-labelledby="slo-title">
-      <div class="slo-top"><img src="/wp-content/uploads/2025/12/logo-mrtylerwhite-1.svg" width="83" height="24" alt="Mr. Tyler White" /></div>
-      <div class="slo-wrap" style="padding-top:40px">
-        <p class="ds-eyebrow">For product designers building with AI</p>
-        <h1 id="slo-title">Prototype fast. <span class="slo-accent">Prove what it's worth.</span></h1>
-        <p class="slo-lead">Prototyping Method is the workflow I use as a Director of Product Design. Load real context, kill the bad ideas in about 30 minutes, build the risky part in code and put a number on it before you present.</p>
-
-        <!-- Replace with the VSL embed when it's recorded. -->
-        <div class="slo-flow" aria-label="The five steps of Prototyping Method">
-          <div class="slo-flow__head"><span class="slo-flow__dots"><i></i><i></i><i></i></span><span>prototyping-method.flow</span></div>
-          <div class="slo-flow__row">
-            <div class="slo-flow__node"><b>01</b><span>Load context</span><small>GitHub, PRD, screenshots</small></div>
-            <div class="slo-flow__node"><b>02</b><span>5 directions</span><small>Kill the weak ones early</small></div>
-            <div class="slo-flow__node"><b>03</b><span>Build it in code</span><small>The risky part, in Cursor</small></div>
-            <div class="slo-flow__node slo-flow__node--roi"><b>04</b><span>Put a number on it</span><small>The ROI step</small></div>
-            <div class="slo-flow__node"><b>05</b><span>Polish and hand off</span><small>Figma, design system</small></div>
-          </div>
-          <div class="slo-flow__foot"><span>Exploration: <b>about 30 min</b></span><span>Output: <b>a prototype with a business case</b></span></div>
+    <!-- Hero (Tailark hero-section-1) -->
+    <section class="tk-hero" aria-labelledby="tk-title">
+      <div class="tk-announce">
+        <span class="tk-badge"><b>Prototyping Method</b><span class="tk-badge__sep"></span><span class="tk-badge__meta">$27 · 30-day guarantee</span><span class="tk-badge__chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>Risk free</span></span>
+      </div>
+      <div class="tk-container">
+        <h1 id="tk-title">Prototype fast. <em>Prove what it's worth.</em></h1>
+        <p class="tk-lead">The workflow I use as a Director of Product Design. Load real context, kill the bad ideas in about 30 minutes, build the risky part in code and put a number on it before you present.</p>
+        <div class="tk-actions">
+          <a href="#pricing" class="tk-btn tk-btn--primary tk-btn--lg" data-slo-cta="hero">Get Prototyping Method · $27</a>
+          <a href="#method" class="tk-btn tk-btn--secondary tk-btn--lg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3"/></svg>See the method</a>
         </div>
-
-        <a href="#pricing" class="ds-btn-primary slo-cta" data-slo-cta="hero">Get Prototyping Method · $27</a>
-        <ul class="slo-pricelines">
-          <li>One payment</li>
-          <li class="slo-save">Free bonus: The Funnel Simulator</li>
-          <li>30-day money-back guarantee</li>
+        <ul class="tk-fineprint">
+          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>One payment</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>2 free bonuses</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>30-day money-back guarantee</li>
         </ul>
-        <p class="slo-meta">Recorded · Start the moment you buy · Yours to keep</p>
+      </div>
+      <div class="tk-hero__stage">
+        <!-- Swap for the VSL when it's recorded -->
+        <div class="tk-mock" aria-label="The five steps of Prototyping Method">
+          <div class="tk-mock__dots"><i></i><i></i><i></i></div>
+          <div class="tk-mock__title">
+            <span><span class="tk-orb"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></svg></span>Prototyping Method</span>
+            <p>From a rough idea to a prototype with a business case</p>
+            <span class="tk-mock__rule"></span>
+          </div>
+          <ol class="tk-steps-mini">
+            <li><span>01</span>Load context<small>GitHub, PRD</small></li>
+            <li><span>02</span>Explore 4 to 5 directions<small>~30 min</small></li>
+            <li><span>03</span>Build the risky part<small>Cursor</small></li>
+            <li class="is-active"><span>04</span>Put a number on it<small>ROI</small></li>
+            <li><span>05</span>Polish and hand off<small>Figma</small></li>
+          </ol>
+          <div class="tk-mock__foot"><span>Output</span><b>Prototype + business case</b></div>
+        </div>
       </div>
     </section>
 
-    <!-- 2. Early proof -->
-    <div class="slo-logos" aria-label="Featured in">
-      <p class="slo-logos__label">Tyler's work has been featured in</p>
-      <div class="slo-logos__row">
-        <img src="/assets/newsletter/logos/6a9c97f0a1298a0a2651852e.svg" width="132" height="27" alt="Financial Post" loading="lazy" />
-        <img src="/assets/newsletter/logos/bd181a86bd9aa1ec456f9005.svg" width="83" height="23" alt="Forbes" loading="lazy" />
-        <img src="/assets/newsletter/logos/81453b553fcd4cec3fadee07.svg" width="165" height="23" alt="VentureBeat" loading="lazy" />
-        <img src="/assets/newsletter/logos/69a53cf8afdb860d93424a01.svg" width="88" height="23" alt="Bloomberg" loading="lazy" />
-        <img src="/assets/newsletter/logos/d3b0e78a3502138579dff374.svg" width="182" height="23" alt="TechCrunch" loading="lazy" />
-        <img src="/assets/newsletter/logos/36c44f3bcc82cae4a552bc51.svg" width="182" height="23" alt="Betakit" loading="lazy" />
+    <!-- Logo cloud (logo-cloud-1) -->
+    <section class="tk-logos" aria-label="Featured in">
+      <div class="tk-container">
+        <p>Tyler's work has been featured in</p>
+        <div class="tk-logos__grid"><div><img src="/assets/newsletter/logos/6a9c97f0a1298a0a2651852e.svg" alt="Financial Post" height="18" loading="lazy" /></div><div><img src="/assets/newsletter/logos/bd181a86bd9aa1ec456f9005.svg" alt="Forbes" height="18" loading="lazy" /></div><div><img src="/assets/newsletter/logos/81453b553fcd4cec3fadee07.svg" alt="VentureBeat" height="18" loading="lazy" /></div><div><img src="/assets/newsletter/logos/69a53cf8afdb860d93424a01.svg" alt="Bloomberg" height="18" loading="lazy" /></div><div><img src="/assets/newsletter/logos/d3b0e78a3502138579dff374.svg" alt="TechCrunch" height="18" loading="lazy" /></div><div><img src="/assets/newsletter/logos/36c44f3bcc82cae4a552bc51.svg" alt="Betakit" height="18" loading="lazy" /></div></div>
       </div>
-    </div>
+    </section>
 
-    <section class="slo-section slo-section--tight">
-      <div class="slo-wrap">
-        <figure class="slo-quote ds-reveal">
-          <div class="slo-stars" aria-label="5 stars">★★★★★</div>
-          <blockquote>&#8220;His knowledge on how ROI and Product Design go together is unmatched.&#8221;</blockquote>
-          <figcaption>Nick Groeneveld, Senior UX Designer</figcaption>
+    <!-- Testimonial (testimonials-1) -->
+    <section class="tk-section" style="padding-top:0">
+      <div class="tk-container">
+        <figure class="tk-quote">
+          <div class="tk-stars" aria-label="5 stars"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg></div>
+          <blockquote>His knowledge on how ROI and Product Design go together is unmatched.</blockquote>
+          <figcaption class="tk-person"><span class="tk-avatar">NG</span><span><span>Nick Groeneveld</span><span>Senior UX Designer</span></span></figcaption>
         </figure>
-        <div class="slo-teaser ds-reveal" aria-label="Free bonuses">
-          <div class="slo-teaser__item"><span class="slo-teaser__tag">Bonus 1</span><span class="slo-teaser__name">The Funnel Simulator Claude skill</span></div>
-          <div class="slo-teaser__item"><span class="slo-teaser__tag">Bonus 2</span><span class="slo-teaser__name">The 15 Minute Case Study Claude skill</span></div>
-        </div>
       </div>
     </section>
 
-    <!-- 3. Problem -->
-    <section class="slo-section slo-section--tight" aria-labelledby="problem-heading">
-      <div class="slo-wrap slo-copy">
-        <p class="ds-eyebrow">The problem</p>
+    <!-- Problem (content) -->
+    <section class="tk-section" aria-labelledby="problem-heading">
+      <div class="tk-narrow tk-content">
+        <p class="tk-eyebrow">The problem</p>
         <h2 id="problem-heading">Building got cheap. <em>So did building the wrong thing.</em></h2>
-        <p class="slo-body">AI can spit out a screen in seconds. Most designers use that to make more mockups, faster, and still walk into review with nothing but a vibe.</p>
-        <p class="slo-body">It will hand you a wrong answer with total confidence. It makes up copy, invents edge cases and suggests things that would never work in your product. Present that and you look sloppy, fast.</p>
-        <p class="slo-body">The designers getting ahead use the speed for something else: finding out what's wrong before anyone else sees it, then showing up with a prototype and a number.</p>
+        <p>AI can spit out a screen in seconds. Most designers use that to make more mockups, faster, and still walk into review with nothing but a vibe.</p>
+        <p>It will hand you a wrong answer with total confidence. It makes up copy, invents edge cases and suggests things that would never work in your product. Present that and you look sloppy, fast.</p>
+        <p>The designers getting ahead use the speed for something else: <b>finding out what's wrong before anyone else sees it, then showing up with a prototype and a number.</b></p>
       </div>
     </section>
 
-    <!-- 4. Inside look -->
-    <section class="slo-section slo-section--raised" aria-labelledby="inside-heading">
-      <div class="slo-wrap slo-center">
-        <p class="ds-eyebrow">The method</p>
-        <h2 id="inside-heading">Five steps from idea to a prototype <em>you can defend.</em></h2>
-        <p class="slo-lead">The tool matters less than the order. Context, exploration, real testing, the business case, then polish.</p>
-        <div class="slo-steps slo-steps--5 ds-reveal">
-          <div class="slo-step">
-            <div class="slo-step__num">01</div>
-            <h3>Load context first</h3>
-            <p>Connect Claude to your GitHub repo and feed it the PRD, notes and screenshots before you ask for anything. Then tell it to wait.</p>
-          </div>
-          <div class="slo-step">
-            <div class="slo-step__num">02</div>
-            <h3>Explore 4 to 5 directions</h3>
-            <p>Separate threads, one prompt. You're looking for what breaks, so two of them usually die right away. That's the point.</p>
-          </div>
-          <div class="slo-step">
-            <div class="slo-step__num">03</div>
-            <h3>Build the risky part in code</h3>
-            <p>Anything with real logic gets a quick working version in Cursor. That's where the problems mockups hide show up.</p>
-          </div>
-          <div class="slo-step">
-            <div class="slo-step__num">04</div>
-            <h3>Put a number on it</h3>
-            <p>Run the ROI step on the direction that survived, so your review starts with what the change is worth instead of how it looks.</p>
-          </div>
-          <div class="slo-step">
-            <div class="slo-step__num">05</div>
-            <h3>Polish and hand off</h3>
-            <p>Once the logic holds up, move to Figma, line it up with the design system and hand engineering something that already works.</p>
-          </div>
+    <!-- Method (how-it-works-1 numbering) -->
+    <section class="tk-section" id="method" aria-labelledby="method-heading">
+      <div class="tk-container">
+        <div class="tk-head">
+          <p class="tk-eyebrow">The method</p>
+          <h2 id="method-heading">Five steps to a prototype <em>you can defend.</em></h2>
+          <p>The tool matters less than the order. Context, exploration, real testing, the business case, then polish.</p>
+        </div>
+        <div class="tk-steps">
+          <div class="tk-step"><span class="tk-step__n">1.</span><div><h3>Load context first</h3><p>Connect Claude to your <b>GitHub repo</b> and feed it the PRD, notes and screenshots before you ask for anything. Then tell it to wait.</p></div></div>
+          <div class="tk-step"><span class="tk-step__n">2.</span><div><h3>Explore 4 to 5 directions</h3><p>Separate threads, one prompt. You're looking for <b>what breaks</b>, so two of them usually die right away. That's the point.</p></div></div>
+          <div class="tk-step"><span class="tk-step__n">3.</span><div><h3>Build the risky part in code</h3><p>Anything with real logic gets a quick working version in <b>Cursor</b>. That's where the problems mockups hide show up.</p></div></div>
+          <div class="tk-step"><span class="tk-step__n">4.</span><div><h3>Put a number on it</h3><p>Run the <b>ROI step</b> on the direction that survived, so your review starts with what the change is worth instead of how it looks.</p></div></div>
+          <div class="tk-step"><span class="tk-step__n">5.</span><div><h3>Polish and hand off</h3><p>Once the logic holds up, move to <b>Figma</b>, line it up with the design system and hand engineering something that already works.</p></div></div>
         </div>
       </div>
     </section>
 
-    <!-- 5. Offer stack -->
-    <section class="slo-section" aria-labelledby="stack-heading">
-      <div class="slo-wrap slo-center">
-        <p class="ds-eyebrow">Everything you get</p>
-        <h2 id="stack-heading">The full workflow. <em>Yours to keep.</em></h2>
-        <div class="slo-stack ds-reveal">
-          <div class="slo-item">
-            <div class="slo-item__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m10 9 5 3-5 3z" fill="currentColor"/></svg></div>
-            <div><h3>The video lessons</h3><p>All five steps, recorded on a real feature, so you see every prompt and every place it goes wrong.</p></div>
-            <span class="slo-item__check" aria-hidden="true">✓</span>
-          </div>
-          <div class="slo-item">
-            <div class="slo-item__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-4 1.5-4-2-6-2.5M15 21v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12 12 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></div>
-            <div><h3>GitHub and Claude setup</h3><p>How I connect Claude to the codebase so it knows the product, the constraints and how things actually work before it generates a thing.</p></div>
-            <span class="slo-item__check" aria-hidden="true">✓</span>
-          </div>
-          <div class="slo-item">
-            <div class="slo-item__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m8 9-4 3 4 3M16 9l4 3-4 3M13 6l-2 12"/></svg></div>
-            <div><h3>The exploration prompt</h3><p>The prompt I use to generate 4 to 5 directions and expose the bad ones. Copy it, adapt it, reuse it on every feature.</p></div>
-            <span class="slo-item__check" aria-hidden="true">✓</span>
-          </div>
-          <div class="slo-item">
-            <div class="slo-item__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19h16M7 15l3-4 3 2 4-6"/></svg></div>
-            <div><h3>The ROI workflow</h3><p>The step that turns a prototype into a business case: what the change moves, what it's worth and how to say it in review.</p></div>
-            <span class="slo-item__check" aria-hidden="true">✓</span>
-          </div>
-          <div class="slo-item slo-item--bonus">
-            <div class="slo-item__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h18l-7 8v6l-4 2v-8z"/></svg></div>
-            <div><span class="slo-item__badge">Free bonus 1</span><h3>The Funnel Simulator</h3><p>You built it. Now show what it moved. A Claude skill that builds a funnel simulator for your product, so you can model what a conversion change is worth before it ships.</p></div>
-          </div>
-          <div class="slo-item slo-item--bonus">
-            <div class="slo-item__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg></div>
-            <div><span class="slo-item__badge">Free bonus 2</span><h3>The 15 Minute Case Study</h3><p>A Claude skill that turns rough project notes into a case study, so the prototype becomes proof for your next review.</p></div>
-          </div>
+    <!-- Offer stack (features-1 grid) -->
+    <section class="tk-section" aria-labelledby="stack-heading">
+      <div class="tk-container">
+        <div class="tk-head">
+          <p class="tk-eyebrow">Everything you get</p>
+          <h2 id="stack-heading">The full workflow. <em>Yours to keep.</em></h2>
         </div>
-        <div class="slo-bump">
-          <span class="slo-bump__price">+$47</span>
-          <p><strong>Optional at checkout: Builder Kickoff™.</strong> Prototyping Method builds the thing. Builder Kickoff gets the team to agree on what the thing should be before you start.</p>
+        <div class="tk-grid tk-grid--2">
+          <div class="tk-cell"><span class="tk-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 7.75a.75.75 0 0 1 1.142-.638l3.664 2.249a.75.75 0 0 1 0 1.278l-3.664 2.25a.75.75 0 0 1-1.142-.64z"/><path d="M12 17v4"/><path d="M8 21h8"/><rect x="2" y="3" width="20" height="14" rx="2"/></svg></span><h3>The video lessons</h3><p>All five steps, recorded on a real feature, so you see every prompt and every place it goes wrong.</p></div>
+          <div class="tk-cell"><span class="tk-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg></span><h3>GitHub and Claude setup</h3><p>How I connect Claude to the codebase so it knows the product, the constraints and how things actually work.</p></div>
+          <div class="tk-cell"><span class="tk-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg></span><h3>The exploration prompt</h3><p>The prompt I use to generate 4 to 5 directions and expose the bad ones. Copy it and reuse it on every feature.</p></div>
+          <div class="tk-cell"><span class="tk-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="m19 9-5 5-4-4-3 3"/></svg></span><h3>The ROI workflow</h3><p>The step that turns a prototype into a business case: what the change moves, what it's worth and how to say it in review.</p></div>
+          <div class="tk-cell"><span class="tk-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 20a1 1 0 0 0 .553.895l2 1A1 1 0 0 0 14 21v-7a2 2 0 0 1 .517-1.341L21.74 4.67A1 1 0 0 0 21 3H3a1 1 0 0 0-.742 1.67l7.225 7.989A2 2 0 0 1 10 14z"/></svg></span><h3>The Funnel Simulator<span class="tk-pill">Bonus</span></h3><p>You built it. Now show what it moved. A Claude skill that models what a conversion change is worth before it ships.</p></div>
+          <div class="tk-cell"><span class="tk-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg></span><h3>The 15 Minute Case Study<span class="tk-pill">Bonus</span></h3><p>A Claude skill that turns rough project notes into a case study, so the prototype becomes proof for your next review.</p></div>
         </div>
-        <div class="slo-stack__cta">
-          <a href="#pricing" class="ds-btn-primary slo-cta" data-slo-cta="stack">Get Prototyping Method · $27</a>
-          <p class="slo-meta">One payment · Instant access · 30-day money-back guarantee</p>
+        <div class="tk-bump">
+          <span class="tk-icon" style="margin:0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"/><path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"/><path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"/></svg></span>
+          <p><b>Optional at checkout: Builder Kickoff™.</b> Prototyping Method builds the thing. Builder Kickoff gets the team to agree on what the thing should be first.</p>
+          <span class="tk-bump__price">+$47</span>
         </div>
       </div>
     </section>
 
-    <!-- 6. Proof -->
-    <section class="slo-section slo-section--raised" aria-labelledby="proof-heading">
-      <div class="slo-wrap slo-center">
-        <p class="ds-eyebrow">What designers are saying</p>
-        <h2 id="proof-heading">Don't take my word for it.</h2>
-        <div class="slo-senja">
+    <!-- Proof (Senja) -->
+    <section class="tk-section" aria-labelledby="proof-heading">
+      <div class="tk-container">
+        <div class="tk-head">
+          <p class="tk-eyebrow">What designers are saying</p>
+          <h2 id="proof-heading">Don't take my word for it.</h2>
+        </div>
+        <div class="tk-senja">
           <script src="https://widget.senja.io/widget/6c0bd6ba-04e7-43f6-a518-24da94b38d60/platform.js" type="text/javascript" async></script>
           <div class="senja-embed" data-id="6c0bd6ba-04e7-43f6-a518-24da94b38d60" data-mode="shadow" data-lazyload="false" style="display: block; width: 100%;"></div>
         </div>
       </div>
     </section>
 
-    <!-- 7. Host -->
-    <section class="slo-section" aria-labelledby="host-heading">
-      <div class="slo-wrap">
-        <div class="slo-host ds-reveal">
-          <img src="/assets/images/prototype-ready/tyler-host.png" alt="Tyler White at his desk with a microphone" width="1024" height="576" loading="lazy" decoding="async" />
-          <div>
-            <p class="ds-eyebrow">Your teacher</p>
+    <!-- Host (content + stats) -->
+    <section class="tk-section" aria-labelledby="host-heading">
+      <div class="tk-container">
+        <div class="tk-host">
+          <div class="tk-host__img"><img src="/assets/images/prototype-ready/tyler-host.png" alt="Tyler White at his desk with a microphone" width="1024" height="576" loading="lazy" decoding="async" /></div>
+          <div class="tk-content">
+            <p class="tk-eyebrow">Your teacher</p>
             <h2 id="host-heading">Tyler White.</h2>
-            <p class="slo-body">I'm a Director of Product Design with 15 years in B2B SaaS and fintech. I build more of my prototypes in code than in Figma now, connected to the real product.</p>
-            <p class="slo-body">This is the exact workflow I use with my team, including the parts where AI burns you if you trust it blindly.</p>
-            <div class="slo-stats">
-              <div class="slo-stat"><b>15+</b><span>Years in product design</span></div>
-              <div class="slo-stat"><b>Director</b><span>Product design</span></div>
-              <div class="slo-stat"><b>B2B</b><span>SaaS and fintech</span></div>
-            </div>
+            <p>I'm a Director of Product Design with 15 years in B2B SaaS and fintech. I build more of my prototypes in code than in Figma now, connected to the real product.</p>
+            <p>This is the exact workflow I use with my team, including the parts where AI burns you if you trust it blindly.</p>
+            <div class="tk-stats"><div><b>15+</b><span>Years in product design</span></div><div><b>Director</b><span>Product design</span></div><div><b>B2B</b><span>SaaS and fintech</span></div></div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 8. Price -->
-    <section class="slo-section slo-section--raised" id="pricing" aria-labelledby="price-heading">
-      <div class="slo-wrap slo-center">
-        <p class="ds-eyebrow">Your access</p>
-        <h2 id="price-heading">Your next prototype comes with <em>a business case.</em></h2>
-        <div class="slo-price ds-reveal">
-          <div class="slo-price__body">
-            <p class="slo-price__was">Prototyping Method</p>
-            <p class="slo-price__now">$27</p>
-          </div>
-          <div class="slo-price__band">One payment · <b>2 free bonuses</b> · Yours to keep</div>
-          <div class="slo-price__body" style="padding-top:8px">
-            <ul class="slo-price__list">
-              <li>The video lessons, all five steps</li>
-              <li>GitHub and Claude setup</li>
-              <li>The exploration prompt</li>
-              <li>The ROI workflow</li>
-              <li>Bonus: The Funnel Simulator</li>
-              <li>Bonus: The 15 Minute Case Study</li>
-            </ul>
-            <a href="#pricing" class="ds-btn-primary slo-cta" data-slo-cta="price">Get Prototyping Method · $27</a>
-            <p class="slo-meta">Secure checkout · Add Builder Kickoff™ for $47 at checkout</p>
-          </div>
+    <!-- Pricing (pricing-1 Pro card) -->
+    <section class="tk-section" id="pricing" aria-labelledby="price-heading">
+      <div class="tk-container">
+        <div class="tk-head">
+          <p class="tk-eyebrow">Your access</p>
+          <h2 id="price-heading">Your next prototype comes with <em>a business case.</em></h2>
+        </div>
+        <div class="tk-price">
+          <div><div class="tk-price__title">Prototyping Method</div><div class="tk-price__desc">The full workflow, the prompts and two bonuses</div></div>
+          <div><div class="tk-price__amount">$27</div><div class="tk-price__per">One payment · Yours to keep</div></div>
+          <a href="#pricing" class="tk-btn tk-btn--primary tk-btn--lg tk-btn--block" data-slo-cta="price">Get instant access</a>
+          <p class="tk-price__note">Add Builder Kickoff™ for $47 at checkout</p>
+          <ul class="tk-list">
+            <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>What's included:</li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>The video lessons, all five steps</li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>GitHub and Claude setup</li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>The exploration prompt</li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>The ROI workflow</li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Bonus: The Funnel Simulator</li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Bonus: The 15 Minute Case Study</li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <!-- 9. Guarantee -->
-    <section class="slo-section slo-section--tight" aria-labelledby="guarantee-heading">
-      <div class="slo-wrap">
-        <div class="slo-guarantee ds-reveal">
-          <div class="slo-seal" aria-hidden="true"><div><b>30</b>day<br>guarantee</div></div>
-          <div>
-            <h2 id="guarantee-heading" style="font-size:var(--ds-size-h3) !important">Run it on one feature.</h2>
-            <p class="slo-body">If it doesn't change how you prototype, email me within 30 days for a full refund. No questions asked.</p>
-          </div>
+    <!-- Guarantee (call-to-action-1 card + Tailark icon badge) -->
+    <section class="tk-section" style="padding-top:0" aria-labelledby="guarantee-heading">
+      <div class="tk-container">
+        <div class="tk-cta">
+          <div class="tk-cta__grid" aria-hidden="true"></div>
+          <span class="tk-orb tk-orb--xl" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span>
+          <h2 id="guarantee-heading">30-day money&#8209;back guarantee.</h2>
+          <p>Run it on one feature. If it doesn't change how you prototype, email me within 30 days for a full refund. No questions asked.</p>
+          <a href="#pricing" class="tk-btn tk-btn--primary tk-btn--lg" data-slo-cta="guarantee">Get Prototyping Method · $27</a>
         </div>
       </div>
     </section>
 
-    <!-- 10. FAQ -->
-    <section class="slo-section slo-section--raised" aria-labelledby="faq-heading">
-      <div class="slo-wrap slo-center">
-        <p class="ds-eyebrow">FAQ</p>
-        <h2 id="faq-heading">Common questions.</h2>
-        <div class="slo-faq">
-          <details><summary>Why is it $27?</summary><p>It's the way in. I'd rather you see how I work for the price of lunch than read about it. If it helps, you'll know where to find the rest.</p></details>
-          <details><summary>Do I need to know how to code?</summary><p>No. Claude and Cursor write the code. Your job is deciding what to build and checking that it actually works, and the course shows you how.</p></details>
-          <details><summary>What tools do I need?</summary><p>Claude connected to GitHub, Cursor and Figma. The course covers the setup.</p></details>
-          <details><summary>Is this just vibe coding?</summary><p>No. Vibe coding is building with no context and no idea what you're trying to prove. This workflow starts with real context, kills the bad ideas on purpose and ends with a number.</p></details>
-          <details><summary>How is this different from Builder Kickoff™?</summary><p>Builder Kickoff decides what to build with your team. Prototyping Method builds it and proves what it's worth. You can add Builder Kickoff at checkout for $47.</p></details>
-          <details><summary>How long do I have access?</summary><p>It's yours to keep. Rewatch any step right before you need it.</p></details>
-          <details><summary>What if it doesn't work for me?</summary><p>Email me within 30 days and I'll refund you in full. No form, no hoops.</p></details>
+    <!-- FAQ (faqs-2) -->
+    <section class="tk-section" aria-labelledby="faq-heading">
+      <div class="tk-narrow">
+        <div style="max-width:32rem">
+          <h2 id="faq-heading">Frequently asked questions</h2>
+          <p class="tk-muted" style="font-size:1.125rem;margin:1rem 0 0">Still unsure? Email me and I'll answer myself.</p>
         </div>
-      </div>
-    </section>
-
-    <!-- 11. Final CTA -->
-    <section class="slo-final" aria-labelledby="final-heading">
-      <div class="slo-wrap">
-        <p class="ds-eyebrow" style="color:var(--ds-color-on-dark-muted)">Stop shipping mockups</p>
-        <h2 id="final-heading">Show up with a prototype <em>and a number.</em></h2>
-        <p class="slo-lead">The full workflow and two bonuses for $27, with a 30-day guarantee.</p>
-        <a href="#pricing" class="ds-btn-primary slo-cta slo-cta--light" data-slo-cta="final">Get Prototyping Method · $27</a>
-        <p class="slo-meta">Recorded · Instant access · Yours to keep</p>
+        <div class="tk-faq"><details name="tk-faq" open><summary>Why is it $27?<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="tk-faq__a"><p>It's the way in. I'd rather you see how I work for the price of lunch than read about it. If it helps, you'll know where to find the rest.</p></div></details><details name="tk-faq"><summary>Do I need to know how to code?<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="tk-faq__a"><p>No. Claude and Cursor write the code. Your job is deciding what to build and checking that it actually works, and the course shows you how.</p></div></details><details name="tk-faq"><summary>What tools do I need?<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="tk-faq__a"><p>Claude connected to GitHub, Cursor and Figma. The course covers the setup.</p></div></details><details name="tk-faq"><summary>Is this just vibe coding?<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="tk-faq__a"><p>No. Vibe coding is building with no context and no idea what you're trying to prove. This workflow starts with real context, kills the bad ideas on purpose and ends with a number.</p></div></details><details name="tk-faq"><summary>How is this different from Builder Kickoff™?<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="tk-faq__a"><p>Builder Kickoff decides what to build with your team. Prototyping Method builds it and proves what it's worth. You can add Builder Kickoff at checkout for $47.</p></div></details><details name="tk-faq"><summary>How long do I have access?<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="tk-faq__a"><p>It's yours to keep. Rewatch any step right before you need it.</p></div></details><details name="tk-faq"><summary>What if it doesn't work for me?<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="tk-faq__a"><p>Email me within 30 days and I'll refund you in full. No form, no hoops.</p></div></details></div>
       </div>
     </section>
   </main>
 
-  <footer class="slo-foot">
-    © 2026 Tyler White <a href="/privacy-policy/">Privacy Policy</a><a href="/privacy-policy/#cookies" data-cookie-settings>Cookie settings</a>
+  <footer class="tk-foot">
+    <span>© 2026 Tyler White</span>
+    <nav><a href="/privacy-policy/">Privacy</a><a href="/privacy-policy/#cookies" data-cookie-settings>Cookie settings</a></nav>
   </footer>
 
+  <script>
+  (function () {
+    // faqs-2 behaviour: one open at a time, soft height reveal
+    var items = document.querySelectorAll('.tk-faq details');
+    items.forEach(function (d) {
+      d.querySelector('summary').addEventListener('click', function (e) {
+        e.preventDefault();
+        var opening = !d.open;
+        items.forEach(function (o) { if (o !== d && o.open) o.open = false; });
+        if (!opening) { d.open = false; return; }
+        d.open = true;
+        var a = d.querySelector('.tk-faq__a');
+        if (a.animate && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          a.animate([{ height: '0px', opacity: 0 }, { height: a.scrollHeight + 'px', opacity: 1 }], { duration: 380, easing: 'cubic-bezier(0.22,1,0.36,1)' });
+        }
+        if (typeof window.trackEvent === 'function') window.trackEvent('slo_faq_open', { label: d.querySelector('summary').textContent.trim() });
+      });
+    });
+  }());
+  </script>
   <script>
   (function () {
     'use strict';
@@ -307,7 +265,6 @@
     window.addEventListener('load', function () { track('slo_page_view', { label: 'prototyping_method_27' }); });
   }());
   </script>
-  <script src="/assets/js/scroll-reveal.js?v=7f35e6c2" defer></script>
   <script src="/assets/js/gtm-defer.js?v=ca2c75ba" defer></script>
   <script src="/assets/js/analytics.js?v=d85a8237" defer></script>
   <script src="/assets/js/consent.js?v=6a4de25c" defer></script>
