@@ -2,6 +2,8 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
   "trailingSlash": true,
+  "buildCommand": "npm run build:dist",
+  "outputDirectory": "dist",
   "headers": [
     {
       "source": "/(.*)\\.(jpg|jpeg|png|gif|webp|svg|ico|woff|woff2|ttf|eot|mp4|webm)",
@@ -84,6 +86,16 @@
       "source": "/checkout/",
       "destination": "/builder-kickoff/",
       "permanent": true
+    },
+    {
+      "source": "/go/prototyping-method",
+      "destination": "/prototyping-method/",
+      "permanent": false
+    },
+    {
+      "source": "/go/prototyping-method/",
+      "destination": "/prototyping-method/",
+      "permanent": false
     },
     {
       "source": "/prototype-ready",

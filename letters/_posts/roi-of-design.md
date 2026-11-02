@@ -84,6 +84,8 @@ The same math works on your own time, by the way. I caught myself after a client
 
 A one-point lift sounds boring in a design review. It doesn't sound boring in a revenue meeting.
 
+Want to run this math on your own product? The [Funnel Simulator](/funnel-simulator/) is a free Claude skill that maps every step from visitor to paid and shows which lever moves revenue most.
+
 ### Example 3: retention (fixing the first week)
 
 You have **2,000 customers** at **$1,200 a year**, monthly churn of **2%**, and exit surveys keep naming the same setup step. The fix brings churn down to **1.8%**.

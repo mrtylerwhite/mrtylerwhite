@@ -146,7 +146,7 @@ body.tk #page-container a:not(.tk-btn) { color: inherit; }
 .tk .tk-icon svg { width: 1rem; height: 1rem; }
 body.tk #page-container .tk-cell h3 { font-size: 1rem !important; line-height: 1.5 !important; margin: 0 0 .5rem !important; }
 .tk .tk-cell p { color: var(--muted-foreground); margin: 0; line-height: 1.6; font-size: .9375rem; }
-.tk .tk-pill { display: inline-flex; align-items: center; gap: .25rem; border-radius: 999px; padding: .125rem .5rem; margin-left: .5rem; font-size: .6875rem; font-weight: 500; vertical-align: middle; color: var(--brand); background: rgba(197,144,96,.10); box-shadow: inset 0 0 0 1px rgba(197,144,96,.25); }
+.tk .tk-bonus { display: inline-flex; align-items: center; gap: .25rem; border-radius: 999px; padding: .125rem .5rem; margin-left: .5rem; font-size: .6875rem; font-weight: 500; vertical-align: middle; color: var(--brand); background: rgba(197,144,96,.10); box-shadow: inset 0 0 0 1px rgba(197,144,96,.25); }
 
 /* How it works (how-it-works-1 numbering) */
 .tk .tk-steps { margin: 3rem auto 0; max-width: 48rem; display: grid; }
@@ -230,3 +230,202 @@ body.tk *, body.tk *::before, body.tk *::after { box-sizing: border-box; }
   .tk .tk-logos__grid img { max-height: .9375rem; }
   .tk .tk-quote { padding: 1.75rem; }
 }
+
+/* ── Builder Kickoff conventions: full-rounded buttons, sticky bar, logo marquee ── */
+.tk .tk-btn { border-radius: 999px; }
+.tk .tk-btn--lg { height: 3rem; padding: 0 1.75rem; font-size: 1rem; font-weight: 600; }
+.tk .tk-btn--primary { background: #fff; color: #0a0a0a !important; box-shadow: 0 8px 24px -8px rgba(255,255,255,.25), 0 0 0 1px rgba(255,255,255,.6); }
+.tk .tk-btn--primary:hover { background: #f1f1f1; }
+.tk .tk-bar { position: fixed; inset: 0 0 auto; z-index: 50; padding: 12px 16px; transform: translateY(-110%); transition: transform .45s cubic-bezier(.22,1,.36,1); }
+.tk .tk-bar.is-on { transform: none; }
+.tk .tk-bar__in { max-width: 64rem; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 8px 8px 8px 20px; border-radius: 999px; background: rgba(23,23,23,.72); backdrop-filter: blur(20px) saturate(1.6); -webkit-backdrop-filter: blur(20px) saturate(1.6); box-shadow: 0 0 0 1px var(--border), 0 12px 32px -12px rgba(0,0,0,.6); }
+.tk .tk-bar__logo img { display: block; height: 20px; width: auto; }
+@media (prefers-reduced-motion: reduce) { .tk .tk-bar { transition: none; } }
+
+.tk .tk-marquee { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); }
+.tk .tk-marquee__track { display: flex; width: max-content; animation: tkMarquee 32s linear infinite; }
+.tk .tk-marquee:hover .tk-marquee__track { animation-play-state: paused; }
+.tk .tk-marquee__set { display: flex; align-items: center; gap: 4rem; padding-right: 4rem; }
+.tk .tk-marquee__set img { height: 1.25rem; width: auto; opacity: .7; }
+@keyframes tkMarquee { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .tk .tk-marquee__track { animation: none; } }
+
+/* ── Illustration layout ── */
+.tk .tk-hero__stage { padding-bottom: 4rem; }
+.tk .tk-hero-fig { max-width: 44rem; margin: 3.5rem auto 0; }
+.tk .tk-hero-fig .tk-tray { padding: 56px 24px 40px; }
+.tk .tk-split { display: grid; gap: 3rem; align-items: center; }
+@media (min-width: 896px) { .tk .tk-split { grid-template-columns: 0.9fr 1.1fr; } }
+.tk .tk-split .tk-content p:last-child { margin-bottom: 0; }
+.tk .tk-steps--compact .tk-step { padding: 1.125rem 0; }
+.tk .tk-figrow { display: grid; gap: 1.5rem; margin-top: 3rem; }
+@media (min-width: 896px) { .tk .tk-figrow { grid-template-columns: 1.15fr 0.85fr; align-items: stretch; } .tk .tk-figrow .tk-tray { height: 100%; align-items: center; } .tk .tk-figrow .letter-fig { display: flex; flex-direction: column; } .tk .tk-figrow .tk-tray { flex: 1; } }
+.tk .tk-figrow .tk-stage--fan { zoom: .85; }
+@media (min-width: 761px) and (max-width: 1100px) { .tk .tk-figrow .tk-stage--fan { zoom: .72; } }
+.tk .tk-split .tk-stage--split { zoom: .82; }
+@media (max-width: 760px) { .tk .tk-split .tk-stage--split { zoom: .56; } .tk .tk-figrow .tk-stage--fan { zoom: .6; } }
+@media (max-width: 480px) { .tk .tk-split .tk-stage--split { zoom: .52; } .tk .tk-figrow .tk-stage--fan { zoom: .55; } .tk .tk-hero-fig .tk-stage--merge { zoom: .62; } }
+@media (max-width: 480px) {
+  body.tk .tk-tray, body.tk .tk-hero-fig .tk-tray { padding: 24px 6px; }
+  .tk .tk-hero-fig .tk-stage--merge { zoom: .7; }
+  .tk .tk-figrow .tk-stage--fan { zoom: .68; }
+  .tk .tk-split .letter-fig { display: none; }
+  .tk .tk-hero__stage { padding-left: 1rem; padding-right: 1rem; }
+}
+
+/* ── Top of page, modelled on a direct-response training page:
+      thin logo header, eyebrow, big centered title, two-line credibility sub,
+      one card with media left and "what you'll learn" + CTA right ── */
+.tk .tk-top { border-bottom: 1px solid var(--border); }
+.tk .tk-top__in { max-width: 64rem; margin: 0 auto; padding: 1.125rem 1.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.tk .tk-top__in img { display: block; height: 22px; width: auto; }
+.tk .tk-top__meta { font-size: .8125rem; color: var(--muted-foreground); }
+.tk .tk-lead-hero { position: relative; overflow: hidden; padding: 3.5rem 0 5rem; text-align: center; }
+.tk .tk-lead-hero::before { content: ""; position: absolute; inset: 0 0 auto; height: 520px; background: radial-gradient(50% 60% at 50% 0%, rgba(197,144,96,.13), transparent 70%); pointer-events: none; }
+.tk .tk-lead-hero > * { position: relative; }
+.tk .tk-kicker { margin: 0 0 1.25rem; font-size: .875rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--brand); }
+.tk #page-container .tk-lead-hero h1 { max-width: 56rem; margin: 0 auto !important; font-size: var(--ds-size-display) !important; line-height: var(--ds-leading-display) !important; }
+.tk .tk-sub { margin: 1.5rem auto 0; max-width: 40rem; font-size: 1.125rem; line-height: 1.6; color: var(--foreground); }
+.tk .tk-sub span { display: block; color: var(--muted-foreground); font-size: 1rem; }
+.tk .tk-feature { max-width: 64rem; margin: 2.75rem auto 0; padding: 1.75rem; display: grid; gap: 1.75rem; align-items: center; text-align: left; border-radius: 1.25rem; background: var(--card); box-shadow: var(--shadow-xl), 0 0 0 1px var(--border); }
+@media (min-width: 896px) { .tk .tk-feature { grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); padding: 1.75rem 2rem 1.75rem 1.75rem; } }
+.tk .tk-feature__media { border-radius: 1rem; overflow: hidden; }
+.tk .tk-feature__media .letter-fig, .tk .tk-feature__media .tk-hero-fig { max-width: none; margin: 0 !important; }
+.tk .tk-feature__media .tk-tray { border-radius: 1rem; padding: 40px 16px 28px; }
+.tk .tk-feature__media .tk-stage--merge { zoom: .9; }
+body.tk #page-container .tk-learn h2 { font-family: var(--ds-font-body) !important; text-transform: none !important; font-size: .9375rem !important; letter-spacing: 0 !important; font-weight: 600 !important; margin: 0 0 1rem !important; line-height: 1.4 !important; }
+.tk .tk-learn ul { list-style: none; margin: 0 0 1.5rem; padding: 0; display: grid; gap: .875rem; }
+.tk .tk-learn li { display: grid; grid-template-columns: 1.125rem 1fr; gap: .625rem; font-size: .9375rem; line-height: 1.45; color: rgba(250,250,250,.85); }
+.tk .tk-learn li svg { width: 1.125rem; height: 1.125rem; color: var(--brand); margin-top: .125rem; }
+.tk .tk-learn .tk-btn { width: 100%; }
+.tk .tk-learn__note { margin: .75rem 0 0; text-align: center; font-size: .8125rem; color: var(--muted-foreground); }
+
+/* Waitlist form */
+.tk .tk-form { display: grid; gap: .75rem; }
+.tk .tk-form label { display: grid; gap: .375rem; font-size: .8125rem; font-weight: 500; color: rgba(250,250,250,.85); }
+.tk .tk-input { width: 100%; height: 2.75rem; padding: 0 .875rem; border: 0; border-radius: .75rem; background: rgba(255,255,255,.04); color: var(--foreground); font: 400 .9375rem/1.2 var(--ds-font-body); box-shadow: inset 0 0 0 1px var(--input); transition: box-shadow .2s; }
+.tk textarea.tk-input { height: auto; min-height: 4.5rem; padding: .75rem .875rem; resize: vertical; line-height: 1.45; }
+.tk .tk-input::placeholder { color: rgba(250,250,250,.35); }
+.tk .tk-input:focus { outline: none; box-shadow: inset 0 0 0 1px var(--brand), 0 0 0 3px rgba(197,144,96,.18); }
+.tk .tk-choices { border: 0; margin: 0; padding: 0; display: grid; gap: .375rem; }
+.tk .tk-choices legend { padding: 0; margin-bottom: .375rem; font-size: .8125rem; font-weight: 500; color: rgba(250,250,250,.85); }
+.tk .tk-choice { position: relative; display: flex !important; align-items: center; gap: .625rem; padding: .625rem .875rem; border-radius: .75rem; background: rgba(255,255,255,.03); box-shadow: inset 0 0 0 1px var(--border); cursor: pointer; font-weight: 400 !important; font-size: .875rem !important; transition: box-shadow .2s, background .2s; }
+.tk .tk-choice input { position: absolute; opacity: 0; pointer-events: none; }
+.tk .tk-choice i { flex: none; width: 1rem; height: 1rem; border-radius: 999px; box-shadow: inset 0 0 0 1.5px rgba(250,250,250,.35); transition: box-shadow .2s; }
+.tk .tk-choice:has(input:checked) { background: rgba(197,144,96,.10); box-shadow: inset 0 0 0 1px rgba(197,144,96,.6); }
+.tk .tk-choice:has(input:checked) i { box-shadow: inset 0 0 0 4.5px var(--brand); }
+.tk .tk-choice:has(input:focus-visible) { box-shadow: inset 0 0 0 1px var(--brand), 0 0 0 3px rgba(197,144,96,.18); }
+.tk .tk-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.tk .tk-form__error { margin: 0; font-size: .8125rem; color: #f87171; min-height: 0; }
+.tk .tk-form .tk-btn[disabled] { opacity: .6; pointer-events: none; }
+.tk .tk-done { text-align: center; padding: 1.5rem .5rem; }
+.tk .tk-done .tk-orb { margin-bottom: 1rem; }
+body.tk #page-container .tk-done h2 { font-size: 1.75rem !important; margin: 0 0 .5rem !important; }
+.tk .tk-done p { margin: 0 auto 1.25rem; color: var(--muted-foreground); max-width: 22rem; line-height: 1.55; }
+.tk .tk-share { display: flex; gap: .5rem; justify-content: center; flex-wrap: wrap; }
+
+@media (max-width: 480px) {
+  .tk .tk-lead-hero { padding: 2.25rem 0 3.5rem; }
+  .tk .tk-feature { padding: 1rem; margin-left: 1rem; margin-right: 1rem; }
+  .tk .tk-feature__media .tk-tray { padding: 24px 4px; }
+  .tk .tk-feature__media .tk-stage--merge { zoom: .64; }
+  .tk .tk-top__meta { display: none; }
+}
+
+@media (min-width: 896px) {
+  .tk .tk-feature { align-items: stretch; }
+  .tk .tk-feature__media { display: flex; }
+  .tk .tk-feature__media .letter-fig { display: flex; flex: 1; }
+  .tk .tk-feature__media .tk-tray { flex: 1; align-items: center; }
+  .tk .tk-learn { align-self: center; }
+}
+
+/* ── Video slot (16:9). Holds a Vidalytics embed; poster until then ── */
+.tk .tk-video { position: relative; width: 100%; aspect-ratio: 16 / 9; border-radius: 1rem; overflow: hidden; background: #000; box-shadow: 0 0 0 1px var(--border); }
+.tk .tk-video > div { width: 100%; height: 100%; }
+.tk .tk-video__poster { all: unset; position: absolute; inset: 0; cursor: pointer; display: block; }
+.tk .tk-video__poster img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(.9); transition: transform .6s cubic-bezier(.22,1,.36,1); }
+.tk .tk-video__poster::after { content: ""; position: absolute; inset: 0; background: radial-gradient(60% 60% at 50% 50%, rgba(0,0,0,.05), rgba(0,0,0,.45)); }
+.tk .tk-video__poster:hover img { transform: scale(1.03); }
+.tk .tk-video__play { position: absolute; z-index: 1; left: 50%; top: 50%; width: 4.5rem; height: 4.5rem; margin: -2.25rem 0 0 -2.25rem; display: grid; place-items: center; border-radius: 999px; background: #fff; color: #0a0a0a; box-shadow: 0 10px 30px -6px rgba(0,0,0,.6), 0 0 0 8px rgba(255,255,255,.14); transition: transform .3s cubic-bezier(.22,1,.36,1); }
+.tk .tk-video__play svg { width: 1.625rem; height: 1.625rem; margin-left: 3px; }
+.tk .tk-video__poster:hover .tk-video__play { transform: scale(1.06); }
+.tk .tk-video__play::before { content: ""; position: absolute; inset: -8px; border-radius: inherit; border: 1px solid rgba(255,255,255,.35); animation: tk-ping 2.4s cubic-bezier(0,0,.2,1) infinite; }
+.tk .tk-video__label { position: absolute; z-index: 1; left: 1rem; bottom: 1rem; padding: .375rem .75rem; border-radius: 999px; background: rgba(10,10,10,.6); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); font-size: .8125rem; color: #fff; box-shadow: 0 0 0 1px rgba(255,255,255,.12); }
+.tk .tk-feature__media .tk-video { height: auto; }
+@media (min-width: 896px) { .tk .tk-feature:has(.tk-video) { align-items: center; } .tk .tk-feature:has(.tk-video) .tk-feature__media { display: block; } }
+.tk .tk-btn--lg svg { width: 1rem; height: 1rem; }
+@media (prefers-reduced-motion: reduce) { .tk .tk-video__play::before { animation: none; } }
+
+/* ── Waitlist popup (native <dialog>) ── */
+.tk .tk-modal { width: min(28rem, calc(100vw - 2rem)); max-height: calc(100dvh - 2rem); overflow: auto; padding: 2rem; border: 0; border-radius: 1.25rem; background: var(--card); color: var(--foreground); box-shadow: 0 30px 60px -12px rgba(0,0,0,.7), 0 0 0 1px var(--border); }
+.tk .tk-modal::backdrop { background: rgba(0,0,0,.6); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+.tk .tk-modal[open] { animation: tkModalIn .35s cubic-bezier(.22,1,.36,1); }
+@keyframes tkModalIn { from { opacity: 0; transform: translateY(12px) scale(.98); } to { opacity: 1; transform: none; } }
+.tk .tk-modal .tk-kicker { font-size: .75rem; margin-bottom: .75rem; }
+.tk .tk-modal h2 { font-family: var(--ds-font-display); text-transform: uppercase; font-weight: 700; font-size: 2.25rem; line-height: 1; letter-spacing: -0.02em; margin: 0 0 .75rem; color: var(--foreground); }
+.tk .tk-modal__lead { margin: 0 0 1.5rem; color: var(--muted-foreground); line-height: 1.55; font-size: .9375rem; }
+.tk .tk-modal__close { position: absolute; top: .875rem; right: .875rem; width: 2.25rem; height: 2.25rem; display: grid; place-items: center; border: 0; border-radius: 999px; background: rgba(255,255,255,.06); color: var(--muted-foreground); cursor: pointer; }
+.tk .tk-modal__close:hover { color: var(--foreground); background: rgba(255,255,255,.1); }
+.tk .tk-modal__close svg { width: 1rem; height: 1rem; }
+.tk .tk-modal__skip { border: 0; background: none; color: var(--muted-foreground); font: 500 .8125rem var(--ds-font-body); cursor: pointer; padding: .25rem; justify-self: center; }
+.tk .tk-modal__skip:hover { color: var(--foreground); }
+.tk .tk-modal .tk-done { padding: .5rem 0 0; }
+.tk .tk-modal .tk-done h2 { font-size: 2rem; }
+
+/* Long Expert Secrets style headline: one step smaller so it reads in 3 lines */
+.tk #page-container .tk-lead-hero h1.tk-h1--long { max-width: 60rem; font-size: var(--ds-size-h1) !important; line-height: var(--ds-leading-h1) !important; }
+.tk .tk-lead-hero .tk-kicker { font-size: 1rem; }
+.tk .tk-sub { font-size: 1.1875rem; }
+.tk .tk-lead-hero .tk-sub { max-width: 48rem; text-wrap: balance; }
+
+/* ── Waitlist page: sizes matched 1:1 to go.ajsmart.com/start at 1440px ──
+   header 102 · eyebrow 28 bold · h1 90/90 in 1100 · sub 28/500 · card 1170, r25,
+   rgba(84,84,84,.26), pad 75/25/49 · video 730x411 r10 · col 340, gap 50 ·
+   learn 20 bold, list 20/28.6 · button 340x71, 22 bold, pill */
+body.tk-aj .tk-top { border-bottom: 0; }
+body.tk-aj .tk-top__in { max-width: 1100px; height: 102px; padding: 5px 0 0; box-sizing: border-box; }
+body.tk-aj .tk-top__in img { height: 40px; }
+body.tk-aj .tk-top__meta { font-size: 1rem; }
+body.tk-aj .tk-lead-hero { padding: 30px 0 80px; }
+body.tk-aj .tk-lead-hero .tk-container { max-width: 1100px; padding: 0; }
+body.tk-aj .tk-lead-hero > .tk-container:last-child { max-width: 1170px; }
+body.tk-aj .tk-feature { max-width: 1170px; margin-top: 40px; padding: 75px 25px 49px; gap: 50px; border-radius: 25px; background: rgba(84,84,84,.26); box-shadow: none; }
+@media (min-width: 896px) { body.tk-aj .tk-feature { grid-template-columns: minmax(0, 730px) 340px; justify-content: start; align-items: center; } }
+body.tk-aj .tk-video { border-radius: 10px; box-shadow: none; }
+body.tk-aj #page-container .tk-learn h2 { font-size: 20px !important; line-height: 26px !important; font-weight: 700 !important; margin: 0 0 30px !important; }
+body.tk-aj .tk-learn ul { gap: 20px; margin-bottom: 40px; }
+body.tk-aj .tk-learn li { grid-template-columns: 25px 1fr; gap: 0; font-size: 20px; line-height: 28.6px; color: #fff; }
+body.tk-aj .tk-learn li svg { width: 20px; height: 20px; margin-top: 4px; }
+body.tk-aj .tk-learn .tk-btn--lg { height: 71px; padding: 0 40px; font-size: 22px; font-weight: 700; }
+body.tk-aj .tk-learn .tk-btn--lg svg { width: 18px; height: 18px; }
+body.tk-aj .tk-learn__note { font-size: 15px; margin-top: 14px; }
+
+@media (max-width: 1200px) {
+  body.tk-aj .tk-top__in, body.tk-aj .tk-lead-hero .tk-container { padding-left: 24px; padding-right: 24px; }
+}
+@media (max-width: 895px) {
+  body.tk-aj .tk-feature { padding: 20px; gap: 28px; border-radius: 20px; }
+}
+@media (max-width: 600px) {
+  body.tk-aj .tk-top__in { height: 72px; }
+  body.tk-aj .tk-top__in img { height: 30px; }
+  body.tk-aj .tk-feature { margin: 28px 16px 0; padding: 14px 14px 24px; }
+  body.tk-aj #page-container .tk-learn h2 { margin-bottom: 18px !important; }
+  body.tk-aj .tk-learn li { font-size: 17px; line-height: 24px; }
+  body.tk-aj .tk-learn ul { gap: 14px; margin-bottom: 28px; }
+  body.tk-aj .tk-learn .tk-btn--lg { height: 60px; font-size: 19px; }
+}
+
+/* ── Nav: Builder Kickoff's .pr-bar, in its on-dark state (copied 1:1 from prototype-ready.css) ── */
+body.tk .pr-bar { position: sticky; top: 0; z-index: 100; background: rgba(10, 10, 10, 0.4); backdrop-filter: blur(21px); -webkit-backdrop-filter: blur(21px); padding: 0.875rem 0; }
+body.tk .pr-bar__inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; width: 90%; max-width: 1100px; margin: 0 auto; }
+body.tk .pr-bar__wordmark { display: flex; align-items: center; flex-shrink: 0; text-decoration: none; line-height: 0; }
+body.tk .pr-bar__wordmark img { display: block; width: 69px; height: 20px; filter: brightness(0) invert(1); }
+body.tk .pr-bar__wordmark:hover { opacity: 0.65; }
+body.tk .pr-bar__meta { font-family: var(--ds-font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255, 255, 255, 0.75); text-align: center; }
+body.tk .pr-bar__cta { display: inline-flex; align-items: center; justify-content: center; height: 36px; padding: 0 16px; border-radius: 999px; background: #ffffff; color: #000000 !important; border: 1px solid #ffffff; font-family: var(--ds-font-body); font-size: 13px; font-weight: 600; letter-spacing: 0.01em; text-decoration: none !important; white-space: nowrap; flex-shrink: 0; cursor: pointer; transition: background 0.2s ease; }
+body.tk .pr-bar__cta:hover, body.tk .pr-bar__cta:focus-visible { background: rgba(255, 255, 255, 0.88); color: #000000 !important; }
+@media screen and (max-width: 767px) { body.tk .pr-bar__meta { display: none; } }
+@media screen and (max-width: 479px) { body.tk .pr-bar__inner { width: 92%; } }
+body.tk .tk-lead-hero { padding-top: 3rem; }

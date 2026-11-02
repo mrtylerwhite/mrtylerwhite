@@ -26,7 +26,7 @@ import { fileURLToPath } from "url";
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const PARTIALS_DIR = path.join(ROOT, "partials");
-const SKIP_DIRS = new Set(["node_modules", ".git", "wp-content", "wp-includes", "partials"]);
+const SKIP_DIRS = new Set(["node_modules", ".git", "wp-content", "wp-includes", "partials", "dist", "build"]);
 
 const MARKER_RE = /<!-- partial:([\w-]+)((?:\s+[\w-]+="[^"]*")*)\s*-->[\s\S]*?<!-- \/partial:\1 -->/g;
 const ATTR_RE = /([\w-]+)="([^"]*)"/g;
