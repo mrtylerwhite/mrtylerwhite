@@ -18,8 +18,6 @@ popular: true
 
 **PRD vs BRD:** a BRD makes the business case for a project, and a PRD spells out what the product will do to deliver it. Most product teams only need one: a PRD with the business case built in.
 
-Here's the short answer.
-
 A **BRD** (business requirements document) explains *why* the business wants something.
 
 A [**PRD**](/letters/what-is-a-prd/) (product requirements document) explains *what* the product will do to get there.
@@ -91,7 +89,7 @@ That's the structure in my template. One doc. One source of truth. (That's also 
 
 **Use a separate BRD** when you genuinely need approval before any product work starts. Big budget decisions, regulated industries, new product lines, or anything that needs a finance sign-off before a team gets assigned.
 
-If you're going the one-doc route, start from [the PRD template](/letters/prd-template/). The business case section is already in it. Or run a [Builder Kickoff™](/builder-kickoff/) and walk out with the PRD and the business case from one session.
+If you're going the one-doc route, start from [the PRD template](/letters/prd-template/). The business case section is already in it.
 
 ## Where the product brief fits
 

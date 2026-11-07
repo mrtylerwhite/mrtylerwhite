@@ -692,6 +692,22 @@ function leadMagnetCard(lm, where) {
 </aside>`;
 }
 
+const LM_MIN_GAP_WORDS = 150;
+function inlineCardIndex(html) {
+  const offerAt = html.indexOf('<aside class="letter-offer"');
+  const from = offerAt >= 0 ? html.indexOf("</aside>", offerAt) + 8 : 0;
+  const words = (chunk) => chunk.replace(/<[^>]+>/g, " ").split(/\s+/).filter(Boolean).length;
+  const re = /<h2 /g;
+  re.lastIndex = from;
+  let fallback = -1;
+  for (let m; (m = re.exec(html)); ) {
+    if (/<\/aside>\s*$/.test(html.slice(0, m.index))) continue; // right after another box
+    if (fallback < 0) fallback = m.index;
+    if (offerAt < 0 || words(html.slice(from, m.index)) >= LM_MIN_GAP_WORDS) return m.index;
+  }
+  return fallback;
+}
+
 // Slim offer placed before the first H2 (see header comment).
 function earlyOfferBlock(post) {
   const c = CTAS[post.cta];
@@ -871,9 +887,13 @@ function renderBody(post) {
     const at = pAt > 0 && (h2At < 0 || pAt < h2At) ? pAt : h2At;
     if (at >= 0) html = `${html.slice(0, at)}\n${early}\n${html.slice(at)}`;
   }
+  // Inline lead magnet card (phones/tablets only; desktop shows the sidebar).
+  // Goes before the first H2 that sits at least LM_MIN_GAP_WORDS of reading
+  // after the early offer, and never directly after another box, so the two
+  // offers don't land on the same phone screen.
   const lm = leadMagnetFor(post);
   if (lm) {
-    const at = html.search(/<h2 /);
+    const at = inlineCardIndex(html);
     if (at >= 0) html = `${html.slice(0, at)}${leadMagnetCard(lm, "inline")}\n${html.slice(at)}`;
   }
   if (html.includes("<!-- cta -->")) html = html.replace("<!-- cta -->", ctaBlock(post.cta));
