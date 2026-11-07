@@ -88,9 +88,25 @@
       </div>
     </section>
 
-    <!-- Video: paste the Vidalytics embed for the PRD thank-you video here.
-         Copy the "Video" section + script from roi-case-study-skill/thank-you/index.html
-         and swap in the new embed ID. Until then the page goes straight to the next step. -->
+    <!-- Video (self-hosted, 1080p web copy of the AI twin clip) -->
+    <section class="fck-video-section" aria-label="Where to find your PRD template">
+      <div class="fck-container fck-container--video">
+        <div class="fck-video-card">
+          <div class="fck-video-card__embed">
+            <video class="fck-video-card__frame" src="/assets/videos/prd-thank-you.mp4" poster="/assets/videos/prd-thank-you-poster.jpg" controls playsinline preload="metadata" width="1920" height="1080" style="object-fit:cover;background:#09090b" data-track-location="prd_template_thank_you"></video>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script>
+    (function () {
+      var v = document.querySelector('.fck-video-card video'); if (!v) return;
+      var sent = {};
+      function ev(name) { if (sent[name]) return; sent[name] = 1; try { if (window.gtag) gtag('event', name, { video_location: 'prd_template_thank_you' }); } catch (e) {} }
+      v.addEventListener('play', function () { ev('thank_you_video_play'); });
+      v.addEventListener('ended', function () { ev('thank_you_video_complete'); });
+    })();
+    </script>
 
     <!-- Builder Kickoff next step -->
     <section class="fck-next" aria-labelledby="fck-next-heading">
