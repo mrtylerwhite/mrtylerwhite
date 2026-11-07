@@ -10,6 +10,7 @@ topic: kickoffs
 cover: /assets/images/letters/scope-creep.jpg
 keyword: scope creep in product design
 cta: builder-kickoff
+leadMagnet: prd-template
 offer: none
 ---
 

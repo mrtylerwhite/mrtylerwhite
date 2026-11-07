@@ -10,7 +10,7 @@ topic: kickoffs
 cover: /assets/images/letters/prd-template.jpg
 keyword: prd template
 cta: builder-kickoff
-leadMagnet: prd-template
+leadMagnet: case-study
 source: 23087793, 23657334
 ---
 

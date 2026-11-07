@@ -11,6 +11,7 @@ topic: kickoffs
 cover: /assets/images/letters/project-kickoff-meeting.jpg
 keyword: project kickoff meeting
 cta: builder-kickoff
+leadMagnet: prd-template
 source: 23000589, 24812604, 23657334
 ---
 

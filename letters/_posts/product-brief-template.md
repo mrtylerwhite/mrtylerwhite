@@ -11,6 +11,7 @@ topic: kickoffs
 cover: /assets/images/letters/product-brief-template.jpg
 keyword: product brief template
 cta: builder-kickoff
+leadMagnet: prd-template
 source: 24566874, 24752740
 ---
 
