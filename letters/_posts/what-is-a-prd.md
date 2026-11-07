@@ -6,6 +6,7 @@ description: PRD stands for product requirements document: the doc that says wha
 subtitle: A PRD is a record of decisions. Most teams treat it as a request for decisions, which is why theirs go stale by Thursday.
 slug: what-is-a-prd
 date: 2026-10-15
+updated: 2026-11-06
 topic: kickoffs
 cover: /assets/images/letters/what-is-a-prd.jpg
 keyword: what is a prd
