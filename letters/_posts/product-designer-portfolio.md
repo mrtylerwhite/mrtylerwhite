@@ -123,7 +123,7 @@ That's not a portfolio. That's a machine that pre-sells you before the first int
 
 Here's the trap. Designers spend weeks polishing the website, then practice the actual presentation twice, alone, five minutes before the interview.
 
-The portfolio gets you into the room. The presentation decides what happens once you're there. And in a live review, people interrupt, skip ahead and ask about the decision you thought was obvious.
+The portfolio gets you into the room. [The presentation decides what happens](https://www.designtablepodcast.com/products/become-a-modern-in-demand-product-designer?utm_source=mrtylerwhite&utm_medium=letter&utm_campaign=product-designer-portfolio) once you're there. And in a live review, people interrupt, skip ahead and ask about the decision you thought was obvious.
 
 They're judging your thinking, not your typography.
 

@@ -98,7 +98,7 @@ The rules kept changing as we tested edge cases. Cursor made it easy to adjust w
 
 ## Figma still has a job
 
-I'm not anti-Figma. After the logic holds up in code, I move to Figma and clean it up. Visual polish, design system alignment, handoff.
+I'm not anti-Figma. After the logic holds up in code, I [move to Figma and clean it up](https://www.designtablepodcast.com/products/become-a-modern-in-demand-product-designer?utm_source=mrtylerwhite&utm_medium=letter&utm_campaign=cursor-for-designers). Visual polish, design system alignment, handoff.
 
 The change is the order. For this kind of work I'm not starting with wireframes anymore. Too easy to lie. If it matters, build it. If it breaks, fix it.
 

@@ -66,7 +66,7 @@ For anything with real logic, I build a quick version in Cursor and use it. That
 
 **5. Polish in Figma.**
 
-Once the logic holds up, I move to Figma and clean it up.
+Once the logic holds up, I [move to Figma and clean it up](https://www.designtablepodcast.com/products/become-a-modern-in-demand-product-designer?utm_source=mrtylerwhite&utm_medium=letter&utm_campaign=ai-prototyping-workflow).
 
 What used to take hours now takes about 20 to 30 minutes to explore and kill bad ideas early.
 
