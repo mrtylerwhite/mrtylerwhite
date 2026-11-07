@@ -18,8 +18,8 @@ export const LEAD_MAGNETS = {
   "prd-template": {
     label: "Free template",
     title: "The PRD Template",
-    description: "Six sections, one page, plus a filled-in example engineering will actually read.",
-    image: "/assets/images/lead-magnets/prd-template-cover.svg",
+    description: "Blank, filled in, and the order to fill it in. A PRD engineering will actually read.",
+    image: "/assets/images/lead-magnets/prd-template-cover.webp",
     href: "/free-prd-template/",
   },
   "case-study": {
