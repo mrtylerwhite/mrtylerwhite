@@ -1,6 +1,7 @@
 ---
 title: What is a PRD? The doc that decides what gets built
 seoTitle: What Does PRD Stand For? Meaning, Template & Example
+titleSuffix: false
 description: PRD stands for product requirements document: the doc that says what a team will build, why, and how you'll know it worked. Meaning, sections and template.
 subtitle: A PRD is a record of decisions. Most teams treat it as a request for decisions, which is why theirs go stale by Thursday.
 slug: what-is-a-prd

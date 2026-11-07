@@ -1,6 +1,7 @@
 ---
 title: PRD vs BRD: which one you actually need (probably not both)
 seoTitle: PRD vs BRD: What's the Difference and Which You Need
+titleSuffix: false
 description: A BRD says why the business wants something. A PRD says what the product will do. See the difference in one table, and why most teams only need one.
 subtitle: One explains why the business wants it. The other explains what the product will do. Most teams write both and then let them drift apart.
 slug: prd-vs-brd

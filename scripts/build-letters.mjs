@@ -10,6 +10,7 @@
  * Front matter (one `key: value` per line):
  *   title        H1 on the page (the human headline)
  *   seoTitle     <title> tag, keyword first, ~60 chars max (defaults to title)
+ *   titleSuffix  false = drop " | Tyler White" from <title> and og:/twitter: titles
  *   description  meta description, ~155 chars max
  *   subtitle     one-line dek under the H1 and in lists
  *   slug         URL: /letters/<slug>/
@@ -1017,7 +1018,7 @@ function postPage(post, related) {
     : "";
 
   return `${headCommon({
-    title: `${post.seoTitle} | Tyler White`,
+    title: post.titleSuffix === false ? post.seoTitle : `${post.seoTitle} | Tyler White`,
     description: post.description,
     canonical,
     ogImage: post.cover || DEFAULT_OG,
