@@ -26,7 +26,7 @@ export const LEAD_MAGNETS = {
     label: "Free Claude Skill",
     title: "The 15 Minute Case Study",
     description: "Turn rough project notes into a case study that proves what changed.",
-    image: "/assets/images/lead-magnets/15-minute-case-study-cover.svg",
+    image: "/assets/images/lead-magnets/15-minute-case-study-cover.webp",
     href: "/roi-case-study-template/",
   },
 };
