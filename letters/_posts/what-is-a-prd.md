@@ -1,7 +1,7 @@
 ---
 title: What is a PRD? The doc that decides what gets built
-seoTitle: What Is a PRD? Meaning and What Goes in One
-description: PRD stands for product requirements document: the doc that says what a team is building, why, and how they'll know it worked. Here's what goes in one.
+seoTitle: What Does PRD Stand For? Meaning, Template & Example
+description: PRD stands for product requirements document: the doc that says what a team will build, why, and how you'll know it worked. Meaning, sections and template.
 subtitle: A PRD is a record of decisions. Most teams treat it as a request for decisions, which is why theirs go stale by Thursday.
 slug: what-is-a-prd
 date: 2026-10-15
@@ -93,6 +93,8 @@ Here's the part that isn't: the best time is during the kickoff, live, on the sh
 Every decision the room makes goes straight into the doc while everyone is still there to correct it. Problem, bet, constraints, scope, open questions. By the end of the hour, the PRD is mostly done.
 
 That's the whole idea behind running a [project kickoff meeting](/letters/project-kickoff-meeting/) that actually decides something. The PRD is what the meeting produces.
+
+The fastest way to do that is [Builder Kickoff™](/builder-kickoff/). You run the session once and walk out with the PRD, the business case and the prototype direction the same day. If you'd rather write it yourself, start from [the PRD template](/letters/prd-template/).
 
 ## Signs your PRD is a bad one
 

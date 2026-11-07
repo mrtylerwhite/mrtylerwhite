@@ -1,7 +1,7 @@
 ---
 title: PRD vs BRD: which one you actually need (probably not both)
-seoTitle: PRD vs BRD: Key Differences and Which You Need
-description: A BRD explains why the business wants it. A PRD explains what the product will do. See the differences side by side, and which one your team needs.
+seoTitle: PRD vs BRD: What's the Difference and Which You Need
+description: A BRD says why the business wants something. A PRD says what the product will do. See the difference in one table, and why most teams only need one.
 subtitle: One explains why the business wants it. The other explains what the product will do. Most teams write both and then let them drift apart.
 slug: prd-vs-brd
 date: 2026-04-15
@@ -13,6 +13,8 @@ cta: builder-kickoff
 source: 23657334
 popular: true
 ---
+
+**PRD vs BRD:** a BRD makes the business case for a project, and a PRD spells out what the product will do to deliver it. Most product teams only need one: a PRD with the business case built in.
 
 Here's the short answer.
 
@@ -86,6 +88,8 @@ The trick is putting the "why" inside the PRD instead of in a separate file:
 That's the structure in my template. One doc. One source of truth. (That's also how [Atlassian describes a PRD](<https://www.atlassian.com/agile/product-management/requirements>): a single source of truth for cross-functional teams.) Business case and requirements can't drift apart because they're on the same page.
 
 **Use a separate BRD** when you genuinely need approval before any product work starts. Big budget decisions, regulated industries, new product lines, or anything that needs a finance sign-off before a team gets assigned.
+
+If you're going the one-doc route, start from [the PRD template](/letters/prd-template/). The business case section is already in it. Or run a [Builder Kickoff™](/builder-kickoff/) and walk out with the PRD and the business case from one session.
 
 ## Where the product brief fits
 
