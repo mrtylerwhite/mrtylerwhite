@@ -1,18 +1,15 @@
 /**
  * PRD Template lead magnet: Kit subscribe (server-side). Same flow as
- * roi-case-study.js: upsert the subscriber, then add them to a form.
- * The template itself is delivered on /free-prd-template/thank-you/, so no
- * incentive email is required.
+ * funnel-simulator.js: upsert the subscriber, tag them "Lead magnet: PRD
+ * Template", and add them to the PRD Template Drip sequence (4 emails, ends
+ * with the Builder Kickoff pitch). No Kit form, so no confirmation email; the
+ * template itself is delivered on /free-prd-template/thank-you/.
  *
  * Required env (never expose to client):
  *   KIT_API_KEY: Kit API v4 key (X-Kit-Api-Key), same key the ROI route uses
- * Optional env:
- *   KIT_PRD_TEMPLATE_FORM_ID: a dedicated Kit form for this lead magnet.
- *     Falls back to KIT_FORM_ID (the Weekly Newsletter form, 4969496).
- *   KIT_PRD_TEMPLATE_TAG_ID: tag to apply as well (skipped when unset).
- *
- * https://developers.kit.com/api-reference/subscribers/create-a-subscriber
- * https://developers.kit.com/api-reference/forms/add-subscriber-to-form-by-email-address
+ * Optional env overrides:
+ *   KIT_PRD_TEMPLATE_TAG_ID (default 25541379)
+ *   KIT_PRD_TEMPLATE_SEQUENCE_ID (default 2961168)
  */
 
 const KIT_API_BASE = "https://api.kit.com/v4";
@@ -78,9 +75,9 @@ async function upsertKitSubscriber(apiKey, email, firstName) {
   });
 }
 
-async function addKitSubscriberToForm(apiKey, formId, email) {
+async function addKitSubscriberTo(apiKey, kind, id, email) {
   return fetch(
-    `${KIT_API_BASE}/forms/${encodeURIComponent(formId)}/subscribers`,
+    `${KIT_API_BASE}/${kind}/${encodeURIComponent(id)}/subscribers`,
     {
       method: "POST",
       headers: {
@@ -123,11 +120,10 @@ module.exports = async function handler(req, res) {
   }
 
   const apiKey = process.env.KIT_API_KEY;
-  const formId =
-    process.env.KIT_PRD_TEMPLATE_FORM_ID || process.env.KIT_FORM_ID || "4969496";
-  const tagId = process.env.KIT_PRD_TEMPLATE_TAG_ID;
+  const tagId = process.env.KIT_PRD_TEMPLATE_TAG_ID || "25541379";
+  const sequenceId = process.env.KIT_PRD_TEMPLATE_SEQUENCE_ID || "2961168";
 
-  if (!apiKey || !formId) {
+  if (!apiKey) {
     return res.status(503).json({ success: false, error: GENERIC_ERROR });
   }
 
@@ -137,23 +133,15 @@ module.exports = async function handler(req, res) {
       return res.status(502).json({ success: false, error: GENERIC_ERROR });
     }
 
-    const formRes = await addKitSubscriberToForm(apiKey, formId, email);
-    if (!kitRequestSucceeded(formRes.status)) {
+    const [tagRes, seqRes] = await Promise.all([
+      addKitSubscriberTo(apiKey, "tags", tagId, email),
+      addKitSubscriberTo(apiKey, "sequences", sequenceId, email),
+    ]);
+    if (!kitRequestSucceeded(seqRes.status)) {
       return res.status(502).json({ success: false, error: GENERIC_ERROR });
     }
-
-    if (tagId) {
-      const tagRes = await fetch(
-        `${KIT_API_BASE}/tags/${encodeURIComponent(tagId)}/subscribers`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json", "X-Kit-Api-Key": apiKey },
-          body: JSON.stringify({ email_address: email }),
-        }
-      );
-      if (!kitRequestSucceeded(tagRes.status)) {
-        console.error("prd-template: tag failed", tagRes.status);
-      }
+    if (!kitRequestSucceeded(tagRes.status)) {
+      console.error("prd-template: tag failed", tagRes.status);
     }
 
     return res.status(200).json({ success: true });
