@@ -11,6 +11,7 @@ topic: kickoffs
 cover: /assets/images/letters/prd-vs-brd.jpg
 keyword: prd vs brd
 cta: builder-kickoff
+leadMagnet: prd-template
 source: 23657334
 popular: true
 ---

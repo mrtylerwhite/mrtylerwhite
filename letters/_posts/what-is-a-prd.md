@@ -10,6 +10,7 @@ topic: kickoffs
 cover: /assets/images/letters/what-is-a-prd.jpg
 keyword: what is a prd
 cta: builder-kickoff
+leadMagnet: prd-template
 popular: true
 ---
 

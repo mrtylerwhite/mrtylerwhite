@@ -79,6 +79,8 @@ npm run build:letters
 
 That renders `/letters/`, every `/letters/<slug>/`, the RSS feed (`/letters/feed.xml`) and `letters-sitemap.xml`, then fills the shared partials. Layout lives in `assets/css/system/pages/letters.css`; signup forms use `assets/js/newsletter-form.js`. Don't edit the generated HTML in `letters/`; edit the `.md` file and rebuild.
 
+**Lead magnet card.** Every letter gets a sticky lead magnet card in a right-hand column on desktop (1180px and up), shown inline before the first H2 on smaller screens. The lead magnets (label, title, description, cover image, landing page) live in `scripts/lead-magnets.mjs`. A letter picks one with `leadMagnet: <slug>` in its front matter (`none` hides it); without the field it gets `DEFAULT_LEAD_MAGNET`. Cover images are 800 × 600 (4:3) and go in `assets/images/lead-magnets/`.
+
 ## Shared nav and footer (partials)
 
 The nav and footer live once in `partials/` and are copied into every page:

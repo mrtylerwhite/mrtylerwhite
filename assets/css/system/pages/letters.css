@@ -2323,3 +2323,110 @@ img.letters-feature__art {
   .letter-faq__a { padding-right: 0; }
 }
 @media (prefers-reduced-motion: reduce) { .letter-faq__chev, .letter-faq__item { transition: none; } }
+
+/* ── Post: lead magnet card (scripts/lead-magnets.mjs) ────────────────────────
+   Desktop (1180px+): article left, card sticky in a 300px right column.
+   Smaller screens: the same card sits inline in the body, before the first H2.
+   Cover art is 800x600 (4:3) inside a light rounded panel. */
+/* critical:start */
+.lm-card--sidebar,
+.letter__side { display: none; }
+@media (min-width: 1180px) {
+  .letter__layout {
+    display: grid;
+    grid-template-columns: minmax(0, var(--letters-measure)) 300px;
+    gap: 64px;
+    justify-content: center;
+    align-items: start;
+  }
+  .letter__layout .letter__article { margin: 0; }
+  .letter__side {
+    display: block;
+    position: sticky;
+    top: 112px;
+    padding-top: 40px;
+  }
+  .lm-card--sidebar { display: block; }
+  .lm-card--inline { display: none; }
+}
+/* critical:end */
+.lm-card { font-family: var(--ds-font-body); }
+#page-container .lm-card .lm-card__label {
+  margin: 0 0 12px;
+  font-family: var(--ds-font-mono);
+  font-size: 11px;
+  line-height: 16px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ds-color-faint);
+}
+#page-container .lm-card .lm-card__media {
+  display: block;
+  padding: 20px;
+  border-radius: var(--ds-radius-lg);
+  background: var(--ds-color-surface-raised);
+  text-decoration: none;
+  overflow: hidden;
+}
+.lm-card__media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.lm-card:hover .lm-card__media img { transform: scale(1.02); }
+#page-container .lm-card .lm-card__title {
+  margin: 18px 0 6px;
+  font-family: "Instrument Serif", Georgia, "Times New Roman", serif;
+  font-size: 30px;
+  line-height: 1.1;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--ds-color-text-strong);
+}
+#page-container .lm-card .lm-card__desc {
+  margin: 0 0 14px;
+  font-size: 15px;
+  line-height: 22px;
+  color: var(--ds-color-muted);
+}
+#page-container .lm-card .lm-card__link {
+  font-size: 15px;
+  line-height: 22px;
+  font-weight: 600;
+  color: var(--ds-color-text-strong);
+  text-decoration: underline;
+  text-decoration-color: var(--letters-gold);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+#page-container .lm-card .lm-card__link:hover { text-decoration-color: currentColor; }
+.lm-card--inline {
+  margin: 36px 0;
+  padding: 20px;
+  border: 1px solid var(--ds-color-border);
+  border-radius: var(--ds-radius-lg);
+  background: var(--ds-color-surface);
+}
+@media (min-width: 600px) and (max-width: 1179px) {
+  .lm-card--inline {
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr);
+    grid-template-rows: auto auto auto 1fr;
+    column-gap: 24px;
+    align-items: start;
+  }
+  .lm-card--inline .lm-card__media { grid-column: 1; grid-row: 1 / span 4; }
+  #page-container .lm-card--inline .lm-card__media { padding: 14px; }
+  .lm-card--inline .lm-card__label,
+  .lm-card--inline .lm-card__title,
+  .lm-card--inline .lm-card__desc,
+  .lm-card--inline .lm-card__link { grid-column: 2; }
+  #page-container .lm-card--inline .lm-card__label { margin-top: 4px; }
+  #page-container .lm-card--inline .lm-card__title { margin-top: 0; font-size: 28px; }
+  .lm-card--inline .lm-card__link { justify-self: start; }
+}
+@media (prefers-reduced-motion: reduce) { .lm-card__media img { transition: none; } }

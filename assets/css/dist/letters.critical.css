@@ -2211,3 +2211,25 @@ img.letters-feature__art {
   .cs-stat { padding: 18px 16px; }
 }
 /* critical:end */
+/* critical:start */
+.lm-card--sidebar,
+.letter__side { display: none; }
+@media (min-width: 1180px) {
+  .letter__layout {
+    display: grid;
+    grid-template-columns: minmax(0, var(--letters-measure)) 300px;
+    gap: 64px;
+    justify-content: center;
+    align-items: start;
+  }
+  .letter__layout .letter__article { margin: 0; }
+  .letter__side {
+    display: block;
+    position: sticky;
+    top: 112px;
+    padding-top: 40px;
+  }
+  .lm-card--sidebar { display: block; }
+  .lm-card--inline { display: none; }
+}
+/* critical:end */

@@ -11,6 +11,7 @@ topic: case-studies
 cover: /assets/images/letters/ux-case-study-template.jpg
 keyword: ux case study template
 cta: case-study
+leadMagnet: case-study
 source: 24149534, 25364104
 ---
 

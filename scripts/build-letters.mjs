@@ -19,6 +19,8 @@
  *   topic        case-studies | kickoffs | ai-workflow | career
  *   keyword      primary search term (for the record and the automation)
  *   cta          case-study | builder-kickoff | newsletter
+ *   leadMagnet   sidebar lead magnet card: a slug from scripts/lead-magnets.mjs,
+ *                or "none" to hide it (defaults to DEFAULT_LEAD_MAGNET)
  *   offer        optional one-line pitch for the early offer (defaults per cta; "none" hides it)
  *   cover        optional image path; lists fall back to a typographic tile
  *   featured     true = hero on /letters/ (else the newest letter)
@@ -40,6 +42,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import crypto from "crypto";
 import { marked } from "marked";
+import { LEAD_MAGNETS, DEFAULT_LEAD_MAGNET } from "./lead-magnets.mjs";
 
 // Cache-busting: Vercel serves CSS/JS with max-age=86400, so an unchanged URL keeps
 // browsers on a stale file for up to a day. Append a short content hash instead,
@@ -669,6 +672,26 @@ function newsletterBlock(location, { floating = true } = {}) {
 </aside>`;
 }
 
+// Lead magnet card: sticky in the right column on desktop, inline after the
+// intro (before the first H2) on smaller screens. Same markup, two placements;
+// CSS shows exactly one of them.
+function leadMagnetFor(post) {
+  if (post.leadMagnet === "none") return null;
+  const slug = post.leadMagnet || DEFAULT_LEAD_MAGNET;
+  const lm = LEAD_MAGNETS[slug];
+  if (!lm) throw new Error(`${post.slug}: unknown leadMagnet "${slug}" (see scripts/lead-magnets.mjs)`);
+  return { slug, ...lm };
+}
+function leadMagnetCard(lm, where) {
+  return `<aside class="lm-card lm-card--${where}" aria-label="${esc(lm.label)}: ${esc(lm.title)}">
+  <p class="lm-card__label">${esc(lm.label)}</p>
+  <a class="lm-card__media" href="${lm.href}" tabindex="-1" aria-hidden="true" data-track-event="letters_lead_magnet_click" data-track-location="${where}_${lm.slug}"><img src="${lm.image}" alt="" width="800" height="600" loading="lazy" decoding="async" /></a>
+  <p class="lm-card__title">${esc(lm.title)}</p>
+  <p class="lm-card__desc">${esc(lm.description)}</p>
+  <a class="lm-card__link" href="${lm.href}" data-track-event="letters_lead_magnet_click" data-track-location="${where}_${lm.slug}">${esc(lm.link || "Download free")} <span aria-hidden="true">&rarr;</span></a>
+</aside>`;
+}
+
 // Slim offer placed before the first H2 (see header comment).
 function earlyOfferBlock(post) {
   const c = CTAS[post.cta];
@@ -848,6 +871,11 @@ function renderBody(post) {
     const at = pAt > 0 && (h2At < 0 || pAt < h2At) ? pAt : h2At;
     if (at >= 0) html = `${html.slice(0, at)}\n${early}\n${html.slice(at)}`;
   }
+  const lm = leadMagnetFor(post);
+  if (lm) {
+    const at = html.search(/<h2 /);
+    if (at >= 0) html = `${html.slice(0, at)}${leadMagnetCard(lm, "inline")}\n${html.slice(at)}`;
+  }
   if (html.includes("<!-- cta -->")) html = html.replace("<!-- cta -->", ctaBlock(post.cta));
   else html += `\n${ctaBlock(post.cta)}`;
   return { html, toc, videos };
@@ -972,6 +1000,8 @@ const ANSWER_CSS = `  <style>
 
 function postPage(post, related) {
   const { html, toc, videos } = renderBody(post);
+  const lmPick = leadMagnetFor(post);
+  const lmSide = lmPick ? leadMagnetCard(lmPick, "sidebar") : "";
   const canonical = post.url;
   const jsonld = [
     {
@@ -1034,7 +1064,7 @@ function postPage(post, related) {
   })}
 ${shellOpen("letters-page letter-page")}
 <main class="letter" id="main-content">
-  <article class="letter__article">
+  ${lmSide ? '<div class="letter__layout">\n  ' : ""}<article class="letter__article">
     <header class="letter__header">
       <a class="letter__back ds-enter" href="/letters/" data-track-event="letters_back_click"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>All letters</a>
       <h1 class="letter__title ds-enter ds-enter-d1">${esc(post.title)}</h1>
@@ -1062,6 +1092,7 @@ ${html}
       </div>
     </footer>
   </article>
+  ${lmSide ? `<div class="letter__side">${lmSide}</div>\n  </div>` : ""}
   ${relatedHtml}
 </main>
 <script>

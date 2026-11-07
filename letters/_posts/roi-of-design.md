@@ -11,6 +11,7 @@ topic: case-studies
 cover: /assets/images/letters/roi-of-design.jpg
 keyword: roi of design
 cta: case-study
+leadMagnet: case-study
 source: 24846454, 24742867, 23947769, 22627381
 ---
 
