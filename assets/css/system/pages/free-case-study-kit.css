@@ -212,7 +212,7 @@ body.free-case-study-kit .fck-hero__title {
     max-width: min(42rem, 100%);
     font-size: var(--ds-size-h1) !important;
     line-height: var(--ds-leading-h1) !important;
-    margin: 0 0 var(--ds-gap-title);
+    margin: 0 auto var(--ds-gap-title);
   }
 }
 

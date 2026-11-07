@@ -2380,11 +2380,12 @@ img.letters-feature__art {
 .lm-card:hover .lm-card__media img { transform: scale(1.02); }
 #page-container .lm-card .lm-card__title {
   margin: 18px 0 6px;
-  font-family: "Instrument Serif", Georgia, "Times New Roman", serif;
-  font-size: 30px;
-  line-height: 1.1;
-  font-weight: 400;
-  letter-spacing: -0.01em;
+  font-family: var(--ds-font-body);
+  font-size: 24px;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  text-transform: none;
   color: var(--ds-color-text-strong);
 }
 #page-container .lm-card .lm-card__desc {
@@ -2426,7 +2427,7 @@ img.letters-feature__art {
   .lm-card--inline .lm-card__desc,
   .lm-card--inline .lm-card__link { grid-column: 2; }
   #page-container .lm-card--inline .lm-card__label { margin-top: 4px; }
-  #page-container .lm-card--inline .lm-card__title { margin-top: 0; font-size: 28px; }
+  #page-container .lm-card--inline .lm-card__title { margin-top: 0; font-size: 22px; }
   .lm-card--inline .lm-card__link { justify-self: start; }
 }
 @media (prefers-reduced-motion: reduce) { .lm-card__media img { transition: none; } }
