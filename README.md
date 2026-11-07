@@ -61,7 +61,7 @@ npx serve@latest . -l 4321
 │   └── themes/Divi/                      WP theme CSS/JS/icon font
 ├── wp-includes/                          WP core JS/CSS deps
 ├── s/                                    Google Fonts cached locally (Figtree, Geist, Smooch)
-├── favicon.ico
+├── favicon.ico + favicon-32x32.png + icon-192.png + apple-touch-icon.png   site icons (black W on light grey)
 ├── robots.txt
 ├── sitemap.xml + page-sitemap.xml
 └── vercel.json
