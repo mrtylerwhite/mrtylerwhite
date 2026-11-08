@@ -1179,9 +1179,20 @@ function indexPage(posts) {
   })}
 ${shellOpen("letters-page letters-index")}
 <main class="letters" id="main-content">
-  <h1 class="screen-reader-text">Letters</h1>
-
-
+  <header class="letters-hero ds-enter ds-enter-d1">
+    <p class="ds-eyebrow letters-hero__eyebrow">Letters</p>
+    <h1 class="letters-hero__title">Design moves the business. Most designers can't show the receipts.</h1>
+    <form class="letters-hero__form" data-newsletter-form data-track-location="letters_hero" method="post" action="${KIT_FORM}" novalidate>
+      <input type="hidden" name="fields[signup_source]" value="letters_hero" data-signup-source />
+      <label class="screen-reader-text" for="nl-letters_hero">Email address</label>
+      <div class="letter-signup__field">
+        <input id="nl-letters_hero" class="letter-signup__input" name="email_address" type="email" autocomplete="email" placeholder="Your email" required />
+        <button class="letter-signup__btn" type="submit">Get the ROI of Design <span aria-hidden="true">&rarr;</span></button>
+      </div>
+      <p class="letter-signup__error" data-newsletter-error role="alert" aria-live="polite"></p>
+    </form>
+    <p class="letters-hero__note">One letter every Saturday. Join 260+ product designers.</p>
+  </header>
 
   ${featured ? `<a class="letters-feature ds-enter ds-enter-d2" href="/letters/${featured.slug}/">
     ${tile(featured, "letters-feature__art", true)}
