@@ -8,7 +8,8 @@ slug: project-kickoff-meeting
 date: 2026-07-08
 updated: 2026-10-15
 topic: kickoffs
-cover: /assets/images/letters/project-kickoff-meeting.jpg
+cover: /assets/images/letters/project-kickoff-meeting-v2.jpg
+coverAlt: "Four people stand around a stone table lit by a glowing hourglass and a single sheet of paper"
 keyword: project kickoff meeting
 cta: builder-kickoff
 leadMagnet: prd-template

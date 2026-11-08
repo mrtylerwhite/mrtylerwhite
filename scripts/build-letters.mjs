@@ -22,7 +22,8 @@
  *   leadMagnet   sidebar lead magnet card: a slug from scripts/lead-magnets.mjs,
  *                or "none" to hide it (defaults to DEFAULT_LEAD_MAGNET)
  *   offer        optional one-line pitch for the early offer (defaults per cta; "none" hides it)
- *   cover        optional image path; lists fall back to a typographic tile
+ *   cover        optional image path (1536x1024); lists fall back to a typographic tile
+ *   coverAlt     alt text for the cover on the letter page and in share tags
  *   featured     true = hero on /letters/ (else the newest letter)
  *   popular      true = in the "Most popular" strip
  *   source       Kit broadcast id(s) the letter was built from
@@ -192,6 +193,9 @@ const SITE = "https://www.mrtylerwhite.com";
 const KIT_FORM = "https://app.kit.com/forms/4969496/subscriptions";
 const AUTHOR_IMG = "/assets/images/tyler-white-avatar.webp";
 const DEFAULT_OG = "/assets/images/og-home.jpg";
+// Letter covers are generated at 1536x1024 (3:2).
+const COVER_W = 1536;
+const COVER_H = 1024;
 
 const TOPICS = {
   "case-studies": "Case Studies",
@@ -901,8 +905,13 @@ function renderBody(post) {
   return { html, toc, videos };
 }
 
-function headCommon({ title, description, canonical, ogImage, ogType, noindex, jsonld, extraHead = "" }) {
+function headCommon({ title, description, canonical, ogImage, ogImageAlt, ogImageSize, ogType, noindex, jsonld, extraHead = "" }) {
   const img = ogImage.startsWith("http") ? ogImage : SITE + ogImage;
+  const imgSize = ogImageSize
+    ? `\n  <meta property="og:image:width" content="${ogImageSize[0]}" />\n  <meta property="og:image:height" content="${ogImageSize[1]}" />`
+    : "";
+  const imgAlt = ogImageAlt ? `\n  <meta property="og:image:alt" content="${esc(ogImageAlt)}" />` : "";
+  const twAlt = ogImageAlt ? `\n  <meta name="twitter:image:alt" content="${esc(ogImageAlt)}" />` : "";
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -917,12 +926,12 @@ ${noindex ? '  <meta name="robots" content="noindex" />\n' : ""}
   <meta property="og:title" content="${esc(title)}" />
   <meta property="og:description" content="${esc(description)}" />
   <meta property="og:url" content="${canonical}" />
-  <meta property="og:image" content="${img}" />
+  <meta property="og:image" content="${img}" />${imgSize}${imgAlt}
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@mrtylerwhite" />
   <meta name="twitter:title" content="${esc(title)}" />
   <meta name="twitter:description" content="${esc(description)}" />
-  <meta name="twitter:image" content="${img}" />
+  <meta name="twitter:image" content="${img}" />${twAlt}
   <link rel="alternate" type="application/rss+xml" title="Letters · Tyler White" href="${SITE}/letters/feed.xml" />
 ${jsonld.map((j) => `  <script type="application/ld+json">${JSON.stringify(j)}</script>`).join("\n")}
 
@@ -1031,7 +1040,15 @@ function postPage(post, related) {
       description: post.description,
       datePublished: post.date,
       dateModified: post.updated,
-      image: SITE + (post.cover || DEFAULT_OG),
+      image: post.cover
+        ? {
+            "@type": "ImageObject",
+            url: SITE + post.cover,
+            width: COVER_W,
+            height: COVER_H,
+            caption: post.coverAlt || undefined,
+          }
+        : SITE + DEFAULT_OG,
       mainEntityOfPage: canonical,
       url: canonical,
       keywords: post.keyword || undefined,
@@ -1072,6 +1089,8 @@ function postPage(post, related) {
     description: post.description,
     canonical,
     ogImage: post.cover || DEFAULT_OG,
+    ogImageAlt: post.cover ? post.coverAlt : undefined,
+    ogImageSize: post.cover ? [COVER_W, COVER_H] : undefined,
     ogType: "article",
     noindex: post.draft === true,
     jsonld,
@@ -1098,7 +1117,7 @@ ${shellOpen("letters-page letter-page")}
         <button type="button" class="letter__share" data-share-url="${canonical}">Share</button>
       </div>
     </header>
-    ${post.cover ? coverPicture(post.cover, 'class="letter__cover" alt="" width="1200" height="630" fetchpriority="high" decoding="async"') : ""}
+    ${post.cover ? coverPicture(post.cover, `class="letter__cover" alt="${esc(post.coverAlt || "")}" width="${COVER_W}" height="${COVER_H}" fetchpriority="high" decoding="async"`) : ""}
     ${post.answer ? `<aside class="letter-answer" aria-label="The short answer"><div class="letter-answer__head"><p class="letter-answer__title">The short answer</p></div><div class="letter-answer__bubble"><p class="letter-answer__text">${marked.parseInline(post.answer)}</p><div class="letter-answer__foot">The full breakdown is below ↓</div></div></aside>` : ""}
     ${tocHtml}
     <div class="letter__body">

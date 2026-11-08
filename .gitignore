@@ -10,3 +10,4 @@ node_modules
 .playwright-investigation/
 .backups/
 dist/
+.covers-drafts/

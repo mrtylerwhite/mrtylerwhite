@@ -8,7 +8,8 @@ slug: roi-of-design
 date: 2026-10-26
 updated: 2026-10-27
 topic: case-studies
-cover: /assets/images/letters/roi-of-design.jpg
+cover: /assets/images/letters/roi-of-design-v2.jpg
+coverAlt: "A stone balance scale tips toward a glowing block labeled value, outweighing a small block labeled cost"
 keyword: roi of design
 cta: case-study
 leadMagnet: case-study

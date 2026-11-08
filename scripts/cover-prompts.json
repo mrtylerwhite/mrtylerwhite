@@ -1,0 +1,60 @@
+{
+  "style": "Clean, minimal, cinematic conceptual illustration with a dark, moody atmosphere. A vast dark space: deep near-black background, soft atmospheric haze and light fog, strong vignette with edges fading to black. Monochrome charcoal and grey, with one warm, soft golden-amber glow as the only color and the main light source. Clean and polished, not grungy: no heavy grain. Fine hairline etched texture appears only on the stone and paper objects, like delicate silver pencil lines. Figures are lone silhouettes in long dark coats, rim-lit by the amber glow. Dark, softly reflective floor catching the amber glow. Lots of negative dark space above. Quiet, thoughtful mood. Photorealistic 3D render, painterly cinematic lighting, wide 3:2 composition.",
+  "covers": {
+    "ux-metrics": {
+      "idea": "the four UX metrics leadership cares about, with revenue being the one that matters most",
+      "scene": "Four tall rectangular stone pillars stand in a row, evenly spaced, rising in height from left to right like a simple bar chart. Each pillar has one word etched cleanly into its base in simple lowercase handwriting: from left to right \"adoption\", \"retention\", \"efficiency\", \"revenue\". The first three pillars are plain grey stone. The fourth and tallest pillar, \"revenue\", glows warm amber from within, the brightest thing in the scene. In front of the pillars, a lone figure seen from behind holds a small glowing lantern at their side, looking up at the glowing revenue pillar.",
+      "text": "The only text in the image is the four etched words \"adoption\", \"retention\", \"efficiency\", \"revenue\", each spelled exactly like that. No other text, no numbers, no logos."
+    },
+    "ai-prototyping-workflow": {
+      "idea": "AI lets you explore many directions fast, and most of them fall apart once tested; only one holds up and becomes something real",
+      "scene": "A lone figure stands at the near end of a dark floor, seen from behind. From where they stand, five narrow paths of glowing amber light fan out across the floor into the distance. Four of the paths flicker, break apart into scattered fragments and fade into the darkness partway along. The fifth path, slightly right of center, stays solid and bright and leads to a single solid stone block standing in the distance, glowing warm amber.",
+      "text": "No text, no words, no letters, no logos."
+    },
+    "cursor-for-designers": {
+      "idea": "a pretty mock-up is only a facade; building in real code gives you a structure that actually works",
+      "scene": "Left of center: a tall, thin, flat facade of a stone doorway and wall, propped up from behind by two thin wooden braces, seen at an angle so it is obvious there is nothing behind it but darkness. It is grey and unlit. Right of center: a solid, three-dimensional stone structure under construction, open on one side to show its inner frame of beams and joints glowing warm amber from within, the brightest thing in the scene. A lone figure walks away from the flat facade toward the glowing structure, carrying one stone block.",
+      "text": "No text, no words, no letters, no logos."
+    },
+    "design-rationale": {
+      "idea": "explain a design decision with one clear line, not a defensive slide deck",
+      "scene": "Left: a tall, precarious, leaning tower of thin grey presentation boards and slides stacked haphazardly, some sliding off and falling, unlit and heavy. Right: a lone figure stands calmly, holding up a single slim stone tablet that glows warm amber from within, the brightest thing in the scene. Etched across the tablet is one single clean horizontal line, nothing else.",
+      "text": "No text, no words, no letters, no logos."
+    },
+    "prd-template": {
+      "idea": "fill in the requirements document live during the kickoff, while the team is still making the decisions",
+      "scene": "A low, round, solid stone table with four figures in long dark coats standing around it on all sides, talking. Lying flat in the center of the table is a large sheet of paper divided into six clear rectangular sections by fine etched lines. The top three sections are filled with glowing warm amber lines of abstract writing, rising light drifting up from them; the bottom three sections are still blank. The glowing sheet is the main light source, lighting the faces of the figures from below.",
+      "text": "No readable text, no words, no letters, no logos."
+    },
+    "prd-vs-brd": {
+      "idea": "two documents, one about why the business wants it and one about what the product will do, that start connected and drift apart",
+      "scene": "Two tall upright stone tablets stand on either side of a widening crack in the dark floor. The left tablet has the single word \"why\" etched into it in simple lowercase handwriting. The right tablet has the single word \"what\" etched into it in simple lowercase handwriting. A thin, taut thread of glowing warm amber light connects the two tablets across the crack, stretched and fraying in the middle, about to snap. A lone figure stands below the thread, looking up at it.",
+      "text": "The only text in the image is the etched word \"why\" on the left tablet and \"what\" on the right tablet. No other text, no logos."
+    },
+    "product-brief-template": {
+      "idea": "before anyone builds anything, decide whether the problem is worth solving",
+      "scene": "A huge, dark stone wall fills the background. A lone figure stands before it, seen from behind, holding a lantern up high. The lantern light reveals one long glowing warm amber crack running through the wall, the brightest thing in the scene. Behind the figure, neat stacks of unused grey building blocks and tools wait in the dark, untouched.",
+      "text": "No text, no words, no letters, no logos."
+    },
+    "product-designer-portfolio": {
+      "idea": "a portfolio homepage should be a filter, not a highlight reel; only the strongest work gets through",
+      "scene": "A large horizontal stone grate, like a fine sieve, floats at chest height in the center of the space. Dozens of small grey cards rain down onto it from the darkness above and pile up on top. Only three cards have passed through the grate; they glow warm amber and drift down toward a lone figure standing below, who reaches up to catch them.",
+      "text": "No text, no words, no letters, no logos."
+    },
+    "product-designer-salary": {
+      "idea": "the biggest jump in pay is from mid-level to senior, and proof of the value of your work is what gets you across",
+      "scene": "Two wide stone plateaus with a deep dark gap between them; the right plateau is clearly higher than the left. The left plateau has the word \"mid\" etched into its edge in simple lowercase handwriting, the right plateau has the word \"senior\" etched into its edge in simple lowercase handwriting. Spanning the gap is a narrow rising bridge built from stone blocks that glow warm amber from within, the brightest thing in the scene. A lone figure walks up the glowing bridge toward the higher plateau.",
+      "text": "The only text in the image is the etched word \"mid\" on the left plateau and \"senior\" on the right plateau. No other text, no numbers, no logos."
+    },
+    "ux-case-study-examples": {
+      "idea": "most case studies show what got built; the good ones show what changed because of it",
+      "scene": "A long gallery wall of identical dim grey picture frames hangs in a row, each showing only a faint flat grey rectangle, like screenshots no one looks at. One frame near the right glows warm amber from within and shows a single clean line rising steeply upward, like a simple growth line, the brightest thing in the scene. A lone figure stands in front of the glowing frame, ignoring the others.",
+      "text": "No text, no words, no numbers, no letters, no logos."
+    },
+    "ux-case-study-template": {
+      "idea": "build a case study around one decision by answering five hard questions; the screens come last",
+      "scene": "A short, wide stone staircase of five steps rises from the floor. Each step has a thin line of warm amber light glowing along its edge. A lone figure is climbing the stairs, on the fourth step. At the top of the staircase, in the distance, a small neat stack of grey screen-shaped panels sits waiting, unlit.",
+      "text": "No text, no words, no letters, no logos."
+    }
+  }
+}

@@ -8,6 +8,7 @@ slug: scope-creep
 date: 2026-10-31
 topic: kickoffs
 cover: /assets/images/letters/scope-creep-v2.jpg
+coverAlt: "A person carries one brick out of a full, glowing frame while a pile of blocks labeled also waits to take its place"
 keyword: scope creep in product design
 cta: builder-kickoff
 leadMagnet: prd-template
