@@ -142,6 +142,10 @@ No. A PRD says what to build and why. A functional spec says exactly how each pa
 
 Yes, because the PRD decides the box the design has to fit in. Designers who help write it get to shape the problem. Designers who only read it get handed someone else's decisions.
 
+### What is a PRD meeting?
+
+It's the session where the team agrees on what the PRD says: the problem, the bet, the scope and what's out. Done right, it's just a [project kickoff meeting](/letters/project-kickoff-meeting/) where someone fills in the PRD live.
+
 ### Can AI write a PRD?
 
 It can draft one, fast, from a kickoff transcript or notes. It can't make the decisions for you. If the meeting never agreed on scope, the AI will write a confident PRD about a scope nobody agreed to.

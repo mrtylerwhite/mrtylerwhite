@@ -899,7 +899,7 @@ function headCommon({ title, description, canonical, ogImage, ogImageAlt, ogImag
   <link rel="canonical" href="${canonical}" />
 ${noindex ? '  <meta name="robots" content="noindex" />\n' : ""}
   <meta property="og:type" content="${ogType}" />
-  <meta property="og:site_name" content="Mr. Tyler White" />
+  <meta property="og:site_name" content="Tyler White" />
   <meta property="og:title" content="${esc(title)}" />
   <meta property="og:description" content="${esc(description)}" />
   <meta property="og:url" content="${canonical}" />

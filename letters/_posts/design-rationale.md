@@ -1,12 +1,13 @@
 ---
 title: "Design rationale: how to explain design decisions without defending them"
-seoTitle: Design Rationale: Explaining Design Decisions
-description: How to write and present design rationale: which calls aren't up for debate, how to document the ones that are, and a decision record format to reuse.
+seoTitle: Design Rationale Template (and How to Explain Decisions)
+titleSuffix: false
+description: A copy-paste design rationale template, plus how to explain design decisions without defending them: what isn't up for debate, and what needs one clear line.
 subtitle: Engineers don't justify their linter in a design review. Some design calls deserve the same treatment. The rest need one clear line, not a slide deck.
 answer: Design rationale is the short, written reason behind a design decision. Treat standards like accessibility as settled and don't re-argue them. For real bets, write one line on the tradeoff, the evidence and what would change your mind, and keep it in the PRD and the case study.
 slug: design-rationale
 date: 2026-09-16
-updated: 2026-10-15
+updated: 2026-11-07
 topic: case-studies
 cover: /assets/images/letters/design-rationale-v2.jpg
 coverAlt: "A person holds up a glowing tablet with a single line on it next to a toppling tower of presentation boards"
@@ -23,6 +24,8 @@ Nine times out of ten, you go into defense mode. Wireframes. Research. The whole
 I stopped doing that.
 
 Not because rationale doesn't matter. It matters a lot. But most designers explain the wrong decisions, at the wrong length, at the wrong time. And it slowly teaches the room that every design call is up for a vote.
+
+**Just want the template?** [Skip to the design rationale template](#design-rationale-template). Six lines, one decision.
 
 ## Not every decision is up for debate
 
@@ -55,13 +58,16 @@ Most design arguments go badly because a standard gets treated like a bet. You e
 
 And sometimes it's the opposite: a genuine bet gets presented like a standard, and the room feels steamrolled. That's when you need real rationale.
 
-## How to write design rationale for the bets
+## Design rationale template
+
+This is how to write design rationale for the bets.
+
 
 Engineering solved this years ago. An [architecture decision record](<https://martinfowler.com/bliki/ArchitectureDecisionRecord.html>), a term Michael Nygard coined in 2011, is a short document that captures one decision, its context and the tradeoffs behind it. Design bets deserve the same.
 
 Keep it short enough that someone will actually read it. This format works:
 
-```markdown decision-record.md
+```markdown design-rationale-template.md
 ## Decision: [what we chose]
 
 - Context: what problem this solves, in one sentence

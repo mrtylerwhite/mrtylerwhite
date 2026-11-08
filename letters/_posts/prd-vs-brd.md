@@ -95,11 +95,11 @@ That's the structure in my template. One doc. One source of truth. (That's also 
 
 If you're going the one-doc route, start from [the PRD template](/letters/prd-template/). The business case section is already in it.
 
-## Where the product brief fits
+## What about a product brief?
 
 There's a third doc people mix in here: the product brief.
 
-Think of it as a lightweight BRD. One page that decides whether a problem is worth solving at all, before you commit a team. If it is, the brief grows into the PRD.
+A product brief asks whether a problem is worth a team's time. A PRD records what that team will build once the answer is yes. Think of the brief as a lightweight BRD. One page that decides whether a problem is worth solving at all, before you commit a team. If it is, the brief grows into the PRD.
 
 Here's [a product brief template](/letters/product-brief-template/) if you want that starting point.
 
@@ -122,6 +122,10 @@ That's what [Builder Kickoff™](/builder-kickoff/) is built for. You run the se
 ### Is a PRD the same as a functional spec?
 
 No. A PRD says what the product needs to do and why. A functional spec goes deeper into exactly how each piece behaves. Many teams skip the formal spec and let design and engineering work it out from the PRD.
+
+### What's the difference between a product brief and a PRD?
+
+A product brief is one page that decides whether a problem is worth solving. A PRD comes after, and spells out what you're building, what's out of scope and how you'll measure it. Start with [the product brief template](/letters/product-brief-template/), then grow it into the PRD.
 
 ### What's an MRD?
 

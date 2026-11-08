@@ -1,12 +1,12 @@
 ---
 title: Product brief template (and the design brief questions that actually matter)
-seoTitle: Product Brief and Design Brief Template
-description: A free product brief template plus the design brief questions that matter, so design gets pulled in before the decisions are made, not after.
+seoTitle: Product Brief Template (Free, With Examples)
+description: A free product brief template to copy into Word, Google Docs or Notion, plus filled-in product brief examples and the design brief questions that matter.
 subtitle: The brief usually shows up as a Jira ticket with the decisions already baked in. Here's the template, and how to stop it arriving half-wrong.
 answer: A product brief answers one question before anyone commits time: is this problem worth solving, and what does solved look like? It covers the problem, why now, the outcome, the bet, constraints, what you're not doing and open questions. A brief decides whether to do the work. A PRD decides how.
 slug: product-brief-template
 date: 2026-07-01
-updated: 2026-10-15
+updated: 2026-11-07
 topic: kickoffs
 cover: /assets/images/letters/product-brief-template-v2.jpg
 coverAlt: "A person raises a lantern to a glowing crack in a dark wall while stacks of unused building blocks wait behind them"
@@ -72,7 +72,7 @@ It's lighter than a [PRD](/letters/what-is-a-prd/), and that's the point. Even [
 
 One page. If it runs longer, you're writing the PRD early, and locking in a solution before anyone's challenged the problem.
 
-## Product brief example (filled in)
+## Product brief examples
 
 Here's the template filled in for Ledgerly, the fictional invoicing app from my Builder Kickoff™ demo. Fictional company, realistic numbers, so you can see the shape without anyone's confidential detail.
 
@@ -109,6 +109,15 @@ Here's the template filled in for Ledgerly, the fictional invoicing app from my 
 ```
 
 Notice how much of that is constraints and not-doing. That's where the brief earns its keep. The problem section takes two minutes to write. The not-doing list is what saves you a month.
+
+Two more, shorter, so you can see how the core lines change by feature. Illustrative, not from real teams.
+
+| | Onboarding checklist | Saved report filters |
+|---|---|---|
+| **Problem** | New admins invite nobody in week one, so the account dies before anyone else sees it. | Account managers rebuild the same five filters every Monday. |
+| **Outcome** | Accounts with 3+ active users in week one, from 22% to 35%. | Weekly active report users from 38% to 50% within a quarter. |
+| **The bet** | A checklist that makes inviting the team step one gets more accounts past week one. | Saved filters pull managers back into the product every week. |
+| **Not doing** | A product tour. Gamification. Reworking the signup form. | Sharing views with teammates. Scheduled email reports. |
 
 ## The design brief questions that actually matter
 
@@ -178,6 +187,10 @@ Usually product. But the strongest briefs get written live, with design and engi
 ### What's the difference between a creative brief and a design brief?
 
 A creative brief usually comes from marketing and covers messaging, audience and tone for a campaign. A design brief in product work covers the user, the current experience, constraints and how success gets measured for a feature.
+
+### Can I use this product brief template in Word or Google Docs?
+
+Yes. It's plain text with headings. Paste it into Word, Google Docs or Notion and turn the ## lines into headings. Whatever tool you use, keep it to one page.
 
 ### Can I skip the brief and go straight to a PRD?
 
