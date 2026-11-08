@@ -122,6 +122,19 @@
   margin: 0 auto 48px;
 }
 .letters-hero__eyebrow { margin: 0 0 16px; }
+/* The eyebrow is the page's H1 (matches the title); keep it looking like an eyebrow. */
+#page-container h1.letters-hero__eyebrow,
+#main-content h1.letters-hero__eyebrow {
+  margin: 0 0 16px;
+  padding: 0;
+  font-family: var(--ds-font-mono, "JetBrains Mono", ui-monospace, monospace) !important;
+  font-size: var(--ds-size-eyebrow) !important;
+  line-height: var(--ds-leading-eyebrow) !important;
+  font-weight: 500 !important;
+  letter-spacing: var(--ds-tracking-eyebrow) !important;
+  text-transform: uppercase !important;
+  color: #c59060 !important;
+}
 #page-container .letters-hero__title {
   max-width: 900px;
   margin: 0;
@@ -133,6 +146,7 @@
   letter-spacing: -0.01em;
   text-transform: none;
   color: var(--ds-color-text-strong);
+  text-wrap: balance;
 }
 @media (max-width: 720px) {
   .letters-hero { margin-bottom: 32px; }
