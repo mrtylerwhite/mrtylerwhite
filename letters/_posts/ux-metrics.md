@@ -87,6 +87,8 @@ Here's the important part: **you're not claiming results. You're showing expecte
 
 For the full formula, three worked examples and a calculator to run your own numbers, see [how to calculate the ROI of design](/letters/roi-of-design/).
 
+Want the same math for your whole product, not just one feature? The [Funnel Simulator](/funnel-simulator/) is a free Claude skill. Give it your traffic, sign-ups and churn, skip what you don't know, and it ranks every fix by what it's worth in revenue a year out. That's the number to bring into planning.
+
 <!-- newsletter -->
 
 ## UX KPIs vs UX metrics
