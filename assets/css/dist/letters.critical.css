@@ -1326,12 +1326,15 @@ img.letters-feature__art {
   color: rgba(255, 255, 255, 0.7);
   margin-bottom: var(--ds-gap-eyebrow-sm);
 }
+/* Sentence case in the body sans, a step below the page H1 (display caps),
+   so the featured letter doesn't compete with the page title. */
 .letters-feature__title {
-  font-family: var(--ds-font-display);
-  font-weight: var(--ds-font-weight-heading, 700);
-  font-size: var(--ds-size-h2);
-  line-height: var(--ds-leading-h2);
-  text-transform: uppercase;
+  font-family: var(--ds-font-body);
+  font-weight: 700;
+  font-size: var(--ds-size-h3);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  text-transform: none;
   color: #ffffff;
 }
 .letters-feature__sub {
@@ -1931,9 +1934,9 @@ img.letters-feature__art {
 .letter-table__scroll { overflow-x: auto; }
 .letter__body .letter-table table {
   width: 100%;
-  margin: 0;
-  border-collapse: collapse;
-  color: var(--lt-ink);
+.letter__author {
+  display: flex;
+  gap: 16px;
   align-items: flex-start;
   margin-top: 48px;
   padding-top: 24px;
@@ -1988,9 +1991,6 @@ img.letters-feature__art {
     position: static;
     width: auto; margin: 0;
     padding: 24px;
-  }
-  .letters-feature__text { margin: 24px; width: calc(100% - 48px); }
-  .letters-feature__title { font-size: var(--ds-size-h2); }
 /* critical:start */
 /* Early offer: slim, topic-matched, just before a letter's first H2.
    Inside the critical markers so build-letters puts it in the above-the-fold CSS. */
