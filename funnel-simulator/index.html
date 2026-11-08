@@ -36,8 +36,8 @@
 <link rel="preload" as="style" href="https://use.typekit.net/fks5kmr.css" fetchpriority="low" onload="this.onload=null;this.rel='stylesheet'" />
 <noscript><link rel="stylesheet" href="https://use.typekit.net/fks5kmr.css" /></noscript>
 <link rel="stylesheet" href="/assets/css/dist/critical.css?v=bb2cecba" />
-  <link rel="stylesheet" href="/assets/css/system/pages/roi-case-study-template.css?v=b47b47b7" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="/assets/css/system/pages/roi-case-study-template.css?v=b47b47b7"></noscript>
+  <link rel="stylesheet" href="/assets/css/system/pages/roi-case-study-template.css?v=f8cb183c" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="/assets/css/system/pages/roi-case-study-template.css?v=f8cb183c"></noscript>
   <link rel="stylesheet" href="/assets/css/system/site-footer.css?v=2a5d33c5" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="/assets/css/system/site-footer.css?v=2a5d33c5"></noscript>
 <!-- partial:head -->
@@ -110,58 +110,62 @@
 
           <!-- Kit: tag 24704531 + sequence 2932269 via /api/subscribe/funnel-simulator -->
           <div class="rcst-chat-shell" id="chat-capture">
-            <div
-              class="rcst-chat"
-              data-chat-lead-capture
+            <form
+              class="rcst-form"
+              data-lead-form
               data-subscribe-api="/api/subscribe/funnel-simulator/"
               data-success-redirect="/funnel-simulator/thank-you/"
-              data-magnet-name="The Funnel Simulator"
-              data-button-text="Get the Funnel Simulator"
               data-track-prefix="funnel_sim"
-              data-intro='["Most founders guess where their funnel leaks. This shows you exactly where, with your own numbers.","Where should I send it? Drop your email below."]'
-              role="region"
-              aria-label="Funnel Simulator chat"
+              novalidate
             >
-              <div class="rcst-chat__window">
-                <div class="rcst-chat__dots" aria-hidden="true">
-                  <span></span><span></span><span></span>
+              <div class="rcst-form__window">
+                <div class="rcst-form__media">
+                  <img
+                    src="/assets/images/lead-magnets/funnel-simulator-cover-wide.webp"
+                    alt="The Funnel Simulator cover"
+                    width="1200"
+                    height="800"
+                    fetchpriority="high"
+                    decoding="async"
+                  />
                 </div>
 
-                <div class="rcst-chat__intro">
-                  <div class="rcst-chat__brand">
-                    <span class="rcst-chat__icon" aria-hidden="true">
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m2 7 10 6 10-6"></path></svg>
-                    </span>
-                    <span class="rcst-chat__brand-name">Get the Funnel Simulator</span>
-                  </div>
-                </div>
+                <div class="rcst-form__body">
+                  <h2 class="rcst-form__title">Get the free tool.</h2>
 
-                <div class="rcst-chat__thread" data-chat-messages aria-live="polite" aria-relevant="additions"></div>
+                  <label class="screen-reader-text" for="lead-first-name">First name</label>
+                  <input
+                    id="lead-first-name"
+                    class="rcst-form__input"
+                    type="text"
+                    name="firstName"
+                    placeholder="First name"
+                    autocomplete="given-name"
+                    maxlength="80"
+                    data-lead-first-name
+                  />
 
-                <p class="rcst-chat__error" data-chat-error role="alert" hidden></p>
+                  <label class="screen-reader-text" for="lead-email">Email address</label>
+                  <input
+                    id="lead-email"
+                    class="rcst-form__input"
+                    type="email"
+                    name="email"
+                    placeholder="Email address"
+                    autocomplete="email"
+                    inputmode="email"
+                    required
+                    data-lead-email
+                  />
 
-                <div class="rcst-chat__composer rcst-chat__composer--hidden" data-chat-composer>
-                  <div class="rcst-chat__composer-panel">
-                    <label class="screen-reader-text" data-chat-label for="chat-lead-input">Your response</label>
-                    <span class="rcst-chat__composer-idle" data-chat-idle-hint>Drop your email to get it</span>
-                    <input
-                      id="chat-lead-input"
-                      class="rcst-chat__input"
-                      type="email"
-                      data-chat-input
-                      placeholder="you@company.com"
-                      disabled
-                      autocomplete="email"
-                    />
-                    <div class="rcst-chat__composer-bar">
-                      <button type="button" class="rcst-chat__send" data-chat-submit disabled aria-label="Continue">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 7-7 7 7"></path><path d="M12 19V5"></path></svg>
-                      </button>
-                    </div>
-                  </div>
+                  <p class="rcst-form__error" data-lead-error role="alert" hidden></p>
+
+                  <button type="submit" class="rcst-form__submit" data-lead-submit>Send me the Funnel Simulator</button>
+
+                  <p class="rcst-form__note">Free. In your inbox in a minute. Unsubscribe anytime.</p>
                 </div>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>
@@ -175,7 +179,7 @@
           <li class="rcst-how__step">
             <span class="rcst-how__num" aria-hidden="true">01</span>
             <h3 class="rcst-how__step-title">Tell me your email</h3>
-            <p class="rcst-how__step-body">One question in the chat. The Claude skill and a live demo land in your inbox right away.</p>
+            <p class="rcst-how__step-body">Your first name and email, that&#8217;s it. The Claude skill and a live demo land in your inbox right away.</p>
           </li>
           <li class="rcst-how__step">
             <span class="rcst-how__num" aria-hidden="true">02</span>
@@ -240,7 +244,7 @@
   <script src="/assets/js/gtm-defer.js?v=ca2c75ba" defer></script>
   <script src="/assets/js/analytics.js?v=f4ae71c8" defer></script>
 <script src="/assets/js/consent.js?v=6a4de25c" defer></script>
-  <script src="/assets/js/chat-lead-capture.js?v=97c29e18" defer></script>
+  <script src="/assets/js/lead-form.js?v=79374d55" defer></script>
 
   <script>
   (function () {

@@ -1049,3 +1049,150 @@ body.roi-case-study-template .rcst-bridge__cta:hover::before {
     flex: 0 1 auto;
   }
 }
+
+/* ── Lead form card: cover on top, name + email below ────────────
+   Same frosted Tailark window as the old chat card, but a plain form:
+   the cover sells the download, two fields, one solid button. */
+body.roi-case-study-template .rcst-form {
+  max-width: 480px; /* keeps the fields above the fold when the hero stacks */
+  margin: 0 auto;
+}
+
+body.roi-case-study-template .rcst-form__window {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 10px;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(64px);
+  -webkit-backdrop-filter: blur(64px);
+  box-shadow:
+    oklab(0.141 0.00136173 -0.00480696 / 0.075) 0 0 0 1px,
+    oklab(0 0 0 / 0.065) 0 20px 25px -5px,
+    oklab(0 0 0 / 0.065) 0 8px 10px -6px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* The wide cover (outpainted 3:2 version with room around the book)
+   fills the panel edge to edge: one frame, no extra padding. */
+body.roi-case-study-template .rcst-form__media {
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+body.roi-case-study-template .rcst-form__media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+}
+
+body.roi-case-study-template .rcst-form__body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 26px 22px 18px;
+}
+
+body.roi-case-study-template .rcst-form__title {
+  margin: 0 0 6px;
+  text-align: center;
+  font-family: var(--ds-font-body);
+  font-weight: 600;
+  font-size: clamp(26px, 2.4vw, 32px);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  color: #09090b;
+}
+
+body.roi-case-study-template .rcst-form__input {
+  box-sizing: border-box;
+  width: 100%;
+  height: 56px;
+  padding: 0 20px;
+  border: 1px solid rgba(9, 9, 11, 0.14);
+  border-radius: 14px;
+  background: #fff;
+  font: inherit;
+  font-size: 16px; /* 16px stops iOS zooming on focus */
+  color: #09090b;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+body.roi-case-study-template .rcst-form__input::placeholder {
+  color: #71717a;
+}
+
+body.roi-case-study-template .rcst-form__input:focus {
+  outline: none;
+  border-color: #c59060;
+  box-shadow: 0 0 0 3px rgba(197, 144, 96, 0.25);
+}
+
+body.roi-case-study-template .rcst-form__input[aria-invalid="true"] {
+  border-color: #dc2626;
+}
+
+body.roi-case-study-template .rcst-form__error {
+  margin: -2px 4px 0;
+  font-size: 14px;
+  color: #b91c1c;
+}
+
+body.roi-case-study-template .rcst-form__submit {
+  height: 56px;
+  margin-top: 4px;
+  border: 0;
+  border-radius: 999px;
+  background: #0a0a0a;
+  color: #fff;
+  font: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.12) inset, 0 8px 18px -8px rgba(0, 0, 0, 0.45);
+  transition: background-color 0.15s ease, transform 0.15s ease;
+}
+
+body.roi-case-study-template .rcst-form__submit:hover {
+  background: #27272a;
+}
+
+body.roi-case-study-template .rcst-form__submit:active {
+  transform: translateY(1px);
+}
+
+body.roi-case-study-template .rcst-form__submit:focus-visible {
+  outline: 2px solid #c59060;
+  outline-offset: 3px;
+}
+
+body.roi-case-study-template .rcst-form__submit:disabled {
+  cursor: default;
+  opacity: 0.75;
+}
+
+body.roi-case-study-template .rcst-form--success .rcst-form__submit {
+  background: #15803d;
+  opacity: 1;
+}
+
+body.roi-case-study-template .rcst-form__note {
+  margin: 2px 0 0;
+  text-align: center;
+  font-size: 13px;
+  color: #71717a;
+}
+
+@media (max-width: 767px) {
+  body.roi-case-study-template .rcst-form__body {
+    padding: 22px 14px 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.roi-case-study-template .rcst-form__input,
+  body.roi-case-study-template .rcst-form__submit {
+    transition: none;
+  }
+}
