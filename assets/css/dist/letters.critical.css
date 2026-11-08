@@ -1249,6 +1249,29 @@ body.ds-standalone-nav #main-header #logo {
   color: var(--ds-color-muted);
 }
 
+/* ── Index: hero (name, promise, newsletter signup) above the feature ─────── */
+.letters-hero {
+  max-width: var(--letters-wide);
+  margin: 0 auto 48px;
+}
+.letters-hero__eyebrow { margin: 0 0 16px; }
+#page-container .letters-hero__title {
+  max-width: 900px;
+  margin: 0;
+  padding: 0;
+  font-family: var(--ds-font-display) !important;
+  font-weight: var(--ds-font-weight-heading, 700) !important;
+  font-size: var(--ds-size-display) !important;
+  line-height: var(--ds-leading-h1) !important;
+  letter-spacing: -0.01em;
+  text-transform: none;
+  color: var(--ds-color-text-strong);
+}
+@media (max-width: 720px) {
+  .letters-hero { margin-bottom: 32px; }
+  #page-container .letters-hero__title { font-size: var(--ds-size-h1) !important; }
+}
+
 /* ── Index: feature panel (1100 x 400+, text centred left, equal top/bottom) ─ */
 .letters-feature {
   position: relative;
@@ -1911,28 +1934,28 @@ img.letters-feature__art {
   margin: 0;
   border-collapse: collapse;
   color: var(--lt-ink);
-  font-family: var(--ds-font-body);
-  font-size: 14px;
+  align-items: flex-start;
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--ds-color-border);
+}
+.letter__author-name {
+  margin: 0 0 4px;
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--ds-color-text-strong);
+}
+.letter__author-bio {
+  margin: 0;
+  font-size: 15px;
   line-height: 20px;
+  color: var(--ds-color-muted);
 }
-.letter__body .letter-table th,
-.letter__body .letter-table td {
-  text-align: left;
-  vertical-align: middle;
-  border: 1px solid var(--lt-grid);
+.letters-related { margin-top: 64px; }
+.letters-related .letters-label {
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--ds-color-border);
 }
-.letter__body .letter-table thead { background: #f6efe9; } /* warm, between --ds-color-page and --ds-color-surface-inset */
-.letter__body .letter-table th {
-  padding: 12px;
-  font-weight: 500;
-  font-size: 14px;
-  letter-spacing: normal;
-  text-transform: none;
-  color: var(--lt-ink);
-  background: none;
-}
-.letter__body .letter-table td { padding: 8px; }
-.letter__body .letter-table td strong { font-weight: 600; }
 
 /* ── Responsive ───────────────────────────────────────────────────────────── */
 @media (max-width: 1100px) {
@@ -1968,29 +1991,6 @@ img.letters-feature__art {
   }
   .letters-feature__text { margin: 24px; width: calc(100% - 48px); }
   .letters-feature__title { font-size: var(--ds-size-h2); }
-  .letters-popular__grid { grid-template-columns: minmax(0, 1fr); }
-  .letters-list__link { grid-template-columns: minmax(0, 1fr) 96px; gap: 16px; padding: 20px 0; }
-  .letters-list__thumb { width: 96px; height: 64px; }
-  .letters-list__title { font-size: 17px; line-height: 24px; }
-  #page-container .letter__title { font-size: var(--ds-size-h1) !important; }
-  #page-container .letter__subtitle { font-size: var(--ds-size-body-lg); }
-  #page-container .letter__body p,
-  #page-container .letter__body li { font-size: 18px; }
-  #page-container .letter__body h2 { font-size: var(--ds-size-h3) !important; margin-top: 44px !important; }
-  #page-container .letter__body h3 { font-size: var(--ds-size-h4) !important; }
-  .letter-table__card { padding: 16px; }
-  .letter-table__dots { margin-bottom: 16px; }
-  .letter__body .letter-table th,
-  .letter__body .letter-table td { min-width: 150px; }
-  .letter__body .cb-pre { white-space: pre-wrap; overflow-wrap: anywhere; }
-  .letter__body .cb-pre code { min-width: 0; }
-  .cb-line { grid-template-columns: 36px 1fr; }
-  .cb .cb-copy__label { display: none; }
-  .cb .cb-copy { padding: 0 10px; }
-  .letter-signup,
-  .letter-cta { padding: 22px; }
-}
-
 /* critical:start */
 /* Early offer: slim, topic-matched, just before a letter's first H2.
    Inside the critical markers so build-letters puts it in the above-the-fold CSS. */

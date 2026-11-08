@@ -143,15 +143,15 @@
                 <div class="rcst-chat__composer rcst-chat__composer--hidden" data-chat-composer>
                   <div class="rcst-chat__composer-panel">
                     <label class="screen-reader-text" data-chat-label for="chat-lead-input">Your response</label>
-                    <span class="rcst-chat__composer-idle" data-chat-idle-hint>Start with your first name</span>
+                    <span class="rcst-chat__composer-idle" data-chat-idle-hint>Drop your email to get it</span>
                     <input
                       id="chat-lead-input"
                       class="rcst-chat__input"
-                      type="text"
+                      type="email"
                       data-chat-input
-                      placeholder="Start with your first name"
+                      placeholder="you@company.com"
                       disabled
-                      autocomplete="name"
+                      autocomplete="email"
                     />
                     <div class="rcst-chat__composer-bar">
                       <button type="button" class="rcst-chat__send" data-chat-submit disabled aria-label="Continue">
@@ -174,8 +174,8 @@
         <ol class="rcst-how__steps">
           <li class="rcst-how__step">
             <span class="rcst-how__num" aria-hidden="true">01</span>
-            <h3 class="rcst-how__step-title">Tell me your name and email</h3>
-            <p class="rcst-how__step-body">A quick intro in the chat. The Claude skill and a live demo land in your inbox right away.</p>
+            <h3 class="rcst-how__step-title">Tell me your email</h3>
+            <p class="rcst-how__step-body">One question in the chat. The Claude skill and a live demo land in your inbox right away.</p>
           </li>
           <li class="rcst-how__step">
             <span class="rcst-how__num" aria-hidden="true">02</span>
@@ -238,7 +238,7 @@
 <!-- /partial:footer -->
 
   <script src="/assets/js/gtm-defer.js?v=ca2c75ba" defer></script>
-  <script src="/assets/js/analytics.js?v=d85a8237" defer></script>
+  <script src="/assets/js/analytics.js?v=f4ae71c8" defer></script>
 <script src="/assets/js/consent.js?v=6a4de25c" defer></script>
   <script src="/assets/js/chat-lead-capture.js?v=97c29e18" defer></script>
 

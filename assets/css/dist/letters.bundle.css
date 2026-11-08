@@ -2183,6 +2183,29 @@ body.ds-standalone-nav #main-header #logo {
   color: var(--ds-color-muted);
 }
 
+/* ── Index: hero (name, promise, newsletter signup) above the feature ─────── */
+.letters-hero {
+  max-width: var(--letters-wide);
+  margin: 0 auto 48px;
+}
+.letters-hero__eyebrow { margin: 0 0 16px; }
+#page-container .letters-hero__title {
+  max-width: 900px;
+  margin: 0;
+  padding: 0;
+  font-family: var(--ds-font-display) !important;
+  font-weight: var(--ds-font-weight-heading, 700) !important;
+  font-size: var(--ds-size-display) !important;
+  line-height: var(--ds-leading-h1) !important;
+  letter-spacing: -0.01em;
+  text-transform: none;
+  color: var(--ds-color-text-strong);
+}
+@media (max-width: 720px) {
+  .letters-hero { margin-bottom: 32px; }
+  #page-container .letters-hero__title { font-size: var(--ds-size-h1) !important; }
+}
+
 /* ── Index: feature panel (1100 x 400+, text centred left, equal top/bottom) ─ */
 .letters-feature {
   position: relative;

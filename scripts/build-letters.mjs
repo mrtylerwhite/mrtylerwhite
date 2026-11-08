@@ -1198,9 +1198,10 @@ function indexPage(posts) {
   })}
 ${shellOpen("letters-page letters-index")}
 <main class="letters" id="main-content">
-  <h1 class="screen-reader-text">Letters</h1>
-
-
+  <header class="letters-hero ds-enter ds-enter-d1">
+    <p class="ds-eyebrow letters-hero__eyebrow">Letters</p>
+    <h1 class="letters-hero__title">Design moves the business. Most designers can't show the receipts.</h1>
+  </header>
 
   ${featured ? `<a class="letters-feature ds-enter ds-enter-d2" href="/letters/${featured.slug}/">
     ${tile(featured, "letters-feature__art", true)}

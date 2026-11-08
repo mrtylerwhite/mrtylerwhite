@@ -6,7 +6,7 @@ description: A BRD says why the business wants something. A PRD says what the pr
 subtitle: One explains why the business wants it. The other explains what the product will do. Most teams write both and then let them drift apart.
 slug: prd-vs-brd
 date: 2026-04-15
-updated: 2026-10-15
+updated: 2026-11-06
 topic: kickoffs
 cover: /assets/images/letters/prd-vs-brd-v2.jpg
 coverAlt: "Two stone tablets labeled why and what stand on either side of a widening crack, joined by a glowing thread about to snap"

@@ -76,6 +76,8 @@
     if (p === "/roi-case-study-template/") trackEvent("roi_skill_page_view", { page: p });
     if (p === "/roi-case-study-skill/thank-you/") trackEvent("roi_skill_thank_you_view", { page: p });
     if (p === "/free-case-study-kit/") trackEvent("free_case_study_kit_thank_you_view", { page: p });
+    if (p === "/free-prd-template/") trackEvent("prd_template_page_view", { page: p });
+    if (p === "/free-prd-template/thank-you/") trackEvent("prd_template_thank_you_view", { page: p });
     if (p === "/builder-kickoff/") trackEvent("builder_kickoff_page_view", { page: p });
     if (p === "/builder-kickoff/thank-you/") {
       var txnId = purchaseTransactionId();
@@ -87,6 +89,8 @@
 
   function linkLocation(el) {
     if (!el) return "unknown";
+    /* Thank-you pages share .fck-next; their own data-track-location says which page it is. */
+    if (el.closest(".fck-next") && el.getAttribute("data-track-location")) return el.getAttribute("data-track-location");
     if (el.closest(".hero-intro") || el.closest(".hero-cntn")) return "home_hero";
     if (el.closest("#top-menu") || el.closest("#main-header")) return "nav";
     if (el.closest(".pr-bar")) return "header";
