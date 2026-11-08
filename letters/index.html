@@ -30,9 +30,9 @@
   <link rel="preconnect" href="https://p.typekit.net" crossorigin />
   <link rel="preload" as="style" href="https://use.typekit.net/fks5kmr.css" fetchpriority="low" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript><link rel="stylesheet" href="https://use.typekit.net/fks5kmr.css" /></noscript>
-  <link rel="stylesheet" href="/assets/css/dist/letters.critical.css?v=cbfb280f" />
-  <link rel="stylesheet" href="/assets/css/dist/letters.bundle.css?v=2e41d35b" media="print" onload="this.media='all'" />
-  <noscript><link rel="stylesheet" href="/assets/css/dist/letters.bundle.css?v=2e41d35b" /></noscript>
+  <link rel="stylesheet" href="/assets/css/dist/letters.critical.css?v=ed572e4f" />
+  <link rel="stylesheet" href="/assets/css/dist/letters.bundle.css?v=225f72f8" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="/assets/css/dist/letters.bundle.css?v=225f72f8" /></noscript>
   <link rel="stylesheet" href="/assets/css/system/site-footer.css?v=2a5d33c5" media="print" onload="this.media='all'" />
   <noscript><link rel="stylesheet" href="/assets/css/system/site-footer.css?v=2a5d33c5" /></noscript>
   <link rel="preload" as="image" imagesrcset="/assets/images/letters/scope-creep-800.webp 800w, /assets/images/letters/scope-creep.webp 1536w" imagesizes="(max-width: 760px) 100vw, 728px" type="image/webp" fetchpriority="high" />
@@ -100,9 +100,20 @@
 					</header>
 <!-- /partial:header -->
 <main class="letters" id="main-content">
-  <h1 class="screen-reader-text">Letters</h1>
-
-
+  <header class="letters-hero ds-enter ds-enter-d1">
+    <p class="ds-eyebrow letters-hero__eyebrow">Letters</p>
+    <h1 class="letters-hero__title">Design moves the business. Most designers can't show the receipts.</h1>
+    <form class="letters-hero__form" data-newsletter-form data-track-location="letters_hero" method="post" action="https://app.kit.com/forms/4969496/subscriptions" novalidate>
+      <input type="hidden" name="fields[signup_source]" value="letters_hero" data-signup-source />
+      <label class="screen-reader-text" for="nl-letters_hero">Email address</label>
+      <div class="letter-signup__field">
+        <input id="nl-letters_hero" class="letter-signup__input" name="email_address" type="email" autocomplete="email" placeholder="Your email" required />
+        <button class="letter-signup__btn" type="submit">Get the ROI of Design <span aria-hidden="true">&rarr;</span></button>
+      </div>
+      <p class="letter-signup__error" data-newsletter-error role="alert" aria-live="polite"></p>
+    </form>
+    <p class="letters-hero__note">One letter every Saturday. Join 260+ product designers.</p>
+  </header>
 
   <a class="letters-feature ds-enter ds-enter-d2" href="/letters/scope-creep/">
     <picture><source srcset="/assets/images/letters/scope-creep-800.webp 800w, /assets/images/letters/scope-creep.webp 1536w" sizes="320px" type="image/webp" /><img src="/assets/images/letters/scope-creep.jpg" class="letters-feature__art" alt="" fetchpriority="high" decoding="async" width="320" height="200" /></picture>
