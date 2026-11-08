@@ -55,6 +55,11 @@
       "idea": "build a case study around one decision by answering five hard questions; the screens come last",
       "scene": "A short, wide stone staircase of five steps rises from the floor. Each step has a thin line of warm amber light glowing along its edge. A lone figure is climbing the stairs, on the fourth step. On the landing at the top of the staircase, a small neat stack of three thin modern tablet-style device screens leans upright, unlit, each showing a faint simple grey interface layout of rectangles, clearly app screens and not stone slabs.",
       "text": "No text, no words, no letters, no logos."
+    },
+    "scope-creep": {
+      "idea": "scope creep: small extra requests pile up one at a time until they block the path to the deadline",
+      "scene": "Far in the distance, centered, a tall narrow doorway glows warm amber, the brightest thing in the scene, casting a long beam of light along the dark floor toward the viewer. A lone figure stands on the lit path, seen from behind, facing the doorway. Between the figure and the doorway, small grey stone blocks lie across the lit path, each with the single word \"also\" etched into its face in simple lowercase handwriting. Near the figure there are only one or two; farther along they multiply and stack higher, until near the door they form a low wall that is beginning to block it. One more \"also\" block drifts down from the darkness above to land on the pile.",
+      "text": "The only text in the image is the word \"also\" on the small blocks, spelled exactly like that. No other text, no logos."
     }
   }
 }

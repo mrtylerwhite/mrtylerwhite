@@ -7,8 +7,8 @@ answer: Handle scope creep by keeping the time budget fixed and letting scope be
 slug: scope-creep
 date: 2026-10-31
 topic: kickoffs
-cover: /assets/images/letters/scope-creep-v2.jpg
-coverAlt: "A person carries one brick out of a full, glowing frame while a pile of blocks labeled also waits to take its place"
+cover: /assets/images/letters/scope-creep-v3.jpg
+coverAlt: "Small stone blocks labeled also pile up on the path between a person and a glowing doorway, starting to wall it off as another one drops in"
 keyword: scope creep in product design
 cta: builder-kickoff
 leadMagnet: prd-template
