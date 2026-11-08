@@ -1257,7 +1257,7 @@ body.ds-standalone-nav #main-header #logo {
 .letters-hero__eyebrow { margin: 0 0 16px; }
 #page-container .letters-hero__title {
   max-width: 900px;
-  margin: 0 0 32px;
+  margin: 0;
   padding: 0;
   font-family: var(--ds-font-display) !important;
   font-weight: var(--ds-font-weight-heading, 700) !important;
@@ -1267,16 +1267,9 @@ body.ds-standalone-nav #main-header #logo {
   text-transform: none;
   color: var(--ds-color-text-strong);
 }
-.letters-hero__form { max-width: 520px; }
-.letters-hero__note {
-  margin: 12px 0 0;
-  padding: 0;
-  font-size: 14px;
-  color: var(--ds-color-muted);
-}
 @media (max-width: 720px) {
   .letters-hero { margin-bottom: 32px; }
-  #page-container .letters-hero__title { font-size: var(--ds-size-h1) !important; margin-bottom: 24px; }
+  #page-container .letters-hero__title { font-size: var(--ds-size-h1) !important; }
 }
 
 /* ── Index: feature panel (1100 x 400+, text centred left, equal top/bottom) ─ */
@@ -1934,19 +1927,13 @@ img.letters-feature__art {
   background: #f4f4f5;
   border: 1px solid rgba(0, 0, 0, 0.05);
   border-radius: 999px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
 }
-
-/* ── Author + related ─────────────────────────────────────────────────────── */
-.letter__author {
-  display: flex;
-  gap: 16px;
+.letter-table__scroll { overflow-x: auto; }
+.letter__body .letter-table table {
+  width: 100%;
+  margin: 0;
+  border-collapse: collapse;
+  color: var(--lt-ink);
   align-items: flex-start;
   margin-top: 48px;
   padding-top: 24px;
@@ -1991,6 +1978,19 @@ img.letters-feature__art {
   img.letters-feature__art {
     position: static;
     display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 2;
+    -webkit-mask-image: none;
+            mask-image: none;
+  }
+  .letters-feature:has(img.letters-feature__art) .letters-feature__text {
+    position: static;
+    width: auto; margin: 0;
+    padding: 24px;
+  }
+  .letters-feature__text { margin: 24px; width: calc(100% - 48px); }
+  .letters-feature__title { font-size: var(--ds-size-h2); }
 /* critical:start */
 /* Early offer: slim, topic-matched, just before a letter's first H2.
    Inside the critical markers so build-letters puts it in the above-the-fold CSS. */
