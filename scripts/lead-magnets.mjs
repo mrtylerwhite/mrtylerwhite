@@ -19,14 +19,14 @@ export const LEAD_MAGNETS = {
     label: "Free template",
     title: "The PRD Template",
     description: "Blank, filled in, and the order to fill it in. A PRD engineering will actually read.",
-    image: "/assets/images/lead-magnets/prd-template-cover.webp",
+    image: "/assets/images/lead-magnets/prd-template-cover-wide.webp",
     href: "/free-prd-template/",
   },
   "case-study": {
     label: "Free Claude Skill",
     title: "The 15 Minute Case Study",
     description: "Turn rough project notes into a case study that proves what changed.",
-    image: "/assets/images/lead-magnets/15-minute-case-study-cover.webp",
+    image: "/assets/images/lead-magnets/15-minute-case-study-cover-wide.webp",
     href: "/roi-case-study-template/",
   },
 };
