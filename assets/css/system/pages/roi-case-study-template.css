@@ -1091,19 +1091,9 @@ body.roi-case-study-template .rcst-form__body {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  padding: 26px 22px 18px;
+  padding: 18px 22px 18px;
 }
 
-body.roi-case-study-template .rcst-form__title {
-  margin: 0 0 6px;
-  text-align: center;
-  font-family: var(--ds-font-body);
-  font-weight: 600;
-  font-size: clamp(26px, 2.4vw, 32px);
-  line-height: 1.1;
-  letter-spacing: -0.025em;
-  color: #09090b;
-}
 
 body.roi-case-study-template .rcst-form__input {
   box-sizing: border-box;
@@ -1186,7 +1176,7 @@ body.roi-case-study-template .rcst-form__note {
 
 @media (max-width: 767px) {
   body.roi-case-study-template .rcst-form__body {
-    padding: 22px 14px 14px;
+    padding: 14px 14px 14px;
   }
 }
 
