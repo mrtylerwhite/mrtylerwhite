@@ -3,10 +3,11 @@ title: PRD vs BRD: which one you actually need (probably not both)
 seoTitle: PRD vs BRD: What's the Difference and Which You Need
 titleSuffix: false
 description: A BRD says why the business wants something. A PRD says what the product will do. See the difference in one table, and why most teams only need one.
+answer: A BRD (business requirements document) explains why the business wants something. A PRD (product requirements document) explains what the product will do to deliver it. Most product teams only need one: a PRD with the business case built in, so the why and the what can't drift apart.
 subtitle: One explains why the business wants it. The other explains what the product will do. Most teams write both and then let them drift apart.
 slug: prd-vs-brd
 date: 2026-04-15
-updated: 2026-11-06
+updated: 2026-11-07
 topic: kickoffs
 cover: /assets/images/letters/prd-vs-brd-v2.jpg
 coverAlt: "Two stone tablets labeled why and what stand on either side of a widening crack, joined by a glowing thread about to snap"
