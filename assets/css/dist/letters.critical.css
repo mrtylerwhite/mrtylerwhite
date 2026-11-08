@@ -2231,5 +2231,7 @@ img.letters-feature__art {
   }
   .lm-card--sidebar { display: block; }
   .lm-card--inline { display: none; }
+  /* The sidebar card already promotes this offer on desktop. */
+  .letter-offer--sidebar-dup { display: none; }
 }
 /* critical:end */

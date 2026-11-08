@@ -698,7 +698,7 @@ function leadMagnetCard(lm, where) {
 
 const LM_MIN_GAP_WORDS = 150;
 function inlineCardIndex(html) {
-  const offerAt = html.indexOf('<aside class="letter-offer"');
+  const offerAt = html.indexOf('<aside class="letter-offer');
   const from = offerAt >= 0 ? html.indexOf("</aside>", offerAt) + 8 : 0;
   const words = (chunk) => chunk.replace(/<[^>]+>/g, " ").split(/\s+/).filter(Boolean).length;
   const re = /<h2 /g;
@@ -713,14 +713,16 @@ function inlineCardIndex(html) {
 }
 
 // Slim offer placed before the first H2 (see header comment).
-function earlyOfferBlock(post) {
+// sidebarDup: the desktop sidebar card promotes the same page, so the offer
+// is hidden where the sidebar shows (CSS) and kept on phones and tablets.
+function earlyOfferBlock(post, sidebarDup = false) {
   const c = CTAS[post.cta];
   if (!c) return "";
   if (post.offer === "none") return "";
   const icon = post.cta === "case-study"
     ? `<img class="letter-offer__icon" src="/assets/images/roi-case-study-template/claude-icon.svg" alt="" width="48" height="48" />`
     : "";
-  return `<aside class="letter-offer" aria-label="${esc(c.label)}">
+  return `<aside class="letter-offer${sidebarDup ? " letter-offer--sidebar-dup" : ""}" aria-label="${esc(c.label)}">
   <div class="letter-offer__lead">${icon}<p class="letter-offer__text"><span class="letter-offer__eyebrow">${esc(c.offerEyebrow)}</span> ${esc(post.offer || c.offer)}</p></div>
   <a class="letter-offer__btn" href="${c.href}" data-track-event="letters_offer_click" data-track-location="early_${post.cta}">${esc(c.label)} &rarr;</a>
 </aside>`;
@@ -882,7 +884,8 @@ function renderBody(post) {
   }
   // Early offer: after the third paragraph or before the first H2, whichever
   // comes first, so it lands in the first screen or two.
-  const early = earlyOfferBlock(post);
+  const lm = leadMagnetFor(post);
+  const early = earlyOfferBlock(post, !!lm && lm.href === CTAS[post.cta]?.href);
   if (early) {
     const h2At = html.search(/<h2 /);
     let pAt = -1;
@@ -895,7 +898,6 @@ function renderBody(post) {
   // Goes before the first H2 that sits at least LM_MIN_GAP_WORDS of reading
   // after the early offer, and never directly after another box, so the two
   // offers don't land on the same phone screen.
-  const lm = leadMagnetFor(post);
   if (lm) {
     const at = inlineCardIndex(html);
     if (at >= 0) html = `${html.slice(0, at)}${leadMagnetCard(lm, "inline")}\n${html.slice(at)}`;
