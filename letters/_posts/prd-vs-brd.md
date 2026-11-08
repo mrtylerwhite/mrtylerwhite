@@ -8,7 +8,8 @@ slug: prd-vs-brd
 date: 2026-04-15
 updated: 2026-10-15
 topic: kickoffs
-cover: /assets/images/letters/prd-vs-brd.jpg
+cover: /assets/images/letters/prd-vs-brd-v2.jpg
+coverAlt: "Two stone tablets labeled why and what stand on either side of a widening crack, joined by a glowing thread about to snap"
 keyword: prd vs brd
 cta: builder-kickoff
 leadMagnet: prd-template

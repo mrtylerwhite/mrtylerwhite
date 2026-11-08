@@ -8,7 +8,8 @@ slug: ai-prototyping-workflow
 date: 2026-03-25
 updated: 2026-10-15
 topic: ai-workflow
-cover: /assets/images/letters/ai-prototyping-workflow.jpg
+cover: /assets/images/letters/ai-prototyping-workflow-v2.jpg
+coverAlt: "Five glowing paths fan out from a person; four break apart into fragments while one stays solid and leads to a glowing stone block"
 keyword: ai prototyping
 cta: builder-kickoff
 source: 23375470, 23750252

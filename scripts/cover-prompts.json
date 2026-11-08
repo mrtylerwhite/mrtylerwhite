@@ -13,7 +13,7 @@
     },
     "cursor-for-designers": {
       "idea": "a pretty mock-up is only a facade; building in real code gives you a structure that actually works",
-      "scene": "Left of center: a tall, thin, flat facade of a stone doorway and wall, propped up from behind by two thin wooden braces, seen at an angle so it is obvious there is nothing behind it but darkness. It is grey and unlit. Right of center: a solid, three-dimensional stone structure under construction, open on one side to show its inner frame of beams and joints glowing warm amber from within, the brightest thing in the scene. A lone figure walks away from the flat facade toward the glowing structure, carrying one stone block.",
+      "scene": "Left side of the image: a tall, thin, flat facade of a stone doorway and wall, propped up from behind by two thin wooden braces, seen at an angle so it is obvious there is nothing behind it but darkness. It is grey and unlit. Right side of the image: a solid, three-dimensional stone structure under construction, open on one side to show its inner frame of beams and joints glowing warm amber from within, the brightest thing in the scene. In the middle, a lone figure carrying one stone block walks to the RIGHT, toward the glowing structure, with their back turned to the flat facade. The figure is facing and moving toward the glowing structure, clearly leaving the facade behind.",
       "text": "No text, no words, no letters, no logos."
     },
     "design-rationale": {
@@ -53,7 +53,7 @@
     },
     "ux-case-study-template": {
       "idea": "build a case study around one decision by answering five hard questions; the screens come last",
-      "scene": "A short, wide stone staircase of five steps rises from the floor. Each step has a thin line of warm amber light glowing along its edge. A lone figure is climbing the stairs, on the fourth step. At the top of the staircase, in the distance, a small neat stack of grey screen-shaped panels sits waiting, unlit.",
+      "scene": "A short, wide stone staircase of five steps rises from the floor. Each step has a thin line of warm amber light glowing along its edge. A lone figure is climbing the stairs, on the fourth step. On the landing at the top of the staircase, a small neat stack of three thin modern tablet-style device screens leans upright, unlit, each showing a faint simple grey interface layout of rectangles, clearly app screens and not stone slabs.",
       "text": "No text, no words, no letters, no logos."
     }
   }

@@ -8,7 +8,8 @@ slug: ux-case-study-examples
 date: 2026-08-26
 updated: 2026-10-15
 topic: case-studies
-cover: /assets/images/letters/ux-case-study-examples.jpg
+cover: /assets/images/letters/ux-case-study-examples-v2.jpg
+coverAlt: "A person stands before the one glowing frame in a gallery of dim screenshots, showing a line rising sharply"
 keyword: ux case study examples
 cta: case-study
 leadMagnet: case-study

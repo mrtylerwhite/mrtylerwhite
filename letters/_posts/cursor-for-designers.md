@@ -8,7 +8,8 @@ slug: cursor-for-designers
 date: 2026-04-22
 updated: 2026-10-15
 topic: ai-workflow
-cover: /assets/images/letters/cursor-for-designers.jpg
+cover: /assets/images/letters/cursor-for-designers-v2.jpg
+coverAlt: "A person carrying a stone block walks away from a flat, propped-up facade toward a real structure whose glowing frame is being built"
 keyword: cursor for designers
 cta: builder-kickoff
 source: 23750252, 23375470

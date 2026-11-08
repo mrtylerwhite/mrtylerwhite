@@ -8,7 +8,8 @@ slug: ux-metrics
 date: 2026-04-01
 updated: 2026-10-15
 topic: case-studies
-cover: /assets/images/letters/ux-metrics.jpg
+cover: /assets/images/letters/ux-metrics-v2.jpg
+coverAlt: "Four stone pillars labeled adoption, retention, efficiency and revenue rise like a bar chart, with the tallest, revenue, glowing as a person with a lantern looks up at it"
 keyword: ux metrics
 cta: case-study
 source: 23375787, 22924501

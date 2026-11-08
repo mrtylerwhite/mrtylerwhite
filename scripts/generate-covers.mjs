@@ -27,7 +27,9 @@ async function loadKey() {
     const p = path.join(ROOT, f);
     if (!existsSync(p)) continue;
     const m = (await readFile(p, "utf8")).match(/^OPENAI_API_KEY=(.+)$/m);
-    if (m) return m[1].trim().replace(/^["']|["']$/g, "");
+    const key = m && m[1].trim().replace(/^["']|["']$/g, "");
+    if (key && key.startsWith("PASTE_")) throw new Error(`Replace the OPENAI_API_KEY placeholder in ${f} with your key`);
+    if (key) return key;
   }
   throw new Error("OPENAI_API_KEY not found in env, .env.local or .env");
 }

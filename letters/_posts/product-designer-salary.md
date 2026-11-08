@@ -6,7 +6,8 @@ subtitle: The biggest jump in pay sits between mid-level and senior. Proof of wh
 slug: product-designer-salary
 date: 2026-10-12
 topic: career
-cover: /assets/images/letters/product-designer-salary.jpg
+cover: /assets/images/letters/product-designer-salary-v2.jpg
+coverAlt: "A person climbs a glowing staircase across a gap from a lower ledge labeled mid to a higher one labeled senior"
 keyword: product designer salary
 cta: case-study
 ---

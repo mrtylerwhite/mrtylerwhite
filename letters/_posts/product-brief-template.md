@@ -8,7 +8,8 @@ slug: product-brief-template
 date: 2026-07-01
 updated: 2026-10-15
 topic: kickoffs
-cover: /assets/images/letters/product-brief-template.jpg
+cover: /assets/images/letters/product-brief-template-v2.jpg
+coverAlt: "A person raises a lantern to a glowing crack in a dark wall while stacks of unused building blocks wait behind them"
 keyword: product brief template
 cta: builder-kickoff
 leadMagnet: prd-template

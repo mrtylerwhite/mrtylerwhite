@@ -8,7 +8,8 @@ slug: ux-case-study-template
 date: 2026-08-19
 updated: 2026-10-15
 topic: case-studies
-cover: /assets/images/letters/ux-case-study-template.jpg
+cover: /assets/images/letters/ux-case-study-template-v2.jpg
+coverAlt: "A person climbs five glowing stone steps toward a few app screens waiting at the top"
 keyword: ux case study template
 cta: case-study
 leadMagnet: case-study

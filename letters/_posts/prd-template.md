@@ -7,7 +7,8 @@ answer: The best PRD template is short: metadata, objective, problem and context
 slug: prd-template
 date: 2026-10-08
 topic: kickoffs
-cover: /assets/images/letters/prd-template.jpg
+cover: /assets/images/letters/prd-template-v2.jpg
+coverAlt: "Four people stand around a stone table where a glowing document fills in section by section as they talk"
 keyword: prd template
 cta: builder-kickoff
 leadMagnet: case-study

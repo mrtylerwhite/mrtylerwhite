@@ -8,7 +8,8 @@ slug: product-designer-portfolio
 date: 2026-08-12
 updated: 2026-10-22
 topic: case-studies
-cover: /assets/images/letters/product-designer-portfolio.jpg
+cover: /assets/images/letters/product-designer-portfolio-v2.jpg
+coverAlt: "Many grey cards pile up on a stone sieve while only three glowing cards fall through to a person reaching up to catch them"
 keyword: product designer portfolio
 cta: case-study
 leadMagnet: case-study

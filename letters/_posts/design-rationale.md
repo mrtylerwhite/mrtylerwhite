@@ -8,7 +8,8 @@ slug: design-rationale
 date: 2026-09-16
 updated: 2026-10-15
 topic: case-studies
-cover: /assets/images/letters/design-rationale.jpg
+cover: /assets/images/letters/design-rationale-v2.jpg
+coverAlt: "A person holds up a glowing tablet with a single line on it next to a toppling tower of presentation boards"
 keyword: design rationale
 cta: case-study
 source: 25878451, 24149534
