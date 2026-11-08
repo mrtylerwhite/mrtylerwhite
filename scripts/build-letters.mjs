@@ -21,7 +21,7 @@
  *   cta          case-study | builder-kickoff | newsletter
  *   leadMagnet   sidebar lead magnet card: a slug from scripts/lead-magnets.mjs,
  *                or "none" to hide it (defaults to DEFAULT_LEAD_MAGNET)
- *   offer        optional one-line pitch for the early offer (defaults per cta; "none" hides it)
+ *   offer        optional one-line pitch for the case study early offer (letters no longer show it)
  *   cover        optional image path (1536x1024); lists fall back to a typographic tile
  *   coverAlt     alt text for the cover on the letter page and in share tags
  *   featured     true = hero on /letters/ (else the newest letter)
@@ -32,10 +32,6 @@
  * In the body, `<!-- newsletter -->` places the inline signup and
  * `<!-- cta -->` places the call-to-action block. Without markers the signup
  * goes before the third H2 and the CTA goes at the end.
- *
- * Every letter with a cta also gets a slim early offer after its third
- * paragraph (or first H2 if sooner), so readers who leave early (most of
- * them) still see the matched offer.
  */
 
 import fs from "fs";
@@ -874,22 +870,9 @@ function renderBody(post) {
     let n = 0;
     html = html.replace(/<h2 /g, (mm) => (++n === 3 ? `${newsletterBlock("letters_inline")}\n<h2 ` : mm));
   }
-  // Early offer: after the third paragraph or before the first H2, whichever
-  // comes first, so it lands in the first screen or two.
   const lm = leadMagnetFor(post);
-  const early = earlyOfferBlock(post, !!lm && lm.href === CTAS[post.cta]?.href);
-  if (early) {
-    const h2At = html.search(/<h2 /);
-    let pAt = -1;
-    const re = /<\/p>/g;
-    for (let i = 0; i < 3; i++) { const m = re.exec(html); if (!m) break; pAt = m.index + 4; }
-    const at = pAt > 0 && (h2At < 0 || pAt < h2At) ? pAt : h2At;
-    if (at >= 0) html = `${html.slice(0, at)}\n${early}\n${html.slice(at)}`;
-  }
   // Inline lead magnet card (phones/tablets only; desktop shows the sidebar).
-  // Goes before the first H2 that sits at least LM_MIN_GAP_WORDS of reading
-  // after the early offer, and never directly after another box, so the two
-  // offers don't land on the same phone screen.
+  // Goes before the first H2 that isn't directly after another box.
   if (lm) {
     const at = inlineCardIndex(html);
     if (at >= 0) html = `${html.slice(0, at)}${leadMagnetCard(lm, "inline")}\n${html.slice(at)}`;
