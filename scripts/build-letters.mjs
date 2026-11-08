@@ -681,7 +681,7 @@ function leadMagnetFor(post) {
 function leadMagnetCard(lm, where) {
   return `<aside class="lm-card lm-card--${where}" aria-label="${esc(lm.label)}: ${esc(lm.title)}">
   <p class="lm-card__label">${esc(lm.label)}</p>
-  <a class="lm-card__media" href="${lm.href}" tabindex="-1" aria-hidden="true" data-track-event="letters_lead_magnet_click" data-track-location="${where}_${lm.slug}"><img src="${lm.image}" alt="" width="800" height="600" loading="lazy" decoding="async" /></a>
+  <a class="lm-card__media" href="${lm.href}" tabindex="-1" aria-hidden="true" data-track-event="letters_lead_magnet_click" data-track-location="${where}_${lm.slug}"><img src="${lm.image}" alt="" width="1200" height="800" loading="lazy" decoding="async" /></a>
   <p class="lm-card__title">${esc(lm.title)}</p>
   <p class="lm-card__desc">${esc(lm.description)}</p>
   <a class="lm-card__link" href="${lm.href}" data-track-event="letters_lead_magnet_click" data-track-location="${where}_${lm.slug}">${esc(lm.link || "Download free")} <span aria-hidden="true">&rarr;</span></a>

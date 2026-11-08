@@ -2391,9 +2391,8 @@ img.letters-feature__art {
 }
 #page-container .lm-card .lm-card__media {
   display: block;
-  padding: 20px;
-  border-radius: var(--ds-radius-lg);
-  background: var(--ds-color-surface-raised);
+  padding: 0;
+  border-radius: 12px;
   text-decoration: none;
   overflow: hidden;
 }
@@ -2401,8 +2400,8 @@ img.letters-feature__art {
   display: block;
   width: 100%;
   height: auto;
-  aspect-ratio: 4 / 3;
-  object-fit: contain;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
   transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .lm-card:hover .lm-card__media img { transform: scale(1.02); }
@@ -2449,7 +2448,6 @@ img.letters-feature__art {
     align-items: start;
   }
   .lm-card--inline .lm-card__media { grid-column: 1; grid-row: 1 / span 4; }
-  #page-container .lm-card--inline .lm-card__media { padding: 14px; }
   .lm-card--inline .lm-card__label,
   .lm-card--inline .lm-card__title,
   .lm-card--inline .lm-card__desc,
