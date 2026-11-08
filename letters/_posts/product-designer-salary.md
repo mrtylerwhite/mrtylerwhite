@@ -2,9 +2,11 @@
 title: Product designer salary in 2026, and what actually moves you up a band
 seoTitle: Product Designer Salary 2026: US and Canada Ranges
 description: What product designers earn in 2026 in the US and Canada, by level and company, and the skills that move you from mid-level pay to senior pay.
+answer: In the US, the median product designer makes about $120,000 a year in total pay. In Canada it's about CA$88,000. The big jump is senior, at a median of about $213,000 in the US. What gets you there isn't more craft. It's scope: being in the room when problems get picked, and showing what your work was worth.
 subtitle: The biggest jump in pay sits between mid-level and senior. Proof of what your work was worth is what gets you across it.
 slug: product-designer-salary
 date: 2026-10-12
+updated: 2026-11-07
 topic: career
 cover: /assets/images/letters/product-designer-salary-v2.jpg
 coverAlt: "A person climbs a glowing staircase across a gap from a lower ledge labeled mid to a higher one labeled senior"
