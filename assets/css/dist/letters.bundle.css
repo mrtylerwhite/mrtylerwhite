@@ -4526,3 +4526,92 @@ img.letters-feature__art {
   .lm-card--inline .lm-card__link { justify-self: start; }
 }
 @media (prefers-reduced-motion: reduce) { .lm-card__media img { transition: none; } }
+
+/* ── Newsletter signup, restyled to match the lead magnet forms ─────────────
+   Same frosted Tailark card as the 15 Minute Case Study / PRD / Funnel
+   pages: light glass card, sentence-case Inter title, the email field as
+   its own white input, and a full-width black pill button under it.
+   Overrides the dark card + single white capsule above. */
+#page-container .letter-signup {
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(64px);
+  -webkit-backdrop-filter: blur(64px);
+  border: 0;
+  border-radius: 20px;
+  box-shadow:
+    oklab(0.141 0.00136173 -0.00480696 / 0.075) 0 0 0 1px,
+    oklab(0 0 0 / 0.065) 0 20px 25px -5px,
+    oklab(0 0 0 / 0.065) 0 8px 10px -6px;
+}
+#page-container .letter-signup .letter-signup__title {
+  margin: 6px 0 8px;
+  font-family: var(--ds-font-body);
+  font-weight: 700 !important;
+  font-size: 24px !important;
+  line-height: 1.15 !important;
+  letter-spacing: -0.02em;
+  text-transform: none;
+  color: #09090b !important;
+}
+#page-container .letter-signup .letter-signup__body {
+  margin: 0 0 18px;
+  font-size: 15px;
+  line-height: 1.45;
+  color: #52525b;
+}
+#page-container .letter-signup .letter-signup__field {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
+  padding: 0;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+#page-container .letter-signup .letter-signup__field:hover,
+#page-container .letter-signup .letter-signup__field:focus-within {
+  border: 0;
+  box-shadow: none;
+}
+#page-container .letter-signup .letter-signup__field .letter-signup__input {
+  height: 56px;
+  padding: 0 20px;
+  border: 1px solid rgba(9, 9, 11, 0.14);
+  border-radius: 14px;
+  background: #fff;
+  font: 400 16px var(--ds-font-body); /* 16px stops iOS zooming on focus */
+  color: #09090b;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+#page-container .letter-signup .letter-signup__field .letter-signup__input::placeholder { color: #71717a; }
+#page-container .letter-signup .letter-signup__field .letter-signup__input:focus {
+  outline: none;
+  border-color: #c59060;
+  box-shadow: 0 0 0 3px rgba(197, 144, 96, 0.25);
+}
+#page-container .letter-signup .letter-signup__field .letter-signup__btn {
+  height: 56px;
+  padding: 0 24px;
+  border-radius: 999px;
+  justify-content: center;
+  background: #0a0a0a;
+  color: #fff;
+  font: 600 16px var(--ds-font-body);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.12) inset, 0 8px 18px -8px rgba(0, 0, 0, 0.45);
+}
+#page-container .letter-signup .letter-signup__field .letter-signup__btn:hover { background: #27272a; }
+#page-container .letter-signup .letter-signup__error { color: #b91c1c; }
+
+/* In-article version: centred, a little roomier, avatars float on the light card */
+#page-container .letter-signup--float { padding: 56px 40px 44px; border-radius: 24px; }
+#page-container .letter-signup--float .letter-signup__inner { max-width: 400px; }
+#page-container .letter-signup--float .letter-signup__title { font-size: 32px !important; margin: 8px 0 10px; }
+#page-container .letter-signup--float .letter-signup__body { margin: 0 auto 22px; }
+#page-container .letter-signup__bubble img {
+  box-shadow: 0 12px 26px -12px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(9, 9, 11, 0.08);
+}
+@media (max-width: 820px) {
+  #page-container .letter-signup--float { padding: 36px 20px 24px; }
+  #page-container .letter-signup--float .letter-signup__title { font-size: 26px !important; }
+}
