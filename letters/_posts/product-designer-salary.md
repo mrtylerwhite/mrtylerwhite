@@ -14,9 +14,13 @@ keyword: product designer salary
 cta: case-study
 ---
 
-In the US, the median product designer makes about **$120,000 a year in total pay**. In Canada it's about **CA$88,000**.
+The median salary is the least useful number on this page.
 
-That's the short answer. The longer one is more useful, because the median hides the only number that matters to you: how much more the next level up pays, and what it takes to get there.
+It averages the junior designer pushing pixels with the principal who sets the roadmap. You're neither of them.
+
+The number that matters is how much more the next level up pays, and what it takes to get there.
+
+Spoiler: it's not more Figma.
 
 ## Product designer salary in the US
 

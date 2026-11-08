@@ -17,17 +17,17 @@ leadMagnet: prd-template
 popular: true
 ---
 
-**PRD** stands for **product requirements document**. It's the doc that says what a team is building, why, and how they'll know it worked.
+Everyone on your team knows what PRD stands for.
 
-That's the textbook answer. Here's the useful one.
+Almost nobody agrees on what it's for.
 
-[Atlassian's definition](<https://www.atlassian.com/agile/product-management/requirements>) is a good baseline: a PRD sets out the product's purpose, key features, user needs and success criteria, and acts as a single source of truth for the team.
+So the PRD gets written after the meeting, from memory, by whoever lost the coin toss. Engineering reads it, finds three things nobody agreed to, and the real decisions move into Slack.
 
-A good PRD is a record of decisions that were already made, with the people who made them in the room.
+That's not a PRD. That's a wish list with a header.
 
-A bad PRD is a list of things somebody hopes will be true. It gets written after the meeting, from memory, by whoever lost the coin toss. Then engineering reads it, finds three things nobody agreed to, and the real decisions move into Slack.
+A good PRD is a record of decisions that were already made, with the people who made them in the room. Same document. Completely different outcome.
 
-Same document. Completely different outcome.
+If you want the textbook version, [Atlassian's definition](<https://www.atlassian.com/agile/product-management/requirements>) is a fine baseline. This letter is about the part the textbook skips.
 
 ## What a PRD is for
 
