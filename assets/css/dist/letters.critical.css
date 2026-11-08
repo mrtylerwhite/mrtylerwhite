@@ -1255,6 +1255,19 @@ body.ds-standalone-nav #main-header #logo {
   margin: 0 auto 48px;
 }
 .letters-hero__eyebrow { margin: 0 0 16px; }
+/* The eyebrow is the page's H1 (matches the title); keep it looking like an eyebrow. */
+#page-container h1.letters-hero__eyebrow,
+#main-content h1.letters-hero__eyebrow {
+  margin: 0 0 16px;
+  padding: 0;
+  font-family: var(--ds-font-mono, "JetBrains Mono", ui-monospace, monospace) !important;
+  font-size: var(--ds-size-eyebrow) !important;
+  line-height: var(--ds-leading-eyebrow) !important;
+  font-weight: 500 !important;
+  letter-spacing: var(--ds-tracking-eyebrow) !important;
+  text-transform: uppercase !important;
+  color: #c59060 !important;
+}
 #page-container .letters-hero__title {
   max-width: 900px;
   margin: 0;
@@ -1266,6 +1279,7 @@ body.ds-standalone-nav #main-header #logo {
   letter-spacing: -0.01em;
   text-transform: none;
   color: var(--ds-color-text-strong);
+  text-wrap: balance;
 }
 @media (max-width: 720px) {
   .letters-hero { margin-bottom: 32px; }
@@ -1920,20 +1934,20 @@ img.letters-feature__art {
 }
 .letter-table__dots {
   display: flex;
-  gap: 6px;
-  margin-bottom: 24px;
+/* Visually hidden, still read by screen readers (Divi's version isn't loaded here) */
+.letters-page .screen-reader-text {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
-.letter-table__dots span {
-  width: 8px;
-  height: 8px;
-  box-sizing: border-box;
-  background: #f4f4f5;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  border-radius: 999px;
-}
-.letter-table__scroll { overflow-x: auto; }
-.letter__body .letter-table table {
-  width: 100%;
+
+/* ── Author + related ─────────────────────────────────────────────────────── */
 .letter__author {
   display: flex;
   gap: 16px;
@@ -1977,20 +1991,6 @@ img.letters-feature__art {
   .letter { padding: 112px 16px 72px; }
   .letters-feature { min-height: 360px; }
   /* With a cover: drawing on top, text below it, nothing overlapping */
-  .letters-feature:has(img.letters-feature__art) { min-height: 0; flex-direction: column; align-items: stretch; }
-  img.letters-feature__art {
-    position: static;
-    display: block;
-    width: 100%;
-    height: auto;
-    aspect-ratio: 3 / 2;
-    -webkit-mask-image: none;
-            mask-image: none;
-  }
-  .letters-feature:has(img.letters-feature__art) .letters-feature__text {
-    position: static;
-    width: auto; margin: 0;
-    padding: 24px;
 /* critical:start */
 /* Early offer: slim, topic-matched, just before a letter's first H2.
    Inside the critical markers so build-letters puts it in the above-the-fold CSS. */

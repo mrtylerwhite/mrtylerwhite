@@ -1175,8 +1175,8 @@ function indexPage(posts) {
 ${shellOpen("letters-page letters-index")}
 <main class="letters" id="main-content">
   <header class="letters-hero ds-enter ds-enter-d1">
-    <p class="ds-eyebrow letters-hero__eyebrow">Letters</p>
-    <h1 class="letters-hero__title">Design moves the business. Most designers can't show the receipts.</h1>
+    <h1 class="ds-eyebrow letters-hero__eyebrow">Letters</h1>
+    <p class="letters-hero__title">Design moves the business. Most designers can't show the receipts.</p>
   </header>
 
   ${featured ? `<a class="letters-feature ds-enter ds-enter-d2" href="/letters/${featured.slug}/">
