@@ -11,7 +11,8 @@
     ".sj-card{background:#161616!important;box-shadow:0 0 0 1px #2a2a2a!important;color:#e8e4dd!important}" +
     ".sj-text-card .sj-endorser-name{color:#fff!important}" +
     ".sj-text-card .sj-content,.sj-text-card .sj-content *,.sj-text-card p{color:#d6d1c9!important}" +
-    ".sj-avatar-container{background:rgba(255,255,255,.08)!important}";
+    ".sj-text-card{border-color:#2a2a2a!important;background:#161616!important}" +
+    ".sj-avatar-container{background:transparent!important}";
 
   function apply(embed) {
     var root = embed.shadowRoot;
