@@ -645,23 +645,15 @@ const slugifyHeading = (text) =>
   text.toLowerCase().replace(/<[^>]+>/g, "").replace(/&[a-z#0-9]+;/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
 // Reader avatars from the Senja testimonials widget, saved locally at 192px.
-const READERS = ["nick-groeneveld", "stav-lipman", "nidhi-arora", "laila-albuquerque", "aline-a"].map(
-  (slug) => `/assets/images/readers/${slug}.webp`
-);
-
-// Wide placements get floating avatar bubbles that drift with the cursor
-// (/assets/js/signup-float.js); the narrow sidebar keeps just the avatar row.
+// Newsletter signup: warm card, copper brush scribble in the corner and a
+// brush underline under "already" (assets/images/brand/brush-*.webp).
+// `floating` is the roomier in-article version; the sidebar is compact.
 function newsletterBlock(location, { floating = true } = {}) {
-  const bubbles = floating
-    ? `<div class="letter-signup__float" aria-hidden="true">${READERS.map(
-        (src, i) => `<span class="letter-signup__bubble letter-signup__bubble--${i + 1}" data-depth="${[0.6, 1, 0.8, 0.45, 0.9][i]}"><img src="${src}" alt="" width="96" height="96" loading="lazy" decoding="async" /></span>`
-      ).join("")}</div>`
-    : "";
-  return `<aside class="letter-signup${floating ? " letter-signup--float" : ""}" aria-label="Newsletter"${floating ? " data-signup-float" : ""}>
-  ${bubbles}
+  return `<aside class="letter-signup${floating ? " letter-signup--float" : ""}" aria-label="Newsletter">
+  <img class="letter-signup__scribble" src="/assets/images/brand/brush-scribble.webp" alt="" width="520" height="440" loading="lazy" decoding="async" aria-hidden="true" />
   <div class="letter-signup__inner">
     <p class="ds-eyebrow letter-signup__eyebrow">The ROI of Design</p>
-    <p class="letter-signup__title">Get credit for the work you already ship.</p>
+    <p class="letter-signup__title">Get credit for the work you <span class="letter-signup__mark">already</span> ship.</p>
     <p class="letter-signup__body">Every Saturday: how to turn your design work into numbers execs actually fund.</p>
     <form class="letter-signup__form" data-newsletter-form data-track-location="${location}" method="post" action="${KIT_FORM}" novalidate>
       <input type="hidden" name="fields[signup_source]" value="${location}" data-signup-source />
@@ -969,7 +961,6 @@ const shellClose = `<!-- partial:footer hide="portfolio" -->
 </div>
 <script src="${asset("/assets/js/mobile-menu-a11y.js")}" defer></script>
 <script src="${asset("/assets/js/newsletter-form.js")}" defer></script>
-<script src="${asset("/assets/js/signup-float.js")}" defer></script>
 <script src="${asset("/assets/js/gtm-defer.js")}" defer></script>
 <script src="${asset("/assets/js/analytics.js")}" defer></script>
 <script src="${asset("/assets/js/consent.js")}" defer></script>
