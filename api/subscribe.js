@@ -9,6 +9,8 @@
  * KIT_API_KEY / KIT_BROADCAST_API_KEY are not used here (only for other /api/* routes).
  */
 
+const { checkBot, validEmail, logBlocked } = require("./_lib/bot-guard");
+
 const KIT_FORM_SUBSCRIBE_BASE = "https://app.kit.com/forms";
 
 function alreadyParsedBody(req) {
@@ -74,8 +76,15 @@ module.exports = async function handler(req, res) {
   }
 
   const email = typeof body.email === "string" ? body.email.trim() : "";
-  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+  if (!email || !validEmail(email)) {
     return res.status(400).json({ error: "Valid email required" });
+  }
+
+  const guard = await checkBot(req, body);
+  if (!guard.ok) {
+    logBlocked("newsletter", guard);
+    if (guard.silent) return res.status(200).json({ success: true });
+    return res.status(guard.status).json({ success: false, error: guard.error });
   }
 
   const formId = process.env.KIT_FORM_ID;

@@ -48,6 +48,7 @@
     var prefix = form.getAttribute("data-track-prefix") || "roi_skill";
     var label = submitEl.textContent;
     var started = false;
+    var guard = window.MTWBotGuard ? window.MTWBotGuard.create(form) : null; // assets/js/bot-guard.js
     var busy = false;
 
     function showError(msg, field) {
@@ -98,11 +99,14 @@
       setBusy(true);
 
       try {
+        var body = firstName ? { firstName: firstName, email: email } : { email: email };
+        if (guard) Object.assign(body, await guard.payload());
         var res = await fetch(api, {
           method: "POST",
           headers: { "Content-Type": "application/json", Accept: "application/json" },
-          body: JSON.stringify(firstName ? { firstName: firstName, email: email } : { email: email }),
+          body: JSON.stringify(body),
         });
+        if (guard) guard.reset();
         var data = null;
         try {
           data = await res.json();
@@ -129,6 +133,7 @@
           emailEl
         );
       } catch (_) {
+        if (guard) guard.reset();
         track(prefix + "_submit_error", { page: location.pathname, reason: "network" });
         setBusy(false);
         showError("Something went wrong. Please try again.", emailEl);

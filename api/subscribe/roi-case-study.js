@@ -9,8 +9,9 @@
  * https://developers.kit.com/api-reference/forms/add-subscriber-to-form-by-email-address
  */
 
+const { checkBot, validEmail, logBlocked } = require("../_lib/bot-guard");
+
 const KIT_API_BASE = "https://api.kit.com/v4";
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const GENERIC_ERROR = "Something went wrong. Please try again.";
 
 function alreadyParsedBody(req) {
@@ -110,10 +111,17 @@ module.exports = async function handler(req, res) {
   // First name is optional: the capture asks for email only.
 
   const email = typeof body.email === "string" ? body.email.trim() : "";
-  if (!email || !EMAIL_RE.test(email)) {
+  if (!email || !validEmail(email)) {
     return res
       .status(400)
       .json({ success: false, error: "Valid email required." });
+  }
+
+  const guard = await checkBot(req, body);
+  if (!guard.ok) {
+    logBlocked("roi-case-study", guard);
+    if (guard.silent) return res.status(200).json({ success: true });
+    return res.status(guard.status).json({ success: false, error: guard.error });
   }
 
   const apiKey = process.env.KIT_API_KEY;

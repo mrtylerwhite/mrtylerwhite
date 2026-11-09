@@ -389,7 +389,20 @@
     document.querySelectorAll("[data-wl-open]").forEach(function (b) { b.addEventListener("click", function () { open(b.getAttribute("data-wl-open")); }); });
     modal.querySelectorAll("[data-wl-close]").forEach(function (b) { b.addEventListener("click", close); });
     modal.addEventListener("click", function (e) { if (e.target === modal) close(); });
-    function post(data) {
+    var guards = {};
+    document.addEventListener("DOMContentLoaded", function () {
+      if (!window.MTWBotGuard) return; // assets/js/bot-guard.js
+      guards.join = window.MTWBotGuard.create(modal.querySelector("[data-wl-form]"));
+      guards.intent = window.MTWBotGuard.create(modal.querySelector("[data-wl-intent]"));
+    });
+    function post(data, which) {
+      var g = guards[which];
+      return (g ? g.payload() : Promise.resolve({})).then(function (extra) {
+        if (g) g.reset();
+        return send(Object.assign({}, data, extra));
+      });
+    }
+    function send(data) {
       return fetch("/api/subscribe/prototyping-waitlist", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) })
         .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { if (!r.ok || !j.success) throw new Error(j.error || "Something went wrong. Please try again."); }); });
     }
@@ -399,7 +412,7 @@
       var d = Object.fromEntries(new FormData(f1).entries());
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email || "")) { e1.textContent = "Add a valid email so I can tell you when it opens."; return; }
       b1.disabled = true; b1.textContent = "Joining...";
-      post(d).then(function () {
+      post(d, "join").then(function () {
         email = d.email.trim(); firstName = (d.firstName || "").trim();
         track("waitlist_submit", { label: "prototyping_method" });
         track("generate_lead", { lead_source: "prototyping_method_waitlist" });
@@ -412,7 +425,7 @@
       var d = Object.fromEntries(new FormData(f2).entries());
       if (!d.goal && !d.intent) { thanks(); return; }
       b2.disabled = true; b2.textContent = "Sending...";
-      post({ email: email, firstName: firstName, goal: d.goal || "", intent: d.intent || "" }).then(function () {
+      post({ email: email, firstName: firstName, goal: d.goal || "", intent: d.intent || "" }, "intent").then(function () {
         track("waitlist_intent", { label: "prototyping_method", intent: d.intent || "none" });
         thanks();
       }).catch(function (x) { e2.textContent = x.message; }).finally(function () { b2.disabled = false; b2.textContent = "Send"; });
@@ -420,6 +433,7 @@
     modal.querySelector("[data-wl-skip]").addEventListener("click", thanks);
   }());
   </script>
+  <script src="/assets/js/bot-guard.js?v=e33118c5" defer></script>
   <script src="/assets/js/scroll-reveal.js?v=7f35e6c2" defer></script>
   <script src="/assets/js/letter-figures.js?v=d73a4a52" defer></script>
   <script src="/assets/js/gtm-defer.js?v=ca2c75ba" defer></script>

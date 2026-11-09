@@ -12,8 +12,9 @@
  *   KIT_PROTO_WAITLIST_SEQUENCE_ID (default 2953530, "Prototyping Method: Waitlist")
  */
 
+const { checkBot, validEmail, logBlocked } = require("../_lib/bot-guard");
+
 const KIT_API_BASE = "https://api.kit.com/v4";
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const GENERIC_ERROR = "Something went wrong. Please try again.";
 
 function alreadyParsedBody(req) {
@@ -110,8 +111,15 @@ module.exports = async function handler(req, res) {
 
   const firstName = typeof body.firstName === "string" ? body.firstName.trim().slice(0, 80) : "";
   const email = typeof body.email === "string" ? body.email.trim() : "";
-  if (!email || !EMAIL_RE.test(email)) {
+  if (!email || !validEmail(email)) {
     return res.status(400).json({ success: false, error: "Valid email required." });
+  }
+
+  const guard = await checkBot(req, body);
+  if (!guard.ok) {
+    logBlocked("prototyping-waitlist", guard);
+    if (guard.silent) return res.status(200).json({ success: true });
+    return res.status(guard.status).json({ success: false, error: guard.error });
   }
   // Honeypot: bots fill every field.
   if (typeof body.company === "string" && body.company.trim()) {
