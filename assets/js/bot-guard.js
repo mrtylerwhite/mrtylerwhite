@@ -11,7 +11,7 @@
  * - Measures time since the form was set up. If a fast human (autofill) submits
  *   in under 3 seconds, payload() just waits out the rest, so nobody real is
  *   ever dropped by the timing check.
- * - Cloudflare Turnstile, only when /api/turnstile-config returns a site key.
+ * - Cloudflare Turnstile, only when /api/turnstile-config/ returns a site key.
  *   Rendered on first interaction in "interaction-only" mode: invisible for
  *   almost everyone, a single checkbox only when Cloudflare is unsure.
  */
@@ -29,7 +29,7 @@
 
   function config() {
     if (!configPromise) {
-      configPromise = fetch("/api/turnstile-config", { headers: { Accept: "application/json" } })
+      configPromise = fetch("/api/turnstile-config/", { headers: { Accept: "application/json" } })
         .then(function (r) { return r.ok ? r.json() : {}; })
         .then(function (j) { return { siteKey: (j && typeof j.siteKey === "string" && j.siteKey) || "" }; })
         .catch(function () { return { siteKey: "" }; });
