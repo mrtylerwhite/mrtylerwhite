@@ -759,6 +759,47 @@ body.home #page-container .home-bento__cell {
   transition: box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
+body.home #page-container .home-bento__cell--feature {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 2.5rem;
+  padding: 1.5rem 2.5rem 1.5rem 1.5rem;
+}
+
+body.home #page-container .home-bento__media {
+  overflow: hidden;
+  border-radius: 0.75rem;
+  aspect-ratio: 3 / 2;
+}
+
+body.home #page-container .home-bento__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+body.home #page-container .home-bento__body {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+body.home #page-container .home-bento__cell--feature .home-bento__title {
+  margin: 0 0 var(--ds-gap-title) !important;
+  font-family: var(--ds-font-display) !important;
+  font-weight: var(--ds-font-weight-heading, 800) !important;
+  font-size: var(--ds-size-h3) !important;
+  line-height: var(--ds-leading-h3) !important;
+  letter-spacing: var(--ds-tracking-h3) !important;
+  text-transform: none !important;
+}
+
+body.home #page-container .home-bento__cell--feature .home-bento__copy {
+  flex: none;
+}
+
 body.home #page-container .home-bento__cell--kit {
   background: #fff;
   border: 1px solid rgba(0, 0, 0, 0.08);
@@ -1232,6 +1273,12 @@ body.home #page-container #cta_builder_kickoff:active {
     grid-template-columns: 1fr;
   }
 
+  body.home #page-container .home-bento__cell--feature {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+    padding: 1.25rem 1.25rem 2rem;
+  }
+
   body.home #page-container .home-bento__cell--workshop {
     order: -1;
   }
@@ -1263,6 +1310,11 @@ body.home #page-container #cta_builder_kickoff:active {
   body.home #page-container .home-bento__cell {
     padding: 1.625rem 1.5rem;
     gap: 0;
+  }
+
+  body.home #page-container .home-bento__cell--feature {
+    gap: 1.5rem;
+    padding: 1rem 1rem 1.75rem;
   }
 
   body.home #page-container .home-bento__cell--workshop {
@@ -1518,10 +1570,7 @@ body.home #page-container #cta_builder_kickoff:active {
 <h2 class="home-hub__title" id="home-start-heading">Start where the pain is.</h2>
 <p class="home-hub__lead">If your case study sounds vague, your prototype proves nothing, or your team is still circling the same decision, start here.</p>
 <div class="home-bento">
-<div class="home-bento__primary">
-<a class="home-bento__cell home-bento__cell--kit" href="https://www.mrtylerwhite.com/roi-case-study-template/"><p class="home-bento__eyebrow">FREE · THE 15 MINUTE CASE STUDY</p><h3 class="home-bento__title home-bento__title--sans">Turn your last project into a case study that shows what it was worth.</h3><p class="home-bento__copy">A free Claude Skill. Paste your rough notes, answer the hard questions, and walk away with the business story in 15 minutes.</p><span class="home-bento__btn home-bento__btn--ghost">Get the free kit</span></a>
-<a class="home-bento__cell home-bento__cell--workshop" href="/builder-kickoff/"><p class="home-bento__eyebrow home-bento__eyebrow--light">BUILDER KICKOFF™ · $97</p><h3 class="home-bento__title home-bento__title--serif">The course that makes you the most powerful designer in the room.</h3><p class="home-bento__copy home-bento__copy--light">Learn to run the structured session that turns a business problem into a Decision Brief with ROI and a prototype prompt. Your PM and engineer will wonder how you did it. 7 short lessons. Everything included.</p><span class="home-bento__btn home-bento__btn--white">Get Builder Kickoff™</span></a>
-</div>
+<a class="home-bento__cell home-bento__cell--kit home-bento__cell--feature" href="/roi-case-study-template/" data-track-event="case_study_kit_cta_click" data-track-location="home_start"><div class="home-bento__media"><img src="/assets/images/lead-magnets/15-minute-case-study-cover-wide.webp" alt="The 15 Minute Case Study cover" width="1200" height="800" loading="lazy" decoding="async"></div><div class="home-bento__body"><p class="home-bento__eyebrow">FREE · THE 15 MINUTE CASE STUDY</p><h3 class="home-bento__title home-bento__title--sans">Turn your last project into a case study that shows what it was worth.</h3><p class="home-bento__copy">A free Claude Skill. Paste your rough notes, answer the hard questions, and walk away with the business story in 15 minutes.</p><span class="home-bento__btn home-bento__btn--ghost">Get the free kit</span></div></a>
 </div>
 </div></div>
 			</div>
