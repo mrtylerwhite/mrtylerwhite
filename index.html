@@ -1506,11 +1506,39 @@ body.home #page-container .hero-cntn .et_pb_row_2.social-proof .et_pb_image img 
 }
 
 @media screen and (max-width: 767px) {
+  /* Phones: bigger type, lines wrap freely (more than 3 is fine) */
   body.home #page-container #main-content .hero-cntn .et_pb_text_0 h1 {
-    font-size: max(2rem, min(calc((100vw - 2.25rem) / 9.7), calc((100svh - 30rem) / 2.9), 3.6rem)) !important;
-    margin-left: -1.5rem !important;
-    margin-right: -1.5rem !important;
+    font-size: max(2.5rem, min(13vw, calc((100svh - 24rem) / 4.25), 4rem)) !important;
+    margin-left: -1rem !important;
+    margin-right: -1rem !important;
     max-width: none;
+  }
+  body.home #page-container #main-content .hero-cntn .et_pb_text_0 h1 .home-hero__line {
+    text-wrap: balance;
+  }
+  /* Shadow repeats on every wrapped line (one band per 0.85em line); the very first line stays clean */
+  body.home #page-container #main-content .hero-cntn .et_pb_text_0 h1 .home-hero__line,
+  body.home #page-container #main-content .hero-cntn .et_pb_text_0 h1 .home-hero__line + .home-hero__line {
+    background:
+      linear-gradient(180deg, #8a847e 0%, #b9b3ac 12%, #e2dcd4 24%, #faf7f2 36%, #faf7f2 100%) 0 0 / 100% 0.85em repeat-y;
+    -webkit-background-clip: text;
+            background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+  body.home #page-container #main-content .hero-cntn .et_pb_text_0 h1 .home-hero__line:first-child {
+    background:
+      linear-gradient(#faf7f2, #faf7f2) 0 0 / 100% 0.85em no-repeat,
+      linear-gradient(180deg, #8a847e 0%, #b9b3ac 12%, #e2dcd4 24%, #faf7f2 36%, #faf7f2 100%) 0 0 / 100% 0.85em repeat-y;
+    -webkit-background-clip: text;
+            background-clip: text;
+  }
+  body.home #page-container #main-content .hero-cntn .et_pb_text_0 h1 .home-hero__accent {
+    background: linear-gradient(180deg, #6e4c2e 0%, #966b45 12%, #b6845a 24%, #c59060 36%, #c59060 100%) 0 0 / 100% 0.85em repeat-y !important;
+    -webkit-background-clip: text !important;
+            background-clip: text !important;
+    -webkit-box-decoration-break: clone;
+            box-decoration-break: clone;
   }
 }
 
@@ -1616,6 +1644,84 @@ body.home .hero-cntn .home-hero__tip-foot b {
   background: rgba(197, 144, 96, 0.2);
   color: #e3b588;
   letter-spacing: 0;
+}
+
+/* ── About: looping podcast clips + bio ─────────────────────────── */
+body.home #page-container .home-about { max-width: 1080px; margin: 0 auto; }
+body.home #page-container .home-about__title { margin-bottom: clamp(2rem, 4vw, 3rem) !important; }
+body.home #page-container .home-about__accent { color: #c59060; }
+body.home #page-container .home-about__clips {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(10px, 1.4vw, 18px);
+  margin: 0 0 clamp(2.5rem, 5vw, 4rem);
+  padding: 8px 0;
+}
+body.home #page-container .home-about__clip {
+  margin: 0;
+  aspect-ratio: 2 / 3;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #1a1714;
+  box-shadow: 0 1px 0 rgba(74, 52, 32, 0.06), 0 18px 40px -18px rgba(74, 52, 32, 0.45);
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+body.home #page-container .home-about__clip--1 { transform: rotate(-1.5deg); }
+body.home #page-container .home-about__clip--2 { transform: rotate(2deg) translateY(-6px); }
+body.home #page-container .home-about__clip--3 { transform: rotate(3.5deg) translateY(4px); }
+body.home #page-container .home-about__clip--4 { transform: rotate(-2deg) translateY(-4px); }
+body.home #page-container .home-about__clip:hover {
+  transform: rotate(0deg) translateY(-8px) scale(1.02);
+  box-shadow: 0 1px 0 rgba(74, 52, 32, 0.06), 0 28px 50px -20px rgba(74, 52, 32, 0.55);
+}
+body.home #page-container .home-about__clip video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+body.home #page-container .home-about__cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 6vw, 6rem);
+  text-align: left;
+}
+body.home #page-container .home-about__lead p {
+  font-size: clamp(1.15rem, 1.6vw, 1.4rem) !important;
+  line-height: 1.35 !important;
+  color: rgba(10, 10, 10, 0.55) !important;
+  margin: 0 0 1.25rem !important;
+  text-wrap: pretty;
+}
+body.home #page-container .home-about__body p {
+  font-size: 1rem !important;
+  line-height: 1.6 !important;
+  color: rgba(10, 10, 10, 0.82) !important;
+  margin: 0 0 1.25rem !important;
+  text-wrap: pretty;
+}
+body.home #page-container .home-about__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 1.75rem !important;
+}
+body.home #page-container .home-about__links a {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #0a0a0a;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(10, 10, 10, 0.3);
+  padding-bottom: 2px;
+  transition: border-color 0.3s ease;
+}
+body.home #page-container .home-about__links a:hover { border-color: #c59060; }
+@media screen and (max-width: 767px) {
+  body.home #page-container .home-about__clips { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  body.home #page-container .home-about__cols { grid-template-columns: 1fr; gap: 0.5rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  body.home #page-container .home-about__clip { transition: none; }
 }
 
 /* Short viewports: pull content up so the CTA clears the fold */
@@ -1901,6 +2007,41 @@ body.home .hero-cntn .home-hero__tip-foot b {
 </div></div>
 			</div>
 			</div>
+			</div>
+			</div><div class="et_pb_section home-hub-section home-hub-section--cream home-about-section et_section_regular" >
+				<div class="et_pb_row">
+				<div class="et_pb_column et_pb_column_4_4 et_pb_css_mix_blend_mode_passthrough et-last-child">
+				<div class="et_pb_module et_pb_code">
+				<div class="et_pb_code_inner"><section class="home-hub home-about" aria-labelledby="home-about-heading">
+<p class="home-hub__eyebrow">About</p>
+<h2 class="home-hub__title home-about__title" id="home-about-heading">From a year unemployed<br> to <span class="home-about__accent">Director of Product Design</span></h2>
+<!-- Looping clips: placeholder footage until Design Table podcast clips are exported (swap each <source>) -->
+<div class="home-about__clips">
+<figure class="home-about__clip home-about__clip--1"><video muted loop playsinline preload="none" poster="/assets/images/prototype-ready/tyler-host.png" data-start="0" aria-hidden="true"><source src="/assets/video/prototype-ready/background-video-tyler.mp4" type="video/mp4"></video></figure>
+<figure class="home-about__clip home-about__clip--2"><video muted loop playsinline preload="none" poster="/assets/images/prototype-ready/tyler-host.png" data-start="4" aria-hidden="true"><source src="/assets/video/prototype-ready/background-video-tyler.mp4" type="video/mp4"></video></figure>
+<figure class="home-about__clip home-about__clip--3"><video muted loop playsinline preload="none" poster="/assets/images/prototype-ready/tyler-host.png" data-start="8" aria-hidden="true"><source src="/assets/video/prototype-ready/background-video-tyler.mp4" type="video/mp4"></video></figure>
+<figure class="home-about__clip home-about__clip--4"><video muted loop playsinline preload="none" poster="/assets/images/prototype-ready/tyler-host.png" data-start="12" aria-hidden="true"><source src="/assets/video/prototype-ready/background-video-tyler.mp4" type="video/mp4"></video></figure>
+</div>
+<div class="home-about__cols">
+<div class="home-about__lead">
+<p>I started with no mentor and a senior designer who quit two months into my first job. Lead designer, then Director of UX, now Director of Product Design.</p>
+<p>16 years in startups. Based in Montreal.</p>
+<p>Every week I co-host The Design Table Podcast with Nick Groeneveld.</p>
+</div>
+<div class="home-about__body">
+<p>For most of my career I obsessed over craft: perfect dashboards, pixel-perfect login screens. Nobody told me it all had to tie back to revenue, retention and efficiency.</p>
+<p>Then I built a product from zero that hit $1.1M ARR in year one and grew to 50% of company revenue. Then I got let go. Twice. In the same year.</p>
+<p>That is where the clarity came from. Craft gets you a paycheck. Business impact gets you a seat at the table. It became the Builder Kickoff™: turn a business problem into a decision the whole team agrees on, before anyone opens Figma.</p>
+<p class="home-about__links"><a href="/about/">Read my full story <span aria-hidden="true">&rarr;</span></a><a href="https://www.youtube.com/@designtablepodcast" target="_blank" rel="noopener">Watch the podcast <span aria-hidden="true">&rarr;</span></a></p>
+</div>
+</div>
+</section></div>
+			</div>
+			</div>
+				
+				
+				
+				
 			</div>
 			</div><div class="et_pb_section et_pb_section_2 case-work et_section_regular et_section_transparent" >
 				
@@ -2730,6 +2871,32 @@ document.addEventListener("click", function (e) {
   resize();
   focus.x = w / 2; focus.y = h * 0.55;
   if (reduce) draw(performance.now()); else play();
+})();
+</script>
+<script id="home-about-clips-js">
+/* About section: play the looping clips only while on screen; each starts at its own offset.
+   Reduced motion: clips stay on their poster frame. */
+(function () {
+  var vids = [].slice.call(document.querySelectorAll('.home-about__clip video'));
+  if (!vids.length) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  function start(v) {
+    if (!v.dataset.ready) {
+      v.dataset.ready = '1';
+      v.preload = 'auto';
+      v.addEventListener('loadedmetadata', function () {
+        var t = parseFloat(v.dataset.start || '0');
+        if (v.duration && t < v.duration) v.currentTime = t;
+      }, { once: true });
+      v.load();
+    }
+    var p = v.play(); if (p && p.catch) p.catch(function () {});
+  }
+  if (!('IntersectionObserver' in window)) { vids.forEach(start); return; }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) start(e.target); else e.target.pause(); });
+  }, { rootMargin: '200px 0px' });
+  vids.forEach(function (v) { io.observe(v); });
 })();
 </script>
 </body>
