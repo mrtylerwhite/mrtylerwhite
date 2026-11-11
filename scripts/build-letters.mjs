@@ -1177,7 +1177,7 @@ ${shellOpen("letters-page letters-index")}
 <main class="letters" id="main-content">
   <header class="letters-hero ds-enter ds-enter-d1">
     <h1 class="ds-eyebrow letters-hero__eyebrow">Letters</h1>
-    <p class="letters-hero__title">Design moves the business. Most designers can't show the receipts.</p>
+    <p class="letters-hero__title">Design moves the business. <span class="letters-hero__accent">Most designers can't show the receipts.</span></p>
   </header>
 
   ${featured ? `<a class="letters-feature ds-enter ds-enter-d2" href="/letters/${featured.slug}/">

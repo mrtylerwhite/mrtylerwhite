@@ -2210,8 +2210,8 @@ body.ds-standalone-nav #main-header #logo {
   font-weight: var(--ds-font-weight-heading, 700) !important;
   font-size: var(--ds-size-display) !important;
   line-height: var(--ds-leading-h1) !important;
-  letter-spacing: -0.01em;
-  text-transform: none;
+  letter-spacing: var(--ds-tracking-h1) !important;
+  text-transform: uppercase !important;
   color: var(--ds-color-text-strong);
   text-wrap: balance;
 }
@@ -4662,3 +4662,8 @@ img.letters-feature__art {
   #page-container .letter-signup--float .letter-signup__title { font-size: 28px !important; }
   #page-container .letter-signup--float .letter-signup__body { font-size: 15px; }
 }
+
+/* critical:start */
+/* Letters index title: copper on the second phrase, like the other display headings */
+#page-container .letters-hero__accent { color: #c59060; }
+/* critical:end */
