@@ -30,8 +30,9 @@
  *   source       Kit broadcast id(s) the letter was built from
  *   draft        true = built (for preview) but noindex and left out of lists
  *
- * In the body, `<!-- offer:<lead-magnet-slug> -->` places a slim offer box for that
- * lead magnet (e.g. offer:prd-template), `<!-- newsletter -->` places the inline signup and
+ * In the body, `<!-- offer:<lead-magnet-slug> -->` places that lead magnet's card
+ * right there (e.g. offer:prd-template) instead of the automatic spot lower down,
+ * `<!-- newsletter -->` places the inline signup and
  * `<!-- cta -->` places the call-to-action block. Without markers the signup
  * goes before the third H2 and the CTA goes at the end.
  */
@@ -676,13 +677,6 @@ function leadMagnetFor(post) {
   if (!lm) throw new Error(`${post.slug}: unknown leadMagnet "${slug}" (see scripts/lead-magnets.mjs)`);
   return { slug, ...lm };
 }
-// Slim in-body offer for a lead magnet (same look as the case study early offer).
-function leadMagnetOffer(lm) {
-  return `<aside class="letter-offer letter-offer--lm" aria-label="${esc(lm.label)}: ${esc(lm.title)}">
-  <div class="letter-offer__lead"><p class="letter-offer__text"><span class="letter-offer__eyebrow">${esc(lm.offerEyebrow || lm.label)}</span> ${esc(lm.offer || lm.description)}</p></div>
-  <a class="letter-offer__btn" href="${lm.href}" data-track-event="letters_offer_click" data-track-location="body_${lm.slug}">${esc(lm.offerLabel || "Get it free")} &rarr;</a>
-</aside>`;
-}
 function leadMagnetCard(lm, where) {
   return `<aside class="lm-card lm-card--${where}" aria-label="${esc(lm.label)}: ${esc(lm.title)}">
   <p class="lm-card__label">${esc(lm.label)}</p>
@@ -879,16 +873,19 @@ function renderBody(post) {
     let n = 0;
     html = html.replace(/<h2 /g, (mm) => (++n === 3 ? `${newsletterBlock("letters_inline")}\n<h2 ` : mm));
   }
-  // Opt-in in-body offer for a lead magnet: <!-- offer:prd-template -->
+  // <!-- offer:prd-template --> pins the lead magnet card (same component and
+  // config as the sidebar) to that spot. Phones/tablets show it; desktop has the sidebar.
+  let pinned = false;
   html = html.replace(/(?:<p>)?<!-- offer:([a-z0-9-]+) -->(?:<\/p>)?/g, (mm, slug) => {
     const m = LEAD_MAGNETS[slug];
     if (!m) throw new Error(`${post.slug}: unknown offer "${slug}" (see scripts/lead-magnets.mjs)`);
-    return leadMagnetOffer({ slug, ...m });
+    pinned = true;
+    return leadMagnetCard({ slug, ...m }, "inline");
   });
   const lm = leadMagnetFor(post);
   // Inline lead magnet card (phones/tablets only; desktop shows the sidebar).
-  // Goes before the first H2 that isn't directly after another box.
-  if (lm) {
+  // Goes before the first H2 that isn't directly after another box, unless pinned above.
+  if (lm && !pinned) {
     const at = inlineCardIndex(html);
     if (at >= 0) html = `${html.slice(0, at)}${leadMagnetCard(lm, "inline")}\n${html.slice(at)}`;
   }

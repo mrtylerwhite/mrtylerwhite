@@ -21,10 +21,6 @@ export const LEAD_MAGNETS = {
     description: "Blank, filled in, and the order to fill it in. A PRD engineering will actually read.",
     image: "/assets/images/lead-magnets/prd-template-cover-wide.webp",
     href: "/free-prd-template/",
-    // In-body offer (<!-- offer:prd-template --> in a letter)
-    offerEyebrow: "Free PRD template",
-    offer: "The blank template, a filled-in example, and the order to fill it in during the kickoff.",
-    offerLabel: "Get the free PRD template",
   },
   "case-study": {
     label: "Free Claude Skill",
