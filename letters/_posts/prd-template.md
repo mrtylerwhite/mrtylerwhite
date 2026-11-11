@@ -5,6 +5,7 @@ description: A free PRD template to copy and paste, plus how to fill it from one
 subtitle: Most PRDs die because they're written after the decisions get made. Here's the template, and how to fill it while the room is still deciding.
 answer: The best PRD template is short: metadata, objective, problem and context, ROI analysis, scope and open questions. The trick is timing. Fill it in during the kickoff call, while the decisions are being made, not days later from memory.
 slug: prd-template
+homeFeatured: true
 date: 2026-10-08
 topic: kickoffs
 cover: /assets/images/letters/prd-template-v2.jpg

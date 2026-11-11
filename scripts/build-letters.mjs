@@ -26,6 +26,7 @@
  *   coverAlt     alt text for the cover on the letter page and in share tags
  *   featured     true = hero on /letters/ (else the newest letter)
  *   popular      true = in the "Most popular" strip
+ *   homeFeatured true = in the homepage's featured letters (newest 3; falls back to popular)
  *   source       Kit broadcast id(s) the letter was built from
  *   draft        true = built (for preview) but noindex and left out of lists
  *
@@ -1342,6 +1343,22 @@ for (const post of all) {
   write(`letters/${post.slug}/index.html`, postPage(post, related));
 }
 write("letters/index.html", indexPage(published));
+// Homepage "Featured letters": generated between <!-- letters:home-featured --> markers in /index.html.
+{
+  const homePath = path.join(ROOT, "index.html");
+  const picks = (published.some((p) => p.homeFeatured === true)
+    ? published.filter((p) => p.homeFeatured === true)
+    : published.filter((p) => p.popular === true)).slice(0, 3);
+  const items = picks.map((p) => `<li><a class="home-letters__row" href="/letters/${p.slug}/">
+${tile(p, "home-letters__thumb")}
+<span class="home-letters__text"><span class="home-letters__title">${esc(p.title)}</span>${p.subtitle ? `<span class="home-letters__sub">${esc(p.subtitle)}</span>` : ""}<span class="home-letters__meta"><time datetime="${p.date}">${fmtDate(p.date)}</time> · ${esc(TOPICS[p.topic])}</span></span>
+</a></li>`).join("\n");
+  if (fs.existsSync(homePath)) {
+    const home = fs.readFileSync(homePath, "utf8");
+    const next = home.replace(/(<!-- letters:home-featured -->)[\s\S]*?(<!-- \/letters:home-featured -->)/, `$1\n<ul class="home-letters__list">\n${items}\n</ul>\n$2`);
+    if (next !== home) { fs.writeFileSync(homePath, next); console.log("  updated → index.html featured letters"); }
+  }
+}
 write("letters/feed.xml", feed(published));
 write("letters-sitemap.xml", sitemap(published));
 // llms.txt: keep the "## Letters" section in sync with the published letters (newest first).

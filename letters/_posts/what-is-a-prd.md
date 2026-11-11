@@ -6,6 +6,7 @@ description: PRD stands for product requirements document: the doc that says wha
 answer: PRD stands for product requirements document. It says what a team is building, why, and how they'll know it worked. A good one covers six things: objective, problem and context, ROI and the bet, scope, constraints and open questions. Write it during the kickoff, as a record of decisions already made.
 subtitle: A PRD is a record of decisions. Most teams treat it as a request for decisions, which is why theirs go stale by Thursday.
 slug: what-is-a-prd
+homeFeatured: true
 date: 2026-10-15
 updated: 2026-11-07
 topic: kickoffs

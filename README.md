@@ -77,7 +77,7 @@ Each letter is a Markdown file in `letters/_posts/`. The front matter (title, SE
 npm run build:letters
 ```
 
-That renders `/letters/`, every `/letters/<slug>/`, the RSS feed (`/letters/feed.xml`) and `letters-sitemap.xml`, then fills the shared partials. Layout lives in `assets/css/system/pages/letters.css`; signup forms use `assets/js/newsletter-form.js`. Don't edit the generated HTML in `letters/`; edit the `.md` file and rebuild.
+That renders `/letters/`, every `/letters/<slug>/`, the RSS feed (`/letters/feed.xml`) and `letters-sitemap.xml`, then fills the shared partials. Layout lives in `assets/css/system/pages/letters.css`; signup forms use `assets/js/newsletter-form.js`. Don't edit the generated HTML in `letters/`; edit the `.md` file and rebuild. The homepage's **Featured letters** list is generated too (between `<!-- letters:home-featured -->` markers in `/index.html`): add `homeFeatured: true` to up to three letters' front matter and run `npm run build:letters`.
 
 **Lead magnet card.** Every letter gets a sticky lead magnet card in a right-hand column on desktop (1180px and up), shown inline before the first H2 on smaller screens. The lead magnets (label, title, description, cover image, landing page) live in `scripts/lead-magnets.mjs`. A letter picks one with `leadMagnet: <slug>` in its front matter (`none` hides it); without the field it gets `DEFAULT_LEAD_MAGNET`. Cover images are 800 × 600 (4:3) and go in `assets/images/lead-magnets/`.
 
