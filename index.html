@@ -1124,12 +1124,22 @@ body.home #page-container .home-hub__enemy-copy a {
 }
 body.home #page-container .home-hub__enemy-copy a:hover { color: #f4f0ea; text-decoration-color: #c59060; }
 
-/* Proof: one real result quote, crawlable text */
-body.home #page-container .home-proof__quote {
-  max-width: 40rem;
+/* Proof: real Senja quotes as crawlable text */
+body.home #page-container #home-proof-heading { text-wrap: balance; }
+body.home #page-container .home-proof__quotes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1rem, 3vw, 2.5rem);
+  max-width: 52rem;
   margin: clamp(1.5rem, 3vw, 2.25rem) auto 0;
+}
+body.home #page-container .home-proof__quote {
+  margin: 0;
   padding: 0;
-  text-align: center;
+  text-align: left;
+}
+@media screen and (max-width: 680px) {
+  body.home #page-container .home-proof__quotes { grid-template-columns: 1fr; }
 }
 body.home #page-container .home-proof__quote blockquote { margin: 0; padding: 0; border: 0; }
 body.home #page-container .home-proof__quote blockquote p {
@@ -2201,7 +2211,6 @@ body.home #page-container .home-about__links a:hover { border-color: #c59060; }
 <span class="home-agent-workflow__title">Tell the business story</span>
 <span class="home-agent-workflow__desc">Turn the work into what changed, not what you made</span>
 </span>
-<span class="home-agent-workflow__badge">Pending</span>
 </div>
 
 </div>
@@ -2225,9 +2234,12 @@ body.home #page-container .home-about__links a:hover { border-color: #c59060; }
 				<div class="et_pb_column et_pb_column_4_4 et_pb_css_mix_blend_mode_passthrough et-last-child">
 				<div class="et_pb_module et_pb_code">
 				<div class="et_pb_code_inner"><div class="home-hub home-hub--proof-intro">
-<h2 class="home-hub__title home-hub__title--proof" id="home-proof-heading">Design ROI case studies from real work.</h2>
+<h2 class="home-hub__title home-hub__title--proof" id="home-proof-heading">Design ROI case studies from real product work</h2>
 <p class="home-hub__lead">Real product work. Real constraints. Real outcomes. No pretend redesigns for a coffee app that already has 900 versions on Dribbble.</p>
+<div class="home-proof__quotes">
 <figure class="home-proof__quote"><blockquote><p>&#8220;Tyler personally walked me through his ROI of design content over 4 weeks. After helping me rebrand, I was able to refine my portfolio and onboarded 2 new clients that month!&#8221;</p></blockquote><figcaption>Laila Albuquerque</figcaption></figure>
+<figure class="home-proof__quote"><blockquote><p>&#8220;No one explains things the way you do: clear, detailed, and right to the point.&#8221;</p></blockquote><figcaption>Nidhi Arora</figcaption></figure>
+</div>
 </div></div>
 			</div>
 			</div>
@@ -2305,7 +2317,7 @@ body.home #page-container .home-about__links a:hover { border-color: #c59060; }
 				<div class="et_pb_module et_pb_code">
 				<div class="et_pb_code_inner"><section class="home-hub home-about" aria-labelledby="home-about-heading">
 <p class="home-hub__eyebrow">About Tyler White</p>
-<h2 class="home-hub__title home-about__title" id="home-about-heading">From no mentor<br> to <span class="home-about__accent">Director of Product Design</span></h2>
+<h2 class="home-hub__title home-about__title" id="home-about-heading">From lead designer<br> to <span class="home-about__accent">Director of Product Design</span></h2>
 <div class="home-about__grid">
 <figure class="home-about__media">
 <div class="home-about__frame"><video muted loop playsinline preload="none" poster="/assets/video/home/tyler-about-poster.jpg" width="720" height="900" aria-hidden="true"><source src="/assets/video/home/tyler-about.mp4" type="video/mp4"></video></div>
@@ -2319,13 +2331,11 @@ body.home #page-container .home-about__links a:hover { border-color: #c59060; }
 </figure>
 <div class="home-about__cols">
 <div class="home-about__lead">
-<p>Lead designer while the user base grew from 1M to 3.2M. Director of UX on a product I built from zero to $1.1M ARR in year one, which grew to 50% of company revenue. Now Director of Product Design.</p>
-<p>16 years in startups. Based in Montreal. Every week I co-host The Design Table Podcast with Nick Groeneveld.</p>
+<p>Lead designer: 1M to 3.2M users. Director of UX: a product from zero to $1.1M ARR in year one, 50% of company revenue. Now Director of Product Design.</p>
 </div>
 <div class="home-about__body">
-<p>I started with no mentor and a senior designer who quit two months into my first job. For most of my career I obsessed over craft: perfect dashboards, pixel-perfect login screens. Nobody told me it all had to tie back to revenue, retention and efficiency.</p>
-<p>I also got let go twice in the same year. That part taught me the most. Craft gets you a paycheck. Business impact you can explain gets you a seat at the table. It became the Builder Kickoff™: turn a business problem into a decision the whole team agrees on, before anyone opens Figma.</p>
-<p class="home-about__links"><a href="/about/">Read my full story <span aria-hidden="true">&rarr;</span></a><a href="https://www.youtube.com/@designtablepodcast" target="_blank" rel="noopener">Watch the podcast <span aria-hidden="true">&rarr;</span></a></p>
+<p>I also got let go twice in the same year. That part taught me the most.</p>
+<p class="home-about__links"><a href="/about/">Read the full story <span aria-hidden="true">&rarr;</span></a><a href="https://www.youtube.com/@designtablepodcast" target="_blank" rel="noopener">Watch the podcast <span aria-hidden="true">&rarr;</span></a></p>
 </div>
 </div>
 </div>
@@ -2373,7 +2383,7 @@ body.home #page-container .home-about__links a:hover { border-color: #c59060; }
 				<div class="et_pb_module et_pb_code">
 				<div class="et_pb_code_inner"><div class="home-v3-band__inner home-v3-band__inner--center home-hub home-hub--close">
 <h2 class="home-hub__title home-hub__title--close" id="home-close-heading">Ready to make your work harder to ignore?</h2>
-<p class="home-hub__close-copy">Start with the free case study. When you're ready to run the decision meeting yourself, Builder Kickoff™ is 7 short video lessons (about 20 minutes) plus the facilitation deck, FigJam template, Notion kit and the Claude skill that turns your kickoff transcript into a PRD.</p>
+<p class="home-hub__close-copy">Start with the free case study. When you're ready to run the decision meeting yourself, Builder Kickoff™ is 7 video lessons, about 20 minutes, instant access, plus the FigJam board, slide deck, Notion kit and the Claude skill that turns your kickoff transcript into a PRD.</p>
 <div class="home-close__actions">
 <a class="home-close__btn home-close__btn--primary" href="https://www.mrtylerwhite.com/roi-case-study-template/">Get the free kit</a>
 <a class="home-close__btn home-close__btn--ghost" href="https://mrtylerwhite.kit.com/products/builder-kickoff-course?step=checkout" target="_blank" rel="noopener noreferrer">Get Builder Kickoff™ · $97</a>
