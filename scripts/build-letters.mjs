@@ -30,7 +30,8 @@
  *   source       Kit broadcast id(s) the letter was built from
  *   draft        true = built (for preview) but noindex and left out of lists
  *
- * In the body, `<!-- newsletter -->` places the inline signup and
+ * In the body, `<!-- offer:<lead-magnet-slug> -->` places a slim offer box for that
+ * lead magnet (e.g. offer:prd-template), `<!-- newsletter -->` places the inline signup and
  * `<!-- cta -->` places the call-to-action block. Without markers the signup
  * goes before the third H2 and the CTA goes at the end.
  */
@@ -675,6 +676,13 @@ function leadMagnetFor(post) {
   if (!lm) throw new Error(`${post.slug}: unknown leadMagnet "${slug}" (see scripts/lead-magnets.mjs)`);
   return { slug, ...lm };
 }
+// Slim in-body offer for a lead magnet (same look as the case study early offer).
+function leadMagnetOffer(lm) {
+  return `<aside class="letter-offer letter-offer--lm" aria-label="${esc(lm.label)}: ${esc(lm.title)}">
+  <div class="letter-offer__lead"><p class="letter-offer__text"><span class="letter-offer__eyebrow">${esc(lm.offerEyebrow || lm.label)}</span> ${esc(lm.offer || lm.description)}</p></div>
+  <a class="letter-offer__btn" href="${lm.href}" data-track-event="letters_offer_click" data-track-location="body_${lm.slug}">${esc(lm.offerLabel || "Get it free")} &rarr;</a>
+</aside>`;
+}
 function leadMagnetCard(lm, where) {
   return `<aside class="lm-card lm-card--${where}" aria-label="${esc(lm.label)}: ${esc(lm.title)}">
   <p class="lm-card__label">${esc(lm.label)}</p>
@@ -871,6 +879,12 @@ function renderBody(post) {
     let n = 0;
     html = html.replace(/<h2 /g, (mm) => (++n === 3 ? `${newsletterBlock("letters_inline")}\n<h2 ` : mm));
   }
+  // Opt-in in-body offer for a lead magnet: <!-- offer:prd-template -->
+  html = html.replace(/(?:<p>)?<!-- offer:([a-z0-9-]+) -->(?:<\/p>)?/g, (mm, slug) => {
+    const m = LEAD_MAGNETS[slug];
+    if (!m) throw new Error(`${post.slug}: unknown offer "${slug}" (see scripts/lead-magnets.mjs)`);
+    return leadMagnetOffer({ slug, ...m });
+  });
   const lm = leadMagnetFor(post);
   // Inline lead magnet card (phones/tablets only; desktop shows the sidebar).
   // Goes before the first H2 that isn't directly after another box.

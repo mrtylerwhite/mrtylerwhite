@@ -7,7 +7,7 @@ answer: A BRD (business requirements document) explains why the business wants s
 subtitle: One explains why the business wants it. The other explains what the product will do. Most teams write both and then let them drift apart.
 slug: prd-vs-brd
 date: 2026-04-15
-updated: 2026-11-07
+updated: 2026-11-10
 topic: kickoffs
 cover: /assets/images/letters/prd-vs-brd-v2.jpg
 coverAlt: "Two stone tablets labeled why and what stand on either side of a widening crack, joined by a glowing thread about to snap"
@@ -27,6 +27,8 @@ The BRD says why the business wants it. The [PRD](/letters/what-is-a-prd/) says 
 Most teams don't need both. They need one doc where the why and the what can't drift apart.
 
 Here's how to tell which one you actually need.
+
+<!-- offer:prd-template -->
 
 ## PRD vs BRD at a glance
 

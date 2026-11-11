@@ -1,14 +1,14 @@
 ---
 title: What is a PRD? The doc that decides what gets built
-seoTitle: What Does PRD Stand For? Meaning, Template & Example
+seoTitle: "PRD Meaning: What Does PRD Stand For? (+ Template)"
 titleSuffix: false
-description: PRD stands for product requirements document: the doc that says what a team will build, why, and how you'll know it worked. Meaning, sections and template.
+description: "PRD meaning: product requirements document, the doc that says what a team will build, why, and how you'll know it worked. Example and free template."
 answer: PRD stands for product requirements document. It says what a team is building, why, and how they'll know it worked. A good one covers six things: objective, problem and context, ROI and the bet, scope, constraints and open questions. Write it during the kickoff, as a record of decisions already made.
 subtitle: A PRD is a record of decisions. Most teams treat it as a request for decisions, which is why theirs go stale by Thursday.
 slug: what-is-a-prd
 homeFeatured: true
 date: 2026-10-15
-updated: 2026-11-07
+updated: 2026-11-10
 topic: kickoffs
 cover: /assets/images/letters/what-is-a-prd-v2.jpg
 coverAlt: "A person carves glowing checked-off lines into a stone tablet while loose papers scatter into the dark"
@@ -18,7 +18,7 @@ leadMagnet: prd-template
 popular: true
 ---
 
-Everyone on your team knows what PRD stands for.
+PRD meaning, in plain words: product requirements document. Everyone on your team knows what PRD stands for.
 
 Almost nobody agrees on what it's for.
 
@@ -28,9 +28,11 @@ That's not a PRD. That's a wish list with a header.
 
 A good PRD is a record of decisions that were already made, with the people who made them in the room. Same document. Completely different outcome.
 
+<!-- offer:prd-template -->
+
 If you want the textbook version, [Atlassian's definition](<https://www.atlassian.com/agile/product-management/requirements>) is a fine baseline. This letter is about the part the textbook skips.
 
-## What a PRD is for
+## PRD meaning: what a PRD is for
 
 Every PRD has to answer three questions for everyone who touches the work:
 
