@@ -1771,7 +1771,17 @@ body.home #page-container .home-about__frame video {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  pointer-events: none; /* decorative: no tap-to-fullscreen on iOS */
 }
+/* iOS Safari (e.g. Low Power Mode) can refuse autoplay and paint its big play
+   button. Hide native controls; if play() is refused, show the poster instead. */
+body.home #page-container .home-about__frame video::-webkit-media-controls,
+body.home #page-container .home-about__frame video::-webkit-media-controls-start-playback-button,
+body.home #page-container .home-about__frame video::-webkit-media-controls-overlay-play-button {
+  display: none !important;
+  -webkit-appearance: none;
+}
+body.home #page-container .home-about__frame.is-still video { visibility: hidden; }
 body.home #page-container .home-about__roi,
 body.home #page-container .home-about__chip {
   position: absolute;
@@ -2287,7 +2297,7 @@ body.home #page-container .home-about__links a:hover { border-color: #c59060; }
 <h2 class="home-hub__title home-about__title" id="home-about-heading">From lead designer<br> to <span class="home-about__accent">Director of Product Design</span></h2>
 <div class="home-about__grid">
 <figure class="home-about__media">
-<div class="home-about__frame"><video muted loop playsinline preload="none" poster="/assets/video/home/tyler-about-poster.jpg" width="720" height="900" aria-hidden="true"><source src="/assets/video/home/tyler-about.mp4" type="video/mp4"></video></div>
+<div class="home-about__frame"><video muted loop playsinline webkit-playsinline disablepictureinpicture disableremoteplayback preload="none" poster="/assets/video/home/tyler-about-poster.jpg" width="720" height="900" aria-hidden="true"><source src="/assets/video/home/tyler-about.mp4" type="video/mp4"></video></div>
 <p class="home-about__chip"><span class="home-about__chip-dot" aria-hidden="true"></span>16 years in startups</p>
 <div class="home-about__roi" role="img" aria-label="Product built from zero: $1.1M ARR in year one, 50% of company revenue">
 <p class="home-about__roi-label">Built from zero</p>
@@ -3062,19 +3072,55 @@ document.addEventListener("click", function (e) {
 })();
 </script>
 <script id="home-about-clips-js">
-/* About section: the portrait clip plays (muted, looping) only while on screen and the
-   ROI sparkline draws in once. Reduced motion: poster frame only, no draw-in. */
+/* About section: the portrait clip plays (muted, looping, inline) only while on screen and
+   the ROI sparkline draws in once. Reduced motion: poster frame only, no draw-in.
+   If the browser refuses autoplay (iOS Low Power Mode, data saver), the frame shows the
+   poster with no play button, and playback starts on the next tap anywhere on the page. */
 (function () {
   var fig = document.querySelector('.home-about__media');
   if (!fig) return;
   var v = fig.querySelector('video');
+  var frame = fig.querySelector('.home-about__frame');
   var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var visible = false, waitingForTap = false;
+  if (v) {
+    // Muted must be a property, set before any play(), for iOS to allow autoplay.
+    v.muted = true; v.defaultMuted = true; v.playsInline = true;
+    v.setAttribute('muted', ''); v.setAttribute('playsinline', ''); v.setAttribute('webkit-playsinline', '');
+    v.addEventListener('playing', function () { frame.classList.remove('is-still'); });
+  }
+  if (still && frame) frame.classList.add('is-still');
+  function retryOnTap() {
+    if (waitingForTap) return;
+    waitingForTap = true;
+    function go() {
+      document.removeEventListener('touchend', go, true);
+      document.removeEventListener('click', go, true);
+      waitingForTap = false;
+      if (visible) tryPlay();
+    }
+    document.addEventListener('touchend', go, true);
+    document.addEventListener('click', go, true);
+  }
+  function tryPlay() {
+    v.muted = true;
+    var p;
+    try { p = v.play(); } catch (e) { p = null; frame.classList.add('is-still'); retryOnTap(); return; }
+    if (p && p.then) {
+      p.catch(function (err) {
+        if (err && err.name === 'AbortError') return; // paused or reloaded mid-play: harmless
+        frame.classList.add('is-still');
+        retryOnTap();
+      });
+    }
+  }
   function show(on) {
+    visible = on;
     if (on && !fig.classList.contains('is-drawing')) fig.classList.add('is-drawing');
     if (still || !v) return;
     if (on) {
       if (!v.dataset.ready) { v.dataset.ready = '1'; v.preload = 'auto'; v.load(); }
-      var p = v.play(); if (p && p.catch) p.catch(function () {});
+      tryPlay();
     } else { v.pause(); }
   }
   if (!('IntersectionObserver' in window)) { show(true); return; }
