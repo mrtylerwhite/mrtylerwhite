@@ -1656,40 +1656,128 @@ body.home .hero-cntn .home-hero__tip-foot b {
 body.home #page-container .home-about { max-width: 1080px; margin: 0 auto; }
 body.home #page-container .home-about__title { margin-bottom: clamp(2rem, 4vw, 3rem) !important; }
 body.home #page-container .home-about__accent { color: #c59060; }
-body.home #page-container .home-about__clips {
+/* One looping portrait clip with a floating ROI card (Tailark-style) */
+body.home #page-container .home-about__grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: clamp(10px, 1.4vw, 18px);
-  margin: 0 0 clamp(2.5rem, 5vw, 4rem);
-  padding: 8px 0;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(2.5rem, 6vw, 5.5rem);
+  align-items: start;
 }
-body.home #page-container .home-about__clip {
-  margin: 0;
-  aspect-ratio: 2 / 3;
-  border-radius: 14px;
+body.home #page-container .home-about__media {
+  position: relative;
+  margin: 0 0 0 auto;
+  width: 100%;
+  max-width: 380px;
+}
+body.home #page-container .home-about__frame {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border-radius: 20px;
   overflow: hidden;
-  background: #1a1714;
-  box-shadow: 0 1px 0 rgba(74, 52, 32, 0.06), 0 18px 40px -18px rgba(74, 52, 32, 0.45);
-  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  background: #1a1714 url("/assets/video/home/tyler-about-poster.jpg") center / cover no-repeat;
+  box-shadow: 0 1px 0 rgba(74, 52, 32, 0.06), 0 30px 60px -28px rgba(74, 52, 32, 0.55), 0 12px 24px -16px rgba(74, 52, 32, 0.3);
 }
-body.home #page-container .home-about__clip--1 { transform: rotate(-1.5deg); }
-body.home #page-container .home-about__clip--2 { transform: rotate(2deg) translateY(-6px); }
-body.home #page-container .home-about__clip--3 { transform: rotate(3.5deg) translateY(4px); }
-body.home #page-container .home-about__clip--4 { transform: rotate(-2deg) translateY(-4px); }
-body.home #page-container .home-about__clip:hover {
-  transform: rotate(0deg) translateY(-8px) scale(1.02);
-  box-shadow: 0 1px 0 rgba(74, 52, 32, 0.06), 0 28px 50px -20px rgba(74, 52, 32, 0.55);
-}
-body.home #page-container .home-about__clip video {
+body.home #page-container .home-about__frame video {
+  position: absolute;
+  inset: 0;
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
+body.home #page-container .home-about__roi,
+body.home #page-container .home-about__chip {
+  position: absolute;
+  background: rgba(250, 247, 242, 0.9);
+  -webkit-backdrop-filter: blur(14px) saturate(1.2);
+          backdrop-filter: blur(14px) saturate(1.2);
+  border: 1px solid rgba(74, 52, 32, 0.12);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) inset, 0 18px 36px -18px rgba(40, 28, 16, 0.5), 0 4px 10px -6px rgba(40, 28, 16, 0.25);
+  color: #0a0a0a;
+  text-align: left;
+}
+body.home #page-container .home-about__roi {
+  right: -28px;
+  bottom: -24px;
+  width: 210px;
+  padding: 14px 16px 12px;
+  border-radius: 14px;
+}
+body.home #page-container .home-about__roi p { margin: 0 !important; padding: 0 !important; }
+body.home #page-container .home-about__roi-label {
+  font-size: 11px !important;
+  line-height: 1.3 !important;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(10, 10, 10, 0.55) !important;
+}
+body.home #page-container .home-about__roi-value {
+  margin-top: 4px !important;
+  font-size: 28px !important;
+  line-height: 1.05 !important;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #0a0a0a !important;
+}
+body.home #page-container .home-about__roi-value span {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: rgba(10, 10, 10, 0.55);
+}
+body.home #page-container .home-about__roi-spark {
+  display: block;
+  width: 100%;
+  height: 40px;
+  margin: 8px 0 6px;
+  overflow: visible;
+}
+body.home #page-container .home-about__roi-line { stroke-dasharray: 1; stroke-dashoffset: 0; }
+body.home #page-container .home-about__media.is-drawing .home-about__roi-line { animation: home-about-draw 1.6s cubic-bezier(0.22, 1, 0.36, 1) both; }
+@keyframes home-about-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+body.home #page-container .home-about__roi-foot {
+  padding-top: 8px !important;
+  border-top: 1px solid rgba(74, 52, 32, 0.1);
+  font-size: 12px !important;
+  line-height: 1.3 !important;
+  color: rgba(10, 10, 10, 0.6) !important;
+  white-space: nowrap;
+}
+body.home #page-container .home-about__roi-foot b {
+  display: inline-block;
+  margin-right: 4px;
+  padding: 1px 7px;
+  border-radius: 999px;
+  background: rgba(197, 144, 96, 0.18);
+  color: #8a5a30;
+  font-weight: 700;
+}
+body.home #page-container .home-about__chip {
+  top: 22px;
+  left: -22px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 !important;
+  padding: 8px 12px !important;
+  border-radius: 999px;
+  font-size: 12px !important;
+  line-height: 1 !important;
+  font-weight: 600;
+  white-space: nowrap;
+}
+body.home #page-container .home-about__chip-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #c59060;
+  box-shadow: 0 0 0 3px rgba(197, 144, 96, 0.22);
+}
 body.home #page-container .home-about__cols {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(2rem, 6vw, 6rem);
+  grid-template-columns: 1fr;
+  gap: 0.25rem;
   text-align: left;
 }
 body.home #page-container .home-about__lead p {
@@ -1723,11 +1811,17 @@ body.home #page-container .home-about__links a {
 }
 body.home #page-container .home-about__links a:hover { border-color: #c59060; }
 @media screen and (max-width: 767px) {
-  body.home #page-container .home-about__clips { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-  body.home #page-container .home-about__cols { grid-template-columns: 1fr; gap: 0.5rem; }
+  body.home #page-container .home-about__grid { grid-template-columns: 1fr; gap: 3.5rem; }
+  /* Room for the card and chip to sit past the edges without side-scrolling */
+  body.home #page-container .home-about__media { margin: 0 auto; width: calc(100% - 48px); max-width: 320px; }
+  body.home #page-container .home-about__roi { right: -22px; bottom: -26px; width: 196px; padding: 12px 14px 10px; }
+  body.home #page-container .home-about__roi-foot { font-size: 11.5px !important; }
+  body.home #page-container .home-about__roi-value { font-size: 24px !important; }
+  body.home #page-container .home-about__roi-spark { height: 32px; }
+  body.home #page-container .home-about__chip { left: -20px; top: 18px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  body.home #page-container .home-about__clip { transition: none; }
+  body.home #page-container .home-about__media.is-drawing .home-about__roi-line { animation: none; }
 }
 
 /* Short viewports: pull content up so the CTA clears the fold */
@@ -2021,13 +2115,17 @@ body.home #page-container .home-about__links a:hover { border-color: #c59060; }
 				<div class="et_pb_code_inner"><section class="home-hub home-about" aria-labelledby="home-about-heading">
 <p class="home-hub__eyebrow">About</p>
 <h2 class="home-hub__title home-about__title" id="home-about-heading">From a year unemployed<br> to <span class="home-about__accent">Director of Product Design</span></h2>
-<!-- Looping clips: placeholder footage until Design Table podcast clips are exported (swap each <source>) -->
-<div class="home-about__clips">
-<figure class="home-about__clip home-about__clip--1"><video muted loop playsinline preload="none" poster="/assets/images/prototype-ready/tyler-host.png" data-start="0" aria-hidden="true"><source src="/assets/video/prototype-ready/background-video-tyler.mp4" type="video/mp4"></video></figure>
-<figure class="home-about__clip home-about__clip--2"><video muted loop playsinline preload="none" poster="/assets/images/prototype-ready/tyler-host.png" data-start="4" aria-hidden="true"><source src="/assets/video/prototype-ready/background-video-tyler.mp4" type="video/mp4"></video></figure>
-<figure class="home-about__clip home-about__clip--3"><video muted loop playsinline preload="none" poster="/assets/images/prototype-ready/tyler-host.png" data-start="8" aria-hidden="true"><source src="/assets/video/prototype-ready/background-video-tyler.mp4" type="video/mp4"></video></figure>
-<figure class="home-about__clip home-about__clip--4"><video muted loop playsinline preload="none" poster="/assets/images/prototype-ready/tyler-host.png" data-start="12" aria-hidden="true"><source src="/assets/video/prototype-ready/background-video-tyler.mp4" type="video/mp4"></video></figure>
+<div class="home-about__grid">
+<figure class="home-about__media">
+<div class="home-about__frame"><video muted loop playsinline preload="none" poster="/assets/video/home/tyler-about-poster.jpg" width="720" height="900" aria-hidden="true"><source src="/assets/video/home/tyler-about.mp4" type="video/mp4"></video></div>
+<p class="home-about__chip"><span class="home-about__chip-dot" aria-hidden="true"></span>16 years in startups</p>
+<div class="home-about__roi" role="img" aria-label="Product built from zero: $1.1M ARR in year one, 50% of company revenue">
+<p class="home-about__roi-label">Built from zero</p>
+<p class="home-about__roi-value">$1.1M <span>ARR, year one</span></p>
+<svg class="home-about__roi-spark" viewBox="0 0 160 44" preserveAspectRatio="none" aria-hidden="true" focusable="false"><defs><linearGradient id="home-about-roi-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c59060" stop-opacity="0.35"/><stop offset="1" stop-color="#c59060" stop-opacity="0"/></linearGradient></defs><path class="home-about__roi-area" d="M0 40 C18 39 28 37 42 34 S66 30 80 25 S108 18 122 12 S146 5 160 3 L160 44 L0 44 Z" fill="url(#home-about-roi-fill)"/><path class="home-about__roi-line" d="M0 40 C18 39 28 37 42 34 S66 30 80 25 S108 18 122 12 S146 5 160 3" fill="none" stroke="#c59060" stroke-width="2" stroke-linecap="round" pathLength="1"/><circle cx="160" cy="3" r="3" fill="#c59060"/></svg>
+<p class="home-about__roi-foot"><b>50%</b> of company revenue</p>
 </div>
+</figure>
 <div class="home-about__cols">
 <div class="home-about__lead">
 <p>I started with no mentor and a senior designer who quit two months into my first job. Lead designer, then Director of UX, now Director of Product Design.</p>
@@ -2039,6 +2137,7 @@ body.home #page-container .home-about__links a:hover { border-color: #c59060; }
 <p>Then I built a product from zero that hit $1.1M ARR in year one and grew to 50% of company revenue. Then I got let go. Twice. In the same year.</p>
 <p>That is where the clarity came from. Craft gets you a paycheck. Business impact gets you a seat at the table. It became the Builder Kickoff™: turn a business problem into a decision the whole team agrees on, before anyone opens Figma.</p>
 <p class="home-about__links"><a href="/about/">Read my full story <span aria-hidden="true">&rarr;</span></a><a href="https://www.youtube.com/@designtablepodcast" target="_blank" rel="noopener">Watch the podcast <span aria-hidden="true">&rarr;</span></a></p>
+</div>
 </div>
 </div>
 </section></div>
@@ -2880,29 +2979,25 @@ document.addEventListener("click", function (e) {
 })();
 </script>
 <script id="home-about-clips-js">
-/* About section: play the looping clips only while on screen; each starts at its own offset.
-   Reduced motion: clips stay on their poster frame. */
+/* About section: the portrait clip plays (muted, looping) only while on screen and the
+   ROI sparkline draws in once. Reduced motion: poster frame only, no draw-in. */
 (function () {
-  var vids = [].slice.call(document.querySelectorAll('.home-about__clip video'));
-  if (!vids.length) return;
-  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  function start(v) {
-    if (!v.dataset.ready) {
-      v.dataset.ready = '1';
-      v.preload = 'auto';
-      v.addEventListener('loadedmetadata', function () {
-        var t = parseFloat(v.dataset.start || '0');
-        if (v.duration && t < v.duration) v.currentTime = t;
-      }, { once: true });
-      v.load();
-    }
-    var p = v.play(); if (p && p.catch) p.catch(function () {});
+  var fig = document.querySelector('.home-about__media');
+  if (!fig) return;
+  var v = fig.querySelector('video');
+  var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function show(on) {
+    if (on && !fig.classList.contains('is-drawing')) fig.classList.add('is-drawing');
+    if (still || !v) return;
+    if (on) {
+      if (!v.dataset.ready) { v.dataset.ready = '1'; v.preload = 'auto'; v.load(); }
+      var p = v.play(); if (p && p.catch) p.catch(function () {});
+    } else { v.pause(); }
   }
-  if (!('IntersectionObserver' in window)) { vids.forEach(start); return; }
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) { if (e.isIntersecting) start(e.target); else e.target.pause(); });
-  }, { rootMargin: '200px 0px' });
-  vids.forEach(function (v) { io.observe(v); });
+  if (!('IntersectionObserver' in window)) { show(true); return; }
+  new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { show(e.isIntersecting); });
+  }, { rootMargin: '200px 0px' }).observe(fig);
 })();
 </script>
 </body>
