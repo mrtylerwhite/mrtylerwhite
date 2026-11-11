@@ -1114,6 +1114,107 @@ body.home #page-container .case-work .et_pb_row_6 {
   display: none !important;
 }
 
+/* Enemy copy: in-text links to the PRD and ROI letters */
+body.home #page-container .home-hub__enemy-copy a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: rgba(197, 144, 96, 0.7);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+body.home #page-container .home-hub__enemy-copy a:hover { color: #f4f0ea; text-decoration-color: #c59060; }
+
+/* Proof: one real result quote, crawlable text */
+body.home #page-container .home-proof__quote {
+  max-width: 40rem;
+  margin: clamp(1.5rem, 3vw, 2.25rem) auto 0;
+  padding: 0;
+  text-align: center;
+}
+body.home #page-container .home-proof__quote blockquote { margin: 0; padding: 0; border: 0; }
+body.home #page-container .home-proof__quote blockquote p {
+  margin: 0 !important;
+  font-size: clamp(1.05rem, 1.5vw, 1.2rem) !important;
+  line-height: 1.5 !important;
+  color: #0a0a0a !important;
+  text-wrap: pretty;
+}
+body.home #page-container .home-proof__quote figcaption {
+  margin-top: 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #8a5a30;
+}
+
+/* From the letters: internal links to the PRD and ROI guides */
+body.home #page-container .home-letters { max-width: 1080px; margin: 0 auto; }
+body.home #page-container .home-letters__list {
+  list-style: none;
+  margin: clamp(1.5rem, 3vw, 2.5rem) 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+body.home #page-container .home-letters__list li { margin: 0; padding: 0; list-style: none; }
+body.home #page-container .home-letters__card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 18px 18px 16px;
+  border-radius: 14px;
+  background: #faf7f2;
+  border: 1px solid rgba(74, 52, 32, 0.12);
+  box-shadow: 0 10px 24px -18px rgba(74, 52, 32, 0.45);
+  color: #0a0a0a;
+  text-decoration: none;
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+body.home #page-container .home-letters__card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(197, 144, 96, 0.5);
+  box-shadow: 0 16px 30px -18px rgba(74, 52, 32, 0.55);
+}
+body.home #page-container .home-letters__kicker {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #8a5a30;
+}
+body.home #page-container .home-letters__title {
+  font-size: 1rem;
+  line-height: 1.35;
+  font-weight: 600;
+  text-wrap: pretty;
+}
+body.home #page-container .home-letters__go {
+  margin-top: auto;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: rgba(10, 10, 10, 0.6);
+}
+body.home #page-container .home-letters__all { margin: 1.5rem 0 0 !important; text-align: center; }
+body.home #page-container .home-letters__all a {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #0a0a0a;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(10, 10, 10, 0.3);
+  padding-bottom: 2px;
+}
+@media screen and (max-width: 980px) {
+  body.home #page-container .home-letters__list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media screen and (max-width: 520px) {
+  body.home #page-container .home-letters__list { grid-template-columns: 1fr; gap: 8px; }
+  body.home #page-container .home-letters__card { gap: 4px; padding: 12px 14px; }
+  body.home #page-container .home-letters__go { display: none; }
+}
+
 /* ── SECTION 08: Final close ────────────────────────────────────── */
 body.home #page-container .home-hub__title--close {
   color: #fff !important;
@@ -1897,8 +1998,8 @@ body.home #page-container .home-about__links a:hover { border-color: #c59060; }
 				
 				
 				
-				<div class="et_pb_text_inner"><h1><span class="home-hero__line">The ROI of design is</span> <span class="home-hero__line">products people love</span> <span class="home-hero__line">enough to <span class="home-hero__accent">keep paying for.</span></span></h1>
-<p class="home-hero__sub ds-reveal ds-reveal-d2">Designers who understand business will win the next decade. I help product designers think beyond the mockup, prototype the right thing, and explain why the work actually matters.</p></div>
+				<div class="et_pb_text_inner"><p class="ds-eyebrow ds-reveal">Tyler White · Director of Product Design</p><h1><span class="home-hero__line">The ROI of design is</span> <span class="home-hero__line">products people love</span> <span class="home-hero__line">enough to <span class="home-hero__accent">keep paying for.</span></span></h1>
+<p class="home-hero__sub ds-reveal ds-reveal-d2">I built a product from zero to $1.1M ARR in year one. Now I help product designers prove what their work is worth, so it gets noticed, funded and rewarded.</p></div>
 			</div><div class="et_pb_module et_pb_code et_pb_code_0  et_pb_text_align_left ds-reveal ds-reveal-d4">
 				
 				
@@ -1953,7 +2054,7 @@ body.home #page-container .home-about__links a:hover { border-color: #c59060; }
 				
 				
 				
-				<span class="et_pb_image_wrap "><img decoding="async" src="/wp-content/uploads/2020/04/social-proof1.svg" alt="Bloomberg Forbes Icon - Mr. Tyler White" title="Bloomberg Forbes Icon" class="wp-image-1395" /></span>
+				<span class="et_pb_image_wrap "><img decoding="async" src="/wp-content/uploads/2020/04/social-proof1.svg" alt="Bloomberg and Forbes" title="Bloomberg and Forbes" class="wp-image-1395" /></span>
 			</div>
 			</div><div class="et_pb_column et_pb_column_1_5 et_pb_column_4  et_pb_css_mix_blend_mode_passthrough">
 				
@@ -1965,7 +2066,7 @@ body.home #page-container .home-about__links a:hover { border-color: #c59060; }
 				
 				
 				
-				<span class="et_pb_image_wrap "><img decoding="async" src="/wp-content/uploads/2020/04/social-proof2.svg" alt="CBS News CrunchBase Icon - Mr. Tyler White" title="CBS News CrunchBase Icon " class="wp-image-1396" /></span>
+				<span class="et_pb_image_wrap "><img decoding="async" src="/wp-content/uploads/2020/04/social-proof2.svg" alt="CBS News and Crunchbase" title="CBS News and Crunchbase" class="wp-image-1396" /></span>
 			</div>
 			</div><div class="et_pb_column et_pb_column_1_5 et_pb_column_5  et_pb_css_mix_blend_mode_passthrough">
 				
@@ -1977,7 +2078,7 @@ body.home #page-container .home-about__links a:hover { border-color: #c59060; }
 				
 				
 				
-				<span class="et_pb_image_wrap "><img decoding="async" src="/wp-content/uploads/2020/04/social-proof3.svg" alt="Cision Venture Beat Icon - Mr. Tyler White" title="Cision Venture Beat Icon" class="wp-image-1397" /></span>
+				<span class="et_pb_image_wrap "><img decoding="async" src="/wp-content/uploads/2020/04/social-proof3.svg" alt="Cision and VentureBeat" title="Cision and VentureBeat" class="wp-image-1397" /></span>
 			</div>
 			</div><div class="et_pb_column et_pb_column_1_5 et_pb_column_6  et_pb_css_mix_blend_mode_passthrough">
 				
@@ -1989,7 +2090,7 @@ body.home #page-container .home-about__links a:hover { border-color: #c59060; }
 				
 				
 				
-				<span class="et_pb_image_wrap "><img decoding="async" src="/wp-content/uploads/2020/04/social-proof4.svg" alt="TechCrunch Icon - Mr. Tyler White" title="TechCrunch Icon" class="wp-image-1398" /></span>
+				<span class="et_pb_image_wrap "><img decoding="async" src="/wp-content/uploads/2020/04/social-proof4.svg" alt="TechCrunch and Financial Post" title="TechCrunch and Financial Post" class="wp-image-1398" /></span>
 			</div>
 			</div><div class="et_pb_column et_pb_column_1_5 et_pb_column_7  et_pb_css_mix_blend_mode_passthrough et-last-child">
 				
@@ -2001,7 +2102,7 @@ body.home #page-container .home-about__links a:hover { border-color: #c59060; }
 				
 				
 				
-				<span class="et_pb_image_wrap "><img decoding="async" src="/wp-content/uploads/2020/04/social-proof5.svg" alt=" Betakit abc News Icon " title="Betakit abc News Icon" class="wp-image-1399" /></span>
+				<span class="et_pb_image_wrap "><img decoding="async" src="/wp-content/uploads/2020/04/social-proof5.svg" alt="Betakit and ABC News" title="Betakit and ABC News" class="wp-image-1399" /></span>
 			</div>
 			</div>
 				
@@ -2018,7 +2119,7 @@ body.home #page-container .home-about__links a:hover { border-color: #c59060; }
 				<div class="et_pb_code_inner"><div class="home-v3-band__inner home-hub home-hub--enemy">
 <p class="home-hub__eyebrow home-hub__eyebrow--dark">The enemy</p>
 <h2 class="home-hub__title home-hub__title--cinematic" id="home-enemy-heading">Most design work dies between <span class="home-hub__accent">&#8220;looks good&#8221;</span> and &#8220;why the hell should anyone care?&#8221;</h2>
-<p class="home-hub__enemy-copy">The feature shipped, but nobody used it. The prototype looked cool, but answered nothing. The case study looked polished, but proved nothing. I help product designers close that gap: scope the right problem, write the PRD, and build the business case for the ROI of design. Here is what designers say.</p>
+<p class="home-hub__enemy-copy">The feature shipped, but nobody used it. The prototype looked cool, but answered nothing. The case study looked polished, but proved nothing. I help product designers close that gap: scope the right problem, write <a href="/letters/what-is-a-prd/">the PRD</a>, and build the business case for <a href="/letters/roi-of-design/">the ROI of design</a>. Here is what designers say.</p>
 </div>
 <div class="home-v3-band__testimonials et_pb_code_1" data-senja-dark aria-label="What designers say"><script src="https://widget.senja.io/widget/0ea8a66c-4cbc-4b54-ab14-37f19e4353ee/platform.js" type="text/javascript" async></script>
 <div class="senja-embed" data-id="0ea8a66c-4cbc-4b54-ab14-37f19e4353ee" data-mode="shadow" data-lazyload="false" style="display: block; width: 100%;"></div></div></div>
@@ -2047,7 +2148,7 @@ body.home #page-container .home-about__links a:hover { border-color: #c59060; }
 <div class="home-vps">
 <div class="home-vps__intro">
 <p class="home-hub__eyebrow">The method</p>
-<h2 class="home-hub__title" id="home-method-heading">The Value Proof System</h2>
+<h2 class="home-hub__title" id="home-method-heading">The Value Proof System: how to prove design ROI</h2>
 <p class="home-hub__lead">Before the case study, before the workshop, before the polished deck, the work has to prove something.</p>
 </div>
 <div class="home-vps__lockup">
@@ -2108,46 +2209,6 @@ body.home #page-container .home-about__links a:hover { border-color: #c59060; }
 			</div>
 			</div>
 			</div>
-			</div><div class="et_pb_section home-hub-section home-hub-section--cream home-about-section et_section_regular" >
-				<div class="et_pb_row">
-				<div class="et_pb_column et_pb_column_4_4 et_pb_css_mix_blend_mode_passthrough et-last-child">
-				<div class="et_pb_module et_pb_code">
-				<div class="et_pb_code_inner"><section class="home-hub home-about" aria-labelledby="home-about-heading">
-<p class="home-hub__eyebrow">About</p>
-<h2 class="home-hub__title home-about__title" id="home-about-heading">From a year unemployed<br> to <span class="home-about__accent">Director of Product Design</span></h2>
-<div class="home-about__grid">
-<figure class="home-about__media">
-<div class="home-about__frame"><video muted loop playsinline preload="none" poster="/assets/video/home/tyler-about-poster.jpg" width="720" height="900" aria-hidden="true"><source src="/assets/video/home/tyler-about.mp4" type="video/mp4"></video></div>
-<p class="home-about__chip"><span class="home-about__chip-dot" aria-hidden="true"></span>16 years in startups</p>
-<div class="home-about__roi" role="img" aria-label="Product built from zero: $1.1M ARR in year one, 50% of company revenue">
-<p class="home-about__roi-label">Built from zero</p>
-<p class="home-about__roi-value">$1.1M <span>ARR, year one</span></p>
-<svg class="home-about__roi-spark" viewBox="0 0 160 44" preserveAspectRatio="none" aria-hidden="true" focusable="false"><defs><linearGradient id="home-about-roi-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c59060" stop-opacity="0.35"/><stop offset="1" stop-color="#c59060" stop-opacity="0"/></linearGradient></defs><path class="home-about__roi-area" d="M0 40 C18 39 28 37 42 34 S66 30 80 25 S108 18 122 12 S146 5 160 3 L160 44 L0 44 Z" fill="url(#home-about-roi-fill)"/><path class="home-about__roi-line" d="M0 40 C18 39 28 37 42 34 S66 30 80 25 S108 18 122 12 S146 5 160 3" fill="none" stroke="#c59060" stroke-width="2" stroke-linecap="round" pathLength="1"/><circle cx="160" cy="3" r="3" fill="#c59060"/></svg>
-<p class="home-about__roi-foot"><b>50%</b> of company revenue</p>
-</div>
-</figure>
-<div class="home-about__cols">
-<div class="home-about__lead">
-<p>I started with no mentor and a senior designer who quit two months into my first job. Lead designer, then Director of UX, now Director of Product Design.</p>
-<p>16 years in startups. Based in Montreal.</p>
-<p>Every week I co-host The Design Table Podcast with Nick Groeneveld.</p>
-</div>
-<div class="home-about__body">
-<p>For most of my career I obsessed over craft: perfect dashboards, pixel-perfect login screens. Nobody told me it all had to tie back to revenue, retention and efficiency.</p>
-<p>Then I built a product from zero that hit $1.1M ARR in year one and grew to 50% of company revenue. Then I got let go. Twice. In the same year.</p>
-<p>That is where the clarity came from. Craft gets you a paycheck. Business impact gets you a seat at the table. It became the Builder Kickoff™: turn a business problem into a decision the whole team agrees on, before anyone opens Figma.</p>
-<p class="home-about__links"><a href="/about/">Read my full story <span aria-hidden="true">&rarr;</span></a><a href="https://www.youtube.com/@designtablepodcast" target="_blank" rel="noopener">Watch the podcast <span aria-hidden="true">&rarr;</span></a></p>
-</div>
-</div>
-</div>
-</section></div>
-			</div>
-			</div>
-				
-				
-				
-				
-			</div>
 			</div><div class="et_pb_section et_pb_section_2 case-work et_section_regular et_section_transparent" >
 				
 				
@@ -2159,8 +2220,9 @@ body.home #page-container .home-about__links a:hover { border-color: #c59060; }
 				<div class="et_pb_column et_pb_column_4_4 et_pb_css_mix_blend_mode_passthrough et-last-child">
 				<div class="et_pb_module et_pb_code">
 				<div class="et_pb_code_inner"><div class="home-hub home-hub--proof-intro">
-<h2 class="home-hub__title home-hub__title--proof" id="home-proof-heading">Proof from the actual work.</h2>
+<h2 class="home-hub__title home-hub__title--proof" id="home-proof-heading">Design ROI case studies from real work.</h2>
 <p class="home-hub__lead">Real product work. Real constraints. Real outcomes. No pretend redesigns for a coffee app that already has 900 versions on Dribbble.</p>
+<figure class="home-proof__quote"><blockquote><p>&#8220;Tyler personally walked me through his ROI of design content over 4 weeks. After helping me rebrand, I was able to refine my portfolio and onboarded 2 new clients that month!&#8221;</p></blockquote><figcaption>Laila Albuquerque</figcaption></figure>
 </div></div>
 			</div>
 			</div>
@@ -2218,35 +2280,6 @@ body.home #page-container .home-about__links a:hover { border-color: #c59060; }
 				
 				
 				
-			</div><div class="et_pb_row et_pb_row_6 card-side-by-side card-side-by-side3 et_pb_equal_columns et_pb_gutters2">
-				<div class="et_pb_column et_pb_column_1_2 et_pb_column_13 et_animated et_clickable  et_pb_css_mix_blend_mode_passthrough" data-lazy-bg="/wp-content/uploads/2024/08/verify.webp">
-				
-				
-				<span class="et_pb_background_pattern"></span>
-				<span class="et_pb_background_mask"></span>
-				<div class="et_pb_module et_pb_text et_pb_text_5 et_clickable  et_pb_text_align_left et_pb_bg_layout_light">
-				
-				
-				
-				
-				<div class="et_pb_text_inner"><p class="ds-eyebrow">Automating quality control</p>
-<h4>Reducing document review from days to minutes, and helping GlobalVision reach $1M ARR in year one</h4>
-<p><a class="ds-btn-secondary cta_secondary text-button brand-link" href="/casestudies/the-innovation-of-verify/">View Case Study</a></p></div>
-			</div>
-			</div><div class="et_pb_column et_pb_column_1_2 et_pb_column_14 et_animated et_clickable  et_pb_css_mix_blend_mode_passthrough et-last-child" data-lazy-bg="/wp-content/uploads/2024/08/Frame-5748-1.webp?v=2">
-				
-				
-				<span class="et_pb_background_pattern"></span>
-				<span class="et_pb_background_mask"></span>
-				<div class="et_pb_module et_pb_text et_pb_text_6 et_clickable  et_pb_text_align_left et_pb_bg_layout_light">
-				
-				
-				
-				
-				<div class="et_pb_text_inner"><p class="ds-eyebrow">Accelerating client delivery</p>
-<h4>Reducing client project timelines from months to weeks</h4>
-<p><a class="ds-btn-secondary cta_secondary text-button brand-link" href="/casestudies/kepler-pipeline-builder/">View Case Study</a></p></div>
-			</div>
 			</div><div class="et_pb_row et_pb_row_hub_cases_cta">
 				<div class="et_pb_column et_pb_column_4_4 et_pb_css_mix_blend_mode_passthrough et-last-child">
 				<div class="et_pb_module et_pb_code">
@@ -2261,16 +2294,72 @@ body.home #page-container .home-about__links a:hover { border-color: #c59060; }
 			</div>
 				
 				
+			</div><div class="et_pb_section home-hub-section home-hub-section--cream home-about-section et_section_regular" >
+				<div class="et_pb_row">
+				<div class="et_pb_column et_pb_column_4_4 et_pb_css_mix_blend_mode_passthrough et-last-child">
+				<div class="et_pb_module et_pb_code">
+				<div class="et_pb_code_inner"><section class="home-hub home-about" aria-labelledby="home-about-heading">
+<p class="home-hub__eyebrow">About Tyler White</p>
+<h2 class="home-hub__title home-about__title" id="home-about-heading">From no mentor<br> to <span class="home-about__accent">Director of Product Design</span></h2>
+<div class="home-about__grid">
+<figure class="home-about__media">
+<div class="home-about__frame"><video muted loop playsinline preload="none" poster="/assets/video/home/tyler-about-poster.jpg" width="720" height="900" aria-hidden="true"><source src="/assets/video/home/tyler-about.mp4" type="video/mp4"></video></div>
+<p class="home-about__chip"><span class="home-about__chip-dot" aria-hidden="true"></span>16 years in startups</p>
+<div class="home-about__roi" role="img" aria-label="Product built from zero: $1.1M ARR in year one, 50% of company revenue">
+<p class="home-about__roi-label">Built from zero</p>
+<p class="home-about__roi-value">$1.1M <span>ARR, year one</span></p>
+<svg class="home-about__roi-spark" viewBox="0 0 160 44" preserveAspectRatio="none" aria-hidden="true" focusable="false"><defs><linearGradient id="home-about-roi-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c59060" stop-opacity="0.35"/><stop offset="1" stop-color="#c59060" stop-opacity="0"/></linearGradient></defs><path class="home-about__roi-area" d="M0 40 C18 39 28 37 42 34 S66 30 80 25 S108 18 122 12 S146 5 160 3 L160 44 L0 44 Z" fill="url(#home-about-roi-fill)"/><path class="home-about__roi-line" d="M0 40 C18 39 28 37 42 34 S66 30 80 25 S108 18 122 12 S146 5 160 3" fill="none" stroke="#c59060" stroke-width="2" stroke-linecap="round" pathLength="1"/><circle cx="160" cy="3" r="3" fill="#c59060"/></svg>
+<p class="home-about__roi-foot"><b>50%</b> of company revenue</p>
+</div>
+</figure>
+<div class="home-about__cols">
+<div class="home-about__lead">
+<p>Lead designer while the user base grew from 1M to 3.2M. Director of UX on a product I built from zero to $1.1M ARR in year one, which grew to 50% of company revenue. Now Director of Product Design.</p>
+<p>16 years in startups. Based in Montreal. Every week I co-host The Design Table Podcast with Nick Groeneveld.</p>
+</div>
+<div class="home-about__body">
+<p>I started with no mentor and a senior designer who quit two months into my first job. For most of my career I obsessed over craft: perfect dashboards, pixel-perfect login screens. Nobody told me it all had to tie back to revenue, retention and efficiency.</p>
+<p>I also got let go twice in the same year. That part taught me the most. Craft gets you a paycheck. Business impact you can explain gets you a seat at the table. It became the Builder Kickoff™: turn a business problem into a decision the whole team agrees on, before anyone opens Figma.</p>
+<p class="home-about__links"><a href="/about/">Read my full story <span aria-hidden="true">&rarr;</span></a><a href="https://www.youtube.com/@designtablepodcast" target="_blank" rel="noopener">Watch the podcast <span aria-hidden="true">&rarr;</span></a></p>
+</div>
+</div>
+</div>
+</section></div>
+			</div>
+			</div>
+				
+				
+				
+				
+			</div>
+			</div><div class="et_pb_section home-hub-section home-hub-section--warm home-letters-section et_section_regular" >
+				<div class="et_pb_row">
+				<div class="et_pb_column et_pb_column_4_4 et_pb_css_mix_blend_mode_passthrough et-last-child">
+				<div class="et_pb_module et_pb_code">
+				<div class="et_pb_code_inner"><section class="home-hub home-letters" aria-labelledby="home-letters-heading">
+<p class="home-hub__eyebrow">From the letters</p>
+<h2 class="home-hub__title" id="home-letters-heading">Free guides on PRDs and the ROI of design</h2>
+<ul class="home-letters__list">
+<li><a class="home-letters__card" href="/letters/roi-of-design/"><span class="home-letters__kicker">ROI of design</span><span class="home-letters__title">How to calculate the ROI of design for one feature</span><span class="home-letters__go" aria-hidden="true">Read &rarr;</span></a></li>
+<li><a class="home-letters__card" href="/letters/what-is-a-prd/"><span class="home-letters__kicker">PRDs</span><span class="home-letters__title">What is a PRD? The doc that decides what gets built</span><span class="home-letters__go" aria-hidden="true">Read &rarr;</span></a></li>
+<li><a class="home-letters__card" href="/letters/prd-template/"><span class="home-letters__kicker">Template</span><span class="home-letters__title">The PRD template I actually use</span><span class="home-letters__go" aria-hidden="true">Read &rarr;</span></a></li>
+<li><a class="home-letters__card" href="/letters/prd-vs-brd/"><span class="home-letters__kicker">PRDs</span><span class="home-letters__title">PRD vs BRD: which one you actually need</span><span class="home-letters__go" aria-hidden="true">Read &rarr;</span></a></li>
+</ul>
+<p class="home-letters__all"><a href="/letters/">All letters <span aria-hidden="true">&rarr;</span></a></p>
+</section></div>
+			</div>
+			</div>
+			</div>
 			</div><div class="et_pb_section home-v3-band home-v3-band--close et_section_regular" data-nav-theme="dark">
 				<div class="et_pb_row">
 				<div class="et_pb_column et_pb_column_4_4 et_pb_css_mix_blend_mode_passthrough et-last-child">
 				<div class="et_pb_module et_pb_code">
 				<div class="et_pb_code_inner"><div class="home-v3-band__inner home-v3-band__inner--center home-hub home-hub--close">
 <h2 class="home-hub__title home-hub__title--close" id="home-close-heading">Ready to make your work harder to ignore?</h2>
-<p class="home-hub__close-copy">Start with the free case study. Get the course when you are ready to prototype the proof.</p>
+<p class="home-hub__close-copy">Start with the free case study. When you're ready to run the decision meeting yourself, Builder Kickoff™ is 7 short video lessons (about 20 minutes) plus the facilitation deck, FigJam template, Notion kit and the Claude skill that turns your kickoff transcript into a PRD.</p>
 <div class="home-close__actions">
 <a class="home-close__btn home-close__btn--primary" href="https://www.mrtylerwhite.com/roi-case-study-template/">Get the free kit</a>
-<a class="home-close__btn home-close__btn--ghost" href="https://mrtylerwhite.kit.com/products/builder-kickoff-course?step=checkout" target="_blank" rel="noopener noreferrer">Get the course · $97</a>
+<a class="home-close__btn home-close__btn--ghost" href="https://mrtylerwhite.kit.com/products/builder-kickoff-course?step=checkout" target="_blank" rel="noopener noreferrer">Get Builder Kickoff™ · $97</a>
 </div>
 </div></div>
 			</div>
