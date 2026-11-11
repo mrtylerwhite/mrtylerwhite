@@ -686,6 +686,17 @@ body.home #page-container .home-v3-band__testimonials {
 }
 
 /* ── SECTION 03: Enemy centered lockup ──────────────────────────── */
+/* Desktop: let the enemy headline run wider than the 680px copy column (3 lines, not 4) */
+@media screen and (min-width: 981px) {
+  body.home #page-container .home-hub--enemy #home-enemy-heading {
+    --enemy-w: min(calc(100vw - 6rem), 14.3em); /* ~860px at 60px type: 3 lines */
+    width: var(--enemy-w);
+    max-width: none !important;
+    margin-left: calc((100% - var(--enemy-w)) / 2) !important;
+    margin-right: calc((100% - var(--enemy-w)) / 2) !important;
+    text-wrap: balance;
+  }
+}
 body.home #page-container .home-hub--enemy {
   text-align: center;
 }
@@ -1394,7 +1405,7 @@ body.home #page-container #main-content .hero-cntn .et_pb_text_0 h1 {
   color: #faf7f2 !important;
   /* Line breaks are set in the markup (middle line narrowest); 100% keeps it inside the nav width (hero row = 90% / 1080px, same as the menu) */
   max-width: 100%;
-  margin: 0 auto clamp(1rem, 3vh, 2.5rem) !important;
+  margin: 50px auto clamp(1rem, 3vh, 2.5rem) !important;
   transform-origin: 50% 40%;
   animation: home-hero-land 1.3s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
@@ -1404,9 +1415,47 @@ body.home #page-container #main-content .hero-cntn .et_pb_text_0 h1 {
   100% { transform: scale(1); opacity: 1; }
 }
 
-/* Brand copper on the payoff phrase */
+/* Each H1 line is its own layer: upper lines sit in front and cast a soft
+   shadow onto the tops of the letters below (gradient clipped to the glyphs). */
+body.home #page-container #main-content .hero-cntn .et_pb_text_0 h1 .home-hero__line {
+  display: block;
+  position: relative;
+  font: inherit !important;
+  letter-spacing: inherit !important;
+  text-transform: inherit !important;
+  line-height: inherit !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  color: #faf7f2;
+}
+body.home #page-container #main-content .hero-cntn .et_pb_text_0 h1 .home-hero__line:nth-child(1) { z-index: 3; }
+body.home #page-container #main-content .hero-cntn .et_pb_text_0 h1 .home-hero__line:nth-child(2) { z-index: 2; }
+body.home #page-container #main-content .hero-cntn .et_pb_text_0 h1 .home-hero__line:nth-child(3) { z-index: 1; }
+body.home #page-container #main-content .hero-cntn .et_pb_text_0 h1 .home-hero__line + .home-hero__line {
+  background: linear-gradient(180deg,
+    #8a847e 0%,
+    #b9b3ac 12%,
+    #e2dcd4 24%,
+    #faf7f2 36%,
+    #faf7f2 100%);
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Brand copper on the payoff phrase, with the same cast shadow */
 body.home #page-container #main-content .hero-cntn .et_pb_text_0 h1 .home-hero__accent {
   color: #c59060 !important;
+  background: linear-gradient(180deg,
+    #6e4c2e 0%,
+    #966b45 12%,
+    #b6845a 24%,
+    #c59060 36%,
+    #c59060 100%);
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
   display: inline !important;
   font: inherit !important;
   letter-spacing: inherit !important;
@@ -1642,7 +1691,7 @@ body.home .hero-cntn .home-hero__tip-foot b {
 				
 				
 				
-				<div class="et_pb_text_inner"><h1>The ROI of design is<br class="home-hero__br"> products people love<br class="home-hero__br"> enough to <span class="home-hero__accent">keep paying for.</span></h1>
+				<div class="et_pb_text_inner"><h1><span class="home-hero__line">The ROI of design is</span> <span class="home-hero__line">products people love</span> <span class="home-hero__line">enough to <span class="home-hero__accent">keep paying for.</span></span></h1>
 <p class="home-hero__sub ds-reveal ds-reveal-d2">Designers who understand business will win the next decade. I help product designers think beyond the mockup, prototype the right thing, and explain why the work actually matters.</p></div>
 			</div><div class="et_pb_module et_pb_code et_pb_code_0  et_pb_text_align_left ds-reveal ds-reveal-d4">
 				
@@ -1763,8 +1812,7 @@ body.home .hero-cntn .home-hero__tip-foot b {
 				<div class="et_pb_code_inner"><div class="home-v3-band__inner home-hub home-hub--enemy">
 <p class="home-hub__eyebrow home-hub__eyebrow--dark">The enemy</p>
 <h2 class="home-hub__title home-hub__title--cinematic" id="home-enemy-heading">Most design work dies between <span class="home-hub__accent">&#8220;looks good&#8221;</span> and &#8220;why the hell should anyone care?&#8221;</h2>
-<p class="home-hub__enemy-copy">The feature shipped, but nobody used it. The prototype looked cool, but did not answer the question. The case study looked polished, but said nothing useful. Everyone liked the work, and somehow the team still had no clue what to build next.</p>
-<p class="home-hub__enemy-close">That is the gap I help designers close.</p>
+<p class="home-hub__enemy-copy">The feature shipped, but nobody used it. The prototype looked cool, but answered nothing. The case study looked polished, but proved nothing. I help product designers close that gap: scope the right problem, write the PRD, and build the business case for the ROI of design. Here is what designers say.</p>
 </div>
 <div class="home-v3-band__testimonials et_pb_code_1" data-senja-dark aria-label="What designers say"><script src="https://widget.senja.io/widget/0ea8a66c-4cbc-4b54-ab14-37f19e4353ee/platform.js" type="text/javascript" async></script>
 <div class="senja-embed" data-id="0ea8a66c-4cbc-4b54-ab14-37f19e4353ee" data-mode="shadow" data-lazyload="false" style="display: block; width: 100%;"></div></div></div>
