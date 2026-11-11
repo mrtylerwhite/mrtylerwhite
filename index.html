@@ -63,8 +63,6 @@ body.custom-background { background-color: #f9f9fe; }
 
 
 <link rel="preload" href="/assets/fonts/inter/InterVariable.woff2" as="font" type="font/woff2" crossorigin />
-<link rel="preload" as="image" href="/wp-content/uploads/2026/07/home-hero.webp" type="image/webp" media="(min-width: 981px)" fetchpriority="high" />
-<link rel="preload" as="image" href="/wp-content/uploads/2026/07/home-hero-1200.webp" type="image/webp" media="(max-width: 980px)" fetchpriority="high" />
 <link rel="stylesheet" href="/assets/css/dist/home-deferred.css?v=f5e6be48" media="print" onload="this.media='all'" />
 <noscript><link rel="stylesheet" href="/assets/css/dist/home-deferred.css?v=f5e6be48" /></noscript>
 <style id="home-no-divi-animation">body.home .et_animated{opacity:1 !important;animation:none !important}</style>
@@ -113,6 +111,7 @@ body.home #page-container .hero-cntn .et_pb_text_0 h1 {
   margin-bottom: 0 !important;
   color: #faf7f2 !important;
   text-wrap: balance;
+  text-align: center !important;
 }
 
 @media screen and (max-width: 980px) {
@@ -145,7 +144,7 @@ body.home #page-container .et_pb_text_8 .notion-sub_header-block {
 </style>
 <style id="home-hero-background-inline">
 /*
-  Homepage hero: dark wash over full-bleed portrait (subject right, copy left).
+  Homepage hero: dark wash over full-bleed looping video (photo fallback), copy centered.
 */
 
 .hero-cntn.et_pb_section_0 {
@@ -183,12 +182,11 @@ body.home #page-container .et_pb_text_8 .notion-sub_header-block {
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  background: linear-gradient(
-    90deg,
-    rgba(6, 5, 4, 0.92) 0%,
-    rgba(6, 5, 4, 0.78) 34%,
-    rgba(6, 5, 4, 0.28) 58%,
-    rgba(6, 5, 4, 0.08) 100%
+  background: radial-gradient(
+    ellipse at center,
+    rgba(6, 5, 4, 0.82) 0%,
+    rgba(6, 5, 4, 0.68) 55%,
+    rgba(6, 5, 4, 0.5) 100%
   );
 }
 
@@ -231,22 +229,22 @@ body.home #page-container .hero-cntn.et_pb_section_0 > .et_pb_row_0.et_pb_row {
 body.home #page-container .hero-cntn .et_pb_column_0 {
   float: none !important;
   width: 100% !important;
-  max-width: 36rem !important;
-  margin-left: 0 !important;
+  max-width: 44rem !important;
+  margin-left: auto !important;
   margin-right: auto !important;
 }
 
 body.home #page-container .hero-cntn .et_pb_text_0.et_pb_module,
 body.home #page-container .hero-cntn .et_pb_code_0.et_pb_module {
-  margin-left: 0 !important;
-  margin-right: 0 !important;
-  text-align: left !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
 }
 
 body.home #page-container .hero-cntn .et_pb_text_0,
 body.home #page-container .hero-cntn .et_pb_text_0 .et_pb_text_inner,
 body.home #page-container .hero-cntn .et_pb_code_0 .et_pb_code_inner {
-  text-align: left !important;
+  text-align: center !important;
 }
 
 .hero-cntn.et_pb_section_0 > .et_pb_row {
@@ -1365,6 +1363,223 @@ body.home #page-container #cta_builder_kickoff:active {
 }
 </style>
 <!-- /partial:head -->
+<style id="home-hero-editorial">
+/*
+  Homepage hero, editorial pass: dark field, giant condensed H1,
+  light type, copper accents. H1 lands from oversized to final size,
+  then the rest of the copy rises in.
+*/
+body.home #page-container .hero-cntn.et_pb_section_0 {
+  background: #0c0b0a !important;
+  color: #faf7f2;
+  min-height: 0 !important;
+}
+body.home #page-container .hero-cntn.et_pb_section_0::after { display: none !important; }
+
+body.home #page-container .hero-cntn .et_pb_column_0 {
+  max-width: none !important;
+}
+
+/* Eyebrow keeps the site's standard style; just spacing */
+body.home #page-container .hero-cntn .et_pb_text_0 .ds-eyebrow {
+  margin: 0 0 clamp(1rem, 2.5vh, 2rem) !important;
+}
+
+/* Giant condensed H1 (#main-content matches the global h1 rule's specificity) */
+body.home #page-container #main-content .hero-cntn .et_pb_text_0 h1 {
+  font-size: max(2.25rem, min(calc(min(90vw, 1080px) / 9.7), calc((100svh - 27rem) / 2.9), 7.5rem)) !important;
+  text-wrap: wrap !important;
+  line-height: 0.85 !important;
+  letter-spacing: -0.035em !important;
+  color: #faf7f2 !important;
+  /* Line breaks are set in the markup (middle line narrowest); 100% keeps it inside the nav width (hero row = 90% / 1080px, same as the menu) */
+  max-width: 100%;
+  margin: 0 auto clamp(1rem, 3vh, 2.5rem) !important;
+  transform-origin: 50% 40%;
+  animation: home-hero-land 1.3s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes home-hero-land {
+  0%   { transform: scale(1.55); opacity: 0; }
+  12%  { opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Brand copper on the payoff phrase */
+body.home #page-container #main-content .hero-cntn .et_pb_text_0 h1 .home-hero__accent {
+  color: #c59060 !important;
+  display: inline !important;
+  font: inherit !important;
+  letter-spacing: inherit !important;
+  text-transform: inherit !important;
+  line-height: inherit !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Subtitle (merged with the old punch line) */
+body.home #page-container .hero-cntn .et_pb_text_0 p.home-hero__sub {
+  max-width: 40rem;
+  margin: 0 auto !important;
+  font-size: clamp(1.05rem, 1.4vw, 1.25rem) !important;
+  line-height: 1.5 !important;
+  color: rgba(244, 240, 234, 0.78) !important;
+}
+
+/* Copy and CTA rise in after the H1 lands */
+body.home #page-container .hero-cntn .ds-eyebrow.ds-reveal { transition-delay: 900ms; }
+body.home #page-container .hero-cntn .home-hero__sub.ds-reveal { transition-delay: 1050ms; }
+body.home #page-container .hero-cntn .et_pb_code_0.ds-reveal { transition-delay: 1200ms; }
+
+/* CTA: light pill on dark (inside the copper ring) */
+body.home #page-container #cta_case_studies {
+  background: #faf7f2 !important;
+  color: #0a0a0a !important;
+}
+body.home #page-container #cta_case_studies:hover,
+body.home #page-container #cta_case_studies:active {
+  background: #ffffff !important;
+  color: #0a0a0a !important;
+}
+body.home #page-container .hero-cntn .home-hero__cta-note {
+  color: rgba(244, 240, 234, 0.6) !important;
+}
+
+/* Featured-in label + logos on dark */
+body.home #page-container .hero-cntn .et_pb_text_1,
+body.home #page-container .hero-cntn .et_pb_text_1 .et_pb_text_inner,
+body.home #page-container .hero-cntn .et_pb_text_1 sup {
+  color: rgba(244, 240, 234, 0.5) !important;
+}
+body.home #page-container .hero-cntn .et_pb_row_2.social-proof img,
+body.home #page-container .hero-cntn .et_pb_row_2.social-proof .et_pb_image img {
+  filter: brightness(0) invert(1) !important;
+  opacity: 0.85;
+}
+
+@media screen and (max-width: 767px) {
+  body.home #page-container #main-content .hero-cntn .et_pb_text_0 h1 {
+    font-size: max(2rem, min(calc((100vw - 2.25rem) / 9.7), calc((100svh - 30rem) / 2.9), 3.6rem)) !important;
+    margin-left: -1.5rem !important;
+    margin-right: -1.5rem !important;
+    max-width: none;
+  }
+}
+
+/* Interactive ROI background behind the hero copy. data-variant on the canvas: "bars" (#home-hero-bars-js), "chart" (#home-hero-chart-js) or "reveal" (#home-hero-reveal-js) */
+body.home #page-container .hero-cntn .home-hero__bars {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none;
+  /* Quieter behind the copy, full strength toward the edges */
+  -webkit-mask-image: radial-gradient(ellipse 60% 55% at 50% 45%, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.6) 55%, #000 100%);
+          mask-image: radial-gradient(ellipse 60% 55% at 50% 45%, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.6) 55%, #000 100%);
+}
+
+/* Push the chart back from the copy: lower overall opacity, plus a deep,
+   gradual halo in the hero colour behind the copy and the logo row. */
+body.home #page-container .hero-cntn .home-hero__bars { opacity: 0.6; }
+body.home #page-container .hero-cntn .et_pb_row_0::before,
+body.home #page-container .hero-cntn .et_pb_row_2::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(closest-side,
+    rgba(12, 11, 10, 0.92) 0%,
+    rgba(12, 11, 10, 0.8) 35%,
+    rgba(12, 11, 10, 0.5) 62%,
+    rgba(12, 11, 10, 0.2) 82%,
+    rgba(12, 11, 10, 0) 100%);
+}
+body.home #page-container .hero-cntn .et_pb_row_0::before {
+  inset: 4% -12% -6% -12%;
+}
+body.home #page-container .hero-cntn .et_pb_row_2::before {
+  inset: -30% -6% -10% -6%;
+}
+
+/* Chart tooltip card (variant "chart") */
+body.home .hero-cntn .home-hero__tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  min-width: 176px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: rgba(22, 20, 18, 0.78);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08), 0 12px 32px -8px rgba(0, 0, 0, 0.6);
+  font-family: var(--ds-font-body);
+  font-size: 12px;
+  line-height: 1.2;
+  color: #faf7f2;
+  pointer-events: none;
+  opacity: 0;
+  filter: blur(2px);
+  transition: opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1), filter 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, opacity;
+}
+body.home .hero-cntn .home-hero__tip.is-on { opacity: 1; filter: none; }
+body.home .hero-cntn .home-hero__tip-head,
+body.home .hero-cntn .home-hero__tip-foot {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--ds-font-mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(244, 240, 234, 0.5);
+}
+body.home .hero-cntn .home-hero__tip-head { margin-bottom: 8px; }
+body.home .hero-cntn .home-hero__tip-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 3px 0;
+}
+body.home .hero-cntn .home-hero__tip-row span { flex: 1; color: rgba(244, 240, 234, 0.72); }
+body.home .hero-cntn .home-hero__tip b {
+  font-family: var(--ds-font-mono);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+body.home .hero-cntn .home-hero__tip-row i {
+  width: 12px;
+  height: 0;
+  border-top: 2px solid #c59060;
+}
+body.home .hero-cntn .home-hero__tip-row i.is-base { border-top: 1.5px dashed rgba(244, 240, 234, 0.5); }
+body.home .hero-cntn .home-hero__tip-foot {
+  align-items: center;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+body.home .hero-cntn .home-hero__tip-foot b {
+  padding: 2px 6px;
+  border-radius: 999px;
+  background: rgba(197, 144, 96, 0.2);
+  color: #e3b588;
+  letter-spacing: 0;
+}
+
+/* Short viewports: pull content up so the CTA clears the fold */
+@media screen and (min-width: 768px) and (max-height: 820px) {
+  body.home #page-container .hero-cntn .et_pb_row_0.et_pb_row {
+    padding-top: 112px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.home #page-container .hero-cntn .et_pb_text_0 h1 { animation: none; }
+}
+</style>
 </head>
 <body data-rsssl=1 class="home wp-singular page-template-default page page-id-42 custom-background wp-theme-Divi et_divi_100_custom_hamburger_menu et_divi_100_custom_hamburger_menu--style-2 et_divi_100_custom_hamburger_menu--type-1 et_button_no_icon et_button_custom_icon et_pb_button_helper_class et_fixed_nav et_show_nav et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_header_style_left et_pb_svg_logo et_pb_footer_columns4 et_cover_background et_pb_gutter osx et_pb_gutters3 et_pb_pagebuilder_layout et_no_sidebar et_divi_theme et-db">
 	<div id="page-container">
@@ -1415,11 +1630,7 @@ body.home #page-container #cta_builder_kickoff:active {
 					<div class="et-l et-l--post">
 			<div class="et_builder_inner_content et_pb_gutters3">
 		<div class="et_pb_section et_pb_section_0 hero-cntn et_pb_with_background et_section_regular" data-nav-theme="dark">
-				<picture class="home-hero__media">
-					<source media="(max-width: 980px)" srcset="/wp-content/uploads/2026/07/home-hero-1200.webp" type="image/webp" />
-					<source srcset="/wp-content/uploads/2026/07/home-hero.webp" type="image/webp" />
-					<img src="/wp-content/uploads/2026/07/home-hero-1200.webp" alt="" width="1200" height="747" fetchpriority="high" decoding="async" />
-				</picture>
+				<canvas class="home-hero__bars" data-variant="chart" aria-hidden="true"></canvas>
 				<div class="et_pb_row et_pb_row_0 hero-intro et_pb_equal_columns et_pb_gutters2">
 				<div class="et_pb_column et_pb_column_2_3 et_pb_column_0  et_pb_css_mix_blend_mode_passthrough">
 				
@@ -1431,10 +1642,8 @@ body.home #page-container #cta_builder_kickoff:active {
 				
 				
 				
-				<div class="et_pb_text_inner"><p class="ds-eyebrow ds-reveal">Director of Product Design · B2B SaaS</p>
-<h1>Designers who understand business will win the next decade</h1>
-<p class="ds-reveal ds-reveal-d2">I help product designers think beyond the mockup, prototype the right thing, and explain why the work actually matters.</p>
-<p class="home-hero__punch ds-reveal ds-reveal-d3">Design products people love enough to keep paying for.</p></div>
+				<div class="et_pb_text_inner"><h1>The ROI of design is<br class="home-hero__br"> products people love<br class="home-hero__br"> enough to <span class="home-hero__accent">keep paying for.</span></h1>
+<p class="home-hero__sub ds-reveal ds-reveal-d2">Designers who understand business will win the next decade. I help product designers think beyond the mockup, prototype the right thing, and explain why the work actually matters.</p></div>
 			</div><div class="et_pb_module et_pb_code et_pb_code_0  et_pb_text_align_left ds-reveal ds-reveal-d4">
 				
 				
@@ -1884,6 +2093,596 @@ document.addEventListener("click", function (e) {
   window.addEventListener('resize', enqueue, { passive: true });
   enqueue();
 }());
+</script>
+<script id="home-hero-bars-js">
+/*
+  Homepage hero: a field of small bars that rise toward the cursor, like a bar
+  chart growing wherever you put effort (ROI of design). Canvas, no library.
+  - Touch / no cursor: a slow wave drifts across on its own.
+  - Reduced motion: one static frame, no animation.
+  - Pauses when the hero is off screen.
+*/
+(function () {
+  var canvas = document.querySelector('.hero-cntn .home-hero__bars');
+  if (!canvas || !canvas.getContext) return;
+  // Other data-variant values run their own script (#home-hero-chart-js, #home-hero-reveal-js)
+  var variant = canvas.getAttribute('data-variant');
+  if (variant && variant !== 'bars') return;
+  var hero = canvas.parentElement;
+  var ctx = canvas.getContext('2d');
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var GAP_X = 14, GAP_Y = 30, BAR_W = 3;
+  var BASE_H = 3, MAX_H = 24, RADIUS = 190;
+  // Tan field, darker tan resting bars, copper at the cursor
+  var REST = [120, 84, 50], HOT = [197, 144, 96];
+
+  var w = 0, h = 0, dpr = 1, cols = 0, rows = 0, ox = 0, oy = 0;
+  var heights = new Float32Array(0);
+  var pointer = { x: -9999, y: -9999, active: false };
+  var focus = { x: -9999, y: -9999 };
+  var start = performance.now(), visible = true, raf = 0;
+
+  function resize() {
+    var r = hero.getBoundingClientRect();
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    w = r.width; h = r.height;
+    canvas.width = Math.round(w * dpr);
+    canvas.height = Math.round(h * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    cols = Math.ceil(w / GAP_X) + 1;
+    rows = Math.ceil(h / GAP_Y) + 1;
+    // Smaller, tighter lift on phones so it never fights the copy
+    var narrow = w < 768;
+    MAX_H = narrow ? 14 : 24;
+    RADIUS = narrow ? 110 : 190;
+    ox = (w - (cols - 1) * GAP_X) / 2;
+    oy = (h - (rows - 1) * GAP_Y) / 2 + MAX_H / 2;
+    heights = new Float32Array(cols * rows);
+    if (reduce) draw(performance.now());
+  }
+
+  function draw(now) {
+    var t = (now - start) / 1000;
+    // Intro: bars rise in alongside the H1 landing
+    var grow = reduce ? 1 : Math.min(1, t / 1.4);
+    grow = 1 - Math.pow(1 - grow, 3);
+
+    // Where the "effort" is: the cursor, or a slow drifting wave without one
+    if (pointer.active) {
+      focus.x += (pointer.x - focus.x) * 0.18;
+      focus.y += (pointer.y - focus.y) * 0.18;
+    } else {
+      var dx = w * (0.5 + 0.38 * Math.sin(t * 0.35));
+      var dy = h * (0.55 + 0.25 * Math.sin(t * 0.6 + 1.2));
+      focus.x += (dx - focus.x) * 0.04;
+      focus.y += (dy - focus.y) * 0.04;
+    }
+
+    ctx.clearRect(0, 0, w, h);
+    var r2 = RADIUS * RADIUS, i = 0;
+    for (var row = 0; row < rows; row++) {
+      var y = oy + row * GAP_Y;
+      for (var col = 0; col < cols; col++, i++) {
+        var x = ox + col * GAP_X;
+        var ddx = x - focus.x, ddy = y - focus.y;
+        var d2 = ddx * ddx + ddy * ddy;
+        var lift = d2 < r2 * 4 ? Math.exp(-d2 / r2) : 0;
+        // A little texture so the resting field isn't flat
+        var idle = 0.5 + 0.5 * Math.sin(col * 0.55 + row * 1.3 + t * 0.8);
+        var target = (BASE_H + idle * 2 + lift * MAX_H) * grow;
+        heights[i] += (target - heights[i]) * (reduce ? 1 : 0.14);
+        var bh = heights[i];
+        var k = Math.min(1, lift * 1.3);
+        var cr = REST[0] + (HOT[0] - REST[0]) * k;
+        var cg = REST[1] + (HOT[1] - REST[1]) * k;
+        var cb = REST[2] + (HOT[2] - REST[2]) * k;
+        var a = (0.12 + k * 0.5) * grow;
+        ctx.fillStyle = 'rgba(' + (cr | 0) + ',' + (cg | 0) + ',' + (cb | 0) + ',' + a.toFixed(3) + ')';
+        ctx.fillRect(x - BAR_W / 2, y - bh, BAR_W, bh);
+      }
+    }
+  }
+
+  function loop(now) {
+    raf = 0;
+    if (!visible) return;
+    draw(now);
+    raf = requestAnimationFrame(loop);
+  }
+  function play() { if (!reduce && !raf && visible) raf = requestAnimationFrame(loop); }
+
+  hero.addEventListener('pointermove', function (e) {
+    if (e.pointerType === 'touch') return;
+    var r = hero.getBoundingClientRect();
+    pointer.x = e.clientX - r.left;
+    pointer.y = e.clientY - r.top;
+    pointer.active = true;
+  }, { passive: true });
+  hero.addEventListener('pointerleave', function () { pointer.active = false; }, { passive: true });
+
+  if ('ResizeObserver' in window) new ResizeObserver(resize).observe(hero);
+  else window.addEventListener('resize', resize);
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      visible = entries[0].isIntersecting;
+      if (visible) play();
+    }).observe(hero);
+  }
+
+  resize();
+  focus.x = w / 2; focus.y = h * 0.55;
+  if (reduce) draw(performance.now()); else play();
+})();
+</script>
+<script id="home-hero-chart-js">
+/*
+  Homepage hero, variant "chart": a product-style analytics chart.
+  Two series, "Baseline" (dashed) and "With design" (copper), split at a
+  "Redesign shipped" marker; the hatched gap between them is the ROI.
+  Hairline grid, mono axis ticks, and a crosshair that snaps to data points
+  with an HTML tooltip card. Canvas + one div, no library.
+  - The tooltip hides while the cursor is over the hero copy.
+  - Touch / no cursor: no crosshair; the latest point pulses.
+  - Reduced motion: no draw-in or pulse; hover still works.
+  - Pauses when the hero is off screen.
+*/
+(function () {
+  var canvas = document.querySelector('.hero-cntn .home-hero__bars');
+  if (!canvas || !canvas.getContext || canvas.getAttribute('data-variant') !== 'chart') return;
+  var hero = canvas.parentElement;
+  var ctx = canvas.getContext('2d');
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var copy = hero.querySelector('.et_pb_column_0');
+
+  // Dark hero: light ink, copper series, dots punched out in the hero colour
+  var INK = '244,240,234', COPPER = '197,144,96', TAN = '#0c0b0a';
+  var MONO = getComputedStyle(document.documentElement).getPropertyValue('--ds-font-mono') || 'ui-monospace, monospace';
+
+  // Illustrative quarterly retention (%): flat baseline vs. after the redesign ships at Q3
+  var LABELS = ['Q1', 'Q2', 'Q3', 'Q4', 'Q5', 'Q6', 'Q7', 'Q8', 'Q9'];
+  var BASE = [38, 39, 38, 40, 39, 41, 40, 42, 41];
+  var DESIGN = [38, 39, 38, 44, 49, 53, 58, 61, 66];
+  var SHIP = 2, Y_MIN = 30, Y_MAX = 70;
+
+  // Tooltip card
+  var tip = document.createElement('div');
+  tip.className = 'home-hero__tip';
+  tip.setAttribute('aria-hidden', 'true');
+  tip.innerHTML =
+    '<div class="home-hero__tip-head"><span data-k="q"></span><span>Retention</span></div>' +
+    '<div class="home-hero__tip-row"><i class="is-design"></i><span>With design</span><b data-k="d"></b></div>' +
+    '<div class="home-hero__tip-row"><i class="is-base"></i><span>Baseline</span><b data-k="b"></b></div>' +
+    '<div class="home-hero__tip-foot"><span>ROI</span><b data-k="r"></b></div>';
+  hero.appendChild(tip);
+  var tq = tip.querySelector('[data-k=q]'), td = tip.querySelector('[data-k=d]'), tb = tip.querySelector('[data-k=b]'), tr = tip.querySelector('[data-k=r]');
+
+  var w = 0, h = 0, dpr = 1, L = 0, R = 0, T = 0, B = 0, narrow = false, hatch = null;
+  var pointer = { x: 0, y: 0, active: false };
+  var hover = -1, lastHover = -1, hx = 0, hxSet = false, hoverFade = 0, tipX = 0, tipY = 0, tipSet = false;
+  var start = performance.now(), visible = true, raf = 0;
+
+  function xAt(i) { return L + (R - L) * (i / (LABELS.length - 1)); }
+  function yAt(v) { return B - (B - T) * ((v - Y_MIN) / (Y_MAX - Y_MIN)); }
+
+  function makeHatch() {
+    var c = document.createElement('canvas'), s = 8 * dpr;
+    c.width = c.height = s;
+    var g = c.getContext('2d');
+    g.strokeStyle = 'rgba(' + COPPER + ',0.32)';
+    g.lineWidth = 1 * dpr;
+    g.beginPath(); g.moveTo(0, s); g.lineTo(s, 0); g.moveTo(-s / 2, s / 2); g.lineTo(s / 2, -s / 2); g.moveTo(s / 2, s * 1.5); g.lineTo(s * 1.5, s / 2); g.stroke();
+    return ctx.createPattern(c, 'repeat');
+  }
+
+  function resize() {
+    var r = hero.getBoundingClientRect();
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    w = r.width; h = r.height;
+    canvas.width = Math.round(w * dpr);
+    canvas.height = Math.round(h * dpr);
+    narrow = w < 768;
+    L = narrow ? 20 : Math.max(48, w * 0.06);
+    R = narrow ? w - 20 : w - Math.max(48, w * 0.06);
+    T = narrow ? h * 0.7 : h * 0.2;
+    B = narrow ? h * 0.92 : h * 0.86;
+    hatch = makeHatch();
+    hxSet = false;
+    draw(performance.now());
+  }
+
+  // Monotone-ish smooth path through points (Catmull-Rom with low tension)
+  function path(vals, upto) {
+    var n = vals.length, k = 0.18;
+    ctx.moveTo(xAt(0), yAt(vals[0]));
+    for (var i = 0; i < n - 1; i++) {
+      var x0 = xAt(Math.max(0, i - 1)), y0 = yAt(vals[Math.max(0, i - 1)]);
+      var x1 = xAt(i), y1 = yAt(vals[i]), x2 = xAt(i + 1), y2 = yAt(vals[i + 1]);
+      var x3 = xAt(Math.min(n - 1, i + 2)), y3 = yAt(vals[Math.min(n - 1, i + 2)]);
+      ctx.bezierCurveTo(x1 + (x2 - x0) * k, y1 + (y2 - y0) * k, x2 - (x3 - x1) * k, y2 - (y3 - y1) * k, x2, y2);
+    }
+  }
+
+  function draw(now) {
+    var t = (now - start) / 1000;
+    // Slow, eased draw-in (easeInOutCubic) after the H1 lands
+    var reveal = reduce ? 1 : Math.min(1, Math.max(0, t - 0.5) / 2.4);
+    reveal = reveal < 0.5 ? 4 * reveal * reveal * reveal : 1 - Math.pow(-2 * reveal + 2, 3) / 2;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, w, h);
+
+    // Hairline grid: horizontal value lines + vertical quarter lines
+    ctx.lineWidth = 1;
+    ctx.font = '500 10px ' + MONO;
+    ctx.textBaseline = 'middle';
+    for (var v = Y_MIN; v <= Y_MAX; v += 10) {
+      var gy = Math.round(yAt(v)) + 0.5;
+      ctx.strokeStyle = 'rgba(' + INK + ',' + (v === Y_MIN ? 0.22 : 0.08) + ')';
+      ctx.setLineDash(v === Y_MIN ? [] : [1, 3]);
+      ctx.beginPath(); ctx.moveTo(L, gy); ctx.lineTo(R, gy); ctx.stroke();
+      if (!narrow) {
+        ctx.fillStyle = 'rgba(' + INK + ',0.45)';
+        ctx.textAlign = 'right';
+        ctx.fillText(v + '%', L - 10, gy);
+      }
+    }
+    ctx.setLineDash([]);
+    for (var q = 0; q < LABELS.length; q++) {
+      var gx = Math.round(xAt(q)) + 0.5;
+      ctx.strokeStyle = 'rgba(' + INK + ',0.05)';
+      ctx.beginPath(); ctx.moveTo(gx, T); ctx.lineTo(gx, B); ctx.stroke();
+      ctx.strokeStyle = 'rgba(' + INK + ',0.3)';
+      ctx.beginPath(); ctx.moveTo(gx, B); ctx.lineTo(gx, B + 4); ctx.stroke();
+      if (!narrow || q % 2 === 0) {
+        ctx.fillStyle = 'rgba(' + INK + ',' + (q === hover ? 0.9 : 0.45) + ')';
+        ctx.textAlign = 'center';
+        ctx.fillText(LABELS[q], gx, B + 16);
+      }
+    }
+
+    // Reveal the series left to right
+    ctx.save();
+    ctx.beginPath(); ctx.rect(0, 0, L + (R - L) * reveal + 2, h); ctx.clip();
+
+    // ROI gap: hatched area between the two series
+    ctx.beginPath();
+    path(DESIGN);
+    for (var j = BASE.length - 1; j >= 0; j--) ctx.lineTo(xAt(j), yAt(BASE[j]));
+    ctx.closePath();
+    ctx.fillStyle = hatch; ctx.fill();
+    var grad = ctx.createLinearGradient(0, T, 0, B);
+    grad.addColorStop(0, 'rgba(' + COPPER + ',0.12)');
+    grad.addColorStop(1, 'rgba(' + COPPER + ',0)');
+    ctx.fillStyle = grad; ctx.fill();
+
+    // Baseline (dashed) and With design (solid copper)
+    ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+    ctx.beginPath(); path(BASE);
+    ctx.setLineDash([4, 4]); ctx.strokeStyle = 'rgba(' + INK + ',0.5)'; ctx.lineWidth = 1.25; ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.beginPath(); path(DESIGN);
+    ctx.strokeStyle = 'rgb(' + COPPER + ')'; ctx.lineWidth = 2; ctx.stroke();
+    ctx.restore();
+
+    // "Redesign shipped" marker
+    if (!narrow && reveal > SHIP / (LABELS.length - 1)) {
+      var sx = Math.round(xAt(SHIP)) + 0.5;
+      ctx.strokeStyle = 'rgba(' + INK + ',0.35)'; ctx.lineWidth = 1;
+      ctx.setLineDash([2, 3]);
+      ctx.beginPath(); ctx.moveTo(sx, T - 18); ctx.lineTo(sx, B); ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.font = '600 10px ' + MONO;
+      var flag = 'REDESIGN SHIPPED', fw = ctx.measureText(flag).width + 12;
+      ctx.fillStyle = 'rgba(' + INK + ',0.08)';
+      roundRect(sx, T - 30, fw, 18, 4); ctx.fill();
+      ctx.strokeStyle = 'rgba(' + INK + ',0.2)'; ctx.stroke();
+      ctx.fillStyle = 'rgba(' + INK + ',0.75)'; ctx.textAlign = 'left';
+      ctx.fillText(flag, sx + 6, T - 21);
+    }
+
+    // Legend, top right
+    if (!narrow) {
+      ctx.font = '500 10px ' + MONO; ctx.textAlign = 'left';
+      var lx = R - 210, ly = T - 21;
+      ctx.strokeStyle = 'rgb(' + COPPER + ')'; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(lx, ly); ctx.lineTo(lx + 14, ly); ctx.stroke();
+      ctx.fillStyle = 'rgba(' + INK + ',0.7)'; ctx.fillText('WITH DESIGN', lx + 20, ly);
+      ctx.strokeStyle = 'rgba(' + INK + ',0.5)'; ctx.lineWidth = 1.25; ctx.setLineDash([4, 4]);
+      ctx.beginPath(); ctx.moveTo(lx + 112, ly); ctx.lineTo(lx + 126, ly); ctx.stroke(); ctx.setLineDash([]);
+      ctx.fillText('BASELINE', lx + 132, ly);
+    }
+
+    // Latest point: pulsing ring when idle
+    var last = LABELS.length - 1;
+    if (reveal >= 1 && hoverFade < 0.5) {
+      var px = xAt(last), py = yAt(DESIGN[last]);
+      if (!reduce) {
+        var p = (t % 3.2) / 3.2;
+        p = 1 - Math.pow(1 - p, 2);
+        ctx.strokeStyle = 'rgba(' + COPPER + ',' + (0.35 * (1 - p)).toFixed(3) + ')';
+        ctx.lineWidth = 1.5;
+        ctx.beginPath(); ctx.arc(px, py, 4 + p * 12, 0, Math.PI * 2); ctx.stroke();
+      }
+      dot(px, py, 'rgb(' + COPPER + ')');
+    }
+
+    // Crosshair snapped to the nearest quarter; fades in and out
+    hoverFade += ((hover >= 0 ? 1 : 0) - hoverFade) * (reduce ? 1 : 0.08);
+    if (lastHover >= 0 && reveal >= 1 && hoverFade > 0.01) {
+      var target = xAt(lastHover);
+      if (!hxSet) { hx = target; hxSet = true; }
+      hx += (target - hx) * (reduce ? 1 : 0.1);
+      ctx.strokeStyle = 'rgba(' + INK + ',' + (0.3 * hoverFade).toFixed(3) + ')'; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(Math.round(hx) + 0.5, T); ctx.lineTo(Math.round(hx) + 0.5, B); ctx.stroke();
+      var k = (hx - L) / (R - L) * (LABELS.length - 1), i0 = Math.floor(k), f = k - i0, i1 = Math.min(LABELS.length - 1, i0 + 1);
+      var vb = BASE[i0] + (BASE[i1] - BASE[i0]) * f, vd = DESIGN[i0] + (DESIGN[i1] - DESIGN[i0]) * f;
+      ctx.globalAlpha = hoverFade;
+      dot(hx, yAt(vb), 'rgba(' + INK + ',0.6)');
+      dot(hx, yAt(vd), 'rgb(' + COPPER + ')');
+      ctx.globalAlpha = 1;
+      placeTip(hx, yAt(vd));
+    }
+  }
+
+  function roundRect(x, y, rw, rh, r) {
+    ctx.beginPath();
+    if (ctx.roundRect) ctx.roundRect(x, y, rw, rh, r);
+    else ctx.rect(x, y, rw, rh);
+  }
+  function dot(x, y, color) {
+    ctx.fillStyle = TAN; ctx.beginPath(); ctx.arc(x, y, 4.5, 0, Math.PI * 2); ctx.fill();
+    ctx.strokeStyle = color; ctx.lineWidth = 2; ctx.stroke();
+  }
+
+  function overCopy() {
+    if (!copy) return false;
+    var r = copy.getBoundingClientRect(), hr = hero.getBoundingClientRect();
+    var x = pointer.x + hr.left, y = pointer.y + hr.top;
+    return x > r.left - 16 && x < r.right + 16 && y > r.top - 16 && y < r.bottom + 16;
+  }
+
+  function placeTip(x, y) {
+    var tw = tip.offsetWidth || 180, th = tip.offsetHeight || 110;
+    var left = x + 20 + tw > w - 12 ? x - 20 - tw : x + 20;
+    var top = Math.min(Math.max(y - th / 2, 12), h - th - 12);
+    if (!tipSet || reduce) { tipX = left; tipY = top; tipSet = true; }
+    tipX += (left - tipX) * 0.12;
+    tipY += (top - tipY) * 0.12;
+    tip.style.transform = 'translate3d(' + tipX.toFixed(1) + 'px,' + tipY.toFixed(1) + 'px,0)';
+  }
+
+  function setHover() {
+    var idx = -1;
+    if (pointer.active && !narrow) {
+      var k = Math.round((pointer.x - L) / (R - L) * (LABELS.length - 1));
+      if (k >= 0 && k < LABELS.length) idx = k;
+    }
+    var showTip = idx >= 0 && !overCopy();
+    if (idx !== hover && idx >= 0) {
+      tq.textContent = LABELS[idx];
+      td.textContent = DESIGN[idx] + '%';
+      tb.textContent = BASE[idx] + '%';
+      var roi = Math.round((DESIGN[idx] - BASE[idx]) / BASE[idx] * 100);
+      tr.textContent = (roi > 0 ? '+' : '') + roi + '%';
+    }
+    if (idx >= 0) lastHover = idx;
+    if (idx < 0 && hoverFade < 0.02) { hxSet = false; tipSet = false; }
+    hover = idx;
+    tip.classList.toggle('is-on', showTip);
+  }
+
+  function loop(now) {
+    raf = 0;
+    if (!visible) return;
+    draw(now);
+    raf = requestAnimationFrame(loop);
+  }
+  function play() { if (!raf && visible) raf = requestAnimationFrame(loop); }
+
+  hero.addEventListener('pointermove', function (e) {
+    if (e.pointerType === 'touch') return;
+    var r = hero.getBoundingClientRect();
+    pointer.x = e.clientX - r.left;
+    pointer.y = e.clientY - r.top;
+    pointer.active = true;
+    setHover();
+    play();
+  }, { passive: true });
+  hero.addEventListener('pointerleave', function () { pointer.active = false; setHover(); play(); }, { passive: true });
+
+  if ('ResizeObserver' in window) new ResizeObserver(resize).observe(hero);
+  else window.addEventListener('resize', resize);
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      visible = entries[0].isIntersecting;
+      if (visible) play();
+    }).observe(hero);
+  }
+
+  resize();
+  play();
+})();
+</script>
+<script id="home-hero-reveal-js">
+/*
+  Homepage hero, variant "reveal": the value is already there; design makes it
+  visible. A hidden layer of graph paper and ROI marks (formula, rising bars,
+  trend line, figures) sits under the tan; the cursor is a flashlight that
+  reveals it. Canvas, no library.
+  - Touch / no cursor: the light drifts slowly on its own.
+  - Reduced motion: a faint static frame of the layer, no light.
+  - Pauses when the hero is off screen.
+*/
+(function () {
+  var canvas = document.querySelector('.hero-cntn .home-hero__bars');
+  if (!canvas || !canvas.getContext || canvas.getAttribute('data-variant') !== 'reveal') return;
+  var hero = canvas.parentElement;
+  var ctx = canvas.getContext('2d');
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var INK = '74,52,32', COPPER = '197,144,96';
+  var mono = getComputedStyle(document.querySelector('.hero-cntn .ds-eyebrow') || document.body).fontFamily;
+
+  var layer = document.createElement('canvas'), lctx = layer.getContext('2d');
+  var spot = document.createElement('canvas'), sctx = spot.getContext('2d');
+  var w = 0, h = 0, dpr = 1, RADIUS = 220, BASE = 0.07;
+  var pointer = { x: 0, y: 0, active: false };
+  var focus = { x: 0, y: 0 }, light = 0;
+  var start = performance.now(), visible = true, raf = 0;
+
+  function size(c) { c.width = Math.round(w * dpr); c.height = Math.round(h * dpr); }
+
+  // Paint the hidden layer once per resize
+  function paintLayer() {
+    var c = lctx, narrow = w < 768;
+    c.setTransform(dpr, 0, 0, dpr, 0, 0);
+    c.clearRect(0, 0, w, h);
+
+    // Graph paper
+    var g = narrow ? 20 : 24;
+    c.lineWidth = 1;
+    for (var x = 0.5; x < w; x += g) {
+      c.strokeStyle = 'rgba(' + INK + ',' + ((Math.round((x - 0.5) / g) % 5 === 0) ? 0.55 : 0.22) + ')';
+      c.beginPath(); c.moveTo(x, 0); c.lineTo(x, h); c.stroke();
+    }
+    for (var y = 0.5; y < h; y += g) {
+      c.strokeStyle = 'rgba(' + INK + ',' + ((Math.round((y - 0.5) / g) % 5 === 0) ? 0.55 : 0.22) + ')';
+      c.beginPath(); c.moveTo(0, y); c.lineTo(w, y); c.stroke();
+    }
+
+    function label(text, lx, ly, size, color, align) {
+      c.font = '600 ' + size + 'px ' + mono;
+      c.fillStyle = color; c.textAlign = align || 'left'; c.textBaseline = 'alphabetic';
+      c.fillText(text, lx, ly);
+    }
+    var ink = 'rgb(' + INK + ')', cop = 'rgb(' + COPPER + ')';
+    var fs = narrow ? 10 : 13;
+
+    // Formula, top left
+    label('ROI = (GAIN − COST) ÷ COST', w * 0.04, h * (narrow ? 0.62 : 0.2), narrow ? 11 : 15, ink);
+
+    // Rising bars with axis, bottom left
+    var bx = w * 0.04, by = h * 0.9, bw = narrow ? 12 : 22, gap = narrow ? 6 : 10, bh = h * (narrow ? 0.18 : 0.32);
+    c.strokeStyle = ink; c.lineWidth = 1.5;
+    c.beginPath(); c.moveTo(bx - 6, by - bh - 10); c.lineTo(bx - 6, by); c.lineTo(bx + 6 * (bw + gap) + 4, by); c.stroke();
+    var vals = [0.22, 0.31, 0.29, 0.45, 0.62, 0.86];
+    for (var i = 0; i < vals.length; i++) {
+      c.fillStyle = i === vals.length - 1 ? cop : 'rgba(' + INK + ',0.75)';
+      c.fillRect(bx + i * (bw + gap), by - bh * vals[i], bw, bh * vals[i]);
+    }
+    label('Q1', bx, by + fs + 6, fs - 2, ink);
+    label('Q6', bx + 5 * (bw + gap), by + fs + 6, fs - 2, ink);
+
+    // Trend line with points and arrow, right side
+    var pts = narrow
+      ? [[0.62, 0.92], [0.72, 0.86], [0.8, 0.88], [0.88, 0.76], [0.96, 0.66]]
+      : [[0.72, 0.62], [0.78, 0.55], [0.83, 0.58], [0.88, 0.4], [0.95, 0.22]];
+    c.strokeStyle = cop; c.lineWidth = 2.5; c.lineJoin = 'round';
+    c.beginPath();
+    pts.forEach(function (p, k) { var px = p[0] * w, py = p[1] * h; if (k) c.lineTo(px, py); else c.moveTo(px, py); });
+    c.stroke();
+    pts.forEach(function (p) { c.fillStyle = cop; c.beginPath(); c.arc(p[0] * w, p[1] * h, 4, 0, Math.PI * 2); c.fill(); });
+    var e1 = pts[pts.length - 2], e2 = pts[pts.length - 1];
+    var ang = Math.atan2((e2[1] - e1[1]) * h, (e2[0] - e1[0]) * w), ax = e2[0] * w, ay = e2[1] * h;
+    c.beginPath(); c.moveTo(ax, ay);
+    c.lineTo(ax - 14 * Math.cos(ang - 0.45), ay - 14 * Math.sin(ang - 0.45));
+    c.moveTo(ax, ay);
+    c.lineTo(ax - 14 * Math.cos(ang + 0.45), ay - 14 * Math.sin(ang + 0.45));
+    c.stroke();
+
+    // Figures
+    if (!narrow) {
+      label('+18% RETENTION', w * 0.96, h * 0.16, fs, cop, 'right');
+      label('−32% SUPPORT TICKETS', w * 0.96, h * 0.74, fs, ink, 'right');
+      label('ACTIVATION 41% → 58%', w * 0.04, h * 0.27, fs, ink);
+      label('PAYBACK: 4 MONTHS', w * 0.04, h * 0.48, fs, ink);
+    } else {
+      label('+18% RETENTION', w * 0.96, h * 0.6, fs, cop, 'right');
+    }
+  }
+
+  function resize() {
+    var r = hero.getBoundingClientRect();
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    w = r.width; h = r.height;
+    size(canvas); size(layer); size(spot);
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    RADIUS = w < 768 ? 140 : 230;
+    paintLayer();
+    if (reduce) draw(performance.now());
+  }
+
+  function draw(now) {
+    var t = (now - start) / 1000;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Faint hint of the layer everywhere
+    ctx.globalAlpha = BASE * (reduce ? 1 : Math.min(1, t / 1.2));
+    ctx.drawImage(layer, 0, 0);
+    ctx.globalAlpha = 1;
+    if (reduce) return;
+
+    // The light: the cursor, or a slow drift
+    if (pointer.active) {
+      focus.x += (pointer.x - focus.x) * 0.22;
+      focus.y += (pointer.y - focus.y) * 0.22;
+    } else {
+      var dx = w * (0.5 + 0.42 * Math.sin(t * 0.18));
+      var dy = h * (0.55 + 0.3 * Math.sin(t * 0.31 + 1.1));
+      focus.x += (dx - focus.x) * 0.03;
+      focus.y += (dy - focus.y) * 0.03;
+    }
+    var goal = pointer.active ? 1 : 0.6;
+    light += (goal - light) * 0.06;
+    light = Math.min(light, Math.max(0, (t - 0.6) / 1.2));
+
+    // Spotlight: the layer, masked to a soft circle
+    sctx.setTransform(1, 0, 0, 1, 0, 0);
+    sctx.globalCompositeOperation = 'source-over';
+    sctx.clearRect(0, 0, spot.width, spot.height);
+    sctx.drawImage(layer, 0, 0);
+    sctx.globalCompositeOperation = 'destination-in';
+    var fx = focus.x * dpr, fy = focus.y * dpr, R = RADIUS * dpr;
+    var grad = sctx.createRadialGradient(fx, fy, 0, fx, fy, R);
+    grad.addColorStop(0, 'rgba(0,0,0,' + (0.9 * light).toFixed(3) + ')');
+    grad.addColorStop(0.55, 'rgba(0,0,0,' + (0.45 * light).toFixed(3) + ')');
+    grad.addColorStop(1, 'rgba(0,0,0,0)');
+    sctx.fillStyle = grad;
+    sctx.fillRect(0, 0, spot.width, spot.height);
+    ctx.drawImage(spot, 0, 0);
+  }
+
+  function loop(now) {
+    raf = 0;
+    if (!visible) return;
+    draw(now);
+    raf = requestAnimationFrame(loop);
+  }
+  function play() { if (!reduce && !raf && visible) raf = requestAnimationFrame(loop); }
+
+  hero.addEventListener('pointermove', function (ev) {
+    if (ev.pointerType === 'touch') return;
+    var r = hero.getBoundingClientRect();
+    pointer.x = ev.clientX - r.left;
+    pointer.y = ev.clientY - r.top;
+    if (!pointer.active) { focus.x = pointer.x; focus.y = pointer.y; }
+    pointer.active = true;
+  }, { passive: true });
+  hero.addEventListener('pointerleave', function () { pointer.active = false; }, { passive: true });
+
+  if ('ResizeObserver' in window) new ResizeObserver(resize).observe(hero);
+  else window.addEventListener('resize', resize);
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      visible = entries[0].isIntersecting;
+      if (visible) play();
+    }).observe(hero);
+  }
+
+  resize();
+  focus.x = w / 2; focus.y = h * 0.55;
+  if (reduce) draw(performance.now()); else play();
+})();
 </script>
 </body>
 </html>
