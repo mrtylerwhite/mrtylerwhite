@@ -1516,29 +1516,35 @@ body.home #page-container .hero-cntn .et_pb_row_2.social-proof .et_pb_image img 
   body.home #page-container #main-content .hero-cntn .et_pb_text_0 h1 .home-hero__line {
     text-wrap: balance;
   }
-  /* Shadow repeats on every wrapped line (one band per 0.85em line); the very first line stays clean */
+  /* No cast shadow on phones: lines wrap here, and a gradient tiled per
+     0.85em line can't stay aligned with the glyphs (the inline accent's
+     background starts at its taller content box, so bands landed across the
+     bottom of "keep paying for." in iOS Safari). Solid colours instead. */
   body.home #page-container #main-content .hero-cntn .et_pb_text_0 h1 .home-hero__line,
   body.home #page-container #main-content .hero-cntn .et_pb_text_0 h1 .home-hero__line + .home-hero__line {
-    background:
-      linear-gradient(180deg, #8a847e 0%, #b9b3ac 12%, #e2dcd4 24%, #faf7f2 36%, #faf7f2 100%) 0 0 / 100% 0.85em repeat-y;
-    -webkit-background-clip: text;
-            background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-  }
-  body.home #page-container #main-content .hero-cntn .et_pb_text_0 h1 .home-hero__line:first-child {
-    background:
-      linear-gradient(#faf7f2, #faf7f2) 0 0 / 100% 0.85em no-repeat,
-      linear-gradient(180deg, #8a847e 0%, #b9b3ac 12%, #e2dcd4 24%, #faf7f2 36%, #faf7f2 100%) 0 0 / 100% 0.85em repeat-y;
-    -webkit-background-clip: text;
-            background-clip: text;
+    background: none !important;
+    -webkit-background-clip: border-box;
+            background-clip: border-box;
+    -webkit-text-fill-color: #faf7f2;
+    color: #faf7f2;
   }
   body.home #page-container #main-content .hero-cntn .et_pb_text_0 h1 .home-hero__accent {
-    background: linear-gradient(180deg, #6e4c2e 0%, #966b45 12%, #b6845a 24%, #c59060 36%, #c59060 100%) 0 0 / 100% 0.85em repeat-y !important;
-    -webkit-background-clip: text !important;
-            background-clip: text !important;
-    -webkit-box-decoration-break: clone;
-            box-decoration-break: clone;
+    background: none !important;
+    -webkit-background-clip: border-box !important;
+            background-clip: border-box !important;
+    -webkit-text-fill-color: #c59060;
+    color: #c59060 !important;
+  }
+
+  /* CTA ring: the spinning conic gradient only lights half the border, which
+     reads as an offset shadow on a full-width button. Even, still ring. */
+  body.home .home-hero__cta-ring {
+    background: rgba(197, 144, 96, 0.55);
+    padding: 1px;
+    animation: none;
+  }
+  body.home #page-container #cta_case_studies {
+    box-shadow: none !important;
   }
 }
 
