@@ -60,6 +60,26 @@
       "idea": "scope creep: small extra requests pile up one at a time until they block the path to the deadline",
       "scene": "Far in the distance, centered, a tall narrow doorway glows warm amber, the brightest thing in the scene, casting a long beam of light along the dark floor toward the viewer. A lone figure stands on the lit path, seen from behind, facing the doorway. Between the figure and the doorway, small grey stone blocks lie across the lit path, each with the single word \"also\" etched into its face in simple lowercase handwriting. Near the figure there are only one or two; farther along they multiply and stack higher, until near the door they form a low wall that is beginning to block it. One more \"also\" block drifts down from the darkness above to land on the pile.",
       "text": "The only text in the image is the word \"also\" on the small blocks, spelled exactly like that. No other text, no logos."
+    },
+    "linkedin-signups-cheapest-number": {
+      "idea": "signups are cheap and plentiful, but the real money is in the few that make it through the narrow step from trial to paid",
+      "scene": "On the left, hundreds of small plain grey stones are scattered loosely across the dark floor. In the center stands a single narrow stone gateway. Only a handful of stones have passed through the gateway, and on the right side those few stones are neatly stacked into a growing column that glows warm amber from within, the brightest thing in the scene. A lone figure seen from behind stands beside the gateway, looking at the glowing stack.",
+      "text": "The only text in the image is two words etched cleanly into stone in simple lowercase handwriting: \"trial\" on the base of the left side of the gateway and \"paid\" on the base of the glowing stack, each spelled exactly like that. No other text, no numbers, no logos."
+    },
+    "linkedin-day-two-screen": {
+      "idea": "the most important moment in a product trial is day two, the moment a user decides whether it is worth paying for",
+      "scene": "A row of five tall, plain stone doorways stands evenly spaced across the dark floor, receding slightly into the haze. The first doorway is plain grey stone. The second doorway glows warm amber from within, light spilling out across the reflective floor, the brightest thing in the scene. The remaining three doorways are dim and fade into the darkness. A lone figure seen from behind stands in front of the glowing second doorway, about to step through.",
+      "text": "The only text in the image is the two words \"day two\" etched cleanly into the stone lintel above the glowing doorway in simple lowercase handwriting, spelled exactly like that. No other text, no numbers, no logos."
+    },
+    "linkedin-bronto-funnel-map": {
+      "idea": "reading a funnel like a map, node by node, makes it impossible to miss where the money leaks",
+      "scene": "A large branching tree of smooth round stone discs lies flat on the dark floor like a map, each disc connected to the next by thin etched hairline channels, branching from one disc at the left into several discs toward the right. One channel in the middle of the map is cracked open, and warm amber light leaks out of the crack and pools across the reflective floor, the brightest thing in the scene. A lone figure seen from behind kneels beside the crack holding a small glowing lantern, studying the leak.",
+      "text": "No text, no words, no letters, no numbers, no logos."
+    },
+    "linkedin-shipping-halfway-point": {
+      "idea": "shipping is only the halfway point; the work counts once you measure whether the number moved",
+      "scene": "In the background, a finished stone structure stands dim and grey, almost lost in the haze. In the foreground, two small upright stone tablets stand side by side on the reflective floor. The left tablet is plain grey stone. The right tablet glows warm amber from within, the brightest thing in the scene. A lone figure seen from behind stands between the tablets and the structure, turned toward the glowing tablet, holding a small lantern at their side.",
+      "text": "The only text in the image is two words etched cleanly into the tablets in simple lowercase handwriting: \"before\" on the left tablet and \"after\" on the glowing right tablet, each spelled exactly like that. No other text, no numbers, no logos."
     }
   }
 }
