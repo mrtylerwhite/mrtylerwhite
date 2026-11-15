@@ -21,7 +21,7 @@
  *   cta          case-study | builder-kickoff | newsletter
  *   leadMagnet   sidebar lead magnet card: a slug from scripts/lead-magnets.mjs,
  *                or "none" to hide it (defaults to DEFAULT_LEAD_MAGNET)
- *   roiSkillCard true = a text-only 15 Minute Case Study card right after the lead magnet
+ *   roiSkillCard true = a 15 Minute Case Study card right after the lead magnet
  *                card (inline and sidebar). In the body, [text](/roi-case-study-template/ "roi-skill")
  *                makes a tracked inline link (letters_roi_skill_click).
  *   offer        optional one-line pitch for the case study early offer (letters no longer show it)
@@ -691,15 +691,16 @@ function leadMagnetCard(lm, where) {
 }
 
 // The 15 Minute Case Study card for PRD letters (front matter `roiSkillCard: true`).
-// Same lm-card component, text only, placed right after the PRD template card.
+// Same lm-card component (with the skill's cover), placed right after the PRD template card.
 // Clicks fire letters_roi_skill_click with page_slug + placement (analytics.js).
 const ROI_SKILL = LEAD_MAGNETS["case-study"];
 function roiSkillTrack(post, placement, where) {
   return `data-track-event="letters_roi_skill_click" data-track-location="${where}_roi-skill" data-track-param-page-slug="${esc(post.slug)}" data-track-param-placement="${placement}"`;
 }
 function roiSkillCard(post, where) {
-  return `<aside class="lm-card lm-card--${where} lm-card--text" aria-label="${esc(ROI_SKILL.label)}: ${esc(ROI_SKILL.title)}">
+  return `<aside class="lm-card lm-card--${where} lm-card--roi" aria-label="${esc(ROI_SKILL.label)}: ${esc(ROI_SKILL.title)}">
   <p class="lm-card__label">${esc(ROI_SKILL.label)}</p>
+  <a class="lm-card__media" href="${ROI_SKILL.href}" tabindex="-1" aria-hidden="true" ${roiSkillTrack(post, "card", where)}><img src="${ROI_SKILL.image}" alt="" width="1200" height="800" loading="lazy" decoding="async" /></a>
   <p class="lm-card__title">Your PRD says what to build. Can you prove it worked?</p>
   <p class="lm-card__desc">The 15 Minute Case Study walks you through what changed, why, and what it was worth.</p>
   <a class="lm-card__link" href="${ROI_SKILL.href}" ${roiSkillTrack(post, "card", where)}>Try the 15 Minute Case Study <span aria-hidden="true">&rarr;</span></a>
