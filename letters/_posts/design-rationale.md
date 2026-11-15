@@ -82,6 +82,8 @@ That last field is the one that ends arguments. "We'll revisit if week-two usage
 
 If you need help picking that signal, start with [the UX metrics that actually make it into the exec deck](/letters/ux-metrics/). To put a dollar value on the bet, use [the ROI of design math](/letters/roi-of-design/).
 
+When that number comes in, the decision record is how you [prove what your work was actually worth](/roi-case-study-template/ "roi-skill").
+
 <!-- newsletter -->
 
 ## Where design rationale should live

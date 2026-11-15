@@ -129,10 +129,17 @@
 
     var explicit = el.getAttribute("data-track-event");
     if (explicit) {
-      trackEvent(explicit, {
+      var explicitProps = {
         location: el.getAttribute("data-track-location") || linkLocation(el),
         label: el.getAttribute("data-track-label") || undefined,
+      };
+      /* Extra event params: data-track-param-page-slug="x" sends page_slug: "x". */
+      Array.prototype.forEach.call(el.attributes, function (a) {
+        if (a.name.indexOf("data-track-param-") === 0) {
+          explicitProps[a.name.slice(17).replace(/-/g, "_")] = a.value;
+        }
       });
+      trackEvent(explicit, explicitProps);
       return;
     }
 

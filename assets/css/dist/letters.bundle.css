@@ -4537,6 +4537,16 @@ img.letters-feature__art {
   #page-container .lm-card--inline .lm-card__title { margin-top: 0; font-size: 22px; }
   .lm-card--inline .lm-card__link { justify-self: start; }
 }
+/* Text-only card (no cover), e.g. the 15 Minute Case Study after the PRD card. */
+#page-container .lm-card--text .lm-card__title { margin-top: 0; font-size: 20px; }
+.letter__side .lm-card--text {
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid var(--ds-color-border);
+}
+@media (min-width: 600px) and (max-width: 1179px) {
+  .lm-card--inline.lm-card--text { display: block; }
+}
 @media (prefers-reduced-motion: reduce) { .lm-card__media img { transition: none; } }
 
 /* ── Newsletter signup: warm card + copper brush ──────────────────────────

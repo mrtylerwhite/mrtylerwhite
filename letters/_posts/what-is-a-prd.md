@@ -15,6 +15,7 @@ coverAlt: "A person carves glowing checked-off lines into a stone tablet while l
 keyword: what is a prd
 cta: builder-kickoff
 leadMagnet: prd-template
+roiSkillCard: true
 popular: true
 ---
 
@@ -116,6 +117,8 @@ Check yours against this list:
 - [ ] It hasn't been touched since the kickoff, but the plan has changed twice
 
 One box ticked is normal. Three or more and the PRD isn't steering anything. It's a souvenir.
+
+Shipped one with no baseline? You can still [prove what your work was actually worth](/roi-case-study-template/ "roi-skill").
 
 ## Do PRDs still matter with AI?
 

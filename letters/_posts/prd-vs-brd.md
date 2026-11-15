@@ -14,6 +14,7 @@ coverAlt: "Two stone tablets labeled why and what stand on either side of a wide
 keyword: prd vs brd
 cta: builder-kickoff
 leadMagnet: prd-template
+roiSkillCard: true
 source: 23657334
 popular: true
 ---
@@ -78,6 +79,8 @@ Scope changes during the build. The PRD gets updated. The BRD doesn't.
 Now the business case says one thing and the product does another. Two docs, zero truth. Congrats, you've built a very expensive way to argue. And when someone asks "did this work?", nobody can agree what the hell "work" was supposed to mean.
 
 Better docs won't fix it. The decisions got made in different rooms, by different people, at different times.
+
+One doc fixes the next project. For the last one, you can still [prove what your work was actually worth](/roi-case-study-template/ "roi-skill").
 
 <!-- newsletter -->
 

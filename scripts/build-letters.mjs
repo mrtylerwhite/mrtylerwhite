@@ -21,6 +21,9 @@
  *   cta          case-study | builder-kickoff | newsletter
  *   leadMagnet   sidebar lead magnet card: a slug from scripts/lead-magnets.mjs,
  *                or "none" to hide it (defaults to DEFAULT_LEAD_MAGNET)
+ *   roiSkillCard true = a text-only 15 Minute Case Study card right after the lead magnet
+ *                card (inline and sidebar). In the body, [text](/roi-case-study-template/ "roi-skill")
+ *                makes a tracked inline link (letters_roi_skill_click).
  *   offer        optional one-line pitch for the case study early offer (letters no longer show it)
  *   cover        optional image path (1536x1024); lists fall back to a typographic tile
  *   coverAlt     alt text for the cover on the letter page and in share tags
@@ -687,6 +690,22 @@ function leadMagnetCard(lm, where) {
 </aside>`;
 }
 
+// The 15 Minute Case Study card for PRD letters (front matter `roiSkillCard: true`).
+// Same lm-card component, text only, placed right after the PRD template card.
+// Clicks fire letters_roi_skill_click with page_slug + placement (analytics.js).
+const ROI_SKILL = LEAD_MAGNETS["case-study"];
+function roiSkillTrack(post, placement, where) {
+  return `data-track-event="letters_roi_skill_click" data-track-location="${where}_roi-skill" data-track-param-page-slug="${esc(post.slug)}" data-track-param-placement="${placement}"`;
+}
+function roiSkillCard(post, where) {
+  return `<aside class="lm-card lm-card--${where} lm-card--text" aria-label="${esc(ROI_SKILL.label)}: ${esc(ROI_SKILL.title)}">
+  <p class="lm-card__label">${esc(ROI_SKILL.label)}</p>
+  <p class="lm-card__title">Your PRD says what to build. Can you prove it worked?</p>
+  <p class="lm-card__desc">The 15 Minute Case Study walks you through what changed, why, and what it was worth.</p>
+  <a class="lm-card__link" href="${ROI_SKILL.href}" ${roiSkillTrack(post, "card", where)}>Try the 15 Minute Case Study <span aria-hidden="true">&rarr;</span></a>
+</aside>`;
+}
+
 const LM_MIN_GAP_WORDS = 150;
 function inlineCardIndex(html) {
   const offerAt = html.indexOf('<aside class="letter-offer');
@@ -880,15 +899,21 @@ function renderBody(post) {
     const m = LEAD_MAGNETS[slug];
     if (!m) throw new Error(`${post.slug}: unknown offer "${slug}" (see scripts/lead-magnets.mjs)`);
     pinned = true;
-    return leadMagnetCard({ slug, ...m }, "inline");
+    return leadMagnetCard({ slug, ...m }, "inline") + (post.roiSkillCard === true ? `\n${roiSkillCard(post, "inline")}` : "");
   });
   const lm = leadMagnetFor(post);
   // Inline lead magnet card (phones/tablets only; desktop shows the sidebar).
   // Goes before the first H2 that isn't directly after another box, unless pinned above.
   if (lm && !pinned) {
     const at = inlineCardIndex(html);
-    if (at >= 0) html = `${html.slice(0, at)}${leadMagnetCard(lm, "inline")}\n${html.slice(at)}`;
+    const roi = post.roiSkillCard === true ? `\n${roiSkillCard(post, "inline")}` : "";
+    if (at >= 0) html = `${html.slice(0, at)}${leadMagnetCard(lm, "inline")}${roi}\n${html.slice(at)}`;
   }
+  // [text](/roi-case-study-template/ "roi-skill") in a post = tracked inline link to the skill.
+  html = html.replace(
+    new RegExp(`<a href="${ROI_SKILL.href}" title="roi-skill">`, "g"),
+    `<a href="${ROI_SKILL.href}" ${roiSkillTrack(post, "inline", "body")}>`
+  );
   if (html.includes("<!-- cta -->")) html = html.replace("<!-- cta -->", ctaBlock(post.cta));
   else html += `\n${ctaBlock(post.cta)}`;
   return { html, toc, videos };
@@ -1018,7 +1043,9 @@ const ANSWER_CSS = `  <style>
 function postPage(post, related) {
   const { html, toc, videos } = renderBody(post);
   const lmPick = leadMagnetFor(post);
-  const lmSide = lmPick ? leadMagnetCard(lmPick, "sidebar") : "";
+  const lmSide = lmPick
+    ? leadMagnetCard(lmPick, "sidebar") + (post.roiSkillCard === true ? `\n${roiSkillCard(post, "sidebar")}` : "")
+    : "";
   const canonical = post.url;
   const jsonld = [
     {
