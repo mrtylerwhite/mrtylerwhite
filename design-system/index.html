@@ -2,1241 +2,798 @@
 <html lang="en-CA">
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Design System (Internal): Mr. Tyler White</title>
   <meta name="robots" content="noindex, nofollow" />
-
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32" />
-  <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-  <meta name="msapplication-TileImage" content="/icon-192.png" />
 
-  <!-- Internal documentation only -->
-  <meta name="robots" content="noindex, nofollow" />
+  <script>
+    // Apply saved theme before paint (no flash).
+    try { if (localStorage.getItem('ds-theme') === 'dark') document.documentElement.classList.add('dark'); } catch (e) {}
+  </script>
 
-  <!-- Fonts used across the site (as referenced by existing pages) -->
-  <!-- Existing plugin CSS present in repo (mobile hamburger icon) -->
-  <link rel="stylesheet" href="/wp-content/plugins/divi-100-hamburger-menu/assets/css/style.css" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="/wp-content/plugins/divi-100-hamburger-menu/assets/css/style.css"></noscript>
-  <link rel="stylesheet" href="/wp-content/et-cache/global/et-divi-customizer-global.min.css" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="/wp-content/et-cache/global/et-divi-customizer-global.min.css"></noscript>
+  <link rel="preconnect" href="https://use.typekit.net" crossorigin />
+  <link rel="stylesheet" href="https://use.typekit.net/fks5kmr.css" />
+  <link rel="preload" href="/assets/fonts/inter/InterVariable.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/assets/css/ds/basecoat.css" />
+  <script src="/assets/js/vendor/basecoat.all.min.js" defer></script>
+  <script src="/assets/js/ds-charts.js" defer></script>
 
-  <!-- Design system: tokens, typography utilities, layout, components (opt-in classes only) -->
-  <link rel="preload" href="/assets/fonts/instrument-serif/InstrumentSerif-Regular.woff2" as="font" type="font/woff2" crossorigin />
-<link rel="preconnect" href="https://use.typekit.net" crossorigin />
-<link rel="preconnect" href="https://p.typekit.net" crossorigin />
-<link rel="preload" as="style" href="https://use.typekit.net/fks5kmr.css" fetchpriority="low" onload="this.onload=null;this.rel='stylesheet'" />
-<noscript><link rel="stylesheet" href="https://use.typekit.net/fks5kmr.css" /></noscript>
-<link rel="stylesheet" href="/assets/css/system/index.css?v=d9f85923" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="/assets/css/system/index.css?v=d9f85923"></noscript>
-<link rel="stylesheet" href="/assets/css/system/site-footer.css?v=2a5d33c5" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="/assets/css/system/site-footer.css?v=2a5d33c5"></noscript>
-
-  <!-- Docs-only layout CSS -->
-  <link rel="stylesheet" href="/design-system/design-system.css" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="/design-system/design-system.css"></noscript>
-
-  <!-- Minimal "site frame" CSS so header/footer & previews are usable here.
-       (Production pages carry large Divi/inline CSS; this page intentionally does not duplicate the entire payload.) -->
   <style>
-    :root{--ds-accent:#2ea3f2;--ds-text:#333;--ds-muted:#666;}
-    html,body{margin:0;padding:0}
-    body{font-family:Open Sans,Arial,sans-serif;font-size:14px;color:var(--ds-muted);line-height:1.7em;font-weight:500;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;background:#fff}
-    h1,h2,h3,h4{color:var(--ds-text);line-height:1.15;font-weight:600;margin:0 0 10px}
-    h1{font-size:30px} h2{font-size:24px} h3{font-size:18px} h4{font-size:16px}
-    p{margin:0 0 12px}
-    a{color:var(--ds-accent);text-decoration:none}
-    a:hover{text-decoration:underline}
-    .container{width:80%;max-width:1080px;margin:auto;position:relative}
-
-    /* Header: no local overrides; critical.css (via index.css @import) owns #main-header styling
-       so this page's header renders identically to production. */
-
-    /* Footer frame */
-    #main-footer{background:#222;color:#fff;margin-top:36px}
-    #footer-bottom{background:#1f1f1f}
-    #footer-bottom .container{padding:18px 0;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
-    .et-social-icons{margin:0;padding:0;list-style:none;display:flex;gap:12px}
-    .et-social-icon a{color:#fff;opacity:.9}
-    .et-social-icon a:hover{opacity:.7}
-    #footer-info{color:rgba(255,255,255,.85)}
-    #footer-info .brand-color{color:#ff6b6b}
-
-    /* Keep docs visuals stable; ds-btn provides the canonical examples. */
-
-    /* Mobile */
-    @media (max-width:980px){
-      .container{width:92%}
-    }
+    /* Docs-only chrome (not part of the system) */
+    .ds-swatch { box-shadow: inset 0 0 0 1px var(--border); }
+    .ds-code { max-height: 28rem; }
+    [id] { scroll-margin-top: 5rem; }
   </style>
-  <script src="/assets/js/consent.js?v=6a4de25c" defer></script>
-<!-- partial:head -->
-<style id="page-transitions">
-/* Page transitions (details.so port). Inline on purpose: Chrome decides whether
-   to run a cross-page transition as the new page first renders, and an opt-in
-   inside an external stylesheet is sometimes not applied yet, so the transition
-   was skipped at random. Text entrance (.ds-enter) lives in page-transitions.css. */
-@media (prefers-reduced-motion: no-preference) {
-  @view-transition { navigation: auto; }
-}
-::view-transition-old(root),
-::view-transition-new(root) {
-  animation-duration: 0.5s;
-  animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-/* Nav stays in place while the page crossfades. Named on the glass pill, and the
-   group re-applies the glass blur, which a snapshot can't capture. */
-#main-header .et_menu_container,
-.fck-site-header .fck-nav {
-  view-transition-name: site-header;
-}
-::view-transition-group(site-header) {
-  animation-duration: 0.5s;
-  animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  border-radius: 10px;
-  -webkit-backdrop-filter: blur(20px) saturate(1.8);
-  backdrop-filter: blur(20px) saturate(1.8);
-}
-</style>
-<!-- /partial:head -->
 </head>
-<body class="custom-background wp-theme-Divi et_divi_100_custom_hamburger_menu et_divi_100_custom_hamburger_menu--style-2 et_divi_100_custom_hamburger_menu--type-1 et_button_no_icon et_button_custom_icon et_pb_button_helper_class et_fixed_nav et_show_nav et_header_style_left et_pb_svg_logo">
-  <div id="page-container">
-    <!-- partial:header cta="connect" -->
-<header id="main-header" data-height-onload="30">
-
-			<div class="container clearfix et_menu_container">
-							<div class="logo_container">
-					<span class="logo_helper"></span>
-					<a href="/">
-						<img src="/wp-content/uploads/2025/12/logo-mrtylerwhite-1.svg" width="69" height="20" alt="Mr. Tyler White" id="logo" data-height-percentage="34" />
-					</a>
-				</div>
-							<div id="et-top-navigation" data-height="30" data-fixed-height="40">
-											<nav id="top-menu-nav">
-						<ul id="top-menu" class="nav"><li id="menu-item-30" class="anim-link menu-item menu-item-type-post_type menu-item-object-page menu-item-30"><a href="/about/">About Me</a></li>
-<li id="menu-item-3458" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3458"><a href="/letters/">Letters</a></li>
-<li id="menu-item-3464" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3464"><a href="https://www.designtablepodcast.com/" target="_blank" rel="noopener noreferrer">Podcast</a></li><li id="menu-item-4000" class="site-nav-workshop menu-item menu-item-type-custom menu-item-object-custom menu-item-4000"><a href="/builder-kickoff/">Builder Kickoff™</a></li>
-
-<li id="menu-item-54" class="et_pb_button menu-item menu-item-type-custom menu-item-object-custom menu-item-54"><a href="https://www.linkedin.com/in/mrtylerwhite/" target="_blank" rel="noopener noreferrer">Let&#8217;s Connect</a></li>
-</ul>						</nav>
-
-
-
-
-					<div id="et_mobile_nav_menu">
-				<div class="mobile_nav closed">
-					<span class="select_page">Select Page</span>
-					<button type="button" class="mobile_menu_bar mobile_menu_bar_toggle" aria-label="Open menu" aria-controls="mobile_menu" aria-expanded="false"></button>
-				</div>
-			</div>				</div> <!-- #et-top-navigation -->
-			</div> <!-- .container -->
-					</header>
-<!-- /partial:header -->
-
-    <div id="et-main-area">
-      <div id="main-content" role="main">
-        <div class="container">
-          <div class="ds-shell" role="document">
-            <aside class="ds-sidebar" aria-label="Design system navigation">
-              <h2>Design system</h2>
-              <ul class="ds-nav">
-                <li><a href="#overview">Overview</a></li>
-                <li>
-                  <a href="#foundations">Foundations</a>
-                  <ul class="ds-nav-sub">
-                    <li><a href="#foundations-colors">Colors</a></li>
-                    <li><a href="#foundations-typography">Typography</a></li>
-                    <li><a href="#foundations-typography-utilities">Typography utilities (Phase 5)</a></li>
-                    <li><a href="#foundations-spacing">Spacing</a></li>
-                    <li><a href="#foundations-borders">Borders &amp; radius</a></li>
-                    <li><a href="#foundations-shadows">Shadows</a></li>
-                    <li><a href="#foundations-backgrounds">Backgrounds</a></li>
-                    <li><a href="#foundations-breakpoints">Breakpoints</a></li>
-                  </ul>
-                </li>
-                <li>
-                  <a href="#layout">Layout</a>
-                  <ul class="ds-nav-sub">
-                    <li><a href="#layout-wrappers">Page wrappers</a></li>
-                    <li><a href="#layout-containers">Containers</a></li>
-                    <li><a href="#layout-section-spacing">Section spacing</a></li>
-                    <li><a href="#layout-grids">Grids</a></li>
-                    <li><a href="#layout-heroes">Hero layouts</a></li>
-                    <li><a href="#layout-mobile">Mobile behavior</a></li>
-                  </ul>
-                </li>
-                <li>
-                  <a href="#components">Components</a>
-                  <ul class="ds-nav-sub">
-                    <li><a href="#cmp-header">Header / nav</a></li>
-                    <li><a href="#cmp-mobile-menu">Mobile menu</a></li>
-                    <li><a href="#cmp-buttons">Buttons</a></li>
-                    <li><a href="#cmp-links">Links</a></li>
-                    <li><a href="#cmp-cards">Cards</a></li>
-                    <li><a href="#cmp-forms">Forms</a></li>
-                    <li><a href="#cmp-newsletter">Newsletter signup</a></li>
-                    <li><a href="#cmp-testimonials">Testimonials</a></li>
-                    <li><a href="#cmp-logo-strips">Logo strips</a></li>
-                    <li><a href="#cmp-footer">Footer</a></li>
-                  </ul>
-                </li>
-                <li>
-                  <a href="#templates">Page templates</a>
-                  <ul class="ds-nav-sub">
-                    <li><a href="#tpl-home">Homepage</a></li>
-                    <li><a href="#tpl-about">About</a></li>
-                    <li><a href="#tpl-case-studies">Case studies</a></li>
-                    <li><a href="#tpl-newsletter">Newsletter</a></li>
-                    <li><a href="#tpl-podcast">Podcast</a></li>
-                    <li><a href="#tpl-confirmation">Confirmation pages</a></li>
-                  </ul>
-                </li>
-                <li><a href="#responsive-rules">Responsive rules</a></li>
-                <li><a href="#inconsistencies">Inconsistencies</a></li>
-                <li><a href="#cleanup-priorities">Cleanup priorities</a></li>
-              </ul>
-            </aside>
-
-            <main class="ds-main" aria-label="Design system content">
-              <section class="ds-top" id="overview">
-                <h1>Internal design system audit</h1>
-                <p>
-                  This page documents the <strong>current</strong> HTML/CSS system extracted from a hardcoded WordPress/Divi export.
-                  It inventories foundations, layout patterns, and reusable components as they exist today, highlights inconsistencies,
-                  and recommends cleanup priorities, without introducing new frameworks (no Tailwind).
-                </p>
-                <div class="ds-doc-meta">
-                  <span class="ds-pill"><strong>Last audited</strong> <span>2026-05-10</span></span>
-                  <span class="ds-pill"><strong>Scope</strong> <span>HTML + inline CSS + plugin CSS in repo</span></span>
-                  <span class="ds-pill"><strong>Note</strong> <span>Production pages contain large Divi inline CSS not duplicated here</span></span>
-                </div>
-              </section>
-
-              <section class="ds-section" id="foundations">
-                <h2>Foundations</h2>
-                <p>Baseline tokens inferred from inline CSS present in exported pages, plus site-specific overrides (notably the Newsletter page).</p>
-
-                <div class="ds-subsection" id="foundations-colors">
-                  <h3>Colors</h3>
-                  <dl class="ds-kv">
-                    <dt>What exists today</dt>
-                    <dd>
-                      A Divi/WP baseline palette (e.g. link/accent <code class="ds-code">#2ea3f2</code>) plus page-specific accents (Newsletter hover/focus <code class="ds-code">#c59060</code>, CTA accent <code class="ds-code">#24c8dc</code>).
-                    </dd>
-                    <dt>Where it appears</dt>
-                    <dd>
-                      Global-ish defaults are in head inline styles across most pages (e.g. <code class="ds-code">index.html</code>, <code class="ds-code">case-studies/index.html</code>). Newsletter includes a dedicated style block (<code class="ds-code">newsletter/index.html</code>).
-                    </dd>
-                    <dt>CSS selectors/classes</dt>
-                    <dd>
-                      <code class="ds-code">a</code>, <code class="ds-code">.et_pb_button</code>, <code class="ds-code">#main-header</code>, <code class="ds-code">#main-footer</code>, <code class="ds-code">.newsletter-input-container</code>
-                    </dd>
-                  </dl>
-
-                  <div class="ds-grid ds-grid--3" aria-label="Color swatches (sample)">
-                    <div class="ds-card ds-card--surface ds-card--bordered">
-                      <div class="ds-swatch">
-                        <div class="ds-swatch-box" style="background:#2ea3f2"></div>
-                        <div class="ds-swatch-meta">
-                          <div class="ds-swatch-name">Accent / Link (Divi default)</div>
-                          <div class="ds-swatch-hex">#2ea3f2</div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="ds-card ds-card--surface ds-card--bordered">
-                      <div class="ds-swatch">
-                        <div class="ds-swatch-box" style="background:#222222"></div>
-                        <div class="ds-swatch-meta">
-                          <div class="ds-swatch-name">Footer background</div>
-                          <div class="ds-swatch-hex">#222222</div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="ds-card ds-card--surface ds-card--bordered">
-                      <div class="ds-swatch">
-                        <div class="ds-swatch-box" style="background:#c59060"></div>
-                        <div class="ds-swatch-meta">
-                          <div class="ds-swatch-name">Newsletter accent (hover/focus ring)</div>
-                          <div class="ds-swatch-hex">#c59060</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="ds-issue">
-                    <strong>Known issues</strong>
-                    <ul>
-                      <li>Near-duplicate accents exist across pages (e.g. <code class="ds-code">#2ea3f2</code> vs Newsletter accent <code class="ds-code">#c59060</code> vs CTA accent <code class="ds-code">#24c8dc</code>).</li>
-                      <li>Some Newsletter cards use one-off inline styles (e.g. borders/shadows in <code class="ds-code">style=""</code> attributes).</li>
-                    </ul>
-                  </div>
-                  <p><strong>Cleanup recommendation</strong>: define a small accent set (Primary/Secondary/Neutral) and migrate one-off inline colors to named variables (even if only within Newsletter CSS initially).</p>
-                </div>
-
-                <div class="ds-subsection" id="foundations-typography">
-                  <h3>Typography</h3>
-                  <dl class="ds-kv">
-                    <dt>What exists today</dt>
-                    <dd>
-                      Baseline body: Open Sans, 14px, line-height ~1.7 (Divi default). Headings use fixed sizes: H1 30px, H2 26px, H3 22px, etc (Divi default). Newsletter introduces its own hero title and supporting text sizing.
-                    </dd>
-                    <dt>Where it appears</dt>
-                    <dd>
-                      Divi defaults in the head inline style block on most pages. Newsletter overrides in <code class="ds-code">&lt;style id="et-builder-module-design-deferred-newsletter"&gt;</code>.
-                    </dd>
-                    <dt>CSS selectors/classes</dt>
-                    <dd>
-                      <code class="ds-code">body</code>, <code class="ds-code">h1..h6</code>, <code class="ds-code">.newsletter-hero-title</code>, <code class="ds-code">.newsletter-hero-proof</code>, <code class="ds-code">.newsletter-hero-lede</code>
-                    </dd>
-                  </dl>
-
-                  <div class="ds-preview">
-                    <div class="ds-preview-row" style="align-items:baseline">
-                      <div style="flex:1;min-width:240px">
-                        <div style="font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:rgba(0,0,0,.55);margin-bottom:8px">Type samples</div>
-                        <h1 style="margin:0 0 10px">H1 example: Divi baseline</h1>
-                        <h2 style="margin:0 0 8px">H2 example</h2>
-                        <p style="margin:0">Body example: Open Sans, 14px baseline.</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="ds-issue">
-                    <strong>Known issues</strong>
-                    <ul>
-                      <li>Heading sizes are fixed, and column-specific heading overrides exist (e.g. <code class="ds-code">.et_pb_column_1_3 h1</code> etc in Divi CSS).</li>
-                      <li>Newsletter typography can diverge noticeably from the rest of the site (intentionally), but currently mixes class-based CSS with inline styles.</li>
-                    </ul>
-                  </div>
-                  <p><strong>Cleanup recommendation</strong>: define a typography scale (H1/H2/H3/body/caption/eyebrow/button) and normalize heading overrides to component-level classes rather than layout-based selectors.</p>
-                </div>
-
-                <div class="ds-subsection" id="foundations-typography-utilities">
-                  <h3>Typography utilities (Phase 5)</h3>
-                  <p>
-                    Reusable, opt-in classes are defined in <code class="ds-code">/assets/css/system/typography.css</code>, which <code class="ds-code">index.css</code> imports. Stylesheets load only from the document <code class="ds-code">&lt;head&gt;</code>. This section contains documentation only (no <code class="ds-code">&lt;link rel="stylesheet"&gt;</code> here).
-                  </p>
-                  <p>
-                    Utilities apply only when added to markup. No global <code class="ds-code">h1</code>–<code class="ds-code">h6</code> or <code class="ds-code">p</code> overrides.
-                  </p>
-
-                  <dl class="ds-kv">
-                    <dt>Purpose</dt>
-                    <dd>Normalize hero, page, section, and card titles plus body/caption/meta/link treatments using design tokens, <code class="ds-code">clamp()</code> for key headings, and mobile-safe line lengths (no fixed widths on utilities).</dd>
-                  </dl>
-
-                  <h4>When to use each utility</h4>
-                  <dl class="ds-kv">
-                    <dt><code class="ds-code">.ds-hero-title</code></dt>
-                    <dd>Primary headline in heroes (homepage video hero, newsletter hero, large promotional bands).</dd>
-                    <dt><code class="ds-code">.ds-page-title</code></dt>
-                    <dd>Main title for interior pages (about, case studies index, resume) when migrating off Divi default heading sizes.</dd>
-                    <dt><code class="ds-code">.ds-section-title</code></dt>
-                    <dd>Major section headings inside long pages (mid-page bands, “What readers say”, feature grids).</dd>
-                    <dt><code class="ds-code">.ds-card-title</code></dt>
-                    <dd>Titles inside cards and tiles; aligns with <code class="ds-code">.ds-card__title</code> in spirit for non-card markup.</dd>
-                    <dt><code class="ds-code">.ds-eyebrow</code></dt>
-                    <dd>Kicker labels above headlines (category, series name, “New issue”).</dd>
-                    <dt><code class="ds-code">.ds-body</code> / <code class="ds-code">.ds-body--large</code> / <code class="ds-code">.ds-body--small</code></dt>
-                    <dd>Default paragraph density; large for intros and hero supporting copy; small for dense UI paragraphs.</dd>
-                    <dt><code class="ds-code">.ds-caption</code></dt>
-                    <dd>Figure captions, thumbnail labels, supplementary notes.</dd>
-                    <dt><code class="ds-code">.ds-meta</code></dt>
-                    <dd>Secondary lines: dates, bylines, roles, taxonomy. Paired well with listings and card footers.</dd>
-                    <dt><code class="ds-code">.ds-text-link</code></dt>
-                    <dd>Inline text links where underline affordance should match the tokenized link color (not button-styled CTAs).</dd>
-                  </dl>
-
-                  <h4>Live examples</h4>
-                  <div class="ds-preview">
-                    <div class="ds-stack ds-stack--sm">
-                      <p class="ds-eyebrow">Design system · Phase 5</p>
-                      <p class="ds-hero-title">Hero title: fluid size, no horizontal overflow on narrow viewports</p>
-                      <p class="ds-page-title">Page title: interior pages &amp; listing headers</p>
-                      <p class="ds-section-title">Section title: bands &amp; major subsections</p>
-                      <p class="ds-card-title">Card title: tiles &amp; compact summaries</p>
-                      <p class="ds-body--large">Body large: supporting copy and short intros. Uses clamp between slightly larger than body and a modest desktop cap.</p>
-                      <p class="ds-body">Body default: Open Sans at the token body size and line height for long reading.</p>
-                      <p class="ds-body--small">Body small: dense paragraphs, secondary descriptions, fine print adjacent to controls.</p>
-                      <p class="ds-caption">Caption: labels under figures, screenshots, or media thumbnails.</p>
-                      <p class="ds-meta">Meta: March 2026 · Montreal · Product design</p>
-                      <p class="ds-body">
-                        Inline link styled as <a class="ds-text-link" href="#foundations-typography-utilities">text link utility</a> (same paragraph as body copy).
-                      </p>
-                    </div>
-                  </div>
-
-                  <h4>Areas to migrate later (not done in Phase 5)</h4>
-                  <ul>
-                    <li><strong>Global Divi head styles</strong>: <code class="ds-code">h1</code>–<code class="ds-code">h4</code> fixed pixel sizes in inline blocks on most pages → apply utilities in markup where markup is controlled.</li>
-                    <li><strong>Column-specific heading overrides</strong>: e.g. <code class="ds-code">.et_pb_column_1_3 h1</code> patterns → replace with component classes (<code class="ds-code">.ds-section-title</code>, etc.) when templates are refactored.</li>
-                    <li><strong>Newsletter hero</strong>: <code class="ds-code">.newsletter-hero-title</code>, <code class="ds-code">.newsletter-hero-lede</code>, proof lines → candidates for <code class="ds-code">.ds-hero-title</code>, <code class="ds-code">.ds-body--large</code>, <code class="ds-code">.ds-meta</code> once explicitly migrated.</li>
-                    <li><strong>Case study long-form</strong>: pullquotes, stats, image captions → <code class="ds-code">.ds-caption</code>, <code class="ds-code">.ds-body--small</code>.</li>
-                    <li><strong>Footer / legal</strong>: copyright and secondary lines → often <code class="ds-code">.ds-caption</code> or <code class="ds-code">.ds-meta</code>.</li>
-                  </ul>
-
-                  <div class="ds-issue">
-                    <strong>Known typography inconsistencies (from audit)</strong>
-                    <ul>
-                      <li>Fixed heading sizes in Divi defaults conflict with layout-based column overrides (<code class="ds-code">.et_pb_column_* h1</code>).</li>
-                      <li>Newsletter typography intentionally diverges but mixes class-based CSS with inline styles.</li>
-                      <li>Multiple accent/link behaviors (<code class="ds-code">#2ea3f2</code> vs newsletter focus <code class="ds-code">#c59060</code>) affect perceived “primary link” color.</li>
-                      <li>Body text is broadly consistent (14px / 1.7) but module-level exceptions are common.</li>
-                      <li>See also <a class="ds-text-link" href="#inconsistencies">Inconsistencies (inventory)</a>: heading sizes, duplicate components, and spacing layers compound type rhythm drift.</li>
-                    </ul>
-                  </div>
-                </div>
-
-                <div class="ds-subsection" id="foundations-spacing">
-                  <h3>Spacing</h3>
-                  <dl class="ds-kv">
-                    <dt>What exists today</dt>
-                    <dd>
-                      Divi sections use percentage padding on desktop and fixed pixel padding on mobile/tablet. Many page-specific modules add one-off margins/padding (e.g. <code class="ds-code">4.5em</code>, <code class="ds-code">2em</code>, <code class="ds-code">50px</code>).
-                    </dd>
-                    <dt>Where it appears</dt>
-                    <dd>
-                      Divi base: <code class="ds-code">.et_pb_section</code>, <code class="ds-code">.et_pb_row</code>. Per-page: <code class="ds-code">et-builder-module-design-deferred-*</code> style blocks near the bottom of each HTML file.
-                    </dd>
-                    <dt>Selectors/classes</dt>
-                    <dd><code class="ds-code">.et_pb_section</code>, <code class="ds-code">.et_pb_row</code>, <code class="ds-code">.et_pb_module</code>, plus per-page <code class="ds-code">.et_pb_section_0</code>, <code class="ds-code">.et_pb_row_1</code>, etc.</dd>
-                  </dl>
-
-                  <div class="ds-issue">
-                    <strong>Cleanup recommendation</strong>
-                    <ul>
-                      <li>Extract a spacing scale from existing values (suggest: 4, 8, 12, 16, 24, 32, 48, 64) and map the most common <code class="ds-code">px/em/%</code> values onto it.</li>
-                      <li>Reduce one-off inline spacing on Newsletter cards into a single component style.</li>
-                    </ul>
-                  </div>
-                </div>
-
-                <div class="ds-subsection" id="foundations-borders">
-                  <h3>Borders &amp; radius</h3>
-                  <dl class="ds-kv">
-                    <dt>What exists today</dt>
-                    <dd>
-                      Divi defaults lean on subtle borders and small radii; Newsletter introduces pill radius (<code class="ds-code">border-radius:999px</code>) and card radius around 4px–12px (mix of inline styles + CSS).
-                    </dd>
-                    <dt>Selectors/classes</dt>
-                    <dd><code class="ds-code">.et_pb_button</code>, <code class="ds-code">.newsletter-input-container</code>, <code class="ds-code">.newsletter-preview-card</code></dd>
-                  </dl>
-                </div>
-
-                <div class="ds-subsection" id="foundations-shadows">
-                  <h3>Shadows</h3>
-                  <dl class="ds-kv">
-                    <dt>What exists today</dt>
-                    <dd>
-                      Light UI shadows used in header and in Newsletter form/container (<code class="ds-code">0 5px 40px rgba(0,0,0,.05)</code>) plus card shadows (e.g. <code class="ds-code">0 2px 12px rgba(0,0,0,.05)</code> inline).
-                    </dd>
-                    <dt>Selectors/classes</dt>
-                    <dd><code class="ds-code">#main-header</code>, <code class="ds-code">.newsletter-input-container</code>, <code class="ds-code">.newsletter-preview-card</code></dd>
-                  </dl>
-                </div>
-
-                <div class="ds-subsection" id="foundations-backgrounds">
-                  <h3>Backgrounds</h3>
-                  <dl class="ds-kv">
-                    <dt>What exists today</dt>
-                    <dd>
-                      Divi section backgrounds set by per-page section IDs/classes (e.g. homepage hero uses video background; many sections use warm off-whites like <code class="ds-code">#f6f0e9</code> and <code class="ds-code">#fbf7f5</code>).
-                    </dd>
-                    <dt>Selectors/classes</dt>
-                    <dd><code class="ds-code">.et_pb_section</code>, <code class="ds-code">.et_pb_section_video_bg</code>, per-page <code class="ds-code">.et_pb_section_*</code></dd>
-                  </dl>
-                </div>
-
-                <div class="ds-subsection" id="foundations-breakpoints">
-                  <h3>Breakpoints</h3>
-                  <dl class="ds-kv">
-                    <dt>What exists today</dt>
-                    <dd>
-                      Divi’s primary breakpoints show up repeatedly: <code class="ds-code">max-width: 980px</code> (tablet/mobile), <code class="ds-code">max-width: 767px</code> (phone), and <code class="ds-code">min-width: 981px</code> (desktop). The Site Designer UI panel uses <code class="ds-code">max-width: 768px</code>.
-                    </dd>
-                    <dt>Where it appears</dt>
-                    <dd>Inline CSS in nearly every HTML page.</dd>
-                  </dl>
-                </div>
-              </section>
-
-              <section class="ds-section" id="layout">
-                <h2>Layout</h2>
-                <p>Primary layout primitives are Divi wrappers/rows/columns. Page-level layouts are composed from sections and rows, with heavy per-page class naming.</p>
-
-                <div class="ds-subsection" id="layout-wrappers">
-                  <h3>Page wrappers</h3>
-                  <dl class="ds-kv">
-                    <dt>What exists today</dt>
-                    <dd><code class="ds-code">#page-container</code> wraps everything; content lives under <code class="ds-code">#et-main-area</code> and <code class="ds-code">#main-content</code>.</dd>
-                    <dt>Appears on</dt>
-                    <dd>All pages</dd>
-                    <dt>CSS selectors/classes</dt>
-                    <dd><code class="ds-code">#page-container</code>, <code class="ds-code">#et-main-area</code>, <code class="ds-code">#main-content</code></dd>
-                  </dl>
-                </div>
-
-                <div class="ds-subsection" id="layout-containers">
-                  <h3>Containers</h3>
-                  <dl class="ds-kv">
-                    <dt>What exists today</dt>
-                    <dd><code class="ds-code">.container</code> is the global max-width container (80% width, max 1080px).</dd>
-                    <dt>Known issues</dt>
-                    <dd>Some components use fixed widths or per-page max-width overrides that can be mobile-risky.</dd>
-                  </dl>
-                </div>
-
-                <div class="ds-subsection" id="layout-section-spacing">
-                  <h3>Section spacing</h3>
-                  <dl class="ds-kv">
-                    <dt>What exists today</dt>
-                    <dd>Desktop sections often use percentage padding; tablet/phone use fixed padding (50px) for sections/rows.</dd>
-                    <dt>Selectors/classes</dt>
-                    <dd><code class="ds-code">.et_pb_section</code>, <code class="ds-code">.et_pb_row</code></dd>
-                  </dl>
-                </div>
-
-                <div class="ds-subsection" id="layout-grids">
-                  <h3>Grids</h3>
-                  <dl class="ds-kv">
-                    <dt>What exists today</dt>
-                    <dd>Divi columns with gutter presets (e.g. <code class="ds-code">.et_pb_gutters3</code>, <code class="ds-code">.et_pb_gutters2</code>) and responsive column collapsing below 980px.</dd>
-                    <dt>Selectors/classes</dt>
-                    <dd><code class="ds-code">.et_pb_row</code>, <code class="ds-code">.et_pb_column_2_3</code>, <code class="ds-code">.et_pb_column_1_3</code>, etc.</dd>
-                  </dl>
-                </div>
-
-                <div class="ds-subsection" id="layout-heroes">
-                  <h3>Hero layouts</h3>
-                  <dl class="ds-kv">
-                    <dt>What exists today</dt>
-                    <dd>Homepage hero uses video background + two-column row. Newsletter hero is a text-first hero with embedded social proof and a custom form.</dd>
-                    <dt>Appears on</dt>
-                    <dd><code class="ds-code">/</code>, <code class="ds-code">/newsletter/</code></dd>
-                  </dl>
-                </div>
-
-                <div class="ds-subsection" id="layout-mobile">
-                  <h3>Mobile behavior</h3>
-                  <dl class="ds-kv">
-                    <dt>What exists today</dt>
-                    <dd>Divi collapses columns to 100% and swaps to mobile nav below 980px. Some page-specific modules hide/show elements at 768/767.</dd>
-                    <dt>Known issues</dt>
-                    <dd>Multiple breakpoints (980/768/767/600) can cause edge-case overlaps if page-specific rules conflict.</dd>
-                  </dl>
-                </div>
-              </section>
-
-              <section class="ds-section" id="components">
-                <h2>Components (Atomic Design)</h2>
-                <p>Components below are grouped as Atoms, Molecules, Organisms, and Templates. Each entry documents what exists today and what should be cleaned up.</p>
-
-                <div class="ds-subsection" id="cmp-ds-phase1">
-                  <h3>Design System (Phase 1): live examples</h3>
-                  <dl class="ds-kv">
-                    <dt>What exists today</dt>
-                    <dd>New opt-in <code class="ds-code">ds-*</code> classes for tokens, buttons, and forms. These do not override Divi styles unless added to markup.</dd>
-                    <dt>CSS files</dt>
-                    <dd>
-                      <code class="ds-code">/assets/css/system/tokens.css</code>,
-                      <code class="ds-code">/assets/css/system/typography.css</code>,
-                      <code class="ds-code">/assets/css/system/components/buttons.css</code>,
-                      <code class="ds-code">/assets/css/system/components/forms.css</code>,
-                      <code class="ds-code">/assets/css/system/index.css</code>
-                    </dd>
-                  </dl>
-
-                  <div class="ds-preview">
-                    <strong>Buttons</strong>
-                    <div class="ds-preview-row" style="margin-top:10px">
-                      <a class="ds-btn ds-btn--primary" href="#cmp-ds-phase1">Primary button</a>
-                      <a class="ds-btn ds-btn--secondary" href="#cmp-ds-phase1">Secondary button</a>
-                      <a class="ds-btn ds-btn--dark ds-btn--pill" href="#cmp-ds-phase1">Dark pill button</a>
-                    </div>
-                  </div>
-
-                  <div class="ds-preview">
-                    <strong>Forms</strong>
-                    <form class="ds-form" onsubmit="return false" style="margin-top:10px">
-                      <div class="ds-preview-row" style="align-items:stretch">
-                        <input class="ds-input" type="email" placeholder="Enter your email address…" aria-label="Email" style="flex:1;min-width:220px;background:rgba(255,255,255,.7);border:1px solid rgba(0,0,0,.12);border-radius:999px;box-shadow:var(--ds-shadow-lg);padding:8px 14px;height:auto;min-height:40px" />
-                        <button class="ds-btn ds-btn--dark ds-btn--pill ds-submit" type="button">Subscribe</button>
-                      </div>
-                      <div class="ds-form-message ds-form-message--error" role="alert" aria-live="polite">Error message example (invalid email)</div>
-                      <div class="ds-form-message ds-form-message--success" role="status" aria-live="polite">Success message example (subscribed)</div>
-                    </form>
-                  </div>
-                </div>
-
-                <div class="ds-subsection" id="cmp-ds-phase2">
-                  <h3>Design System (Phase 2): layout utilities (live examples)</h3>
-                  <dl class="ds-kv">
-                    <dt>What exists today</dt>
-                    <dd>New opt-in layout utilities for containers, sections, stacks, grids, and mobile safety. These only apply when <code class="ds-code">ds-*</code> classes are used.</dd>
-                    <dt>CSS file</dt>
-                    <dd><code class="ds-code">/assets/css/system/layout.css</code></dd>
-                  </dl>
-
-                  <div class="ds-preview">
-                    <strong>Standard container</strong>
-                    <div class="ds-section ds-section--tight" style="background:rgba(0,0,0,.02);border-radius:12px;border:1px solid rgba(0,0,0,.08)">
-                      <div class="ds-container ds-safe-wrap">
-                        <div style="font-size:13px;color:rgba(0,0,0,.65)">
-                          <code class="ds-code">.ds-container</code> (max-width 1080px) inside a padded section.
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="ds-preview">
-                    <strong>Narrow container</strong>
-                    <div class="ds-section ds-section--tight" style="background:rgba(0,0,0,.02);border-radius:12px;border:1px solid rgba(0,0,0,.08)">
-                      <div class="ds-container ds-container--narrow ds-safe-wrap">
-                        <div style="font-size:13px;color:rgba(0,0,0,.65)">
-                          <code class="ds-code">.ds-container.ds-container--narrow</code> (max-width 823px)
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="ds-preview">
-                    <strong>Two-column grid</strong>
-                    <div class="ds-container ds-safe-wrap">
-                      <div class="ds-grid ds-grid--2">
-                        <div class="ds-card ds-card--surface ds-card--bordered"><strong>Column A</strong><p style="margin:6px 0 0">Stacks to 1 column on mobile; 2 columns at ≥768px.</p></div>
-                        <div class="ds-card ds-card--surface ds-card--bordered"><strong>Column B</strong><p style="margin:6px 0 0">Uses <code class="ds-code">minmax(0, 1fr)</code> to avoid overflow.</p></div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="ds-preview">
-                    <strong>Three-column grid</strong>
-                    <div class="ds-container ds-safe-wrap">
-                      <div class="ds-grid ds-grid--3">
-                        <div class="ds-card ds-card--surface ds-card--bordered"><strong>Card 1</strong><p style="margin:6px 0 0">1 col on mobile</p></div>
-                        <div class="ds-card ds-card--surface ds-card--bordered"><strong>Card 2</strong><p style="margin:6px 0 0">2 cols at ≥768px</p></div>
-                        <div class="ds-card ds-card--surface ds-card--bordered"><strong>Card 3</strong><p style="margin:6px 0 0">3 cols at ≥981px</p></div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="ds-preview">
-                    <strong>Stacked mobile layout</strong>
-                    <div class="ds-container ds-safe-wrap">
-                      <div class="ds-stack ds-stack--sm" style="max-width:520px">
-                        <div class="ds-card ds-card--surface ds-card--bordered"><strong>Item 1</strong><p style="margin:6px 0 0">Uses <code class="ds-code">gap</code> token scale.</p></div>
-                        <div class="ds-card ds-card--surface ds-card--bordered"><strong>Item 2</strong><p style="margin:6px 0 0">Switch sizes with <code class="ds-code">.ds-stack--sm</code>/<code class="ds-code">--lg</code>.</p></div>
-                        <div class="ds-card ds-card--surface ds-card--bordered"><strong>Item 3</strong><p style="margin:6px 0 0">No fixed widths.</p></div>
-                      </div>
-                    </div>
-                  </div>
-
-                <div class="ds-subsection" id="cmp-ds-phase3">
-                  <h3>Design System (Phase 3): card primitives (live examples)</h3>
-                  <dl class="ds-kv">
-                    <dt>What exists today</dt>
-                    <dd>Composable card primitives for surfaces, borders, shadows, feature highlights, testimonials, and quotes. These are opt-in and do not modify Divi markup until migrated.</dd>
-                    <dt>CSS file</dt>
-                    <dd><code class="ds-code">/assets/css/system/components/cards.css</code></dd>
-                    <dt>When to use</dt>
-                    <dd>
-                      Use <code class="ds-code">.ds-card</code> as the base wrapper, then compose variants like
-                      <code class="ds-code">.ds-card--surface</code>, <code class="ds-code">--bordered</code>, <code class="ds-code">--shadow</code>, <code class="ds-code">--feature</code>, <code class="ds-code">--testimonial</code>, or <code class="ds-code">--quote</code>.
-                    </dd>
-                  </dl>
-
-                  <div class="ds-preview">
-                    <strong>Default card</strong>
-                    <div class="ds-card ds-card--surface ds-card--bordered">
-                      <div class="ds-card__eyebrow">Base</div>
-                      <div class="ds-card__title">Default card</div>
-                      <p class="ds-card__body">Use for neutral surfaces that need padding + radius and safe mobile sizing.</p>
-                      <div class="ds-card__meta"><span>Meta item</span><span>Another meta</span></div>
-                      <div class="ds-card__footer"><a class="ds-btn ds-btn--secondary" href="#cmp-ds-phase3">Action</a></div>
-                    </div>
-                  </div>
-
-                  <div class="ds-preview">
-                    <strong>Feature card</strong>
-                    <div class="ds-card ds-card--feature">
-                      <div class="ds-card__eyebrow">Feature</div>
-                      <div class="ds-card__title">Feature highlight</div>
-                      <p class="ds-card__body">Use when a card needs more emphasis (homepage callouts, primary case study promos).</p>
-                    </div>
-                  </div>
-
-                  <div class="ds-preview">
-                    <strong>Article / content card</strong>
-                    <div class="ds-card ds-card--surface ds-card--bordered ds-card--shadow">
-                      <div class="ds-card__eyebrow">From the letter</div>
-                      <div class="ds-card__title">Content preview</div>
-                      <p class="ds-card__body">Candidate replacement for one-off inline “newsletter preview card” styling.</p>
-                      <div class="ds-card__footer">
-                        <a class="ds-btn ds-btn--primary" href="#cmp-ds-phase3">Read more</a>
-                        <a class="ds-btn ds-btn--secondary" href="#cmp-ds-phase3">Secondary</a>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="ds-preview">
-                    <strong>Testimonial card</strong>
-                    <div class="ds-card ds-card--testimonial">
-                      <div class="ds-card__meta"><span aria-hidden="true">★★★★★</span><span>Reader</span></div>
-                      <p class="ds-card__body" style="font-family:Georgia, 'Times New Roman', serif;color:#2a2a2a">“Practical, direct, and immediately useful. This should feel editorial, not like UI chrome.”</p>
-                      <div class="ds-card__footer" style="gap:10px">
-                        <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(145deg,#ebe7e2,#d9d3cc);display:flex;align-items:center;justify-content:center;font-weight:700">TW</div>
-                        <div>
-                          <div style="font-weight:650;color:#2a2a2a;line-height:1.2">Taylor W.</div>
-                          <div style="font-size:13px;color:rgba(0,0,0,.55)">Product Designer</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="ds-preview">
-                    <strong>Quote card</strong>
-                    <div class="ds-card ds-card--surface ds-card--bordered ds-card--quote">
-                      <div class="ds-card__title">Quote</div>
-                      <p class="ds-card__body">Use for pullquotes or emphasized callouts inside long-form case studies.</p>
-                      <div class="ds-card__meta"><span>Attribution</span></div>
-                    </div>
-                  </div>
-
-                  <div class="ds-preview">
-                    <strong>Card grid (ds-grid--3)</strong>
-                    <div class="ds-grid ds-grid--3">
-                      <div class="ds-card ds-card--surface ds-card--bordered">
-                        <div class="ds-card__title">Grid card 1</div>
-                        <p class="ds-card__body">One column on mobile.</p>
-                      </div>
-                      <div class="ds-card ds-card--surface ds-card--bordered">
-                        <div class="ds-card__title">Grid card 2</div>
-                        <p class="ds-card__body">Two columns at ≥768px.</p>
-                      </div>
-                      <div class="ds-card ds-card--surface ds-card--bordered">
-                        <div class="ds-card__title">Grid card 3</div>
-                        <p class="ds-card__body">Three columns at ≥981px.</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="ds-issue">
-                    <strong>Future migration candidates</strong>
-                    <ul>
-                      <li><strong>Newsletter preview card</strong> → <code class="ds-code">.ds-card--surface.ds-card--bordered.ds-card--shadow</code> (replaces inline border/shadow/padding).</li>
-                      <li><strong>Newsletter testimonial cards</strong> → <code class="ds-code">.ds-card--testimonial</code> (then map existing author/stars markup onto internals).</li>
-                      <li><strong>Case study index “row-cards”</strong> → <code class="ds-code">.ds-card--feature</code> for primary promos and <code class="ds-code">.ds-card--surface</code> for standard cards (after markup extraction).</li>
-                      <li><strong>Case study pullquotes</strong> → <code class="ds-code">.ds-card--quote</code>.</li>
-                    </ul>
-                  </div>
-
-                  <div class="ds-issue">
-                    <strong>Known gaps before production migration</strong>
-                    <ul>
-                      <li>Divi-generated case study “cards” are currently layout-driven (<code class="ds-code">.et_pb_row_*</code>) rather than component markup; migration needs an intermediate “wrapper” approach or re-export.</li>
-                      <li>Newsletter testimonial layout uses masonry columns; card primitives cover the card surface but not masonry composition.</li>
-                      <li>Some cards use inline background images; card primitives do not prescribe media handling yet (will likely need <code class="ds-code">.ds-card__media</code> later).</li>
-                    </ul>
-                  </div>
-                </div>
-
-                  <div class="ds-preview">
-                    <strong>Section spacing variants</strong>
-                    <div class="ds-stack ds-stack--sm">
-                      <div class="ds-section ds-section--tight" style="background:rgba(0,0,0,.02);border:1px solid rgba(0,0,0,.08);border-radius:12px">
-                        <div class="ds-container ds-safe-wrap"><code class="ds-code">.ds-section--tight</code></div>
-                      </div>
-                      <div class="ds-section" style="background:rgba(0,0,0,.02);border:1px solid rgba(0,0,0,.08);border-radius:12px">
-                        <div class="ds-container ds-safe-wrap"><code class="ds-code">.ds-section</code></div>
-                      </div>
-                      <div class="ds-section ds-section--loose" style="background:rgba(0,0,0,.02);border:1px solid rgba(0,0,0,.08);border-radius:12px">
-                        <div class="ds-container ds-safe-wrap"><code class="ds-code">.ds-section--loose</code></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="ds-subsection" id="cmp-header">
-                  <h3>Header / nav</h3>
-                  <dl class="ds-kv">
-                    <dt>Component name</dt><dd>Primary Header</dd>
-                    <dt>Type</dt><dd>Organism</dd>
-                    <dt>Appears on</dt><dd>Homepage, About, Case Studies, Newsletter, Case Study detail pages</dd>
-                    <dt>CSS selectors/classes</dt><dd><code class="ds-code">#main-header</code>, <code class="ds-code">#top-menu</code>, <code class="ds-code">#et-top-navigation</code>, <code class="ds-code">.container</code></dd>
-                    <dt>Current HTML</dt>
-                    <dd>
-                      <pre class="ds-code">&lt;header id="main-header"&gt;
-  &lt;div class="container et_menu_container"&gt;
-    &lt;div class="logo_container"&gt;...&lt;/div&gt;
-    &lt;nav id="top-menu-nav"&gt;
-      &lt;ul id="top-menu" class="nav"&gt;...&lt;/ul&gt;
-    &lt;/nav&gt;
-  &lt;/div&gt;
-&lt;/header&gt;</pre>
-                    </dd>
-                  </dl>
-                  <div class="ds-preview">
-                    <strong>Visual sample</strong>
-                    <p style="margin-top:6px">The live header is the one at the top of this page.</p>
-                  </div>
-                  <div class="ds-issue">
-                    <strong>Cleanup recommendation</strong>
-                    <ul>
-                      <li>Normalize “nav item as button” patterns (currently menu items reuse <code class="ds-code">.et_pb_button</code> styles).</li>
-                      <li>Reduce selector specificity for nav states and align hover/focus behavior for accessibility.</li>
-                    </ul>
-                  </div>
-                </div>
-
-                <div class="ds-subsection" id="cmp-mobile-menu">
-                  <h3>Mobile menu</h3>
-                  <dl class="ds-kv">
-                    <dt>Component name</dt><dd>Hamburger menu icon</dd>
-                    <dt>Type</dt><dd>Atom</dd>
-                    <dt>Appears on</dt><dd>All pages (below 980px)</dd>
-                    <dt>CSS selectors/classes</dt><dd><code class="ds-code">.mobile_menu_bar</code>, <code class="ds-code">.et_divi_100_custom_hamburger_menu__icon</code></dd>
-                    <dt>Current HTML</dt>
-                    <dd>
-                      <pre class="ds-code">&lt;div id="et_mobile_nav_menu"&gt;
-  &lt;div class="mobile_nav closed"&gt;
-    &lt;span class="mobile_menu_bar mobile_menu_bar_toggle"&gt;&lt;/span&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</pre>
-                    </dd>
-                  </dl>
-                  <div class="ds-issue">
-                    <strong>Known issues</strong>
-                    <ul>
-                      <li>Behavior/styling depends on a JS file not loaded on this docs page; this audit focuses on HTML/CSS structure.</li>
-                      <li>Multiple hamburger style variants exist in plugin CSS (types/styles) without clear governance.</li>
-                    </ul>
-                  </div>
-                </div>
-
-                <div class="ds-subsection" id="cmp-buttons">
-                  <h3>Buttons</h3>
-                  <dl class="ds-kv">
-                    <dt>Component name</dt><dd>Primary / Secondary button</dd>
-                    <dt>Type</dt><dd>Atom</dd>
-                    <dt>Appears on</dt><dd>Header CTAs, homepage hero CTAs, case study CTAs, newsletter CTA</dd>
-                    <dt>CSS selectors/classes</dt><dd><code class="ds-code">.et_pb_button</code>, <code class="ds-code">.et_pb_button_secondary</code></dd>
-                    <dt>Current HTML</dt>
-                    <dd>
-                      <pre class="ds-code">&lt;a class="et_pb_button et_pb_bg_layout_light" href="/case-studies/"&gt;
-  View case studies
-&lt;/a&gt;</pre>
-                    </dd>
-                  </dl>
-                  <div class="ds-preview">
-                    <strong>Visual sample (ds-btn)</strong>
-                    <div class="ds-preview-row" style="margin-top:10px">
-                      <a class="ds-btn ds-btn--primary" href="#cmp-buttons">Primary button</a>
-                      <a class="ds-btn ds-btn--secondary" href="#cmp-buttons">Secondary button</a>
-                      <a class="ds-btn ds-btn--dark ds-btn--pill" target="_blank" rel="noopener" href="https://example.com">External dark pill</a>
-                    </div>
-                  </div>
-                  <div class="ds-issue">
-                    <strong>Known issues</strong>
-                    <ul>
-                      <li>Buttons are used inside nav list items, which mixes semantics (navigation vs call-to-action).</li>
-                      <li>Newsletter submit button uses a separate system (<code class="ds-code">.newsletter-submit-btn</code>).</li>
-                    </ul>
-                  </div>
-                  <p><strong>Cleanup recommendation</strong>: standardize on one button base + variants, then map Newsletter submit onto that system (or intentionally define “Newsletter CTA” variant).</p>
-                </div>
-
-                <div class="ds-subsection" id="cmp-links">
-                  <h3>Links</h3>
-                  <dl class="ds-kv">
-                    <dt>Component name</dt><dd>Text link</dd>
-                    <dt>Type</dt><dd>Atom</dd>
-                    <dt>Appears on</dt><dd>All pages</dd>
-                    <dt>Selectors/classes</dt><dd><code class="ds-code">a</code>, plus occasional utility classes (e.g. <code class="ds-code">.anim-link</code>)</dd>
-                    <dt>Usage</dt><dd>Use for inline navigation; avoid styling a link to look like a button unless it is a primary action.</dd>
-                  </dl>
-                </div>
-
-                <div class="ds-subsection" id="cmp-cards">
-                  <h3>Cards</h3>
-                  <dl class="ds-kv">
-                    <dt>Component name</dt><dd>Case study card / Newsletter testimonial card</dd>
-                    <dt>Type</dt><dd>Molecule → Organism (depending on composition)</dd>
-                    <dt>Appears on</dt><dd>Homepage case study grid, Case Studies index, Newsletter testimonials</dd>
-                    <dt>Known issues</dt><dd>Multiple implementations exist: Divi row-as-card patterns vs Newsletter custom card markup.</dd>
-                  </dl>
-                  <div class="ds-preview">
-                    <strong>Visual sample</strong>
-                    <p style="margin-top:6px">Preview (iframe) of an existing page section:</p>
-                    <iframe class="ds-iframe" title="Case studies preview" src="/case-studies/"></iframe>
-                  </div>
-                </div>
-
-                <div class="ds-subsection" id="cmp-forms">
-                  <h3>Forms</h3>
-                  <dl class="ds-kv">
-                    <dt>Component name</dt><dd>Text input + submit</dd>
-                    <dt>Type</dt><dd>Molecule</dd>
-                    <dt>Appears on</dt><dd>Newsletter</dd>
-                    <dt>Selectors/classes</dt><dd><code class="ds-code">#newsletter-form</code>, <code class="ds-code">.newsletter-text-field</code>, <code class="ds-code">.newsletter-submit-btn</code></dd>
-                  </dl>
-                  <div class="ds-preview">
-                    <strong>Visual sample</strong>
-                    <p style="margin-top:6px">See the Newsletter page’s live form:</p>
-                    <iframe class="ds-iframe" title="Newsletter form preview" src="/newsletter/"></iframe>
-                  </div>
-                </div>
-
-                <div class="ds-subsection" id="cmp-newsletter">
-                  <h3>Newsletter signup</h3>
-                  <dl class="ds-kv">
-                    <dt>Component name</dt><dd>Newsletter hero signup</dd>
-                    <dt>Type</dt><dd>Organism</dd>
-                    <dt>Appears on</dt><dd><code class="ds-code">/newsletter/</code></dd>
-                    <dt>Current HTML</dt>
-                    <dd>
-                      <pre class="ds-code">&lt;form id="newsletter-form" novalidate&gt;
-  &lt;label class="screen-reader-text" for="email"&gt;Email address&lt;/label&gt;
-  &lt;input id="email" class="newsletter-text-field" type="email" ...&gt;
-  &lt;button id="subscribe-btn" class="newsletter-submit-btn"&gt;Subscribe&lt;/button&gt;
-&lt;/form&gt;</pre>
-                    </dd>
-                    <dt>Known issues</dt><dd>Mix of inline styles + dedicated Newsletter CSS; potential divergence from global form/button styles.</dd>
-                    <dt>Cleanup recommendation</dt><dd>Extract a reusable “email signup” component and align input/button tokens with site foundations.</dd>
-                  </dl>
-                </div>
-
-                <div class="ds-subsection" id="cmp-testimonials">
-                  <h3>Testimonials</h3>
-                  <dl class="ds-kv">
-                    <dt>Component name</dt><dd>Newsletter testimonial card</dd>
-                    <dt>Type</dt><dd>Molecule</dd>
-                    <dt>Appears on</dt><dd><code class="ds-code">/newsletter/</code></dd>
-                    <dt>Page-specific selectors</dt><dd><code class="ds-code">.newsletter-t-card</code>, <code class="ds-code">.newsletter-t-author</code>, <code class="ds-code">.newsletter-t-meta</code></dd>
-                    <dt>Reusable utilities (Phase 8)</dt>
-                    <dd>
-                      <code class="ds-code">.ds-testimonial</code>,
-                      <code class="ds-code">.ds-testimonial__stars</code>,
-                      <code class="ds-code">.ds-testimonial__quote</code>,
-                      <code class="ds-code">.ds-testimonial__author</code>,
-                      <code class="ds-code">.ds-testimonial__avatar</code>,
-                      <code class="ds-code">.ds-testimonial__name</code>,
-                      <code class="ds-code">.ds-testimonial__role</code>
-                    </dd>
-                    <dt>CSS file</dt>
-                    <dd><code class="ds-code">/assets/css/system/components/testimonials.css</code></dd>
-                  </dl>
-
-                  <h4>When to use</h4>
-                  <p>
-                    Compose with <code class="ds-code">.ds-card</code> (typically with the <code class="ds-code">.ds-card--testimonial</code> variant) for the surface, then add <code class="ds-code">.ds-testimonial</code> on the same root element to apply masonry-safe behavior, an editorial serif quote treatment, and an initials-based avatar circle.
-                  </p>
-                  <ul>
-                    <li><strong>Avatar</strong>: when no image asset exists, place 1–3 initials directly inside <code class="ds-code">.ds-testimonial__avatar</code>. To use an image instead, drop an <code class="ds-code">&lt;img&gt;</code> as the only child of the avatar; it is sized and clipped automatically.</li>
-                    <li><strong>Author meta</strong>: name and role render as block elements; wrap them in any element you need to stack them next to the avatar. The newsletter uses <code class="ds-code">.newsletter-t-meta</code> as that wrapper.</li>
-                    <li><strong>Masonry</strong>: the root carries <code class="ds-code">break-inside: avoid</code> + <code class="ds-code">display: inline-block; vertical-align: top</code>, so cards never split inside a CSS multi-column parent. Outside column contexts (grid/flex) those properties are no-ops.</li>
-                  </ul>
-
-                  <h4>Live example: single card</h4>
-                  <div class="ds-preview">
-                    <article class="ds-card ds-card--testimonial ds-testimonial" style="max-width:380px">
-                      <div class="ds-testimonial__stars" aria-hidden="true">★★★★★</div>
-                      <p class="ds-testimonial__quote">Tyler&rsquo;s insights completely changed the way I think about design and business. Every newsletter is packed with real, actionable advice.</p>
-                      <div class="ds-testimonial__author">
-                        <div class="ds-testimonial__avatar" aria-hidden="true">MJ</div>
-                        <div style="display:flex;flex-direction:column;gap:.12rem;min-width:0">
-                          <span class="ds-testimonial__name">Michael Johnson</span>
-                          <span class="ds-testimonial__role">UX Designer</span>
-                        </div>
-                      </div>
-                    </article>
-                  </div>
-
-                  <h4>Live example: three-up grid</h4>
-                  <div class="ds-preview">
-                    <div class="ds-grid ds-grid--3">
-                      <article class="ds-card ds-card--testimonial ds-testimonial">
-                        <div class="ds-testimonial__stars" aria-hidden="true">★★★★★</div>
-                        <p class="ds-testimonial__quote">Finally, someone who gets how chaotic product design really is. A reality check and a roadmap for moving forward.</p>
-                        <div class="ds-testimonial__author">
-                          <div class="ds-testimonial__avatar" aria-hidden="true">ST</div>
-                          <div style="display:flex;flex-direction:column;gap:.12rem;min-width:0">
-                            <span class="ds-testimonial__name">Sarah Thompson</span>
-                            <span class="ds-testimonial__role">Product Designer</span>
-                          </div>
-                        </div>
-                      </article>
-                      <article class="ds-card ds-card--testimonial ds-testimonial">
-                        <div class="ds-testimonial__stars" aria-hidden="true">★★★★★</div>
-                        <p class="ds-testimonial__quote">Deep in the trenches. The advice is not theory: it&rsquo;s experience earned from real, messy product work.</p>
-                        <div class="ds-testimonial__author">
-                          <div class="ds-testimonial__avatar" aria-hidden="true">DM</div>
-                          <div style="display:flex;flex-direction:column;gap:.12rem;min-width:0">
-                            <span class="ds-testimonial__name">David Martinez</span>
-                            <span class="ds-testimonial__role">Senior Product Designer</span>
-                          </div>
-                        </div>
-                      </article>
-                      <article class="ds-card ds-card--testimonial ds-testimonial">
-                        <div class="ds-testimonial__stars" aria-hidden="true">★★★★★</div>
-                        <p class="ds-testimonial__quote">Practical, business-first, and immediately actionable: exactly what most designers are missing.</p>
-                        <div class="ds-testimonial__author">
-                          <div class="ds-testimonial__avatar" aria-hidden="true">ED</div>
-                          <div style="display:flex;flex-direction:column;gap:.12rem;min-width:0">
-                            <span class="ds-testimonial__name">Emily Davis</span>
-                            <span class="ds-testimonial__role">UI/UX Designer</span>
-                          </div>
-                        </div>
-                      </article>
-                    </div>
-                  </div>
-
-                  <h4>Live example: masonry (CSS columns)</h4>
-                  <div class="ds-preview">
-                    <div style="column-count:1;column-gap:14px;max-width:1100px;margin:0 auto">
-                      <style>
-                        @media (min-width:600px){ #ds-testimonial-masonry-demo{ column-count:2 } }
-                        @media (min-width:981px){ #ds-testimonial-masonry-demo{ column-count:3 } }
-                      </style>
-                      <div id="ds-testimonial-masonry-demo" style="column-count:1;column-gap:14px">
-                        <article class="ds-card ds-card--testimonial ds-testimonial" style="margin-bottom:14px">
-                          <div class="ds-testimonial__stars" aria-hidden="true">★★★★★</div>
-                          <p class="ds-testimonial__quote">A short testimonial that fits on one line in masonry layout.</p>
-                          <div class="ds-testimonial__author">
-                            <div class="ds-testimonial__avatar" aria-hidden="true">AW</div>
-                            <div style="display:flex;flex-direction:column;gap:.12rem;min-width:0">
-                              <span class="ds-testimonial__name">Alexander Wilson</span>
-                              <span class="ds-testimonial__role">Lead Designer</span>
-                            </div>
-                          </div>
-                        </article>
-                        <article class="ds-card ds-card--testimonial ds-testimonial" style="margin-bottom:14px">
-                          <div class="ds-testimonial__stars" aria-hidden="true">★★★★★</div>
-                          <p class="ds-testimonial__quote">A medium-length testimonial that demonstrates how masonry packs cards of varying heights without splitting them across columns.</p>
-                          <div class="ds-testimonial__author">
-                            <div class="ds-testimonial__avatar" aria-hidden="true">JL</div>
-                            <div style="display:flex;flex-direction:column;gap:.12rem;min-width:0">
-                              <span class="ds-testimonial__name">Jessica Lee</span>
-                              <span class="ds-testimonial__role">Graphic Designer</span>
-                            </div>
-                          </div>
-                        </article>
-                        <article class="ds-card ds-card--testimonial ds-testimonial" style="margin-bottom:14px">
-                          <div class="ds-testimonial__stars" aria-hidden="true">★★★★★</div>
-                          <p class="ds-testimonial__quote">A longer testimonial that takes up more vertical space than its neighbours. The column-break-inside rules ensure the card stays whole even when the column count changes at the next breakpoint.</p>
-                          <div class="ds-testimonial__author">
-                            <div class="ds-testimonial__avatar" aria-hidden="true">TW</div>
-                            <div style="display:flex;flex-direction:column;gap:.12rem;min-width:0">
-                              <span class="ds-testimonial__name">Taylor W.</span>
-                              <span class="ds-testimonial__role">Product Designer</span>
-                            </div>
-                          </div>
-                        </article>
-                      </div>
-                    </div>
-                  </div>
-
-                  <h4>Markup</h4>
-                  <pre class="ds-code">&lt;article class="ds-card ds-card--testimonial ds-testimonial"&gt;
-  &lt;div class="ds-testimonial__stars" aria-hidden="true"&gt;&#9733;&#9733;&#9733;&#9733;&#9733;&lt;/div&gt;
-  &lt;p class="ds-testimonial__quote"&gt;Quote text&hellip;&lt;/p&gt;
-  &lt;div class="ds-testimonial__author"&gt;
-    &lt;div class="ds-testimonial__avatar" aria-hidden="true"&gt;TW&lt;/div&gt;
-    &lt;div&gt;
-      &lt;span class="ds-testimonial__name"&gt;Taylor W.&lt;/span&gt;
-      &lt;span class="ds-testimonial__role"&gt;Product Designer&lt;/span&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/article&gt;</pre>
-
-                  <div class="ds-preview">
-                    <strong>Newsletter (live page)</strong>
-                    <iframe class="ds-iframe" title="Newsletter testimonials preview" src="/newsletter/#newsletter-form"></iframe>
-                  </div>
-                </div>
-
-                <div class="ds-subsection" id="cmp-logo-strips">
-                  <h3>Logo strips</h3>
-                  <dl class="ds-kv">
-                    <dt>Component name</dt><dd>Featured-in logo strip</dd>
-                    <dt>Type</dt><dd>Organism</dd>
-                    <dt>Appears on</dt><dd>Homepage</dd>
-                    <dt>Known issues</dt><dd>Implementation appears to be Divi module-specific and page-scoped.</dd>
-                  </dl>
-                  <div class="ds-preview">
-                    <strong>Visual sample</strong>
-                    <iframe class="ds-iframe" title="Homepage logo strip preview" src="/"></iframe>
-                  </div>
-                </div>
-
-                <div class="ds-subsection" id="cmp-footer">
-                  <h3>Footer</h3>
-                  <dl class="ds-kv">
-                    <dt>Component name</dt><dd>Footer bottom bar</dd>
-                    <dt>Type</dt><dd>Organism</dd>
-                    <dt>Appears on</dt><dd>All pages</dd>
-                    <dt>Selectors/classes</dt><dd><code class="ds-code">#main-footer</code>, <code class="ds-code">#footer-bottom</code>, <code class="ds-code">.et-social-icons</code></dd>
-                  </dl>
-                  <div class="ds-preview">
-                    <strong>Visual sample</strong>
-                    <p style="margin-top:6px">The live footer is the one at the bottom of this page.</p>
-                  </div>
-                </div>
-              </section>
-
-              <section class="ds-section" id="templates">
-                <h2>Page templates</h2>
-                <p>Templates are primarily “Divi pagebuilder layouts” with large page-scoped class names and deferred style blocks.</p>
-
-                <div class="ds-subsection" id="tpl-home">
-                  <h3>Homepage template</h3>
-                  <dl class="ds-kv">
-                    <dt>Type</dt><dd>Template</dd>
-                    <dt>Appears on</dt><dd><code class="ds-code">/</code></dd>
-                    <dt>Notes</dt><dd>Video hero + CTAs + featured logo strip + case study grid.</dd>
-                  </dl>
-                </div>
-                <div class="ds-subsection" id="tpl-about">
-                  <h3>About template</h3>
-                  <dl class="ds-kv"><dt>Appears on</dt><dd><code class="ds-code">/about/</code></dd></dl>
-                </div>
-                <div class="ds-subsection" id="tpl-case-studies">
-                  <h3>Case studies template</h3>
-                  <dl class="ds-kv"><dt>Appears on</dt><dd><code class="ds-code">/case-studies/</code> and <code class="ds-code">/casestudies/*</code></dd></dl>
-                </div>
-                <div class="ds-subsection" id="tpl-newsletter">
-                  <h3>Newsletter template</h3>
-                  <dl class="ds-kv"><dt>Appears on</dt><dd><code class="ds-code">/newsletter/</code></dd></dl>
-                </div>
-                <div class="ds-subsection" id="tpl-podcast">
-                  <h3>Podcast</h3>
-                  <dl class="ds-kv"><dt>Appears on</dt><dd>External: <code class="ds-code">designtablepodcast.com</code></dd></dl>
-                </div>
-                <div class="ds-subsection" id="tpl-confirmation">
-                  <h3>Confirmation pages</h3>
-                  <dl class="ds-kv"><dt>Appears on</dt><dd><code class="ds-code">/newsletter-confirmation/</code></dd></dl>
-                </div>
-              </section>
-
-              <section class="ds-section" id="responsive-rules">
-                <h2>Responsive rules</h2>
-                <dl class="ds-kv">
-                  <dt>Breakpoints seen</dt>
-                  <dd><code class="ds-code">981px</code>, <code class="ds-code">980px</code>, <code class="ds-code">768px</code>, <code class="ds-code">767px</code>, <code class="ds-code">600px</code>, <code class="ds-code">479px</code></dd>
-                  <dt>Major component changes</dt>
-                  <dd>
-                    Header switches to mobile nav below 980px; rows/columns collapse to single column; some modules hide on tablet/phone using page-specific rules.
-                  </dd>
-                </dl>
-                <div class="ds-issue">
-                  <strong>Risk areas</strong>
-                  <ul>
-                    <li>Conflicting page-specific media queries (especially when mixing 768 and 767 cutoffs).</li>
-                    <li>Hard-coded widths/max-widths inside page-scoped selectors (<code class="ds-code">.et_pb_row_*</code> etc).</li>
-                  </ul>
-                </div>
-              </section>
-
-              <section class="ds-section" id="inconsistencies">
-                <h2>Inconsistencies (inventory)</h2>
-                <ul>
-                  <li><strong>Duplicate button styles</strong>: Divi buttons vs Newsletter submit button system.</li>
-                  <li><strong>Duplicate card styles</strong>: Divi row-as-card vs Newsletter custom cards + inline styles.</li>
-                  <li><strong>Duplicate nav/header patterns</strong>: menu items styled as buttons; hover/focus behavior varies.</li>
-                  <li><strong>Inconsistent heading sizes</strong>: fixed heading sizes plus layout-based overrides.</li>
-                  <li><strong>Inconsistent form styles</strong>: Newsletter pill input + focus ring differs from Divi inputs.</li>
-                  <li><strong>One-off colors</strong>: multiple accents and inline swatches.</li>
-                  <li><strong>One-off spacing</strong>: frequent <code class="ds-code">em</code>/<code class="ds-code">px</code>/<code class="ds-code">%</code> mix and inline spacing.</li>
-                  <li><strong>Conflicting media queries</strong>: repeated 980/768/767/600/479 rules across different layers.</li>
-                  <li><strong>Legacy WordPress CSS</strong>: WP preset variables and block styles present even when not used widely.</li>
-                  <li><strong>Overly specific selectors</strong>: page-scoped <code class="ds-code">.et_pb_row_*</code>, <code class="ds-code">.et_pb_section_*</code> increase maintenance cost.</li>
-                  <li><strong>Hardcoded widths</strong>: max-width overrides (e.g. row max-width 750px on homepage) can create inconsistent rhythm.</li>
-                </ul>
-              </section>
-
-              <section class="ds-section" id="cleanup-priorities">
-                <h2>Cleanup priorities</h2>
-
-                <div class="ds-priority ds-priority--high">
-                  <strong>High</strong>
-                  <ul>
-                    <li>Mobile-breaking layout rules (audit page-scoped media queries; fix overlaps).</li>
-                    <li>Duplicated header/nav patterns (semantics + consistent CTA treatment).</li>
-                    <li>Form styles needed for Newsletter (standardize input + submit button).</li>
-                    <li>Buttons and CTAs (single base + variants across site + newsletter).</li>
-                    <li>Core typography scale (normalize headings/eyebrows/button text).</li>
-                  </ul>
-                </div>
-
-                <div class="ds-priority ds-priority--medium">
-                  <strong>Medium</strong>
-                  <ul>
-                    <li>Card normalization (case study + newsletter cards).</li>
-                    <li>Testimonial styles (extract into shared component).</li>
-                    <li>Logo strips (standardize spacing/alignment).</li>
-                    <li>Section spacing rhythm (reduce one-offs).</li>
-                    <li>Legacy WordPress/Divi CSS cleanup plan (identify unused selectors safely).</li>
-                  </ul>
-                </div>
-
-                <div class="ds-priority ds-priority--low">
-                  <strong>Low</strong>
-                  <ul>
-                    <li>Minor color cleanup (near-duplicates, token naming).</li>
-                    <li>Animation cleanup (ensure consistent motion + reduced motion support).</li>
-                    <li>Decorative details (borders, shadow fine-tuning).</li>
-                  </ul>
-                </div>
-              </section>
-            </main>
+<body>
+
+<aside class="sidebar" id="ds-sidebar" aria-hidden="false">
+  <nav aria-label="Design system">
+    <header class="px-4 pt-5 pb-3">
+      <a href="/design-system/" class="flex items-center gap-3">
+        <span class="grid size-9 place-items-center rounded-full bg-primary text-primary-foreground font-display text-lg font-bold">TW</span>
+        <span class="leading-tight">
+          <span class="block text-sm font-medium">Tyler White</span>
+          <span class="block text-xs text-muted-foreground">Design system · Dusk on Basecoat</span>
+        </span>
+      </a>
+    </header>
+    <section class="scrollbar">
+      <div role="group" aria-labelledby="g-foundations">
+        <h3 id="g-foundations">Foundations</h3>
+        <ul>
+          <li><a href="#colours"><span>Colours</span></a></li>
+          <li><a href="#typography"><span>Typography</span></a></li>
+          <li><a href="#elevation"><span>Elevation</span></a></li>
+          <li><a href="#light-dark"><span>Light &amp; dark sections</span></a></li>
+        </ul>
+      </div>
+      <div role="group" aria-labelledby="g-components">
+        <h3 id="g-components">Components</h3>
+        <ul>
+          <li><a href="#button"><span>Button</span></a></li>
+          <li><a href="#badge"><span>Badge &amp; pill</span></a></li>
+          <li><a href="#card"><span>Card</span></a></li>
+          <li><a href="#alert"><span>Alert</span></a></li>
+          <li><a href="#form"><span>Form fields</span></a></li>
+          <li><a href="#switch"><span>Switch &amp; checkbox</span></a></li>
+          <li><a href="#tabs"><span>Tabs</span></a></li>
+          <li><a href="#accordion"><span>Accordion</span></a></li>
+          <li><a href="#table"><span>Table</span></a></li>
+          <li><a href="#dialog"><span>Dialog</span></a></li>
+          <li><a href="#tooltip"><span>Tooltip &amp; kbd</span></a></li>
+        </ul>
+      </div>
+      <div role="group" aria-labelledby="g-data">
+        <h3 id="g-data">Data &amp; illustration</h3>
+        <ul>
+          <li><a href="#d-line"><span>Trend line</span></a></li>
+          <li><a href="#d-bars"><span>Activity bars</span></a></li>
+          <li><a href="#d-compare"><span>Before / after</span></a></li>
+          <li><a href="#d-tiles"><span>Stat tiles &amp; ring</span></a></li>
+          <li><a href="#d-seg"><span>Value breakdown</span></a></li>
+        </ul>
+      </div>
+      <div role="group" aria-labelledby="g-patterns">
+        <h3 id="g-patterns">Sections (Dusk)</h3>
+        <ul>
+          <li><a href="#p-hero"><span>Hero</span></a></li>
+          <li><a href="#p-logos"><span>Logo cloud</span></a></li>
+          <li><a href="#p-features"><span>Features 1</span></a></li>
+          <li><a href="#p-cards"><span>Features 2</span></a></li>
+          <li><a href="#p-bento"><span>Bento</span></a></li>
+          <li><a href="#p-stats"><span>Stats</span></a></li>
+          <li><a href="#p-pricing"><span>Pricing</span></a></li>
+          <li><a href="#p-testimonials"><span>Testimonials</span></a></li>
+          <li><a href="#p-cta"><span>CTA</span></a></li>
+          <li><a href="#p-footer"><span>Footer</span></a></li>
+        </ul>
+      </div>
+    </section>
+    <footer class="px-4 py-3 text-xs text-muted-foreground">
+      <a href="/design-system/legacy/" class="underline underline-offset-4 hover:text-foreground">Old design system (legacy)</a>
+    </footer>
+  </nav>
+</aside>
+
+<main class="min-h-screen">
+  <header class="sticky top-0 z-30 flex h-14 items-center gap-2 border-b bg-background/85 px-4 backdrop-blur">
+    <button type="button" class="btn" data-variant="ghost" data-size="icon" aria-label="Toggle sidebar" onclick="document.getElementById('ds-sidebar').toggle()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/></svg>
+    </button>
+    <span class="text-sm text-muted-foreground">mrtylerwhite.com / design-system</span>
+    <div class="ms-auto flex items-center gap-2">
+      <a href="/" class="btn" data-variant="ghost" data-size="sm">View site</a>
+      <button type="button" class="btn" data-variant="secondary" data-size="icon" aria-label="Toggle dark mode" onclick="dsToggleTheme()">
+        <svg class="dark:hidden" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        <svg class="hidden dark:block" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M6.3 17.7l-1.4 1.4M19.1 4.9l-1.4 1.4"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="mx-auto max-w-5xl px-4 py-12 sm:px-8 md:py-16">
+
+    <!-- Intro -->
+    <h1 class="ds-display max-w-3xl">Design system</h1>
+    <p class="text-muted-foreground mt-4 max-w-2xl text-balance md:text-lg">Tailark Dusk ported to plain HTML on Basecoat. Light sections use our warm off-white, dark sections use Dusk's near-black, H1–H4 stay in condensed caps, and our brown is the accent. Everything else follows Dusk 1:1. <a href="#colours">See the colours</a>.</p>
+    <div class="mt-8 flex flex-wrap gap-2">
+      <a href="#p-hero" class="btn">Browse sections</a>
+      <a href="#button" class="btn" data-variant="secondary">Components</a>
+    </div>
+
+    <div class="alert mt-10">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+      <h2>How to use it</h2>
+      <section><p>Link <code class="font-mono">/assets/css/ds/basecoat.css</code>, add the page to <code class="font-mono">@source</code> in <code class="font-mono">assets/css/ds/basecoat.input.css</code>, then run <code class="font-mono">npm run build:ds</code>. Copy markup from the Code tabs. Put <code class="font-mono">class="dark"</code> or <code class="font-mono">class="light"</code> on each <code class="font-mono">&lt;section&gt;</code>.</p></section>
+    </div>
+
+    <!-- ═══════════ FOUNDATIONS ═══════════ -->
+    <section id="colours" class="mt-20">
+      <h2>Colours</h2>
+      <p class="text-muted-foreground mt-3 mb-8 max-w-2xl">Components only ever use the role names. The section's class decides which palette fills them.</p>
+      <div class="grid gap-4 md:grid-cols-2">
+        <div class="light rounded-xl p-5 ring-1 ring-foreground/10"><p class="mb-4 text-sm font-medium">Light · <span class="text-muted-foreground">class="light"</span></p><div class="ds-swatches grid grid-cols-3 gap-3"></div></div>
+        <div class="dark rounded-xl p-5 ring-1 ring-foreground/10"><p class="mb-4 text-sm font-medium">Dark · <span class="text-muted-foreground">class="dark"</span></p><div class="ds-swatches grid grid-cols-3 gap-3"></div></div>
+      </div>
+    </section>
+
+    <section id="typography" class="mt-20">
+      <h2>Typography</h2>
+      <p class="text-muted-foreground mt-3 mb-8 max-w-2xl">Plain <code class="font-mono text-sm">&lt;h1&gt;</code>–<code class="font-mono text-sm">&lt;h4&gt;</code> are styled automatically, always one colour. Brown is the accent for stats, highlights, links and icons, never headlines.</p>
+      <div class="card">
+        <section class="divide-y">
+          <div class="grid gap-2 py-5 sm:grid-cols-[9rem_1fr] sm:items-baseline"><code class="font-mono text-xs text-muted-foreground">.ds-display</code><p class="ds-display">Design that pays</p></div>
+          <div class="grid gap-2 py-5 sm:grid-cols-[9rem_1fr] sm:items-baseline"><code class="font-mono text-xs text-muted-foreground">h1</code><p class="ds-h1">Prove the ROI</p></div>
+          <div class="grid gap-2 py-5 sm:grid-cols-[9rem_1fr] sm:items-baseline"><code class="font-mono text-xs text-muted-foreground">h2 (two lines)</code><p class="ds-h2">Every project, one story. <br>What changed and why.</p></div>
+          <div class="grid gap-2 py-5 sm:grid-cols-[9rem_1fr] sm:items-baseline"><code class="font-mono text-xs text-muted-foreground">h3</code><p class="ds-h3">What changed and why</p></div>
+          <div class="grid gap-2 py-5 sm:grid-cols-[9rem_1fr] sm:items-baseline"><code class="font-mono text-xs text-muted-foreground">h4</code><p class="ds-h4">A smaller heading</p></div>
+          <div class="grid gap-2 py-5 sm:grid-cols-[9rem_1fr] sm:items-baseline"><code class="font-mono text-xs text-muted-foreground">lead · text-lg</code><p class="text-muted-foreground text-balance md:text-lg">Intro paragraph under a heading. Muted, balanced, 18px from tablet up.</p></div>
+          <div class="grid gap-2 py-5 sm:grid-cols-[9rem_1fr] sm:items-baseline"><code class="font-mono text-xs text-muted-foreground">feature · lg medium</code><p class="text-muted-foreground max-w-sm text-lg font-medium"><span class="text-foreground">One pipeline view.</span> Bold lead-in, then the muted explanation.</p></div>
+          <div class="grid gap-2 py-5 sm:grid-cols-[9rem_1fr] sm:items-baseline"><code class="font-mono text-xs text-muted-foreground">body</code><p class="text-muted-foreground">Body copy. Designers who can show what changed get the budget, the headcount and the promotion.</p></div>
+          <div class="grid gap-2 py-5 sm:grid-cols-[9rem_1fr] sm:items-baseline"><code class="font-mono text-xs text-muted-foreground">.ds-stat</code><p class="ds-stat">+18%</p></div>
+        </section>
+      </div>
+    </section>
+
+    <section id="elevation" class="mt-20">
+      <h2>Elevation</h2>
+      <p class="text-muted-foreground mt-3 mb-8 max-w-2xl">Dusk lifts surfaces with a hairline ring in the text colour, then a black shadow that grows with the level. Same classes in light and dark; the strength adjusts per palette.</p>
+      <div class="ds-example" data-flush data-title="Elevation">
+        <div class="grid md:grid-cols-2">
+          <div class="light grid gap-8 p-8">
+            <div class="ds-elev-1 p-6"><p class="font-medium">.card · .ds-elev-1</p><p class="text-muted-foreground text-sm">Resting card. Ring 6.5% + soft shadow.</p></div>
+            <div class="ds-elev-2 p-6"><p class="font-medium">.ds-elev-2</p><p class="text-muted-foreground text-sm">Floating panel. Ring + deep shadow.</p></div>
+            <div class="ds-elev-2 ds-elev-fade p-6"><p class="font-medium">.ds-elev-2 .ds-elev-fade</p><p class="text-muted-foreground text-sm">Floating with a top-down fill.</p></div>
+            <div class="flex gap-2"><button class="btn">Solid</button><button class="btn" data-variant="secondary">Secondary</button></div>
+          </div>
+          <div class="dark grid gap-8 p-8">
+            <div class="ds-elev-1 p-6"><p class="font-medium">.card · .ds-elev-1</p><p class="text-muted-foreground text-sm">Resting card. Ring 6.5% + soft shadow.</p></div>
+            <div class="ds-elev-2 p-6"><p class="font-medium">.ds-elev-2</p><p class="text-muted-foreground text-sm">Floating panel. Ring + deep shadow.</p></div>
+            <div class="ds-elev-2 ds-elev-fade p-6"><p class="font-medium">.ds-elev-2 .ds-elev-fade</p><p class="text-muted-foreground text-sm">Floating with a top-down fill.</p></div>
+            <div class="flex gap-2"><button class="btn">Solid</button><button class="btn" data-variant="secondary">Secondary</button></div>
           </div>
         </div>
       </div>
+    </section>
 
-      <!-- partial:footer -->
-<footer class="site-footer" role="contentinfo">
-  <div class="site-footer__inner">
-    <div class="site-footer__brand">
-      <img class="site-footer__wordmark" src="/wp-content/uploads/2025/12/logo-mrtylerwhite-1.svg" width="69" height="20" alt="Mr. Tyler White" />
-      <p class="site-footer__tagline">Product design, growth systems, and prototypes that help teams make better decisions.</p>
+    <section id="light-dark" class="mt-20">
+      <h2>Light &amp; dark sections</h2>
+      <p class="text-muted-foreground mt-3 mb-8 max-w-2xl">Add <code class="font-mono text-sm">class="light"</code> or <code class="font-mono text-sm">class="dark"</code> to a section. It paints its own background and every component inside follows. Nest freely.</p>
+      <div class="ds-example" data-flush data-title="Light and dark">
+        <section class="dark px-6 py-14 text-center">
+          <h3>A dark section</h3>
+          <p class="text-muted-foreground mx-auto mt-3 max-w-md">Dusk near-black, white pill CTA.</p>
+          <div class="mt-6 flex justify-center gap-2"><a href="#" class="btn">Primary</a><a href="#" class="btn" data-variant="secondary">Secondary</a></div>
+        </section>
+        <section class="light px-6 py-14 text-center">
+          <h3>A light section</h3>
+          <p class="text-muted-foreground mx-auto mt-3 max-w-md">Warm off-white, black pill CTA.</p>
+          <div class="mt-6 flex justify-center gap-2"><a href="#" class="btn">Primary</a><a href="#" class="btn" data-variant="secondary">Secondary</a></div>
+        </section>
+      </div>
+    </section>
+
+    <!-- ═══════════ COMPONENTS ═══════════ -->
+    <section id="button" class="mt-24">
+      <h2>Button</h2>
+      <p class="text-muted-foreground mt-3 mb-6"><code class="font-mono text-sm">.btn</code> with <code class="font-mono text-sm">data-variant</code> and <code class="font-mono text-sm">data-size</code>. Dusk sizing: 36px default, 32px small, 40px large.</p>
+      <div class="ds-example" data-title="Button">
+        <div class="flex flex-wrap items-center gap-2">
+          <button class="btn">Get started</button>
+          <button class="btn" data-variant="secondary">Login</button>
+          <button class="btn" data-variant="outline">Outline</button>
+          <button class="btn" data-variant="ghost">Watch the flow</button>
+          <button class="btn" data-variant="link">Link</button>
+          <button class="btn" data-variant="destructive">Delete</button>
+        </div>
+        <div class="mt-5 flex flex-wrap items-center gap-2">
+          <button class="btn" data-size="sm">Small</button>
+          <button class="btn" data-size="sm" data-variant="secondary">Small</button>
+          <button class="btn" data-size="lg">Large</button>
+          <button class="btn" data-variant="secondary" data-size="icon" aria-label="Next"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+          <button class="btn" disabled>Disabled</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="badge" class="mt-20">
+      <h2>Badge &amp; pill</h2>
+      <p class="text-muted-foreground mt-3 mb-6">Badges for tags. The <code class="font-mono text-sm">.ds-pill</code> is Dusk's announcement link above a hero headline.</p>
+      <div class="ds-example" data-title="Badge">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="badge">New</span>
+          <span class="badge" data-variant="secondary">Case study</span>
+          <span class="badge" data-variant="outline">Workshop</span>
+          <span class="badge" data-variant="destructive">Sold out</span>
+        </div>
+        <a href="#" class="ds-pill group mt-8">
+          <span class="text-sm font-medium">New:</span>
+          <span class="text-muted-foreground text-sm">The ROI Case Study Kit is out</span>
+          <div class="size-6 overflow-hidden rounded-full duration-500"><div class="flex w-12 -translate-x-1/2 duration-500 ease-in-out group-hover:translate-x-0"><span class="flex size-6"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="m-auto size-3"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span><span class="flex size-6"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="m-auto size-3"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></div></div>
+        </a>
+      </div>
+    </section>
+
+    <section id="card" class="mt-20">
+      <h2>Card</h2>
+      <p class="text-muted-foreground mt-3 mb-6"><code class="font-mono text-sm">.card</code> with <code class="font-mono text-sm">header</code>, <code class="font-mono text-sm">section</code> and <code class="font-mono text-sm">footer</code>.</p>
+      <div class="ds-example" data-title="Card">
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div class="card">
+            <header>
+              <h3>ROI Case Study Kit</h3>
+              <p>Templates and prompts to write up what your work changed.</p>
+            </header>
+            <section class="text-sm text-muted-foreground">Used by 2,000+ designers to make the case for promotions and budget.</section>
+            <footer class="flex gap-2">
+              <a href="#" class="btn">Get the kit</a>
+              <a href="#" class="btn" data-variant="ghost">Preview</a>
+            </footer>
+          </div>
+          <div class="card">
+            <header>
+              <span class="badge w-fit" data-variant="secondary">Letter #42</span>
+              <h3>Why your case study isn't landing</h3>
+              <p>Most write-ups describe the work. The ones that land describe the change.</p>
+            </header>
+            <footer><a href="#" class="btn" data-variant="link">Read the letter →</a></footer>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="alert" class="mt-20">
+      <h2>Alert</h2>
+      <div class="ds-example mt-6" data-title="Alert">
+        <div class="grid gap-4">
+          <div class="alert">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            <h2>You're subscribed</h2>
+            <section>Check your inbox to confirm. The first letter arrives Sunday.</section>
+          </div>
+          <div class="alert" data-variant="destructive">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+            <h2>Something went wrong</h2>
+            <section>That email address doesn't look right. Try again.</section>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="form" class="mt-20">
+      <h2>Form fields</h2>
+      <p class="text-muted-foreground mt-3 mb-6">Wrap a label, control and help text in <code class="font-mono text-sm">.field</code>.</p>
+      <div class="ds-example" data-title="Form">
+        <form class="grid max-w-md gap-6" onsubmit="return false">
+          <div class="field">
+            <label for="f-name">Name</label>
+            <input type="text" id="f-name" placeholder="Jordan Lee">
+          </div>
+          <div class="field">
+            <label for="f-email">Email</label>
+            <input type="email" id="f-email" placeholder="you@company.com">
+            <p>One letter a week. Unsubscribe any time.</p>
+          </div>
+          <div class="field">
+            <label for="f-role">Role</label>
+            <select class="select w-full" id="f-role">
+              <option>Product designer</option>
+              <option>Design lead</option>
+              <option>Design manager</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-msg">What are you working on?</label>
+            <textarea class="textarea" id="f-msg" rows="3" placeholder="A redesign of…"></textarea>
+          </div>
+          <button type="submit" class="btn w-fit">Subscribe</button>
+        </form>
+      </div>
+    </section>
+
+    <section id="switch" class="mt-20">
+      <h2>Switch &amp; checkbox</h2>
+      <div class="ds-example mt-6" data-title="Switch">
+        <div class="grid gap-4">
+          <label class="label gap-3"><input type="checkbox" role="switch" class="input" checked> Weekly letter</label>
+          <label class="label gap-3"><input type="checkbox" role="switch" class="input"> Workshop announcements</label>
+          <label class="label gap-3"><input type="checkbox" class="input" checked> I agree to the privacy policy</label>
+          <fieldset class="grid gap-3">
+            <label class="label gap-3"><input type="radio" name="plan" class="input" checked> Solo</label>
+            <label class="label gap-3"><input type="radio" name="plan" class="input"> Team</label>
+          </fieldset>
+        </div>
+      </div>
+    </section>
+
+    <section id="tabs" class="mt-20">
+      <h2>Tabs</h2>
+      <p class="text-muted-foreground mt-3 mb-6">Needs the Basecoat JS.</p>
+      <div class="ds-example" data-title="Tabs">
+        <div class="tabs w-full" id="demo-tabs">
+          <nav role="tablist" aria-orientation="horizontal">
+            <button type="button" role="tab" id="demo-tabs-tab-1" aria-controls="demo-tabs-panel-1" aria-selected="true" tabindex="0">Before</button>
+            <button type="button" role="tab" id="demo-tabs-tab-2" aria-controls="demo-tabs-panel-2" aria-selected="false" tabindex="-1">After</button>
+            <button type="button" role="tab" id="demo-tabs-tab-3" aria-controls="demo-tabs-panel-3" aria-selected="false" tabindex="-1">Impact</button>
+          </nav>
+          <div role="tabpanel" id="demo-tabs-panel-1" aria-labelledby="demo-tabs-tab-1" tabindex="-1" aria-selected="true"><p class="pt-4 text-sm text-muted-foreground">Checkout took 7 steps and 4 minutes on average.</p></div>
+          <div role="tabpanel" id="demo-tabs-panel-2" aria-labelledby="demo-tabs-tab-2" tabindex="-1" aria-selected="false" hidden><p class="pt-4 text-sm text-muted-foreground">3 steps, saved payment, under 90 seconds.</p></div>
+          <div role="tabpanel" id="demo-tabs-panel-3" aria-labelledby="demo-tabs-tab-3" tabindex="-1" aria-selected="false" hidden><p class="pt-4 text-sm text-muted-foreground">+18% completed orders in the first month.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="accordion" class="mt-20">
+      <h2>Accordion</h2>
+      <p class="text-muted-foreground mt-3 mb-6">Plain <code class="font-mono text-sm">&lt;details&gt;</code>, no JS. Good for FAQs.</p>
+      <div class="ds-example" data-title="Accordion">
+        <section class="accordion">
+          <details class="group">
+            <summary>Who is the newsletter for?<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-open:rotate-180"><path d="m6 9 6 6 6-6"/></svg></summary>
+            <section class="pb-4 text-sm text-muted-foreground">Product designers and design leads who need to show the business value of their work.</section>
+          </details>
+          <details class="group">
+            <summary>How often does it go out?<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-open:rotate-180"><path d="m6 9 6 6 6-6"/></svg></summary>
+            <section class="pb-4 text-sm text-muted-foreground">Once a week, on Sunday.</section>
+          </details>
+          <details class="group">
+            <summary>Is it free?<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-open:rotate-180"><path d="m6 9 6 6 6-6"/></svg></summary>
+            <section class="pb-4 text-sm text-muted-foreground">Yes.</section>
+          </details>
+        </section>
+      </div>
+    </section>
+
+    <section id="table" class="mt-20">
+      <h2>Table</h2>
+      <div class="ds-example mt-6" data-title="Table">
+        <div class="table-container">
+          <table class="table">
+            <thead><tr><th>Metric</th><th>Before</th><th>After</th><th class="text-right">Change</th></tr></thead>
+            <tbody>
+              <tr><td class="font-medium">Checkout completion</td><td>61%</td><td>72%</td><td class="text-right font-medium text-brand-text">+18%</td></tr>
+              <tr><td class="font-medium">Support tickets / week</td><td>340</td><td>210</td><td class="text-right font-medium text-brand-text">−38%</td></tr>
+              <tr><td class="font-medium">Time to complete</td><td>4m 02s</td><td>1m 27s</td><td class="text-right font-medium text-brand-text">−64%</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="dialog" class="mt-20">
+      <h2>Dialog</h2>
+      <p class="text-muted-foreground mt-3 mb-6">Native <code class="font-mono text-sm">&lt;dialog&gt;</code>; open with <code class="font-mono text-sm">showModal()</code>.</p>
+      <div class="ds-example" data-title="Dialog">
+        <button type="button" class="btn" data-variant="secondary" onclick="document.getElementById('demo-dialog').showModal()">Open dialog</button>
+        <dialog id="demo-dialog" class="dialog w-full sm:max-w-md" aria-labelledby="demo-dialog-title" aria-describedby="demo-dialog-desc" onclick="if (event.target === this) this.close()">
+          <div>
+            <header>
+              <h2 id="demo-dialog-title">Get the free kit</h2>
+              <p id="demo-dialog-desc">We'll send the ROI Case Study Kit to your inbox.</p>
+            </header>
+            <section>
+              <div class="field"><label for="d-email">Email</label><input type="email" id="d-email" placeholder="you@company.com"></div>
+            </section>
+            <footer>
+              <button type="button" class="btn" data-variant="secondary" onclick="this.closest('dialog').close()">Cancel</button>
+              <button type="button" class="btn" onclick="this.closest('dialog').close()">Send it</button>
+            </footer>
+            <button type="button" class="btn" data-variant="ghost" data-size="icon-sm" aria-label="Close dialog" onclick="this.closest('dialog').close()"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
+          </div>
+        </dialog>
+      </div>
+    </section>
+
+    <section id="tooltip" class="mt-20">
+      <h2>Tooltip &amp; kbd</h2>
+      <div class="ds-example mt-6" data-title="Tooltip">
+        <div class="flex flex-wrap items-center gap-4">
+          <button class="btn" data-variant="secondary" data-tooltip="Copies the case study link">Hover me</button>
+          <span class="text-sm text-muted-foreground">Search <kbd class="kbd">⌘</kbd> <kbd class="kbd">K</kbd></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ DATA & ILLUSTRATION ═══════════ -->
+    <div class="mt-24 border-t pt-16">
+      <h2>Data &amp; illustration</h2>
+      <p class="text-muted-foreground mt-3 max-w-2xl">Charts follow Apple's Health and Stocks idiom: a summary above the plot that follows your pointer, the axis on the right, four light gridlines, and the whole plot as the touch target. Brown is always the result. Illustrations come from Tailark's library (see Bento).</p>
     </div>
-    <nav class="site-footer__col" aria-label="Explore">
-      <span class="site-footer__col-heading">Explore</span>
-      <a href="/about/">About Me</a>
-      <a href="/case-studies/">Case Studies</a>
-      <a href="/newsletter/">Newsletter</a>
-      <a href="/letters/">Letters</a>
-      <a href="https://www.designtablepodcast.com/" target="_blank" rel="noopener noreferrer">Podcast</a>
-      <a href="/builder-kickoff/">Builder Kickoff™</a>
-    </nav>
-    <nav class="site-footer__col" aria-label="Resources">
-      <span class="site-footer__col-heading">Resources</span>
-      <a href="/resume/">Resume</a>
-      <a href="https://www.linkedin.com/in/mrtylerwhite/" target="_blank" rel="noopener noreferrer">Let&#8217;s Connect</a>
-      <a href="https://www.designtablepodcast.com/" target="_blank" rel="noopener noreferrer">The Design Table</a>
-      <a href="/funnel-simulator/">The Funnel Simulator</a>
-      <a href="/roi-case-study-template/">The 15 Minute Case Study</a>
-    </nav>
-    <div class="site-footer__cta-block">
-      <span class="site-footer__col-heading">Free Strategy Call</span>
-      <p class="site-footer__cta-copy">Want help turning messy product, growth, or design problems into a clearer plan? Book a 30-minute call and we&#8217;ll figure out where the biggest leverage is.</p>
-      <a href="https://cal.com/mrtylerwhite/30min" class="site-footer__cta-btn" target="_blank" rel="noopener noreferrer">Book a free strategy call</a>
+
+    <section id="d-line" class="mt-14">
+      <h3 class="mb-4">Trend line</h3>
+      <p class="text-muted-foreground mb-6 max-w-2xl">Stocks-style: smooth line, soft gradient, time-range switcher, ship date marked. Drag across it or use the arrow keys.</p>
+      <div class="ds-example" data-title="Trend line">
+        <figure class="ds-chart" data-ds-chart="line">
+          <script type="application/json">{"title":"Checkout completion","kicker":"Average","unit":"%","min":50,"ranges":[{"id":"6W","range":"Last 6 weeks","labels":["W7","W8","W9","W10","W11","W12"],"series":[{"name":"Completion","color":"1","values":[66,68,70,71,72,72]}]},{"id":"12W","range":"Last 12 weeks","labels":["W1","W2","W3","W4","W5","W6","W7","W8","W9","W10","W11","W12"],"marker":{"index":5,"label":"Redesign shipped"},"series":[{"name":"Completion","color":"1","values":[61,60,62,61,60,63,66,68,70,71,72,72]}]}]}</script>
+        </figure>
+      </div>
+    </section>
+
+    <section id="d-bars" class="mt-14">
+      <h3 class="mb-4">Activity bars</h3>
+      <p class="text-muted-foreground mb-6 max-w-2xl">Health-style: rounded bars from zero, optional goal line, the selected bar stays lit while the rest dim.</p>
+      <div class="ds-example" data-title="Activity bars">
+        <figure class="ds-chart" data-ds-chart="bars">
+          <script type="application/json">{"title":"Orders completed","kicker":"Daily average","unit":"orders","range":"Nov 1 – 30","goal":600,"color":"1","labels":["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30"],"values":[420,455,438,470,510,380,360,490,520,540,515,560,430,410,575,590,610,600,640,470,450,630,655,668,642,690,520,505,700,715]}</script>
+        </figure>
+      </div>
+    </section>
+
+    <section id="d-compare" class="mt-14">
+      <h3 class="mb-4">Before / after</h3>
+      <p class="text-muted-foreground mb-6 max-w-2xl">The core ROI comparison. The header leads with the average lift; hovering a task shows its before, after and lift.</p>
+      <div class="ds-example" data-title="Before after">
+        <figure class="ds-chart" data-ds-chart="compare">
+          <script type="application/json">{"title":"Task success rate","unit":"%","categories":["Sign up","Checkout","Find order","Return item"],"series":[{"name":"Before","color":"muted","values":[54,61,48,39]},{"name":"After","color":"1","values":[71,72,69,58]}]}</script>
+        </figure>
+      </div>
+    </section>
+
+    <section id="d-tiles" class="mt-14">
+      <h3 class="mb-4">Stat tiles &amp; goal ring</h3>
+      <p class="text-muted-foreground mb-6 max-w-2xl">Label, value, change, sparkline. The Activity-style ring shows progress to a target.</p>
+      <div class="ds-example" data-title="Stat tiles">
+        <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          <div class="ds-tile">
+            <span class="ds-tile-label">Revenue influenced</span>
+            <span class="ds-tile-value">$1.2M</span>
+            <span class="ds-tile-delta">↑ 18% vs last quarter</span>
+            <div class="ds-chart" data-ds-chart="spark"><script type="application/json">{"color":"1","values":[40,42,41,45,44,48,52,51,55,58,60,64]}</script></div>
+          </div>
+          <div class="ds-tile">
+            <span class="ds-tile-label">Support tickets / week</span>
+            <span class="ds-tile-value">210</span>
+            <span class="ds-tile-delta">↓ 38% vs before</span>
+            <div class="ds-chart" data-ds-chart="spark"><script type="application/json">{"color":"1","values":[340,335,338,330,320,290,260,240,228,220,214,210]}</script></div>
+          </div>
+          <div class="ds-tile">
+            <span class="ds-tile-label">Time to complete</span>
+            <span class="ds-tile-value">1m 27s</span>
+            <span class="ds-tile-delta">↓ 64% vs before</span>
+            <div class="ds-chart" data-ds-chart="spark"><script type="application/json">{"color":"1","values":[242,240,238,236,230,180,140,110,98,92,90,87]}</script></div>
+          </div>
+          <div class="ds-tile place-items-center">
+            <div class="ds-chart" data-ds-chart="ring"><script type="application/json">{"value":1.2,"goal":1.5,"unit":"$","label":"of $1.5M target","color":"1"}</script></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="d-seg" class="mt-14">
+      <h3 class="mb-4">Value breakdown</h3>
+      <p class="text-muted-foreground mb-6 max-w-2xl">iPhone Storage-style: one whole, parts separated by a small gap.</p>
+      <div class="ds-example" data-title="Value breakdown">
+        <figure class="ds-chart" aria-label="Value delivered: revenue 58%, cost saved 27%, risk avoided 15%">
+          <div class="ds-chart-head"><div class="ds-chart-kicker">Value delivered</div><div class="ds-chart-valuerow"><span class="ds-chart-value">$2.1M</span><span class="ds-chart-unit">per year</span></div></div>
+          <div class="ds-seg">
+            <span style="width:58%;background:var(--chart-1)">58%</span>
+            <span style="width:27%;background:var(--chart-2)">27%</span>
+            <span style="width:15%;background:var(--chart-3)">15%</span>
+          </div>
+          <ul class="ds-chart-legend">
+            <li><span class="ds-chart-key-box" style="background:var(--chart-1)"></span>Revenue</li>
+            <li><span class="ds-chart-key-box" style="background:var(--chart-2)"></span>Cost saved</li>
+            <li><span class="ds-chart-key-box" style="background:var(--chart-3)"></span>Risk avoided</li>
+          </ul>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ═══════════ SECTIONS (DUSK) ═══════════ -->
+    <div class="mt-24 border-t pt-16">
+      <h2>Sections</h2>
+      <p class="text-muted-foreground mt-3 max-w-2xl">Full-width page sections. Each one carries its own <code class="font-mono text-sm">dark</code> / <code class="font-mono text-sm">light</code> class, so you can stack them in any order. Containers: <code class="font-mono text-sm">mx-auto max-w-7xl px-6</code>; spacing: <code class="font-mono text-sm">py-16 md:py-20</code>.</p>
     </div>
+
+    <section id="p-hero" class="mt-14">
+      <h3 class="mb-4">Hero</h3>
+      <div class="ds-example" data-flush data-title="Hero">
+        <section class="dark overflow-hidden">
+          <div class="relative pt-24 md:pt-36">
+            <div class="mx-auto max-w-7xl">
+              <div class="px-6 text-center">
+                <a href="#" class="ds-pill group">
+              <span class="text-sm font-medium">New:</span>
+              <span class="text-muted-foreground text-sm">The ROI Case Study Kit is out</span>
+              <div class="size-6 overflow-hidden rounded-full duration-500"><div class="flex w-12 -translate-x-1/2 duration-500 ease-in-out group-hover:translate-x-0"><span class="flex size-6"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="m-auto size-3"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span><span class="flex size-6"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="m-auto size-3"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></div></div>
+            </a>
+                <h1 class="ds-display mx-auto mt-8 lg:mt-12">Show what your work changed</h1>
+                <p class="text-muted-foreground mx-auto mt-4 max-w-2xl text-balance md:text-lg">A weekly letter and toolkit for designers who want the budget, the headcount and the promotion.</p>
+                <div class="mt-6 flex flex-col items-center justify-center gap-2 md:flex-row">
+                  <a href="#" class="btn"><span class="text-nowrap">Join the newsletter</span></a>
+                  <a href="#" class="btn" data-variant="ghost"><span class="text-nowrap">Read a letter</span></a>
+                </div>
+              </div>
+              <div class="ds-frame-wrap mt-8 sm:mt-16">
+                <div class="ds-frame">
+                  <div class="absolute inset-0 z-1 rounded-2xl bg-foreground/2"></div>
+                  <div class="relative grid aspect-15/8 place-items-center rounded-2xl bg-background text-sm text-muted-foreground">App screenshot goes here</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section id="p-logos" class="mt-14">
+      <h3 class="mb-4">Logo cloud</h3>
+      <p class="text-muted-foreground mb-6 max-w-2xl">Dusk's strip under the hero, with your press logos (split from the homepage sprites into <code class="font-mono text-sm">assets/images/ds/logos/</code>). Hover blurs the logos and reveals the link.</p>
+      <div class="ds-example" data-flush data-title="Logo cloud">
+        <section class="dark pt-6 pb-16 md:pb-32">
+          <div class="group relative m-auto max-w-5xl px-6">
+            <div class="absolute inset-0 z-10 flex scale-95 items-center justify-center opacity-0 duration-500 group-hover:scale-100 group-hover:opacity-100">
+              <a href="#" class="block text-sm duration-150 hover:opacity-75"><span>Work featured in the press</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="ml-1 inline-block size-3"><path d="m9 18 6-6-6-6"/></svg></a>
+            </div>
+            <div class="mx-auto mt-12 grid max-w-2xl grid-cols-3 gap-x-12 gap-y-8 transition-all duration-500 group-hover:opacity-50 group-hover:blur-xs sm:gap-x-16 sm:gap-y-14 md:grid-cols-4">
+              <div class="flex items-center"><span class="ds-logo mx-auto h-5 w-full" style="--logo:url(/assets/images/ds/logos/bloomberg.svg)" role="img" aria-label="Bloomberg"></span></div><div class="flex items-center"><span class="ds-logo mx-auto h-5 w-full" style="--logo:url(/assets/images/ds/logos/forbes.svg)" role="img" aria-label="Forbes"></span></div><div class="flex items-center"><span class="ds-logo mx-auto h-5 w-full" style="--logo:url(/assets/images/ds/logos/techcrunch.svg)" role="img" aria-label="TechCrunch"></span></div><div class="flex items-center"><span class="ds-logo mx-auto h-5 w-full" style="--logo:url(/assets/images/ds/logos/cbs-news.svg)" role="img" aria-label="CBS News"></span></div><div class="flex items-center"><span class="ds-logo mx-auto h-5 w-full" style="--logo:url(/assets/images/ds/logos/abc-news.svg)" role="img" aria-label="ABC News"></span></div><div class="flex items-center"><span class="ds-logo mx-auto h-5 w-full" style="--logo:url(/assets/images/ds/logos/venturebeat.svg)" role="img" aria-label="VentureBeat"></span></div><div class="hidden items-center sm:flex"><span class="ds-logo mx-auto h-5 w-full" style="--logo:url(/assets/images/ds/logos/financial-post.svg)" role="img" aria-label="Financial Post"></span></div><div class="hidden items-center sm:flex"><span class="ds-logo mx-auto h-5 w-full" style="--logo:url(/assets/images/ds/logos/crunchbase.svg)" role="img" aria-label="Crunchbase"></span></div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section id="p-features" class="mt-14">
+      <h3 class="mb-4">Features 1</h3>
+      <p class="text-muted-foreground mb-6 max-w-2xl">Dusk's feature cards are intentionally empty abstract compositions: an offset card, a fade panel, a window. Replace a shape with a real screenshot, never with decoration.</p>
+      <div class="ds-example" data-flush data-title="Features 1">
+        <section class="dark py-16 md:py-20">
+          <div class="mx-auto max-w-7xl px-6">
+            <h2>Every project, one story. <br>What changed and why.</h2>
+            <div class="mt-8 grid gap-3 *:bg-background md:mt-16 md:grid-cols-2 lg:grid-cols-3">
+              <div class="ds-elev-1 p-8">
+                <p class="text-muted-foreground max-w-xs text-lg font-medium"><span class="text-foreground">One impact view.</span> See every project's baseline, change and owner in one place.</p>
+                <div class="my-16"><div aria-hidden="true" class="bg-background relative mx-auto aspect-square w-10/12 max-w-xs rounded-xl border"><div class="ds-elev-2 absolute right-0 bottom-0 aspect-square w-3/5 translate-x-8 translate-y-16"></div></div></div>
+              </div>
+              <div class="ds-elev-1 lg:col-span-2">
+                <div class="p-8"><p class="text-muted-foreground max-w-xs text-lg font-medium"><span class="text-foreground">Evidence in context.</span> Metrics, quotes and decisions stay linked to the work, not scattered across decks.</p></div>
+                <div class="mask-x-from-65% mt-6 pt-2"><div aria-hidden="true" class="ds-elev-2 ds-elev-fade relative h-72"></div></div>
+              </div>
+            </div>
+            <div class="mt-12 grid gap-3 *:max-w-xs max-sm:*:not-last:border-b max-sm:*:not-last:pb-3 sm:grid-cols-2 md:mt-16 md:gap-y-6 lg:mt-24 lg:grid-cols-4 lg:gap-6"><p class="text-muted-foreground text-balance"><span class="text-foreground font-medium"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="inline size-4 -translate-y-0.5"><path d="M8 3 4 7l4 4"/><path d="M4 7h16"/><path d="m16 21 4-4-4-4"/><path d="M20 17H4"/></svg> Baselines.</span> Capture the before so the after means something.</p><p class="text-muted-foreground text-balance"><span class="text-foreground font-medium"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="inline size-4 -translate-y-0.5"><path d="M10.268 21a2 2 0 0 0 3.464 0"/><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"/></svg> Updates.</span> Leaders hear about wins as they land.</p><p class="text-muted-foreground text-balance"><span class="text-foreground font-medium"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="inline size-4 -translate-y-0.5"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> Stakeholders.</span> Everyone works from the same numbers.</p><p class="text-muted-foreground text-balance"><span class="text-foreground font-medium"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="inline size-4 -translate-y-0.5"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="m19 9-5 5-4-4-3 3"/></svg> Trends.</span> Spot the impact before review season.</p></div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section id="p-cards" class="mt-14">
+      <h3 class="mb-4">Features 2</h3>
+      <div class="ds-example" data-flush data-title="Features 2">
+        <section class="light py-16 md:py-20">
+          <div class="mx-auto max-w-7xl px-6">
+            <h2>Your impact, aligned. <br>One story per project.</h2>
+            <div class="mt-8 grid gap-3 *:bg-background md:mt-16 md:grid-cols-2 lg:grid-cols-3">
+              <div class="ds-elev-1 p-8">
+                <p class="text-muted-foreground max-w-xs text-lg font-medium"><span class="text-foreground">Ownership, clarified.</span> Know who drove each result and what changed last.</p>
+                <div class="my-16"><div aria-hidden="true" class="relative mx-auto aspect-square w-10/12 max-w-xs"><div class="mask-b-from-75% absolute inset-0"><div class="bg-background h-full rounded-xl border"></div></div><div class="ds-elev-2 absolute right-0 bottom-0 aspect-square w-3/5 translate-x-8 translate-y-16"></div></div></div>
+              </div>
+              <div class="ds-elev-1 overflow-hidden">
+                <div class="p-8"><p class="text-muted-foreground max-w-xs text-lg font-medium"><span class="text-foreground">Proof without busywork.</span> Results tied to real outcomes, not activity.</p></div>
+                <div class="mask-x-from-65% relative mt-6 pt-2"><div aria-hidden="true" class="ds-elev-2 relative h-72 bg-linear-to-b from-card to-background"></div></div>
+              </div>
+              <div class="ds-elev-1 p-8">
+                <p class="text-muted-foreground max-w-xs text-lg font-medium"><span class="text-foreground">Teams aligned.</span> Design, product and leadership share one record, from kickoff to review.</p>
+                <div class="mask-b-from-75% mt-16"><div aria-hidden="true" class="bg-background relative mx-auto flex aspect-square max-w-sm flex-col justify-between rounded-xl border pb-6"><div class="flex gap-1 border-b p-3"><div class="size-1 rounded-full bg-foreground/10"></div><div class="size-1 rounded-full bg-foreground/10"></div><div class="size-1 rounded-full bg-foreground/10"></div></div><div class="ds-elev-2 mx-6 mt-auto aspect-video"></div></div></div>
+              </div>
+            </div>
+            <div class="mt-12 grid gap-3 *:max-w-xs max-sm:*:not-last:border-b max-sm:*:not-last:pb-3 sm:grid-cols-2 md:mt-16 md:gap-y-6 lg:mt-24 lg:grid-cols-4 lg:gap-6"><p class="text-muted-foreground text-balance"><span class="text-foreground font-medium"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="inline size-4 -translate-y-0.5"><path d="M8 3 4 7l4 4"/><path d="M4 7h16"/><path d="m16 21 4-4-4-4"/><path d="M20 17H4"/></svg> Kickoffs.</span> Agree the metric before the first pixel.</p><p class="text-muted-foreground text-balance"><span class="text-foreground font-medium"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="inline size-4 -translate-y-0.5"><path d="M10.268 21a2 2 0 0 0 3.464 0"/><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"/></svg> Milestones.</span> Log launches and results without extra admin.</p><p class="text-muted-foreground text-balance"><span class="text-foreground font-medium"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="inline size-4 -translate-y-0.5"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> Reviews.</span> Promotion evidence surfaces before the cycle.</p><p class="text-muted-foreground text-balance"><span class="text-foreground font-medium"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="inline size-4 -translate-y-0.5"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="m19 9-5 5-4-4-3 3"/></svg> Focus.</span> Less time on decks, more time on the work.</p></div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section id="p-bento" class="mt-14">
+      <h3 class="mb-4">Bento (Tailark)</h3>
+      <p class="text-muted-foreground mb-6 max-w-2xl">Ported from Tailark Quartz <code class="font-mono text-sm">bento-1</code> and <code class="font-mono text-sm">bento-2</code>. Not every feature gets the same box: wide tiles carry the main visual, small tiles support the story. Uses a container query, so it adapts to wherever it's placed.</p>
+      <div class="ds-example" data-flush data-title="Bento 1">
+        <section class="light @container py-16">
+          <div class="mx-auto w-full max-w-5xl px-6">
+            <h2 class="sr-only">Features</h2>
+            <div class="ds-bento">
+          <div class="ds-bento-card grid-rows-[auto_1fr] gap-8 @3xl:col-span-2"><div><h3>Reports that send themselves</h3><p>Impact summaries land with stakeholders every month.</p></div><div class="relative -m-8 flex items-end p-8"><div class="ds-stripes"></div><div aria-hidden="true" class="relative w-full"><div class="ds-illo-card group relative grid w-full grid-cols-[auto_1fr] gap-2.5 p-4 text-xs"><div class="relative h-fit"><div class="absolute bottom-1.5 -left-1.5 rounded-md border-t border-red-700 bg-red-500 px-1 py-px text-[10px] font-medium text-white shadow-md shadow-red-500/35">PDF</div><div class="h-10 w-8 rounded-md border bg-linear-to-b from-muted to-accent"></div></div><div class="mt-0.5"><div class="text-sm font-medium">q3-design-impact.pdf</div><div class="relative my-1.5 h-1 overflow-hidden rounded-full bg-foreground/5 before:absolute before:inset-0 before:w-1/3 before:rounded-r-full before:bg-brand before:transition-[width] before:delay-150 before:duration-300 group-hover:before:w-2/3"></div><div class="text-xs text-muted-foreground">Sending to 6 stakeholders</div></div></div></div></div></div>
+          <div class="ds-bento-card grid-rows-[auto_1fr] gap-8 @3xl:col-span-2"><div><h3>Value, by source</h3><p>Revenue, acquisition cost and risk, each tied to a project.</p></div><div class="relative -m-8 flex items-end p-8"><div class="ds-stripes"></div><div aria-hidden="true" class="flex -space-x-4"><div class="relative w-16 translate-y-1 -rotate-12 space-y-2 rounded-lg bg-illustration p-2 shadow-md ring-1 ring-border-illustration shadow-black/6.5 before:absolute before:inset-0.5 before:rounded-[6px] before:border before:border-foreground/5 before:bg-linear-to-b before:from-chart-1/15 before:from-25% before:to-illustration before:to-75% before:mask-b-from-65%"><div class="relative flex -translate-x-0.5 items-center gap-0.5 text-foreground"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-3 text-chart-1"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg><span class="text-xs font-medium">ARR</span></div><div class="relative space-y-2"><div class="space-y-1.5"><div class="flex items-center gap-1"><div class="h-[3px] w-2.5 rounded-full bg-border"></div><div class="h-[3px] w-6 rounded-full bg-border"></div></div><div class="flex items-center gap-1"><div class="h-[3px] w-2.5 rounded-full bg-border"></div><div class="h-[3px] w-6 rounded-full bg-border"></div></div></div><div class="space-y-1.5"><div class="h-[3px] w-full rounded-full bg-border"></div><div class="flex items-center gap-1"><div class="h-[3px] w-2/3 rounded-full bg-border"></div><div class="h-[3px] w-1/3 rounded-full bg-border"></div></div></div></div><div class="relative flex"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-auto size-3"><path d="m21 17-2.156-1.868A.5.5 0 0 0 18 15.5v.5a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1c0-2.545-3.991-3.97-8.5-4a1 1 0 0 0 0 5c4.153 0 4.745-11.295 5.708-13.5a2.5 2.5 0 1 1 3.31 3.284"/><path d="M3 21h18"/></svg></div></div><div class="relative w-16 translate-y-1 -rotate-12 space-y-2 rounded-lg bg-illustration p-2 shadow-md ring-1 ring-border-illustration shadow-black/6.5 before:absolute before:inset-0.5 before:rounded-[6px] before:border before:border-foreground/5 before:bg-linear-to-b before:from-chart-2/15 before:from-25% before:to-illustration before:to-75% before:mask-b-from-65%"><div class="relative flex -translate-x-0.5 items-center gap-0.5 text-foreground"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-3 text-chart-2"><line x1="12" x2="12" y1="2" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span class="text-xs font-medium">CAC</span></div><div class="relative space-y-2"><div class="space-y-1.5"><div class="flex items-center gap-1"><div class="h-[3px] w-2.5 rounded-full bg-border"></div><div class="h-[3px] w-6 rounded-full bg-border"></div></div><div class="flex items-center gap-1"><div class="h-[3px] w-2.5 rounded-full bg-border"></div><div class="h-[3px] w-6 rounded-full bg-border"></div></div></div><div class="space-y-1.5"><div class="h-[3px] w-full rounded-full bg-border"></div><div class="flex items-center gap-1"><div class="h-[3px] w-2/3 rounded-full bg-border"></div><div class="h-[3px] w-1/3 rounded-full bg-border"></div></div></div></div><div class="relative flex"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-auto size-3"><path d="m21 17-2.156-1.868A.5.5 0 0 0 18 15.5v.5a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1c0-2.545-3.991-3.97-8.5-4a1 1 0 0 0 0 5c4.153 0 4.745-11.295 5.708-13.5a2.5 2.5 0 1 1 3.31 3.284"/><path d="M3 21h18"/></svg></div></div><div class="relative w-16 translate-y-1 -rotate-12 space-y-2 rounded-lg bg-illustration p-2 shadow-md ring-1 ring-border-illustration shadow-black/6.5 before:absolute before:inset-0.5 before:rounded-[6px] before:border before:border-foreground/5 before:bg-linear-to-b before:from-chart-3/15 before:from-25% before:to-illustration before:to-75% before:mask-b-from-65%"><div class="relative flex -translate-x-0.5 items-center gap-0.5 text-foreground"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-3 text-chart-3"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg><span class="text-xs font-medium">RISK</span></div><div class="relative space-y-2"><div class="space-y-1.5"><div class="flex items-center gap-1"><div class="h-[3px] w-2.5 rounded-full bg-border"></div><div class="h-[3px] w-6 rounded-full bg-border"></div></div><div class="flex items-center gap-1"><div class="h-[3px] w-2.5 rounded-full bg-border"></div><div class="h-[3px] w-6 rounded-full bg-border"></div></div></div><div class="space-y-1.5"><div class="h-[3px] w-full rounded-full bg-border"></div><div class="flex items-center gap-1"><div class="h-[3px] w-2/3 rounded-full bg-border"></div><div class="h-[3px] w-1/3 rounded-full bg-border"></div></div></div></div><div class="relative flex"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-auto size-3"><path d="m21 17-2.156-1.868A.5.5 0 0 0 18 15.5v.5a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1c0-2.545-3.991-3.97-8.5-4a1 1 0 0 0 0 5c4.153 0 4.745-11.295 5.708-13.5a2.5 2.5 0 1 1 3.31 3.284"/><path d="M3 21h18"/></svg></div></div></div></div></div>
+          <div class="ds-bento-card grid-rows-[auto_1fr] gap-8 @3xl:col-span-2"><div><h3>Sign-off in the thread</h3><p>Leaders approve the story where they already work.</p></div><div class="relative -m-8 flex items-end p-8"><div class="ds-stripes"></div><div aria-hidden="true" class="ds-illo-card relative mt-0 flex w-full flex-col space-y-4 px-4 pt-4 pb-2"><p class="text-sm font-medium text-brand-text">@Priya <span class="font-normal text-muted-foreground">approved the case study</span></p><div class="-ml-1.5 flex text-muted-foreground"><div class="flex size-7 rounded-full hover:bg-muted hover:text-foreground"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="m-auto size-4"><circle cx="12" cy="12" r="4"/><path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-4 8"/></svg></div><div class="flex size-7 rounded-full hover:bg-muted hover:text-foreground"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="m-auto size-4"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" x2="9.01" y1="9" y2="9"/><line x1="15" x2="15.01" y1="9" y2="9"/></svg></div><div class="flex size-7 rounded-full hover:bg-muted hover:text-foreground"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="m-auto size-4"><path d="M13.234 20.252 21 12.3"/><path d="m16 6-8.414 8.586a2 2 0 0 0 0 2.828 2 2 0 0 0 2.828 0l8.414-8.586a4 4 0 0 0 0-5.656 4 4 0 0 0-5.656 0l-8.415 8.585a6 6 0 1 0 8.486 8.486"/></svg></div></div></div></div></div>
+          <div class="ds-bento-card grid-rows-[auto_1fr] gap-8 @3xl:col-span-2"><div><h3>A timeline of proof</h3><p>Baseline to promotion, every milestone logged.</p></div><div class="relative -m-8 flex items-end p-8"><div class="ds-stripes"></div><div aria-hidden="true" class="relative w-full px-5 select-none"><div class="relative w-full space-y-3 py-6 before:absolute before:inset-y-0 before:w-px before:bg-foreground/15 before:mask-y-from-75%"><div class="pl-5"><div class="text-xs text-muted-foreground">January</div><div class="relative mt-0.5 text-sm font-medium text-foreground before:absolute before:inset-y-0 before:my-auto before:size-[5px] before:rounded-full before:border before:bg-background before:ring before:ring-background before:left-[-22px] before:border-muted-foreground">Baseline set</div></div><div class="ds-illo-card relative -mx-5 p-2 text-xs"><div class="ml-7 text-xs text-muted-foreground">March</div><div class="ml-7 flex gap-1 py-1.5"><span class="ds-avatar">TW</span><span class="ds-avatar">JL</span><span class="ds-avatar">SP</span><span class="ds-avatar">AK</span></div><div class="relative mt-0.5 ml-7 text-sm font-medium before:absolute before:inset-y-0 before:my-auto before:size-[5px] before:rounded-full before:border before:bg-background before:ring before:ring-background before:left-[-19px] before:border-brand">Redesign shipped</div></div><div class="pl-5"><div class="text-xs text-muted-foreground">June</div><div class="relative mt-0.5 text-sm font-medium text-foreground before:absolute before:inset-y-0 before:my-auto before:size-[5px] before:rounded-full before:border before:bg-background before:ring before:ring-background before:left-[-22px] before:border-muted-foreground">Promotion approved</div></div></div></div></div></div>
+          <div class="ds-bento-card grid-rows-[auto_1fr] gap-8 @xl:col-span-2 @3xl:col-span-4"><div><h3>See where the value came from</h3><p>One breakdown leadership can read in ten seconds.</p></div><div class=""><div aria-hidden="true" class="group relative -mx-4 mask-b-from-65% px-4 pt-6 before:absolute before:inset-x-6 before:top-4 before:bottom-0 before:z-1 before:rounded-2xl before:border before:border-border before:bg-background after:absolute after:inset-x-9 after:top-2 after:bottom-0 after:rounded-2xl after:border after:border-border after:bg-background/50"><div class="relative z-10 rounded-2xl border border-transparent bg-illustration p-6 shadow-(--elev-2) ring-1 ring-border-illustration"><div class="font-medium text-foreground"><span class="bg-brand-soft py-1 text-brand-text">Impact</span> breakdown</div><div class="mt-0.5 text-sm text-muted-foreground">Share of annual value by source</div><div class="relative mt-4 mb-4 flex"><div class="h-5 w-2/5 rounded-l-md bg-[color-mix(in_oklab,var(--foreground)55%,var(--brand))]"></div><div class="ds-gloss-fill h-5 w-1/4 transition-[width] duration-300 group-hover:w-2/5"></div><div class="h-5 flex-1 rounded-r-md border bg-[linear-gradient(-90deg,var(--stripes)_25%,transparent_25%,transparent_50%,var(--stripes)_50%,var(--stripes)_75%,transparent_75%,transparent)] bg-size-[5px_5px] [--stripes:color-mix(in_oklab,var(--foreground)20%,transparent)]"></div></div><div class="flex gap-1 border-b border-dashed pb-3"><div class="w-2/5"><div class="text-xl font-medium text-foreground">$1.2M</div><div class="text-sm text-muted-foreground">Revenue</div></div><div class="w-3/5"><div class="text-xl font-medium text-foreground">$0.7M</div><div class="text-sm text-muted-foreground">Savings</div></div></div><div class="mt-3 space-y-1"><div class="grid grid-cols-[auto_1fr] items-center gap-2"><div class="size-1.5 rounded-full bg-[color-mix(in_oklab,var(--foreground)55%,var(--brand))]"></div><div class="line-clamp-1 text-sm font-medium">Checkout redesign <span class="text-muted-foreground">(40%)</span> +18% conversion</div></div><div class="grid grid-cols-[auto_1fr] items-center gap-2"><div class="size-1.5 rounded-full bg-brand"></div><div class="line-clamp-1 text-sm font-medium">Support flows <span class="text-muted-foreground">(25%)</span></div></div></div></div></div></div></div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <p class="text-muted-foreground mt-10 mb-6 max-w-2xl">Bento 2: illustration on top, text below; a 3-up row, then two halves.</p>
+      <div class="ds-example" data-flush data-title="Bento 2">
+        <section class="dark @container py-16">
+          <div class="mx-auto w-full max-w-5xl px-6">
+            <h2 class="sr-only">Features</h2>
+            <div class="ds-bento">
+          <div class="ds-bento-card grid-rows-[1fr_auto] gap-y-12 @3xl:col-span-2"><div class="relative -m-8 p-8"><div class="ds-stripes"></div><div aria-hidden="true" class="relative w-full"><div class="ds-illo-card group relative grid w-full grid-cols-[auto_1fr] gap-2.5 p-4 text-xs"><div class="relative h-fit"><div class="absolute bottom-1.5 -left-1.5 rounded-md border-t border-red-700 bg-red-500 px-1 py-px text-[10px] font-medium text-white shadow-md shadow-red-500/35">PDF</div><div class="h-10 w-8 rounded-md border bg-linear-to-b from-muted to-accent"></div></div><div class="mt-0.5"><div class="text-sm font-medium">q3-design-impact.pdf</div><div class="relative my-1.5 h-1 overflow-hidden rounded-full bg-foreground/5 before:absolute before:inset-0 before:w-1/3 before:rounded-r-full before:bg-brand before:transition-[width] before:delay-150 before:duration-300 group-hover:before:w-2/3"></div><div class="text-xs text-muted-foreground">Sending to 6 stakeholders</div></div></div></div></div><div><h3>Reports that send themselves</h3><p>Impact summaries land with stakeholders every month.</p></div></div>
+          <div class="ds-bento-card grid-rows-[1fr_auto] gap-y-12 @3xl:col-span-2"><div class="relative -m-8 p-8"><div class="ds-stripes"></div><div aria-hidden="true" class="flex -space-x-4"><div class="relative w-16 translate-y-1 -rotate-12 space-y-2 rounded-lg bg-illustration p-2 shadow-md ring-1 ring-border-illustration shadow-black/6.5 before:absolute before:inset-0.5 before:rounded-[6px] before:border before:border-foreground/5 before:bg-linear-to-b before:from-chart-1/15 before:from-25% before:to-illustration before:to-75% before:mask-b-from-65%"><div class="relative flex -translate-x-0.5 items-center gap-0.5 text-foreground"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-3 text-chart-1"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg><span class="text-xs font-medium">ARR</span></div><div class="relative space-y-2"><div class="space-y-1.5"><div class="flex items-center gap-1"><div class="h-[3px] w-2.5 rounded-full bg-border"></div><div class="h-[3px] w-6 rounded-full bg-border"></div></div><div class="flex items-center gap-1"><div class="h-[3px] w-2.5 rounded-full bg-border"></div><div class="h-[3px] w-6 rounded-full bg-border"></div></div></div><div class="space-y-1.5"><div class="h-[3px] w-full rounded-full bg-border"></div><div class="flex items-center gap-1"><div class="h-[3px] w-2/3 rounded-full bg-border"></div><div class="h-[3px] w-1/3 rounded-full bg-border"></div></div></div></div><div class="relative flex"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-auto size-3"><path d="m21 17-2.156-1.868A.5.5 0 0 0 18 15.5v.5a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1c0-2.545-3.991-3.97-8.5-4a1 1 0 0 0 0 5c4.153 0 4.745-11.295 5.708-13.5a2.5 2.5 0 1 1 3.31 3.284"/><path d="M3 21h18"/></svg></div></div><div class="relative w-16 translate-y-1 -rotate-12 space-y-2 rounded-lg bg-illustration p-2 shadow-md ring-1 ring-border-illustration shadow-black/6.5 before:absolute before:inset-0.5 before:rounded-[6px] before:border before:border-foreground/5 before:bg-linear-to-b before:from-chart-2/15 before:from-25% before:to-illustration before:to-75% before:mask-b-from-65%"><div class="relative flex -translate-x-0.5 items-center gap-0.5 text-foreground"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-3 text-chart-2"><line x1="12" x2="12" y1="2" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span class="text-xs font-medium">CAC</span></div><div class="relative space-y-2"><div class="space-y-1.5"><div class="flex items-center gap-1"><div class="h-[3px] w-2.5 rounded-full bg-border"></div><div class="h-[3px] w-6 rounded-full bg-border"></div></div><div class="flex items-center gap-1"><div class="h-[3px] w-2.5 rounded-full bg-border"></div><div class="h-[3px] w-6 rounded-full bg-border"></div></div></div><div class="space-y-1.5"><div class="h-[3px] w-full rounded-full bg-border"></div><div class="flex items-center gap-1"><div class="h-[3px] w-2/3 rounded-full bg-border"></div><div class="h-[3px] w-1/3 rounded-full bg-border"></div></div></div></div><div class="relative flex"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-auto size-3"><path d="m21 17-2.156-1.868A.5.5 0 0 0 18 15.5v.5a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1c0-2.545-3.991-3.97-8.5-4a1 1 0 0 0 0 5c4.153 0 4.745-11.295 5.708-13.5a2.5 2.5 0 1 1 3.31 3.284"/><path d="M3 21h18"/></svg></div></div><div class="relative w-16 translate-y-1 -rotate-12 space-y-2 rounded-lg bg-illustration p-2 shadow-md ring-1 ring-border-illustration shadow-black/6.5 before:absolute before:inset-0.5 before:rounded-[6px] before:border before:border-foreground/5 before:bg-linear-to-b before:from-chart-3/15 before:from-25% before:to-illustration before:to-75% before:mask-b-from-65%"><div class="relative flex -translate-x-0.5 items-center gap-0.5 text-foreground"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-3 text-chart-3"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg><span class="text-xs font-medium">RISK</span></div><div class="relative space-y-2"><div class="space-y-1.5"><div class="flex items-center gap-1"><div class="h-[3px] w-2.5 rounded-full bg-border"></div><div class="h-[3px] w-6 rounded-full bg-border"></div></div><div class="flex items-center gap-1"><div class="h-[3px] w-2.5 rounded-full bg-border"></div><div class="h-[3px] w-6 rounded-full bg-border"></div></div></div><div class="space-y-1.5"><div class="h-[3px] w-full rounded-full bg-border"></div><div class="flex items-center gap-1"><div class="h-[3px] w-2/3 rounded-full bg-border"></div><div class="h-[3px] w-1/3 rounded-full bg-border"></div></div></div></div><div class="relative flex"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-auto size-3"><path d="m21 17-2.156-1.868A.5.5 0 0 0 18 15.5v.5a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1c0-2.545-3.991-3.97-8.5-4a1 1 0 0 0 0 5c4.153 0 4.745-11.295 5.708-13.5a2.5 2.5 0 1 1 3.31 3.284"/><path d="M3 21h18"/></svg></div></div></div></div><div><h3>Value, by source</h3><p>Revenue, acquisition cost and risk, each tied to a project.</p></div></div>
+          <div class="ds-bento-card grid-rows-[1fr_auto] gap-y-12 @xl:col-span-2"><div class="relative -m-8 p-8"><div class="ds-stripes"></div><div aria-hidden="true" class="ds-illo-card relative mt-0 flex w-full flex-col space-y-4 px-4 pt-4 pb-2"><p class="text-sm font-medium text-brand-text">@Priya <span class="font-normal text-muted-foreground">approved the case study</span></p><div class="-ml-1.5 flex text-muted-foreground"><div class="flex size-7 rounded-full hover:bg-muted hover:text-foreground"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="m-auto size-4"><circle cx="12" cy="12" r="4"/><path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-4 8"/></svg></div><div class="flex size-7 rounded-full hover:bg-muted hover:text-foreground"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="m-auto size-4"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" x2="9.01" y1="9" y2="9"/><line x1="15" x2="15.01" y1="9" y2="9"/></svg></div><div class="flex size-7 rounded-full hover:bg-muted hover:text-foreground"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="m-auto size-4"><path d="M13.234 20.252 21 12.3"/><path d="m16 6-8.414 8.586a2 2 0 0 0 0 2.828 2 2 0 0 0 2.828 0l8.414-8.586a4 4 0 0 0 0-5.656 4 4 0 0 0-5.656 0l-8.415 8.585a6 6 0 1 0 8.486 8.486"/></svg></div></div></div></div><div><h3>Sign-off in the thread</h3><p>Leaders approve the story where they already work.</p></div></div>
+          <div class="ds-bento-card grid-rows-[1fr_auto] gap-y-12 @xl:col-span-2 @3xl:col-span-3"><div class="-m-8 p-8"><div aria-hidden="true" class="group relative -mx-4 mask-b-from-65% px-4 pt-6 before:absolute before:inset-x-6 before:top-4 before:bottom-0 before:z-1 before:rounded-2xl before:border before:border-border before:bg-background after:absolute after:inset-x-9 after:top-2 after:bottom-0 after:rounded-2xl after:border after:border-border after:bg-background/50"><div class="relative z-10 rounded-2xl border border-transparent bg-illustration p-6 shadow-(--elev-2) ring-1 ring-border-illustration"><div class="font-medium text-foreground"><span class="bg-brand-soft py-1 text-brand-text">Impact</span> breakdown</div><div class="mt-0.5 text-sm text-muted-foreground">Share of annual value by source</div><div class="relative mt-4 mb-4 flex"><div class="h-5 w-2/5 rounded-l-md bg-[color-mix(in_oklab,var(--foreground)55%,var(--brand))]"></div><div class="ds-gloss-fill h-5 w-1/4 transition-[width] duration-300 group-hover:w-2/5"></div><div class="h-5 flex-1 rounded-r-md border bg-[linear-gradient(-90deg,var(--stripes)_25%,transparent_25%,transparent_50%,var(--stripes)_50%,var(--stripes)_75%,transparent_75%,transparent)] bg-size-[5px_5px] [--stripes:color-mix(in_oklab,var(--foreground)20%,transparent)]"></div></div><div class="flex gap-1 border-b border-dashed pb-3"><div class="w-2/5"><div class="text-xl font-medium text-foreground">$1.2M</div><div class="text-sm text-muted-foreground">Revenue</div></div><div class="w-3/5"><div class="text-xl font-medium text-foreground">$0.7M</div><div class="text-sm text-muted-foreground">Savings</div></div></div><div class="mt-3 space-y-1"><div class="grid grid-cols-[auto_1fr] items-center gap-2"><div class="size-1.5 rounded-full bg-[color-mix(in_oklab,var(--foreground)55%,var(--brand))]"></div><div class="line-clamp-1 text-sm font-medium">Checkout redesign <span class="text-muted-foreground">(40%)</span> +18% conversion</div></div><div class="grid grid-cols-[auto_1fr] items-center gap-2"><div class="size-1.5 rounded-full bg-brand"></div><div class="line-clamp-1 text-sm font-medium">Support flows <span class="text-muted-foreground">(25%)</span></div></div></div></div></div></div><div><h3>See where the value came from</h3><p>Combine every project into one view of design's return.</p></div></div>
+          <div class="ds-bento-card grid-rows-[1fr_auto] gap-y-12 @xl:col-span-2 @3xl:col-span-3"><div class=""><div aria-hidden="true" class="relative -mx-8 mask-[radial-gradient(ellipse_50%_45%_at_50%_50%,#000_70%,transparent_100%)]"><div class="ds-map"><span class="ds-map-pin" style="left:30%;top:42%">TW</span><span class="ds-map-pin" style="left:51%;top:40%">JL</span><span class="ds-map-pin" style="left:74%;top:47%">SP</span><span class="ds-map-pin" style="left:34%;top:72%">AK</span></div></div></div><div><h3>Designers everywhere</h3><p>Teams in 40+ countries use the kit to prove their impact.</p></div></div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section id="p-stats" class="mt-14">
+      <h3 class="mb-4">Stats</h3>
+      <div class="ds-example" data-flush data-title="Stats">
+        <section class="dark py-16 md:py-20">
+          <div class="mx-auto max-w-7xl px-6">
+            <div class="grid gap-4 md:grid-cols-2 md:gap-6">
+              <h2>Prove the impact. <br>Earn the next role.</h2>
+              <div class="flex flex-col gap-32 md:mx-auto xl:gap-44">
+                <p class="text-muted-foreground text-balance text-lg">Designers who show what their work changed get the budget, the headcount and the promotion. The letter and the kit give you the numbers to prove it.</p>
+                <div class="grid gap-12 md:grid-cols-3 md:gap-12">
+                  <div class="space-y-3 border-t pt-6"><div class="ds-stat">12k</div><p class="text-muted-foreground">Newsletter readers</p></div>
+                  <div class="space-y-3 border-t pt-6"><div class="ds-stat">2,000+</div><p class="text-muted-foreground">Kits downloaded</p></div>
+                  <div class="space-y-3 border-t pt-6"><div class="ds-stat">+500</div><p class="text-muted-foreground">Workshop alumni</p></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section id="p-pricing" class="mt-14">
+      <h3 class="mb-4">Pricing</h3>
+      <div class="ds-example" data-flush data-title="Pricing">
+        <section class="light py-16 md:py-20">
+          <div class="mx-auto max-w-7xl px-6">
+            <div class="max-w-sm space-y-6"><h2>Pricing that fits your team</h2></div>
+            <div class="mt-12 grid gap-1.5 border *:p-6 max-lg:mx-auto max-lg:max-w-sm lg:mt-20 lg:grid-cols-4">
+              <div class="flex flex-col gap-8 max-lg:border-b lg:border-r"><div><p class="text-lg font-medium">Free</p><p class="text-muted-foreground text-lg font-medium">For curious designers</p><div class="my-8 block text-4xl font-medium tracking-tight">$0</div><a href="#" class="btn w-full" data-variant="outline">Get started</a></div><ul class="text-muted-foreground list-outside space-y-3"><li class="flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="ds-check size-3"><path d="M20 6 9 17l-5-5"/></svg>Weekly letter</li><li class="flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="ds-check size-3"><path d="M20 6 9 17l-5-5"/></svg>Case study template</li><li class="flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="ds-check size-3"><path d="M20 6 9 17l-5-5"/></svg>Community access</li></ul></div>
+              <div class="bg-card flex flex-col gap-8 max-lg:border-y lg:border-x"><div><p class="text-lg font-medium">Kit</p><p class="text-muted-foreground text-lg font-medium">For your next review</p><div class="my-8 block text-4xl font-medium tracking-tight">$49 <span class="text-muted-foreground text-lg">one-time</span></div><a href="#" class="btn w-full">Get started</a></div><ul class="text-muted-foreground list-outside space-y-3"><li class="flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="ds-check size-3"><path d="M20 6 9 17l-5-5"/></svg>Everything in Free</li><li class="flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="ds-check size-3"><path d="M20 6 9 17l-5-5"/></svg>ROI calculator</li><li class="flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="ds-check size-3"><path d="M20 6 9 17l-5-5"/></svg>Promotion packet prompts</li><li class="flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="ds-check size-3"><path d="M20 6 9 17l-5-5"/></svg>Before/after templates</li><li class="flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="ds-check size-3"><path d="M20 6 9 17l-5-5"/></svg>Stakeholder email scripts</li></ul></div>
+              <div class="flex flex-col gap-8 max-lg:border-y lg:border-x"><div><p class="text-lg font-medium">Workshop</p><p class="text-muted-foreground text-lg font-medium">For design teams</p><div class="my-8 block text-4xl font-medium tracking-tight">$399 <span class="text-muted-foreground text-lg">/seat</span></div><a href="#" class="btn w-full" data-variant="outline">Get started</a></div><ul class="text-muted-foreground list-outside space-y-3"><li class="flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="ds-check size-3"><path d="M20 6 9 17l-5-5"/></svg>Everything in Kit</li><li class="flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="ds-check size-3"><path d="M20 6 9 17l-5-5"/></svg>Live Builder Kickoff</li><li class="flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="ds-check size-3"><path d="M20 6 9 17l-5-5"/></svg>Team templates</li><li class="flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="ds-check size-3"><path d="M20 6 9 17l-5-5"/></svg>Facilitator guide</li></ul></div>
+              <div class="flex flex-col gap-8 max-lg:border-t lg:border-l"><div><p class="text-lg font-medium">Org</p><p class="text-muted-foreground text-lg font-medium">For design orgs</p><div class="my-8 block text-4xl font-medium tracking-tight">Custom</div><a href="#" class="btn w-full" data-variant="outline">Get started</a></div><ul class="text-muted-foreground list-outside space-y-3"><li class="flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="ds-check size-3"><path d="M20 6 9 17l-5-5"/></svg>Everything in Workshop</li><li class="flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="ds-check size-3"><path d="M20 6 9 17l-5-5"/></svg>On-site workshop</li><li class="flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="ds-check size-3"><path d="M20 6 9 17l-5-5"/></svg>Exec readout</li><li class="flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="ds-check size-3"><path d="M20 6 9 17l-5-5"/></svg>Org licence</li></ul></div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section id="p-testimonials" class="mt-14">
+      <h3 class="mb-4">Testimonials</h3>
+      <div class="ds-example" data-flush data-title="Testimonials">
+        <section class="light py-16 md:py-20">
+          <div class="mx-auto max-w-7xl space-y-8 px-6 md:space-y-16">
+            <div class="grid gap-4 md:grid-cols-2 md:gap-6 lg:gap-12"><h2>Loved by designers who got the budget</h2></div>
+            <div class="grid gap-3 lg:grid-cols-5">
+              <div class="relative overflow-hidden rounded-xl bg-muted p-8 after:pointer-events-none after:absolute after:inset-0 after:rounded-xl after:border after:border-foreground/10 lg:col-span-3 lg:row-span-2">
+                <div class="relative flex min-h-100 flex-col justify-between">
+                  <p class="max-w-lg text-3xl text-foreground">"The kit turned a redesign into a promotion case in one afternoon."</p>
+                  <div class="grid grid-cols-[auto_1fr] items-center gap-4"><span class="ds-avatar size-10 text-xs">JL</span><div class="border-l border-foreground/10 pl-4"><p class="text-sm font-medium">Jordan Lee</p><span class="block text-sm text-muted-foreground">Senior Product Designer</span></div></div>
+                </div>
+              </div>
+              <div class="dark ds-inset relative grid min-h-100 gap-8 overflow-hidden rounded-xl p-8 lg:col-span-2 lg:row-span-2 lg:grid-rows-subgrid" style="background:var(--ds-color-gold)">
+                <div class="pointer-events-none absolute inset-0 bg-linear-to-b to-black/25"></div>
+                <p class="relative max-w-lg text-balance text-3xl text-white">"First time leadership asked me for the numbers instead of the mockups."</p>
+                <div class="relative grid grid-cols-[auto_1fr] items-center gap-4 self-end"><span class="ds-avatar size-10 text-xs">SP</span><div class="border-l border-white/20 pl-4"><p class="text-sm font-medium text-white">Sam Patel</p><span class="block text-sm text-white/65">Design Lead</span></div></div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section id="p-cta" class="mt-14">
+      <h3 class="mb-4">CTA</h3>
+      <div class="ds-example" data-flush data-title="CTA">
+        <section class="dark py-16 md:py-20">
+          <div class="mx-auto max-w-7xl px-6">
+            <div class="mx-auto max-w-4xl text-center">
+              <h2>Write the case study that gets you promoted</h2>
+              <div class="mt-8 flex flex-wrap justify-center gap-3">
+                <a href="#" class="btn" data-size="lg">Get the kit</a>
+                <a href="#" class="btn" data-size="lg" data-variant="outline">See an example</a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section id="p-footer" class="mt-14">
+      <h3 class="mb-4">Footer</h3>
+      <div class="ds-example" data-flush data-title="Footer">
+        <footer class="dark">
+          <div class="mx-auto max-w-7xl space-y-16 px-6 pt-32 pb-16">
+            <div class="grid grid-cols-2 gap-x-3 gap-y-12 sm:grid-cols-4 lg:grid-cols-5">
+              <div class="max-lg:col-span-full"><a href="#" aria-label="go home" class="font-display text-2xl font-bold uppercase">TW</a></div>
+              <div><span class="text-sm font-medium">Learn</span><ul class="mt-4 list-inside space-y-4"><li><a href="#" class="text-sm text-muted-foreground duration-150 hover:text-foreground">Newsletter</a></li><li><a href="#" class="text-sm text-muted-foreground duration-150 hover:text-foreground">Case studies</a></li><li><a href="#" class="text-sm text-muted-foreground duration-150 hover:text-foreground">Letters</a></li></ul></div>
+              <div><span class="text-sm font-medium">Tools</span><ul class="mt-4 list-inside space-y-4"><li><a href="#" class="text-sm text-muted-foreground duration-150 hover:text-foreground">Case Study Kit</a></li><li><a href="#" class="text-sm text-muted-foreground duration-150 hover:text-foreground">PRD template</a></li><li><a href="#" class="text-sm text-muted-foreground duration-150 hover:text-foreground">Funnel simulator</a></li></ul></div>
+              <div><span class="text-sm font-medium">Legal</span><ul class="mt-4 list-inside space-y-4"><li><a href="#" class="text-sm text-muted-foreground duration-150 hover:text-foreground">Privacy policy</a></li></ul></div>
+              <div><span class="text-sm font-medium">Connect</span><ul class="mt-4 list-inside space-y-4"><li><a href="#" class="text-sm text-muted-foreground duration-150 hover:text-foreground">LinkedIn</a></li><li><a href="#" class="text-sm text-muted-foreground duration-150 hover:text-foreground">About</a></li></ul>
+                <form class="mt-12 w-full max-w-xs" onsubmit="return false"><div class="space-y-2.5"><label class="block text-sm font-medium" for="ft-email">Subscribe to the letter</label><input class="input w-full text-sm" placeholder="Your email" type="email" id="ft-email"></div><button type="submit" class="btn mt-3" data-size="sm"><span>Subscribe</span></button></form>
+              </div>
+            </div>
+            <div class="mt-16"><span class="block text-sm text-muted-foreground">&copy; Tyler White</span></div>
+          </div>
+        </footer>
+      </div>
+    </section>
+
+    <p class="mt-24 border-t pt-6 text-sm text-muted-foreground">Source: <code class="font-mono">design-system/index.html</code> · Theme: <code class="font-mono">assets/css/ds/theme.css</code> · Tokens: <code class="font-mono">assets/css/system/tokens.css</code> (<code class="font-mono">--ds-dusk-*</code>)</p>
   </div>
-  <div class="site-footer__bottom">
-    <p class="site-footer__copy">&#169; 2026 Tyler White. Made with taste, caffeine, and a suspicious number of prototypes.</p>
-    <nav class="site-footer__legal" aria-label="Legal">
-      <a href="/privacy-policy/">Privacy Policy</a>
-      <a href="/privacy-policy/#cookies" data-cookie-settings>Cookie settings</a>
-    </nav>
-  </div>
-</footer>
-<!-- /partial:footer -->
-    </div>
-  </div>
-<script type="text/javascript" src="/assets/js/mobile-menu-a11y.js?v=2b161847" id="mobile-menu-a11y-js" defer></script>
+</main>
+
+<script>
+  function dsToggleTheme() {
+    const dark = document.documentElement.classList.toggle('dark');
+    try { localStorage.setItem('ds-theme', dark ? 'dark' : 'light'); } catch (e) {}
+  }
+
+  // Colour swatches (rendered once per palette; each box reads the role variable in its own section)
+  const roles = ['background', 'foreground', 'card', 'muted', 'primary', 'muted-foreground', 'border', 'brand', 'brand-text', 'brand-soft', 'ring', 'destructive'];
+  document.querySelectorAll('.ds-swatches').forEach(el => {
+    el.innerHTML = roles.map(role => `
+      <div>
+        <div class="ds-swatch mb-2 h-12 rounded-md" style="background:var(--${role})"></div>
+        <p class="font-mono text-xs text-muted-foreground">${role}</p>
+      </div>`).join('');
+  });
+
+  // Wrap every .ds-example in Preview / Code tabs, with the code taken from the preview.
+  function dedent(html) {
+    const lines = html.replace(/^\n+|\s+$/g, '').split('\n');
+    const indent = Math.min(...lines.filter(l => l.trim()).map(l => l.match(/^ */)[0].length));
+    return lines.map(l => l.slice(indent)).join('\n');
+  }
+  document.querySelectorAll('.ds-example').forEach((ex, i) => {
+    const id = 'ex-' + (i + 1);
+    const code = dedent(ex.innerHTML);
+    const flush = ex.hasAttribute('data-flush');
+    const wrap = document.createElement('div');
+    wrap.className = 'tabs w-full ' + (ex.className.replace('ds-example', '').trim());
+    wrap.id = id;
+    wrap.innerHTML = `
+      <nav role="tablist" aria-orientation="horizontal" class="w-fit">
+        <button type="button" role="tab" id="${id}-tab-1" aria-controls="${id}-panel-1" aria-selected="true" tabindex="0">Preview</button>
+        <button type="button" role="tab" id="${id}-tab-2" aria-controls="${id}-panel-2" aria-selected="false" tabindex="-1">Code</button>
+      </nav>
+      <div role="tabpanel" id="${id}-panel-1" aria-labelledby="${id}-tab-1" tabindex="-1" aria-selected="true">
+        <div class="ds-preview overflow-hidden rounded-xl ${flush ? 'ring-1 ring-foreground/10' : 'bg-background p-6 ring-1 ring-foreground/10 sm:p-10'}"></div>
+      </div>
+      <div role="tabpanel" id="${id}-panel-2" aria-labelledby="${id}-tab-2" tabindex="-1" aria-selected="false" hidden>
+        <div class="relative">
+          <button type="button" class="btn absolute right-3 top-3" data-variant="secondary" data-size="sm">Copy</button>
+          <pre class="ds-code scrollbar overflow-auto rounded-xl bg-muted p-5 pr-24 font-mono text-xs leading-relaxed ring-1 ring-foreground/10"><code></code></pre>
+        </div>
+      </div>`;
+    ex.replaceWith(wrap);
+    const preview = wrap.querySelector('.ds-preview');
+    while (ex.firstChild) preview.appendChild(ex.firstChild);
+    wrap.querySelector('code').textContent = code;
+    wrap.querySelector('.btn.absolute').addEventListener('click', e => {
+      navigator.clipboard.writeText(code).then(() => { e.target.textContent = 'Copied'; setTimeout(() => e.target.textContent = 'Copy', 1500); });
+    });
+  });
+</script>
 </body>
 </html>
-

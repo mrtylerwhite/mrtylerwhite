@@ -1,0 +1,165 @@
+/*
+  Basecoat theme: Tailark "Dusk" look, with our warm off-white for light sections.
+  Values live in assets/css/system/tokens.css (--ds-dusk-*). This file only says
+  which token plays which shadcn role.
+
+  Sections switch palette with a class:  <section class="dark">  /  <section class="light">
+  The whole page can go dark with <html class="dark">.
+*/
+
+:root,
+.light {
+  --radius: 0.5rem; /* Dusk */
+
+  --background: var(--ds-dusk-light-bg);
+  --foreground: var(--ds-dusk-light-fg);
+  --card: var(--ds-dusk-light-card);
+  --card-foreground: var(--ds-dusk-light-fg);
+  --popover: var(--ds-dusk-light-card);
+  --popover-foreground: var(--ds-dusk-light-fg);
+
+  --primary: var(--ds-dusk-light-fg);          /* black pill CTA */
+  --primary-foreground: var(--ds-dusk-light-bg);
+  --secondary: var(--ds-dusk-light-raised);
+  --secondary-foreground: var(--ds-dusk-light-fg);
+  --muted: var(--ds-dusk-light-sunken);
+  --muted-foreground: var(--ds-dusk-light-muted);
+  --accent: var(--ds-dusk-light-raised);
+  --accent-foreground: var(--ds-dusk-light-fg);
+  --destructive: var(--ds-color-danger);
+
+  --border: var(--ds-dusk-light-border);
+  --input: rgba(9,9,11,.14);
+  --ring: var(--ds-color-gold-deep);         /* brown focus ring */
+
+  /* Charts: validated (dataviz six checks) on the light card #FFFDFB, all pairs.
+     Brown leads; slate + sage for series 2–3. Always legend + direct labels. */
+  --chart-1: #B87E49;        /* brand brown (series / "after") */
+  --chart-2: #4A76AE;        /* slate blue */
+  --chart-3: #417843;        /* sage green */
+  --chart-muted: #8F8984;    /* de-emphasis: "before", baseline, other (3.4:1) */
+  --chart-grid: #EBE3DC;     /* hairline gridlines */
+  --chart-axis: #D9CFC6;     /* baseline / axis rule */
+  --chart-4: var(--chart-muted);
+  --chart-5: var(--ds-color-success);
+
+  --sidebar: var(--ds-dusk-light-bg);
+  --sidebar-foreground: var(--ds-dusk-light-fg);
+  --sidebar-primary: var(--ds-dusk-light-fg);
+  --sidebar-primary-foreground: var(--ds-dusk-light-bg);
+  --sidebar-accent: var(--ds-dusk-light-sunken);
+  --sidebar-accent-foreground: var(--ds-dusk-light-fg);
+  --sidebar-border: var(--ds-dusk-light-border);
+  --sidebar-ring: var(--ds-color-gold-deep);
+
+  /* Brand brown accent: stats, highlights, links, focus, icons */
+  --brand: var(--ds-color-gold-deep);
+  --brand-text: var(--ds-color-gold-ink);
+  --brand-foreground: var(--ds-dusk-light-fg);
+  --brand-soft: var(--ds-color-gold-soft);
+  --heading: var(--ds-dusk-light-fg);
+  /* Brown gloss (Apple-style metal): highlight at the top, deeper brown below.
+     Light stays dark enough at the bottom for large-text contrast. */
+  --brand-gloss: linear-gradient(170deg, #CD9E73 0%, #B07D4F 42%, #96683A 72%, #7E5528 100%);
+  --brand-gloss-fill: linear-gradient(180deg, #D4A77C 0%, #B9875A 50%, #9C6D40 100%);
+  /* Soft, elegant drop under glossy brown (em-based so it scales with the text) */
+  --brand-gloss-shadow: drop-shadow(0 .04em .04em rgb(126 85 40 / .18)) drop-shadow(0 .18em .32em rgb(126 85 40 / .20));
+  --brand-gloss-fill-shadow: 0 1px 2px rgb(126 85 40 / .18), 0 4px 10px -2px rgb(126 85 40 / .28);
+
+  /* Elevation (Dusk). Rings use the foreground colour; shadows are black. */
+  --elev-ring: rgb(9 9 11 / .065);
+  /* Soft, long shadows: small contact shadow + a wide, low-opacity drop further away */
+  --elev-1: 0 1px 2px rgb(60 40 20 / .03), 0 15px 38px -14px rgb(60 40 20 / .10);
+  --elev-2: 0 2px 4px rgb(60 40 20 / .03), 0 32px 64px -23px rgb(60 40 20 / .14);
+  --elev-3: 0 4px 8px rgb(60 40 20 / .03), 0 56px 112px -36px rgb(60 40 20 / .22);
+  /* Buttons: long, soft drop below the pill */
+  --elev-btn: 0 1px 2px rgb(60 40 20 / .05), 0 5px 12px -4px rgb(60 40 20 / .12);
+  --elev-btn-primary: 0 1px 2px rgb(60 40 20 / .08), 0 6px 14px -4px rgb(60 40 20 / .20);
+  --elev-glow: #D9CFC7;                 /* fade behind the hero frame */
+  --elev-fade-from: var(--card);        /* .ds-elev-fade: lighter at the top */
+
+  /* Tailark illustration surface: a lifted card inside bento tiles + 7.5% hairline */
+  --illustration: #FFFFFF;
+  --border-illustration: rgb(9 9 11 / .075);
+
+  /* Secondary button: 57% of the way from Dusk's 5% tint (read as disabled) to white */
+  --btn-secondary-bg: #F9F5F3;
+  --btn-secondary-hover: #F6F1EE;
+
+  color-scheme: light;
+}
+
+.dark {
+  --background: var(--ds-dusk-dark-bg);
+  --foreground: var(--ds-dusk-dark-fg);
+  --card: var(--ds-dusk-dark-card);
+  --card-foreground: var(--ds-dusk-dark-fg);
+  --popover: var(--ds-dusk-dark-bg);
+  --popover-foreground: var(--ds-dusk-dark-fg);
+
+  --primary: var(--ds-dusk-dark-fg);           /* white pill CTA */
+  --primary-foreground: var(--ds-dusk-dark-bg);
+  --secondary: var(--ds-dusk-dark-raised);
+  --secondary-foreground: var(--ds-dusk-dark-fg);
+  --muted: var(--ds-dusk-dark-raised);
+  --muted-foreground: var(--ds-dusk-dark-muted);
+  --accent: var(--ds-dusk-dark-raised);
+  --accent-foreground: var(--ds-dusk-dark-fg);
+
+  --border: var(--ds-dusk-dark-border);
+  --input: var(--ds-dusk-dark-raised);
+  --ring: var(--ds-color-gold);
+
+  /* Charts, dark: validated on #1B1919, all pairs pass */
+  --chart-1: #C48141;
+  --chart-2: #5682BB;
+  --chart-3: #4EA683;
+  --chart-muted: #76716D;
+  --chart-grid: #2B2827;
+  --chart-axis: #3A3634;
+  --chart-4: var(--chart-muted);
+
+  --sidebar: var(--ds-dusk-dark-bg);
+  --sidebar-foreground: var(--ds-dusk-dark-fg);
+  --sidebar-primary: var(--ds-dusk-dark-fg);
+  --sidebar-primary-foreground: var(--ds-dusk-dark-bg);
+  --sidebar-accent: var(--ds-dusk-dark-raised);
+  --sidebar-accent-foreground: var(--ds-dusk-dark-fg);
+  --sidebar-border: var(--ds-dusk-dark-border);
+  --sidebar-ring: var(--ds-color-gold);
+
+  --brand: var(--ds-color-gold);              /* the real #C59060 (7.1:1 on Dusk black) */
+  --brand-text: var(--ds-color-gold);
+  --brand-soft: rgba(197,144,96,.16);
+  --brand-foreground: var(--ds-dusk-dark-bg);
+  --heading: var(--ds-dusk-dark-fg);
+  --brand-gloss: linear-gradient(170deg, #F3D7B7 0%, #DEAF7F 28%, #C59060 58%, #A5743F 100%);
+  --brand-gloss-fill: linear-gradient(180deg, #EAC095 0%, #C59060 55%, #A5743F 100%);
+  /* On black a dark shadow disappears, so the drop is a faint warm glow plus depth */
+  --brand-gloss-shadow: drop-shadow(0 .04em .04em rgb(0 0 0 / .6)) drop-shadow(0 .18em .4em rgb(197 144 96 / .22));
+  --brand-gloss-fill-shadow: 0 1px 2px rgb(0 0 0 / .5), 0 4px 12px -2px rgb(197 144 96 / .35);
+
+  --elev-ring: rgb(255 255 255 / .065);
+  --elev-1: 0 1px 2px rgb(0 0 0 / 0.24), 0 15px 38px -14px rgb(0 0 0 / 0.49);
+  --elev-2: 0 2px 4px rgb(0 0 0 / 0.24), 0 32px 64px -23px rgb(0 0 0 / 0.59);
+  --elev-3: 0 4px 8px rgb(0 0 0 / 0.29), 0 56px 112px -36px rgb(0 0 0 / 0.74);
+  --elev-btn: 0 1px 2px rgb(0 0 0 / 0.29), 0 5px 12px -4px rgb(0 0 0 / 0.49);
+  --elev-btn-primary: 0 1px 2px rgb(0 0 0 / 0.29), 0 6px 14px -4px rgb(0 0 0 / 0.54);
+  --elev-glow: #52525B;                 /* Dusk zinc-600 */
+  --elev-fade-from: rgb(255 255 255 / .05);
+
+  --illustration: #232121;   /* one step above the dark card, like Tailark's #171719 on #09090B */
+  --border-illustration: rgb(255 255 255 / .075);
+
+  --btn-secondary-bg: rgb(255 255 255 / .05);   /* Dusk */
+  --btn-secondary-hover: rgb(255 255 255 / .10);
+
+  color-scheme: dark;
+}
+
+/* Any element with .dark / .light (section, div, figure, footer…) paints its own
+   background and text. <html class="dark"> is handled by body. */
+.dark:not(html), .light:not(html) {
+  background-color: var(--background);
+  color: var(--foreground);
+}

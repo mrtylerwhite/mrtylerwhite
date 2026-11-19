@@ -1,0 +1,321 @@
+/*
+  Tailwind + Basecoat entry. Build with:  npm run build:ds   (or dev:ds to watch)
+  Output: assets/css/ds/basecoat.css (committed, linked by Basecoat pages).
+
+  Only pages listed in @source below are scanned for Tailwind classes, so the
+  old Divi/WordPress pages never leak in. Add a page here when you move it over.
+*/
+
+@import "tailwindcss" source(none);
+@import "basecoat-css/vega";
+@import "../system/tokens.css";
+@import "./fonts.css";
+@import "./theme.css";
+
+@source "../../../design-system/index.html";
+@source "../../js/ds-charts.js";
+
+/* Re-declare colours as `inline` so utilities read the role variables directly.
+   Without this, `class="dark"` on a section wouldn't recolour it (the values
+   would stay resolved at :root). */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-illustration: var(--illustration);
+  --color-border-illustration: var(--border-illustration);
+  --color-brand: var(--brand);
+  --color-brand-text: var(--brand-text);
+  --color-brand-foreground: var(--brand-foreground);
+  --color-brand-soft: var(--brand-soft);
+  --color-heading: var(--heading);
+}
+
+@theme {
+  --font-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-display: "alternate-gothic-atf", "Arial Narrow", Arial, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* Type scale from tokens: text-display, text-h1 … text-h6 */
+  --text-display: var(--ds-size-display);
+  --text-display--line-height: var(--ds-leading-display);
+  --text-h1: var(--ds-size-h1);
+  --text-h1--line-height: var(--ds-leading-h1);
+  --text-h2: var(--ds-size-h2);
+  --text-h2--line-height: var(--ds-leading-h2);
+  --text-h3: var(--ds-size-h3);
+  --text-h3--line-height: var(--ds-leading-h3);
+  --text-h4: var(--ds-size-h4);
+  --text-h4--line-height: var(--ds-leading-h4);
+  --text-h5: var(--ds-size-h5);
+  --text-h5--line-height: var(--ds-leading-h5);
+  --text-h6: var(--ds-size-h6);
+  --text-h6--line-height: var(--ds-leading-h6);
+  --text-body-lg: var(--ds-size-body-lg);
+  --text-body-lg--line-height: var(--ds-leading-body);
+  --text-body: var(--ds-size-body-md);
+  --text-body--line-height: var(--ds-leading-body);
+}
+
+/* Gloss: Apple-style metallic brown for text (.ds-gloss) and bars/fills (.ds-gloss-fill) */
+@utility ds-gloss {
+  color: var(--brand); /* fallback */
+  background-image: var(--brand-gloss);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: var(--brand-gloss-shadow);
+}
+@utility ds-gloss-fill {
+  background-image: var(--brand-gloss-fill);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / .38), inset 0 -1px 0 rgb(0 0 0 / .12), var(--brand-gloss-fill-shadow);
+}
+
+/* `dark:` utilities work inside any .dark section, not only on <html class="dark">,
+   and switch back off inside a nested .light section. */
+@custom-variant dark (&:where(.dark, .dark *):not(:where(.light, .light *)));
+
+/* ── Typography ──────────────────────────────────────────────
+   H1–H4: our condensed caps (Alternate Gothic). Everything else is Tailark Dusk:
+   Inter body, muted paragraphs, two-tone headings via <span class="text-muted-foreground">.
+   Headings inside Basecoat components (card, alert, dialog, sidebar…) are left alone. */
+@layer base {
+  body {
+    @apply bg-background font-sans text-foreground antialiased;
+  }
+  :is(h1, h2, h3, h4):not(:where(.card, .alert, .alert-dialog, .dialog, .sidebar, .toast, .popover, .dropdown-menu, .command, .accordion, .empty, .item, .ds-bento-card) *),
+  .ds-display, .ds-h1, .ds-h2, .ds-h3, .ds-h4 {
+    @apply font-display font-bold uppercase text-balance;
+    color: var(--heading);
+  }
+  h1:not(:where(.card, .alert, .alert-dialog, .dialog, .sidebar, .toast, .popover, .dropdown-menu, .command, .accordion, .empty, .item, .ds-bento-card) *), .ds-h1 {
+    @apply text-h1; letter-spacing: var(--ds-tracking-h1);
+  }
+  h2:not(:where(.card, .alert, .alert-dialog, .dialog, .sidebar, .toast, .popover, .dropdown-menu, .command, .accordion, .empty, .item, .ds-bento-card) *), .ds-h2 {
+    @apply text-h2; letter-spacing: var(--ds-tracking-h2);
+  }
+  h3:not(:where(.card, .alert, .alert-dialog, .dialog, .sidebar, .toast, .popover, .dropdown-menu, .command, .accordion, .empty, .item, .ds-bento-card) *), .ds-h3 {
+    @apply text-h3; letter-spacing: -0.02em;
+  }
+  h4:not(:where(.card, .alert, .alert-dialog, .dialog, .sidebar, .toast, .popover, .dropdown-menu, .command, .accordion, .empty, .item, .ds-bento-card) *), .ds-h4 {
+    @apply text-h4; letter-spacing: -0.01em;
+  }
+  .ds-display { @apply text-display; letter-spacing: var(--ds-tracking-h1); }
+
+  /* Inline text links are brown */
+  :where(p, li, figcaption, td, dd, blockquote, .alert section) a:not([class]):not(:where(nav, .sidebar, .dropdown-menu, .command, .tabs) *) {
+    @apply text-brand-text underline decoration-brand/40 underline-offset-4 hover:decoration-brand;
+  }
+}
+
+/* ── Buttons: Tailark Dusk, always full pill ─────────────────
+   primary   = solid (black on light, white on dark)
+   secondary = faint fill + hairline ring (Dusk "Login")
+   outline   = hairline ring only
+   ghost     = text, faint fill on hover */
+@layer components {
+  .btn {
+    @apply rounded-full font-medium shadow-none;
+  }
+  .btn:not([data-size]), .btn[data-size='default'] { @apply h-9 px-4 text-sm; }
+  .btn[data-size='xs'] { @apply h-7 rounded-full px-2.5 text-xs; }
+  .btn[data-size='sm'] { @apply h-8 rounded-full px-3 text-[0.8rem]; }
+  .btn[data-size='lg'] { @apply h-10 px-6 text-sm; }
+  .btn[data-size='icon-xs'], .btn[data-size='icon-sm'] { @apply rounded-full; }
+
+  .btn:not([data-variant]), .btn[data-variant='primary'] {
+    @apply bg-primary text-primary-foreground shadow-(--elev-btn-primary) hover:bg-primary/90;
+  }
+  .btn[data-variant='secondary'] {
+    @apply bg-(--btn-secondary-bg) text-foreground shadow-(--elev-btn) ring-1 ring-foreground/10 hover:bg-(--btn-secondary-hover);
+  }
+  .btn:disabled, .btn[aria-disabled='true'] { @apply shadow-none; }
+  .btn[data-variant='outline'] {
+    @apply border-transparent bg-transparent text-foreground shadow-none ring-1 ring-foreground/15 hover:bg-foreground/5;
+  }
+  .btn[data-variant='ghost'] {
+    @apply bg-transparent text-foreground hover:bg-foreground/5;
+  }
+  .btn[data-variant='link'] {
+    @apply h-auto px-0 text-brand-text;
+  }
+
+  /* ── Elevation (Dusk) ──────────────────────────────────────
+     1  .card / .ds-elev-1   resting card: hairline ring + soft shadow
+     2  .ds-elev-2           floating panel: ring + deep shadow (add .ds-elev-fade for the top-down fill)
+     3  .ds-frame            hero app frame: ring, heavy shadow, top-left edge highlight
+        .ds-frame-wrap       wrapper that adds the faded glow behind a .ds-frame
+        .ds-inset            inner ring for solid-colour cards */
+  .card, .ds-elev-1 {
+    @apply rounded-xl bg-card ring-1 ring-(--elev-ring) shadow-(--elev-1);
+  }
+  .ds-elev-2 {
+    @apply rounded-xl bg-card ring-1 ring-(--elev-ring) shadow-(--elev-2);
+  }
+  .ds-elev-fade {
+    @apply bg-transparent bg-linear-to-b from-(--elev-fade-from) to-transparent;
+  }
+  .ds-frame-wrap {
+    @apply relative overflow-hidden p-6;
+  }
+  .ds-frame-wrap::before {
+    content: "";
+    @apply absolute inset-0 rounded-[2rem] border bg-linear-to-b from-transparent to-(--elev-glow) mask-t-from-25% mask-t-to-65%;
+  }
+  .ds-frame {
+    @apply relative rounded-2xl bg-background p-2 ring-1 ring-(--elev-ring) shadow-(--elev-3);
+  }
+  .ds-frame::before {
+    content: "";
+    @apply pointer-events-none absolute -inset-px z-10 size-56 rounded-tl-2xl border-t border-l border-foreground/10 mask-radial-[100%_60%] mask-radial-from-65% mask-radial-at-top-left;
+  }
+  .ds-inset {
+    @apply inset-ring inset-ring-foreground/10;
+  }
+
+  /* ── Charts (assets/js/ds-charts.js) — Apple Health / Stocks idiom ──────
+     Header (kicker · big value + unit · range) sits above the plot and follows the scrubber.
+     Y-axis on the right, 4 hairlines, the whole plot is the hit target. */
+  .ds-chart { @apply grid gap-3; }
+  .ds-chart-head { @apply grid gap-0.5; }
+  .ds-chart-title { @apply mb-2 text-sm font-semibold text-foreground; }
+  .ds-chart-kicker { @apply text-xs font-semibold uppercase tracking-wide text-muted-foreground; }
+  .ds-chart-valuerow { @apply flex items-baseline gap-1.5; }
+  .ds-chart-value { @apply text-3xl font-semibold tracking-tight text-foreground; }
+  .ds-chart-unit { @apply text-sm font-medium text-muted-foreground; }
+  .ds-chart-range { @apply text-sm text-muted-foreground; }
+  .ds-chart-plot { @apply relative w-full; }
+  .ds-chart-plot svg { @apply block h-auto w-full overflow-visible; touch-action: pan-y; }
+  .ds-chart-hit { cursor: crosshair; outline: none; }
+  .ds-chart-hit:focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
+  .ds-chart-grid { stroke: var(--chart-grid); stroke-width: 1; }
+  .ds-chart-axis { stroke: var(--chart-axis); stroke-width: 1; }
+  .ds-chart-goal { stroke: var(--foreground); stroke-opacity: .3; stroke-width: 1; }
+  .ds-chart-tick { fill: var(--muted-foreground); font-size: 11px; font-variant-numeric: tabular-nums; }
+  .ds-chart-label { fill: var(--foreground); font-size: 12px; font-weight: 600; }
+  .ds-chart-marker { stroke: var(--foreground); stroke-opacity: .3; stroke-width: 1; }
+  .ds-chart-marker-label { fill: var(--muted-foreground); font-size: 11px; font-weight: 500; }
+  .ds-chart-cross { stroke: var(--foreground); stroke-opacity: .35; stroke-width: 1; }
+  .ds-chart-dot { stroke: var(--card); stroke-width: 2.5; }        /* surface ring */
+  .ds-chart-bar { transition: opacity .18s ease; }
+  .ds-chart-bars.is-scrubbing .ds-chart-bar:not(.is-on) { opacity: .3; }   /* Health: others dim */
+  .ds-chart-legend { @apply flex flex-wrap gap-x-5 gap-y-1 text-sm text-muted-foreground; }
+  .ds-chart-legend li { @apply flex items-center gap-2; }
+  .ds-chart-key-box { @apply inline-block size-2.5 rounded-[3px]; }
+  .ds-chart-key-line { @apply inline-block h-0.5 w-3 rounded-full; }
+  .ds-chart-table summary { @apply cursor-pointer text-sm text-muted-foreground hover:text-foreground; }
+  .ds-chart-table .table-container { @apply mt-3; }
+  /* Segmented time-range control (D · W · M · 6M · Y) */
+  .ds-chart-ranges { @apply mb-2 grid auto-cols-fr grid-flow-col gap-0.5 rounded-full bg-muted p-0.5 text-xs font-medium; }
+  .ds-chart-ranges button { @apply h-7 rounded-full text-muted-foreground transition-colors hover:text-foreground; }
+  .ds-chart-ranges button[aria-pressed='true'] { @apply bg-card text-foreground shadow-(--elev-btn); }
+  /* Activity ring */
+  .ds-ring { @apply relative mx-auto grid w-fit place-items-center; }
+  .ds-ring svg { width: 132px; }
+  .ds-ring-track { stroke: var(--chart-1); stroke-opacity: .16; }
+  .ds-ring-text { @apply absolute inset-0 grid place-content-center text-center; }
+  .ds-ring-value { @apply text-2xl font-semibold tracking-tight text-foreground; }
+  .ds-ring-label { @apply text-xs text-muted-foreground; }
+
+  /* Stat tile: label · value · delta · sparkline */
+  .ds-tile { @apply grid gap-1 rounded-xl bg-card p-5 ring-1 ring-(--elev-ring) shadow-(--elev-1); }
+  .ds-tile-label { @apply text-sm text-muted-foreground; }
+  .ds-tile-value { @apply text-3xl font-semibold tracking-tight; }
+  .ds-tile-delta { @apply text-sm font-medium text-brand-text; }
+  .ds-tile .ds-chart-plot { @apply mt-2; }
+
+  /* Segmented bar (tall): one whole split into parts, values printed inside */
+  .ds-seg { @apply flex h-7 w-full gap-0.5 overflow-hidden; }
+  .ds-seg > span { @apply flex items-center rounded-[4px] px-2 text-xs font-semibold whitespace-nowrap text-white; }
+
+  /* ── Bento (Tailark Quartz bento-1 / bento-2) ─────────────────────
+     Grid: .ds-bento (container-query 2 → 6 columns). Tiles: .ds-bento-card + col-span.
+     Inside a tile: .ds-stripes (faint 45° texture) behind a Tailark illustration. */
+  .ds-bento { @apply grid gap-3 @xl:grid-cols-2 @3xl:grid-cols-6; }
+  .ds-bento-card {
+    @apply grid overflow-hidden rounded-2xl bg-card/50 p-8 text-card-foreground ring-1 ring-(--elev-ring) shadow-(--elev-1);   /* Tailark: not-dark:bg-card/50 */
+  }
+  .dark .ds-bento-card { @apply bg-card; }
+  .ds-bento-card h3 { @apply font-semibold text-foreground; }
+  .ds-bento-card h3 + p { @apply mt-3 text-muted-foreground; }
+  .ds-stripes {
+    @apply pointer-events-none absolute -inset-x-6 inset-y-0 opacity-[.03];
+    background-image: repeating-linear-gradient(-45deg, var(--foreground), var(--foreground) 1px, transparent 1px, transparent 6px);
+    mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 70%, transparent 100%);
+  }
+  .dark .ds-stripes { @apply opacity-[.06]; }
+  /* Tailark illustration card */
+  .ds-illo-card { @apply rounded-2xl border border-transparent bg-illustration shadow-(--elev-1) ring-1 ring-border-illustration; }
+  /* Dotted world map (assets/images/ds/dotted-map.svg as a mask, dots follow the text colour) */
+  .ds-map {
+    @apply relative aspect-[2/1] w-full;
+  }
+  .ds-map::before {
+    content: ""; @apply absolute inset-0 bg-foreground/35;
+    mask: url(/assets/images/ds/dotted-map.svg) center / contain no-repeat;
+  }
+  .ds-map-pin {
+    @apply absolute grid size-8 -translate-x-1/2 -translate-y-full place-items-center rounded-full bg-illustration text-[11px] font-semibold text-foreground ring-1 ring-border-illustration shadow-(--elev-2);
+  }
+  .ds-map-pin::after { content: ""; @apply absolute -bottom-1 size-2 rotate-45 bg-illustration; }
+  .ds-avatar { @apply grid size-6 place-items-center rounded-full border bg-muted text-[9px] font-semibold text-foreground shadow-xs; }
+
+  /* Logo (press / client): SVG drawn as a mask so it takes the text colour (Dusk: **:fill-foreground) */
+  .ds-logo { display: block; background-color: var(--foreground); mask: var(--logo) center / contain no-repeat; }
+
+  /* Dusk announcement pill: "New: … →". The first label is brown. */
+  .ds-pill {
+    @apply mx-auto flex w-fit items-center gap-3 rounded-full p-1 pl-4 transition-colors duration-300;   /* Tailark: no ring, no fill */
+  }
+  .ds-pill > :first-child { @apply ds-gloss font-semibold; }
+
+  /* Accent helpers */
+  .ds-stat { @apply ds-gloss text-4xl font-semibold tracking-tight; }
+
+  .ds-check { @apply size-4 shrink-0 text-brand; }
+}
+
+/* Headlines are one colour. Ported Tailark two-tone spans inherit the heading colour. */
+:is(h1, h2, h3, h4):not(:where(.card, .alert, .alert-dialog, .dialog, .sidebar, .toast, .popover, .dropdown-menu, .command, .accordion, .empty, .item, .ds-bento-card) *) .text-muted-foreground,
+:is(.ds-display, .ds-h1, .ds-h2, .ds-h3, .ds-h4) .text-muted-foreground {
+  color: inherit;
+}
+
+/* Lockup headlines never sit on one line: inside a page section, h1/h2 cap at 18ch
+   (≈ 2 balanced lines for a ≤ 6-word headline). Headlines with their own <br> keep it. */
+:is(.light, .dark):not(html) :is(h1, h2, .ds-display, .ds-h1, .ds-h2):not(:has(br)):not(:where(.card, .alert, .dialog, .sidebar, .ds-bento-card) *) {
+  max-inline-size: 18ch;
+  text-wrap: balance;
+}
+:is(.light, .dark):not(html) .text-center :is(h1, h2, .ds-display, .ds-h1, .ds-h2),
+:is(.light, .dark):not(html):where(.text-center) :is(h1, h2, .ds-display, .ds-h1, .ds-h2) {
+  margin-inline: auto;
+}

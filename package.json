@@ -1,7 +1,7 @@
 {
   "name": "mrtylerwhite-static",
   "private": true,
-  "description": "Static site \u2014 local dev uses live-server for auto-reload",
+  "description": "Static site — local dev uses live-server for auto-reload",
   "scripts": {
     "dev": "live-server . --port=4321 --host=127.0.0.1 --open=/",
     "dev:api": "vercel dev --listen 127.0.0.1:4321",
@@ -11,12 +11,18 @@
     "build:letters": "node scripts/build-letters.mjs && node scripts/build-partials.mjs",
     "strip:css": "node scripts/strip-dead-css-links.mjs",
     "apply:css-performance": "node scripts/strip-dead-css-links.mjs && node scripts/build-css-bundles.mjs",
-    "build:dist": "node build/minify-assets.mjs"
+    "build:dist": "node build/minify-assets.mjs",
+    "build:ds": "tailwindcss -i assets/css/ds/basecoat.input.css -o assets/css/ds/basecoat.css && cp node_modules/basecoat-css/dist/js/all.min.js assets/js/vendor/basecoat.all.min.js",
+    "dev:ds": "tailwindcss -i assets/css/ds/basecoat.input.css -o assets/css/ds/basecoat.css --watch"
   },
   "devDependencies": {
+    "@tailwindcss/cli": "^4.3.5",
+    "basecoat-css": "^1.1.0",
+    "dotted-map": "^3.1.0",
     "esbuild": "^0.24.0",
     "live-server": "^1.2.2",
     "marked": "^14.1.4",
-    "node-html-parser": "^8.0.3"
+    "node-html-parser": "^8.0.3",
+    "tailwindcss": "^4.3.5"
   }
 }
