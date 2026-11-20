@@ -5,6 +5,7 @@
  *   node scripts/generate-covers.mjs ux-metrics prd-vs-brd   # specific letters
  *   node scripts/generate-covers.mjs --all                    # every letter in cover-prompts.json
  *   node scripts/generate-covers.mjs --all --model gpt-image-1.5
+ *   node scripts/generate-covers.mjs my-slug --ref ~/Desktop/me.jpg   # figure looks like the person in the photo
  *
  * Prompts live in scripts/cover-prompts.json (shared style + one scene per slug).
  * Drafts land in .covers-drafts/<slug>.jpg (gitignored) for review before they
@@ -38,12 +39,25 @@ function buildPrompt(style, c) {
   return `${style}\n\nThe idea it must communicate clearly: ${c.idea}.\n\nScene: ${c.scene}\n\n${c.text}`;
 }
 
-async function generate(key, model, slug, prompt) {
-  const res = await fetch("https://api.openai.com/v1/images/generations", {
-    method: "POST",
-    headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
-    body: JSON.stringify({ model, prompt, size: "1536x1024", quality: "high", output_format: "jpeg", n: 1 }),
-  });
+const REF_NOTE =
+  "Use the reference image only for the person: the figure must look like the man in it (build, hair, beard, clothing). Ignore the reference image's text, numbers, background and composition.";
+
+async function generate(key, model, slug, prompt, ref) {
+  let res;
+  if (ref) {
+    // With a reference photo, use the edits endpoint so the figure matches the person in it.
+    const form = new FormData();
+    for (const [k, v] of Object.entries({ model, prompt: `${prompt}\n\n${REF_NOTE}`, size: "1536x1024", quality: "high", output_format: "jpeg", n: "1" })) form.append(k, v);
+    const type = /\.png$/i.test(ref) ? "image/png" : /\.webp$/i.test(ref) ? "image/webp" : "image/jpeg";
+    form.append("image[]", new Blob([await readFile(ref)], { type }), path.basename(ref));
+    res = await fetch("https://api.openai.com/v1/images/edits", { method: "POST", headers: { Authorization: `Bearer ${key}` }, body: form });
+  } else {
+    res = await fetch("https://api.openai.com/v1/images/generations", {
+      method: "POST",
+      headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
+      body: JSON.stringify({ model, prompt, size: "1536x1024", quality: "high", output_format: "jpeg", n: 1 }),
+    });
+  }
   const body = await res.json();
   if (!res.ok) throw new Error(`${res.status} ${body.error?.message || JSON.stringify(body)}`);
   const b64 = body.data?.[0]?.b64_json;
@@ -57,6 +71,9 @@ async function main() {
   const args = process.argv.slice(2);
   const mi = args.indexOf("--model");
   const model = mi >= 0 ? args.splice(mi, 2)[1] : "gpt-image-2";
+  const ri = args.indexOf("--ref");
+  const ref = ri >= 0 ? args.splice(ri, 2)[1] : null;
+  if (ref && !existsSync(ref)) throw new Error(`Reference image not found: ${ref}`);
   const { style, covers } = JSON.parse(await readFile(path.join(ROOT, "scripts/cover-prompts.json"), "utf8"));
   const slugs = args.includes("--all") ? Object.keys(covers) : args;
   if (!slugs.length) throw new Error("Pass letter slugs or --all");
@@ -73,7 +90,7 @@ async function main() {
     Array.from({ length: Math.min(CONCURRENCY, queue.length) }, async () => {
       for (let slug; (slug = queue.shift()); ) {
         try {
-          console.log(`  ✓ ${slug} → ${await generate(key, model, slug, buildPrompt(style, covers[slug]))}`);
+          console.log(`  ✓ ${slug} → ${await generate(key, model, slug, buildPrompt(style, covers[slug]), ref)}`);
         } catch (e) {
           failed++;
           console.error(`  ✗ ${slug}: ${e.message}`);

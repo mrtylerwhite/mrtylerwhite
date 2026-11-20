@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>I tried to quit Figma. Here's where it broke. | Tyler White</title>
+  <meta name="description" content="I spent two and a half months trying to design my website without Figma, using Claude and vibe coding instead. Here's what I tried, where it broke, and the workflow that actually works." />
+  <link rel="canonical" href="https://www.mrtylerwhite.com/letters/designing-without-figma/" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Tyler White" />
+  <meta property="og:title" content="I tried to quit Figma. Here's where it broke. | Tyler White" />
+  <meta property="og:description" content="I spent two and a half months trying to design my website without Figma, using Claude and vibe coding instead. Here's what I tried, where it broke, and the workflow that actually works." />
+  <meta property="og:url" content="https://www.mrtylerwhite.com/letters/designing-without-figma/" />
+  <meta property="og:image" content="https://www.mrtylerwhite.com/assets/images/letters/designing-without-figma.jpg" />
+  <meta property="og:image:width" content="1536" />
+  <meta property="og:image:height" content="1024" />
+  <meta property="og:image:alt" content="A person draws one glowing amber curve across a blank stone canvas, his back to a towering heap of scribbled paper slips" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@mrtylerwhite" />
+  <meta name="twitter:title" content="I tried to quit Figma. Here's where it broke. | Tyler White" />
+  <meta name="twitter:description" content="I spent two and a half months trying to design my website without Figma, using Claude and vibe coding instead. Here's what I tried, where it broke, and the workflow that actually works." />
+  <meta name="twitter:image" content="https://www.mrtylerwhite.com/assets/images/letters/designing-without-figma.jpg" />
+  <meta name="twitter:image:alt" content="A person draws one glowing amber curve across a blank stone canvas, his back to a towering heap of scribbled paper slips" />
+  <link rel="alternate" type="application/rss+xml" title="Letters · Tyler White" href="https://www.mrtylerwhite.com/letters/feed.xml" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"I tried to quit Figma. Here's where it broke.","description":"I spent two and a half months trying to design my website without Figma, using Claude and vibe coding instead. Here's what I tried, where it broke, and the workflow that actually works.","datePublished":"2026-11-21","dateModified":"2026-11-21","image":{"@type":"ImageObject","url":"https://www.mrtylerwhite.com/assets/images/letters/designing-without-figma.jpg","width":1536,"height":1024,"caption":"A person draws one glowing amber curve across a blank stone canvas, his back to a towering heap of scribbled paper slips"},"mainEntityOfPage":"https://www.mrtylerwhite.com/letters/designing-without-figma/","url":"https://www.mrtylerwhite.com/letters/designing-without-figma/","wordCount":1250,"author":{"@type":"Person","name":"Tyler White","url":"https://www.mrtylerwhite.com/about/","jobTitle":"Director of Product Design","sameAs":["https://www.linkedin.com/in/mrtylerwhite/","https://x.com/mrtylerwhite","https://www.instagram.com/mrtylerwhite"]},"publisher":{"@type":"Person","name":"Tyler White","url":"https://www.mrtylerwhite.com/"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.mrtylerwhite.com/"},{"@type":"ListItem","position":2,"name":"Letters","item":"https://www.mrtylerwhite.com/letters/"},{"@type":"ListItem","position":3,"name":"I tried to quit Figma. Here's where it broke.","item":"https://www.mrtylerwhite.com/letters/designing-without-figma/"}]}</script>
+
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32" />
+  <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  <link rel="preconnect" href="https://use.typekit.net" crossorigin />
+  <link rel="preconnect" href="https://p.typekit.net" crossorigin />
+  <link rel="preload" as="style" href="https://use.typekit.net/fks5kmr.css" fetchpriority="low" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="https://use.typekit.net/fks5kmr.css" /></noscript>
+  <link rel="stylesheet" href="/assets/css/dist/letters.critical.css?v=019c2fb9" />
+  <link rel="stylesheet" href="/assets/css/dist/letters.bundle.css?v=e5f2145e" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="/assets/css/dist/letters.bundle.css?v=e5f2145e" /></noscript>
+  <link rel="stylesheet" href="/assets/css/system/site-footer.css?v=2a5d33c5" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="/assets/css/system/site-footer.css?v=2a5d33c5" /></noscript>
+  <link rel="preload" as="image" imagesrcset="/assets/images/letters/designing-without-figma-800.webp 800w, /assets/images/letters/designing-without-figma.webp 1536w" imagesizes="(max-width: 760px) 100vw, 728px" type="image/webp" fetchpriority="high" />
+<!-- partial:head -->
+<style id="page-transitions">
+/* Page transitions (details.so port). Inline on purpose: Chrome decides whether
+   to run a cross-page transition as the new page first renders, and an opt-in
+   inside an external stylesheet is sometimes not applied yet, so the transition
+   was skipped at random. Text entrance (.ds-enter) lives in page-transitions.css. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.5s;
+  animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+/* Nav stays in place while the page crossfades. Named on the glass pill, and the
+   group re-applies the glass blur, which a snapshot can't capture. */
+#main-header .et_menu_container,
+.fck-site-header .fck-nav {
+  view-transition-name: site-header;
+}
+::view-transition-group(site-header) {
+  animation-duration: 0.5s;
+  animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border-radius: 10px;
+  -webkit-backdrop-filter: blur(20px) saturate(1.8);
+  backdrop-filter: blur(20px) saturate(1.8);
+}
+</style>
+<!-- /partial:head -->
+</head>
+<body class="letters-page letter-page ds-standalone-nav et_fixed_nav et_show_nav et_header_style_left et_pb_svg_logo et_divi_100_custom_hamburger_menu et_divi_100_custom_hamburger_menu--style-2 et_divi_100_custom_hamburger_menu--type-1 et_button_no_icon et_button_custom_icon et_pb_button_helper_class">
+<div id="page-container">
+<!-- partial:header -->
+<header id="main-header" data-height-onload="30">
+
+			<div class="container clearfix et_menu_container">
+							<div class="logo_container">
+					<span class="logo_helper"></span>
+					<a href="/">
+						<img src="/wp-content/uploads/2025/12/logo-mrtylerwhite-1.svg" width="69" height="20" alt="Mr. Tyler White" id="logo" data-height-percentage="34" />
+					</a>
+				</div>
+							<div id="et-top-navigation" data-height="30" data-fixed-height="40">
+											<nav id="top-menu-nav">
+						<ul id="top-menu" class="nav"><li id="menu-item-30" class="anim-link menu-item menu-item-type-post_type menu-item-object-page menu-item-30"><a href="/about/">About Me</a></li>
+<li id="menu-item-3458" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3458"><a href="/letters/">Letters</a></li>
+<li id="menu-item-3464" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3464"><a href="https://www.designtablepodcast.com/" target="_blank" rel="noopener noreferrer">Podcast</a></li><li id="menu-item-4000" class="site-nav-workshop menu-item menu-item-type-custom menu-item-object-custom menu-item-4000"><a href="/builder-kickoff/">Builder Kickoff™</a></li>
+
+<li id="menu-item-54" class="et_pb_button menu-item menu-item-type-custom menu-item-object-custom menu-item-54"><a href="/roi-case-study-template/" data-track-event="case_study_kit_cta_click" data-track-location="nav">The 15 Minute Case Study</a></li>
+</ul>						</nav>
+
+
+
+
+					<div id="et_mobile_nav_menu">
+				<div class="mobile_nav closed">
+					<span class="select_page">Select Page</span>
+					<button type="button" class="mobile_menu_bar mobile_menu_bar_toggle" aria-label="Open menu" aria-controls="mobile_menu" aria-expanded="false"></button>
+				</div>
+			</div>				</div> <!-- #et-top-navigation -->
+			</div> <!-- .container -->
+					</header>
+<!-- /partial:header -->
+<main class="letter" id="main-content">
+  <div class="letter__layout">
+  <article class="letter__article">
+    <header class="letter__header">
+      <a class="letter__back ds-enter" href="/letters/" data-track-event="letters_back_click"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>All letters</a>
+      <h1 class="letter__title ds-enter ds-enter-d1">I tried to quit Figma. Here's where it broke.</h1>
+      
+      <div class="letter__byline ds-enter ds-enter-d2">
+        <img class="letter__avatar" src="/assets/images/tyler-white-avatar.webp" alt="" width="36" height="36" />
+        <p><a href="/about/" rel="author">Tyler White</a><time datetime="2026-11-21">Nov 21, 2026</time></p>
+      </div>
+      <div class="letter__bar ds-enter ds-enter-d2">
+        <span>5 min read · <a href="/letters/#ai-workflow">AI Workflow</a></span>
+        <button type="button" class="letter__share" data-share-url="https://www.mrtylerwhite.com/letters/designing-without-figma/">Share</button>
+      </div>
+    </header>
+    <picture><source srcset="/assets/images/letters/designing-without-figma-800.webp 800w, /assets/images/letters/designing-without-figma.webp 1536w" sizes="(max-width: 760px) 100vw, 728px" type="image/webp" /><img src="/assets/images/letters/designing-without-figma.jpg" class="letter__cover" alt="A person draws one glowing amber curve across a blank stone canvas, his back to a towering heap of scribbled paper slips" width="1536" height="1024" fetchpriority="high" decoding="async" /></picture>
+    
+    <nav class="letter-toc" aria-label="In this letter">
+        <p class="letter-toc__label">In this letter</p>
+        <ol><li><a href="#why-i-tried-to-design-without-figma">Why I tried to design without Figma</a></li><li><a href="#what-i-tried">What I tried</a></li><li><a href="#where-it-broke">Where it broke</a></li><li><a href="#why-you-cant-describe-good-design-in-a-prompt">Why you can&#39;t describe good design in a prompt</a></li><li><a href="#what-actually-works-the-70-30-loop">What actually works: the 70/30 loop</a></li><li><a href="#figma-or-prototype-how-my-team-decides">Figma or prototype: how my team decides</a></li><li><a href="#so-should-you-quit-figma">So should you quit Figma?</a></li></ol>
+      </nav>
+    <div class="letter__body">
+<p>If you&#39;ve been on LinkedIn lately, you&#39;d think Figma is already dead. &quot;I don&#39;t need designers anymore.&quot; &quot;I don&#39;t need Figma anymore.&quot; Everyone&#39;s ditching it, or at least posting like they are. I wanted to know if any of it was real, so for the last two and a half months I tried it myself. No Figma. Just me, Claude, and a website I wanted to redesign.</p>
+<aside class="lm-card lm-card--inline" aria-label="Free Claude Skill: The 15 Minute Case Study">
+  <p class="lm-card__label">Free Claude Skill</p>
+  <a class="lm-card__media" href="/roi-case-study-template/" tabindex="-1" aria-hidden="true" data-track-event="letters_lead_magnet_click" data-track-location="inline_case-study"><img src="/assets/images/lead-magnets/15-minute-case-study-cover-wide.webp" alt="" width="1200" height="800" loading="lazy" decoding="async" /></a>
+  <p class="lm-card__title">The 15 Minute Case Study</p>
+  <p class="lm-card__desc">Turn rough project notes into a case study that proves what changed.</p>
+  <a class="lm-card__link" href="/roi-case-study-template/" data-track-event="letters_lead_magnet_click" data-track-location="inline_case-study">Download free <span aria-hidden="true">&rarr;</span></a>
+</aside>
+<h2 id="why-i-tried-to-design-without-figma">Why I tried to design without Figma</h2>
+<p>I&#39;ve been a designer since I was a kid. Painting, drawing, typography, all of it. I like Figma fine. But I think designers, and product people in general, are about to become art directors of the stuff we build. How well you think is going to matter more than how well you execute, and I&#39;d rather learn what that looks like now than get dragged into it in two years. So the challenge was simple: redesign my personal site in a way where I can vibe code new pages and funnels with Claude, and skip Figma completely.</p>
+<h2 id="what-i-tried">What I tried</h2>
+<p>First I bought a marketing design system built on Tailwind. Great components, great sections, one problem: it&#39;s built in React, and my site is plain HTML. I wasn&#39;t about to rebuild my whole website just to use a design system, so I had Claude look at the pages and recreate them. It did a pretty mediocre job.</p>
+<p>Then I found design.md files. The idea is a single doc that sits on top of your codebase and holds your brand: the colors, the sections you&#39;re allowed to use, the rules for spinning up a new page. Think of it as a mini art director living in your code that Claude checks before it builds anything. I&#39;m still wrapping my head around it, but it&#39;s the most promising thing I&#39;ve found so far.</p>
+<p>And then there were the late nights. Me typing &quot;this is what I want&quot; over and over. Asking ChatGPT to write the prompt so I could hand it to Claude. Running out of Claude tokens in the middle of the night and switching to Cursor, because Cursor slows you down when you hit the limit instead of cutting you off. I spent a lot of those nights yelling at a thing with no feelings.</p>
+<p>Here&#39;s what I figured out. Getting Claude to make a website is easy. Getting it to hit the bar of craft I actually care about is a different job entirely, and I&#39;m not hitting it.</p>
+<aside class="letter-signup letter-signup--float" aria-label="Newsletter">
+  <img class="letter-signup__scribble" src="/assets/images/brand/brush-scribble.webp" alt="" width="520" height="440" loading="lazy" decoding="async" aria-hidden="true" />
+  <div class="letter-signup__inner">
+    <p class="ds-eyebrow letter-signup__eyebrow">The ROI of Design</p>
+    <p class="letter-signup__title">Get credit for the work you <span class="letter-signup__mark">already</span> ship.</p>
+    <p class="letter-signup__body">Every Saturday: how to turn your design work into numbers execs actually fund.</p>
+    <form class="letter-signup__form" data-newsletter-form data-track-location="letters_inline" method="post" action="https://app.kit.com/forms/4969496/subscriptions" novalidate>
+      <input type="hidden" name="fields[signup_source]" value="letters_inline" data-signup-source />
+      <label class="screen-reader-text" for="nl-letters_inline">Email address</label>
+      <div class="letter-signup__field">
+        <input id="nl-letters_inline" class="letter-signup__input" name="email_address" type="email" autocomplete="email" placeholder="Enter your email address..." required />
+        <button class="letter-signup__btn" type="submit">Subscribe <span aria-hidden="true">&rarr;</span></button>
+      </div>
+      <p class="letter-signup__error" data-newsletter-error role="alert" aria-live="polite"></p>
+    </form>
+  </div>
+</aside>
+<h2 id="where-it-broke">Where it broke</h2>
+<p>The annoying part is I know this can work. At my 9 to 5, we have a tool that vibe codes client presentations against any company&#39;s brand. You point it at their website, give it a persona and a scenario, and it spits out a white-labeled presentation. It&#39;s damn good.</p>
+<p>But it&#39;s good because everything underneath it was finished first. The design system lives in code. Every module is documented down to the last detail. And all of that was designed in Figma, handed to engineering, and built properly. My website has none of that foundation. I was trying to skip the step that makes the magic possible, and so far that step is required.</p>
+<h2 id="why-you-cant-describe-good-design-in-a-prompt">Why you can&#39;t describe good design in a prompt</h2>
+<p>My co-host Nick put it best when we talked about this on the podcast: we&#39;re trying to do visual thinking expressed in words. Try telling a machine &quot;move that a little to the left, and the corner doesn&#39;t need to be that round.&quot; There&#39;s a literal language barrier.</p>
+<p>It goes deeper than wording, though. Nick asked me to write down the rules of good design, and I couldn&#39;t. Take something as basic as font size. Most designers will tell you body text shouldn&#39;t go below 16 pixels. Then come the exceptions: mobile, fine print, the little Easter egg you don&#39;t really want people to read. Teaching that judgment to a junior designer takes forever. Teaching it to a machine with zero context is starting from scratch.</p>
+<p>And then there&#39;s the wow moment. You know the one. You look at a screen and something just clicks, and you feel it before you can explain it. I&#39;ve been chasing that feeling this whole experiment, and I honestly don&#39;t think I can describe it to Claude. That part might be ours.</p>
+<p>Nick had a perfect example. He had Claude study which of our podcast thumbnails got the best click-through. One of the winners had a single capitalized word on it: TRAP. Now every time he uses that skill, Claude tries to shove the word &quot;trap&quot; in somewhere. Nick reads that same data and thinks &quot;emotional word, big, capitalized.&quot; Claude reads it and thinks &quot;trap.&quot; It looks like it gets it. It doesn&#39;t.</p>
+<h2 id="what-actually-works-the-70-30-loop">What actually works: the 70/30 loop</h2>
+<p>The closest thing to Figma-less that either of us has found still has Figma in it. Nick&#39;s loop runs about 70% Claude and 30% Figma:</p>
+<ol>
+<li>Sketch a few directions in Figma by hand and talk them through with stakeholders and the developer.</li>
+<li>Take the direction that has legs into Claude and start prototyping.</li>
+<li>When you hit something you can&#39;t describe, have Claude put it back into Figma as a frame next to the original.</li>
+<li>Design the variation yourself. Draw the thing you actually meant.</li>
+<li>Point Claude at that frame and keep prototyping from there.</li>
+</ol>
+<p>Claude builds the frames. You paint the picture. That&#39;s where your craft and taste come back in, and honestly, it&#39;s where they belong.</p>
+<h2 id="figma-or-prototype-how-my-team-decides">Figma or prototype: how my team decides</h2>
+<p>We&#39;re testing this at work right now. Designers can hand off to engineering in one of two ways, a Figma file or a prototype, and either is fine. What matters is picking the right one for the problem.</p>
+<div class="letter-table"><div class="letter-table__card"><div class="letter-table__dots" aria-hidden="true"><span></span><span></span><span></span></div><div class="letter-table__scroll"><table>
+<thead>
+<tr>
+<th>If the work is…</th>
+<th>Use</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>High craft: polish, illustrations, how the experience feels</td>
+<td>Figma</td>
+<td>You need a canvas to think visually</td>
+</tr>
+<tr>
+<td>Logic-heavy: lots of states and edge cases</td>
+<td>Prototype</td>
+<td>Easier to cover every case and hand to engineering</td>
+</tr>
+</tbody></table></div></div></div>
+<p>Our prototypes pull in the real production components without the logic or the backend, so what designers build looks one-to-one with production, just lighter. New screens still start in Figma. It works especially well for stuff that&#39;s a nightmare to mock up, like the natural language search we&#39;re building, where typing &quot;apples&quot; should also find the apple pie.</p>
+<p>The prototype route has a bonus too. When design owns the edge cases, engineering stops pinging you about what happens when a loading state errors out, and the conversations between design and engineering get about the stuff that actually matters.</p>
+<h2 id="so-should-you-quit-figma">So should you quit Figma?</h2>
+<p>No. And you shouldn&#39;t cling to it either. We used to have one tool, so we used it for everything, even the projects that never needed it. Now we have a whole kit, and your job is to pick the right tool for the job like any decent craftsperson would. Experiment. Push on the edges. Just don&#39;t torch what works today while you do it.</p>
+<p>One question to take into your next project: when you&#39;re stuck going back and forth with AI, are you stuck because of the tool, or because you can&#39;t put what you want into words? If it&#39;s the words, stop typing. Open a canvas, draw it, and hand it back.</p>
+<p>Hear the full conversation with Nick on The Design Table Podcast.</p>
+
+<aside class="letter-cta letter-cta--art" aria-label="See how Builder Kickoff works">
+  <div class="letter-cta__text">
+  <p class="ds-eyebrow letter-cta__eyebrow">Builder Kickoff™ · $97</p>
+  <p class="letter-cta__title">Run the kickoff.<br />Get the PRD.</p>
+  <p class="letter-cta__body">Seven short lessons. Record your next kickoff, and get the PRD, the business case and the prototype direction the same day.</p>
+  <a class="letter-cta__btn" href="/builder-kickoff/" data-track-event="letters_cta_click" data-track-location="builder-kickoff">See how Builder Kickoff works &rarr;</a>
+  </div><div class="letter-cta__art" aria-hidden="true"><div class="cta-card">
+    <div class="cta-card__head"><span class="cta-card__dot"></span>Builder Kickoff&trade; workflow</div>
+    <div class="cta-step cta-step--done"><span class="cta-step__ico"><svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="cta-step__text"><span class="cta-step__title">Kickoff recorded</span><span class="cta-step__meta">60 min &middot; 4 people</span></span><span class="cta-step__state">Done</span></div>
+    <div class="cta-step cta-step--done"><span class="cta-step__ico"><svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="cta-step__text"><span class="cta-step__title">Problem and bet</span><span class="cta-step__meta">Recovery 35% &rarr; 60%</span></span><span class="cta-step__state">Done</span></div>
+    <div class="cta-step cta-step--done"><span class="cta-step__ico"><svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="cta-step__text"><span class="cta-step__title">PRD drafted</span><span class="cta-step__meta">From the transcript</span></span><span class="cta-step__state">Done</span></div>
+    <div class="cta-step cta-step--live"><span class="cta-step__ico"><span class="cta-spin"></span></span><span class="cta-step__text"><span class="cta-step__title">Prototype prompt</span><span class="cta-step__meta">Writing&hellip;</span></span><span class="cta-step__state">Running</span></div>
+  </div></div>
+</aside>
+    </div>
+    <footer class="letter__author">
+      <img class="letter__avatar letter__avatar--lg" src="/assets/images/tyler-white-avatar.webp" alt="" width="64" height="64" loading="lazy" />
+      <div>
+        <p class="letter__author-name">Tyler White</p>
+        <p class="letter__author-bio">Director of Product Design. 16 years in B2B SaaS, writing about how design decisions turn into revenue, retention and the seat at the table. Creator of Builder Kickoff™.</p>
+      </div>
+    </footer>
+  </article>
+  <div class="letter__side"><aside class="lm-card lm-card--sidebar" aria-label="Free Claude Skill: The 15 Minute Case Study">
+  <p class="lm-card__label">Free Claude Skill</p>
+  <a class="lm-card__media" href="/roi-case-study-template/" tabindex="-1" aria-hidden="true" data-track-event="letters_lead_magnet_click" data-track-location="sidebar_case-study"><img src="/assets/images/lead-magnets/15-minute-case-study-cover-wide.webp" alt="" width="1200" height="800" loading="lazy" decoding="async" /></a>
+  <p class="lm-card__title">The 15 Minute Case Study</p>
+  <p class="lm-card__desc">Turn rough project notes into a case study that proves what changed.</p>
+  <a class="lm-card__link" href="/roi-case-study-template/" data-track-event="letters_lead_magnet_click" data-track-location="sidebar_case-study">Download free <span aria-hidden="true">&rarr;</span></a>
+</aside></div>
+  </div>
+  <section class="letters-related" aria-labelledby="related-heading">
+        <h2 id="related-heading" class="letters-label">Keep reading</h2>
+        <ul class="letters-list"><li class="letters-list__item" data-topic="ai-workflow">
+  <a class="letters-list__link" href="/letters/cursor-for-designers/">
+    <span class="letters-list__text">
+      <span class="letters-list__title">Cursor for designers: why I left Figma Make for real product work</span>
+      <span class="letters-list__sub">Figma Make is great until the thing has to actually work. Here's the loop I use instead, and what building in code exposed that mocks never did.</span>
+      <span class="letters-list__meta"><time datetime="2026-04-22">Apr 22, 2026</time> · AI Workflow</span>
+    </span>
+    <picture><source srcset="/assets/images/letters/cursor-for-designers-v2-800.webp 800w, /assets/images/letters/cursor-for-designers-v2.webp 1536w" sizes="320px" type="image/webp" /><img src="/assets/images/letters/cursor-for-designers-v2.jpg" class="letters-list__thumb" alt="" loading="lazy" decoding="async" width="320" height="200" /></picture>
+  </a>
+</li><li class="letters-list__item" data-topic="ai-workflow">
+  <a class="letters-list__link" href="/letters/ai-prototyping-workflow/">
+    <span class="letters-list__text">
+      <span class="letters-list__title">The AI prototyping workflow I actually use (and where it breaks)</span>
+      <span class="letters-list__sub">Speed doesn't let you skip the fundamentals. It tells you, fast, which ones were real. Here's the workflow, the prompt, and the places it'll burn you.</span>
+      <span class="letters-list__meta"><time datetime="2026-03-25">Mar 25, 2026</time> · AI Workflow</span>
+    </span>
+    <picture><source srcset="/assets/images/letters/ai-prototyping-workflow-v2-800.webp 800w, /assets/images/letters/ai-prototyping-workflow-v2.webp 1536w" sizes="320px" type="image/webp" /><img src="/assets/images/letters/ai-prototyping-workflow-v2.jpg" class="letters-list__thumb" alt="" loading="lazy" decoding="async" width="320" height="200" /></picture>
+  </a>
+</li><li class="letters-list__item" data-topic="kickoffs">
+  <a class="letters-list__link" href="/letters/scope-creep/">
+    <span class="letters-list__text">
+      <span class="letters-list__title">Scope creep in product design: how to stop saying yes to also</span>
+      <span class="letters-list__sub">Every project dies the same way. One small also at a time. Here's the rule that keeps the deadline, and exactly what to say when the next request lands.</span>
+      <span class="letters-list__meta"><time datetime="2026-10-31">Oct 31, 2026</time> · Kickoffs &amp; PRDs</span>
+    </span>
+    <picture><source srcset="/assets/images/letters/scope-creep-v3-800.webp 800w, /assets/images/letters/scope-creep-v3.webp 1536w" sizes="320px" type="image/webp" /><img src="/assets/images/letters/scope-creep-v3.jpg" class="letters-list__thumb" alt="" loading="lazy" decoding="async" width="320" height="200" /></picture>
+  </a>
+</li></ul>
+      </section>
+</main>
+<script>
+(function () {
+  var btn = document.querySelector("[data-share-url]");
+  if (!btn) return;
+  btn.addEventListener("click", async function () {
+    var url = btn.getAttribute("data-share-url");
+    try {
+      if (navigator.share) { await navigator.share({ title: document.title, url: url }); return; }
+      await navigator.clipboard.writeText(url);
+      btn.textContent = "Link copied";
+      setTimeout(function () { btn.textContent = "Share"; }, 2000);
+    } catch (_) {}
+  });
+})();
+</script>
+<!-- partial:footer hide="portfolio" -->
+<footer class="site-footer" role="contentinfo">
+  <div class="site-footer__inner">
+    <div class="site-footer__brand">
+      <img class="site-footer__wordmark" src="/wp-content/uploads/2025/12/logo-mrtylerwhite-1.svg" width="69" height="20" alt="Mr. Tyler White" />
+      <p class="site-footer__tagline">Product design, growth systems, and prototypes that help teams make better decisions.</p>
+    </div>
+    <nav class="site-footer__col" aria-label="Explore">
+      <span class="site-footer__col-heading">Explore</span>
+      <a href="/about/">About Me</a>
+      <a href="/newsletter/">Newsletter</a>
+      <a href="/letters/">Letters</a>
+      <a href="https://www.designtablepodcast.com/" target="_blank" rel="noopener noreferrer">Podcast</a>
+      <a href="/builder-kickoff/">Builder Kickoff™</a>
+    </nav>
+    <nav class="site-footer__col" aria-label="Resources">
+      <span class="site-footer__col-heading">Resources</span>
+      <a href="/resume/">Resume</a>
+      <a href="https://www.linkedin.com/in/mrtylerwhite/" target="_blank" rel="noopener noreferrer">Let&#8217;s Connect</a>
+      <a href="https://www.designtablepodcast.com/" target="_blank" rel="noopener noreferrer">The Design Table</a>
+      <a href="/funnel-simulator/">The Funnel Simulator</a>
+      <a href="/roi-case-study-template/">The 15 Minute Case Study</a>
+    </nav>
+    <div class="site-footer__cta-block">
+      <span class="site-footer__col-heading">Free Strategy Call</span>
+      <p class="site-footer__cta-copy">Want help turning messy product, growth, or design problems into a clearer plan? Book a 30-minute call and we&#8217;ll figure out where the biggest leverage is.</p>
+      <a href="https://cal.com/mrtylerwhite/30min" class="site-footer__cta-btn" target="_blank" rel="noopener noreferrer">Book a free strategy call</a>
+    </div>
+  </div>
+  <div class="site-footer__bottom">
+    <p class="site-footer__copy">&#169; 2026 Tyler White. Made with taste, caffeine, and a suspicious number of prototypes.</p>
+    <nav class="site-footer__legal" aria-label="Legal">
+      <a href="/privacy-policy/">Privacy Policy</a>
+      <a href="/privacy-policy/#cookies" data-cookie-settings>Cookie settings</a>
+    </nav>
+  </div>
+</footer>
+<!-- /partial:footer -->
+</div>
+<script src="/assets/js/mobile-menu-a11y.js?v=2b161847" defer></script>
+<script src="/assets/js/newsletter-form.js?v=642a9a06" defer></script>
+<script src="/assets/js/gtm-defer.js?v=ca2c75ba" defer></script>
+<script src="/assets/js/analytics.js?v=fd655e02" defer></script>
+<script src="/assets/js/consent.js?v=6a4de25c" defer></script>
+</body>
+</html>

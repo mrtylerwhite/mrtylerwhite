@@ -80,6 +80,33 @@
   --ds-color-dark-hover: #1C1C20;
   --ds-color-accent-soft: #E4E4E7;
 
+  /* ── Brand accent (gold) ───────────────────────────────── */
+  --ds-color-gold: #C59060;       /* accent on light + dark */
+  --ds-color-gold-light: #E9B989; /* accent text/lines on dark */
+  --ds-color-gold-soft: rgba(197,144,96,.14); /* tinted tiles */
+  --ds-color-gold-deep: #B07D4F;  /* brand on off-white: icons, big stats, focus (3.4:1) */
+  --ds-color-gold-ink: #8F6234;   /* brand text on off-white: links, small labels (5.0:1, AA) */
+
+  /* ── Dark editorial sections ───────────────────────────── */
+  --ds-color-dark-page: #0A0A0A;  /* legacy dark section bg */
+
+  /* ── Dusk palette (Tailark Dusk, used by Basecoat pages) ── */
+  /* Light sections: warm off-white page, near-black ink */
+  --ds-dusk-light-bg: #FCF7F4;
+  --ds-dusk-light-card: #FFFDFB;   /* elevated: lighter than the page */
+  --ds-dusk-light-sunken: #F6EFEA; /* recessed: tab bars, code, hover fills */
+  --ds-dusk-light-raised: #EEE5DE;
+  --ds-dusk-light-fg: #09090B;
+  --ds-dusk-light-muted: #71717A;
+  --ds-dusk-light-border: rgba(9,9,11,.09);
+  /* Dark sections: straight from Dusk */
+  --ds-dusk-dark-bg: #181717;  /* Dusk #09090B, +4% lighter, 3% brand brown */
+  --ds-dusk-dark-card: #1B1919;  /* elevated: one step above the page */
+  --ds-dusk-dark-raised: #343334;  /* Dusk #27272A, same treatment */
+  --ds-dusk-dark-fg: #FFFFFF;
+  --ds-dusk-dark-muted: #9F9FA9;
+  --ds-dusk-dark-border: rgba(255,255,255,.075);
+
   /* ── Legacy / functional ───────────────────────────────── */
   --ds-color-link: #2ea3f2;
   --ds-color-accent: #24c8dc;
