@@ -2258,6 +2258,8 @@ img.letters-feature__art {
   }
   .lm-card--sidebar { display: block; }
   .lm-card--inline { display: none; }
+  /* "Keep reading" spans both columns, article and sidebar. */
+  .letter__layout ~ .letters-related { max-width: calc(var(--letters-measure) + 64px + 300px); }
   /* The sidebar card already promotes this offer on desktop. */
   .letter-offer--sidebar-dup { display: none; }
 }
