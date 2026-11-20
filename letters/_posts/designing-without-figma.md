@@ -1,6 +1,6 @@
 ---
-title: I tried to quit Figma. Here's where it broke.
-description: I spent two and a half months trying to design my website without Figma, using Claude and vibe coding instead. Here's what I tried, where it broke, and the workflow that actually works.
+title: I tried to quit Figma. Claude wasn't the problem.
+description: I spent two and a half months designing my site with Claude instead of Figma. Claude wasn't the problem. Describing good design in words was.
 slug: designing-without-figma
 date: 2026-11-21
 topic: ai-workflow
