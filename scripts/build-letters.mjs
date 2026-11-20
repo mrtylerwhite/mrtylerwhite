@@ -599,6 +599,49 @@ const FIGURES = {
   </div></div>
   <figcaption>Three honest answers to every also. A quiet yes isn&rsquo;t one of them.</figcaption>
 </figure>`,
+  // Tailark flow (same as scope-swap): the thumbnail data → reading it → Nick's read, Claude's read
+  "trap-read": `<figure class="letter-fig">
+  <div class="tk-tray"><div class="tk-stage tk-stage--filter" aria-hidden="true">
+    <div class="tk-flow-row">
+      <div class="tk-col">${tilePill("Top thumbnail", "Best click-through", "trend", "brown", 0.1)}${tilePill("One word", "TRAP", "message", "brown", 0.22)}${tilePill("All caps", "Big and loud", "alert", "brown", 0.34)}</div>
+      <svg class="tk-lines tk-lines--static" width="64" height="164" viewBox="0 0 64 164" fill="none">
+        <path d="M0 22C32 22 32 82 64 82"/><path d="M0 82H64"/><path d="M0 142C32 142 32 82 64 82"/>
+        <path class="tk-pulse" pathLength="1" d="M0 22C32 22 32 82 64 82" stroke="url(#tkf1-a)"/>
+        <path class="tk-pulse" pathLength="1" d="M0 82H64" stroke="url(#tkf1-b)"/>
+        <path class="tk-pulse" pathLength="1" d="M0 142C32 142 32 82 64 82" stroke="url(#tkf1-c)"/>
+        <defs>${beamGrad("tkf1-a", 0, 22, 64, 82)}${beamGrad("tkf1-b", 0, 82, 64, 82)}${beamGrad("tkf1-c", 0, 142, 64, 82)}</defs>
+      </svg>
+      <div class="tk-node tk-node--inline tk-rise" style="--d:0.5s">${lucideIcon("tk-node__ico", ICON.search)}</div>
+      <svg class="tk-lines tk-lines--static" width="64" height="164" viewBox="0 0 64 164" fill="none">
+        <path d="M0 82C32 82 32 42 64 42"/><path d="M0 82C32 82 32 122 64 122"/>
+        <path class="tk-pulse tk-pulse--out" pathLength="1" d="M0 82C32 82 32 42 64 42" stroke="url(#tkf1-d)"/>
+        <defs>${beamGrad("tkf1-d", 0, 82, 64, 42)}</defs>
+      </svg>
+      <div class="tk-col tk-col--outs">${tilePill("Nick reads", "Emotional word. Big. Caps.", "check", "brown", 0.75)}${tilePill("Claude reads", "Say &ldquo;trap&rdquo; again", "x", "muted", 0.85, " tk-leave")}</div>
+    </div>
+  </div></div>
+  <figcaption>Same data, two reads. One of them is taste.</figcaption>
+</figure>`,
+  // Tailark flow (same as scope-triage): stuck in a prompt → draw it → the loop back into Claude
+  "seventy-thirty": `<figure class="letter-fig">
+  <div class="tk-tray"><div class="tk-stage tk-stage--fan" aria-hidden="true">
+    <svg class="tk-lines tk-lines--fan" viewBox="0 0 400 240" fill="none">
+      <path d="M60 120 H160"/><path d="M220 120 H260"/>
+      <path d="M260 120 Q280 120 290 100 L310 50 Q320 30 340 30"/><path d="M260 120 H340"/><path d="M260 120 Q280 120 290 140 L310 190 Q320 210 340 210"/>
+      <path class="tk-pulse" pathLength="1" d="M60 120 H160" stroke="url(#tkf2-in)"/>
+      <path class="tk-pulse tk-pulse--out" pathLength="1" d="M220 120 H260 Q280 120 290 100 L310 50 Q320 30 340 30" stroke="url(#tkf2-o1)"/>
+      <path class="tk-pulse tk-pulse--out" pathLength="1" d="M220 120 H340" stroke="url(#tkf2-o2)"/>
+      <path class="tk-pulse tk-pulse--out" pathLength="1" d="M220 120 H260 Q280 120 290 140 L310 190 Q320 210 340 210" stroke="url(#tkf2-o3)"/>
+      <defs>${beamGrad("tkf2-in", 220, 120, 160, 120)}${beamGrad("tkf2-o1", 220, 120, 320, 60)}${beamGrad("tkf2-o2", 220, 120, 340, 120)}${beamGrad("tkf2-o3", 220, 120, 320, 180)}</defs>
+    </svg>
+    <div class="tk-fan">
+      ${pill("Can&rsquo;t describe it", "message", "muted")}
+      <div class="tk-dark-pill">${lucideIcon("tk-ico tk-ico--brown", ICON.pen)}<span>Draw it</span></div>
+      <div class="tk-outs">${pill("Claude adds a frame", "wand", "brown")}${pill("You draw it", "pen", "brown")}${pill("Claude builds it", "rocket", "brown")}</div>
+    </div>
+  </div></div>
+  <figcaption>When the words run out, pick up the pen. About 70% Claude, 30% Figma.</figcaption>
+</figure>`,
   "roi-ex-cost": invoiceCard("ROI-001 &middot; COST", "$5,760", "Saved a year", "+44% in 2 yrs",
     [["Tickets", "120 &rarr; 60 a month"], ["Time", "12 min each"], ["Rate", "$40 an hour"], ["Cost", "$8,000"], ["Year one", "&minus;28%"]],
     "Half the tickets, $5,760 a year back. Negative in year one, +44% over two. Illustrative numbers."),
