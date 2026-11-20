@@ -1,5 +1,5 @@
 {
-  "style": "Clean, minimal, cinematic conceptual illustration with a dark, moody atmosphere. A vast dark space: deep near-black background, soft atmospheric haze and light fog, strong vignette with edges fading to black. Monochrome charcoal and grey, with one warm, soft golden-amber glow as the only color and the main light source. Clean and polished, not grungy: no heavy grain. Fine hairline etched texture appears only on the stone and paper objects, like delicate silver pencil lines. Figures are lone silhouettes in long dark coats, rim-lit by the amber glow. Dark, softly reflective floor catching the amber glow. Lots of negative dark space above. Quiet, thoughtful mood. Photorealistic 3D render, painterly cinematic lighting, wide 3:2 composition.",
+  "style": "Clean, minimal, cinematic conceptual illustration with a dark, moody atmosphere. A vast dark space: deep near-black background, soft atmospheric haze and light fog, strong vignette with edges fading to black. Monochrome charcoal and grey, with one warm, soft golden-amber glow as the only color and the main light source. Clean and polished, not grungy: no heavy grain. Fine hairline etched texture appears only on the stone and paper objects, like delicate silver pencil lines. The figure is a lone man with short dark hair and a short dark beard, medium build, in a plain black t-shirt, dark jeans and dark boots, seen from behind or in three-quarter view, rim-lit by the amber glow. Dark, softly reflective floor catching the amber glow. Lots of negative dark space above. Quiet, thoughtful mood. Photorealistic 3D render, painterly cinematic lighting, wide 3:2 composition.",
   "covers": {
     "ux-metrics": {
       "idea": "the four UX metrics leadership cares about, with revenue being the one that matters most",
@@ -80,6 +80,11 @@
       "idea": "shipping is only the halfway point; the work counts once you measure whether the number moved",
       "scene": "In the background, a finished stone structure stands dim and grey, almost lost in the haze. In the foreground, two small upright stone tablets stand side by side on the reflective floor. The left tablet is plain grey stone. The right tablet glows warm amber from within, the brightest thing in the scene. A lone figure seen from behind stands between the tablets and the structure, turned toward the glowing tablet, holding a small lantern at their side.",
       "text": "The only text in the image is two words etched cleanly into the tablets in simple lowercase handwriting: \"before\" on the left tablet and \"after\" on the glowing right tablet, each spelled exactly like that. No other text, no numbers, no logos."
+    },
+    "designing-without-figma": {
+      "idea": "you cannot describe good design in a prompt; when words fail, stop typing, open a canvas, draw it yourself and hand it back",
+      "scene": "Left side of the image: a tall, leaning heap of grey paper slips covered in faint scribbled lines, like endless typed instructions, unlit and spilling across the dark floor, some drifting down from the darkness above. Right side of the image: a large, empty, upright stone frame like a blank canvas, standing on the reflective floor. A lone figure stands in front of the frame with his back to the paper heap, one arm raised, drawing a single bold, flowing curve of warm amber light across the canvas with his hand. The glowing curve is the brightest thing in the scene and lights the figure from the front.",
+      "text": "No text, no words, no letters, no logos."
     }
   }
 }
