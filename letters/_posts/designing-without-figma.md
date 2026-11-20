@@ -71,5 +71,3 @@ The prototype route has a bonus too. When design owns the edge cases, engineerin
 No. And you shouldn't cling to it either. We used to have one tool, so we used it for everything, even the projects that never needed it. Now we have a whole kit, and your job is to pick the right tool for the job like any decent craftsperson would. Experiment. Push on the edges. Just don't torch what works today while you do it.
 
 One question to take into your next project: when you're stuck going back and forth with AI, are you stuck because of the tool, or because you can't put what you want into words? If it's the words, stop typing. Open a canvas, draw it, and hand it back.
-
-Hear the full conversation with Nick on The Design Table Podcast.
