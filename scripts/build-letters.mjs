@@ -193,7 +193,7 @@ function videoSchema(id) {
 }
 const SITE = "https://www.mrtylerwhite.com";
 const KIT_FORM = "https://app.kit.com/forms/4969496/subscriptions";
-const AUTHOR_IMG = "/assets/images/tyler-white-avatar.webp";
+const AUTHOR_IMG = "/assets/images/tyler-white-avatar-v2.jpg";
 const DEFAULT_OG = "/assets/images/og-home.jpg";
 // Letter covers are generated at 1536x1024 (3:2).
 const COVER_W = 1536;
@@ -1046,6 +1046,7 @@ const AUTHOR = {
   name: "Tyler White",
   url: `${SITE}/about/`,
   jobTitle: "Director of Product Design",
+  image: `${SITE}/assets/images/tyler-white-headshot.jpg`,
   sameAs: ["https://www.linkedin.com/in/mrtylerwhite/", "https://x.com/mrtylerwhite", "https://www.instagram.com/mrtylerwhite"],
 };
 const plainText = (md) =>
