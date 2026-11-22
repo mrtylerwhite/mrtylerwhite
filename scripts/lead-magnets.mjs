@@ -29,6 +29,14 @@ export const LEAD_MAGNETS = {
     image: "/assets/images/lead-magnets/15-minute-case-study-cover-wide.webp",
     href: "/roi-case-study-template/",
   },
+  // Clicks on this card fire decision_record_card_click (page_slug, placement), see build-letters.mjs.
+  "decision-record": {
+    label: "Free Claude Skill",
+    title: "The 10 Minute Decision Record",
+    description: "Answer 4 questions. Know what you're building.",
+    image: "/assets/images/lead-magnets/decision-record-cover.jpg",
+    href: "/decision-record/",
+  },
 };
 
 export const DEFAULT_LEAD_MAGNET = "case-study";

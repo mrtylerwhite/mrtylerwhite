@@ -18,12 +18,15 @@
  *   updated      YYYY-MM-DD last meaningful edit (defaults to date)
  *   topic        case-studies | kickoffs | ai-workflow | career
  *   keyword      primary search term (for the record and the automation)
- *   cta          case-study | builder-kickoff | newsletter
+ *   cta          case-study | decision-record | builder-kickoff | newsletter
  *   leadMagnet   sidebar lead magnet card: a slug from scripts/lead-magnets.mjs,
  *                or "none" to hide it (defaults to DEFAULT_LEAD_MAGNET)
  *   roiSkillCard true = a 15 Minute Case Study card right after the lead magnet
  *                card (inline and sidebar). In the body, [text](/roi-case-study-template/ "roi-skill")
  *                makes a tracked inline link (letters_roi_skill_click).
+ *   decisionRecordCard true = a 10 Minute Decision Record card in that same second-card
+ *                slot (use instead of roiSkillCard). leadMagnet: decision-record makes it the main card.
+ *                Either way, clicks fire decision_record_card_click with page_slug + placement.
  *   offer        optional one-line pitch for the case study early offer (letters no longer show it)
  *   cover        optional image path (1536x1024); lists fall back to a typographic tile
  *   coverAlt     alt text for the cover on the letter page and in share tags
@@ -216,6 +219,15 @@ const CTAS = {
     offerEyebrow: "Free Claude Skill",
     offer: "Turn your last project into a case study that shows what it was worth, in 15 minutes.",
   },
+  "decision-record": {
+    eyebrow: "Free Claude Skill",
+    title: "Is it worth building?",
+    body: "The 10 Minute Decision Record. Answer 4 questions about the feature you're about to start. Walk into your kickoff knowing what you're building, what you're not, and how you'll know it worked.",
+    href: "/decision-record/",
+    label: "Get the 10 Minute Decision Record",
+    offerEyebrow: "Free Claude Skill",
+    offer: "Answer 4 questions. Know what you're building.",
+  },
   "builder-kickoff": {
     eyebrow: "Builder Kickoff™ · $97",
     title: "Run the kickoff.\nGet the PRD.",
@@ -238,6 +250,13 @@ const CTA_ART = {
     ${ctaStep("Problem and bet", "Recovery 35% &rarr; 60%", "done")}
     ${ctaStep("PRD drafted", "From the transcript", "done")}
     ${ctaStep("Prototype prompt", "Writing&hellip;", "live")}
+  </div></div>`,
+  "decision-record": `<div class="letter-cta__art" aria-hidden="true"><div class="cta-card cta-card--chat">
+    <div class="cta-card__head"><span class="cta-card__dot"></span>The 10 Minute Decision Record</div>
+    <div class="cta-msg cta-msg--ai">How much time is this worth to you?</div>
+    <div class="cta-msg cta-msg--you">Two weeks, tops.</div>
+    <div class="cta-msg cta-msg--ai">What are you NOT doing?</div>
+    <div class="cta-step cta-step--done cta-step--result"><span class="cta-step__ico">${CHECK}</span><span class="cta-step__text"><span class="cta-step__title">Decision record drafted</span><span class="cta-step__meta">Decision &middot; appetite &middot; what&rsquo;s out</span></span></div>
   </div></div>`,
   "case-study": `<div class="letter-cta__art" aria-hidden="true"><div class="cta-card cta-card--chat">
     <div class="cta-card__head"><span class="cta-card__dot"></span>The 15 Minute Case Study</div>
@@ -723,14 +742,30 @@ function leadMagnetFor(post) {
   if (!lm) throw new Error(`${post.slug}: unknown leadMagnet "${slug}" (see scripts/lead-magnets.mjs)`);
   return { slug, ...lm };
 }
-function leadMagnetCard(lm, where) {
-  return `<aside class="lm-card lm-card--${where}" aria-label="${esc(lm.label)}: ${esc(lm.title)}">
+function leadMagnetCard(lm, where, post, extraClass = "") {
+  // The Decision Record card reports its own event with the page and placement.
+  const track = lm.slug === "decision-record" && post
+    ? `data-track-event="decision_record_card_click" data-track-location="${where}_decision-record" data-track-param-page-slug="${esc(post.slug)}" data-track-param-placement="card"`
+    : `data-track-event="letters_lead_magnet_click" data-track-location="${where}_${lm.slug}"`;
+  return `<aside class="lm-card lm-card--${where}${extraClass}" aria-label="${esc(lm.label)}: ${esc(lm.title)}">
   <p class="lm-card__label">${esc(lm.label)}</p>
-  <a class="lm-card__media" href="${lm.href}" tabindex="-1" aria-hidden="true" data-track-event="letters_lead_magnet_click" data-track-location="${where}_${lm.slug}"><img src="${lm.image}" alt="" width="1200" height="800" loading="lazy" decoding="async" /></a>
+  <a class="lm-card__media" href="${lm.href}" tabindex="-1" aria-hidden="true" ${track}><img src="${lm.image}" alt="" width="1200" height="800" loading="lazy" decoding="async" /></a>
   <p class="lm-card__title">${esc(lm.title)}</p>
   <p class="lm-card__desc">${esc(lm.description)}</p>
-  <a class="lm-card__link" href="${lm.href}" data-track-event="letters_lead_magnet_click" data-track-location="${where}_${lm.slug}">${esc(lm.link || "Download free")} <span aria-hidden="true">&rarr;</span></a>
+  <a class="lm-card__link" href="${lm.href}" ${track}>${esc(lm.link || "Download free")} <span aria-hidden="true">&rarr;</span></a>
 </aside>`;
+}
+
+// The 10 Minute Decision Record card in the second-card slot (front matter `decisionRecordCard: true`).
+// lm-card--roi gives it the same spacing as the 15 Minute Case Study card it replaces.
+function decisionRecordCard(post, where) {
+  return leadMagnetCard({ slug: "decision-record", ...LEAD_MAGNETS["decision-record"] }, where, post, " lm-card--roi");
+}
+// Second card under the main lead magnet card, if the letter asks for one.
+function secondCard(post, where) {
+  if (post.decisionRecordCard === true) return `\n${decisionRecordCard(post, where)}`;
+  if (post.roiSkillCard === true) return `\n${roiSkillCard(post, where)}`;
+  return "";
 }
 
 // The 15 Minute Case Study card for PRD letters (front matter `roiSkillCard: true`).
@@ -943,15 +978,15 @@ function renderBody(post) {
     const m = LEAD_MAGNETS[slug];
     if (!m) throw new Error(`${post.slug}: unknown offer "${slug}" (see scripts/lead-magnets.mjs)`);
     pinned = true;
-    return leadMagnetCard({ slug, ...m }, "inline") + (post.roiSkillCard === true ? `\n${roiSkillCard(post, "inline")}` : "");
+    return leadMagnetCard({ slug, ...m }, "inline", post) + secondCard(post, "inline");
   });
   const lm = leadMagnetFor(post);
   // Inline lead magnet card (phones/tablets only; desktop shows the sidebar).
   // Goes before the first H2 that isn't directly after another box, unless pinned above.
   if (lm && !pinned) {
     const at = inlineCardIndex(html);
-    const roi = post.roiSkillCard === true ? `\n${roiSkillCard(post, "inline")}` : "";
-    if (at >= 0) html = `${html.slice(0, at)}${leadMagnetCard(lm, "inline")}${roi}\n${html.slice(at)}`;
+    const roi = secondCard(post, "inline");
+    if (at >= 0) html = `${html.slice(0, at)}${leadMagnetCard(lm, "inline", post)}${roi}\n${html.slice(at)}`;
   }
   // [text](/roi-case-study-template/ "roi-skill") in a post = tracked inline link to the skill.
   html = html.replace(
@@ -1089,7 +1124,7 @@ function postPage(post, related) {
   const { html, toc, videos } = renderBody(post);
   const lmPick = leadMagnetFor(post);
   const lmSide = lmPick
-    ? leadMagnetCard(lmPick, "sidebar") + (post.roiSkillCard === true ? `\n${roiSkillCard(post, "sidebar")}` : "")
+    ? leadMagnetCard(lmPick, "sidebar", post) + secondCard(post, "sidebar")
     : "";
   const canonical = post.url;
   const jsonld = [

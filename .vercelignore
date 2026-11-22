@@ -7,3 +7,5 @@ scripts/
 README.md
 PERFORMANCE_NOTES.md
 .env.example
+# Skill sources: only the packaged downloads/*.skill is served.
+skills/

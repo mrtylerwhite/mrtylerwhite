@@ -26,6 +26,7 @@
 
 - [Builder Kickoff™ Course](https://www.mrtylerwhite.com/builder-kickoff/): A 20-minute recorded course on running the session that turns a business problem into a scoped decision, then a PRD and a prototype prompt.
 - [The 15 Minute Case Study](https://www.mrtylerwhite.com/roi-case-study-template/): A free Claude skill that turns rough project notes into a case study.
+- [The 10 Minute Decision Record](https://www.mrtylerwhite.com/decision-record/): A free Claude skill that turns 4 answers about a feature into a one-page decision record.
 - [The Funnel Simulator](https://www.mrtylerwhite.com/funnel-simulator/): A free Claude skill that builds a funnel simulator for a SaaS product.
 - [The ROI of Design Newsletter](https://www.mrtylerwhite.com/newsletter/): A weekly newsletter on scoping, framing and building the business case for design work.
 

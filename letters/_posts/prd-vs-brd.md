@@ -14,7 +14,6 @@ coverAlt: "Two stone tablets labeled why and what stand on either side of a wide
 keyword: prd vs brd
 cta: builder-kickoff
 leadMagnet: prd-template
-roiSkillCard: true
 source: 23657334
 popular: true
 ---

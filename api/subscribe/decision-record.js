@@ -1,0 +1,151 @@
+/**
+ * The 10 Minute Decision Record: Kit form subscribe (server-side).
+ * Same flow as roi-case-study.js: upsert the subscriber, then add them to the
+ * Kit form, which sends the delivery email with the .skill download link.
+ *
+ * Required env (never expose to client):
+ *   KIT_API_KEY: Kit API v4 key (X-Kit-Api-Key)
+ *   KIT_FORM_ID_DECISION_RECORD: Kit form ID (set by Tyler once the form exists)
+ *
+ * https://developers.kit.com/api-reference/subscribers/create-a-subscriber
+ * https://developers.kit.com/api-reference/forms/add-subscriber-to-form-by-email-address
+ */
+
+const { checkBot, validEmail, logBlocked } = require("../_lib/bot-guard");
+
+const KIT_API_BASE = "https://api.kit.com/v4";
+const GENERIC_ERROR = "Something went wrong. Please try again.";
+
+function alreadyParsedBody(req) {
+  const b = req.body;
+  if (b == null) return null;
+  if (typeof b === "string") {
+    try {
+      return JSON.parse(b || "{}");
+    } catch {
+      return {};
+    }
+  }
+  if (Buffer.isBuffer(b)) {
+    try {
+      return JSON.parse(b.toString("utf8") || "{}");
+    } catch {
+      return {};
+    }
+  }
+  if (typeof b === "object") return b;
+  return null;
+}
+
+function readJsonFromStream(req) {
+  return new Promise((resolve, reject) => {
+    const chunks = [];
+    req.on("data", (c) => chunks.push(c));
+    req.on("end", () => {
+      const raw = Buffer.concat(chunks).toString("utf8");
+      if (!raw.trim()) {
+        resolve({});
+        return;
+      }
+      try {
+        resolve(JSON.parse(raw));
+      } catch {
+        resolve({});
+      }
+    });
+    req.on("error", reject);
+  });
+}
+
+function kitRequestSucceeded(status) {
+  return status >= 200 && status < 300;
+}
+
+async function upsertKitSubscriber(apiKey, email, firstName) {
+  return fetch(`${KIT_API_BASE}/subscribers`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "X-Kit-Api-Key": apiKey,
+    },
+    // Only send first_name when we have one, so an existing name isn't wiped.
+    body: JSON.stringify(
+      firstName ? { email_address: email, first_name: firstName } : { email_address: email }
+    ),
+  });
+}
+
+async function addKitSubscriberToForm(apiKey, formId, email) {
+  return fetch(
+    `${KIT_API_BASE}/forms/${encodeURIComponent(formId)}/subscribers`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Kit-Api-Key": apiKey,
+      },
+      body: JSON.stringify({
+        email_address: email,
+      }),
+    }
+  );
+}
+
+module.exports = async function handler(req, res) {
+  if (req.method === "OPTIONS") {
+    res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+    return res.status(204).end();
+  }
+
+  if (req.method !== "POST") {
+    res.setHeader("Allow", "POST, OPTIONS");
+    return res.status(405).json({ success: false, error: GENERIC_ERROR });
+  }
+
+  let body = alreadyParsedBody(req);
+  if (body == null) {
+    body = await readJsonFromStream(req);
+  }
+
+  const firstName =
+    typeof body.firstName === "string" ? body.firstName.trim() : "";
+  // First name is optional: the capture asks for email only.
+
+  const email = typeof body.email === "string" ? body.email.trim() : "";
+  if (!email || !validEmail(email)) {
+    return res
+      .status(400)
+      .json({ success: false, error: "Valid email required." });
+  }
+
+  const guard = await checkBot(req, body);
+  if (!guard.ok) {
+    logBlocked("decision-record", guard);
+    if (guard.silent) return res.status(200).json({ success: true });
+    return res.status(guard.status).json({ success: false, error: guard.error });
+  }
+
+  const apiKey = process.env.KIT_API_KEY;
+  const formId = process.env.KIT_FORM_ID_DECISION_RECORD;
+
+  if (!apiKey || !formId) {
+    return res.status(503).json({ success: false, error: GENERIC_ERROR });
+  }
+
+  try {
+    const subscriberRes = await upsertKitSubscriber(apiKey, email, firstName);
+    if (!kitRequestSucceeded(subscriberRes.status)) {
+      return res.status(502).json({ success: false, error: GENERIC_ERROR });
+    }
+
+    const formRes = await addKitSubscriberToForm(apiKey, formId, email);
+    if (!kitRequestSucceeded(formRes.status)) {
+      return res.status(502).json({ success: false, error: GENERIC_ERROR });
+    }
+
+    return res.status(200).json({ success: true });
+  } catch (_) {
+    return res.status(502).json({ success: false, error: GENERIC_ERROR });
+  }
+};

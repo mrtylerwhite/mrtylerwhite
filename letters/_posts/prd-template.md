@@ -12,7 +12,7 @@ cover: /assets/images/letters/prd-template-v2.jpg
 coverAlt: "Four people stand around a stone table where a glowing document fills in section by section as they talk"
 keyword: prd template
 cta: builder-kickoff
-leadMagnet: case-study
+leadMagnet: decision-record
 source: 23087793, 23657334
 ---
 

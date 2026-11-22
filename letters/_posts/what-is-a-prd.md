@@ -15,7 +15,6 @@ coverAlt: "A person carves glowing checked-off lines into a stone tablet while l
 keyword: what is a prd
 cta: builder-kickoff
 leadMagnet: prd-template
-roiSkillCard: true
 popular: true
 ---
 

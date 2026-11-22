@@ -12,7 +12,8 @@ topic: case-studies
 cover: /assets/images/letters/design-rationale-v2.jpg
 coverAlt: "A person holds up a glowing tablet with a single line on it next to a toppling tower of presentation boards"
 keyword: design rationale
-cta: case-study
+cta: decision-record
+leadMagnet: decision-record
 source: 25878451, 24149534
 popular: true
 ---
@@ -116,11 +117,11 @@ If constraints, scope and the success metric get agreed at kickoff, design revie
 
 That's how you earn your seat at the table. Not by winning the review. By making the argument unnecessary before the review starts. Here's [how I run a project kickoff meeting that actually forces those decisions](/letters/project-kickoff-meeting/).
 
-## Turn your rationale into a case study
+## Turn your next decision into a record
 
-Your design decisions are the strongest material you have for a portfolio or a [promotion packet](/letters/product-designer-salary/). Most designers just never write them down.
+The 10 Minute Decision Record is a free Claude skill. Answer 4 questions about the feature you're about to start and get the one-page record: the decision, the appetite, what's out, the metric and what would change your mind.
 
-[The 15 Minute Case Study](/roi-case-study-template/) is a free Claude Skill that pulls the rationale out of your rough notes and turns it into the business story: what you decided, what you traded off, and what changed because of it.
+[Get the 10 Minute Decision Record →](/decision-record/)
 
 ## Design rationale FAQ
 
