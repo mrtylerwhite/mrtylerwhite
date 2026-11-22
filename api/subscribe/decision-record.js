@@ -1,14 +1,15 @@
 /**
- * The 10 Minute Decision Record: Kit form subscribe (server-side).
- * Same flow as roi-case-study.js: upsert the subscriber, then add them to the
- * Kit form, which sends the delivery email with the .skill download link.
+ * The 10 Minute Decision Record lead magnet: Kit subscribe (server-side).
+ * Same flow as prd-template.js: upsert the subscriber, tag them "Lead magnet:
+ * Decision Record", and add them to the Decision Record Drip sequence, whose
+ * first email delivers the .skill download. No Kit form, so no confirmation
+ * email or double opt-in, and no form ID to configure in Vercel.
  *
  * Required env (never expose to client):
- *   KIT_API_KEY: Kit API v4 key (X-Kit-Api-Key)
- *   KIT_FORM_ID_DECISION_RECORD: Kit form ID (set by Tyler once the form exists)
- *
- * https://developers.kit.com/api-reference/subscribers/create-a-subscriber
- * https://developers.kit.com/api-reference/forms/add-subscriber-to-form-by-email-address
+ *   KIT_API_KEY: Kit API v4 key (X-Kit-Api-Key), same key the other routes use
+ * Optional env overrides:
+ *   KIT_DECISION_RECORD_TAG_ID (default 26280350)
+ *   KIT_DECISION_RECORD_SEQUENCE_ID (default 2981696)
  */
 
 const { checkBot, validEmail, logBlocked } = require("../_lib/bot-guard");
@@ -75,9 +76,9 @@ async function upsertKitSubscriber(apiKey, email, firstName) {
   });
 }
 
-async function addKitSubscriberToForm(apiKey, formId, email) {
+async function addKitSubscriberTo(apiKey, kind, id, email) {
   return fetch(
-    `${KIT_API_BASE}/forms/${encodeURIComponent(formId)}/subscribers`,
+    `${KIT_API_BASE}/${kind}/${encodeURIComponent(id)}/subscribers`,
     {
       method: "POST",
       headers: {
@@ -110,7 +111,7 @@ module.exports = async function handler(req, res) {
 
   const firstName =
     typeof body.firstName === "string" ? body.firstName.trim() : "";
-  // First name is optional: the capture asks for email only.
+  // First name is optional; only sent to Kit when given.
 
   const email = typeof body.email === "string" ? body.email.trim() : "";
   if (!email || !validEmail(email)) {
@@ -127,9 +128,10 @@ module.exports = async function handler(req, res) {
   }
 
   const apiKey = process.env.KIT_API_KEY;
-  const formId = process.env.KIT_FORM_ID_DECISION_RECORD;
+  const tagId = process.env.KIT_DECISION_RECORD_TAG_ID || "26280350";
+  const sequenceId = process.env.KIT_DECISION_RECORD_SEQUENCE_ID || "2981696";
 
-  if (!apiKey || !formId) {
+  if (!apiKey) {
     return res.status(503).json({ success: false, error: GENERIC_ERROR });
   }
 
@@ -139,9 +141,15 @@ module.exports = async function handler(req, res) {
       return res.status(502).json({ success: false, error: GENERIC_ERROR });
     }
 
-    const formRes = await addKitSubscriberToForm(apiKey, formId, email);
-    if (!kitRequestSucceeded(formRes.status)) {
+    const [tagRes, seqRes] = await Promise.all([
+      addKitSubscriberTo(apiKey, "tags", tagId, email),
+      addKitSubscriberTo(apiKey, "sequences", sequenceId, email),
+    ]);
+    if (!kitRequestSucceeded(seqRes.status)) {
       return res.status(502).json({ success: false, error: GENERIC_ERROR });
+    }
+    if (!kitRequestSucceeded(tagRes.status)) {
+      console.error("decision-record: tag failed", tagRes.status);
     }
 
     return res.status(200).json({ success: true });
