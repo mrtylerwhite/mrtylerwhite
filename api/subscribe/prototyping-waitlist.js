@@ -13,6 +13,7 @@
  */
 
 const { checkBot, validEmail, logBlocked } = require("../_lib/bot-guard");
+const { attributionFields } = require("../_lib/attribution");
 
 const KIT_API_BASE = "https://api.kit.com/v4";
 const GENERIC_ERROR = "Something went wrong. Please try again.";
@@ -133,7 +134,7 @@ module.exports = async function handler(req, res) {
   const sequenceId = process.env.KIT_PROTO_WAITLIST_SEQUENCE_ID || "2953530";
   if (!apiKey) return res.status(503).json({ success: false, error: GENERIC_ERROR });
 
-  const fields = {};
+  const fields = attributionFields(body);
   if (goal) fields.prototype_goal = goal;
   if (intent) fields.launch_intent = intent;
 

@@ -12,6 +12,7 @@
  */
 
 const { checkBot, validEmail, logBlocked } = require("../_lib/bot-guard");
+const { attributionFields } = require("../_lib/attribution");
 
 const KIT_API_BASE = "https://api.kit.com/v4";
 const GENERIC_ERROR = "Something went wrong. Please try again.";
@@ -61,17 +62,18 @@ function kitRequestSucceeded(status) {
   return status >= 200 && status < 300;
 }
 
-async function upsertKitSubscriber(apiKey, email, firstName) {
+async function upsertKitSubscriber(apiKey, email, firstName, fields) {
+  // Only send first_name / fields when we have them, so existing values aren't wiped.
+  const payload = { email_address: email };
+  if (firstName) payload.first_name = firstName;
+  if (fields && Object.keys(fields).length) payload.fields = fields;
   return fetch(`${KIT_API_BASE}/subscribers`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       "X-Kit-Api-Key": apiKey,
     },
-    // Only send first_name when we have one, so an existing name isn't wiped.
-    body: JSON.stringify(
-      firstName ? { email_address: email, first_name: firstName } : { email_address: email }
-    ),
+    body: JSON.stringify(payload),
   });
 }
 
@@ -135,7 +137,7 @@ module.exports = async function handler(req, res) {
   }
 
   try {
-    const subscriberRes = await upsertKitSubscriber(apiKey, email, firstName);
+    const subscriberRes = await upsertKitSubscriber(apiKey, email, firstName, attributionFields(body));
     if (!kitRequestSucceeded(subscriberRes.status)) {
       return res.status(502).json({ success: false, error: GENERIC_ERROR });
     }

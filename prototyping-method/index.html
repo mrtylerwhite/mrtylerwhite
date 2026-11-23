@@ -59,6 +59,7 @@
   backdrop-filter: blur(20px) saturate(1.8);
 }
 </style>
+<script src="/assets/js/attribution.js?v=e5f6716f" defer></script>
 <!-- /partial:head -->
 </head>
 <body class="tk tk-aj">
@@ -412,10 +413,11 @@
       var d = Object.fromEntries(new FormData(f1).entries());
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email || "")) { e1.textContent = "Add a valid email so I can tell you when it opens."; return; }
       b1.disabled = true; b1.textContent = "Joining...";
+      if (window.MTWAttribution) d.attribution = window.MTWAttribution.fields();
       post(d, "join").then(function () {
         email = d.email.trim(); firstName = (d.firstName || "").trim();
         track("waitlist_submit", { label: "prototyping_method" });
-        track("generate_lead", { lead_source: "prototyping_method_waitlist" });
+        track("generate_lead", { lead_source: "prototyping_method_waitlist", lead_magnet: "prototyping_method_waitlist" });
         show(2);
       }).catch(function (x) { e1.textContent = x.message; }).finally(function () { b1.disabled = false; b1.textContent = "Join the waitlist"; });
     });

@@ -8,7 +8,8 @@
  * Same contract as chat-lead-capture.js: POST {firstName?, email} as JSON,
  * expect {success: true}, then fade out and redirect to the thank-you page.
  * Events: <prefix>_form_start, _email_submitted, _submit_success,
- * _submit_error, _redirect_thank_you, plus generate_lead.
+ * _submit_error, _redirect_thank_you, plus generate_lead (with lead_magnet).
+ * Attribution (assets/js/attribution.js) rides along as `attribution` for Kit.
  * Any [data-start-chat] link scrolls to the form and focuses the first field.
  */
 (function () {
@@ -16,6 +17,13 @@
 
   var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   var THANK_YOU_KEY = "rcst-thank-you-enter"; // read by the thank-you page's enter animation
+  // generate_lead `lead_magnet` per form; data-lead-magnet on the form overrides.
+  var LEAD_MAGNETS = {
+    roi_skill: "15_minute_case_study",
+    prd_template: "prd_template",
+    funnel_sim: "funnel_simulator",
+    decision_record: "decision_record",
+  };
   var FADE_MS = 320;
 
   function track(name, props) {
@@ -46,6 +54,7 @@
     var api = form.getAttribute("data-subscribe-api");
     var next = form.getAttribute("data-success-redirect") || "/roi-case-study-skill/thank-you/";
     var prefix = form.getAttribute("data-track-prefix") || "roi_skill";
+    var leadMagnet = form.getAttribute("data-lead-magnet") || LEAD_MAGNETS[prefix] || prefix;
     var label = submitEl.textContent;
     var started = false;
     var guard = window.MTWBotGuard ? window.MTWBotGuard.create(form) : null; // assets/js/bot-guard.js
@@ -101,6 +110,7 @@
       try {
         var body = firstName ? { firstName: firstName, email: email } : { email: email };
         if (guard) Object.assign(body, await guard.payload());
+        if (window.MTWAttribution) body.attribution = window.MTWAttribution.fields();
         var res = await fetch(api, {
           method: "POST",
           headers: { "Content-Type": "application/json", Accept: "application/json" },
@@ -114,7 +124,7 @@
 
         if (res.ok && data && data.success === true) {
           track(prefix + "_submit_success", { page: location.pathname });
-          track("generate_lead", { page: location.pathname });
+          track("generate_lead", { page: location.pathname, lead_magnet: leadMagnet });
           form.classList.add("rcst-form--success");
           submitEl.textContent = "Done. Check your inbox.";
           redirect(next, prefix);

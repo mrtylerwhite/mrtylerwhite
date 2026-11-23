@@ -5,6 +5,10 @@
  * as the /newsletter/ page: browser POST straight to app.kit.com (a server
  * proxy trips Kit's bot guards), then redirect to /newsletter-confirmation/.
  *
+ * Attribution (assets/js/attribution.js) is added as hidden fields[...] inputs
+ * at submit, so Kit stores referrer, landing_page, utm_* and signup_page as
+ * custom fields on the subscriber, in both the background and fallback POST.
+ *
  * If that background request fails (privacy blockers and in-app browsers such
  * as LinkedIn's can reject it), the form falls back to a normal full-page
  * POST to Kit instead of showing an error, so the signup still lands.
@@ -36,6 +40,24 @@
     return "other";
   }
 
+  // Hidden fields[key] inputs Kit's form endpoint saves as custom fields.
+  function addAttribution(form) {
+    if (!window.MTWAttribution) return;
+    var f = window.MTWAttribution.fields();
+    Object.keys(f).forEach(function (key) {
+      var name = "fields[" + key + "]";
+      var input = form.querySelector('input[name="' + name + '"]');
+      if (!input) {
+        input = document.createElement("input");
+        input.type = "hidden";
+        input.name = name;
+        input.setAttribute("data-attribution", "");
+        form.appendChild(input);
+      }
+      input.value = f[key];
+    });
+  }
+
   function wire(form) {
     var btn = form.querySelector('[type="submit"]');
     var input = form.querySelector('input[type="email"]');
@@ -65,6 +87,7 @@
         // Record where the signup came from in Kit (Signup Source field): location + page path
         var src = form.querySelector("[data-signup-source]");
         if (src && src.value.indexOf("/") === -1) src.value = src.value + " " + window.location.pathname;
+        addAttribution(form);
         var res = await fetch(form.action, {
           method: "POST",
           body: new URLSearchParams(new FormData(form)),
@@ -75,6 +98,7 @@
         var ok = res.type === "opaqueredirect" || res.status === 0 || (res.status >= 200 && res.status < 400);
         if (!ok) return fallBack("http_" + res.status);
         track("newsletter_submit_success", { location: location });
+        track("generate_lead", { lead_magnet: "newsletter", location: location });
         window.location.assign(thankYouUrl);
       } catch (_) {
         fallBack("network");
