@@ -7,13 +7,15 @@
  *   referrer, landing_page, utm_source, utm_medium, utm_campaign, utm_term,
  *   utm_content, signup_page
  *
- * Consent (assets/js/consent.js, localStorage "mtw-consent"):
- * - Accepted ("granted"): the first entry ever is stored as first-touch and
- *   never overwritten; every later entry (a visit from outside the site or
- *   with UTMs) is stored as latest-touch. Forms send first-touch.
- * - Declined or not chosen yet: nothing is stored. At submit time the form
- *   sends what the current page knows (external referrer, this page's URL and
- *   its UTMs), so a visitor who lands on a form page still gets attributed.
+ * Consent follows the same rule as Google Analytics (consent.js analyticsOn):
+ * - Storage allowed (accepted, or no choice yet outside the EU/EEA, UK,
+ *   Switzerland and Quebec, i.e. mtw_geo=0): the first entry ever is stored as
+ *   first-touch and never overwritten; every later entry (a visit from outside
+ *   the site or with UTMs) is stored as latest-touch. Forms send first-touch.
+ * - Storage not allowed (declined, or no choice yet in those regions): nothing
+ *   is stored. At submit time the form sends what the current page knows
+ *   (external referrer, this page's URL and its UTMs), so a visitor who lands
+ *   on a form page still gets attributed.
  * - Declining later deletes anything stored.
  *
  * URLs are trimmed to origin + path (plus utm_* on the landing page) so query
@@ -85,13 +87,18 @@
     return hasUtm(t) || !!t.referrer || !internalNavigation();
   }
 
+  // Same as consent.js analyticsOn(): a stored choice wins; with no choice,
+  // storage is on by default only where mtw_geo=0 (set by middleware.js).
   function consentGranted() {
     try {
-      if (window.mtwConsent && typeof window.mtwConsent.status === "function") {
-        return window.mtwConsent.status() === "granted";
+      if (window.mtwConsent && typeof window.mtwConsent.analyticsOn === "function") {
+        return window.mtwConsent.analyticsOn();
       }
       var c = JSON.parse(window.localStorage.getItem(CONSENT_KEY) || "null");
-      return !!c && c.v === "granted" && !!c.t && Date.now() - c.t <= CONSENT_MAX_AGE_MS;
+      if (c && (c.v === "granted" || c.v === "denied") && c.t && Date.now() - c.t <= CONSENT_MAX_AGE_MS) {
+        return c.v === "granted";
+      }
+      return /(?:^|;\s*)mtw_geo=0(?:;|$)/.test(document.cookie);
     } catch (_) {
       return false;
     }
