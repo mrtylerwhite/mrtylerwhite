@@ -37,6 +37,14 @@ export const LEAD_MAGNETS = {
     image: "/assets/images/lead-magnets/decision-record-cover.jpg",
     href: "/decision-record/",
   },
+  // Clicks on this card fire builder_loop_card_click (page_slug, placement), see build-letters.mjs.
+  "builder-loop": {
+    label: "Free playbook",
+    title: "The Builder Loop",
+    description: "Kickoff to 60-day readout in eight short lessons.",
+    image: "/assets/images/lead-magnets/builder-loop-cover.png",
+    href: "/builder-loop/?utm_source=site&utm_medium=letter&utm_campaign=builder-loop",
+  },
 };
 
 export const DEFAULT_LEAD_MAGNET = "case-study";

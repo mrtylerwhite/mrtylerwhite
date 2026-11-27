@@ -18,7 +18,7 @@
  *   updated      YYYY-MM-DD last meaningful edit (defaults to date)
  *   topic        case-studies | kickoffs | ai-workflow | career
  *   keyword      primary search term (for the record and the automation)
- *   cta          case-study | decision-record | builder-kickoff | newsletter
+ *   cta          case-study | decision-record | builder-loop | builder-kickoff | newsletter
  *   leadMagnet   sidebar lead magnet card: a slug from scripts/lead-magnets.mjs,
  *                or "none" to hide it (defaults to DEFAULT_LEAD_MAGNET)
  *   roiSkillCard true = a 15 Minute Case Study card right after the lead magnet
@@ -228,6 +228,15 @@ const CTAS = {
     offerEyebrow: "Free Claude Skill",
     offer: "Answer 4 questions. Know what you're building.",
   },
+  "builder-loop": {
+    eyebrow: "Free playbook",
+    title: "Shipping is easy now.\nHitting the target isn't.",
+    body: "The Builder Loop. The playbook I run on every project, from kickoff to the 60-day readout. Eight short lessons and one example feature followed all the way around.",
+    href: "/builder-loop/?utm_source=site&utm_medium=letter&utm_campaign=builder-loop",
+    label: "Get the free Builder Loop playbook",
+    offerEyebrow: "Free playbook",
+    offer: "Kickoff to 60-day readout in eight short lessons.",
+  },
   "builder-kickoff": {
     eyebrow: "Builder Kickoff™ · $97",
     title: "Run the kickoff.\nGet the PRD.",
@@ -257,6 +266,13 @@ const CTA_ART = {
     <div class="cta-msg cta-msg--you">Two weeks, tops.</div>
     <div class="cta-msg cta-msg--ai">What are you NOT doing?</div>
     <div class="cta-step cta-step--done cta-step--result"><span class="cta-step__ico">${CHECK}</span><span class="cta-step__text"><span class="cta-step__title">Decision record drafted</span><span class="cta-step__meta">Decision &middot; appetite &middot; what&rsquo;s out</span></span></div>
+  </div></div>`,
+  "builder-loop": `<div class="letter-cta__art" aria-hidden="true"><div class="cta-card">
+    <div class="cta-card__head"><span class="cta-card__dot"></span>The Builder Loop</div>
+    ${ctaStep("Find the target", "One decision sentence", "done")}
+    ${ctaStep("Prove it&rsquo;s worth hitting", "Two insights &middot; one number", "done")}
+    ${ctaStep("Build toward it", "Prototype in five days", "done")}
+    ${ctaStep("Did you hit it?", "60-day readout", "live")}
   </div></div>`,
   "case-study": `<div class="letter-cta__art" aria-hidden="true"><div class="cta-card cta-card--chat">
     <div class="cta-card__head"><span class="cta-card__dot"></span>The 15 Minute Case Study</div>
@@ -743,9 +759,10 @@ function leadMagnetFor(post) {
   return { slug, ...lm };
 }
 function leadMagnetCard(lm, where, post, extraClass = "") {
-  // The Decision Record card reports its own event with the page and placement.
-  const track = lm.slug === "decision-record" && post
-    ? `data-track-event="decision_record_card_click" data-track-location="${where}_decision-record" data-track-param-page-slug="${esc(post.slug)}" data-track-param-placement="card"`
+  // The Decision Record and Builder Loop cards report their own event with the page and placement.
+  const ownEvent = { "decision-record": "decision_record_card_click", "builder-loop": "builder_loop_card_click" }[lm.slug];
+  const track = ownEvent && post
+    ? `data-track-event="${ownEvent}" data-track-location="${where}_${lm.slug}" data-track-param-page-slug="${esc(post.slug)}" data-track-param-placement="card"`
     : `data-track-event="letters_lead_magnet_click" data-track-location="${where}_${lm.slug}"`;
   return `<aside class="lm-card lm-card--${where}${extraClass}" aria-label="${esc(lm.label)}: ${esc(lm.title)}">
   <p class="lm-card__label">${esc(lm.label)}</p>

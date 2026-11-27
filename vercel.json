@@ -120,6 +120,16 @@
       "permanent": false
     },
     {
+      "source": "/go/builder-loop-playbook",
+      "destination": "https://resisted-octave-4bd.notion.site/4251bf9a256d81ee9370cf6621c2b5fb",
+      "statusCode": 302
+    },
+    {
+      "source": "/go/builder-loop-playbook/",
+      "destination": "https://resisted-octave-4bd.notion.site/4251bf9a256d81ee9370cf6621c2b5fb",
+      "statusCode": 302
+    },
+    {
       "source": "/prototype-ready",
       "destination": "/builder-kickoff/",
       "permanent": true

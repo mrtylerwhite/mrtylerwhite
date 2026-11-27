@@ -85,6 +85,11 @@
       "idea": "you cannot describe good design in a prompt; when words fail, stop typing, open a canvas, draw it yourself and hand it back",
       "scene": "Left side of the image: a tall, leaning heap of grey paper slips covered in faint scribbled lines, like endless typed instructions, unlit and spilling across the dark floor, some drifting down from the darkness above. Right side of the image: a large, empty, upright stone frame like a blank canvas, standing on the reflective floor. A lone figure stands in front of the frame with his back to the paper heap, one arm raised, drawing a single bold, flowing curve of warm amber light across the canvas with his hand. The glowing curve is the brightest thing in the scene and lights the figure from the front.",
       "text": "No text, no words, no letters, no logos."
+    },
+    "builder-loop": {
+      "idea": "building got cheap; the hard part is picking the target and checking you hit it",
+      "scene": "A wide circular path of flat grey stone slabs lies on the dark, softly reflective floor, seen from slightly above, and loops back on itself into a closed ring. Parts of the ring fade into the darkness and haze. A lone figure stands on the path, walking forward along it in three-quarter view from behind. Ahead of him on the ring, a single round stone marker stands upright, a simple target of two thin concentric rings with a small glowing amber center. The amber center is the brightest thing in the scene and rim-lights the figure. A faint thin line of warm amber light runs along the stone path from the figure to the marker and onward around the loop, showing the way round.",
+      "text": "No text, no words, no letters, no numbers, no logos."
     }
   }
 }

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>The Builder Loop: free product design playbook | Tyler White</title>
+  <meta name="description" content="The free playbook for designers who have to decide what to build, not just how it looks. Kickoff to 60-day readout in eight short lessons." />
+  <link rel="canonical" href="https://www.mrtylerwhite.com/builder-loop/" />
+
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32" />
+  <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <meta name="msapplication-TileImage" content="/icon-192.png" />
+
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="The Builder Loop: free product design playbook | Tyler White" />
+  <meta property="og:description" content="The free playbook for designers who have to decide what to build, not just how it looks. Kickoff to 60-day readout in eight short lessons." />
+  <meta property="og:url" content="https://www.mrtylerwhite.com/builder-loop/" />
+  <meta property="og:site_name" content="Tyler White" />
+  <meta property="og:image" content="https://www.mrtylerwhite.com/assets/images/lead-magnets/builder-loop-og.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="The Builder Loop, a free product design playbook by Tyler White" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="The Builder Loop: free product design playbook | Tyler White" />
+  <meta name="twitter:description" content="The free playbook for designers who have to decide what to build, not just how it looks. Kickoff to 60-day readout in eight short lessons." />
+  <meta name="twitter:image" content="https://www.mrtylerwhite.com/assets/images/lead-magnets/builder-loop-og.jpg" />
+  <meta name="twitter:image:alt" content="The Builder Loop, a free product design playbook by Tyler White" />
+  <meta name="twitter:site" content="@mrtylerwhite" />
+
+  <link rel="preload" href="/assets/fonts/instrument-serif/InstrumentSerif-Regular.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preconnect" href="https://use.typekit.net" crossorigin />
+<link rel="preconnect" href="https://p.typekit.net" crossorigin />
+<link rel="preload" as="style" href="https://use.typekit.net/fks5kmr.css" fetchpriority="low" onload="this.onload=null;this.rel='stylesheet'" />
+<noscript><link rel="stylesheet" href="https://use.typekit.net/fks5kmr.css" /></noscript>
+<link rel="stylesheet" href="/assets/css/dist/critical.css?v=bb2cecba" />
+  <link rel="stylesheet" href="/assets/css/system/pages/roi-case-study-template.css?v=cc1268c7" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="/assets/css/system/pages/roi-case-study-template.css?v=cc1268c7"></noscript>
+  <link rel="stylesheet" href="/assets/css/system/site-footer.css?v=2a5d33c5" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="/assets/css/system/site-footer.css?v=2a5d33c5"></noscript>
+<!-- partial:head -->
+<style id="page-transitions">
+/* Page transitions (details.so port). Inline on purpose: Chrome decides whether
+   to run a cross-page transition as the new page first renders, and an opt-in
+   inside an external stylesheet is sometimes not applied yet, so the transition
+   was skipped at random. Text entrance (.ds-enter) lives in page-transitions.css. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.5s;
+  animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+/* Nav stays in place while the page crossfades. Named on the glass pill, and the
+   group re-applies the glass blur, which a snapshot can't capture. */
+#main-header .et_menu_container,
+.fck-site-header .fck-nav {
+  view-transition-name: site-header;
+}
+::view-transition-group(site-header) {
+  animation-duration: 0.5s;
+  animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border-radius: 10px;
+  -webkit-backdrop-filter: blur(20px) saturate(1.8);
+  backdrop-filter: blur(20px) saturate(1.8);
+}
+</style>
+<script src="/assets/js/attribution.js?v=5a7e1710" defer></script>
+<!-- /partial:head -->
+</head>
+<body class="roi-case-study-template">
+
+  <div class="pr-bar" role="banner">
+    <div class="pr-bar__inner">
+      <a href="/" class="pr-bar__wordmark" aria-label="Back to mrtylerwhite.com">
+        <img src="/wp-content/uploads/2025/12/logo-mrtylerwhite-1.svg" width="69" height="20" alt="Mr. Tyler White" />
+      </a>
+      <a href="#chat-capture" class="pr-bar__cta" data-start-chat data-track-event="builder_loop_cta_click" data-track-location="header">Get the free playbook</a>
+    </div>
+  </div>
+
+  <main id="main-content" class="rcst-main">
+
+    <section class="rcst-hero" aria-labelledby="rcst-hero-heading">
+      <div class="rcst-hero__stage">
+        <div class="rcst-hero__copy">
+          <p class="rcst-eyebrow ds-enter">Free playbook</p>
+          <h1 id="rcst-hero-heading" class="rcst-hero__title ds-enter ds-enter-d1">Shipping is easy now. Hitting the target isn&#8217;t.</h1>
+          <p class="rcst-hero__sub ds-enter ds-enter-d2">The Builder Loop is the playbook I run on every project, from kickoff to the 60-day readout.<span class="rcst-hero__more"> Eight short lessons on picking what to build, what to leave alone, and finding out if it actually worked.</span></p>
+        </div>
+
+        <div class="rcst-hero__testimonial">
+          <script src="https://widget.senja.io/widget/a304c01f-7703-4d9c-abd5-60e2922171ce/platform.js" type="text/javascript" async></script>
+          <div class="senja-embed" data-id="a304c01f-7703-4d9c-abd5-60e2922171ce" data-mode="shadow" data-lazyload="false" style="display: block; width: 100%;"></div>
+        </div>
+
+        <div class="rcst-hero__visual">
+          <div class="rcst-hero__scene-bg" aria-hidden="true">
+            <img
+              src="/assets/images/roi-case-study-template/background-chat.png"
+              alt=""
+              width="1024"
+              height="710"
+              decoding="async"
+            />
+          </div>
+
+          <!-- Kit: server POST via /api/subscribe/builder-loop (tag "Lead magnet: Builder Loop Playbook" + Builder Loop Playbook Drip) -->
+          <div class="rcst-chat-shell" id="chat-capture">
+            <form
+              class="rcst-form"
+              data-lead-form
+              data-subscribe-api="/api/subscribe/builder-loop/"
+              data-success-redirect="/builder-loop/thank-you/"
+              data-track-prefix="builder_loop"
+              novalidate
+            >
+              <div class="rcst-form__window">
+                <div class="rcst-form__media">
+                  <img
+                    src="/assets/images/lead-magnets/builder-loop-cover.png"
+                    alt="The Builder Loop, a free product design playbook by Tyler White"
+                    width="1200"
+                    height="800"
+                    fetchpriority="high"
+                    decoding="async"
+                  />
+                </div>
+
+                <div class="rcst-form__body">
+                  <label class="screen-reader-text" for="lead-first-name">First name</label>
+                  <input
+                    id="lead-first-name"
+                    class="rcst-form__input"
+                    type="text"
+                    name="firstName"
+                    placeholder="First name"
+                    autocomplete="given-name"
+                    maxlength="80"
+                    data-lead-first-name
+                  />
+
+                  <label class="screen-reader-text" for="lead-email">Email address</label>
+                  <input
+                    id="lead-email"
+                    class="rcst-form__input"
+                    type="email"
+                    name="email"
+                    placeholder="Email address"
+                    autocomplete="email"
+                    inputmode="email"
+                    required
+                    data-lead-email
+                  />
+
+                  <p class="rcst-form__error" data-lead-error role="alert" hidden></p>
+
+                  <button type="submit" class="rcst-form__submit" data-lead-submit>Send me the playbook</button>
+
+                  <p class="rcst-form__note">Free. Lands in your inbox in a minute. Unsubscribe anytime.</p>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="rcst-how" aria-labelledby="rcst-how-heading">
+      <div class="rcst-how__inner">
+        <p class="rcst-eyebrow">What&#8217;s inside</p>
+        <h2 id="rcst-how-heading" class="rcst-how__title">The whole loop, from kickoff to the 60-day readout</h2>
+        <ol class="rcst-how__steps">
+          <li class="rcst-how__step">
+            <span class="rcst-how__num" aria-hidden="true">01</span>
+            <h3 class="rcst-how__step-title">Find the target.</h3>
+            <p class="rcst-how__step-body">The kickoff that ends with one decision sentence.</p>
+          </li>
+          <li class="rcst-how__step">
+            <span class="rcst-how__num" aria-hidden="true">02</span>
+            <h3 class="rcst-how__step-title">Write it down.</h3>
+            <p class="rcst-how__step-body">The brief everyone builds against.</p>
+          </li>
+          <li class="rcst-how__step">
+            <span class="rcst-how__num" aria-hidden="true">03</span>
+            <h3 class="rcst-how__step-title">Prove it&#8217;s worth hitting.</h3>
+            <p class="rcst-how__step-body">Two real insights and a number, before design starts.</p>
+          </li>
+          <li class="rcst-how__step">
+            <span class="rcst-how__num" aria-hidden="true">04</span>
+            <h3 class="rcst-how__step-title">Build toward it.</h3>
+            <p class="rcst-how__step-body">A working prototype in five days.</p>
+          </li>
+          <li class="rcst-how__step">
+            <span class="rcst-how__num" aria-hidden="true">05</span>
+            <h3 class="rcst-how__step-title">Check your aim.</h3>
+            <p class="rcst-how__step-body">The quality pass, handoff and visual QA.</p>
+          </li>
+          <li class="rcst-how__step">
+            <span class="rcst-how__num" aria-hidden="true">06</span>
+            <h3 class="rcst-how__step-title">Did you hit it?</h3>
+            <p class="rcst-how__step-body">The 60-day readout and one clear call.</p>
+          </li>
+        </ol>
+        <p class="rcst-how__proof">One example feature followed all the way around the loop, so you can see every play work on something concrete.</p>
+        <p class="rcst-how__nudge">
+          <a href="#chat-capture" class="rcst-how__nudge-link" data-start-chat data-track-event="builder_loop_cta_click" data-track-location="how_it_works">Get the free playbook &rarr;</a>
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- partial:footer theme="dark" -->
+<footer class="site-footer" role="contentinfo" data-nav-theme="dark">
+  <div class="site-footer__inner">
+    <div class="site-footer__brand">
+      <img class="site-footer__wordmark" src="/wp-content/uploads/2025/12/logo-mrtylerwhite-1.svg" width="69" height="20" alt="Mr. Tyler White" />
+      <p class="site-footer__tagline">Product design, growth systems, and prototypes that help teams make better decisions.</p>
+    </div>
+    <nav class="site-footer__col" aria-label="Explore">
+      <span class="site-footer__col-heading">Explore</span>
+      <a href="/about/">About Me</a>
+      <a href="/case-studies/">Case Studies</a>
+      <a href="/newsletter/">Newsletter</a>
+      <a href="/letters/">Letters</a>
+      <a href="https://www.designtablepodcast.com/" target="_blank" rel="noopener noreferrer">Podcast</a>
+      <a href="/builder-kickoff/">Builder Kickoff™</a>
+    </nav>
+    <nav class="site-footer__col" aria-label="Resources">
+      <span class="site-footer__col-heading">Resources</span>
+      <a href="/resume/">Resume</a>
+      <a href="https://www.linkedin.com/in/mrtylerwhite/" target="_blank" rel="noopener noreferrer">Let&#8217;s Connect</a>
+      <a href="https://www.designtablepodcast.com/" target="_blank" rel="noopener noreferrer">The Design Table</a>
+      <a href="/funnel-simulator/">The Funnel Simulator</a>
+      <a href="/roi-case-study-template/">The 15 Minute Case Study</a>
+    </nav>
+    <div class="site-footer__cta-block">
+      <span class="site-footer__col-heading">Free Strategy Call</span>
+      <p class="site-footer__cta-copy">Want help turning messy product, growth, or design problems into a clearer plan? Book a 30-minute call and we&#8217;ll figure out where the biggest leverage is.</p>
+      <a href="https://cal.com/mrtylerwhite/30min" class="site-footer__cta-btn" target="_blank" rel="noopener noreferrer">Book a free strategy call</a>
+    </div>
+  </div>
+  <div class="site-footer__bottom">
+    <p class="site-footer__copy">&#169; 2026 Tyler White. Made with taste, caffeine, and a suspicious number of prototypes.</p>
+    <nav class="site-footer__legal" aria-label="Legal">
+      <a href="/privacy-policy/">Privacy Policy</a>
+      <a href="/privacy-policy/#cookies" data-cookie-settings>Cookie settings</a>
+    </nav>
+  </div>
+</footer>
+<!-- /partial:footer -->
+
+  <script src="/assets/js/gtm-defer.js?v=ca2c75ba" defer></script>
+  <script src="/assets/js/analytics.js?v=fbe9b0e1" defer></script>
+<script src="/assets/js/consent.js?v=6a4de25c" defer></script>
+  <script src="/assets/js/bot-guard.js?v=d3a63a47" defer></script>
+  <script src="/assets/js/lead-form.js?v=364d141d" defer></script>
+
+  <script>
+  (function () {
+    'use strict';
+    var bar = document.querySelector('.pr-bar');
+    if (!bar) return;
+    var pending = false;
+
+    function check() {
+      pending = false;
+      var r = bar.getBoundingClientRect();
+      var cx = r.left + r.width / 2;
+      var cy = r.bottom - 1;
+      var els = document.elementsFromPoint(cx, cy);
+      var dark = false;
+      for (var i = 0; i < els.length; i++) {
+        if (els[i].dataset && els[i].dataset.navTheme === 'dark') {
+          dark = true;
+          break;
+        }
+      }
+      bar.classList.toggle('pr-bar--on-dark', dark);
+    }
+
+    function enqueue() {
+      if (!pending) { pending = true; requestAnimationFrame(check); }
+    }
+
+    window.addEventListener('scroll', enqueue, { passive: true });
+    window.addEventListener('resize', enqueue, { passive: true });
+    enqueue();
+  }());
+  </script>
+</body>
+</html>
