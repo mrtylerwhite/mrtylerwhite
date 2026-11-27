@@ -42,7 +42,7 @@ export const LEAD_MAGNETS = {
     label: "Free playbook",
     title: "The Builder Loop",
     description: "Kickoff to 60-day readout in eight short lessons.",
-    image: "/assets/images/lead-magnets/builder-loop-cover.png",
+    image: "/assets/images/lead-magnets/builder-loop-cover.jpg",
     href: "/builder-loop/?utm_source=site&utm_medium=letter&utm_campaign=builder-loop",
   },
 };
