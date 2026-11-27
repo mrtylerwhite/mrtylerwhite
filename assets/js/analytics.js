@@ -57,6 +57,7 @@
   /* Builder Kickoff price, in the currency Kit actually bills in (CAD) — keep in
      sync with the product price in Kit if it ever changes. */
   var BUILDER_KICKOFF_VALUE = 97;
+  var BUILDER_KICKOFF_BF_VALUE = 17; /* BF26 Black Friday product, Nov 2026 */
   var BUILDER_KICKOFF_CURRENCY = "USD";
 
   function purchaseTransactionId() {
@@ -83,7 +84,12 @@
     if (p === "/builder-kickoff/") trackEvent("builder_kickoff_page_view", { page: p });
     if (p === "/builder-kickoff/thank-you/") {
       var txnId = purchaseTransactionId();
-      var props = { value: BUILDER_KICKOFF_VALUE, currency: BUILDER_KICKOFF_CURRENCY, page: p };
+      /* The Black Friday Kit product redirects here with ?offer=bf ($17). */
+      var offer = "";
+      try { offer = new URLSearchParams(window.location.search).get("offer") || ""; } catch (_) {}
+      var value = offer === "bf" ? BUILDER_KICKOFF_BF_VALUE : BUILDER_KICKOFF_VALUE;
+      var props = { value: value, currency: BUILDER_KICKOFF_CURRENCY, page: p };
+      if (offer === "bf") props.offer = "bf";
       if (txnId) props.transaction_id = txnId;
       trackEvent("purchase", props);
     }
