@@ -23,6 +23,7 @@
     prd_template: "prd_template",
     funnel_sim: "funnel_simulator",
     decision_record: "decision_record",
+    builder_loop: "builder_loop",
   };
   var FADE_MS = 320;
 

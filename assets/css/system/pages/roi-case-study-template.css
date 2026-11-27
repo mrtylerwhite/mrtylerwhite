@@ -813,6 +813,16 @@ body.roi-case-study-template .rcst-how__nudge {
   margin: 0;
 }
 
+/* One-line proof under the steps (Builder Loop page) */
+body.roi-case-study-template .rcst-how__proof {
+  max-width: 40rem;
+  margin: -0.5rem auto 1.75rem;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--rcst-muted);
+  text-wrap: pretty;
+}
+
 body.roi-case-study-template .rcst-how__nudge-link {
   font-family: var(--ds-font-body);
   font-size: 0.9375rem;

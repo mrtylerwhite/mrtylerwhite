@@ -120,6 +120,16 @@
       "permanent": false
     },
     {
+      "source": "/go/builder-loop-playbook",
+      "destination": "/builder-loop/?todo=replace-with-public-notion-url",
+      "statusCode": 302
+    },
+    {
+      "source": "/go/builder-loop-playbook/",
+      "destination": "/builder-loop/?todo=replace-with-public-notion-url",
+      "statusCode": 302
+    },
+    {
       "source": "/prototype-ready",
       "destination": "/builder-kickoff/",
       "permanent": true

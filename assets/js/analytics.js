@@ -79,6 +79,8 @@
     if (p === "/free-case-study-kit/") trackEvent("free_case_study_kit_thank_you_view", { page: p });
     if (p === "/decision-record/") trackEvent("decision_record_page_view", { page: p });
     if (p === "/decision-record/thank-you/") trackEvent("decision_record_thank_you_view", { page: p });
+    if (p === "/builder-loop/") trackEvent("builder_loop_page_view", { page: p });
+    if (p === "/builder-loop/thank-you/") trackEvent("builder_loop_thank_you_view", { page: p });
     if (p === "/free-prd-template/") trackEvent("prd_template_page_view", { page: p });
     if (p === "/free-prd-template/thank-you/") trackEvent("prd_template_thank_you_view", { page: p });
     if (p === "/builder-kickoff/") trackEvent("builder_kickoff_page_view", { page: p });
