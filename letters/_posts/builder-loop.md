@@ -4,6 +4,8 @@ description: Building got cheap. Picking what to build didn't. The loop I run fr
 slug: builder-loop
 date: 2026-12-05
 topic: kickoffs
+cover: /assets/images/letters/builder-loop.jpg
+coverAlt: "A man walks a ring of stone slabs that loops back on itself, toward an upright stone target with a glowing amber center"
 keyword: product design process
 cta: builder-loop
 leadMagnet: builder-loop
