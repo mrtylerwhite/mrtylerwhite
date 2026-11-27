@@ -677,6 +677,49 @@ const FIGURES = {
   </div></div>
   <figcaption>When the words run out, pick up the pen. About 70% Claude, 30% Figma.</figcaption>
 </figure>`,
+  // Tailark flow (same as scope-swap): where the learning comes from → the readout → a real number, or a vibe
+  "ship-and-learn": `<figure class="letter-fig">
+  <div class="tk-tray"><div class="tk-stage tk-stage--filter" aria-hidden="true">
+    <div class="tk-flow-row">
+      <div class="tk-col">${tilePill("Analytics", "What people did", "dashboard", "brown", 0.1)}${tilePill("Sales calls", "What buyers said", "message", "brown", 0.22)}${tilePill("Users", "What broke", "users", "brown", 0.34)}</div>
+      <svg class="tk-lines tk-lines--static" width="64" height="164" viewBox="0 0 64 164" fill="none">
+        <path d="M0 22C32 22 32 82 64 82"/><path d="M0 82H64"/><path d="M0 142C32 142 32 82 64 82"/>
+        <path class="tk-pulse" pathLength="1" d="M0 22C32 22 32 82 64 82" stroke="url(#tkb1-a)"/>
+        <path class="tk-pulse" pathLength="1" d="M0 82H64" stroke="url(#tkb1-b)"/>
+        <path class="tk-pulse" pathLength="1" d="M0 142C32 142 32 82 64 82" stroke="url(#tkb1-c)"/>
+        <defs>${beamGrad("tkb1-a", 0, 22, 64, 82)}${beamGrad("tkb1-b", 0, 82, 64, 82)}${beamGrad("tkb1-c", 0, 142, 64, 82)}</defs>
+      </svg>
+      <div class="tk-node tk-node--inline tk-rise" style="--d:0.5s">${lucideIcon("tk-node__ico", ICON.calendar)}</div>
+      <svg class="tk-lines tk-lines--static" width="64" height="164" viewBox="0 0 64 164" fill="none">
+        <path d="M0 82C32 82 32 42 64 42"/><path d="M0 82C32 82 32 122 64 122"/>
+        <path class="tk-pulse tk-pulse--out" pathLength="1" d="M0 82C32 82 32 42 64 42" stroke="url(#tkb1-d)"/>
+        <defs>${beamGrad("tkb1-d", 0, 82, 64, 42)}</defs>
+      </svg>
+      <div class="tk-col tk-col--outs">${tilePill("Predicted vs actual", "Day 60. Written down.", "check", "brown", 0.75)}${tilePill("&ldquo;People seemed to like it&rdquo;", "Not a receipt.", "x", "muted", 0.85, " tk-leave")}</div>
+    </div>
+  </div></div>
+  <figcaption>&ldquo;Ship and learn&rdquo; only counts if something actually comes back. Otherwise it&rsquo;s just shipping.</figcaption>
+</figure>`,
+  // Tailark flow (same as seventy-thirty): shipped → the 60-day readout → one call, which feeds the next target
+  "loop-readout": `<figure class="letter-fig">
+  <div class="tk-tray"><div class="tk-stage tk-stage--fan" aria-hidden="true">
+    <svg class="tk-lines tk-lines--fan" viewBox="0 0 400 240" fill="none">
+      <path d="M60 120 H160"/><path d="M220 120 H260"/>
+      <path d="M260 120 Q280 120 290 100 L310 50 Q320 30 340 30"/><path d="M260 120 H340"/><path d="M260 120 Q280 120 290 140 L310 190 Q320 210 340 210"/>
+      <path class="tk-pulse" pathLength="1" d="M60 120 H160" stroke="url(#tkb2-in)"/>
+      <path class="tk-pulse tk-pulse--out" pathLength="1" d="M220 120 H260 Q280 120 290 100 L310 50 Q320 30 340 30" stroke="url(#tkb2-o1)"/>
+      <path class="tk-pulse tk-pulse--out" pathLength="1" d="M220 120 H340" stroke="url(#tkb2-o2)"/>
+      <path class="tk-pulse tk-pulse--out" pathLength="1" d="M220 120 H260 Q280 120 290 140 L310 190 Q320 210 340 210" stroke="url(#tkb2-o3)"/>
+      <defs>${beamGrad("tkb2-in", 220, 120, 160, 120)}${beamGrad("tkb2-o1", 220, 120, 320, 60)}${beamGrad("tkb2-o2", 220, 120, 340, 120)}${beamGrad("tkb2-o3", 220, 120, 320, 180)}</defs>
+    </svg>
+    <div class="tk-fan">
+      ${pill("Shipped", "rocket", "muted")}
+      <div class="tk-dark-pill">${lucideIcon("tk-ico tk-ico--brown", ICON.trend)}<span>60-day readout</span></div>
+      <div class="tk-outs">${pill("Keep it", "check", "brown")}${pill("Iterate", "refresh", "brown")}${pill("Stop it", "x", "brown")}</div>
+    </div>
+  </div></div>
+  <figcaption>Shipping is the halfway point. The call you make at day 60 becomes the next target.</figcaption>
+</figure>`,
   "roi-ex-cost": invoiceCard("ROI-001 &middot; COST", "$5,760", "Saved a year", "+44% in 2 yrs",
     [["Tickets", "120 &rarr; 60 a month"], ["Time", "12 min each"], ["Rate", "$40 an hour"], ["Cost", "$8,000"], ["Year one", "&minus;28%"]],
     "Half the tickets, $5,760 a year back. Negative in year one, +44% over two. Illustrative numbers."),
