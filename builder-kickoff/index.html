@@ -19,6 +19,8 @@
   <meta name="twitter:title" content="Builder Kickoff™ Course for Product Designers" />
   <meta name="twitter:description" content="A recorded course for product designers. Walk out with the FigJam board, team slide deck, Notion kit, and the Claude skill that turns your transcript into a PRD." />
   <meta name="twitter:image" content="https://www.mrtylerwhite.com/wp-content/uploads/2026/06/builder-kickoff-og.webp" />
+  <script>/* ?offer=bf: hide the page until the end-of-body script swaps the prices, so $97 never flashes. Same deadline as OFFERS.bf below. */(function(){try{if(new URLSearchParams(location.search).get('offer')==='bf'&&Date.now()<Date.UTC(2026,11,1,5,0,0)){var d=document.documentElement;d.classList.add('bk-offer-pending');setTimeout(function(){d.classList.remove('bk-offer-pending');},3000);}}catch(e){}})();</script>
+  <style>.bk-offer-pending body{visibility:hidden}</style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Course","name":"Builder Kickoff™","description":"A 20-minute recorded course where you learn to run the session that turns a business problem into a scoped decision, then turn the transcript into a PRD and a prototype prompt. Includes the FigJam board, team slide deck, Notion kit, and Claude skill.","url":"https://www.mrtylerwhite.com/builder-kickoff/","provider":{"@type":"Person","name":"Tyler White","url":"https://www.mrtylerwhite.com/"},"offers":{"@type":"Offer","price":"97","priceCurrency":"USD","availability":"https://schema.org/InStock","url":"https://mrtylerwhite.kit.com/products/builder-kickoff-course?step=checkout","category":"Paid"},"hasCourseInstance":{"@type":"CourseInstance","courseMode":"Online","courseWorkload":"PT20M","instructor":{"@type":"Person","name":"Tyler White","url":"https://www.mrtylerwhite.com/"}},"image":"https://www.mrtylerwhite.com/wp-content/uploads/2026/06/builder-kickoff-og.webp","inLanguage":"en","educationalLevel":"Intermediate","teaches":"Product design facilitation, Builder Kickoff System, prototype scoping, business case framing"}</script>
 
   <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -790,8 +792,25 @@
 <script>
 (function () {
   'use strict';
-  var EARLY_URL = 'https://mrtylerwhite.kit.com/products/builder-kickoff-early-access';
-  var DEADLINE = '202610312359';
+  /* Time-boxed offers, switched on by ?offer=<key> and checked in the browser,
+     so they end on their own without a redeploy. Without a live offer the page
+     stays exactly as served ($97, the regular checkout). */
+  var OFFERS = {
+    early: {
+      url: 'https://mrtylerwhite.kit.com/products/builder-kickoff-early-access',
+      price: '$27',
+      view: 'kickoff_early_view',
+      open: function () { return torontoStamp() <= '202610312359'; }
+    },
+    bf: {
+      url: 'https://mrtylerwhite.kit.com/products/builder-kickoff-black-friday?step=checkout',
+      price: '$17',
+      view: 'kickoff_bf_view',
+      note: 'Black Friday price. Ends Monday at midnight ET.',
+      // Monday 30 Nov 2026, midnight ET = 2026-12-01T05:00:00Z (also in the <head> guard)
+      open: function () { return Date.now() < Date.UTC(2026, 11, 1, 5, 0, 0); }
+    }
+  };
 
   function pad(n) { return n.length === 1 ? '0' + n : n; }
 
@@ -810,15 +829,7 @@
     return map.year + pad(map.month) + pad(map.day) + pad(map.hour) + pad(map.minute);
   }
 
-  function earlyOpen() {
-    try {
-      return torontoStamp() <= DEADLINE;
-    } catch (err) {
-      return false;
-    }
-  }
-
-  function replacePrices(root) {
+  function replacePrices(root, newPrice) {
     var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
       acceptNode: function (node) {
         if (!node.nodeValue || node.nodeValue.indexOf('$97') === -1) return NodeFilter.FILTER_REJECT;
@@ -846,7 +857,7 @@
         if (match.index > last) frag.appendChild(document.createTextNode(text.slice(last, match.index)));
         var price = document.createElement('span');
         price.className = 'bk-early-price';
-        price.appendChild(document.createTextNode('$27'));
+        price.appendChild(document.createTextNode(newPrice));
         price.appendChild(document.createTextNode(' '));
         var was = document.createElement('s');
         was.textContent = '$97';
@@ -859,38 +870,64 @@
     });
   }
 
-  function fireView() {
+  /* The deadline line goes under each main buy button, using the class of the
+     small meta line already there so it matches the section's type. */
+  function addNotes(note) {
+    var spots = [
+      ['.pr-hero__cta', 'pr-hero__meta'],
+      ['.pr-tldr .pr-cta-inverse', 'pr-meta-light'],
+      ['.pr-ticket__cta', 'pr-ticket__purchase-seats'],
+      ['.pr-final__cta', 'pr-meta-light']
+    ];
+    spots.forEach(function (spot) {
+      var btn = document.querySelector(spot[0]);
+      if (!btn || !btn.parentNode) return;
+      var p = document.createElement('p');
+      p.className = spot[1] + ' bk-offer-note';
+      p.textContent = note;
+      btn.parentNode.insertBefore(p, btn.nextSibling);
+    });
+  }
+
+  function fireView(name) {
     function send() {
       if (typeof window.trackEvent === 'function') {
-        window.trackEvent('kickoff_early_view');
+        window.trackEvent(name);
         return;
       }
       window.dataLayer = window.dataLayer || [];
-      if (typeof window.gtag === 'function') window.gtag('event', 'kickoff_early_view');
-      else window.dataLayer.push({ event: 'kickoff_early_view' });
+      if (typeof window.gtag === 'function') window.gtag('event', name);
+      else window.dataLayer.push({ event: name });
     }
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', send);
     else send();
   }
 
   try {
-    if (new URLSearchParams(window.location.search).get('offer') !== 'early') return;
-    if (!earlyOpen()) return;
+    var key = new URLSearchParams(window.location.search).get('offer');
+    var offer = key && Object.prototype.hasOwnProperty.call(OFFERS, key) ? OFFERS[key] : null;
+    var live = false;
+    try { live = !!offer && offer.open(); } catch (e) { live = false; }
+    if (!live) return;
 
     var anchors = document.getElementsByTagName('a');
     for (var i = 0; i < anchors.length; i++) {
       var href = anchors[i].getAttribute('href') || '';
       if (href.indexOf('builder-kickoff-course') === -1) continue;
-      anchors[i].setAttribute('href', EARLY_URL);
+      anchors[i].setAttribute('href', offer.url);
     }
 
-    replacePrices(document.body);
+    replacePrices(document.body, offer.price);
+    if (offer.note) addNotes(offer.note);
 
     var style = document.createElement('style');
-    style.textContent = '.bk-early-price s{text-decoration:line-through;text-decoration-thickness:1px;opacity:.55;font-weight:500;margin-left:.15em}.pr-ticket__purchase-price .bk-early-price s{font-size:.45em}';
+    style.textContent = '.bk-early-price s{text-decoration:line-through;text-decoration-thickness:1px;opacity:.55;font-weight:500;margin-left:.15em}.pr-ticket__purchase-price .bk-early-price s{font-size:.45em}.bk-offer-note{margin-top:.5em}';
     document.head.appendChild(style);
-    fireView();
-  } catch (err) {}
+    fireView(offer.view);
+  } catch (err) {
+  } finally {
+    document.documentElement.classList.remove('bk-offer-pending');
+  }
 })();
 </script>
 </body>
