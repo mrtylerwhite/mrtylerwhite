@@ -774,7 +774,6 @@ const slugifyHeading = (text) =>
 // `floating` is the roomier in-article version; the sidebar is compact.
 function newsletterBlock(location, { floating = true } = {}) {
   return `<aside class="letter-signup${floating ? " letter-signup--float" : ""}" aria-label="Newsletter">
-  <img class="letter-signup__scribble" src="/assets/images/brand/brush-scribble.webp" alt="" width="520" height="440" loading="lazy" decoding="async" aria-hidden="true" />
   <div class="letter-signup__inner">
     <p class="ds-eyebrow letter-signup__eyebrow">The ROI of Design</p>
     <p class="letter-signup__title">Get credit for the work you <span class="letter-signup__mark">already</span> ship.</p>
