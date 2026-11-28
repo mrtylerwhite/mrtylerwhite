@@ -182,14 +182,14 @@
     }
 
     if (
-      (href === "/builder-kickoff/" || href.indexOf("/builder-kickoff/#") === 0) &&
+      /^\/builder-kickoff\/(?:[?#]|$)/.test(href) &&
       el.closest(".fck-next")
     ) {
       trackEvent("builder_kickoff_upsell_click", { location: linkLocation(el) });
       return;
     }
 
-    if (href === "/builder-kickoff/" || href.indexOf("/builder-kickoff/#") === 0) {
+    if (/^\/builder-kickoff\/(?:[?#]|$)/.test(href)) {
       trackEvent("builder_kickoff_cta_click", { location: linkLocation(el) });
       return;
     }

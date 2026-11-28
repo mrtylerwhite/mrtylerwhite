@@ -22,15 +22,23 @@ I also think it's the best news designers have had in years.
 
 ## Building got cheap
 
-The new tools build a working screen before your coffee's cold. I spent two and a half months designing this site without opening Figma ([here's how that went](/letters/designing-without-figma/)). Making the thing is fast now. Stupid fast.
+I haven't opened Figma in two and a half months. Claude builds my prototypes now. Real screens, real data, stuff you can click. ([Here's how that went](/letters/designing-without-figma/), including the parts that sucked.)
 
-So the expensive part moved.
+So the expensive part of the job moved.
 
-It used to be making the thing. Now it's picking the thing. What do we build? What do we leave alone? And sixty days after launch, did it actually work?
+It used to be making the thing. Now it's picking the thing. And three questions got very expensive, very fast:
 
-That used to be the PM's question. It's yours now too.
+1. What do we build?
+2. What do we leave alone?
+3. Sixty days after launch, did it actually work?
 
-Teams can ship the wrong feature faster than ever. The designer who can say "that one, not that one, and here's the number it'll move" is the one who gets hired. And the one who gets [pulled into the room early](/letters/product-designer-portfolio/).
+Those used to be the PM's problem. They're yours now too. Your team can ship the wrong feature in a week, and nobody's going to stop you because it looks great in the demo.
+
+Quick gut check. Say, in one sentence, what your current project is supposed to move and by how much.
+
+Can't? Then nobody on your team can either. You're all building on vibes and hoping the launch post gets enough likes.
+
+The designer who can say "that one, not that one, and here's the number it'll move" is the one who gets hired. And the one who gets [pulled into the room early](/letters/product-designer-portfolio/).
 
 ## The AI part is the easy part
 
@@ -56,15 +64,27 @@ You know the pattern.
 
 Nobody's in the room at the same time. Nobody agrees on how much time the thing gets. Design draws the dream version. Then engineering finds the constraints, the PM finds the deadline, and your dream gets gutted [one "can we also" at a time](/letters/scope-creep/) in a ticket thread.
 
-That question turned into Builder Kickoff. Everyone in one room. Agree up front how many weeks this is worth, and let that number decide the scope.
+That question turned into [Builder Kickoff](/builder-kickoff/?utm_source=site&utm_medium=letter&utm_campaign=builder-loop). One session, everyone in the room at the same time, before anyone opens a design tool.
+
+The order matters more than the agenda:
+
+1. **Appetite first.** How many weeks is this worth? Agree on that before anyone talks solutions, and let that number decide the scope.
+2. **Engineering talks constraints first.** Before design shows a single sketch. If the engineering lead can't make it, reschedule. Seriously. Without them you're just making a wish list.
+3. **Scope call last.** You walk out with one decision sentence everybody agreed to out loud.
+
+And three lines I use to keep the room honest:
+
+- "We're not here to collect opinions. We're here to leave with a buildable decision."
+- "If we include this, what gets cut?"
+- "If someone asks tomorrow what we decided, what's the one-sentence answer?"
 
 You still get friction. It's the useful kind. The kind that happens before anyone's attached to a mockup.
 
 The first time I ran it as a proper 90-minute session, I designed the full feature end to end the next day. Presented it to everyone the day after. PMs and engineers included. Zero pushback.
 
-That's the extreme case. On most projects it just kills a ton of the friction you'd otherwise eat later. (The agenda is [here](/letters/project-kickoff-meeting/) if you want to steal it.)
+That's the extreme case. On most projects it just kills a ton of the friction you'd otherwise eat later. (The full agenda is [here](/letters/project-kickoff-meeting/) if you want to steal it.)
 
-But the kickoff was only the start. The part that kept bugging me was the end.
+But the kickoff was only the start. The part that kept bugging the shit out of me was the end.
 
 ## "We'll ship and learn"
 
@@ -81,6 +101,12 @@ And it's exactly how design's value stays invisible. You did the work and you ha
 So when someone says "ship and learn," I ask one question. Is learning actually part of our process? Are we looking at the [analytics](/letters/ux-metrics/)? Talking to sales? Going back to users?
 
 Or are we just saying it to get the damn thing out the door?
+
+If you want it to be real, set it up before launch, while everyone still cares:
+
+- **Book the readout the day you ship.** Sixty days out, PM and engineering lead invited. If it's not on a calendar, it doesn't exist.
+- **Name who pulls the number.** Before launch. "Someone will check the dashboard" means nobody will.
+- **Bring more than a chart.** One note from a sales call and one quote from a user, next to the number. The chart tells you what moved. The people tell you why.
 
 <!-- figure:ship-and-learn -->
 
