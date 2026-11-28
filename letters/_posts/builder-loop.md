@@ -59,18 +59,18 @@ If your pitch is "I know what we're shooting at and I can prove we hit it," you'
 
 ## Where this started
 
-Two years ago I had one question. How do I design something I'm proud of that doesn't get hacked to pieces three weeks later?
+Two years ago I had one question. How the hell do I design something I'm proud of without watching it turn into a half-assed version of itself three weeks later?
 
 You know the pattern.
 
-Nobody's in the room at the same time. Nobody agrees on how much time the thing gets. Design draws the dream version. Then engineering finds the constraints, the PM finds the deadline, and your dream gets gutted [one "can we also" at a time](/letters/scope-creep/) in a ticket thread.
+Nobody's in the room at the same time. Nobody agrees on how much time the thing gets. Design draws the dream version. Then engineering finds the constraints, the PM finds the deadline, and the thing you designed dies [one "can we also" at a time](/letters/scope-creep/) in a ticket thread. Nobody decided to ship the shitty version. It just happened, one comment at a time.
 
 That question turned into [Builder Kickoff](/builder-kickoff/?utm_source=site&utm_medium=letter&utm_campaign=builder-loop). One session, everyone in the room at the same time, before anyone opens a design tool.
 
 The order matters more than the agenda:
 
 1. **Appetite first.** How many weeks is this worth? Agree on that before anyone talks solutions, and let that number decide the scope.
-2. **Engineering talks constraints first.** Before design shows a single sketch. If the engineering lead can't make it, reschedule. Seriously. Without them you're just making a wish list.
+2. **Engineering talks constraints first.** Before design shows a single sketch. If the engineering lead can't make it, reschedule. I'm dead serious. Without them you're writing a wish list and calling it a plan.
 3. **Scope call last.** You walk out with one decision sentence everybody agreed to out loud.
 
 And three lines I use to keep the room honest:
@@ -85,6 +85,37 @@ The first time I ran it as a proper 90-minute session, I designed the full featu
 
 That's the extreme case. On most projects it just kills a ton of the friction you'd otherwise eat later. (The full agenda is [here](/letters/project-kickoff-meeting/) if you want to steal it.)
 
+## Appetite is a money question
+
+"Appetite" sounds soft. Like a vibe about how hungry the team is.
+
+It's the hardest number in the room.
+
+Appetite is how many weeks this thing is worth, decided before anyone estimates how long it'll take. And the fastest way to get an honest answer is to price the room.
+
+Count everyone who'll touch it. Design, PM, every engineer, QA. Then put a cost on a week of their time.
+
+Don't use anyone's real salary. Nobody needs to know what the backend lead makes, and HR will hunt you down. Use a blended number. Ask finance for one, or take a market salary, multiply by 1.3 for benefits and overhead, and divide by 52.
+
+Here's the math with made-up but realistic numbers:
+
+- Five people on it. Blended salary $150k.
+- $150k &times; 1.3 &divide; 52 = about $3,750 a week each.
+- The room costs $18,750 a week.
+- A six-week appetite is $112,500.
+
+<!-- figure:appetite-cost -->
+
+Now flip the question. What does this feature have to make or save to pay that back?
+
+**Break-even** is the number where it pays for itself. If an average account is worth $15k a year, you need about eight new or saved accounts in year one just to get your money back.
+
+**Revenue** is everything above that line. That's the number that goes in the decision sentence, and it's the number you check at day 60.
+
+If nobody in the room believes this can land eight accounts, the appetite's wrong. Cut it to three weeks ($56k, four accounts), or don't build the damn thing.
+
+The first time you do this out loud, it's awkward as hell. Do it anyway. Nothing kills a bad feature faster than a price tag. And it's exactly the kind of math that turns "the designer" into [someone the business listens to](/letters/roi-of-design/).
+
 But the kickoff was only the start. The part that kept bugging the shit out of me was the end.
 
 ## "We'll ship and learn"
@@ -93,7 +124,7 @@ You've heard it. Let's just ship it and learn.
 
 I'm not against that. Build fast, launch, iterate. Great.
 
-But here's what actually happens. The iteration cycle is so long it never comes. The feature ships, everyone moves on, and the learning part quietly dies. Sixty days later somebody asks what it did, and the honest answer is "no idea, but people seemed to like it."
+But here's what actually happens. The iteration cycle is so long it never comes. The feature ships, everyone moves on, and the learning part dies without anyone noticing. Sixty days later somebody asks what it did, and the honest answer is "no fucking idea, but people seemed to like it."
 
 That's a vibe with a launch date.
 
@@ -124,7 +155,7 @@ This is what I run now, start to finish. I call it the Builder Loop.
 
 Stage six feeds the next stage one. What you learned becomes the next target. That's why it's a loop.
 
-<!-- figure:loop-readout -->
+<!-- figure:loop-ring -->
 
 Shipping is the halfway point. Most teams stop there and call it a win.
 
@@ -172,6 +203,8 @@ When the date comes up, put what you predicted next to what actually happened, w
 Then write one more line: what would change your mind about this call? It keeps you honest, and it tells the next loop exactly what to look for.
 
 In the playbook's example, the team expected new workspaces with two or more members to go from 18% to 30%. At day 60 it was 26%. The call was iterate, because most failed invites came from one gap the team had already spotted while building. That gap became the next target. That's the loop closing.
+
+<!-- figure:day60-chart -->
 
 And this is where case studies actually come from. "We said this would move 12 points, it moved 8, here's what we did next" beats any before-and-after screenshot. (Here's [how to write it up](/letters/ux-case-study-template/).)
 

@@ -700,27 +700,94 @@ const FIGURES = {
   </div></div>
   <figcaption>&ldquo;Ship and learn&rdquo; only counts if something actually comes back. Otherwise it&rsquo;s just shipping.</figcaption>
 </figure>`,
-  // Tailark flow (same as seventy-thirty): shipped → the 60-day readout → one call, which feeds the next target
-  "loop-readout": `<figure class="letter-fig">
-  <div class="tk-tray"><div class="tk-stage tk-stage--fan" aria-hidden="true">
-    <svg class="tk-lines tk-lines--fan" viewBox="0 0 400 240" fill="none">
-      <path d="M60 120 H160"/><path d="M220 120 H260"/>
-      <path d="M260 120 Q280 120 290 100 L310 50 Q320 30 340 30"/><path d="M260 120 Q290 120 300 105 Q310 90 340 90"/><path d="M260 120 Q290 120 300 135 Q310 150 340 150"/><path d="M260 120 Q280 120 290 140 L310 190 Q320 210 340 210"/>
-      <path class="tk-pulse" pathLength="1" d="M60 120 H160" stroke="url(#tkb2-in)"/>
-      <path class="tk-pulse tk-pulse--out" pathLength="1" d="M220 120 H260 Q280 120 290 100 L310 50 Q320 30 340 30" stroke="url(#tkb2-o1)"/>
-      <path class="tk-pulse tk-pulse--out" pathLength="1" d="M220 120 H260 Q290 120 300 105 Q310 90 340 90" stroke="url(#tkb2-o2)"/>
-      <path class="tk-pulse tk-pulse--out" pathLength="1" d="M220 120 H260 Q290 120 300 135 Q310 150 340 150" stroke="url(#tkb2-o3)"/>
-      <path class="tk-pulse tk-pulse--out" pathLength="1" d="M220 120 H260 Q280 120 290 140 L310 190 Q320 210 340 210" stroke="url(#tkb2-o4)"/>
-      <defs>${beamGrad("tkb2-in", 220, 120, 160, 120)}${beamGrad("tkb2-o1", 220, 120, 320, 60)}${beamGrad("tkb2-o2", 220, 120, 340, 90)}${beamGrad("tkb2-o3", 220, 120, 340, 150)}${beamGrad("tkb2-o4", 220, 120, 320, 180)}</defs>
-    </svg>
-    <div class="tk-fan">
-      ${pill("Shipped", "rocket", "muted")}
-      <div class="tk-dark-pill">${lucideIcon("tk-ico tk-ico--brown", ICON.trend)}<span>60-day readout</span></div>
-      <div class="tk-outs tk-outs--4">${pill("Keep", "check", "brown")}${pill("Iterate", "refresh", "brown")}${pill("Investigate", "search", "brown")}${pill("Stop", "x", "brown")}</div>
-    </div>
+  // The Builder Loop as a ring: six stages clockwise, the day-60 call feeds stage 1 again.
+  // Two drawings: wide for desktop, tall with bigger type for phones (CSS swaps them).
+  "loop-ring": `<figure class="letter-fig">
+  <div class="tk-tray"><div class="tk-ring" aria-hidden="true">
+      <svg class="tk-ring__d" viewBox="0 0 600 340" fill="none" font-family="Inter, var(--ds-font-body)">
+      <path d="M80 170 A220 118 0 1 1 520 170 A220 118 0 1 1 80 170" stroke="rgba(9,9,11,0.14)" stroke-width="1.5"/>
+      <path d="M80 170 A220 118 0 1 1 520 170 A220 118 0 1 1 80 170" stroke="rgba(197,144,96,0.35)" stroke-width="2" stroke-dasharray="3 6"/><circle class="tk-dot" r="3.2"><animateMotion dur="7.0s" begin="-0.00s" repeatCount="indefinite" path="M80 170 A220 118 0 1 1 520 170 A220 118 0 1 1 80 170"/></circle><circle class="tk-dot" r="2.6"><animateMotion dur="7.0s" begin="-1.00s" repeatCount="indefinite" path="M80 170 A220 118 0 1 1 520 170 A220 118 0 1 1 80 170"/></circle><circle class="tk-dot" r="2.6"><animateMotion dur="7.0s" begin="-2.00s" repeatCount="indefinite" path="M80 170 A220 118 0 1 1 520 170 A220 118 0 1 1 80 170"/></circle><circle class="tk-dot" r="2.6"><animateMotion dur="7.0s" begin="-3.00s" repeatCount="indefinite" path="M80 170 A220 118 0 1 1 520 170 A220 118 0 1 1 80 170"/></circle><circle class="tk-dot" r="2.6"><animateMotion dur="7.0s" begin="-4.00s" repeatCount="indefinite" path="M80 170 A220 118 0 1 1 520 170 A220 118 0 1 1 80 170"/></circle><circle class="tk-dot" r="2.6"><animateMotion dur="7.0s" begin="-5.00s" repeatCount="indefinite" path="M80 170 A220 118 0 1 1 520 170 A220 118 0 1 1 80 170"/></circle><circle class="tk-dot" r="2.6"><animateMotion dur="7.0s" begin="-6.00s" repeatCount="indefinite" path="M80 170 A220 118 0 1 1 520 170 A220 118 0 1 1 80 170"/></circle>
+      <path d="M-5 -4 L2 0 L-5 4" transform="translate(190.0 67.8) rotate(-17.2)" stroke="#C59060" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M-5 -4 L2 0 L-5 4" transform="translate(410.0 67.8) rotate(17.2)" stroke="#C59060" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M-5 -4 L2 0 L-5 4" transform="translate(520.0 170.0) rotate(90.0)" stroke="#C59060" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M-5 -4 L2 0 L-5 4" transform="translate(410.0 272.2) rotate(162.8)" stroke="#C59060" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M-5 -4 L2 0 L-5 4" transform="translate(190.0 272.2) rotate(-162.8)" stroke="#C59060" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M-5 -4 L2 0 L-5 4" transform="translate(80.0 170.0) rotate(-90.0)" stroke="#C59060" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="300" y="152.2" text-anchor="middle" font-size="13.0" font-weight="700" fill="#09090b">Day 60: make one call</text>
+      <text x="300" y="172.0" text-anchor="middle" font-size="11.5" fill="#71717a">Keep &middot; Iterate &middot; Investigate &middot; Stop</text>
+      <text x="300" y="189.8" text-anchor="middle" font-size="11.5" font-weight="600" fill="#9a6a3d">What you learned is the next target</text>
+      <g class="tk-ring__node" transform="translate(300.0 52.0)"><rect x="-68.5" y="-15.0" width="137" height="29.9" rx="15.0" fill="#fff" stroke="rgba(9,9,11,0.08)"/><circle cx="-52.4" cy="0" r="9.2" fill="rgba(197,144,96,0.16)"/><text x="-52.4" y="3.7" text-anchor="middle" font-size="9.9" font-weight="700" fill="#9a6a3d">1</text><text x="-37.5" y="4.0" font-size="11.5" font-weight="600" fill="#09090b">Find the target</text></g>
+      <g class="tk-ring__node" transform="translate(490.5 111.0)"><rect x="-62.0" y="-15.0" width="124" height="29.9" rx="15.0" fill="#fff" stroke="rgba(9,9,11,0.08)"/><circle cx="-45.9" cy="0" r="9.2" fill="rgba(197,144,96,0.16)"/><text x="-45.9" y="3.7" text-anchor="middle" font-size="9.9" font-weight="700" fill="#9a6a3d">2</text><text x="-31.0" y="4.0" font-size="11.5" font-weight="600" fill="#09090b">Write it down</text></g>
+      <g class="tk-ring__node" transform="translate(490.5 229.0)"><rect x="-98.0" y="-15.0" width="196" height="29.9" rx="15.0" fill="#fff" stroke="rgba(9,9,11,0.08)"/><circle cx="-81.9" cy="0" r="9.2" fill="rgba(197,144,96,0.16)"/><text x="-81.9" y="3.7" text-anchor="middle" font-size="9.9" font-weight="700" fill="#9a6a3d">3</text><text x="-67.0" y="4.0" font-size="11.5" font-weight="600" fill="#09090b">Prove it’s worth hitting</text></g>
+      <g class="tk-ring__node" transform="translate(300.0 288.0)"><rect x="-68.5" y="-15.0" width="137" height="29.9" rx="15.0" fill="#fff" stroke="rgba(9,9,11,0.08)"/><circle cx="-52.4" cy="0" r="9.2" fill="rgba(197,144,96,0.16)"/><text x="-52.4" y="3.7" text-anchor="middle" font-size="9.9" font-weight="700" fill="#9a6a3d">4</text><text x="-37.5" y="4.0" font-size="11.5" font-weight="600" fill="#09090b">Build toward it</text></g>
+      <g class="tk-ring__node" transform="translate(109.5 229.0)"><rect x="-65.5" y="-15.0" width="131" height="29.9" rx="15.0" fill="#fff" stroke="rgba(9,9,11,0.08)"/><circle cx="-49.4" cy="0" r="9.2" fill="rgba(197,144,96,0.16)"/><text x="-49.4" y="3.7" text-anchor="middle" font-size="9.9" font-weight="700" fill="#9a6a3d">5</text><text x="-34.5" y="4.0" font-size="11.5" font-weight="600" fill="#09090b">Check your aim</text></g>
+      <g class="tk-ring__node tk-ring__node--hot" transform="translate(109.5 111.0)"><rect x="-68.5" y="-15.0" width="137" height="29.9" rx="15.0" fill="#0a0a0a" stroke="#0a0a0a"/><circle cx="-52.4" cy="0" r="9.2" fill="#C59060"/><text x="-52.4" y="3.7" text-anchor="middle" font-size="9.9" font-weight="700" fill="#fff">6</text><text x="-37.5" y="4.0" font-size="11.5" font-weight="600" fill="#fff">Did you hit it?</text></g>
+      </svg>
+      <svg class="tk-ring__m" viewBox="0 0 360 470" fill="none" font-family="Inter, var(--ds-font-body)">
+      <path d="M70 235 A110 180 0 1 1 290 235 A110 180 0 1 1 70 235" stroke="rgba(9,9,11,0.14)" stroke-width="1.5"/>
+      <path d="M70 235 A110 180 0 1 1 290 235 A110 180 0 1 1 70 235" stroke="rgba(197,144,96,0.35)" stroke-width="2" stroke-dasharray="3 6"/><circle class="tk-dot" r="3.2"><animateMotion dur="7.0s" begin="-0.00s" repeatCount="indefinite" path="M70 235 A110 180 0 1 1 290 235 A110 180 0 1 1 70 235"/></circle><circle class="tk-dot" r="2.6"><animateMotion dur="7.0s" begin="-1.00s" repeatCount="indefinite" path="M70 235 A110 180 0 1 1 290 235 A110 180 0 1 1 70 235"/></circle><circle class="tk-dot" r="2.6"><animateMotion dur="7.0s" begin="-2.00s" repeatCount="indefinite" path="M70 235 A110 180 0 1 1 290 235 A110 180 0 1 1 70 235"/></circle><circle class="tk-dot" r="2.6"><animateMotion dur="7.0s" begin="-3.00s" repeatCount="indefinite" path="M70 235 A110 180 0 1 1 290 235 A110 180 0 1 1 70 235"/></circle><circle class="tk-dot" r="2.6"><animateMotion dur="7.0s" begin="-4.00s" repeatCount="indefinite" path="M70 235 A110 180 0 1 1 290 235 A110 180 0 1 1 70 235"/></circle><circle class="tk-dot" r="2.6"><animateMotion dur="7.0s" begin="-5.00s" repeatCount="indefinite" path="M70 235 A110 180 0 1 1 290 235 A110 180 0 1 1 70 235"/></circle><circle class="tk-dot" r="2.6"><animateMotion dur="7.0s" begin="-6.00s" repeatCount="indefinite" path="M70 235 A110 180 0 1 1 290 235 A110 180 0 1 1 70 235"/></circle>
+      <path d="M-5 -4 L2 0 L-5 4" transform="translate(125.0 79.1) rotate(-43.4)" stroke="#C59060" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M-5 -4 L2 0 L-5 4" transform="translate(235.0 79.1) rotate(43.4)" stroke="#C59060" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M-5 -4 L2 0 L-5 4" transform="translate(290.0 235.0) rotate(90.0)" stroke="#C59060" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M-5 -4 L2 0 L-5 4" transform="translate(235.0 390.9) rotate(136.6)" stroke="#C59060" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M-5 -4 L2 0 L-5 4" transform="translate(125.0 390.9) rotate(-136.6)" stroke="#C59060" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M-5 -4 L2 0 L-5 4" transform="translate(70.0 235.0) rotate(-90.0)" stroke="#C59060" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="180" y="191.4" text-anchor="middle" font-size="13.5" font-weight="700" fill="#09090b">Day 60: make one call</text>
+      <text x="180" y="212.0" text-anchor="middle" font-size="12" fill="#71717a">Keep &middot; Iterate &middot; Investigate &middot; Stop</text>
+      <text x="180" y="230.6" text-anchor="middle" font-size="12" font-weight="600" fill="#9a6a3d">What you learned is the next target</text>
+      <g class="tk-ring__node" transform="translate(180.0 55.0)"><rect x="-71.5" y="-15.6" width="143" height="31.2" rx="15.6" fill="#fff" stroke="rgba(9,9,11,0.08)"/><circle cx="-54.7" cy="0" r="9.6" fill="rgba(197,144,96,0.16)"/><text x="-54.7" y="3.8" text-anchor="middle" font-size="10.3" font-weight="700" fill="#9a6a3d">1</text><text x="-39.1" y="4.2" font-size="12" font-weight="600" fill="#09090b">Find the target</text></g>
+      <g class="tk-ring__node" transform="translate(275.3 145.0)"><rect x="-65.0" y="-15.6" width="130" height="31.2" rx="15.6" fill="#fff" stroke="rgba(9,9,11,0.08)"/><circle cx="-48.2" cy="0" r="9.6" fill="rgba(197,144,96,0.16)"/><text x="-48.2" y="3.8" text-anchor="middle" font-size="10.3" font-weight="700" fill="#9a6a3d">2</text><text x="-32.6" y="4.2" font-size="12" font-weight="600" fill="#09090b">Write it down</text></g>
+      <g class="tk-ring__node" transform="translate(253.5 296.6)"><rect x="-102.5" y="-15.6" width="205" height="31.2" rx="15.6" fill="#fff" stroke="rgba(9,9,11,0.08)"/><circle cx="-85.7" cy="0" r="9.6" fill="rgba(197,144,96,0.16)"/><text x="-85.7" y="3.8" text-anchor="middle" font-size="10.3" font-weight="700" fill="#9a6a3d">3</text><text x="-70.1" y="4.2" font-size="12" font-weight="600" fill="#09090b">Prove it’s worth hitting</text></g>
+      <g class="tk-ring__node" transform="translate(180.0 415.0)"><rect x="-71.5" y="-15.6" width="143" height="31.2" rx="15.6" fill="#fff" stroke="rgba(9,9,11,0.08)"/><circle cx="-54.7" cy="0" r="9.6" fill="rgba(197,144,96,0.16)"/><text x="-54.7" y="3.8" text-anchor="middle" font-size="10.3" font-weight="700" fill="#9a6a3d">4</text><text x="-39.1" y="4.2" font-size="12" font-weight="600" fill="#09090b">Build toward it</text></g>
+      <g class="tk-ring__node" transform="translate(76.6 296.6)"><rect x="-68.5" y="-15.6" width="137" height="31.2" rx="15.6" fill="#fff" stroke="rgba(9,9,11,0.08)"/><circle cx="-51.7" cy="0" r="9.6" fill="rgba(197,144,96,0.16)"/><text x="-51.7" y="3.8" text-anchor="middle" font-size="10.3" font-weight="700" fill="#9a6a3d">5</text><text x="-36.1" y="4.2" font-size="12" font-weight="600" fill="#09090b">Check your aim</text></g>
+      <g class="tk-ring__node tk-ring__node--hot" transform="translate(84.7 145.0)"><rect x="-71.5" y="-15.6" width="143" height="31.2" rx="15.6" fill="#0a0a0a" stroke="#0a0a0a"/><circle cx="-54.7" cy="0" r="9.6" fill="#C59060"/><text x="-54.7" y="3.8" text-anchor="middle" font-size="10.3" font-weight="700" fill="#fff">6</text><text x="-39.1" y="4.2" font-size="12" font-weight="600" fill="#fff">Did you hit it?</text></g>
+      </svg>
   </div></div>
-  <figcaption>Shipping is the halfway point. The call you make at day 60 becomes the next target.</figcaption>
+  <figcaption>Shipping is the halfway point. The call you make at day 60 becomes the next target, and you go round again.</figcaption>
 </figure>`,
+  // Time series: baseline and target written down at kickoff, actual drawn in, day-60 gap
+  "day60-chart": `<figure class="letter-fig">
+  <div class="tk-tray"><div class="tk-ring tk-chart" aria-hidden="true">
+      <svg class="tk-ring__d" viewBox="0 0 600 300" fill="none" font-family="Inter, var(--ds-font-body)">
+      <text x="62" y="254.0" text-anchor="end" font-size="11.0" fill="#71717a">10%</text><path d="M70 250.0 H560" stroke="rgba(9,9,11,0.06)"/>
+      <text x="62" y="170.0" text-anchor="end" font-size="11.0" fill="#71717a">20%</text><path d="M70 166.0 H560" stroke="rgba(9,9,11,0.06)"/>
+      <text x="62" y="86.0" text-anchor="end" font-size="11.0" fill="#71717a">30%</text><path d="M70 82.0 H560" stroke="rgba(9,9,11,0.06)"/>
+      <path d="M70 250 H560" stroke="rgba(9,9,11,0.25)"/>
+      <text x="70.0" y="269.5" text-anchor="start" font-size="11.0" fill="#71717a">Launch</text><path d="M70.0 250 V255" stroke="rgba(9,9,11,0.2)"/>
+      <text x="192.5" y="269.5" text-anchor="middle" font-size="11.0" fill="#71717a">Day 15</text><path d="M192.5 250 V255" stroke="rgba(9,9,11,0.2)"/>
+      <text x="315.0" y="269.5" text-anchor="middle" font-size="11.0" fill="#71717a">Day 30</text><path d="M315.0 250 V255" stroke="rgba(9,9,11,0.2)"/>
+      <text x="437.5" y="269.5" text-anchor="middle" font-size="11.0" fill="#71717a">Day 45</text><path d="M437.5 250 V255" stroke="rgba(9,9,11,0.2)"/>
+      <text x="560.0" y="269.5" text-anchor="end" font-size="11.0" fill="#71717a">Day 60</text><path d="M560.0 250 V255" stroke="rgba(9,9,11,0.2)"/>
+      <path d="M70 182.8 H560" stroke="#a1a1aa" stroke-width="1.5" stroke-dasharray="5 5"/><text x="76" y="199.3" font-size="11.5" font-weight="600" fill="#71717a">Baseline 18%</text>
+      <path d="M70 82.0 H560" stroke="#C59060" stroke-width="1.5" stroke-dasharray="5 5"/><text x="76" y="74.0" font-size="11.5" font-weight="600" fill="#9a6a3d">Target 30%</text>
+      <path class="tk-fade" d="M70.0 182.8 L127.2 179.4 L184.3 169.4 L241.5 157.6 L298.7 145.8 L355.8 135.8 L413.0 127.4 L470.2 121.5 L527.3 117.3 L560.0 115.6 L560.0 250 L70.0 250 Z" fill="rgba(197,144,96,0.10)"/>
+      <path class="tk-draw" pathLength="1" d="M70.0 182.8 L127.2 179.4 L184.3 169.4 L241.5 157.6 L298.7 145.8 L355.8 135.8 L413.0 127.4 L470.2 121.5 L527.3 117.3 L560.0 115.6" stroke="#09090b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle class="tk-fade" cx="560.0" cy="115.6" r="5" fill="#09090b" stroke="#fff" stroke-width="2"/>
+      <text class="tk-fade" x="550.0" y="139.1" text-anchor="end" font-size="12.0" font-weight="700" fill="#09090b">Day 60: 26%</text>
+      <text class="tk-fade" x="550.0" y="154.6" text-anchor="end" font-size="11.5" fill="#9a6a3d">4 points short. Call: iterate.</text>
+      </svg>
+      <svg class="tk-ring__m" viewBox="0 0 360 300" fill="none" font-family="Inter, var(--ds-font-body)">
+      <text x="36" y="244.0" text-anchor="end" font-size="12.5" fill="#71717a">10%</text><path d="M44 240.0 H350" stroke="rgba(9,9,11,0.06)"/>
+      <text x="36" y="162.4" text-anchor="end" font-size="12.5" fill="#71717a">20%</text><path d="M44 158.4 H350" stroke="rgba(9,9,11,0.06)"/>
+      <text x="36" y="80.8" text-anchor="end" font-size="12.5" fill="#71717a">30%</text><path d="M44 76.8 H350" stroke="rgba(9,9,11,0.06)"/>
+      <path d="M44 240 H350" stroke="rgba(9,9,11,0.25)"/>
+      <text x="44.0" y="261" text-anchor="start" font-size="12.5" fill="#71717a">Launch</text><path d="M44.0 240 V245" stroke="rgba(9,9,11,0.2)"/>
+      <text x="197.0" y="261" text-anchor="middle" font-size="12.5" fill="#71717a">Day 30</text><path d="M197.0 240 V245" stroke="rgba(9,9,11,0.2)"/>
+      <text x="350.0" y="261" text-anchor="end" font-size="12.5" fill="#71717a">Day 60</text><path d="M350.0 240 V245" stroke="rgba(9,9,11,0.2)"/>
+      <path d="M44 174.7 H350" stroke="#a1a1aa" stroke-width="1.5" stroke-dasharray="5 5"/><text x="50" y="192.7" font-size="13" font-weight="600" fill="#71717a">Baseline 18%</text>
+      <path d="M44 76.8 H350" stroke="#C59060" stroke-width="1.5" stroke-dasharray="5 5"/><text x="50" y="68.8" font-size="13" font-weight="600" fill="#9a6a3d">Target 30%</text>
+      <path class="tk-fade" d="M44.0 174.7 L79.7 171.5 L115.4 161.7 L151.1 150.2 L186.8 138.8 L222.5 129.0 L258.2 120.9 L293.9 115.2 L329.6 111.1 L350.0 109.4 L350.0 240 L44.0 240 Z" fill="rgba(197,144,96,0.10)"/>
+      <path class="tk-draw" pathLength="1" d="M44.0 174.7 L79.7 171.5 L115.4 161.7 L151.1 150.2 L186.8 138.8 L222.5 129.0 L258.2 120.9 L293.9 115.2 L329.6 111.1 L350.0 109.4" stroke="#09090b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle class="tk-fade" cx="350.0" cy="109.4" r="5" fill="#09090b" stroke="#fff" stroke-width="2"/>
+      <text class="tk-fade" x="340.0" y="134.4" text-anchor="end" font-size="13.5" font-weight="700" fill="#09090b">Day 60: 26%</text>
+      <text class="tk-fade" x="340.0" y="151.4" text-anchor="end" font-size="13" fill="#9a6a3d">4 points short. Call: iterate.</text>
+      </svg>
+  </div></div>
+  <figcaption>Baseline and target go in the brief before design starts. At day 60 you plot what actually happened. The playbook&rsquo;s example: invited workspaces, 18% to 26% against a 30% target.</figcaption>
+</figure>`,
+  "appetite-cost": invoiceCard("APPETITE &middot; 6 WEEKS", "$112,500", "What the room costs", "",
+    [["People", "5: design, PM, 3 eng"], ["Blended salary", "$150k a year"], ["Loaded", "&times;1.3 &rarr; $3,750 a week each"], ["The room", "$18,750 a week"], ["Break-even", "8 accounts at $15k"]],
+    "Price the room before you price the feature. Illustrative numbers: use your own blended rate, never anyone&rsquo;s real salary."),
   "roi-ex-cost": invoiceCard("ROI-001 &middot; COST", "$5,760", "Saved a year", "+44% in 2 yrs",
     [["Tickets", "120 &rarr; 60 a month"], ["Time", "12 min each"], ["Rate", "$40 an hour"], ["Cost", "$8,000"], ["Year one", "&minus;28%"]],
     "Half the tickets, $5,760 a year back. Negative in year one, +44% over two. Illustrative numbers."),
