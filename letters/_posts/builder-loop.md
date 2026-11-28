@@ -61,6 +61,12 @@ If your pitch is "I'm fluent in eight AI tools," you're competing with every des
 
 If your pitch is "I know what we're shooting at and I can prove we hit it," you're competing with almost nobody.
 
+So what does "AI-native" actually mean, then? My answer: you use AI to get to evidence faster.
+
+A prototype in five days instead of five weeks means real users see it sooner. A brief drafted from the kickoff transcript means the decision is written down the same afternoon. A reminder at day 60 means somebody actually checks the number. Every one of those makes the loop shorter. None of them pick the target for you.
+
+And when you apply? Skip the tool list. Bring one 60-day readout: what you predicted, what actually happened, and the call you made. Even if the answer was "we missed." Especially then. That one page says more about you than "Figma, Cursor, Claude" ever will. (Here's [how to turn it into a case study](/letters/ux-case-study-template/).)
+
 So how do you actually learn to aim? For me it started with one question I couldn't stop asking.
 
 ## Where this started
@@ -231,6 +237,10 @@ In the playbook's example, the team expected new workspaces with two or more mem
 <!-- figure:day60-chart -->
 
 And this is where case studies actually come from. "We said this would move 12 points, it moved 8, here's what we did next" beats any before-and-after screenshot. (Here's [how to write it up](/letters/ux-case-study-template/).)
+
+Back to the person I coach, and her question. Would her skills still fit?
+
+Yes. If she can aim, her skills fit better than they ever have. The tools got cheap for everyone. Knowing what to point them at didn't.
 
 That's one feature going round the loop once. Want to see every stage done properly, with the templates I actually use?
 
