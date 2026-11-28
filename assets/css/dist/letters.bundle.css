@@ -3816,6 +3816,35 @@ img.letters-feature__art {
   .tk-stage--filter { zoom: 0.56; }
   .tk-stage--proof, .tk-stage--sort, .tk-stage--exit { zoom: 0.64; }
 }
+/* Phones: chip diagrams (filter: inputs → node → outputs; fan: trigger → pill → outputs)
+   reflow into one centred column at full size instead of being zoomed to ~55%, so chip
+   text stays readable (13/11px) and nothing crowds the edges or the connectors. The
+   curved SVG connectors give way to one thin vertical line behind the stack. */
+@media (max-width: 600px) {
+  .tk-stage--filter, .tk-stage--fan { zoom: 1; min-width: 0; min-height: 0; width: 100%; transform: none; }
+  .tk-stage--filter .tk-lines, .tk-stage--fan .tk-lines { display: none; }
+  .tk-stage--filter .tk-flow-row,
+  .tk-stage--fan .tk-fan {
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    background: linear-gradient(rgba(9, 9, 11, 0.14), rgba(9, 9, 11, 0.14)) center / 1px 100% no-repeat;
+  }
+  .tk-stage--filter .tk-col,
+  .tk-stage--filter .tk-col--outs,
+  .tk-stage--fan .tk-outs { gap: 10px; width: 100%; max-width: 300px; align-items: stretch; }
+  .tk-stage--filter .tk-col .tk-pill { width: 100%; min-width: 0; height: auto; min-height: 52px; }
+  .tk-stage--fan .tk-pill, .tk-stage--fan .tk-dark-pill { margin: 0 auto; }
+  .tk-stage--fan .tk-outs .tk-pill { width: 100%; box-sizing: border-box; padding: 10px 16px; justify-content: center; }
+  .tk-stage--filter .tk-col .tk-pill { box-sizing: border-box; }
+  .tk-stage--filter .tk-pill--tile { padding: 8px 14px 8px 8px; gap: 12px; align-items: center; }
+  .tk-stage--filter .tk-pill--tile > div:last-child { display: flex; flex-direction: column; justify-content: center; }
+  .tk-stage--filter .tk-pill__label, .tk-stage--fan .tk-pill__label { font-size: 13px; line-height: 1.3; white-space: normal; }
+  .tk-stage--filter .tk-pill__sub { font-size: 11px; line-height: 1.35; margin-top: 2px; white-space: normal; }
+  .tk-stage--fan .tk-dark-pill { font-size: 13px; }
+  .tk-col .tk-pill { animation: none; }
+}
 
 /* ── Podcast video (click-to-load YouTube) ───────────────────────────────── */
 .letter-video {
