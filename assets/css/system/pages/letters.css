@@ -1447,10 +1447,11 @@ img.letters-feature__art {
 .tk-ring__node rect { filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.06)); }
 /* Funnel Simulator treatment: glowing dots travel the loop clockwise; stage 6 pulses */
 .tk-dot { fill: #E9B989; filter: drop-shadow(0 0 4px rgba(233, 185, 137, 0.9)); }
+.tk-smoke { fill: #E9B989; filter: blur(2.5px); }
 .tk-ring__node--hot circle { transform-box: fill-box; transform-origin: center; animation: tk-breathe 2.4s ease-in-out infinite; }
 /* Chart: elevated white card on the tray */
 .tk-chart { padding: 18px 14px 10px; background: #fff; border-radius: 16px; box-shadow: 0 0 0 1px rgba(9, 9, 11, 0.06), 0 20px 25px -5px rgba(0, 0, 0, 0.07), 0 8px 10px -6px rgba(0, 0, 0, 0.06); }
-@media (prefers-reduced-motion: reduce) { .tk-dot { display: none; } .tk-ring__node--hot circle { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .tk-dot, .tk-smoke { display: none; } .tk-ring__node--hot circle { animation: none; } }
 .tk-draw { stroke-dasharray: 1; stroke-dashoffset: 1; animation: tk-draw 2.2s ease-out 0.3s forwards; }
 .tk-fade { opacity: 0; animation: tk-fade 0.5s ease-out 2.3s forwards; }
 @keyframes tk-draw { to { stroke-dashoffset: 0; } }
