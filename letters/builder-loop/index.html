@@ -36,8 +36,8 @@
   <link rel="preload" as="style" href="https://use.typekit.net/fks5kmr.css" fetchpriority="low" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript><link rel="stylesheet" href="https://use.typekit.net/fks5kmr.css" /></noscript>
   <link rel="stylesheet" href="/assets/css/dist/letters.critical.css?v=586f62cc" />
-  <link rel="stylesheet" href="/assets/css/dist/letters.bundle.css?v=5eade7b8" media="print" onload="this.media='all'" />
-  <noscript><link rel="stylesheet" href="/assets/css/dist/letters.bundle.css?v=5eade7b8" /></noscript>
+  <link rel="stylesheet" href="/assets/css/dist/letters.bundle.css?v=20179b78" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="/assets/css/dist/letters.bundle.css?v=20179b78" /></noscript>
   <link rel="stylesheet" href="/assets/css/system/site-footer.css?v=2a5d33c5" media="print" onload="this.media='all'" />
   <noscript><link rel="stylesheet" href="/assets/css/system/site-footer.css?v=2a5d33c5" /></noscript>
   <link rel="preload" as="image" imagesrcset="/assets/images/letters/builder-loop-800.webp 800w, /assets/images/letters/builder-loop.webp 1536w" imagesizes="(max-width: 760px) 100vw, 728px" type="image/webp" fetchpriority="high" />
@@ -357,42 +357,52 @@
 <p>In the playbook&#39;s example, the team expected new workspaces with two or more members to go from 18% to 30%. At day 60 it was 26%. The call was iterate, because most failed invites came from one gap the team had already spotted while building. That gap became the next target. That&#39;s the loop closing.</p>
 <figure class="letter-fig">
   <div class="tk-tray"><div class="tk-ring tk-chart" aria-hidden="true">
-      <svg class="tk-ring__d" viewBox="0 0 600 300" fill="none" font-family="Inter, var(--ds-font-body)">
-      <text x="62" y="254.0" text-anchor="end" font-size="11.0" fill="#71717a">10%</text><path d="M70 250.0 H560" stroke="rgba(9,9,11,0.06)"/>
-      <text x="62" y="170.0" text-anchor="end" font-size="11.0" fill="#71717a">20%</text><path d="M70 166.0 H560" stroke="rgba(9,9,11,0.06)"/>
-      <text x="62" y="86.0" text-anchor="end" font-size="11.0" fill="#71717a">30%</text><path d="M70 82.0 H560" stroke="rgba(9,9,11,0.06)"/>
-      <path d="M70 250 H560" stroke="rgba(9,9,11,0.25)"/>
-      <text x="70.0" y="269.5" text-anchor="start" font-size="11.0" fill="#71717a">Launch</text><path d="M70.0 250 V255" stroke="rgba(9,9,11,0.2)"/>
-      <text x="192.5" y="269.5" text-anchor="middle" font-size="11.0" fill="#71717a">Day 15</text><path d="M192.5 250 V255" stroke="rgba(9,9,11,0.2)"/>
-      <text x="315.0" y="269.5" text-anchor="middle" font-size="11.0" fill="#71717a">Day 30</text><path d="M315.0 250 V255" stroke="rgba(9,9,11,0.2)"/>
-      <text x="437.5" y="269.5" text-anchor="middle" font-size="11.0" fill="#71717a">Day 45</text><path d="M437.5 250 V255" stroke="rgba(9,9,11,0.2)"/>
-      <text x="560.0" y="269.5" text-anchor="end" font-size="11.0" fill="#71717a">Day 60</text><path d="M560.0 250 V255" stroke="rgba(9,9,11,0.2)"/>
-      <path d="M70 182.8 H560" stroke="#a1a1aa" stroke-width="1.5" stroke-dasharray="5 5"/><text x="76" y="199.3" font-size="11.5" font-weight="600" fill="#71717a">Baseline 18%</text>
-      <path d="M70 82.0 H560" stroke="#C59060" stroke-width="1.5" stroke-dasharray="5 5"/><text x="76" y="74.0" font-size="11.5" font-weight="600" fill="#9a6a3d">Target 30%</text>
-      <path class="tk-fade" d="M70.0 182.8 L127.2 179.4 L184.3 169.4 L241.5 157.6 L298.7 145.8 L355.8 135.8 L413.0 127.4 L470.2 121.5 L527.3 117.3 L560.0 115.6 L560.0 250 L70.0 250 Z" fill="rgba(197,144,96,0.10)"/>
-      <path class="tk-draw" pathLength="1" d="M70.0 182.8 L127.2 179.4 L184.3 169.4 L241.5 157.6 L298.7 145.8 L355.8 135.8 L413.0 127.4 L470.2 121.5 L527.3 117.3 L560.0 115.6" stroke="#09090b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-      <circle class="tk-fade" cx="560.0" cy="115.6" r="5" fill="#09090b" stroke="#fff" stroke-width="2"/>
-      <text class="tk-fade" x="550.0" y="139.1" text-anchor="end" font-size="12.0" font-weight="700" fill="#09090b">Day 60: 26%</text>
-      <text class="tk-fade" x="550.0" y="154.6" text-anchor="end" font-size="11.5" fill="#9a6a3d">4 points short. Call: iterate.</text>
+    <div class="tk-chart__head">
+      <div><p class="tk-chart__title">Invited workspaces</p><p class="tk-chart__sub">New workspaces with 2+ members. Baseline and target set at kickoff.</p></div>
+      <div class="tk-chart__kpi"><b>26%</b><span>&uarr; 8 pts vs baseline</span></div>
+    </div>
+      <svg class="tk-ring__d" viewBox="0 0 600 290" fill="none" font-family="Inter, var(--ds-font-body)">
+      <defs><linearGradient id="tkcg-d" x1="0" y1="18" x2="0" y2="250" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#C59060" stop-opacity="0.18"/><stop offset="1" stop-color="#C59060" stop-opacity="0.02"/></linearGradient></defs>
+      <text x="42" y="254.0" text-anchor="end" font-size="12" fill="#52525b">10%</text><path d="M52 250.0 H580" stroke="rgba(9,9,11,0.06)"/>
+      <text x="42" y="207.6" text-anchor="end" font-size="12" fill="#52525b">15%</text><path d="M52 203.6 H580" stroke="rgba(9,9,11,0.06)"/>
+      <text x="42" y="161.2" text-anchor="end" font-size="12" fill="#52525b">20%</text><path d="M52 157.2 H580" stroke="rgba(9,9,11,0.06)"/>
+      <text x="42" y="114.8" text-anchor="end" font-size="12" fill="#52525b">25%</text><path d="M52 110.8 H580" stroke="rgba(9,9,11,0.06)"/>
+      <text x="42" y="68.4" text-anchor="end" font-size="12" fill="#52525b">30%</text><path d="M52 64.4 H580" stroke="rgba(9,9,11,0.06)"/>
+      <text x="42" y="22.0" text-anchor="end" font-size="12" fill="#52525b">35%</text><path d="M52 18.0 H580" stroke="rgba(9,9,11,0.06)"/>
+      <text x="52.0" y="272" text-anchor="start" font-size="12" fill="#52525b">Launch</text>
+      <text x="184.0" y="272" text-anchor="middle" font-size="12" fill="#52525b">Day 15</text>
+      <text x="316.0" y="272" text-anchor="middle" font-size="12" fill="#52525b">Day 30</text>
+      <text x="448.0" y="272" text-anchor="middle" font-size="12" fill="#52525b">Day 45</text>
+      <text x="580.0" y="272" text-anchor="end" font-size="12" fill="#52525b">Day 60</text>
+      <path d="M52 175.8 H580" stroke="#a1a1aa" stroke-width="1" stroke-dasharray="4 4"/><text x="580" y="191.8" text-anchor="end" font-size="11.5" font-weight="600" fill="#71717a">Baseline 18%</text>
+      <path d="M52 64.4 H580" stroke="#C59060" stroke-width="1" stroke-dasharray="4 4"/><text x="56" y="57.4" font-size="11.5" font-weight="600" fill="#9a6a3d">Target 30%</text>
+      <path class="tk-fade" d="M52.0 175.8 L113.6 172.0 L175.2 160.9 L236.8 147.9 L298.4 134.9 L360.0 123.8 L421.6 114.5 L483.2 108.0 L544.8 103.4 L580.0 101.5 L580.0 250 L52.0 250 Z" fill="url(#tkcg-d)"/>
+      <path class="tk-draw" pathLength="1" d="M52.0 175.8 L113.6 172.0 L175.2 160.9 L236.8 147.9 L298.4 134.9 L360.0 123.8 L421.6 114.5 L483.2 108.0 L544.8 103.4 L580.0 101.5" stroke="#9a6a3d" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+      <path class="tk-fade" d="M580.0 109.5 V250" stroke="#71717a" stroke-width="1" stroke-dasharray="3 3"/>
+      <circle class="tk-fade" cx="580.0" cy="101.5" r="6" fill="#fff" stroke="#9a6a3d" stroke-width="3"/>
+      <g class="tk-fade"><rect x="462.8" y="48.1" width="103.2" height="46.8" rx="10" fill="#fff" stroke="rgba(9,9,11,0.08)" style="filter:drop-shadow(0 6px 12px rgba(0,0,0,0.08))"/><text x="514.4" y="66.1" text-anchor="middle" font-size="12" fill="#52525b">Day 60 &middot; iterate</text><text x="514.4" y="85.3" text-anchor="middle" font-size="15" font-weight="700" fill="#09090b">26%</text></g>
       </svg>
       <svg class="tk-ring__m" viewBox="0 0 360 300" fill="none" font-family="Inter, var(--ds-font-body)">
-      <text x="36" y="244.0" text-anchor="end" font-size="12.5" fill="#71717a">10%</text><path d="M44 240.0 H350" stroke="rgba(9,9,11,0.06)"/>
-      <text x="36" y="162.4" text-anchor="end" font-size="12.5" fill="#71717a">20%</text><path d="M44 158.4 H350" stroke="rgba(9,9,11,0.06)"/>
-      <text x="36" y="80.8" text-anchor="end" font-size="12.5" fill="#71717a">30%</text><path d="M44 76.8 H350" stroke="rgba(9,9,11,0.06)"/>
-      <path d="M44 240 H350" stroke="rgba(9,9,11,0.25)"/>
-      <text x="44.0" y="261" text-anchor="start" font-size="12.5" fill="#71717a">Launch</text><path d="M44.0 240 V245" stroke="rgba(9,9,11,0.2)"/>
-      <text x="197.0" y="261" text-anchor="middle" font-size="12.5" fill="#71717a">Day 30</text><path d="M197.0 240 V245" stroke="rgba(9,9,11,0.2)"/>
-      <text x="350.0" y="261" text-anchor="end" font-size="12.5" fill="#71717a">Day 60</text><path d="M350.0 240 V245" stroke="rgba(9,9,11,0.2)"/>
-      <path d="M44 174.7 H350" stroke="#a1a1aa" stroke-width="1.5" stroke-dasharray="5 5"/><text x="50" y="192.7" font-size="13" font-weight="600" fill="#71717a">Baseline 18%</text>
-      <path d="M44 76.8 H350" stroke="#C59060" stroke-width="1.5" stroke-dasharray="5 5"/><text x="50" y="68.8" font-size="13" font-weight="600" fill="#9a6a3d">Target 30%</text>
-      <path class="tk-fade" d="M44.0 174.7 L79.7 171.5 L115.4 161.7 L151.1 150.2 L186.8 138.8 L222.5 129.0 L258.2 120.9 L293.9 115.2 L329.6 111.1 L350.0 109.4 L350.0 240 L44.0 240 Z" fill="rgba(197,144,96,0.10)"/>
-      <path class="tk-draw" pathLength="1" d="M44.0 174.7 L79.7 171.5 L115.4 161.7 L151.1 150.2 L186.8 138.8 L222.5 129.0 L258.2 120.9 L293.9 115.2 L329.6 111.1 L350.0 109.4" stroke="#09090b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-      <circle class="tk-fade" cx="350.0" cy="109.4" r="5" fill="#09090b" stroke="#fff" stroke-width="2"/>
-      <text class="tk-fade" x="340.0" y="134.4" text-anchor="end" font-size="13.5" font-weight="700" fill="#09090b">Day 60: 26%</text>
-      <text class="tk-fade" x="340.0" y="151.4" text-anchor="end" font-size="13" fill="#9a6a3d">4 points short. Call: iterate.</text>
+      <defs><linearGradient id="tkcg-m" x1="0" y1="18" x2="0" y2="250" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#C59060" stop-opacity="0.18"/><stop offset="1" stop-color="#C59060" stop-opacity="0.02"/></linearGradient></defs>
+      <text x="30" y="254.0" text-anchor="end" font-size="13" fill="#52525b">10%</text><path d="M40 250.0 H350" stroke="rgba(9,9,11,0.06)"/>
+      <text x="30" y="207.6" text-anchor="end" font-size="13" fill="#52525b">15%</text><path d="M40 203.6 H350" stroke="rgba(9,9,11,0.06)"/>
+      <text x="30" y="161.2" text-anchor="end" font-size="13" fill="#52525b">20%</text><path d="M40 157.2 H350" stroke="rgba(9,9,11,0.06)"/>
+      <text x="30" y="114.8" text-anchor="end" font-size="13" fill="#52525b">25%</text><path d="M40 110.8 H350" stroke="rgba(9,9,11,0.06)"/>
+      <text x="30" y="68.4" text-anchor="end" font-size="13" fill="#52525b">30%</text><path d="M40 64.4 H350" stroke="rgba(9,9,11,0.06)"/>
+      <text x="30" y="22.0" text-anchor="end" font-size="13" fill="#52525b">35%</text><path d="M40 18.0 H350" stroke="rgba(9,9,11,0.06)"/>
+      <text x="40.0" y="273" text-anchor="start" font-size="13" fill="#52525b">Launch</text>
+      <text x="195.0" y="273" text-anchor="middle" font-size="13" fill="#52525b">Day 30</text>
+      <text x="350.0" y="273" text-anchor="end" font-size="13" fill="#52525b">Day 60</text>
+      <path d="M40 175.8 H350" stroke="#a1a1aa" stroke-width="1" stroke-dasharray="4 4"/><text x="350" y="192.8" text-anchor="end" font-size="12.5" font-weight="600" fill="#71717a">Baseline 18%</text>
+      <path d="M40 64.4 H350" stroke="#C59060" stroke-width="1" stroke-dasharray="4 4"/><text x="44" y="57.4" font-size="12.5" font-weight="600" fill="#9a6a3d">Target 30%</text>
+      <path class="tk-fade" d="M40.0 175.8 L76.2 172.0 L112.3 160.9 L148.5 147.9 L184.7 134.9 L220.8 123.8 L257.0 114.5 L293.2 108.0 L329.3 103.4 L350.0 101.5 L350.0 250 L40.0 250 Z" fill="url(#tkcg-m)"/>
+      <path class="tk-draw" pathLength="1" d="M40.0 175.8 L76.2 172.0 L112.3 160.9 L148.5 147.9 L184.7 134.9 L220.8 123.8 L257.0 114.5 L293.2 108.0 L329.3 103.4 L350.0 101.5" stroke="#9a6a3d" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+      <path class="tk-fade" d="M350.0 109.5 V250" stroke="#71717a" stroke-width="1" stroke-dasharray="3 3"/>
+      <circle class="tk-fade" cx="350.0" cy="101.5" r="6" fill="#fff" stroke="#9a6a3d" stroke-width="3"/>
+      <g class="tk-fade"><rect x="224.2" y="46.2" width="111.8" height="50.7" rx="10" fill="#fff" stroke="rgba(9,9,11,0.08)" style="filter:drop-shadow(0 6px 12px rgba(0,0,0,0.08))"/><text x="280.1" y="65.7" text-anchor="middle" font-size="13" fill="#52525b">Day 60 &middot; iterate</text><text x="280.1" y="86.5" text-anchor="middle" font-size="16" font-weight="700" fill="#09090b">26%</text></g>
       </svg>
   </div></div>
-  <figcaption>Baseline and target go in the brief before design starts. At day 60 you plot what actually happened. The playbook&rsquo;s example: invited workspaces, 18% to 26% against a 30% target.</figcaption>
+  <figcaption>Baseline and target go in the brief before design starts. At day 60 you plot what actually happened: 26% against a 30% target. Four points short, so the call is iterate. (The playbook&rsquo;s worked example.)</figcaption>
 </figure>
 
 <p>And this is where case studies actually come from. &quot;We said this would move 12 points, it moved 8, here&#39;s what we did next&quot; beats any before-and-after screenshot. (Here&#39;s <a href="/letters/ux-case-study-template/">how to write it up</a>.)</p>
