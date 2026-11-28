@@ -34,6 +34,8 @@
  *   popular      true = in the "Most popular" strip
  *   homeFeatured true = in the homepage's featured letters (newest 3; falls back to popular)
  *   source       Kit broadcast id(s) the letter was built from
+ *   inlineCard   false = no lead magnet card early in the body on phones/tablets
+ *                (the sidebar card and the end CTA stay)
  *   draft        true = built (for preview) but noindex and left out of lists
  *
  * In the body, `<!-- offer:<lead-magnet-slug> -->` places that lead magnet's card
@@ -269,10 +271,8 @@ const CTA_ART = {
   </div></div>`,
   "builder-loop": `<div class="letter-cta__art" aria-hidden="true"><div class="cta-card">
     <div class="cta-card__head"><span class="cta-card__dot"></span>The Builder Loop</div>
-    ${ctaStep("Find the target", "One decision sentence", "done")}
-    ${ctaStep("Prove it&rsquo;s worth hitting", "Two insights &middot; one number", "done")}
-    ${ctaStep("Build toward it", "Prototype in five days", "done")}
-    ${ctaStep("Did you hit it?", "60-day readout", "live")}
+    ${[["Find the target", "One decision sentence"], ["Write it down", "The brief everyone builds against"], ["Prove it&rsquo;s worth hitting", "Two insights, one number"], ["Build toward it", "Prototype in five days"], ["Check your aim", "Quality pass and visual QA"], ["Did you hit it?", "60-day readout"]]
+      .map(([t, m], i) => `<div class="cta-step cta-step--num"><span class="cta-step__ico cta-step__num">${i + 1}</span><span class="cta-step__text"><span class="cta-step__title">${t}</span><span class="cta-step__meta">${m}</span></span></div>`).join("\n    ")}
   </div></div>`,
   "case-study": `<div class="letter-cta__art" aria-hidden="true"><div class="cta-card cta-card--chat">
     <div class="cta-card__head"><span class="cta-card__dot"></span>The 15 Minute Case Study</div>
@@ -705,17 +705,18 @@ const FIGURES = {
   <div class="tk-tray"><div class="tk-stage tk-stage--fan" aria-hidden="true">
     <svg class="tk-lines tk-lines--fan" viewBox="0 0 400 240" fill="none">
       <path d="M60 120 H160"/><path d="M220 120 H260"/>
-      <path d="M260 120 Q280 120 290 100 L310 50 Q320 30 340 30"/><path d="M260 120 H340"/><path d="M260 120 Q280 120 290 140 L310 190 Q320 210 340 210"/>
+      <path d="M260 120 Q280 120 290 100 L310 50 Q320 30 340 30"/><path d="M260 120 Q290 120 300 105 Q310 90 340 90"/><path d="M260 120 Q290 120 300 135 Q310 150 340 150"/><path d="M260 120 Q280 120 290 140 L310 190 Q320 210 340 210"/>
       <path class="tk-pulse" pathLength="1" d="M60 120 H160" stroke="url(#tkb2-in)"/>
       <path class="tk-pulse tk-pulse--out" pathLength="1" d="M220 120 H260 Q280 120 290 100 L310 50 Q320 30 340 30" stroke="url(#tkb2-o1)"/>
-      <path class="tk-pulse tk-pulse--out" pathLength="1" d="M220 120 H340" stroke="url(#tkb2-o2)"/>
-      <path class="tk-pulse tk-pulse--out" pathLength="1" d="M220 120 H260 Q280 120 290 140 L310 190 Q320 210 340 210" stroke="url(#tkb2-o3)"/>
-      <defs>${beamGrad("tkb2-in", 220, 120, 160, 120)}${beamGrad("tkb2-o1", 220, 120, 320, 60)}${beamGrad("tkb2-o2", 220, 120, 340, 120)}${beamGrad("tkb2-o3", 220, 120, 320, 180)}</defs>
+      <path class="tk-pulse tk-pulse--out" pathLength="1" d="M220 120 H260 Q290 120 300 105 Q310 90 340 90" stroke="url(#tkb2-o2)"/>
+      <path class="tk-pulse tk-pulse--out" pathLength="1" d="M220 120 H260 Q290 120 300 135 Q310 150 340 150" stroke="url(#tkb2-o3)"/>
+      <path class="tk-pulse tk-pulse--out" pathLength="1" d="M220 120 H260 Q280 120 290 140 L310 190 Q320 210 340 210" stroke="url(#tkb2-o4)"/>
+      <defs>${beamGrad("tkb2-in", 220, 120, 160, 120)}${beamGrad("tkb2-o1", 220, 120, 320, 60)}${beamGrad("tkb2-o2", 220, 120, 340, 90)}${beamGrad("tkb2-o3", 220, 120, 340, 150)}${beamGrad("tkb2-o4", 220, 120, 320, 180)}</defs>
     </svg>
     <div class="tk-fan">
       ${pill("Shipped", "rocket", "muted")}
       <div class="tk-dark-pill">${lucideIcon("tk-ico tk-ico--brown", ICON.trend)}<span>60-day readout</span></div>
-      <div class="tk-outs">${pill("Keep it", "check", "brown")}${pill("Iterate", "refresh", "brown")}${pill("Stop it", "x", "brown")}</div>
+      <div class="tk-outs tk-outs--4">${pill("Keep", "check", "brown")}${pill("Iterate", "refresh", "brown")}${pill("Investigate", "search", "brown")}${pill("Stop", "x", "brown")}</div>
     </div>
   </div></div>
   <figcaption>Shipping is the halfway point. The call you make at day 60 becomes the next target.</figcaption>
@@ -1043,7 +1044,7 @@ function renderBody(post) {
   const lm = leadMagnetFor(post);
   // Inline lead magnet card (phones/tablets only; desktop shows the sidebar).
   // Goes before the first H2 that isn't directly after another box, unless pinned above.
-  if (lm && !pinned) {
+  if (lm && !pinned && post.inlineCard !== false) {
     const at = inlineCardIndex(html);
     const roi = secondCard(post, "inline");
     if (at >= 0) html = `${html.slice(0, at)}${leadMagnetCard(lm, "inline", post)}${roi}\n${html.slice(at)}`;
