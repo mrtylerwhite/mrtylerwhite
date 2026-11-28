@@ -1961,6 +1961,8 @@ img.letters-feature__art {
 }
 .letter-table__dots {
   display: flex;
+}
+
 /* Visually hidden, still read by screen readers (Divi's version isn't loaded here) */
 .letters-page .screen-reader-text {
   position: absolute !important;
@@ -2016,8 +2018,6 @@ img.letters-feature__art {
 @media (max-width: 720px) {
   .letters,
   .letter { padding: 112px 16px 72px; }
-  .letters-feature { min-height: 360px; }
-  /* With a cover: drawing on top, text below it, nothing overlapping */
 /* critical:start */
 /* Early offer: slim, topic-matched, just before a letter's first H2.
    Inside the critical markers so build-letters puts it in the above-the-fold CSS. */

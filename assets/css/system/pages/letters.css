@@ -998,6 +998,8 @@ img.letters-feature__art {
 .cta-step__text { flex: 1; min-width: 0; display: flex; flex-direction: column; }
 .cta-step__title { font-weight: 600; }
 .cta-step__meta { font-size: 11.5px; color: var(--ds-color-on-dark-muted); }
+.cta-step--num { background: rgba(255, 255, 255, 0.04); }
+.cta-step__num { font-size: 11px; font-weight: 600; }
 .cta-step__state {
   font-size: 11px;
   color: var(--ds-color-on-dark-muted);
@@ -1432,6 +1434,37 @@ img.letters-feature__art {
 }
 .tk-outs { display: flex; flex-direction: column; gap: 56px; }
 .tk-outs .tk-pill { padding: 8px 16px 8px 12px; }
+.tk-outs--4 { gap: 26px; }
+/* Builder Loop ring + day-60 chart (plain SVG figures) */
+.tk-ring { width: 100%; max-width: 600px; margin: 0 auto; }
+.tk-ring svg { display: block; width: 100%; height: auto; overflow: visible; }
+.tk-ring__m { display: none !important; }
+@media (max-width: 600px) {
+  .tk-ring__d { display: none !important; }
+  .tk-ring__m { display: block !important; }
+  .tk-tray:has(.tk-ring) { padding-left: 8px; padding-right: 8px; }
+}
+.tk-ring__node rect { filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.06)); }
+/* Funnel Simulator treatment: glowing dots travel the loop clockwise; stage 6 pulses */
+.tk-dot { fill: #E9B989; filter: drop-shadow(0 0 4px rgba(233, 185, 137, 0.9)); }
+.tk-smoke { fill: #E9B989; filter: blur(2.5px); }
+.tk-ring__node--hot circle { transform-box: fill-box; transform-origin: center; animation: tk-breathe 2.4s ease-in-out infinite; }
+/* Chart: elevated white card on the tray */
+.tk-chart__head { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; padding: 4px 8px 14px; }
+#page-container .tk-chart .tk-chart__title { margin: 0 !important; font-family: var(--ds-font-body) !important; font-weight: 700 !important; font-size: 18px !important; line-height: 1.25 !important; color: #09090b !important; letter-spacing: -0.01em; }
+#page-container .tk-chart .tk-chart__sub { margin: 4px 0 0 !important; max-width: 34ch; font-family: var(--ds-font-body) !important; font-weight: 400 !important; font-size: 13px !important; line-height: 1.4 !important; color: #52525b !important; }
+.tk-chart__kpi { text-align: right; white-space: nowrap; }
+.tk-chart__kpi b { display: block; font: 700 22px/1.1 var(--ds-font-body); color: #09090b; }
+.tk-chart__kpi span { font: 600 13px/1.4 var(--ds-font-body); color: #9a6a3d; }
+@media (max-width: 600px) { #page-container .tk-chart .tk-chart__title { font-size: 16px !important; } .tk-chart__kpi b { font-size: 20px; } }
+.tk-chart { padding: 20px 18px 12px; background: #fff; border-radius: 16px; box-shadow: 0 0 0 1px rgba(9, 9, 11, 0.06), 0 20px 25px -5px rgba(0, 0, 0, 0.07), 0 8px 10px -6px rgba(0, 0, 0, 0.06); }
+@media (prefers-reduced-motion: reduce) { .tk-dot, .tk-smoke { display: none; } .tk-ring__node--hot circle { animation: none; } }
+.tk-draw { stroke-dasharray: 1; stroke-dashoffset: 1; animation: tk-draw 2.2s ease-out 0.3s forwards; }
+.tk-fade { opacity: 0; animation: tk-fade 0.5s ease-out 2.3s forwards; }
+@keyframes tk-draw { to { stroke-dashoffset: 0; } }
+@keyframes tk-fade { to { opacity: 1; } }
+.lf-armed:not(.is-in) .tk-draw, .lf-armed:not(.is-in) .tk-fade { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) { .tk-draw { animation: none; stroke-dashoffset: 0; } .tk-fade { animation: none; opacity: 1; } }
 
 /* Split: source → node → three outputs */
 .tk-stage--split { min-width: 600px; }
@@ -2607,6 +2640,33 @@ img.letters-feature__art {
   #page-container .letter-signup--float .letter-signup__scribble { top: -34px; right: -46px; width: 118px; }
   #page-container .letter-signup--float .letter-signup__title { font-size: 28px !important; }
   #page-container .letter-signup--float .letter-signup__body { font-size: 15px; }
+}
+
+/* Newsletter signup, lead-form card (Nov 2026): the same frosted white card,
+   56px fields and black pill as the /builder-loop/ and 15 Minute Case Study
+   forms. No brush scribble. Copy and the "already" underline are unchanged. */
+#page-container .letter-signup,
+#page-container .letter-signup--float {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 24px;
+  box-shadow:
+    0 0 0 1px rgba(9, 9, 11, 0.075),
+    0 20px 25px -5px rgba(0, 0, 0, 0.065),
+    0 8px 10px -6px rgba(0, 0, 0, 0.065);
+}
+#page-container .letter-signup .letter-signup__scribble { display: none; }
+#page-container .letter-signup .letter-signup__field { gap: 12px; }
+#page-container .letter-signup .letter-signup__field .letter-signup__input {
+  height: 56px;
+  padding: 0 20px;
+  border: 1px solid rgba(9, 9, 11, 0.14);
+  border-radius: 14px;
+}
+#page-container .letter-signup .letter-signup__field .letter-signup__btn {
+  height: 56px;
+  margin-top: 4px;
+  font-size: 16px;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.12) inset, 0 8px 18px -8px rgba(0, 0, 0, 0.45);
 }
 
 /* critical:start */
