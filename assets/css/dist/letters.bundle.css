@@ -3845,6 +3845,62 @@ img.letters-feature__art {
   .tk-stage--fan .tk-dark-pill { font-size: 13px; }
   .tk-col .tk-pill { animation: none; }
 }
+/* Phones, the other figure layouts (merge, split, proof, sort, exit): same idea. No zoom,
+   one centred column at full size, 13/11px text, chips 300px max (about 45px from the
+   edges at 390px), a thin vertical connector behind stacked parts. Desktop unchanged. */
+@media (max-width: 600px) {
+  .tk-stage--merge, .tk-stage--split, .tk-stage--proof, .tk-stage--sort, .tk-stage--exit { zoom: 1; min-width: 0; width: 100%; transform: none; }
+  .tk-stage--merge .tk-lines, .tk-stage--split .tk-lines, .tk-stage--exit .tk-lines { display: none; }
+  .tk-stage--merge, .tk-stage--split, .tk-stage--exit .tk-flow-row {
+    background: linear-gradient(rgba(9, 9, 11, 0.14), rgba(9, 9, 11, 0.14)) center / 1px 100% no-repeat;
+  }
+  .tk-stage--merge .tk-node, .tk-stage--split .tk-node { margin: 16px 0; }
+  .tk-stage--split .tk-node { margin: 22px 0 26px; }
+  .tk-stage--merge .tk-pill__label, .tk-stage--split .tk-pill__label, .tk-stage--exit .tk-pill__label { font-size: 13px; line-height: 1.3; white-space: normal; }
+  .tk-stage--merge .tk-pill__sub, .tk-stage--split .tk-pill__sub, .tk-stage--exit .tk-pill__sub { font-size: 11px; line-height: 1.35; margin-top: 2px; white-space: normal; }
+
+  /* Merge: three input cards → node → result doc */
+  .tk-stage--merge .tk-grid3 { grid-template-columns: 1fr; gap: 10px; width: 100%; max-width: 300px; }
+  .tk-stage--merge .tk-usage { gap: 0; padding: 14px 16px; }
+  .tk-stage--merge .tk-usage .tk-skel { display: none; }
+  .tk-stage--merge .tk-usage__title { font-size: 13px; line-height: 1.3; font-weight: 600; }
+  .tk-stage--merge .tk-usage__title br { display: none; }
+  .tk-stage--merge .tk-usage__ico { width: 16px; height: 16px; }
+  .tk-stage--merge .tk-doc { width: 160px; }
+  .tk-stage--merge .tk-doc__title { font-size: 13px; }
+  .tk-stage--merge .tk-tag { font-size: 11px; right: -24px; }
+
+  /* Split: source → node → three outcomes */
+  .tk-stage--split > .tk-pill { max-width: 300px; box-sizing: border-box; }
+  .tk-stage--split .tk-split-outs { grid-template-columns: 1fr; gap: 10px; width: 100%; max-width: 300px; justify-items: stretch; }
+  .tk-stage--split .tk-split-outs .tk-pill { width: 100%; box-sizing: border-box; justify-content: center; padding: 8px 14px; }
+
+  /* Proof: browser card with three stats */
+  .tk-stage--proof .tk-browser { width: 100%; max-width: 300px; }
+  .tk-stage--proof .tk-browser__body { padding: 14px; gap: 14px; }
+  .tk-stage--proof .tk-stats { gap: 8px; }
+  .tk-stage--proof .tk-stat { padding: 10px 8px; }
+  .tk-stage--proof .tk-stat__num { font-size: 19px; }
+  .tk-stage--proof .tk-stat__label { font-size: 11px; line-height: 1.3; margin-top: 6px; }
+  .tk-stage--proof .tk-tag--inline { font-size: 11px; }
+
+  /* Sort: toggle + legend + six cards that re-sort; slide distance matches the narrower columns */
+  .tk-stage--sort .tk-toggle { font-size: 13px; }
+  .tk-stage--sort .tk-cols { grid-template-columns: repeat(3, 92px); gap: 12px; margin: 18px 0 10px; font-size: 11px; }
+  .tk-stage--sort .tk-sortgrid { grid-template-columns: repeat(3, 92px); grid-auto-rows: 64px; }
+  .tk-stage--sort .tk-gcard[style*="--dx:132px"] { --dx: 104px !important; }
+  .tk-stage--sort .tk-gcard[style*="--dx:-132px"] { --dx: -104px !important; }
+  .tk-stage--sort .tk-gcard__year { font-size: 11px; }
+
+  /* Exit: case study card → booked conversation */
+  .tk-stage--exit .tk-flow-row { flex-direction: column; align-items: center; gap: 16px; width: 100%; }
+  .tk-stage--exit .tk-doc--exit { width: 100%; max-width: 300px; }
+  .tk-stage--exit .tk-doc__title { font-size: 13px; }
+  .tk-stage--exit .tk-rhythm { flex-wrap: wrap; gap: 4px; }
+  .tk-stage--exit .tk-rhythm span { font-size: 11px; padding: 2px 6px; }
+  .tk-stage--exit .tk-cta-btn { font-size: 13px; }
+  .tk-stage--exit .tk-booked { width: 100%; max-width: 300px; height: auto; min-height: 52px; padding: 8px 14px 8px 8px; gap: 12px; }
+}
 
 /* ── Podcast video (click-to-load YouTube) ───────────────────────────────── */
 .letter-video {
