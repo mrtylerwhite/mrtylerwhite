@@ -1,7 +1,8 @@
 ---
 title: "Ship and learn" is a lie. Here's the loop that replaced it.
 subtitle: Shipping is easy now. Hitting the target isn't.
-description: Building got cheap. Picking what to build didn't. The loop I run from kickoff to the 60-day readout, and the free playbook that goes with it.
+seoTitle: Hiring an "AI-native designer"? Most teams want the wrong thing.
+description: AI is the easy part. The loop I run from kickoff to the 60-day readout, and how to prove you can actually aim.
 slug: builder-loop
 date: 2026-11-27
 topic: kickoffs
