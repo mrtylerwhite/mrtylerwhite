@@ -21,6 +21,8 @@ She's right about the market.
 
 I also think it's the best news designers have had in years.
 
+Stick with me. By the end you'll have the loop I run on every project, and the math that gets a designer taken seriously in a room full of PMs.
+
 ## Building got cheap
 
 I haven't opened Figma in two and a half months. Claude builds my prototypes now. Real screens, real data, stuff you can click. ([Here's how that went](/letters/designing-without-figma/), including the parts that sucked.)
@@ -41,6 +43,8 @@ Can't? Then nobody on your team can either. You're all building on vibes and hop
 
 The designer who can say "that one, not that one, and here's the number it'll move" is the one who gets hired. And the one who gets [pulled into the room early](/letters/product-designer-portfolio/).
 
+So what's everyone doing instead? Racing to learn the tools. Which is exactly the wrong race.
+
 ## The AI part is the easy part
 
 Every job post wants an "AI-native designer" now.
@@ -56,6 +60,8 @@ Getting product, engineering and design to agree on what something is worth. Dec
 If your pitch is "I'm fluent in eight AI tools," you're competing with every designer who watched the same YouTube video.
 
 If your pitch is "I know what we're shooting at and I can prove we hit it," you're competing with almost nobody.
+
+So how do you actually learn to aim? For me it started with one question I couldn't stop asking.
 
 ## Where this started
 
@@ -84,6 +90,8 @@ You still get friction. It's the useful kind. The kind that happens before anyon
 The first time I ran it as a proper 90-minute session, I designed the full feature end to end the next day. Presented it to everyone the day after. PMs and engineers included. Zero pushback.
 
 That's the extreme case. On most projects it just kills a ton of the friction you'd otherwise eat later. (The full agenda is [here](/letters/project-kickoff-meeting/) if you want to steal it.)
+
+Look at step one on that list again. Appetite. It's the one everybody skips, because it sounds like the softest thing in the room. It's the opposite.
 
 ## Appetite is a money question
 
@@ -142,6 +150,8 @@ If you want it to be real, set it up before launch, while everyone still cares:
 
 <!-- figure:ship-and-learn -->
 
+Those three fix the ending. But one good readout won't save a team that skipped the beginning. You need the whole thing, start to finish, on repeat.
+
 ## The loop
 
 This is what I run now, start to finish. I call it the Builder Loop.
@@ -159,9 +169,13 @@ Stage six feeds the next stage one. What you learned becomes the next target. Th
 
 Shipping is the halfway point. Most teams stop there and call it a win.
 
+So where does your team fall off the loop? There's a six-question test for that. It takes about two minutes, and most teams fail it by question three.
+
 ## Where your team loses the target
 
-Every stage of the loop has one question behind it. Take the last feature your team shipped and ask them in order:
+Grab the last thing your team shipped. Pick the one nobody's mentioned since launch day.
+
+Now ask these in order. One per stage of the loop:
 
 1. What were we building, for who, and what were we not building?
 2. Where's the doc that says why we made each call?
@@ -170,9 +184,13 @@ Every stage of the loop has one question behind it. Take the last feature your t
 5. Does what shipped match what we decided?
 6. Sixty days later, did the number move?
 
+If the answer to number two is "it's in a Slack thread somewhere," that's a no. If the answer to number three is a shrug, that's a hell no.
+
 The first one nobody can answer is where your team loses the target.
 
 For most teams it's number three. Nobody wrote the number down, so nobody can ever check it. Which means nobody can ever claim the win either, including you.
+
+The good news? Number three is the cheapest one on the list to fix. It takes fifteen minutes and one slightly awkward question.
 
 ## Try it on your next project
 
@@ -191,14 +209,20 @@ It takes about 15 minutes. Put that date in your calendar right now, while you s
 
 If line three is hard to fill in, that's the most useful thing you'll learn all week. No baseline means you instrument first. Ask engineering to add the tracking as part of the build, and write "none yet" instead of guessing.
 
+Then you wait sixty days. And then comes the meeting most teams quietly chicken out of.
+
 ## What the day-60 call sounds like
+
+This is the meeting where careers get made. Most designers skip it, because the answer might be "it didn't work" and nobody wants to say that with the VP in the room.
+
+Show up anyway. The designer who says "we were wrong, here's why, here's what we do next" is the one who gets trusted with the next big bet.
 
 When the date comes up, put what you predicted next to what actually happened, with the source and the date. Then make one call:
 
 - **Keep.** It hit the target. Leave it alone and stop spending on it.
 - **Iterate.** It moved, but not enough. Run another loop on it, with what you learned as the new target.
 - **Investigate.** Something weird happened. The number moved the wrong way, or something else moved instead. Find out why before you decide anything.
-- **Stop.** It didn't work. Pull it, or at least stop investing in it.
+- **Stop.** It didn't work. Pull it, or at least stop pouring money into it. Sunk cost is a hell of a drug.
 
 Then write one more line: what would change your mind about this call? It keeps you honest, and it tells the next loop exactly what to look for.
 
@@ -207,6 +231,8 @@ In the playbook's example, the team expected new workspaces with two or more mem
 <!-- figure:day60-chart -->
 
 And this is where case studies actually come from. "We said this would move 12 points, it moved 8, here's what we did next" beats any before-and-after screenshot. (Here's [how to write it up](/letters/ux-case-study-template/).)
+
+That's one feature going round the loop once. Want to see every stage done properly, with the templates I actually use?
 
 ## Get the playbook
 
