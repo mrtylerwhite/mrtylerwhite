@@ -1406,6 +1406,17 @@ img.letters-feature__art {
 .tk-pill__label { font-size: 12px; line-height: 16px; font-weight: 600; }
 .tk-pill--tile { padding: 4px 12px 4px 4px; border-radius: 12px; }
 .tk-pill__sub { font-size: 10px; line-height: 14px; color: rgba(9, 9, 11, 0.5); }
+/* Phones: the figure stages are zoomed down (0.55 to 0.8), and fixed px line-heights
+   don't grow when a phone enlarges small text, so the title and subtitle touched or
+   overlapped. Unitless line-heights, a gap (~3px on screen after zoom), roomier chips,
+   and no automatic text enlargement inside figures. Desktop unchanged. */
+.tk-tray { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+@media (max-width: 760px) {
+  .tk-pill__label { line-height: 1.3; }
+  .tk-pill__sub { line-height: 1.3; margin-top: 5px; }
+  .tk-pill--tile { padding: 7px 14px 7px 6px; }
+  .tk-stat__label { line-height: 1.3; }
+}
 .tk-ico { width: 16px; height: 16px; flex: none; }
 .tk-ico--muted { color: #71717a; }
 .tk-ico--brown { color: #C59060; }
